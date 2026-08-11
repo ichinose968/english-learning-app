@@ -1,0 +1,1567 @@
+{
+ "level": "C1",
+ "generatedAt": "2026-08-11T10:44:33.200Z",
+ "count": 120,
+ "items": [
+  {
+   "id": "C1-0",
+   "topic": "時制",
+   "question": "By the time the auditors arrive next Monday, we ____ every discrepancy in the quarterly accounts.",
+   "choices": [
+    "will resolve",
+    "will have resolved",
+    "have resolved",
+    "would have resolved"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "By the time+現在形の節は未来の基準時を表し、その時点までに完了する動作は未来完了 will have+過去分詞で示す。will resolve では「完了」のニュアンスが出ず、have resolved は未来の基準時に対応できない。would have resolved は過去の非現実を表すので不可。訳:来週月曜に監査人が来るまでに、四半期決算の不一致はすべて解消しておきます。"
+  },
+  {
+   "id": "C1-1",
+   "topic": "時制",
+   "question": "The final figures ____ in ten minutes ago, so we can begin the analysis straight away.",
+   "choices": [
+    "have come",
+    "had come",
+    "came",
+    "were coming"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "ten minutes ago のように過去の一時点を明示する副詞句は現在完了と共起できないため、単純過去 came が正しい。have come は「ago」と衝突、had come は基準となる過去がない、were coming は進行の意味が不自然。訳:最終数値は10分前に届いたので、すぐに分析を始められます。"
+  },
+  {
+   "id": "C1-2",
+   "topic": "時制",
+   "question": "It was only after she had reached the airport that she realised she ____ her passport on the hall table.",
+   "choices": [
+    "had left",
+    "left",
+    "has left",
+    "was leaving"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "realised(過去)より前に起きた出来事なので過去完了 had left を用いる。left では前後関係が不明確になり、has left は過去の文脈と時制の一致が取れない。was leaving は進行の意味になり文意に合わない。訳:空港に着いてから初めて、彼女はパスポートを玄関のテーブルに置いてきたことに気づいた。"
+  },
+  {
+   "id": "C1-3",
+   "topic": "時制",
+   "question": "No sooner ____ the contract than the whole market collapsed.",
+   "choices": [
+    "we had signed",
+    "had we signed",
+    "did we sign",
+    "have we signed"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "No sooner ... than ... の構文では文頭の否定的副詞により倒置が起こり、かつ先に起きた動作なので過去完了を使う(had we signed)。we had signed は倒置がなく不可、did we sign は時制が合わず、have we signed は過去の出来事に現在完了を用いており誤り。訳:契約を結んだとたんに、市場全体が崩壊した。"
+  },
+  {
+   "id": "C1-4",
+   "topic": "時制",
+   "question": "This time next week I ____ on a beach in Sardinia with my phone switched off.",
+   "choices": [
+    "will lie",
+    "am lying",
+    "will have lain",
+    "will be lying"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "This time next week は未来の一時点を指し、その時点で進行中の状況は未来進行形 will be+-ing で表す。will lie は単なる意志・予測で臨場感がなく、am lying は確定予定の意味にならず、will have lain は完了の意味で文意に合わない。訳:来週の今ごろ、私は電話の電源を切ってサルデーニャの浜辺に寝そべっているでしょう。"
+  },
+  {
+   "id": "C1-5",
+   "topic": "時制",
+   "question": "She promised to get back to me on Tuesday, but I ____ a word from her since.",
+   "choices": [
+    "didn't hear",
+    "haven't heard",
+    "hadn't heard",
+    "don't hear"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "since(それ以来今まで)は過去から現在までの継続を示すので現在完了 haven't heard が必要。didn't hear と don't hear は現在までの継続を表せず、hadn't heard は過去のある時点までを基準にするため文意に合わない。訳:彼女は火曜に連絡すると約束したが、それ以来何の音沙汰もない。"
+  },
+  {
+   "id": "C1-6",
+   "topic": "時制",
+   "question": "For the past decade this region ____ a steady decline in annual rainfall.",
+   "choices": [
+    "experiences",
+    "is experiencing",
+    "has been experiencing",
+    "had experienced"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "For the past decade は過去から現在まで続く期間なので現在完了進行形が最適。単純現在 experiences は期間の継続を示せず、is experiencing は現在の一時的状況、had experienced は現在との接点を失うため不適。訳:この地域では過去10年にわたり、年間降水量が着実に減少し続けている。"
+  },
+  {
+   "id": "C1-7",
+   "topic": "時制",
+   "question": "Once the budget ____ , we can press ahead with the restructuring.",
+   "choices": [
+    "has been finalised",
+    "will be finalised",
+    "will have finalised",
+    "is finalising"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "once などの時の副詞節では未来を表すのに will を使わず、完了を強調する場合は現在完了(受動なら has been+過去分詞)を用いる。will be finalised と will have finalised は節内に will があるため不可、is finalising は能動進行で意味が通らない。訳:予算が確定しさえすれば、組織再編を進められます。"
+  },
+  {
+   "id": "C1-8",
+   "topic": "時制",
+   "question": "It is the first time I ____ such a compelling case for abandoning the scheme.",
+   "choices": [
+    "hear",
+    "heard",
+    "have heard",
+    "had heard"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "It is the first time (that) ... の後ろは現在完了が原則。主節が is なので had heard は不可(主節が was なら過去完了)。hear や heard では「今までで初めて」という現在までの経験の意味が出ない。訳:その計画を断念すべきだというこれほど説得力のある主張を聞いたのは初めてです。"
+  },
+  {
+   "id": "C1-9",
+   "topic": "時制",
+   "question": "By next December she ____ for this firm for thirty years.",
+   "choices": [
+    "will work",
+    "will have been working",
+    "has been working",
+    "would have worked"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "未来の一時点までの動作の継続期間(for thirty years)は未来完了進行形 will have been+-ing で表す。will work は継続を表せず、has been working は基準が現在になってしまい、would have worked は過去の反実仮想。訳:来年の12月には、彼女はこの会社で30年間働き続けてきたことになる。"
+  },
+  {
+   "id": "C1-10",
+   "topic": "助動詞",
+   "question": "You ____ have told me you were coming; I would have made up the spare room.",
+   "choices": [
+    "should",
+    "would",
+    "must",
+    "can"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "should have+過去分詞は「〜すべきだったのに(しなかった)」という非難・後悔を表す。would have told は仮定法帰結、must have told は「〜したに違いない」で文意に反し、can have told は肯定文では通常用いない。訳:来るなら言ってくれればよかったのに。そうすれば客間を用意しておいたよ。"
+  },
+  {
+   "id": "C1-11",
+   "topic": "助動詞",
+   "question": "Every window is dark and the car has gone; they ____ have set off before dawn.",
+   "choices": [
+    "can",
+    "shall",
+    "must",
+    "ought"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "根拠のある過去への確信ある推量は must have+過去分詞。can have は肯定の断定には使えず、shall have は意味を成さない。ought は ought to have の形が必要で、to がないため不可。訳:窓はすべて暗く、車もない。彼らは夜明け前に出発したに違いない。"
+  },
+  {
+   "id": "C1-12",
+   "topic": "助動詞",
+   "question": "She ____ have been more than twenty when she published that novel; it reads like the work of a prodigy.",
+   "choices": [
+    "mustn't",
+    "can't",
+    "shouldn't",
+    "needn't"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜だったはずがない」という過去に対する否定的推量は can't have+過去分詞。mustn't have は禁止の must の否定で推量には使えず、shouldn't have は「〜すべきでなかった」、needn't have は「〜する必要はなかったのに」で意味が異なる。訳:あの小説を出版したとき彼女が20歳を超えていたはずがない。まるで天才の作品のようだ。"
+  },
+  {
+   "id": "C1-13",
+   "topic": "助動詞",
+   "question": "You ____ have bothered peeling the potatoes; in the end we all went out for dinner.",
+   "choices": [
+    "mustn't",
+    "couldn't",
+    "needn't",
+    "hadn't"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "needn't have+過去分詞は「実際にはしたが、その必要はなかった」を表し、後半の文脈と一致する。mustn't have は推量・禁止に使えず不自然、couldn't have は「〜できたはずがない」、hadn't have は形として成立しない。訳:わざわざジャガイモの皮をむかなくてもよかったのに。結局みんなで外食したのだから。"
+  },
+  {
+   "id": "C1-14",
+   "topic": "助動詞",
+   "question": "Under the revised regulations, passengers ____ carry liquids exceeding 100 ml in hand luggage.",
+   "choices": [
+    "may not",
+    "need not",
+    "might not",
+    "would not"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "規則による禁止を表す may not(=are not permitted to)が正解。need not は「〜する必要はない」で義務の不在、might not は可能性の否定、would not は意志・推量で、いずれも規則上の禁止を表さない。訳:改定規則では、乗客は100mlを超える液体を手荷物として持ち込んではならない。"
+  },
+  {
+   "id": "C1-15",
+   "topic": "助動詞",
+   "question": "As a boy he ____ sit for hours at the level crossing watching the trains go by.",
+   "choices": [
+    "will",
+    "would",
+    "used",
+    "should"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "過去の反復的習慣は would+原形で表せる。will は現在の習性、used は used to sit の形にしなければ使えず、should は意味が通らない。訳:少年のころ彼は、踏切で何時間も座って列車が通り過ぎるのを眺めていたものだった。"
+  },
+  {
+   "id": "C1-16",
+   "topic": "助動詞",
+   "question": "The last bus has gone, so we ____ as well walk home.",
+   "choices": [
+    "should",
+    "would",
+    "might",
+    "could"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "might as well+原形は「どうせなら〜した方がいい、〜するしかあるまい」という消極的提案の定型表現。should as well、would as well、could as well はいずれも慣用として成立しない。訳:最終バスが行ってしまったので、歩いて帰るしかないね。"
+  },
+  {
+   "id": "C1-17",
+   "topic": "助動詞",
+   "question": "You ____ better not mention the merger while the interns are in the room.",
+   "choices": [
+    "would",
+    "should",
+    "had",
+    "have"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "忠告を表す定型表現は had better(否定は had better not)。would better、should better、have better という形はなく、had は形の上では過去だが現在・未来の忠告を表す。訳:インターンが部屋にいる間は、合併の話は出さない方がいいですよ。"
+  },
+  {
+   "id": "C1-18",
+   "topic": "助動詞",
+   "question": "She ____ have caught the 6.15 easily, but she decided to walk the whole way instead.",
+   "choices": [
+    "could",
+    "can",
+    "must",
+    "will"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "could have+過去分詞は「〜できたのに(しなかった)」という実現しなかった過去の可能性・能力を表す。can have は肯定の断定に使えず、must have は「〜したに違いない」、will have は未来完了か推量で、but 以下の文脈と矛盾する。訳:彼女は6時15分の列車に余裕で間に合ったはずだが、代わりに全部歩くことにした。"
+  },
+  {
+   "id": "C1-19",
+   "topic": "助動詞",
+   "question": "____ the negotiations break down, we have a contingency plan ready.",
+   "choices": [
+    "Would",
+    "Should",
+    "Might",
+    "Must"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "if を省略した倒置条件文で、万一の事態を表すのは Should+主語+原形(=If the negotiations should break down)。Would、Might、Must にはこの倒置条件用法がない。訳:万一交渉が決裂した場合には、代替策を用意してあります。"
+  },
+  {
+   "id": "C1-20",
+   "topic": "受動態",
+   "question": "The revised proposal is currently ____ by the board of trustees.",
+   "choices": [
+    "being reviewed",
+    "been reviewed",
+    "reviewing",
+    "to reviewing"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「今まさに〜されている最中だ」は進行形の受動態 be being+過去分詞。been reviewed は前に have が必要、reviewing は能動で by 句と矛盾、to reviewing は文法的に成立しない。訳:修正案は現在、理事会で審議されているところです。"
+  },
+  {
+   "id": "C1-21",
+   "topic": "受動態",
+   "question": "By the time we got back to the village, the old mill ____ .",
+   "choices": [
+    "had demolished",
+    "was demolishing",
+    "had been demolished",
+    "has been demolished"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "過去の一時点までに完了していた「される」動作なので過去完了の受動態 had been+過去分詞。had demolished と was demolishing は能動で主語の mill が行為者になってしまい不自然、has been demolished は過去の基準時と合わない。訳:私たちが村に戻ったときには、あの古い製粉所は取り壊されていた。"
+  },
+  {
+   "id": "C1-22",
+   "topic": "受動態",
+   "question": "She has never enjoyed ____ for mistakes that were not hers.",
+   "choices": [
+    "criticising",
+    "been criticised",
+    "being criticised",
+    "to be criticising"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "enjoy は動名詞を目的語にとり、「批判される」という受け身の意味なので being+過去分詞。criticising では能動になり後続の for 句と意味が合わず、been criticised は助動詞を欠き、to be criticising は enjoy の後に不定詞が来ないため誤り。訳:彼女は自分のせいではない失敗で批判されるのを決して快く思ったことがない。"
+  },
+  {
+   "id": "C1-23",
+   "topic": "受動態",
+   "question": "The suspect is believed ____ the country on a forged passport.",
+   "choices": [
+    "to leave",
+    "leaving",
+    "to have left",
+    "to have been left"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "is believed to+不定詞の構文で、主節より前の出来事は完了不定詞 to have+過去分詞で表す。to leave は同時・未来の内容になり、leaving はこの構文で用いず、to have been left は受動で「置き去りにされた」となり意味が崩れる。訳:その容疑者は偽造パスポートで出国したものと考えられている。"
+  },
+  {
+   "id": "C1-24",
+   "topic": "受動態",
+   "question": "The manuscript ____ to have been produced in a Burgundian monastery.",
+   "choices": [
+    "thinks",
+    "is thinking",
+    "is thought",
+    "has thought"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "It is thought that ... を主語に転換した形で、be thought to+不定詞となる。thinks、is thinking、has thought はいずれも能動で、主語 manuscript が「考える」ことになり不成立。訳:その写本はブルゴーニュの修道院で作られたものと考えられている。"
+  },
+  {
+   "id": "C1-25",
+   "topic": "受動態",
+   "question": "I had my luggage ____ twice before I was allowed through.",
+   "choices": [
+    "search",
+    "searching",
+    "to search",
+    "searched"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "have+目的語+過去分詞で「(目的語)を〜される/してもらう」を表す受動的使役。原形 search や to search は目的語が動作主の場合の形、searching は進行の意味になり文意に合わない。訳:通行を許されるまでに、私は荷物を二度検査された。"
+  },
+  {
+   "id": "C1-26",
+   "topic": "受動態",
+   "question": "By the end of the decade the entire line ____ .",
+   "choices": [
+    "will have electrified",
+    "will be electrifying",
+    "is electrifying",
+    "will have been electrified"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "未来の一時点までに完了する受動の動作は未来完了受動態 will have been+過去分詞。will have electrified と will be electrifying は能動で路線自体が電化する側になり、is electrifying も同様に不適。訳:この10年が終わるまでに、路線全体が電化されているだろう。"
+  },
+  {
+   "id": "C1-27",
+   "topic": "受動態",
+   "question": "The talks ____ off until further notice, so the delegates have gone home.",
+   "choices": [
+    "have called",
+    "are calling",
+    "had called",
+    "have been called"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "call off(中止する)の受動で、現在に影響が及ぶ完了なので have been called off。have called、are calling、had called はいずれも能動で、talks が中止する主体になってしまう。訳:協議は追って通知があるまで中止されたため、代表団は帰国した。"
+  },
+  {
+   "id": "C1-28",
+   "topic": "受動態",
+   "question": "She ____ a medal for bravery at a ceremony last spring.",
+   "choices": [
+    "awarded",
+    "was awarded to",
+    "was awarded",
+    "has awarded"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "award は二重目的語動詞で、人を主語にした受動態では was awarded+物が続く。was awarded to は後ろに物が来るとつながらず、awarded と has awarded では彼女が授与した側になる(has awarded は last spring とも共起しない)。訳:彼女は昨春の式典で勇敢さを称える勲章を授与された。"
+  },
+  {
+   "id": "C1-29",
+   "topic": "受動態",
+   "question": "The roof needs ____ before the rainy season sets in.",
+   "choices": [
+    "repairing",
+    "to repair",
+    "repair",
+    "being repaired"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "need+動名詞は能動形で受動の意味(=needs to be repaired)を表す慣用。to repair では屋根が修理する側になり、repair は名詞で動詞が足りず、needs being repaired は英語として用いない。訳:雨季が始まる前に、屋根を修理する必要がある。"
+  },
+  {
+   "id": "C1-30",
+   "topic": "不定詞・動名詞",
+   "question": "I shall never forget ____ the Northern Lights for the first time.",
+   "choices": [
+    "seeing",
+    "to see",
+    "to have seen",
+    "see"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "forget+動名詞は「(過去に)〜したことを忘れる」。forget to see は「見るのを忘れる」という未来の行為を指し文意に合わない。to have seen や原形 see は forget の目的語としてこの意味では使えない。訳:初めてオーロラを見たときのことは決して忘れないだろう。"
+  },
+  {
+   "id": "C1-31",
+   "topic": "不定詞・動名詞",
+   "question": "At two in the morning she finally stopped ____ and went straight to bed.",
+   "choices": [
+    "to work",
+    "working",
+    "work",
+    "to be working"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "stop+動名詞は「〜するのをやめる」。stop to work は「働くために立ち止まる」という目的の不定詞で、直後にベッドへ向かう文脈と矛盾する。原形 work や to be working は stop の後に置けない。訳:午前2時になってようやく彼女は仕事をやめ、まっすぐ寝床に入った。"
+  },
+  {
+   "id": "C1-32",
+   "topic": "不定詞・動名詞",
+   "question": "We regret ____ you that your application has not been successful.",
+   "choices": [
+    "informing",
+    "to informing",
+    "to inform",
+    "inform"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "regret to+不定詞は「残念ながら今から〜する」という改まった通知の表現。regret informing(動名詞)は「〜したことを後悔する」で意味が変わり、to informing と inform は形が誤り。訳:誠に残念ですが、ご応募は不採用となりましたことをお知らせいたします。"
+  },
+  {
+   "id": "C1-33",
+   "topic": "不定詞・動名詞",
+   "question": "After graduating in law, she went on ____ one of the country's most respected judges.",
+   "choices": [
+    "becoming",
+    "to becoming",
+    "to become",
+    "become"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "go on to+不定詞は「(次の段階として)続いて〜するようになる」。go on+動名詞は「同じことを続ける」意味で、卒業後の新展開を述べる文脈に合わない。to becoming と原形 become は形として誤り。訳:法学を修めた後、彼女は同国で最も尊敬される裁判官の一人となった。"
+  },
+  {
+   "id": "C1-34",
+   "topic": "不定詞・動名詞",
+   "question": "I can't help ____ that there is rather more to this story than we have been told.",
+   "choices": [
+    "feeling",
+    "to feel",
+    "feel",
+    "felt"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "cannot help+動名詞で「〜せずにはいられない」。help の後に不定詞 to feel や原形 feel、過去形 felt は置けない(cannot help but feel なら but が必要)。訳:この話には聞かされている以上の何かがあるように思えてならない。"
+  },
+  {
+   "id": "C1-35",
+   "topic": "不定詞・動名詞",
+   "question": "There is no point ____ about the delays; nobody at head office is listening.",
+   "choices": [
+    "to complain",
+    "complain",
+    "in complaining",
+    "complained"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "There is no point (in) doing で「〜しても無駄だ」。point の後に不定詞や原形は続かず、complained も文法的につながらない。訳:遅延について文句を言っても無駄だ。本社の誰も聞いていないのだから。"
+  },
+  {
+   "id": "C1-36",
+   "topic": "不定詞・動名詞",
+   "question": "I would like ____ that meeting yesterday, but I was stuck in Frankfurt.",
+   "choices": [
+    "to attend",
+    "attending",
+    "to have attended",
+    "having attended"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "would like to have+過去分詞は「〜したかったのだが(できなかった)」という実現しなかった過去の願望を表す。to attend では現在・未来の希望になり yesterday と矛盾し、attending や having attended は would like の後に置けない。訳:昨日のあの会議に出たかったのだが、フランクフルトで足止めされていた。"
+  },
+  {
+   "id": "C1-37",
+   "topic": "不定詞・動名詞",
+   "question": "He was made ____ every penny of the money he had taken.",
+   "choices": [
+    "repay",
+    "repaying",
+    "to repaying",
+    "to repay"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "make+目的語+原形は受動態になると to 不定詞が現れる(be made to do)。能動時の原形 repay をそのまま残すのは誤りで、repaying、to repaying も不可。訳:彼は持ち去った金を1ペニーも残さず返済させられた。"
+  },
+  {
+   "id": "C1-38",
+   "topic": "不定詞・動名詞",
+   "question": "She apologised for not ____ me about the change of venue sooner.",
+   "choices": [
+    "to tell",
+    "told",
+    "having told",
+    "to have told"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "前置詞 for の後は動名詞で、主節より前の行為を明示するには完了動名詞 having+過去分詞を用い、否定語 not はその前に置く。to tell、to have told は前置詞の後に置けず、told も動名詞ではない。訳:彼女は会場変更をもっと早く私に知らせなかったことを謝った。"
+  },
+  {
+   "id": "C1-39",
+   "topic": "不定詞・動名詞",
+   "question": "I dread ____ what the neighbours will say when they find out.",
+   "choices": [
+    "thinking",
+    "to think",
+    "think",
+    "to be thinking"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "dread to think は「考えるのも恐ろしい」という慣用表現で、この意味では例外的に不定詞をとる。dread doing は「実際に〜するのが怖い」で、ここでは慣用の定型に合わない。原形 think や to be thinking は不可。訳:近所の人たちが知ったら何と言うか、考えるだけでも恐ろしい。"
+  },
+  {
+   "id": "C1-40",
+   "topic": "分詞",
+   "question": "____ by years of drought, the region's farmland now yields barely half of what it did a decade ago.",
+   "choices": [
+    "Devastating",
+    "Having devastated",
+    "Devastated",
+    "To devastate"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主節の主語 farmland は「荒廃させられる」側なので、受動の意味を持つ過去分詞 Devastated が正しい。Devastating / Having devastated は能動で「農地が何かを荒廃させた」ことになり不可、To devastate では理由・原因を表す分詞構文にならない。和訳:何年もの干ばつで荒廃し、この地域の農地は今や10年前の半分ほどしか収穫を上げていない。"
+  },
+  {
+   "id": "C1-41",
+   "topic": "分詞",
+   "question": "____ the manuscript twice, she still felt uneasy about the closing chapter.",
+   "choices": [
+    "Proofreading",
+    "Having proofread",
+    "Having been proofread",
+    "Proofread"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「2度校正し終えた後で」という主節より前に完了した行為なので完了分詞 Having + 過去分詞。Proofreading では同時進行になり twice と噛み合わない。Having been proofread は受動で「彼女が校正された」ことになり不可。単独の Proofread も受動解釈になる。和訳:原稿を2度校正したのに、彼女は最終章がまだ気がかりだった。"
+  },
+  {
+   "id": "C1-42",
+   "topic": "分詞",
+   "question": "With the negotiations ____ at a delicate stage, neither delegation dared to comment publicly.",
+   "choices": [
+    "stood",
+    "to stand",
+    "having stood",
+    "standing"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "付帯状況の with + 目的語 + 分詞。negotiations は「(微妙な段階に)ある」という能動・進行の状態なので現在分詞 standing。stood は受動になり不可、to stand は with 構文では使えず、having stood は完了で「すでに終わった段階」を示し文意に合わない。和訳:交渉が微妙な段階にあったため、どちらの代表団も公に発言しようとはしなかった。"
+  },
+  {
+   "id": "C1-43",
+   "topic": "分詞",
+   "question": "All things ____, the merger has brought the company more benefits than drawbacks.",
+   "choices": [
+    "considering",
+    "considered",
+    "to consider",
+    "consider"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "All things considered(すべてを考慮すると)は独立分詞構文の慣用表現で、all things は「考慮される」側なので過去分詞。considering は能動なので「あらゆる物事が考える」ことになり不可、to consider や原形も慣用形として成立しない。和訳:すべてを考慮すれば、その合併は会社に欠点よりも多くの利益をもたらしている。"
+  },
+  {
+   "id": "C1-44",
+   "topic": "分詞",
+   "question": "____ twice for the same offence, he stood little chance of being granted bail.",
+   "choices": [
+    "Having arrested",
+    "Being arrested",
+    "Having been arrested",
+    "To have arrested"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "彼は「逮捕された」側であり、しかも主節より前の出来事なので完了受動の Having been arrested。Having arrested は能動で意味が逆、Being arrested は「逮捕されているところ」という同時性を示し twice との相性が悪い、To have arrested も能動で不可。和訳:同じ罪で2度逮捕されていたため、彼が保釈を認められる見込みはほとんどなかった。"
+  },
+  {
+   "id": "C1-45",
+   "topic": "分詞",
+   "question": "The last train ____, we had no choice but to look for a hotel near the station.",
+   "choices": [
+    "had gone",
+    "having gone",
+    "going",
+    "went"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "分詞の意味上の主語(The last train)が主節の主語(we)と異なる独立分詞構文。主節より前の完了した事柄なので having gone。had gone / went では接続詞なしに節が2つ並ぶことになり不可、going では時間的前後関係が示せない。和訳:終電が出てしまったので、私たちは駅の近くでホテルを探すしかなかった。"
+  },
+  {
+   "id": "C1-46",
+   "topic": "分詞",
+   "question": "I'll have the signed contract ____ to your office by courier first thing tomorrow.",
+   "choices": [
+    "deliver",
+    "delivering",
+    "delivered",
+    "to deliver"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "使役の have + 目的語 + 過去分詞で「〜してもらう/〜される状態にする」。契約書は「届けられる」側なので delivered。deliver や delivering は目的語が能動的に動作する場合の形で、書類には使えない。have は to 不定詞を取らない。和訳:明日の朝いちばんに、署名済みの契約書を宅配便でお宅のオフィスに届けさせます。"
+  },
+  {
+   "id": "C1-47",
+   "topic": "分詞",
+   "question": "____ from the summit at dawn, the sprawling city looks almost like a circuit board.",
+   "choices": [
+    "Seeing",
+    "Having seen",
+    "Seen",
+    "To see"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主節の主語 city は「見られる」側なので過去分詞 Seen(= When it is seen)。Seeing / Having seen では「都市が見る」ことになり、いわゆる懸垂分詞の誤り。To see は「見るためには」という目的の意味になり文意に合わない。和訳:夜明けに山頂から眺めると、広がる街はまるで回路基板のように見える。"
+  },
+  {
+   "id": "C1-48",
+   "topic": "分詞",
+   "question": "____ no further objections from the floor, the chair moved straight to a vote.",
+   "choices": [
+    "There being",
+    "Being",
+    "It being",
+    "There be"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "there is 構文を分詞構文にすると、形式主語 there を残して There being となる。Being では意味上の主語が主節の the chair になり「議長が反対意見でない」という不合理な意味に、It being は there 構文の代用にならず、There be は分詞の形をしていない。和訳:議場からそれ以上の反対意見が出なかったので、議長はただちに採決に移った。"
+  },
+  {
+   "id": "C1-49",
+   "topic": "分詞",
+   "question": "____ the sheer scale of the disruption, the airline's response was remarkably swift.",
+   "choices": [
+    "Considered",
+    "Considering",
+    "Consider",
+    "To consider"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "considering は「〜を考えると」という前置詞化した分詞で、後ろに目的語(the sheer scale)を取る。過去分詞 Considered では目的語を取れず(All things considered のように名詞が前に来る形になる)、命令形の Consider や To consider では後続の主節につながらない。和訳:混乱の規模の大きさを考えれば、その航空会社の対応は驚くほど迅速だった。"
+  },
+  {
+   "id": "C1-50",
+   "topic": "関係詞",
+   "question": "He turned up two hours late, ____ was hardly surprising in that weather.",
+   "choices": [
+    "that",
+    "which",
+    "what",
+    "it"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "前の文全体を先行詞とする非制限用法の関係代名詞は which。that は非制限用法(コンマの後)では使えず、what は先行詞を含むので直前の内容を受けられない。it では接続詞のない二重文になる。和訳:彼は2時間遅れて現れたが、あの天候ではまったく驚くことではなかった。"
+  },
+  {
+   "id": "C1-51",
+   "topic": "関係詞",
+   "question": "It is an elegant theory, the implications ____ are still hotly debated among economists.",
+   "choices": [
+    "whose",
+    "which",
+    "of which",
+    "of whose"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「その理論の含意」を表すには the implications of which の語順にする。whose を使うなら whose implications are... と名詞の前に置く必要があり、名詞の後ろでは不可。which だけでは of が欠け、of whose は後ろに名詞が必要。和訳:それは洗練された理論だが、その含意は経済学者の間でいまなお激しく議論されている。"
+  },
+  {
+   "id": "C1-52",
+   "topic": "関係詞",
+   "question": "My cousin, ____ has just moved to Lisbon, keeps urging me to come and visit.",
+   "choices": [
+    "that",
+    "which",
+    "who",
+    "whom"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "コンマ付きの非制限用法で、人が先行詞かつ関係節内で主語の働きをするので who。that は非制限用法では使えず、which は人を受けられない、whom は目的格なので直後に動詞 has を続けられない。和訳:リスボンに引っ越したばかりのいとこが、ぜひ遊びに来いとしきりに言ってくる。"
+  },
+  {
+   "id": "C1-53",
+   "topic": "関係詞",
+   "question": "We have reached a stage ____ further concessions would be politically impossible.",
+   "choices": [
+    "which",
+    "when",
+    "where",
+    "what"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "stage, point, situation など抽象的な「段階・局面」は場所扱いで、関係副詞 where(= at which)で受ける。which は後ろが完全な文なので関係代名詞として機能せず、when は時を表す名詞が先行詞のときに使う。what は先行詞を取らない。和訳:私たちは、これ以上の譲歩は政治的に不可能だという段階に達している。"
+  },
+  {
+   "id": "C1-54",
+   "topic": "関係詞",
+   "question": "The architect ____ we entrusted the renovation of the town hall has since gone bankrupt.",
+   "choices": [
+    "whom",
+    "to whom",
+    "who",
+    "which"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "entrust A to B(AをBに委ねる)の to が必要なので to whom。whom や who だけでは前置詞が欠け、which は人を先行詞にできない。前置詞を節末に残すなら The architect (who) we entrusted the renovation to となる。和訳:私たちが市庁舎の改修を任せた建築家は、その後倒産してしまった。"
+  },
+  {
+   "id": "C1-55",
+   "topic": "関係詞",
+   "question": "____ wins the tender will also be responsible for maintenance for the next ten years.",
+   "choices": [
+    "Whoever",
+    "Whomever",
+    "Whichever",
+    "Who"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜する人は誰でも」で、関係節内で wins の主語になるので主格の Whoever。Whomever は目的格なので不可、Whichever は限られた選択肢の中から「どれ/どちら」を選ぶ意味で人一般には合わない、Who では名詞節の主語として据わりが悪い。和訳:入札に勝った者は誰であれ、今後10年の保守も担うことになる。"
+  },
+  {
+   "id": "C1-56",
+   "topic": "関係詞",
+   "question": "Researchers still disagree about the extent ____ the two phenomena are related.",
+   "choices": [
+    "that",
+    "to which",
+    "which",
+    "in which"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "to the extent that... の関係詞化で the extent to which(どの程度まで〜か)という定型。which 単独や in which では前置詞の選択が誤りで、that では extent と related を結ぶ前置詞 to が欠ける。和訳:その2つの現象がどの程度関連しているのかについては、研究者の間でいまなお意見が分かれている。"
+  },
+  {
+   "id": "C1-57",
+   "topic": "関係詞",
+   "question": "He gave me such help ____ he could, though his own workload was crushing.",
+   "choices": [
+    "that",
+    "as",
+    "which",
+    "what"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "such ... as ~ で「〜するような…」を表す擬似関係代名詞 as。ここでは as が he could (give) の目的語になっている。such ... that は「あまりに…なので」という結果を表し後ろが完全な文になるので不可。which / what はこの相関表現では使えない。和訳:自分の仕事量も過酷だったのに、彼はできる限りの助けを私にしてくれた。"
+  },
+  {
+   "id": "C1-58",
+   "topic": "関係詞",
+   "question": "The team achieved ____ almost no one had thought possible: a working prototype in six months.",
+   "choices": [
+    "that",
+    "which",
+    "what",
+    "how"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "先行詞がなく「〜すること」という名詞節を作るのは what(= the thing which)。ここでは had thought の目的語になっている。that や which は先行詞を必要とし、how は「方法」を表すので thought possible の目的語にならない。和訳:そのチームは、ほとんど誰も可能だと思っていなかったこと、すなわち半年で動く試作機を作ることを成し遂げた。"
+  },
+  {
+   "id": "C1-59",
+   "topic": "関係詞",
+   "question": "The firm has introduced a scheme ____ employees can buy shares at a 15% discount.",
+   "choices": [
+    "whereas",
+    "which",
+    "in that",
+    "whereby"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "whereby = by which で、制度・方法を表す名詞を受けて「それによって〜する」を導く硬い関係副詞。whereas は「〜である一方」という対比の接続詞、which は後ろが完全な文なので不可、in that は「〜という点で」で意味がずれる。和訳:その会社は、従業員が15%割引で株を購入できる制度を導入した。"
+  },
+  {
+   "id": "C1-60",
+   "topic": "比較",
+   "question": "____ we examined the data, the more anomalies came to light.",
+   "choices": [
+    "More carefully",
+    "The more carefully",
+    "The most carefully",
+    "As more carefully"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「the + 比較級 ..., the + 比較級 ...」の相関構文。副詞 carefully の比較級に the を付けて The more carefully とする。the のない More carefully では相関構文にならず、最上級 The most carefully や As more carefully は形として成立しない。和訳:データを注意深く調べるほど、多くの異常が明らかになった。"
+  },
+  {
+   "id": "C1-61",
+   "topic": "比較",
+   "question": "The sequel is no ____ ambitious than the original, though it lacks its warmth.",
+   "choices": [
+    "lesser",
+    "least",
+    "little",
+    "less"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "no less + 形容詞 + than で「〜に劣らず…だ」。lesser は「(重要度などが)より小さい」という限定用法の形容詞で than 構文には使わず、least は最上級、little は比較級形ではない。和訳:続編は原作に劣らず野心的だが、原作の温かさには欠けている。"
+  },
+  {
+   "id": "C1-62",
+   "topic": "比較",
+   "question": "He talked me through the algorithm twice, but I was ____ the wiser.",
+   "choices": [
+    "not",
+    "no",
+    "none",
+    "any"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "none the + 比較級で「それでも少しも〜でない」という慣用表現(I was none the wiser = 結局わからなかった)。no は「no better than」のような形では使えるがこの慣用形では none を用い、not や any(否定文中でのみ any the wiser)はここでは不適。和訳:彼は2度もそのアルゴリズムを順に説明してくれたが、私はそれでもさっぱり理解できなかった。"
+  },
+  {
+   "id": "C1-63",
+   "topic": "比較",
+   "question": "She can barely walk as far as the corner shop, ____ run a marathon.",
+   "choices": [
+    "much less",
+    "much more",
+    "still more",
+    "no less"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "否定的な内容の後に「まして〜ではない」と続けるときは much less(= still less, let alone)。much more / still more は肯定文の後で「まして〜だ」と続ける場合に使う。no less は「〜に劣らず」で意味が逆。和訳:彼女は角の店まで歩くのもやっとで、マラソンを走るなど到底無理だ。"
+  },
+  {
+   "id": "C1-64",
+   "topic": "比較",
+   "question": "Her latest novel is as fine a piece of writing ____ she has ever produced.",
+   "choices": [
+    "than",
+    "that",
+    "as",
+    "like"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "as + 形容詞 + a + 名詞 ... as ~ の同等比較。後半の比較の接続詞は as で、as ... as ever で「これまでのどれにも劣らず」の意味になる。than は比較級とともに使い、that や like はこの相関構文を作れない。和訳:彼女の最新作は、これまでに書いたどの作品にも劣らぬ見事な文章だ。"
+  },
+  {
+   "id": "C1-65",
+   "topic": "比較",
+   "question": "The new premises are ____ as spacious as the agent had led us to believe.",
+   "choices": [
+    "not near",
+    "not nearly",
+    "no nearly",
+    "not near to"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "not nearly as ... as で「〜には到底及ばない」。nearly は「ほとんど」を表す副詞で、否定と結んで程度の大差を示す。not near は形容詞・前置詞の形で as ... as を修飾できず、no nearly や not near to は語法として誤り。和訳:新しい物件は、仲介業者が信じ込ませたほど広くはまったくなかった。"
+  },
+  {
+   "id": "C1-66",
+   "topic": "比較",
+   "question": "I would prefer to postpone the launch ____ risk shipping a faulty product.",
+   "choices": [
+    "than",
+    "to",
+    "instead",
+    "rather than"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "prefer to do ... rather than (do) ... の形で、後ろは原形不定詞を取る。prefer A to B は名詞・動名詞をつなぐ形なので to risk...の形にする必要があり、ここでは不可。than 単独では prefer と結べず、instead は接続語として instead of が必要。和訳:欠陥製品を出荷する危険を冒すよりは、発売を延期したい。"
+  },
+  {
+   "id": "C1-67",
+   "topic": "比較",
+   "question": "Of the two shortlisted candidates, she is by far ____ experienced.",
+   "choices": [
+    "the more",
+    "more",
+    "the most",
+    "most"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "2者間の比較では「the + 比較級」で「(2人のうち)より〜な方」を表す。the のない more は of the two と呼応せず、最上級 the most / most は3者以上の比較に用いる。by far は比較級・最上級のいずれも強調できる。和訳:最終候補の2人のうち、彼女のほうが断然経験豊富だ。"
+  },
+  {
+   "id": "C1-68",
+   "topic": "比較",
+   "question": "____ had the ink dried on the contract than the client started demanding changes.",
+   "choices": [
+    "Hardly",
+    "Scarcely",
+    "No sooner",
+    "Barely"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "than と呼応するのは no sooner ... than(〜するとすぐに)。hardly / scarcely / barely は when と呼応して hardly ... when の形になるため、than の前には置けない。文頭に否定語が出るため助動詞 had が主語の前に来る倒置になっている点も押さえたい。和訳:契約書のインクが乾くやいなや、その顧客は変更を要求し始めた。"
+  },
+  {
+   "id": "C1-69",
+   "topic": "比較",
+   "question": "His flat refusal to apologise made an awkward situation ____ awkward.",
+   "choices": [
+    "all more",
+    "much the more",
+    "the more",
+    "all the more"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "all the + 比較級で「その分いっそう〜」と理由を受けて程度を強める慣用表現。all more は語法として成立せず、much the more や the more だけでは現代英語のこの用法として不自然。和訳:彼が謝罪をきっぱり拒んだことで、ぎこちない状況はいっそう気まずいものになった。"
+  },
+  {
+   "id": "C1-70",
+   "topic": "仮定法",
+   "question": "If she had caught the earlier flight, she ____ in Osaka by now.",
+   "choices": [
+    "would have been",
+    "would be",
+    "will be",
+    "were"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "条件節は過去の事実に反する仮定(had caught)だが、帰結節は by now(今ごろ)という現在の話なので混合条件で would + 原形。would have been では「今ごろ」と合わず、will be は仮定法にならない、were は帰結節の形ではない。和訳:もし彼女が早い便に乗っていたら、今ごろは大阪にいるだろう。"
+  },
+  {
+   "id": "C1-71",
+   "topic": "仮定法",
+   "question": "____ I known about the deadline, I would have submitted the application weeks ago.",
+   "choices": [
+    "If",
+    "Should",
+    "Had",
+    "Were"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "If I had known の if を省略した倒置形 Had I known。If では had が必要(If I had known)、Should は Should I know のように原形を伴い実現可能性の低い未来を表し、Were は Were I to know の形になる。和訳:締め切りを知っていたら、何週間も前に申請書を提出していただろう。"
+  },
+  {
+   "id": "C1-72",
+   "topic": "仮定法",
+   "question": "____ for the quick thinking of a passer-by, the fire might well have spread to the next building.",
+   "choices": [
+    "Had it not been",
+    "Were it not",
+    "If it were not",
+    "Should it not be"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "帰結節が might have spread と過去の事実に反する内容なので、条件も過去形で If it had not been for の倒置形 Had it not been for が正しい。Were it not for / If it were not for は現在の事実に反する仮定に使う。Should it not be は仮定法の定型ではない。和訳:通行人が機転を利かせてくれなかったら、火事は隣の建物にまで広がっていたかもしれない。"
+  },
+  {
+   "id": "C1-73",
+   "topic": "仮定法",
+   "question": "____ you require any further assistance, please do not hesitate to contact our support desk.",
+   "choices": [
+    "Would",
+    "Should",
+    "Were",
+    "Had"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "If you should require の if を省いた倒置で、丁寧・形式的な文書で「万一〜の場合は」を表す Should + 主語 + 原形。Were なら Were you to require、Had なら過去完了(Had you required)が必要で、Would は条件節の先頭に置けない。和訳:さらにご支援が必要な場合は、遠慮なく当社サポート窓口までご連絡ください。"
+  },
+  {
+   "id": "C1-74",
+   "topic": "仮定法",
+   "question": "The auditors insisted that every transaction ____ documented in the ledger.",
+   "choices": [
+    "is",
+    "was",
+    "be",
+    "would have been"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "insist, demand, require など要求・提案を表す動詞に続く that 節では仮定法現在(原形)を用いる。ここは受動なので be documented。is / was は直説法で要求の意味にならず(was は「事実として記録されていた」という報告の意味になる)、would have been は反実仮想。和訳:監査人は、すべての取引を元帳に記録するよう要求した。"
+  },
+  {
+   "id": "C1-75",
+   "topic": "仮定法",
+   "question": "It's high time the board ____ this complaint seriously.",
+   "choices": [
+    "take",
+    "took",
+    "have taken",
+    "would take"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "It's (high) time + 主語 + 過去形で「もう〜してもよい頃だ(実際にはしていない)」という仮定法過去。原形 take や現在完了 have taken は不可で、would take もこの定型では用いない(It's time to take... なら不定詞)。和訳:役員会はそろそろこの苦情を真剣に受け止めるべき時だ。"
+  },
+  {
+   "id": "C1-76",
+   "topic": "仮定法",
+   "question": "He talks about the merger as though it ____ a done deal, but nothing has actually been signed.",
+   "choices": [
+    "is",
+    "would be",
+    "were",
+    "has been"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "as though/as if の後で現在の事実に反する内容を述べるときは仮定法過去 were。後半で「まだ何も調印されていない」と事実を否定しているため、事実に近いことを示す直説法 is や has been は不適切。would be は as though 節では使わない。和訳:彼は合併がもう決まったことのように話すが、実際にはまだ何も調印されていない。"
+  },
+  {
+   "id": "C1-77",
+   "topic": "仮定法",
+   "question": "I wish you ____ me before you rearranged the entire schedule.",
+   "choices": [
+    "consulted",
+    "would consult",
+    "have consulted",
+    "had consulted"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "wish + 過去完了で「(過去に)〜してくれていたらよかったのに」という過去の事実への後悔。rearranged と過去の出来事なので had consulted。consulted は現在の事実に反する願望、would consult は今後の意志への願望、have consulted は wish の後では使えない。和訳:スケジュールを全部組み替える前に、私に相談してくれていたらよかったのに。"
+  },
+  {
+   "id": "C1-78",
+   "topic": "仮定法",
+   "question": "____ his father's connections, he would never have been offered that interview.",
+   "choices": [
+    "Except for",
+    "But for",
+    "Apart from",
+    "Without that"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "but for = if it had not been for で「〜がなかったら」という反実仮想の条件を導く。Except for / Apart from は「〜を除いて」という除外を表し、帰結節の would never have been と呼応する仮定条件にはならない。Without that は語法として不適。和訳:父親の人脈がなかったら、彼はあの面接の機会を与えられることは決してなかっただろう。"
+  },
+  {
+   "id": "C1-79",
+   "topic": "仮定法",
+   "question": "She must have left in a great hurry; otherwise she ____ every light in the house on.",
+   "choices": [
+    "wouldn't leave",
+    "hadn't left",
+    "wouldn't have left",
+    "won't leave"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "otherwise が「そうでなかったら」という過去の事実に反する条件を表しているので、帰結は would not have + 過去分詞。wouldn't leave は現在の反実、hadn't left は条件節の形、won't leave は直説法で仮定にならない。和訳:彼女はよほど急いで出たに違いない。そうでなければ家中の電気をつけっぱなしにしたりしないだろう。"
+  },
+  {
+   "id": "C1-80",
+   "topic": "前置詞",
+   "question": "Her devotion ____ the cause never wavered, even after the funding was withdrawn.",
+   "choices": [
+    "for",
+    "to",
+    "with",
+    "on"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "devotion は devote A to B / be devoted to と同じく前置詞 to をとる名詞。for は「~のための献身」の意味では使わず、with / on は devotion と共起しない。和訳: 資金が打ち切られた後でも、その運動に対する彼女の献身は揺らぐことがなかった。"
+  },
+  {
+   "id": "C1-81",
+   "topic": "前置詞",
+   "question": "The new safety regulations come ____ effect at the beginning of next month.",
+   "choices": [
+    "in",
+    "into",
+    "on",
+    "to"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「発効する」という変化を表す動作は come into effect。状態を表す be in effect(施行されている)と区別する。on / to はこの熟語では使わない。和訳: 新しい安全規則は来月初めに発効する。"
+  },
+  {
+   "id": "C1-82",
+   "topic": "前置詞",
+   "question": "____ all his years of experience in the industry, he failed to foresee the crash.",
+   "choices": [
+    "Despite of",
+    "For",
+    "With",
+    "Even"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "For all ~ は「~にもかかわらず」という譲歩の慣用表現。Despite は of を伴わない誤形、With は「~があれば」の意味で逆接にならず、Even は単独で名詞句を導けない。和訳: 業界での長年の経験にもかかわらず、彼はその暴落を予見できなかった。"
+  },
+  {
+   "id": "C1-83",
+   "topic": "前置詞",
+   "question": "The appeal was upheld ____ the grounds that key evidence had been withheld.",
+   "choices": [
+    "on",
+    "in",
+    "under",
+    "for"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「~という理由で」は on the grounds that が定型。on the basis that も同様に on を用いる。in / under / for は grounds と結びつかない。和訳: 重要な証拠が隠されていたという理由で、その上訴は認められた。"
+  },
+  {
+   "id": "C1-84",
+   "topic": "前置詞",
+   "question": "After twenty years in the field, she was finally appointed ____ the board of trustees.",
+   "choices": [
+    "at",
+    "in",
+    "to",
+    "for"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "appoint / promote / elect などは「~の地位へ」の方向を示す to をとる。be on the board(在籍している状態)と、be appointed to the board(任命される動き)の違いに注意。和訳: その分野で20年働いた後、彼女はついに理事会に任命された。"
+  },
+  {
+   "id": "C1-85",
+   "topic": "前置詞",
+   "question": "____ closer inspection, the signature proved to be a clumsy forgery.",
+   "choices": [
+    "In",
+    "At",
+    "By",
+    "On"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "On (Upon) closer inspection/examination は「よく調べてみると」という定型表現で、on は「~するとすぐに」の意味を含む。At は時点、By は手段、In は場所・状態で不適。和訳: よく調べてみると、その署名は下手な偽造であることが判明した。"
+  },
+  {
+   "id": "C1-86",
+   "topic": "前置詞",
+   "question": "The final decision on the merger rests ____ the shareholders, not the management.",
+   "choices": [
+    "with",
+    "on",
+    "in",
+    "for"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "rest with A は「(責任・決定権が)Aにある」。rest on A は「Aに依存する/Aを根拠とする」で、条件や根拠を続けるときに使う。ここは決定権の帰属なので with。和訳: 合併に関する最終決定権は経営陣ではなく株主にある。"
+  },
+  {
+   "id": "C1-87",
+   "topic": "前置詞",
+   "question": "The witness spoke ____ length about the events of that evening.",
+   "choices": [
+    "in",
+    "for",
+    "at",
+    "on"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "at length は「長々と、詳細に」という固定表現。in length は「長さが~」(three metres in length)、for a long time は時間、on は話題を導く前置詞で、いずれも length とは結びつかない。和訳: その証人はあの夜の出来事について長々と語った。"
+  },
+  {
+   "id": "C1-88",
+   "topic": "前置詞",
+   "question": "The two ministers are still ____ odds over how the funds should be allocated.",
+   "choices": [
+    "in",
+    "at",
+    "on",
+    "by"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be at odds (with/over) は「対立している」という慣用句で、at war, at variance と同じく対立状態を表す at を用いる。in odds / on odds という形はない。和訳: 二人の大臣は資金の配分方法をめぐって今も対立している。"
+  },
+  {
+   "id": "C1-89",
+   "topic": "前置詞",
+   "question": "____ all accounts, the negotiations were far more heated than the press reported.",
+   "choices": [
+    "By",
+    "On",
+    "In",
+    "For"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "by all accounts は「誰の話を聞いても、聞くところによると」という定型句で、by は判断の根拠を示す。on account of(~のため)との混同に注意。和訳: 誰の話を聞いても、その交渉は報道よりはるかに激しいものだったようだ。"
+  },
+  {
+   "id": "C1-90",
+   "topic": "接続詞",
+   "question": "____ he offer a full apology, the committee might reconsider the suspension.",
+   "choices": [
+    "If",
+    "Should",
+    "Were",
+    "Would"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "if を省略した倒置条件文。If he should offer ... → Should he offer ...。Were を使うなら Were he to offer と to 不定詞が必要で、Would は条件節を作れない。If なら If he offered という形が要る。和訳: 彼が全面的に謝罪すれば、委員会は停職処分を見直すかもしれない。"
+  },
+  {
+   "id": "C1-91",
+   "topic": "接続詞",
+   "question": "You are welcome to use the studio, ____ you leave it as you found it.",
+   "choices": [
+    "unless",
+    "whereas",
+    "provided",
+    "as though"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "provided (that) は「~という条件でなら」という条件の接続詞。unless は「~でない限り」で意味が逆、whereas は対比、as though は様態を表すため文意に合わない。和訳: 使ったままの状態に戻してくれるなら、スタジオを自由に使ってかまいません。"
+  },
+  {
+   "id": "C1-92",
+   "topic": "接続詞",
+   "question": "It is not ____ I doubt her competence; I simply think the deadline is unrealistic.",
+   "choices": [
+    "because",
+    "that",
+    "as",
+    "why"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "It is not that ~ で「~というわけではない」という否定の言い換え表現。because を使う場合は It is not because ... that ... のように that 節が続く強調構文が必要。as / why は名詞節を導けない。和訳: 彼女の能力を疑っているわけではない。ただ締切が非現実的だと思うだけだ。"
+  },
+  {
+   "id": "C1-93",
+   "topic": "接続詞",
+   "question": "____ as I sympathise with his position, I cannot support the proposal.",
+   "choices": [
+    "Much",
+    "As much",
+    "However",
+    "So much"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "Much as + S + V は「~ではあるが」という譲歩構文(= Although I sympathise a great deal)。As much as も口語では使われるが、この定型では Much as が標準で、However は後に形容詞/副詞が必要、So much as は別の熟語(not so much as)。和訳: 彼の立場には大いに共感するが、その提案には賛成できない。"
+  },
+  {
+   "id": "C1-94",
+   "topic": "接続詞",
+   "question": "No sooner ____ the results been published than critics began questioning the methodology.",
+   "choices": [
+    "have",
+    "had",
+    "did",
+    "were"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "No sooner ... than ... の構文では前半が過去完了で、否定語句が文頭に来るため助動詞 had が主語の前に出る。been があるので have(現在)や did、were は不可。和訳: 結果が公表されるや否や、批評家たちがその手法に疑問を投げかけ始めた。"
+  },
+  {
+   "id": "C1-95",
+   "topic": "接続詞",
+   "question": "The plan, ____ ambitious, takes no account of the shortage of skilled staff.",
+   "choices": [
+    "while",
+    "despite",
+    "moreover",
+    "hence"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "while は接続詞で、後続の be 動詞と主語を省略して while (it is) ambitious の形で「~ではあるが」という譲歩を表せる。despite は前置詞で形容詞を直接続けられず、moreover / hence は副詞。和訳: その計画は野心的ではあるが、熟練スタッフ不足をまったく考慮していない。"
+  },
+  {
+   "id": "C1-96",
+   "topic": "接続詞",
+   "question": "We shall not know the true impact ____ every vote has been counted.",
+   "choices": [
+    "until",
+    "unless",
+    "whereas",
+    "once"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "not ... until ~ で「~するまで…ない」。unless は条件の否定で「集計されない限り知らない」となり意味がねじれ、once は「いったん集計されれば」で否定文と矛盾、whereas は対比。和訳: すべての票が集計されるまで、真の影響はわからないだろう。"
+  },
+  {
+   "id": "C1-97",
+   "topic": "接続詞",
+   "question": "____ that no one raised any objection, the chair declared the motion carried.",
+   "choices": [
+    "Seeing",
+    "Supposing",
+    "Granting",
+    "Considered"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "Seeing that ~ は「~なので」という理由を表す接続詞句。Supposing that は仮定、Granting that は「仮に~だとしても」の譲歩で、実際に起きた事実の理由づけには合わない。Considered は形が不適。和訳: 誰も異議を唱えなかったので、議長はその動議が可決されたと宣言した。"
+  },
+  {
+   "id": "C1-98",
+   "topic": "接続詞",
+   "question": "It was not until the audit was complete ____ the scale of the fraud became clear.",
+   "choices": [
+    "when",
+    "that",
+    "then",
+    "which"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "It is not until ~ that ... の強調構文なので that が必要。when や which は強調構文の枠組みを作れず、then は副詞。和訳: 監査が終わってはじめて、その不正の規模が明らかになった。"
+  },
+  {
+   "id": "C1-99",
+   "topic": "接続詞",
+   "question": "Try ____ he might, he could not convince the board to delay the launch.",
+   "choices": [
+    "though",
+    "as",
+    "so",
+    "that"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "動詞の原形 + as + S + might/may で「いくら~しようとしても」という譲歩の倒置表現(Try as he might)。though を使うなら Though he tried の語順になり、so / that はこの型を作れない。和訳: どれほど努力しても、彼は取締役会に発売延期を納得させることができなかった。"
+  },
+  {
+   "id": "C1-100",
+   "topic": "冠詞・名詞",
+   "question": "In 2018 she was appointed ____ head of the research division.",
+   "choices": [
+    "a",
+    "the",
+    "an",
+    "— (無冠詞)"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "appoint / elect / become などの後で、組織内に一人しかいない役職を表す補語名詞は無冠詞になる。a head だと「複数いる長の一人」、the head も可能だが appointed の補語としては無冠詞が標準的。和訳: 2018年に彼女は研究部門の責任者に任命された。"
+  },
+  {
+   "id": "C1-101",
+   "topic": "冠詞・名詞",
+   "question": "The candidate has ____ excellent command of both Arabic and French.",
+   "choices": [
+    "an",
+    "the",
+    "— (無冠詞)",
+    "any"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "command, knowledge, understanding などの抽象名詞は形容詞を伴って「程度」を表すと a/an がつく(a good knowledge of ~)。the は特定化が不要、any は肯定の平叙文で不自然。和訳: その候補者はアラビア語とフランス語の両方を非常に高い水準で使いこなす。"
+  },
+  {
+   "id": "C1-102",
+   "topic": "冠詞・名詞",
+   "question": "The minister announced ____ number of measures aimed at easing the housing shortage.",
+   "choices": [
+    "the",
+    "a",
+    "— (無冠詞)",
+    "any"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "a number of ~ は「いくつもの~」で複数扱い。the number of ~ は「~の数」という意味になり、動詞 announced の目的語としては意味が変わる。無冠詞・any は不可。和訳: 大臣は住宅不足の緩和を目的とした多数の対策を発表した。"
+  },
+  {
+   "id": "C1-103",
+   "topic": "冠詞・名詞",
+   "question": "All the office furniture we ordered ____ damaged in transit.",
+   "choices": [
+    "were",
+    "have been",
+    "was",
+    "are"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "furniture は不可算名詞なので単数扱いで was。複数形 furnitures もなく、were / are / have been はいずれも複数一致なので誤り。数えるときは pieces / items of furniture とする。和訳: 私たちが注文した事務用家具はすべて輸送中に破損していた。"
+  },
+  {
+   "id": "C1-104",
+   "topic": "冠詞・名詞",
+   "question": "Statistics ____ now a compulsory module for all economics undergraduates.",
+   "choices": [
+    "are",
+    "is",
+    "were",
+    "have been"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "-ics で終わる学問名(statistics, economics, politics)は単数扱い。「統計の数値」の意味では These statistics are ... と複数扱いになるが、ここでは科目名なので is。now があるので過去形 were も不適。和訳: 統計学は現在、経済学部の全学部生にとって必修科目である。"
+  },
+  {
+   "id": "C1-105",
+   "topic": "冠詞・名詞",
+   "question": "Passengers are permitted two ____ of hand luggage.",
+   "choices": [
+    "piece",
+    "pieces",
+    "luggages",
+    "baggages"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "luggage / baggage は不可算名詞なので複数形にできず、数えるときは two pieces of luggage と単位名詞を使う。two の後なので単数 piece も不可。和訳: 乗客は手荷物を2個まで持ち込むことが認められている。"
+  },
+  {
+   "id": "C1-106",
+   "topic": "冠詞・名詞",
+   "question": "The former treasurer was sent to ____ prison for eighteen months.",
+   "choices": [
+    "a",
+    "the",
+    "— (無冠詞)",
+    "one"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "prison, hospital, school などが本来の機能・目的(ここでは服役)を表すときは無冠詞。the prison だと「特定の刑務所という建物へ行く」意味になり、a prison / one prison は施設の一つを指す。和訳: 元会計担当者は18か月の刑で服役することになった。"
+  },
+  {
+   "id": "C1-107",
+   "topic": "冠詞・名詞",
+   "question": "____ Netherlands has long been a leader in flood management.",
+   "choices": [
+    "A",
+    "The",
+    "— (無冠詞)",
+    "Its"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "複数形や普通名詞由来の国名(the Netherlands, the Philippines, the United Kingdom)には the が必要。形は複数でも単数扱いなので has が続く。無冠詞や a は不可。和訳: オランダは長らく治水の分野で先進国であり続けてきた。"
+  },
+  {
+   "id": "C1-108",
+   "topic": "冠詞・名詞",
+   "question": "In the eighteenth century, sugar was still ____ luxury few could afford.",
+   "choices": [
+    "a",
+    "the",
+    "— (無冠詞)",
+    "any"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "luxury は「贅沢」の意では不可算だが、「贅沢品・ぜいたくな物事」という個別の例を指すときは可算名詞になり a がつく。the は特定化が不要で、無冠詞では可算用法にならない。和訳: 18世紀には、砂糖はまだほとんどの人には手の届かない贅沢品だった。"
+  },
+  {
+   "id": "C1-109",
+   "topic": "冠詞・名詞",
+   "question": "____ wealthy tend to be far less affected by such tax changes.",
+   "choices": [
+    "A",
+    "Those",
+    "— (無冠詞)",
+    "The"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "the + 形容詞で「~な人々」という集合を表し複数扱いになる(the wealthy = wealthy people)。Those wealthy とするなら those wealthy people のように名詞が必要で、A や無冠詞では総称にならない。和訳: 富裕層はそうした税制変更の影響をはるかに受けにくい傾向がある。"
+  },
+  {
+   "id": "C1-110",
+   "topic": "語法・熟語",
+   "question": "I'd rather you ____ nothing to the press until the investigation is over.",
+   "choices": [
+    "say",
+    "said",
+    "will say",
+    "would say"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "would rather + that節(that は通常省略)では、相手への願望を表すのに仮定法過去を用いる。現在形 say や will/would say は不可。和訳: 調査が終わるまで、報道機関には何も話さないでいてほしい。"
+  },
+  {
+   "id": "C1-111",
+   "topic": "語法・熟語",
+   "question": "There is no point ____ about the decision now that the contract has been signed.",
+   "choices": [
+    "to complain",
+    "complain",
+    "in complaining",
+    "of complain"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "There is no point (in) doing で「~しても無駄だ」。in の後なので動名詞。to 不定詞や原形は不可、of complain も文法的に成り立たない。和訳: 契約が締結された今、その決定について文句を言っても意味がない。"
+  },
+  {
+   "id": "C1-112",
+   "topic": "語法・熟語",
+   "question": "The accountant denied ____ any of the figures in the annual report.",
+   "choices": [
+    "to alter",
+    "to have altered",
+    "having altered",
+    "alter"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "deny は動名詞を目的語にとる動詞で、過去の行為を否定するので完了動名詞 having altered が最適。deny to do という形は存在せず、to have altered も不可。和訳: その会計士は年次報告書の数値をいっさい改変していないと否定した。"
+  },
+  {
+   "id": "C1-113",
+   "topic": "語法・熟語",
+   "question": "It is high time we ____ our recruitment procedures.",
+   "choices": [
+    "review",
+    "reviewed",
+    "are reviewing",
+    "will review"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "It is (high) time + S + 仮定法過去で「もう~してもよいころだ」という遅れを含む含意を表す。現在形・進行形・未来形は不可(不定詞なら It is time to review)。和訳: そろそろ採用手続きを見直すべき時期だ。"
+  },
+  {
+   "id": "C1-114",
+   "topic": "語法・熟語",
+   "question": "The composer is said ____ in this very house during the last years of his life.",
+   "choices": [
+    "to live",
+    "to have lived",
+    "having lived",
+    "to be living"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be said to do の主節が現在で、内容が過去のことなので完了不定詞 to have lived を使う(= It is said that he lived ...)。to live や to be living では現在の事実になってしまう。和訳: その作曲家は晩年をまさにこの家で過ごしたと言われている。"
+  },
+  {
+   "id": "C1-115",
+   "topic": "語法・熟語",
+   "question": "No amount of argument could get him ____ his position.",
+   "choices": [
+    "to reconsider",
+    "reconsider",
+    "reconsidering",
+    "reconsidered"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "get + O + to do で「Oに~させる/してもらう」。make や let とは違い、get は原形不定詞をとらない。get him reconsidering は「~し続けさせる」の意で不自然、過去分詞は受動の意味になる。和訳: どれだけ議論しても、彼に自分の立場を再考させることはできなかった。"
+  },
+  {
+   "id": "C1-116",
+   "topic": "語法・熟語",
+   "question": "Her suggestion is certainly worth ____ before we commit to the current plan.",
+   "choices": [
+    "exploring",
+    "to explore",
+    "to be explored",
+    "explore"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "be worth doing で「~する価値がある」。動名詞は能動形のままで受動の意味を表すため、to explore や to be explored は不可。和訳: 現行案に踏み切る前に、彼女の提案は検討する価値が確かにある。"
+  },
+  {
+   "id": "C1-117",
+   "topic": "語法・熟語",
+   "question": "It took me a while to get used to ____ by my first name at work.",
+   "choices": [
+    "be addressed",
+    "being addressed",
+    "address",
+    "have addressed"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "get used to の to は前置詞なので動名詞が続き、「呼ばれる」側なので受動の being addressed。used to do(かつて~した)との混同に注意。和訳: 職場でファーストネームで呼ばれることに慣れるまで少し時間がかかった。"
+  },
+  {
+   "id": "C1-118",
+   "topic": "語法・熟語",
+   "question": "The chairman made ____ clear that no further concessions would be offered.",
+   "choices": [
+    "that",
+    "it",
+    "those",
+    "— (何も入れない)"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "make + it + 形容詞 + that節 の形で、it は後続の that 節を指す形式目的語。that 節を直接 make の目的語にはできないため、it が必須。和訳: 議長は、これ以上の譲歩は行わないと明言した。"
+  },
+  {
+   "id": "C1-119",
+   "topic": "語法・熟語",
+   "question": "Local residents objected ____ a waste incinerator so near the school.",
+   "choices": [
+    "to building",
+    "to build",
+    "against building",
+    "building"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "object to ~ の to は前置詞なので動名詞が続く(object to doing)。to build のような不定詞や object against という形はなく、前置詞を省くこともできない。和訳: 地元住民は学校のすぐ近くにごみ焼却場を建設することに反対した。"
+  }
+ ]
+}

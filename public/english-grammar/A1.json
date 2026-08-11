@@ -1,0 +1,1567 @@
+{
+ "level": "A1",
+ "generatedAt": "2026-08-11T10:44:33.185Z",
+ "count": 120,
+ "items": [
+  {
+   "id": "A1-0",
+   "topic": "時制",
+   "question": "My sister ____ to school by bus every day.",
+   "choices": [
+    "go",
+    "goes",
+    "going",
+    "went"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "every day(毎日)があるので現在の習慣を表す現在形。主語 My sister は三人称単数なので go に -es をつけて goes にする。go は主語が三単現のとき使えず、going は単独では文にならず、went は過去形なので every day と合わない。訳:私の姉は毎日バスで学校へ行きます。"
+  },
+  {
+   "id": "A1-1",
+   "topic": "時制",
+   "question": "Look! It ____ now.",
+   "choices": [
+    "rains",
+    "rained",
+    "is raining",
+    "rain"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "now(今)で「今まさに〜している」の現在進行形〈be動詞+動詞ing〉を使う。rains は現在形で習慣、rained は過去、rain は原形で主語 it に合わない。訳:見て!今、雨が降っています。"
+  },
+  {
+   "id": "A1-2",
+   "topic": "時制",
+   "question": "We ____ to Kyoto last summer.",
+   "choices": [
+    "go",
+    "went",
+    "are going",
+    "goes"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "last summer(昨年の夏)という過去を表す語句があるので過去形 went。go / goes は現在形、are going は今の進行や近い未来を表すので過去の語句と一緒には使えない。訳:私たちは昨年の夏、京都へ行きました。"
+  },
+  {
+   "id": "A1-3",
+   "topic": "時制",
+   "question": "I ____ my aunt next Sunday.",
+   "choices": [
+    "visit",
+    "visited",
+    "visiting",
+    "will visit"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "next Sunday(次の日曜日)は未来なので〈will+動詞の原形〉。visit は現在形、visited は過去形、visiting は単独では述語になれない。訳:私は次の日曜日におばを訪ねます。"
+  },
+  {
+   "id": "A1-4",
+   "topic": "時制",
+   "question": "I ____ math when my father came home.",
+   "choices": [
+    "was studying",
+    "study",
+    "studies",
+    "am studying"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「父が帰ってきたとき勉強していた」という過去のある時点で進行中の動作は過去進行形〈was/were+動詞ing〉。study / studies は現在形、am studying は現在進行形で、過去の came と時がずれる。訳:父が帰宅したとき、私は数学を勉強していました。"
+  },
+  {
+   "id": "A1-5",
+   "topic": "時制",
+   "question": "Did you ____ breakfast this morning?",
+   "choices": [
+    "eat",
+    "ate",
+    "eaten",
+    "eating"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "過去の疑問文は〈Did+主語+動詞の原形〉。Did があるので動詞は原形 eat。ate は過去形、eaten は過去分詞、eating は ing 形でどれも Did の後には置けない。訳:あなたは今朝、朝食を食べましたか。"
+  },
+  {
+   "id": "A1-6",
+   "topic": "時制",
+   "question": "My brother ____ not like tomatoes.",
+   "choices": [
+    "do",
+    "is",
+    "was",
+    "does"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "一般動詞 like の否定文で主語が三人称単数(My brother)なので does not を使う。do not は I / you / 複数のとき、is / was は be動詞なので一般動詞 like と並べて使えない。訳:私の兄はトマトが好きではありません。"
+  },
+  {
+   "id": "A1-7",
+   "topic": "時制",
+   "question": "The children ____ playing in the park now.",
+   "choices": [
+    "do",
+    "was",
+    "are",
+    "is"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "now があるので現在進行形。主語 The children は複数なので be動詞は are。is は単数用、was は過去、do は進行形に使えない。訳:子どもたちは今、公園で遊んでいます。"
+  },
+  {
+   "id": "A1-8",
+   "topic": "時制",
+   "question": "When I was a child, I ____ in Okinawa.",
+   "choices": [
+    "live",
+    "living",
+    "am living",
+    "lived"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "When I was a child(子どものころ)は過去の話なので過去形 lived。live / am living は現在のことを表し、living だけでは述語にならない。訳:子どものころ、私は沖縄に住んでいました。"
+  },
+  {
+   "id": "A1-9",
+   "topic": "時制",
+   "question": "I ____ never been to Hokkaido.",
+   "choices": [
+    "am",
+    "have",
+    "was",
+    "do"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "been(過去分詞)があるので〈have+過去分詞〉の現在完了。「一度も行ったことがない」という経験を表す。am / was は be動詞なので been とはつながらず、do は過去分詞と組めない。訳:私は一度も北海道へ行ったことがありません。"
+  },
+  {
+   "id": "A1-10",
+   "topic": "助動詞",
+   "question": "____ you play the guitar? — Yes, I can.",
+   "choices": [
+    "Are",
+    "Do",
+    "Can",
+    "Have"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "答えが Yes, I can. なので、能力をたずねる Can を使う。Do なら Yes, I do.、Are なら be動詞の文、Have なら過去分詞が必要で、いずれも答えと合わない。訳:あなたはギターを弾けますか。— はい、弾けます。"
+  },
+  {
+   "id": "A1-11",
+   "topic": "助動詞",
+   "question": "You ____ not eat in the library. It's a rule.",
+   "choices": [
+    "must",
+    "are",
+    "were",
+    "don't"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "規則による強い禁止は must not(〜してはいけない)。助動詞の後は動詞の原形。are not eat / were not eat は形が誤りで、don't not eat も二重否定で成り立たない。訳:図書館で食べてはいけません。それが規則です。"
+  },
+  {
+   "id": "A1-12",
+   "topic": "助動詞",
+   "question": "It's very cold today. You ____ wear a coat.",
+   "choices": [
+    "should to",
+    "should",
+    "must to",
+    "have"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜したほうがよい」という助言は should。助動詞の後は to をつけず動詞の原形なので should to / must to は誤り。have wear も形が誤り(have to wear なら正しい)。訳:今日はとても寒いです。コートを着たほうがいいですよ。"
+  },
+  {
+   "id": "A1-13",
+   "topic": "助動詞",
+   "question": "He can ____ the piano very well.",
+   "choices": [
+    "plays",
+    "playing",
+    "to play",
+    "play"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "助動詞 can の後は必ず動詞の原形。三単現の plays、ing形の playing、to不定詞の to play はどれも can の後に置けない。訳:彼はピアノをとても上手に弾くことができます。"
+  },
+  {
+   "id": "A1-14",
+   "topic": "助動詞",
+   "question": "We ____ to clean our classroom after lunch.",
+   "choices": [
+    "must",
+    "should",
+    "have",
+    "can"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "直後に to clean があるので have to(〜しなければならない)の形にする。must / should / can は助動詞で、後ろに to は付けられない(must clean なら正しい)。訳:私たちは昼食後に教室をそうじしなければなりません。"
+  },
+  {
+   "id": "A1-15",
+   "topic": "助動詞",
+   "question": "____ I use your dictionary? — Sure, here you are.",
+   "choices": [
+    "Am",
+    "May",
+    "Do",
+    "Shall"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜してもいいですか」と許可を求めるときは May I 〜?(Can I 〜? も可)。Am I use は形が誤り、Do I use は「私は使うのですか」と意味がずれ、Shall I 〜? は「私が〜しましょうか」と申し出になる。訳:あなたの辞書を使ってもいいですか。— もちろん、どうぞ。"
+  },
+  {
+   "id": "A1-16",
+   "topic": "助動詞",
+   "question": "You don't ____ to come to school tomorrow.",
+   "choices": [
+    "must",
+    "should",
+    "can",
+    "need"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "don't の後に to come が続くので need to(〜する必要がある)の否定 don't need to(〜しなくてよい)にする。must / should / can は don't の後に置けず、to も付けられない。訳:あなたは明日、学校に来なくてもよいです。"
+  },
+  {
+   "id": "A1-17",
+   "topic": "助動詞",
+   "question": "____ you like something to drink? — Yes, please.",
+   "choices": [
+    "Do",
+    "Are",
+    "Would",
+    "Shall"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "Would you like 〜? は「〜はいかがですか」とすすめる決まった言い方。答えの Yes, please. と合う。Are you like は形が誤り、Do you like 〜? は好みをたずねる文、Shall you 〜? は使わない。訳:何か飲み物はいかがですか。— はい、お願いします。"
+  },
+  {
+   "id": "A1-18",
+   "topic": "助動詞",
+   "question": "Look at the sky. It ____ rain soon.",
+   "choices": [
+    "will can",
+    "must to",
+    "is going",
+    "may"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「〜かもしれない」という推量は〈may+動詞の原形〉。助動詞は2つ並べられないので will can は誤り、must to も to が不要、is going は後ろに to が必要(is going to rain)。訳:空を見て。もうすぐ雨が降るかもしれません。"
+  },
+  {
+   "id": "A1-19",
+   "topic": "助動詞",
+   "question": "____ we play tennis after school? — Yes, let's.",
+   "choices": [
+    "Shall",
+    "Do",
+    "Are",
+    "Must"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "Shall we 〜? は「(一緒に)〜しましょうか」と誘う表現で、答えの Yes, let's. と対応する。Do we / Must we では勧誘にならず、Are we play は形が誤り。訳:放課後にテニスをしましょうか。— はい、そうしましょう。"
+  },
+  {
+   "id": "A1-20",
+   "topic": "受動態",
+   "question": "This song ____ by many young people.",
+   "choices": [
+    "is loved",
+    "loves",
+    "loving",
+    "love"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "by 〜(〜によって)があり、歌は「愛される」側なので受動態〈be動詞+過去分詞〉の is loved。loves / love は能動態で意味が逆になり、loving だけでは述語にならない。訳:この歌は多くの若い人たちに愛されています。"
+  },
+  {
+   "id": "A1-21",
+   "topic": "受動態",
+   "question": "The window ____ broken by Tom yesterday.",
+   "choices": [
+    "is",
+    "did",
+    "was",
+    "were"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "yesterday があるので過去の受動態。主語 The window は単数なので be動詞は was。is は現在形、were は複数用、did は過去分詞と組み合わせられない。訳:その窓は昨日トムによって割られました。"
+  },
+  {
+   "id": "A1-22",
+   "topic": "受動態",
+   "question": "English ____ in many countries.",
+   "choices": [
+    "speaks",
+    "is spoken",
+    "is speaking",
+    "spoke"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "英語は「話される」側なので受動態 is spoken。speaks / spoke は能動態で「英語が話す」という意味になってしまい、is speaking も進行形の能動態なので不適切。訳:英語は多くの国で話されています。"
+  },
+  {
+   "id": "A1-23",
+   "topic": "受動態",
+   "question": "These pictures ____ taken in Paris.",
+   "choices": [
+    "was",
+    "are taking",
+    "is",
+    "were"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "写真は「撮られた」ので受動態。主語 These pictures は複数で過去の内容なので were taken。was / is は単数用、are taking は能動の進行形で「写真が撮っている」となり誤り。訳:これらの写真はパリで撮られました。"
+  },
+  {
+   "id": "A1-24",
+   "topic": "受動態",
+   "question": "The classroom is cleaned ____ the students every day.",
+   "choices": [
+    "by",
+    "of",
+    "from",
+    "with"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "受動態で「〜によって」と動作をする人を示すときは by を使う。of / from / with では動作主を表せない(with は道具を表す)。訳:その教室は毎日生徒たちによってそうじされます。"
+  },
+  {
+   "id": "A1-25",
+   "topic": "受動態",
+   "question": "Rice is ____ in many parts of Asia.",
+   "choices": [
+    "grow",
+    "grew",
+    "grown",
+    "growing"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "is の後は過去分詞を置いて受動態にする。grow の過去分詞は grown。grow は原形、grew は過去形、growing は ing 形で受動態には使えない。訳:米はアジアの多くの地域で栽培されています。"
+  },
+  {
+   "id": "A1-26",
+   "topic": "受動態",
+   "question": "The stars can ____ seen well tonight.",
+   "choices": [
+    "is",
+    "be",
+    "are",
+    "being"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "助動詞 can の後は動詞の原形なので、受動態は can be+過去分詞の形になる。is / are は原形ではなく、being も can の後には置けない。訳:今夜は星がよく見えます。"
+  },
+  {
+   "id": "A1-27",
+   "topic": "受動態",
+   "question": "____ this cake made by your mother?",
+   "choices": [
+    "Did",
+    "Does",
+    "Is it",
+    "Was"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "受動態の疑問文は〈be動詞+主語+過去分詞〉。過去のことで主語が単数なので Was を文頭に置く。Did / Does の後は動詞の原形が必要で、Is it では主語が重なってしまう。訳:このケーキはあなたのお母さんが作ったのですか。"
+  },
+  {
+   "id": "A1-28",
+   "topic": "受動態",
+   "question": "Our school ____ built in 1985.",
+   "choices": [
+    "is",
+    "has",
+    "was",
+    "were"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "in 1985 という過去を示す語句があり、学校は「建てられた」側なので was built。is では現在の意味になり、were は複数用、has built は能動態の現在完了で意味が合わない。訳:私たちの学校は1985年に建てられました。"
+  },
+  {
+   "id": "A1-29",
+   "topic": "受動態",
+   "question": "My bike ____ stolen last night.",
+   "choices": [
+    "stole",
+    "steal",
+    "stealing",
+    "was"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "自転車は「盗まれた」側なので受動態 was stolen。stole / steal は能動態で「自転車が盗んだ」となり、stealing も ing 形で受動の意味を表せない。訳:私の自転車は昨夜盗まれました。"
+  },
+  {
+   "id": "A1-30",
+   "topic": "不定詞・動名詞",
+   "question": "I enjoyed ____ with my friends at the party.",
+   "choices": [
+    "talk",
+    "to talk",
+    "talking",
+    "talked"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "enjoy の後の動詞は動名詞(ing形)にする決まりがあるので talking。enjoy to talk とは言わず、原形 talk や過去形 talked も目的語になれない。訳:私はパーティーで友達と話すのを楽しみました。"
+  },
+  {
+   "id": "A1-31",
+   "topic": "不定詞・動名詞",
+   "question": "I want ____ a nurse in the future.",
+   "choices": [
+    "to be",
+    "be",
+    "being",
+    "been"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "want の後は to+動詞の原形(不定詞)で「〜したい」を表す。want being / want be / want been という形はない。訳:私は将来、看護師になりたいです。"
+  },
+  {
+   "id": "A1-32",
+   "topic": "不定詞・動名詞",
+   "question": "Thank you for ____ me with my homework.",
+   "choices": [
+    "help",
+    "helping",
+    "to help",
+    "helped"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "for は前置詞なので、後ろに動詞を置くときは動名詞(ing形)にする。for to help のように前置詞+不定詞は使えず、原形や過去形も置けない。訳:宿題を手伝ってくれてありがとう。"
+  },
+  {
+   "id": "A1-33",
+   "topic": "不定詞・動名詞",
+   "question": "____ books is a lot of fun.",
+   "choices": [
+    "Read",
+    "Reads",
+    "To reading",
+    "Reading"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「本を読むこと」と主語になるのは動名詞 Reading(To read も可)。動詞の原形 Read や三単現 Reads は主語になれず、To reading は to の後に ing がきているので誤り。訳:本を読むことはとても楽しいです。"
+  },
+  {
+   "id": "A1-34",
+   "topic": "不定詞・動名詞",
+   "question": "My brother is good at ____ pictures.",
+   "choices": [
+    "draw",
+    "to draw",
+    "drawing",
+    "drew"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be good at 〜(〜が得意)の at は前置詞なので、後の動詞は動名詞 drawing にする。at to draw は不可、原形 draw や過去形 drew も前置詞の後には置けない。訳:私の兄は絵を描くのが得意です。"
+  },
+  {
+   "id": "A1-35",
+   "topic": "不定詞・動名詞",
+   "question": "I went to the store ____ some milk.",
+   "choices": [
+    "to buy",
+    "buy",
+    "buying",
+    "bought"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜するために」という目的は不定詞 to+動詞の原形で表す。動詞を2つ並べる went buy は誤りで、buying / bought では目的の意味を表せない。訳:私は牛乳を買うために店へ行きました。"
+  },
+  {
+   "id": "A1-36",
+   "topic": "不定詞・動名詞",
+   "question": "Do you have anything ____? — Yes, water, please.",
+   "choices": [
+    "drink",
+    "to drink",
+    "drinking",
+    "drank"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "anything などの代名詞を後ろから説明するときは不定詞 to+原形を使う(anything to drink=何か飲むもの)。原形 drink だけでは修飾できず、drinking / drank もこの形では使えない。訳:何か飲むものはありますか。— はい、水をお願いします。"
+  },
+  {
+   "id": "A1-37",
+   "topic": "不定詞・動名詞",
+   "question": "It is difficult ____ this book in one day.",
+   "choices": [
+    "read",
+    "reading",
+    "reads",
+    "to read"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "〈It is+形容詞+to+動詞の原形〉で「〜することは…だ」を表す。It が指す内容は to read this book。原形 read や reading、reads はこの形では使えない。訳:1日でこの本を読むことは難しいです。"
+  },
+  {
+   "id": "A1-38",
+   "topic": "不定詞・動名詞",
+   "question": "I finished ____ the dishes.",
+   "choices": [
+    "washing",
+    "wash",
+    "to wash",
+    "washed"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "finish の後の動詞は動名詞(ing形)にする。finish to wash とは言わず、原形 wash や過去形 washed も目的語になれない。訳:私は皿を洗い終えました。"
+  },
+  {
+   "id": "A1-39",
+   "topic": "不定詞・動名詞",
+   "question": "His dream is ____ around the world.",
+   "choices": [
+    "travel",
+    "travels",
+    "to travel",
+    "traveled"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be動詞の後に「〜すること」を置くときは不定詞 to+原形を使い、主語の内容を説明する。is travel / is travels / is traveled はどれも文法的に成り立たない。訳:彼の夢は世界中を旅することです。"
+  },
+  {
+   "id": "A1-40",
+   "topic": "分詞",
+   "question": "Look at the ____ baby. Please be quiet.",
+   "choices": [
+    "sleep",
+    "sleeping",
+    "slept",
+    "sleeps"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "名詞を前から修飾して「〜している」という意味を表すのは現在分詞(-ing形)です。sleeping baby =「眠っている赤ちゃん」。sleep / sleeps / slept は動詞の形で、名詞 baby を修飾できません。和訳:「あの眠っている赤ちゃんを見て。静かにしてね。」"
+  },
+  {
+   "id": "A1-41",
+   "topic": "分詞",
+   "question": "I eat ____ eggs every morning.",
+   "choices": [
+    "boil",
+    "boiling",
+    "boiled",
+    "boils"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「ゆでられた卵」のように「〜された」という受け身の意味は過去分詞で表します。boiled eggs =「ゆで卵」。boiling eggs だと「ゆでている卵」になり不自然、boil / boils は動詞のままで名詞を修飾できません。和訳:「私は毎朝ゆで卵を食べます。」"
+  },
+  {
+   "id": "A1-42",
+   "topic": "分詞",
+   "question": "The boy ____ soccer in the park is my brother.",
+   "choices": [
+    "play",
+    "played",
+    "plays",
+    "playing"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "名詞のあとに続けて「〜している(名詞)」と説明するときは現在分詞 -ing を使います(playing soccer in the park が the boy を後ろから修飾)。文の動詞は is なので、plays や played を入れると動詞が2つになってしまいます。和訳:「公園でサッカーをしているあの男の子は私の兄(弟)です。」"
+  },
+  {
+   "id": "A1-43",
+   "topic": "分詞",
+   "question": "This is a book ____ in easy English.",
+   "choices": [
+    "writing",
+    "written",
+    "write",
+    "wrote"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "本は「書かれる」ものなので、受け身の意味を持つ過去分詞 written を使います。writing は「書いている」となり意味が合いません。write / wrote は動詞の形で、後ろから名詞を修飾できません。和訳:「これはやさしい英語で書かれた本です。」"
+  },
+  {
+   "id": "A1-44",
+   "topic": "分詞",
+   "question": "Be careful. The water in the pot is ____.",
+   "choices": [
+    "boiled",
+    "boil",
+    "boiling",
+    "boils"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be動詞 + -ing で「〜している」という進行の意味になります。The water is boiling =「お湯が沸いている」。boiled だと「ゆでられた」という受け身になり、ここでは不自然です。boil / boils は be動詞のあとに置けません。和訳:「気をつけて。なべの水が沸いています。」"
+  },
+  {
+   "id": "A1-45",
+   "topic": "分詞",
+   "question": "Ken hit the ball and now we have a ____ window.",
+   "choices": [
+    "broken",
+    "breaking",
+    "break",
+    "breaks"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「割られた窓=割れた窓」は受け身の意味なので過去分詞 broken を使います。breaking window は「割っている窓」で意味が通りません。break / breaks は動詞の形で名詞を修飾できません。和訳:「ケンがボールを打って、今、窓が割れています。」"
+  },
+  {
+   "id": "A1-46",
+   "topic": "分詞",
+   "question": "The movie was very ____. I want to see it again.",
+   "choices": [
+    "excited",
+    "exciting",
+    "excite",
+    "excites"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「(物事が)わくわくさせる」は現在分詞 exciting、「(人が)わくわくしている」は過去分詞 excited です。主語は movie(物)なので exciting。excite / excites は動詞なので be動詞のあとに置けません。和訳:「その映画はとてもわくわくしました。もう一度見たいです。」"
+  },
+  {
+   "id": "A1-47",
+   "topic": "分詞",
+   "question": "Who is the girl ____ next to the door?",
+   "choices": [
+    "stand",
+    "stood",
+    "standing",
+    "stands"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "名詞 the girl を後ろから「〜している」と説明するので現在分詞 standing を使います。文の動詞は is なので stands や stood を入れると動詞が重なってしまいます。和訳:「ドアのそばに立っているあの女の子はだれですか。」"
+  },
+  {
+   "id": "A1-48",
+   "topic": "分詞",
+   "question": "This is a picture ____ by my grandmother.",
+   "choices": [
+    "painting",
+    "paints",
+    "paint",
+    "painted"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "絵は「描かれる」ものなので、by 〜(〜によって)とともに受け身の意味の過去分詞 painted を使います。painting だと「描いている絵」で意味が合いません。paint / paints は動詞の形なので不可です。和訳:「これは私の祖母が描いた絵です。」"
+  },
+  {
+   "id": "A1-49",
+   "topic": "分詞",
+   "question": "The children were very ____ about the school trip.",
+   "choices": [
+    "exciting",
+    "excite",
+    "excites",
+    "excited"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "主語が the children(人)で「わくわくしている」という気持ちを表すので過去分詞 excited を使います。exciting は「(物が)人をわくわくさせる」なので人の主語には合いません。excite / excites は動詞なので be動詞のあとに置けません。和訳:「子どもたちは修学旅行をとても楽しみにしてわくわくしていました。」"
+  },
+  {
+   "id": "A1-50",
+   "topic": "関係詞",
+   "question": "I have a friend ____ lives in Osaka.",
+   "choices": [
+    "which",
+    "who",
+    "whose",
+    "where"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "先行詞が「人」(a friend)で、後ろに動詞 lives が続く主語のはたらきなので who を使います。which は「物」用、whose は「〜の」、where は「場所」で、どれも合いません。和訳:「私には大阪に住んでいる友達がいます。」"
+  },
+  {
+   "id": "A1-51",
+   "topic": "関係詞",
+   "question": "This is the bag ____ I bought yesterday.",
+   "choices": [
+    "which",
+    "who",
+    "what",
+    "whose"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞が「物」(the bag)で、bought の目的語のはたらきをするので which(または that)を使います。who は人用、whose は「〜の」、what は先行詞をとらないので使えません。和訳:「これは私が昨日買ったかばんです。」"
+  },
+  {
+   "id": "A1-52",
+   "topic": "関係詞",
+   "question": "Do you know the girl ____ name is Emi?",
+   "choices": [
+    "who",
+    "which",
+    "whose",
+    "where"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「その女の子の名前」のように「〜の」という所有の関係を表すときは whose を使います。who は主語、which は物、where は場所を表すので、直後の名詞 name につなげることはできません。和訳:「名前がエミという女の子を知っていますか。」"
+  },
+  {
+   "id": "A1-53",
+   "topic": "関係詞",
+   "question": "This is the house ____ I was born.",
+   "choices": [
+    "which",
+    "who",
+    "that",
+    "where"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が場所(the house)で、後ろの文が「その家で生まれた」と場所を表すので where を使います。which / that を入れると I was born の目的語が必要になり文が成り立ちません。who は人用です。和訳:「これは私が生まれた家です。」"
+  },
+  {
+   "id": "A1-54",
+   "topic": "関係詞",
+   "question": "I want a phone ____ takes good pictures.",
+   "choices": [
+    "who",
+    "that",
+    "where",
+    "whose"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "先行詞が「物」(a phone)で、takes の主語のはたらきをするので that(または which)を使います。who は人用、where は場所、whose は「〜の」で後ろに名詞が必要です。和訳:「私はきれいな写真がとれる携帯電話がほしいです。」"
+  },
+  {
+   "id": "A1-55",
+   "topic": "関係詞",
+   "question": "The man ____ is talking to my teacher is my uncle.",
+   "choices": [
+    "which",
+    "what",
+    "who",
+    "whose"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "先行詞が「人」(the man)で、後ろの is talking の主語になるので who を使います。which は物用、whose は後ろに名詞が必要、what は先行詞をとれません。和訳:「私の先生と話しているあの男性は私のおじです。」"
+  },
+  {
+   "id": "A1-56",
+   "topic": "関係詞",
+   "question": "This is the restaurant ____ we ate lunch last Sunday.",
+   "choices": [
+    "which",
+    "where",
+    "who",
+    "whose"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "先行詞が場所(the restaurant)で、「そこで昼食を食べた」と場所を表すので where です。we ate lunch は目的語がそろっているので which は不要、who は人用、whose は「〜の」です。和訳:「ここが私たちが先週の日曜日に昼食を食べたレストランです。」"
+  },
+  {
+   "id": "A1-57",
+   "topic": "関係詞",
+   "question": "The cake ____ my mother made was delicious.",
+   "choices": [
+    "which",
+    "who",
+    "where",
+    "whose"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞が「物」(the cake)で、made の目的語のはたらきをするので which(または that)を使います。who は人用、where は場所、whose は後ろに名詞が必要です。和訳:「母が作ったケーキはとてもおいしかったです。」"
+  },
+  {
+   "id": "A1-58",
+   "topic": "関係詞",
+   "question": "The dog ____ I saw in the park was very big.",
+   "choices": [
+    "who",
+    "what",
+    "whose",
+    "that"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が動物・物(the dog)で、saw の目的語のはたらきをするので that(または which)を使います。who は人用、whose は「〜の」で後ろに名詞が必要、what は先行詞をとりません。和訳:「私が公園で見たその犬はとても大きかったです。」"
+  },
+  {
+   "id": "A1-59",
+   "topic": "関係詞",
+   "question": "Soccer is a sport ____ many people like.",
+   "choices": [
+    "who",
+    "which",
+    "where",
+    "whose"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "先行詞が「物・事」(a sport)で、like の目的語のはたらきをするので which(または that)を使います。who は人用、where は場所、whose は所有を表します。和訳:「サッカーは多くの人が好きなスポーツです。」"
+  },
+  {
+   "id": "A1-60",
+   "topic": "比較",
+   "question": "My brother is ____ than me.",
+   "choices": [
+    "tall",
+    "taller",
+    "tallest",
+    "more tall"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "than があるので比較級を使います。短い形容詞 tall は -er をつけて taller にします。more tall という形は使わず、tallest は最上級(the をつけて「いちばん〜」)なので than とは合いません。和訳:「私の兄(弟)は私より背が高いです。」"
+  },
+  {
+   "id": "A1-61",
+   "topic": "比較",
+   "question": "This is the ____ book in this library.",
+   "choices": [
+    "old",
+    "older",
+    "oldest",
+    "more old"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "the があり in this library(範囲)が続くので「いちばん古い」という最上級 oldest を使います。older は比較級で than とともに使い、more old という形はありません。和訳:「これはこの図書館でいちばん古い本です。」"
+  },
+  {
+   "id": "A1-62",
+   "topic": "比較",
+   "question": "Tom runs ____ than John.",
+   "choices": [
+    "fast",
+    "fastest",
+    "more fast",
+    "faster"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "than があるので比較級 faster を使います。fast は副詞でも -er をつけて比較級を作り、more fast とは言いません。fastest は最上級です。和訳:「トムはジョンより速く走ります。」"
+  },
+  {
+   "id": "A1-63",
+   "topic": "比較",
+   "question": "My bag is as ____ as yours.",
+   "choices": [
+    "expensive",
+    "more expensive",
+    "most expensive",
+    "expensiver"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "as ... as 〜(〜と同じくらい…)の間には形容詞の元の形(原級)を入れます。比較級 more expensive や最上級 most expensive は入れられません。expensiver という形も存在しません。和訳:「私のかばんはあなたのかばんと同じくらい高いです。」"
+  },
+  {
+   "id": "A1-64",
+   "topic": "比較",
+   "question": "Mt. Fuji is the ____ mountain in Japan.",
+   "choices": [
+    "high",
+    "higher",
+    "more high",
+    "highest"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "the ... in Japan の形で「日本でいちばん高い」となるので最上級 highest です。higher は比較級で than と使い、more high という形はありません。high では「いちばん」の意味が出ません。和訳:「富士山は日本でいちばん高い山です。」"
+  },
+  {
+   "id": "A1-65",
+   "topic": "比較",
+   "question": "For me, English is ____ interesting than math.",
+   "choices": [
+    "much",
+    "more",
+    "most",
+    "very"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "interesting のような長い形容詞は前に more をつけて比較級を作ります。than があるので most(最上級)は不可、very や much は比較級を作る語ではありません。和訳:「私にとって、英語は数学よりおもしろいです。」"
+  },
+  {
+   "id": "A1-66",
+   "topic": "比較",
+   "question": "Which is ____, summer or winter?",
+   "choices": [
+    "hot",
+    "hotter",
+    "hottest",
+    "more hot"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "2つのものを比べて「どちらがより〜か」とたずねるので比較級 hotter を使います(hot は t を重ねて -er)。3つ以上なら最上級 hottest ですが、ここは2つです。more hot という形は使いません。和訳:「夏と冬では、どちらのほうが暑いですか。」"
+  },
+  {
+   "id": "A1-67",
+   "topic": "比較",
+   "question": "She is a ____ singer than her sister.",
+   "choices": [
+    "good",
+    "well",
+    "better",
+    "best"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "than があるので比較級が必要です。good の比較級は不規則変化で better になります。best は最上級、well は副詞で名詞 singer を修飾できません。和訳:「彼女は姉(妹)よりも歌が上手な歌い手です。」"
+  },
+  {
+   "id": "A1-68",
+   "topic": "比較",
+   "question": "This question is the ____ of the three.",
+   "choices": [
+    "easy",
+    "easier",
+    "easiest",
+    "more easy"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "the ... of the three(3つの中で)は3つ以上の比較なので最上級 easiest を使います(y を i に変えて -est)。easier は2つを比べる比較級、more easy という形は使いません。和訳:「この問題は3つの中でいちばんやさしいです。」"
+  },
+  {
+   "id": "A1-69",
+   "topic": "比較",
+   "question": "I have ____ books than you.",
+   "choices": [
+    "many",
+    "much",
+    "most",
+    "more"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "than があるので比較級が必要で、many の比較級は more です。many は原級、most は最上級、much は数えられない名詞に使うので books には合いません。和訳:「私はあなたより多くの本を持っています。」"
+  },
+  {
+   "id": "A1-70",
+   "topic": "仮定法",
+   "question": "If it ____ tomorrow, I will stay home.",
+   "choices": [
+    "will rain",
+    "rains",
+    "rained",
+    "raining"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「もし〜なら」を表す if の文では、未来のことでも if のあとは現在形にします。主語 it は3人称単数なので rains。will rain は使えず、rained は過去、raining は単独では動詞になれません。和訳:「もし明日雨が降ったら、私は家にいます。」"
+  },
+  {
+   "id": "A1-71",
+   "topic": "仮定法",
+   "question": "If I ____ a bird, I could fly to you.",
+   "choices": [
+    "am",
+    "is",
+    "were",
+    "be"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「もし〜だったら(実際はちがう)」という想像を表すときは、主語が I でも be動詞は were を使います(仮定法過去)。あとに could があることもヒントです。am / is / be では現実の話になってしまい合いません。和訳:「もし私が鳥だったら、あなたのところへ飛んでいけるのに。」"
+  },
+  {
+   "id": "A1-72",
+   "topic": "仮定法",
+   "question": "If I had time, I ____ go to the movies with you.",
+   "choices": [
+    "will",
+    "would",
+    "am",
+    "did"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "if のあとが過去形 had(実際は時間がない、という想像)なので、主節は would + 動詞の原形にします。will は現実的な条件の文で使う形で、この文には合いません。am や did は go の前に置けません。和訳:「もし時間があれば、あなたと映画に行くのに。」"
+  },
+  {
+   "id": "A1-73",
+   "topic": "仮定法",
+   "question": "I wish I ____ speak Chinese well.",
+   "choices": [
+    "can",
+    "could",
+    "will",
+    "am"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "I wish 〜(〜であればいいのに)のあとは過去形を使うので、can ではなく could になります。will も現在形なので不可、am のあとに動詞の原形 speak は続けられません。和訳:「中国語を上手に話せたらいいのに。」"
+  },
+  {
+   "id": "A1-74",
+   "topic": "仮定法",
+   "question": "If you ____ hungry, please eat this bread.",
+   "choices": [
+    "are",
+    "will be",
+    "were",
+    "being"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "現実にありうる条件を表す if の文では、if のあとは現在形にします。主語 you なので are。will be は if のあとでは使わず、were は「実際はちがう」という想像の文で使います。being は単独で動詞になれません。和訳:「もしおなかがすいているなら、このパンを食べてください。」"
+  },
+  {
+   "id": "A1-75",
+   "topic": "仮定法",
+   "question": "If I ____ you, I would say sorry to her.",
+   "choices": [
+    "were",
+    "am",
+    "will be",
+    "be"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「もし私があなただったら」という現実にはありえない想像なので、be動詞は were を使います(If I were you は決まった言い方)。主節が would say であることもヒントです。am / will be / be では現実の話になり合いません。和訳:「もし私があなただったら、彼女にごめんと言うでしょう。」"
+  },
+  {
+   "id": "A1-76",
+   "topic": "仮定法",
+   "question": "If I had a lot of money, I ____ buy a big house.",
+   "choices": [
+    "will",
+    "can",
+    "would",
+    "did"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "if のあとが過去形 had(実際はお金がない想像)なので、主節は would + 動詞の原形にします。will や can は現在形なので想像の文には合わず、did は buy の前に置けません。和訳:「もしお金がたくさんあれば、大きな家を買うのに。」"
+  },
+  {
+   "id": "A1-77",
+   "topic": "仮定法",
+   "question": "What would you do if you ____ a ghost?",
+   "choices": [
+    "see",
+    "seen",
+    "seeing",
+    "saw"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "主節が would do という想像の形なので、if のあとの動詞も過去形 saw にします(仮定法過去)。see は現在形、seen は過去分詞、seeing は -ing形で、いずれもここでは動詞として使えません。和訳:「もしおばけを見たら、あなたはどうしますか。」"
+  },
+  {
+   "id": "A1-78",
+   "topic": "仮定法",
+   "question": "I wish it ____ sunny today.",
+   "choices": [
+    "is",
+    "were",
+    "will be",
+    "be"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "I wish 〜(〜だったらいいのに)のあとは過去形を使い、be動詞は主語が it でも were を使うのがふつうです。is / will be は現在・未来の形なので合わず、be は単独では使えません。和訳:「今日晴れだったらいいのに。」"
+  },
+  {
+   "id": "A1-79",
+   "topic": "仮定法",
+   "question": "If she comes to the party, I ____ tell her the news.",
+   "choices": [
+    "would",
+    "will",
+    "did",
+    "were"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "if のあとが現在形 comes で、実際にありうる条件なので、主節は will + 動詞の原形にします。would は「実際はちがう」想像の文で使い、did や were は tell の前に置けません。和訳:「もし彼女がパーティーに来たら、私が彼女にその知らせを伝えます。」"
+  },
+  {
+   "id": "A1-80",
+   "topic": "前置詞",
+   "question": "My birthday is ____ July.",
+   "choices": [
+    "on",
+    "in",
+    "at",
+    "of"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "月を表すときは in を使います(in July, in May)。on は日付や曜日(on Monday)、at は時刻(at six)に使い、of は「〜の」で時を表す用法はありません。訳:私の誕生日は7月です。"
+  },
+  {
+   "id": "A1-81",
+   "topic": "前置詞",
+   "question": "I usually get up ____ seven o'clock.",
+   "choices": [
+    "in",
+    "on",
+    "to",
+    "at"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "時刻の前には at を使います(at seven o'clock)。in は月・年・季節、on は曜日・日付、to は時刻では「〜前」の特別な言い方以外に使いません。訳:私はふつう7時に起きます。"
+  },
+  {
+   "id": "A1-82",
+   "topic": "前置詞",
+   "question": "We have an English test ____ Friday.",
+   "choices": [
+    "in",
+    "at",
+    "on",
+    "for"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "曜日の前は on を使います(on Friday)。in は月や年、at は時刻、for は期間(for two days)に使います。訳:私たちは金曜日に英語のテストがあります。"
+  },
+  {
+   "id": "A1-83",
+   "topic": "前置詞",
+   "question": "My father goes to work ____ train.",
+   "choices": [
+    "with",
+    "by",
+    "on",
+    "in"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "交通手段は by + 乗り物(冠詞なし)で表します(by train, by bus)。with は「〜と一緒に/道具」、on や in は具体的に乗り物の中にいる場合に使い、on the train のように冠詞が必要です。訳:父は電車で仕事に行きます。"
+  },
+  {
+   "id": "A1-84",
+   "topic": "前置詞",
+   "question": "The bank is ____ the post office and the station.",
+   "choices": [
+    "among",
+    "in",
+    "with",
+    "between"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "2つのものの間は between A and B です。among は3つ以上の中に、in は「〜の中に」、with は「〜と一緒に」で、A and B の形とは結びつきません。訳:銀行は郵便局と駅の間にあります。"
+  },
+  {
+   "id": "A1-85",
+   "topic": "前置詞",
+   "question": "My sister is very good ____ singing.",
+   "choices": [
+    "at",
+    "on",
+    "in",
+    "to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "be good at ~ing で「〜が上手だ」という決まった形です。good on / good in / good to はこの意味では使いません。訳:私の姉は歌がとても上手です。"
+  },
+  {
+   "id": "A1-86",
+   "topic": "前置詞",
+   "question": "I studied English ____ two hours yesterday.",
+   "choices": [
+    "during",
+    "for",
+    "since",
+    "while"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「2時間」のような長さ(期間)の前は for を使います。during は the summer など特定の期間を表す名詞と、since は「〜以来」で起点と、while は接続詞で文と結びつきます。訳:私は昨日2時間英語を勉強しました。"
+  },
+  {
+   "id": "A1-87",
+   "topic": "前置詞",
+   "question": "This letter is ____ my grandmother. She wrote it last week.",
+   "choices": [
+    "by",
+    "to",
+    "from",
+    "of"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「〜から来た(送り主)」は from です。by は「〜によって」で行為者、to は「〜へ」で相手方向、of は「〜の」。祖母が書いて自分に届いた手紙なので from が正解です。訳:この手紙は祖母からのものです。彼女は先週それを書きました。"
+  },
+  {
+   "id": "A1-88",
+   "topic": "前置詞",
+   "question": "Please put your bag ____ the table.",
+   "choices": [
+    "on",
+    "in",
+    "at",
+    "of"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "物の表面に置く場合は on(接している)を使います。in は「中に」、at は地点、of は「〜の」で場所を表せません。訳:かばんをテーブルの上に置いてください。"
+  },
+  {
+   "id": "A1-89",
+   "topic": "前置詞",
+   "question": "I went to the park ____ my friends.",
+   "choices": [
+    "by",
+    "for",
+    "with",
+    "of"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「〜と一緒に」は with です。by は手段や「〜によって」、for は「〜のために」、of は「〜の」。訳:私は友達と公園に行きました。"
+  },
+  {
+   "id": "A1-90",
+   "topic": "接続詞",
+   "question": "I like dogs, ____ I don't like cats.",
+   "choices": [
+    "but",
+    "so",
+    "or",
+    "because"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "前後が反対の内容なので「しかし」の but を使います。so は結果、or は選択、because は理由を表すので、ここでは意味がつながりません。訳:私は犬が好きですが、猫は好きではありません。"
+  },
+  {
+   "id": "A1-91",
+   "topic": "接続詞",
+   "question": "It was very cold, ____ I wore a coat.",
+   "choices": [
+    "but",
+    "or",
+    "so",
+    "that"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「寒かった→だからコートを着た」という結果なので so です。but は逆接、or は選択、that は前に think などの動詞が必要です。訳:とても寒かったので、私はコートを着ました。"
+  },
+  {
+   "id": "A1-92",
+   "topic": "接続詞",
+   "question": "____ I was ten years old, I lived in Nagoya.",
+   "choices": [
+    "But",
+    "When",
+    "So",
+    "And"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜のとき」と時を表すのは when です。But / So / And は文の先頭でこのように2つの文をつなぐ働きをせず、時の意味も表しません。訳:私が10歳のとき、名古屋に住んでいました。"
+  },
+  {
+   "id": "A1-93",
+   "topic": "接続詞",
+   "question": "Hurry up, ____ you will miss the train.",
+   "choices": [
+    "and",
+    "but",
+    "or",
+    "so"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "命令文 + or ~ で「〜しなさい、さもないと〜」の意味になります。命令文 + and は「そうすれば」で良い結果、but は逆接、so はここでは不自然です。訳:急ぎなさい、さもないと電車に乗り遅れますよ。"
+  },
+  {
+   "id": "A1-94",
+   "topic": "接続詞",
+   "question": "I think ____ this book is very interesting.",
+   "choices": [
+    "that",
+    "what",
+    "so",
+    "if"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "think の後に「〜ということ」という文を続けるときは接続詞 that を使います。what は後ろに欠けた要素が必要、so は「だから」、if は「もし/〜かどうか」で意味が合いません。訳:私はこの本はとてもおもしろいと思います。"
+  },
+  {
+   "id": "A1-95",
+   "topic": "接続詞",
+   "question": "____ it rains tomorrow, we will stay home.",
+   "choices": [
+    "So",
+    "If",
+    "And",
+    "But"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「もし〜なら」という条件は if で表します。条件の文の中は未来のことでも現在形(rains)を使います。So / And / But は文の先頭でこの働きをしません。訳:もし明日雨が降ったら、私たちは家にいます。"
+  },
+  {
+   "id": "A1-96",
+   "topic": "接続詞",
+   "question": "My mother was cooking ____ I was doing my homework.",
+   "choices": [
+    "while",
+    "during",
+    "but",
+    "or"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜している間に」と文と文をつなぐのは接続詞 while です。during は前置詞なので後ろには名詞が来ます(during dinner)。but は逆接、or は選択で意味が合いません。訳:私が宿題をしている間、母は料理をしていました。"
+  },
+  {
+   "id": "A1-97",
+   "topic": "接続詞",
+   "question": "I was late for school ____ the bus didn't come.",
+   "choices": [
+    "so",
+    "but",
+    "because",
+    "if"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "後ろが理由なので because を使います。so は「だから」で理由と結果が逆、but は逆接、if は条件で文の意味が通りません。訳:バスが来なかったので、私は学校に遅れました。"
+  },
+  {
+   "id": "A1-98",
+   "topic": "接続詞",
+   "question": "Please wait here ____ I come back.",
+   "choices": [
+    "until",
+    "while",
+    "during",
+    "because"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜するまで」は until です。while は「〜する間」で意味がずれ、during は前置詞で名詞が必要、because は理由。訳:私が戻ってくるまでここで待っていてください。"
+  },
+  {
+   "id": "A1-99",
+   "topic": "接続詞",
+   "question": "Both Ken ____ his sister like music.",
+   "choices": [
+    "or",
+    "and",
+    "but",
+    "so"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "both A and B「AもBも両方」という決まった形です。either A or B とは組み合わせが違うので or は不可、but や so もこの形では使えません。訳:ケンも彼の妹も二人とも音楽が好きです。"
+  },
+  {
+   "id": "A1-100",
+   "topic": "冠詞・名詞",
+   "question": "I ate ____ apple for breakfast this morning.",
+   "choices": [
+    "a",
+    "an",
+    "the",
+    "some"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "apple は母音の音で始まるので、1つを表す冠詞は an になります。a は子音の音の前、the は「その」と特定するとき、some は数えられる名詞の複数形や数えられない名詞と使います。訳:私は今朝、朝食にリンゴを1個食べました。"
+  },
+  {
+   "id": "A1-101",
+   "topic": "冠詞・名詞",
+   "question": "There are five ____ in the classroom.",
+   "choices": [
+    "child",
+    "childs",
+    "children",
+    "childrens"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "child の複数形は不規則変化で children です。five があるので単数の child は不可、childs や childrens という形は存在しません。訳:教室に5人の子どもがいます。"
+  },
+  {
+   "id": "A1-102",
+   "topic": "冠詞・名詞",
+   "question": "I'm thirsty. Can I have some ____, please?",
+   "choices": [
+    "water",
+    "waters",
+    "a water",
+    "many water"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "water は数えられない名詞なので、複数の s も a もつけません。数えられない名詞の量は some / much で表し、many は数えられる名詞の複数形に使います。訳:のどがかわきました。お水をいただけますか。"
+  },
+  {
+   "id": "A1-103",
+   "topic": "冠詞・名詞",
+   "question": "I brush my ____ twice a day.",
+   "choices": [
+    "tooths",
+    "teeths",
+    "tooth",
+    "teeth"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "tooth の複数形は不規則変化で teeth です。歯は全部みがくので複数形にします。tooths / teeths という形はなく、tooth では1本だけになってしまいます。訳:私は1日に2回歯をみがきます。"
+  },
+  {
+   "id": "A1-104",
+   "topic": "冠詞・名詞",
+   "question": "Look at ____ sun. It's very beautiful today.",
+   "choices": [
+    "a",
+    "an",
+    "the",
+    "some"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "sun(太陽)や moon のように世界に1つしかないものには the をつけます。a / an は「いくつかあるうちの1つ」を表すので不適切、some も合いません。訳:太陽を見て。今日はとてもきれいだよ。"
+  },
+  {
+   "id": "A1-105",
+   "topic": "冠詞・名詞",
+   "question": "My uncle is ____ doctor at a big hospital.",
+   "choices": [
+    "an",
+    "a",
+    "the",
+    "some"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "職業を言うときは a / an をつけます。doctor は子音の音で始まるので a です。an は母音の音の前、the は特定のとき、some は単数の数えられる名詞には使えません。訳:私のおじは大きな病院の医者です。"
+  },
+  {
+   "id": "A1-106",
+   "topic": "冠詞・名詞",
+   "question": "I need two ____ for these books.",
+   "choices": [
+    "boxs",
+    "boxes",
+    "box",
+    "boxies"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "x で終わる名詞の複数形は -es をつけて boxes になります。boxs や boxies という形はなく、two の後なので単数の box も不可です。訳:私はこれらの本のために箱が2つ必要です。"
+  },
+  {
+   "id": "A1-107",
+   "topic": "冠詞・名詞",
+   "question": "My brother can play ____ guitar very well.",
+   "choices": [
+    "a",
+    "an",
+    "the",
+    "some"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "楽器を演奏すると言うときは play the + 楽器名 と the をつけます(スポーツは play tennis のように無冠詞)。a / an / some ではこの意味を表せません。訳:私の兄はギターをとても上手に弾けます。"
+  },
+  {
+   "id": "A1-108",
+   "topic": "冠詞・名詞",
+   "question": "There are a lot of ____ in the park today.",
+   "choices": [
+    "people",
+    "peoples",
+    "person",
+    "a person"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "people はそれ自体が複数扱いの名詞で「人々」を表します。peoples は「諸民族」の意味で普通は使わず、a lot of の後なので単数の person / a person は不可です。訳:今日は公園にたくさんの人がいます。"
+  },
+  {
+   "id": "A1-109",
+   "topic": "冠詞・名詞",
+   "question": "I can't buy that bike. I don't have ____ money.",
+   "choices": [
+    "many",
+    "much",
+    "a",
+    "few"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "money は数えられない名詞なので、量を表すには much を使います。many と few は数えられる名詞の複数形に使い、a は数えられない名詞につけられません。訳:私はあの自転車を買えません。お金があまりないのです。"
+  },
+  {
+   "id": "A1-110",
+   "topic": "語法・熟語",
+   "question": "I'm looking ____ my glasses. Do you know where they are?",
+   "choices": [
+    "at",
+    "for",
+    "after",
+    "in"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "look for ~ で「〜を探す」です。look at は「〜を見る」、look after は「〜の世話をする」で意味が変わり、look in はここでは不自然です。訳:めがねを探しています。どこにあるか知っていますか。"
+  },
+  {
+   "id": "A1-111",
+   "topic": "語法・熟語",
+   "question": "Please take ____ your shoes before you come in.",
+   "choices": [
+    "off",
+    "on",
+    "in",
+    "up"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "take off ~ で「〜を脱ぐ」です。着るのは put on、take on / take in / take up はここでは意味が通りません。訳:入る前にくつを脱いでください。"
+  },
+  {
+   "id": "A1-112",
+   "topic": "語法・熟語",
+   "question": "It's dark in this room. Can you turn ____ the light?",
+   "choices": [
+    "down",
+    "on",
+    "off",
+    "out"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "turn on ~ で「(電気などを)つける」です。turn off / turn out は「消す」、turn down は「音量を下げる」なので、暗い部屋の場面には合いません。訳:この部屋は暗いです。電気をつけてくれますか。"
+  },
+  {
+   "id": "A1-113",
+   "topic": "語法・熟語",
+   "question": "I ____ my homework after dinner every day.",
+   "choices": [
+    "make",
+    "take",
+    "play",
+    "do"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「宿題をする」は do my homework という決まった組み合わせです。make は「作る」、take は「取る」、play は「(遊び・演奏を)する」で homework とは一緒に使いません。訳:私は毎日夕食のあとに宿題をします。"
+  },
+  {
+   "id": "A1-114",
+   "topic": "語法・熟語",
+   "question": "Excuse me. How ____ does this bag cost?",
+   "choices": [
+    "many",
+    "long",
+    "much",
+    "often"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "値段をたずねるときは How much ~? です。How many は数、How long は長さ・期間、How often は回数をたずねます。訳:すみません。このかばんはいくらですか。"
+  },
+  {
+   "id": "A1-115",
+   "topic": "語法・熟語",
+   "question": "____ you like something to drink?",
+   "choices": [
+    "Do",
+    "Are",
+    "Will",
+    "Would"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "Would you like ~? で「〜はいかがですか」とていねいにすすめる決まった言い方です。Do you like ~? は「好きですか」と好みをたずねる文、Are / Will はこの形では使えません。訳:何か飲み物はいかがですか。"
+  },
+  {
+   "id": "A1-116",
+   "topic": "語法・熟語",
+   "question": "Let's ____ shopping this afternoon.",
+   "choices": [
+    "going",
+    "to go",
+    "go",
+    "goes"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "Let's のあとは動詞の原形が来ます(go shopping で「買い物に行く」)。going / to go / goes はどれも原形ではありません。訳:今日の午後、買い物に行きましょう。"
+  },
+  {
+   "id": "A1-117",
+   "topic": "語法・熟語",
+   "question": "She takes care ____ her little brother every day.",
+   "choices": [
+    "of",
+    "for",
+    "to",
+    "with"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "take care of ~ で「〜の世話をする」という決まった表現です。care for も「世話をする」ですが take care の後は of が正しく、to / with は使いません。訳:彼女は毎日、弟の世話をしています。"
+  },
+  {
+   "id": "A1-118",
+   "topic": "語法・熟語",
+   "question": "It ____ me thirty minutes to walk to the station.",
+   "choices": [
+    "spends",
+    "takes",
+    "makes",
+    "needs"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "It takes + 人 + 時間 + to ~ で「〜するのに(人は)…かかる」を表します。spend は人を主語にして spend time on ~ の形で使い、makes / needs はこの形をとりません。訳:駅まで歩くのに私は30分かかります。"
+  },
+  {
+   "id": "A1-119",
+   "topic": "語法・熟語",
+   "question": "Thank you ____ inviting me to your party.",
+   "choices": [
+    "to",
+    "of",
+    "for",
+    "about"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "Thank you for ~ing で「〜してくれてありがとう」です。for は前置詞なので後ろは動詞のing形になります。to / of / about は thank you と組み合わせて使いません。訳:パーティーに招待してくれてありがとう。"
+  }
+ ]
+}

@@ -1,0 +1,2047 @@
+{
+ "level": "B1",
+ "generatedAt": "2026-08-11T10:16:07.967Z",
+ "count": 170,
+ "words": [
+  {
+   "word": "household",
+   "pos": "名詞",
+   "meaningJa": "世帯、家庭",
+   "distractors": [
+    "近所",
+    "地域社会",
+    "職場"
+   ],
+   "exampleEn": "Every household in this town has a car.",
+   "exampleJa": "この町のどの世帯も車を持っている。"
+  },
+  {
+   "word": "chore",
+   "pos": "名詞",
+   "meaningJa": "家事、雑用",
+   "distractors": [
+    "趣味",
+    "休暇",
+    "給料"
+   ],
+   "exampleEn": "My brother and I share the household chores.",
+   "exampleJa": "兄と私は家事を分担している。"
+  },
+  {
+   "word": "appliance",
+   "pos": "名詞",
+   "meaningJa": "電化製品、器具",
+   "distractors": [
+    "部品",
+    "燃料",
+    "説明書"
+   ],
+   "exampleEn": "This shop sells kitchen appliances at low prices.",
+   "exampleJa": "この店は台所用の電化製品を安く売っている。"
+  },
+  {
+   "word": "ceiling",
+   "pos": "名詞",
+   "meaningJa": "天井",
+   "distractors": [
+    "床",
+    "屋根",
+    "地下室"
+   ],
+   "exampleEn": "There is a small light on the ceiling.",
+   "exampleJa": "天井に小さな照明がある。"
+  },
+  {
+   "word": "rent",
+   "pos": "名詞",
+   "meaningJa": "家賃",
+   "distractors": [
+    "税金",
+    "貯金",
+    "借金"
+   ],
+   "exampleEn": "The rent for this apartment is quite high.",
+   "exampleJa": "このアパートの家賃はかなり高い。"
+  },
+  {
+   "word": "neighborhood",
+   "pos": "名詞",
+   "meaningJa": "近所、地域",
+   "distractors": [
+    "田舎",
+    "首都",
+    "国境"
+   ],
+   "exampleEn": "I grew up in a quiet neighborhood.",
+   "exampleJa": "私は静かな地域で育った。"
+  },
+  {
+   "word": "tidy",
+   "pos": "形容詞",
+   "meaningJa": "きちんと片付いた",
+   "distractors": [
+    "散らかった",
+    "汚れた",
+    "狭い"
+   ],
+   "exampleEn": "Her room is always clean and tidy.",
+   "exampleJa": "彼女の部屋はいつも清潔で片付いている。"
+  },
+  {
+   "word": "sweep",
+   "pos": "動詞",
+   "meaningJa": "掃く",
+   "distractors": [
+    "拭く",
+    "磨く",
+    "洗う"
+   ],
+   "exampleEn": "I sweep the floor before dinner.",
+   "exampleJa": "私は夕食前に床を掃く。"
+  },
+  {
+   "word": "rinse",
+   "pos": "動詞",
+   "meaningJa": "すすぐ",
+   "distractors": [
+    "絞る",
+    "干す",
+    "沸かす"
+   ],
+   "exampleEn": "Rinse the rice twice before cooking it.",
+   "exampleJa": "炊く前に米を2回すすいでください。"
+  },
+  {
+   "word": "iron",
+   "pos": "動詞",
+   "meaningJa": "アイロンをかける",
+   "distractors": [
+    "縫う",
+    "編む",
+    "たたむ"
+   ],
+   "exampleEn": "I need to iron my shirt before the interview.",
+   "exampleJa": "面接の前にシャツにアイロンをかける必要がある。"
+  },
+  {
+   "word": "stir",
+   "pos": "動詞",
+   "meaningJa": "かき混ぜる",
+   "distractors": [
+    "注ぐ",
+    "蒸す",
+    "冷やす"
+   ],
+   "exampleEn": "Stir the soup slowly for two minutes.",
+   "exampleJa": "スープを2分間ゆっくりかき混ぜてください。"
+  },
+  {
+   "word": "roast",
+   "pos": "動詞",
+   "meaningJa": "(肉などを)あぶり焼く",
+   "distractors": [
+    "ゆでる",
+    "漬ける",
+    "冷凍する"
+   ],
+   "exampleEn": "We roasted a chicken for the party.",
+   "exampleJa": "私たちはパーティーのために鶏を丸焼きにした。"
+  },
+  {
+   "word": "peel",
+   "pos": "動詞",
+   "meaningJa": "皮をむく",
+   "distractors": [
+    "種を取る",
+    "味見する",
+    "盛りつける"
+   ],
+   "exampleEn": "Could you peel these potatoes for me?",
+   "exampleJa": "このじゃがいもの皮をむいてくれませんか。"
+  },
+  {
+   "word": "swallow",
+   "pos": "動詞",
+   "meaningJa": "飲み込む",
+   "distractors": [
+    "かむ",
+    "吐く",
+    "味わう"
+   ],
+   "exampleEn": "My throat hurts when I swallow.",
+   "exampleJa": "飲み込むときにのどが痛む。"
+  },
+  {
+   "word": "chew",
+   "pos": "動詞",
+   "meaningJa": "かむ、噛み砕く",
+   "distractors": [
+    "飲み込む",
+    "なめる",
+    "息を吸う"
+   ],
+   "exampleEn": "You should chew your food well.",
+   "exampleJa": "食べ物はよくかむべきだ。"
+  },
+  {
+   "word": "flavor",
+   "pos": "名詞",
+   "meaningJa": "風味、味",
+   "distractors": [
+    "色合い",
+    "音量",
+    "形"
+   ],
+   "exampleEn": "This ice cream has a strong lemon flavor.",
+   "exampleJa": "このアイスクリームは強いレモンの風味がする。"
+  },
+  {
+   "word": "nutrition",
+   "pos": "名詞",
+   "meaningJa": "栄養",
+   "distractors": [
+    "味付け",
+    "消化",
+    "保存"
+   ],
+   "exampleEn": "Good nutrition is important for growing children.",
+   "exampleJa": "よい栄養は成長期の子どもに大切だ。"
+  },
+  {
+   "word": "vegetarian",
+   "pos": "名詞",
+   "meaningJa": "菜食主義者",
+   "distractors": [
+    "料理人",
+    "農家",
+    "大食家"
+   ],
+   "exampleEn": "My sister has been a vegetarian for five years.",
+   "exampleJa": "姉は5年間ずっと菜食主義者だ。"
+  },
+  {
+   "word": "leftover",
+   "pos": "名詞",
+   "meaningJa": "残り物",
+   "distractors": [
+    "おかわり",
+    "前菜",
+    "つけ合わせ"
+   ],
+   "exampleEn": "We ate the leftovers for lunch the next day.",
+   "exampleJa": "私たちは翌日の昼食に残り物を食べた。"
+  },
+  {
+   "word": "portion",
+   "pos": "名詞",
+   "meaningJa": "一人分、部分",
+   "distractors": [
+    "全体",
+    "無駄",
+    "値段"
+   ],
+   "exampleEn": "The portions at this restaurant are very large.",
+   "exampleJa": "このレストランの一人分の量はとても多い。"
+  },
+  {
+   "word": "ripe",
+   "pos": "形容詞",
+   "meaningJa": "熟した",
+   "distractors": [
+    "生の",
+    "乾いた",
+    "塩辛い"
+   ],
+   "exampleEn": "These bananas are not ripe yet.",
+   "exampleJa": "このバナナはまだ熟していない。"
+  },
+  {
+   "word": "frozen",
+   "pos": "形容詞",
+   "meaningJa": "凍った、冷凍の",
+   "distractors": [
+    "焼いた",
+    "蒸した",
+    "腐った"
+   ],
+   "exampleEn": "I keep frozen vegetables in the freezer.",
+   "exampleJa": "私は冷凍野菜を冷凍庫に入れている。"
+  },
+  {
+   "word": "appetite",
+   "pos": "名詞",
+   "meaningJa": "食欲",
+   "distractors": [
+    "味覚",
+    "満腹感",
+    "のどの渇き"
+   ],
+   "exampleEn": "I had no appetite because of the heat.",
+   "exampleJa": "暑さのせいで食欲がなかった。"
+  },
+  {
+   "word": "wrist",
+   "pos": "名詞",
+   "meaningJa": "手首",
+   "distractors": [
+    "足首",
+    "ひじ",
+    "ひざ"
+   ],
+   "exampleEn": "He wears a watch on his left wrist.",
+   "exampleJa": "彼は左手首に時計をつけている。"
+  },
+  {
+   "word": "chest",
+   "pos": "名詞",
+   "meaningJa": "胸",
+   "distractors": [
+    "腹",
+    "背中",
+    "腰"
+   ],
+   "exampleEn": "He felt a pain in his chest.",
+   "exampleJa": "彼は胸に痛みを感じた。"
+  },
+  {
+   "word": "breath",
+   "pos": "名詞",
+   "meaningJa": "息",
+   "distractors": [
+    "声",
+    "汗",
+    "脈"
+   ],
+   "exampleEn": "Take a deep breath and relax.",
+   "exampleJa": "深く息を吸って、リラックスして。"
+  },
+  {
+   "word": "ache",
+   "pos": "名詞",
+   "meaningJa": "(continuous)痛み",
+   "distractors": [
+    "かゆみ",
+    "はれ",
+    "めまい"
+   ],
+   "exampleEn": "I have a dull ache in my back.",
+   "exampleJa": "背中に鈍い痛みがある。"
+  },
+  {
+   "word": "wound",
+   "pos": "名詞",
+   "meaningJa": "傷",
+   "distractors": [
+    "薬",
+    "包帯",
+    "痛み止め"
+   ],
+   "exampleEn": "The nurse cleaned the wound carefully.",
+   "exampleJa": "看護師は傷を注意深く洗った。"
+  },
+  {
+   "word": "symptom",
+   "pos": "名詞",
+   "meaningJa": "症状",
+   "distractors": [
+    "治療",
+    "副作用",
+    "診断書"
+   ],
+   "exampleEn": "A high fever is a common symptom of the flu.",
+   "exampleJa": "高熱はインフルエンザのよくある症状だ。"
+  },
+  {
+   "word": "exhausted",
+   "pos": "形容詞",
+   "meaningJa": "疲れ果てた",
+   "distractors": [
+    "満足した",
+    "退屈した",
+    "元気いっぱいの"
+   ],
+   "exampleEn": "I was exhausted after the long trip.",
+   "exampleJa": "長い旅のあと私は疲れ果てていた。"
+  },
+  {
+   "word": "anxious",
+   "pos": "形容詞",
+   "meaningJa": "不安な、心配して",
+   "distractors": [
+    "満足した",
+    "誇らしい",
+    "眠い"
+   ],
+   "exampleEn": "She feels anxious about her exam results.",
+   "exampleJa": "彼女は試験の結果について不安に感じている。"
+  },
+  {
+   "word": "guilty",
+   "pos": "形容詞",
+   "meaningJa": "罪の意識がある",
+   "distractors": [
+    "誇らしい",
+    "うらやましい",
+    "満足した"
+   ],
+   "exampleEn": "I felt guilty about lying to my parents.",
+   "exampleJa": "両親にうそをついたことで罪の意識を感じた。"
+  },
+  {
+   "word": "grateful",
+   "pos": "形容詞",
+   "meaningJa": "感謝している",
+   "distractors": [
+    "嫉妬した",
+    "失望した",
+    "無関心な"
+   ],
+   "exampleEn": "I'm grateful for all your help.",
+   "exampleJa": "あなたのすべての助けに感謝しています。"
+  },
+  {
+   "word": "confident",
+   "pos": "形容詞",
+   "meaningJa": "自信のある",
+   "distractors": [
+    "内気な",
+    "疲れた",
+    "礼儀正しい"
+   ],
+   "exampleEn": "She is confident about her English.",
+   "exampleJa": "彼女は自分の英語に自信を持っている。"
+  },
+  {
+   "word": "frustrated",
+   "pos": "形容詞",
+   "meaningJa": "いらだった",
+   "distractors": [
+    "落ち着いた",
+    "誇らしい",
+    "うれしい"
+   ],
+   "exampleEn": "I get frustrated when the internet is slow.",
+   "exampleJa": "インターネットが遅いといらいらする。"
+  },
+  {
+   "word": "curious",
+   "pos": "形容詞",
+   "meaningJa": "好奇心のある",
+   "distractors": [
+    "無関心な",
+    "疑わしい",
+    "礼儀正しい"
+   ],
+   "exampleEn": "Children are curious about everything.",
+   "exampleJa": "子どもは何にでも好奇心を持つ。"
+  },
+  {
+   "word": "emotion",
+   "pos": "名詞",
+   "meaningJa": "感情",
+   "distractors": [
+    "理由",
+    "意見",
+    "行動"
+   ],
+   "exampleEn": "He tried to hide his emotions.",
+   "exampleJa": "彼は自分の感情を隠そうとした。"
+  },
+  {
+   "word": "sympathy",
+   "pos": "名詞",
+   "meaningJa": "同情",
+   "distractors": [
+    "感謝",
+    "嫉妬",
+    "尊敬"
+   ],
+   "exampleEn": "She showed great sympathy for the victims.",
+   "exampleJa": "彼女は被害者に深い同情を示した。"
+  },
+  {
+   "word": "patience",
+   "pos": "名詞",
+   "meaningJa": "忍耐、我慢",
+   "distractors": [
+    "勇気",
+    "正直さ",
+    "親切さ"
+   ],
+   "exampleEn": "Teaching children requires a lot of patience.",
+   "exampleJa": "子どもを教えるには多くの忍耐が必要だ。"
+  },
+  {
+   "word": "attitude",
+   "pos": "名詞",
+   "meaningJa": "態度",
+   "distractors": [
+    "能力",
+    "経験",
+    "立場"
+   ],
+   "exampleEn": "I like his positive attitude toward work.",
+   "exampleJa": "私は彼の仕事に対する前向きな態度が好きだ。"
+  },
+  {
+   "word": "behavior",
+   "pos": "名詞",
+   "meaningJa": "ふるまい、行動",
+   "distractors": [
+    "感情",
+    "考え方",
+    "外見"
+   ],
+   "exampleEn": "His behavior at the party surprised everyone.",
+   "exampleJa": "パーティーでの彼のふるまいはみんなを驚かせた。"
+  },
+  {
+   "word": "personality",
+   "pos": "名詞",
+   "meaningJa": "性格、人柄",
+   "distractors": [
+    "外見",
+    "身分",
+    "知識"
+   ],
+   "exampleEn": "She has a cheerful personality.",
+   "exampleJa": "彼女は明るい性格をしている。"
+  },
+  {
+   "word": "generous",
+   "pos": "形容詞",
+   "meaningJa": "気前のよい",
+   "distractors": [
+    "けちな",
+    "頑固な",
+    "内気な"
+   ],
+   "exampleEn": "My uncle is generous with his time and money.",
+   "exampleJa": "おじは時間もお金も気前よく使う。"
+  },
+  {
+   "word": "stubborn",
+   "pos": "形容詞",
+   "meaningJa": "頑固な",
+   "distractors": [
+    "寛大な",
+    "従順な",
+    "注意深い"
+   ],
+   "exampleEn": "My grandfather is too stubborn to ask for help.",
+   "exampleJa": "祖父は頑固すぎて助けを求めない。"
+  },
+  {
+   "word": "reliable",
+   "pos": "形容詞",
+   "meaningJa": "信頼できる",
+   "distractors": [
+    "有名な",
+    "高価な",
+    "にぎやかな"
+   ],
+   "exampleEn": "She is a reliable friend who never breaks promises.",
+   "exampleJa": "彼女は約束を破らない信頼できる友人だ。"
+  },
+  {
+   "word": "admire",
+   "pos": "動詞",
+   "meaningJa": "尊敬する、感心する",
+   "distractors": [
+    "批判する",
+    "無視する",
+    "うらやむ"
+   ],
+   "exampleEn": "I admire my teacher for her kindness.",
+   "exampleJa": "私は先生の優しさを尊敬している。"
+  },
+  {
+   "word": "encourage",
+   "pos": "動詞",
+   "meaningJa": "励ます、勧める",
+   "distractors": [
+    "禁止する",
+    "叱る",
+    "無視する"
+   ],
+   "exampleEn": "My parents encouraged me to study abroad.",
+   "exampleJa": "両親は私に留学するよう勧めてくれた。"
+  },
+  {
+   "word": "comfort",
+   "pos": "動詞",
+   "meaningJa": "慰める",
+   "distractors": [
+    "責める",
+    "からかう",
+    "説得する"
+   ],
+   "exampleEn": "She comforted the crying child.",
+   "exampleJa": "彼女は泣いている子どもを慰めた。"
+  },
+  {
+   "word": "compliment",
+   "pos": "名詞",
+   "meaningJa": "ほめ言葉",
+   "distractors": [
+    "文句",
+    "忠告",
+    "冗談"
+   ],
+   "exampleEn": "She smiled at his kind compliment.",
+   "exampleJa": "彼女は彼の優しいほめ言葉に笑顔を見せた。"
+  },
+  {
+   "word": "relationship",
+   "pos": "名詞",
+   "meaningJa": "関係、間柄",
+   "distractors": [
+    "約束",
+    "規則",
+    "会話"
+   ],
+   "exampleEn": "I have a good relationship with my sister.",
+   "exampleJa": "私は姉とよい関係にある。"
+  },
+  {
+   "word": "divorce",
+   "pos": "名詞",
+   "meaningJa": "離婚",
+   "distractors": [
+    "結婚式",
+    "婚約",
+    "別居中の再会"
+   ],
+   "exampleEn": "They decided to get a divorce last year.",
+   "exampleJa": "彼らは昨年離婚することを決めた。"
+  },
+  {
+   "word": "pregnant",
+   "pos": "形容詞",
+   "meaningJa": "妊娠している",
+   "distractors": [
+    "独身の",
+    "年老いた",
+    "健康な"
+   ],
+   "exampleEn": "My aunt is six months pregnant.",
+   "exampleJa": "おばは妊娠6か月だ。"
+  },
+  {
+   "word": "spoil",
+   "pos": "動詞",
+   "meaningJa": "甘やかす、だめにする",
+   "distractors": [
+    "育てる",
+    "しつける",
+    "守る"
+   ],
+   "exampleEn": "Don't spoil your children too much.",
+   "exampleJa": "子どもを甘やかしすぎてはいけない。"
+  },
+  {
+   "word": "put up with",
+   "pos": "熟語",
+   "meaningJa": "~を我慢する",
+   "distractors": [
+    "~を思いつく",
+    "~を片付ける",
+    "~に追いつく"
+   ],
+   "exampleEn": "I can't put up with this noise anymore.",
+   "exampleJa": "もうこの騒音を我慢できない。"
+  },
+  {
+   "word": "take after",
+   "pos": "熟語",
+   "meaningJa": "~に似ている",
+   "distractors": [
+    "~を引き受ける",
+    "~を追い出す",
+    "~を尊敬する"
+   ],
+   "exampleEn": "She takes after her mother in character.",
+   "exampleJa": "彼女は性格が母親に似ている。"
+  },
+  {
+   "word": "run out of",
+   "pos": "熟語",
+   "meaningJa": "~を使い果たす",
+   "distractors": [
+    "~から逃げる",
+    "~を思い出す",
+    "~に飽きる"
+   ],
+   "exampleEn": "We ran out of milk this morning.",
+   "exampleJa": "今朝、牛乳を使い果たしてしまった。"
+  },
+  {
+   "word": "cheer up",
+   "pos": "熟語",
+   "meaningJa": "元気づける、元気を出す",
+   "distractors": [
+    "あきらめる",
+    "落ち込む",
+    "集まる"
+   ],
+   "exampleEn": "I tried to cheer her up with a joke.",
+   "exampleJa": "私は冗談で彼女を元気づけようとした。"
+  },
+  {
+   "word": "employer",
+   "pos": "名詞",
+   "meaningJa": "雇い主",
+   "distractors": [
+    "従業員",
+    "同僚",
+    "部下"
+   ],
+   "exampleEn": "My employer pays for my train ticket.",
+   "exampleJa": "雇い主が私の電車代を払ってくれる。"
+  },
+  {
+   "word": "income",
+   "pos": "名詞",
+   "meaningJa": "収入",
+   "distractors": [
+    "支出",
+    "貯金",
+    "税金"
+   ],
+   "exampleEn": "His income increased last year.",
+   "exampleJa": "彼の収入は昨年増えた。"
+  },
+  {
+   "word": "expense",
+   "pos": "名詞",
+   "meaningJa": "費用、支出",
+   "distractors": [
+    "利益",
+    "収入",
+    "貯蓄"
+   ],
+   "exampleEn": "Living expenses in this city are high.",
+   "exampleJa": "この街の生活費は高い。"
+  },
+  {
+   "word": "profit",
+   "pos": "名詞",
+   "meaningJa": "利益",
+   "distractors": [
+    "損失",
+    "費用",
+    "割引"
+   ],
+   "exampleEn": "The company made a large profit this year.",
+   "exampleJa": "その会社は今年大きな利益を上げた。"
+  },
+  {
+   "word": "loss",
+   "pos": "名詞",
+   "meaningJa": "損失",
+   "distractors": [
+    "利益",
+    "給料",
+    "投資"
+   ],
+   "exampleEn": "The store reported a loss of ten million yen.",
+   "exampleJa": "その店は1千万円の損失を報告した。"
+  },
+  {
+   "word": "budget",
+   "pos": "名詞",
+   "meaningJa": "予算",
+   "distractors": [
+    "請求書",
+    "領収書",
+    "借金"
+   ],
+   "exampleEn": "We must plan the trip within our budget.",
+   "exampleJa": "私たちは予算内で旅行を計画しなければならない。"
+  },
+  {
+   "word": "debt",
+   "pos": "名詞",
+   "meaningJa": "借金",
+   "distractors": [
+    "貯金",
+    "利益",
+    "財産"
+   ],
+   "exampleEn": "He worked hard to pay off his debt.",
+   "exampleJa": "彼は借金を返すために懸命に働いた。"
+  },
+  {
+   "word": "loan",
+   "pos": "名詞",
+   "meaningJa": "ローン、貸付金",
+   "distractors": [
+    "寄付",
+    "賞金",
+    "給料"
+   ],
+   "exampleEn": "They took out a loan to buy a house.",
+   "exampleJa": "彼らは家を買うためにローンを組んだ。"
+  },
+  {
+   "word": "invest",
+   "pos": "動詞",
+   "meaningJa": "投資する",
+   "distractors": [
+    "浪費する",
+    "返済する",
+    "節約する"
+   ],
+   "exampleEn": "He decided to invest in a small company.",
+   "exampleJa": "彼は小さな会社に投資することに決めた。"
+  },
+  {
+   "word": "economic",
+   "pos": "形容詞",
+   "meaningJa": "経済の",
+   "distractors": [
+    "政治的な",
+    "社会的な",
+    "文化的な"
+   ],
+   "exampleEn": "The country faces serious economic problems.",
+   "exampleJa": "その国は深刻な経済問題に直面している。"
+  },
+  {
+   "word": "advertise",
+   "pos": "動詞",
+   "meaningJa": "宣伝する",
+   "distractors": [
+    "発明する",
+    "調査する",
+    "値下げする"
+   ],
+   "exampleEn": "They advertise their products on TV.",
+   "exampleJa": "彼らは自社製品をテレビで宣伝している。"
+  },
+  {
+   "word": "manage",
+   "pos": "動詞",
+   "meaningJa": "経営する、管理する",
+   "distractors": [
+    "設立する",
+    "協力する",
+    "相談する"
+   ],
+   "exampleEn": "She manages a large hotel in Tokyo.",
+   "exampleJa": "彼女は東京の大きなホテルを経営している。"
+  },
+  {
+   "word": "colleague",
+   "pos": "名詞",
+   "meaningJa": "同僚",
+   "distractors": [
+    "親戚",
+    "上司",
+    "競争相手"
+   ],
+   "exampleEn": "I had lunch with a colleague from my office.",
+   "exampleJa": "私は会社の同僚と昼食をとった。"
+  },
+  {
+   "word": "apply",
+   "pos": "動詞",
+   "meaningJa": "応募する、申し込む",
+   "distractors": [
+    "辞退する",
+    "昇進する",
+    "面接する"
+   ],
+   "exampleEn": "I want to apply for this job.",
+   "exampleJa": "私はこの仕事に応募したい。"
+  },
+  {
+   "word": "fire",
+   "pos": "動詞",
+   "meaningJa": "解雇する",
+   "distractors": [
+    "採用する",
+    "昇進させる",
+    "異動させる"
+   ],
+   "exampleEn": "The company fired him for being late every day.",
+   "exampleJa": "会社は毎日遅刻する彼を解雇した。"
+  },
+  {
+   "word": "retire",
+   "pos": "動詞",
+   "meaningJa": "退職する",
+   "distractors": [
+    "入社する",
+    "出張する",
+    "休憩する"
+   ],
+   "exampleEn": "My father will retire next spring.",
+   "exampleJa": "父は来春退職する。"
+  },
+  {
+   "word": "promote",
+   "pos": "動詞",
+   "meaningJa": "昇進させる、促進する",
+   "distractors": [
+    "解雇する",
+    "延期する",
+    "反対する"
+   ],
+   "exampleEn": "She was promoted to head of the team.",
+   "exampleJa": "彼女はチームの責任者に昇進した。"
+  },
+  {
+   "word": "task",
+   "pos": "名詞",
+   "meaningJa": "仕事、課題",
+   "distractors": [
+    "休日",
+    "給与明細",
+    "会場"
+   ],
+   "exampleEn": "I finished all my tasks before noon.",
+   "exampleJa": "私は昼までにすべての仕事を終えた。"
+  },
+  {
+   "word": "deadline",
+   "pos": "名詞",
+   "meaningJa": "締め切り",
+   "distractors": [
+    "休憩時間",
+    "開始日",
+    "予算案"
+   ],
+   "exampleEn": "The deadline for the report is Monday.",
+   "exampleJa": "レポートの締め切りは月曜日だ。"
+  },
+  {
+   "word": "schedule",
+   "pos": "名詞",
+   "meaningJa": "予定表",
+   "distractors": [
+    "地図",
+    "説明書",
+    "名簿"
+   ],
+   "exampleEn": "Please check the schedule for tomorrow.",
+   "exampleJa": "明日の予定表を確認してください。"
+  },
+  {
+   "word": "contract",
+   "pos": "名詞",
+   "meaningJa": "契約",
+   "distractors": [
+    "会話",
+    "作戦",
+    "申請書"
+   ],
+   "exampleEn": "They signed a two-year contract.",
+   "exampleJa": "彼らは2年間の契約に署名した。"
+  },
+  {
+   "word": "agreement",
+   "pos": "名詞",
+   "meaningJa": "合意、協定",
+   "distractors": [
+    "言い争い",
+    "誤解",
+    "延期"
+   ],
+   "exampleEn": "The two sides reached an agreement.",
+   "exampleJa": "双方は合意に達した。"
+  },
+  {
+   "word": "negotiate",
+   "pos": "動詞",
+   "meaningJa": "交渉する",
+   "distractors": [
+    "翻訳する",
+    "放送する",
+    "調査する"
+   ],
+   "exampleEn": "They are negotiating a better price.",
+   "exampleJa": "彼らはより良い価格を交渉している。"
+  },
+  {
+   "word": "cooperate",
+   "pos": "動詞",
+   "meaningJa": "協力する",
+   "distractors": [
+    "競争する",
+    "反対する",
+    "分離する"
+   ],
+   "exampleEn": "We must cooperate to finish this project.",
+   "exampleJa": "この計画を終えるには協力しなければならない。"
+  },
+  {
+   "word": "organize",
+   "pos": "動詞",
+   "meaningJa": "準備する、まとめる",
+   "distractors": [
+    "中止する",
+    "散らかす",
+    "無視する"
+   ],
+   "exampleEn": "She organized a party for the staff.",
+   "exampleJa": "彼女はスタッフのためにパーティーを企画した。"
+  },
+  {
+   "word": "achieve",
+   "pos": "動詞",
+   "meaningJa": "達成する",
+   "distractors": [
+    "諦める",
+    "延期する",
+    "予測する"
+   ],
+   "exampleEn": "He achieved his goal of studying abroad.",
+   "exampleJa": "彼は留学という目標を達成した。"
+  },
+  {
+   "word": "opportunity",
+   "pos": "名詞",
+   "meaningJa": "機会",
+   "distractors": [
+    "危険",
+    "義務",
+    "規則"
+   ],
+   "exampleEn": "This job is a great opportunity for you.",
+   "exampleJa": "この仕事はあなたにとって素晴らしい機会だ。"
+  },
+  {
+   "word": "qualification",
+   "pos": "名詞",
+   "meaningJa": "資格",
+   "distractors": [
+    "役職",
+    "報酬",
+    "面接"
+   ],
+   "exampleEn": "You need a qualification to work as a nurse.",
+   "exampleJa": "看護師として働くには資格が必要だ。"
+  },
+  {
+   "word": "degree",
+   "pos": "名詞",
+   "meaningJa": "学位",
+   "distractors": [
+    "奨学金",
+    "授業料",
+    "卒業式"
+   ],
+   "exampleEn": "He has a degree in economics.",
+   "exampleJa": "彼は経済学の学位を持っている。"
+  },
+  {
+   "word": "assignment",
+   "pos": "名詞",
+   "meaningJa": "課題",
+   "distractors": [
+    "答案",
+    "時間割",
+    "成績"
+   ],
+   "exampleEn": "I have to hand in my assignment today.",
+   "exampleJa": "私は今日課題を提出しなければならない。"
+  },
+  {
+   "word": "scholarship",
+   "pos": "名詞",
+   "meaningJa": "奨学金",
+   "distractors": [
+    "授業料",
+    "学位",
+    "入学試験"
+   ],
+   "exampleEn": "She won a scholarship to study in Canada.",
+   "exampleJa": "彼女はカナダで学ぶための奨学金を得た。"
+  },
+  {
+   "word": "tuition",
+   "pos": "名詞",
+   "meaningJa": "授業料",
+   "distractors": [
+    "教科書",
+    "時間割",
+    "校則"
+   ],
+   "exampleEn": "The tuition at that university is high.",
+   "exampleJa": "その大学の授業料は高い。"
+  },
+  {
+   "word": "social",
+   "pos": "形容詞",
+   "meaningJa": "社会の",
+   "distractors": [
+    "個人的な",
+    "経済的な",
+    "法律上の"
+   ],
+   "exampleEn": "Poverty is a serious social problem.",
+   "exampleJa": "貧困は深刻な社会問題だ。"
+  },
+  {
+   "word": "population",
+   "pos": "名詞",
+   "meaningJa": "人口",
+   "distractors": [
+    "面積",
+    "国籍",
+    "民族"
+   ],
+   "exampleEn": "The population of this town is falling.",
+   "exampleJa": "この町の人口は減っている。"
+  },
+  {
+   "word": "community",
+   "pos": "名詞",
+   "meaningJa": "地域社会",
+   "distractors": [
+    "会社組織",
+    "家庭",
+    "国家"
+   ],
+   "exampleEn": "The library is useful for the whole community.",
+   "exampleJa": "その図書館は地域社会全体に役立っている。"
+  },
+  {
+   "word": "political",
+   "pos": "形容詞",
+   "meaningJa": "政治の",
+   "distractors": [
+    "経済的な",
+    "歴史的な",
+    "合法的な"
+   ],
+   "exampleEn": "They belong to different political parties.",
+   "exampleJa": "彼らは異なる政党に属している。"
+  },
+  {
+   "word": "policy",
+   "pos": "名詞",
+   "meaningJa": "政策、方針",
+   "distractors": [
+    "法律",
+    "警察官",
+    "予算表"
+   ],
+   "exampleEn": "The new policy helps small businesses.",
+   "exampleJa": "新しい政策は小企業を助ける。"
+  },
+  {
+   "word": "legal",
+   "pos": "形容詞",
+   "meaningJa": "合法の、法律の",
+   "distractors": [
+    "違法の",
+    "公平な",
+    "政治的な"
+   ],
+   "exampleEn": "It is legal to drive at 18 in this country.",
+   "exampleJa": "この国では18歳で運転するのは合法だ。"
+  },
+  {
+   "word": "illegal",
+   "pos": "形容詞",
+   "meaningJa": "違法の",
+   "distractors": [
+    "合法の",
+    "無料の",
+    "危険な"
+   ],
+   "exampleEn": "Parking here is illegal.",
+   "exampleJa": "ここに駐車するのは違法だ。"
+  },
+  {
+   "word": "criminal",
+   "pos": "名詞",
+   "meaningJa": "犯罪者",
+   "distractors": [
+    "弁護士",
+    "証人",
+    "被害者"
+   ],
+   "exampleEn": "The police caught the criminal at the station.",
+   "exampleJa": "警察は駅でその犯罪者を捕まえた。"
+  },
+  {
+   "word": "arrest",
+   "pos": "動詞",
+   "meaningJa": "逮捕する",
+   "distractors": [
+    "釈放する",
+    "尋問する",
+    "保護する"
+   ],
+   "exampleEn": "The man was arrested for stealing a car.",
+   "exampleJa": "その男は車を盗んで逮捕された。"
+  },
+  {
+   "word": "duty",
+   "pos": "名詞",
+   "meaningJa": "義務、職務",
+   "distractors": [
+    "権利",
+    "自由",
+    "休暇"
+   ],
+   "exampleEn": "It is our duty to protect nature.",
+   "exampleJa": "自然を守ることは私たちの義務だ。"
+  },
+  {
+   "word": "responsible",
+   "pos": "形容詞",
+   "meaningJa": "責任がある",
+   "distractors": [
+    "自由な",
+    "有能な",
+    "無関心な"
+   ],
+   "exampleEn": "He is responsible for the whole team.",
+   "exampleJa": "彼はチーム全体に責任がある。"
+  },
+  {
+   "word": "permit",
+   "pos": "動詞",
+   "meaningJa": "許可する",
+   "distractors": [
+    "禁止する",
+    "命令する",
+    "勧める"
+   ],
+   "exampleEn": "Smoking is not permitted in this building.",
+   "exampleJa": "この建物内での喫煙は許可されていない。"
+  },
+  {
+   "word": "protest",
+   "pos": "動詞",
+   "meaningJa": "抗議する",
+   "distractors": [
+    "賛成する",
+    "無視する",
+    "投票する"
+   ],
+   "exampleEn": "Students protested against the new rules.",
+   "exampleJa": "学生たちは新しい規則に抗議した。"
+  },
+  {
+   "word": "oppose",
+   "pos": "動詞",
+   "meaningJa": "反対する",
+   "distractors": [
+    "支持する",
+    "提案する",
+    "説明する"
+   ],
+   "exampleEn": "Many citizens oppose the new tax.",
+   "exampleJa": "多くの市民が新しい税に反対している。"
+  },
+  {
+   "word": "equal",
+   "pos": "形容詞",
+   "meaningJa": "平等な、等しい",
+   "distractors": [
+    "特別な",
+    "不十分な",
+    "自由な"
+   ],
+   "exampleEn": "Men and women should get equal pay.",
+   "exampleJa": "男性と女性は平等な賃金を得るべきだ。"
+  },
+  {
+   "word": "freedom",
+   "pos": "名詞",
+   "meaningJa": "自由",
+   "distractors": [
+    "安全",
+    "責任",
+    "平和条約"
+   ],
+   "exampleEn": "Freedom of speech is protected by law.",
+   "exampleJa": "言論の自由は法によって守られている。"
+  },
+  {
+   "word": "poverty",
+   "pos": "名詞",
+   "meaningJa": "貧困",
+   "distractors": [
+    "裕福",
+    "失業",
+    "犯罪"
+   ],
+   "exampleEn": "Many families still live in poverty.",
+   "exampleJa": "多くの家族が今も貧困の中で暮らしている。"
+  },
+  {
+   "word": "wealth",
+   "pos": "名詞",
+   "meaningJa": "富",
+   "distractors": [
+    "貧困",
+    "知恵",
+    "名誉"
+   ],
+   "exampleEn": "The country's wealth comes from oil.",
+   "exampleJa": "その国の富は石油から来ている。"
+  },
+  {
+   "word": "unemployment",
+   "pos": "名詞",
+   "meaningJa": "失業",
+   "distractors": [
+    "就職活動",
+    "残業",
+    "定年"
+   ],
+   "exampleEn": "Unemployment is rising in some areas.",
+   "exampleJa": "一部の地域では失業が増えている。"
+  },
+  {
+   "word": "charity",
+   "pos": "名詞",
+   "meaningJa": "慈善団体",
+   "distractors": [
+    "保険会社",
+    "労働組合",
+    "政党"
+   ],
+   "exampleEn": "She gives money to a charity every month.",
+   "exampleJa": "彼女は毎月慈善団体にお金を寄付している。"
+  },
+  {
+   "word": "volunteer",
+   "pos": "名詞",
+   "meaningJa": "ボランティア",
+   "distractors": [
+    "専門家",
+    "訪問客",
+    "候補者"
+   ],
+   "exampleEn": "Volunteers cleaned the park on Sunday.",
+   "exampleJa": "ボランティアたちは日曜日に公園を清掃した。"
+  },
+  {
+   "word": "organization",
+   "pos": "名詞",
+   "meaningJa": "組織、団体",
+   "distractors": [
+    "会議室",
+    "計画表",
+    "集会"
+   ],
+   "exampleEn": "She works for an international organization.",
+   "exampleJa": "彼女は国際的な組織で働いている。"
+  },
+  {
+   "word": "союз",
+   "pos": "名詞",
+   "meaningJa": "組合",
+   "distractors": [
+    "会社",
+    "委員会",
+    "政党"
+   ],
+   "exampleEn": "The workers joined a union.",
+   "exampleJa": "労働者たちは組合に加わった。"
+  },
+  {
+   "word": "labor",
+   "pos": "名詞",
+   "meaningJa": "労働",
+   "distractors": [
+    "休息",
+    "生産物",
+    "資本"
+   ],
+   "exampleEn": "Farming requires hard labor.",
+   "exampleJa": "農業は厳しい労働を必要とする。"
+  },
+  {
+   "word": "overtime",
+   "pos": "名詞",
+   "meaningJa": "残業",
+   "distractors": [
+    "昼休み",
+    "有給休暇",
+    "通勤"
+   ],
+   "exampleEn": "He works overtime almost every day.",
+   "exampleJa": "彼はほとんど毎日残業している。"
+  },
+  {
+   "word": "客 service",
+   "pos": "名詞",
+   "meaningJa": "サービス、接客",
+   "distractors": [
+    "製品",
+    "値段",
+    "在庫"
+   ],
+   "exampleEn": "This hotel is famous for its good service.",
+   "exampleJa": "このホテルは良いサービスで有名だ。"
+  },
+  {
+   "word": "account",
+   "pos": "名詞",
+   "meaningJa": "口座",
+   "distractors": [
+    "現金",
+    "小切手",
+    "財布"
+   ],
+   "exampleEn": "I opened a bank account yesterday.",
+   "exampleJa": "私は昨日銀行口座を開いた。"
+  },
+  {
+   "word": "afford",
+   "pos": "動詞",
+   "meaningJa": "(金銭的に)余裕がある",
+   "distractors": [
+    "浪費する",
+    "値切る",
+    "借りる"
+   ],
+   "exampleEn": "We can't afford a new car this year.",
+   "exampleJa": "今年は新しい車を買う余裕がない。"
+  },
+  {
+   "word": "charge",
+   "pos": "動詞",
+   "meaningJa": "請求する",
+   "distractors": [
+    "支払う",
+    "返金する",
+    "値引きする"
+   ],
+   "exampleEn": "They charged me 2,000 yen for delivery.",
+   "exampleJa": "彼らは配達料として2000円を請求した。"
+  },
+  {
+   "word": "apply for",
+   "pos": "熟語",
+   "meaningJa": "～に応募する",
+   "distractors": [
+    "～を辞退する",
+    "～を延期する",
+    "～を担当する"
+   ],
+   "exampleEn": "She applied for a job at the bank.",
+   "exampleJa": "彼女は銀行の仕事に応募した。"
+  },
+  {
+   "word": "be in charge of",
+   "pos": "熟語",
+   "meaningJa": "～を担当している",
+   "distractors": [
+    "～を辞める",
+    "～に賛成する",
+    "～を手伝う"
+   ],
+   "exampleEn": "Ms. Sato is in charge of the sales team.",
+   "exampleJa": "佐藤さんは営業チームを担当している。"
+  },
+  {
+   "word": "deal with",
+   "pos": "熟語",
+   "meaningJa": "～に対処する",
+   "distractors": [
+    "～を無視する",
+    "～を紹介する",
+    "～を延期する"
+   ],
+   "exampleEn": "We must deal with this problem today.",
+   "exampleJa": "私たちは今日この問題に対処しなければならない。"
+  },
+  {
+   "word": "atmosphere",
+   "pos": "名詞",
+   "meaningJa": "大気",
+   "distractors": [
+    "地面",
+    "海面",
+    "宇宙船"
+   ],
+   "exampleEn": "Carbon dioxide in the atmosphere is increasing.",
+   "exampleJa": "大気中の二酸化炭素が増えている。"
+  },
+  {
+   "word": "resource",
+   "pos": "名詞",
+   "meaningJa": "資源",
+   "distractors": [
+    "制度",
+    "収入",
+    "面積"
+   ],
+   "exampleEn": "Japan has few natural resources.",
+   "exampleJa": "日本には天然資源がほとんどない。"
+  },
+  {
+   "word": "species",
+   "pos": "名詞",
+   "meaningJa": "(生物の)種",
+   "distractors": [
+    "群れ",
+    "巣",
+    "化石"
+   ],
+   "exampleEn": "Many species of birds live in this forest.",
+   "exampleJa": "この森には多くの種類の鳥が住んでいる。"
+  },
+  {
+   "word": "wildlife",
+   "pos": "名詞",
+   "meaningJa": "野生生物",
+   "distractors": [
+    "家畜",
+    "植物園",
+    "牧場"
+   ],
+   "exampleEn": "The park is home to rare wildlife.",
+   "exampleJa": "その公園は珍しい野生生物のすみかだ。"
+  },
+  {
+   "word": "surface",
+   "pos": "名詞",
+   "meaningJa": "表面",
+   "distractors": [
+    "内部",
+    "重さ",
+    "深さ"
+   ],
+   "exampleEn": "The surface of the moon is covered with dust.",
+   "exampleJa": "月の表面はちりで覆われている。"
+  },
+  {
+   "word": "gravity",
+   "pos": "名詞",
+   "meaningJa": "重力",
+   "distractors": [
+    "摩擦",
+    "電流",
+    "磁石"
+   ],
+   "exampleEn": "Gravity pulls everything toward the earth.",
+   "exampleJa": "重力はあらゆるものを地球に引き寄せる。"
+  },
+  {
+   "word": "laboratory",
+   "pos": "名詞",
+   "meaningJa": "実験室",
+   "distractors": [
+    "図書館",
+    "工場",
+    "診療所"
+   ],
+   "exampleEn": "Don't eat in the laboratory.",
+   "exampleJa": "実験室で物を食べてはいけない。"
+  },
+  {
+   "word": "observe",
+   "pos": "動詞",
+   "meaningJa": "観察する",
+   "distractors": [
+    "命令する",
+    "想像する",
+    "翻訳する"
+   ],
+   "exampleEn": "The students observed the stars all night.",
+   "exampleJa": "生徒たちは一晩中星を観察した。"
+  },
+  {
+   "word": "electronic",
+   "pos": "形容詞",
+   "meaningJa": "電子の",
+   "distractors": [
+    "化学の",
+    "金属製の",
+    "木製の"
+   ],
+   "exampleEn": "Please turn off all electronic devices.",
+   "exampleJa": "すべての電子機器の電源を切ってください。"
+  },
+  {
+   "word": "access",
+   "pos": "動詞",
+   "meaningJa": "利用する、アクセスする",
+   "distractors": [
+    "削除する",
+    "保存する",
+    "印刷する"
+   ],
+   "exampleEn": "You can access the website from your phone.",
+   "exampleJa": "そのウェブサイトには携帯電話からアクセスできる。"
+  },
+  {
+   "word": "install",
+   "pos": "動詞",
+   "meaningJa": "(機器を)取り付ける",
+   "distractors": [
+    "解体する",
+    "借りる",
+    "貸し出す"
+   ],
+   "exampleEn": "They installed a new air conditioner.",
+   "exampleJa": "彼らは新しいエアコンを取り付けた。"
+  },
+  {
+   "word": "update",
+   "pos": "動詞",
+   "meaningJa": "更新する",
+   "distractors": [
+    "複製する",
+    "削除する",
+    "翻訳する"
+   ],
+   "exampleEn": "I updated the app this morning.",
+   "exampleJa": "私は今朝そのアプリを更新した。"
+  },
+  {
+   "word": "artificial",
+   "pos": "形容詞",
+   "meaningJa": "人工の",
+   "distractors": [
+    "野生の",
+    "新鮮な",
+    "透明な"
+   ],
+   "exampleEn": "The lake is artificial, not natural.",
+   "exampleJa": "その湖は自然のものではなく人工のものだ。"
+  },
+  {
+   "word": "automatic",
+   "pos": "形容詞",
+   "meaningJa": "自動の",
+   "distractors": [
+    "手動の",
+    "一時的な",
+    "無料の"
+   ],
+   "exampleEn": "The door is automatic, so just walk in.",
+   "exampleJa": "そのドアは自動なので、そのまま入ってください。"
+  },
+  {
+   "word": "efficient",
+   "pos": "形容詞",
+   "meaningJa": "効率的な",
+   "distractors": [
+    "高価な",
+    "安全な",
+    "静かな"
+   ],
+   "exampleEn": "This is a more efficient way to study.",
+   "exampleJa": "これはもっと効率的な勉強法だ。"
+  },
+  {
+   "word": "accurate",
+   "pos": "形容詞",
+   "meaningJa": "正確な",
+   "distractors": [
+    "明るい",
+    "巨大な",
+    "柔らかい"
+   ],
+   "exampleEn": "His answer was short but accurate.",
+   "exampleJa": "彼の答えは短かったが正確だった。"
+  },
+  {
+   "word": "complex",
+   "pos": "形容詞",
+   "meaningJa": "複雑な",
+   "distractors": [
+    "単純な",
+    "まれな",
+    "主要な"
+   ],
+   "exampleEn": "The machine has a complex design.",
+   "exampleJa": "その機械は複雑な設計になっている。"
+  },
+  {
+   "word": "function",
+   "pos": "名詞",
+   "meaningJa": "機能",
+   "distractors": [
+    "形状",
+    "価格",
+    "寿命"
+   ],
+   "exampleEn": "This phone has many useful functions.",
+   "exampleJa": "この電話には便利な機能がたくさんある。"
+  },
+  {
+   "word": "process",
+   "pos": "名詞",
+   "meaningJa": "過程",
+   "distractors": [
+    "結論",
+    "目的",
+    "原因"
+   ],
+   "exampleEn": "Making paper is a long process.",
+   "exampleJa": "紙を作るのは長い工程だ。"
+  },
+  {
+   "word": "structure",
+   "pos": "名詞",
+   "meaningJa": "構造",
+   "distractors": [
+    "模様",
+    "重量",
+    "材質"
+   ],
+   "exampleEn": "We studied the structure of the human body.",
+   "exampleJa": "私たちは人体の構造を学んだ。"
+  },
+  {
+   "word": "material",
+   "pos": "名詞",
+   "meaningJa": "材料",
+   "distractors": [
+    "道具",
+    "模型",
+    "作品"
+   ],
+   "exampleEn": "What material is this bag made of?",
+   "exampleJa": "このかばんは何の材料でできていますか。"
+  },
+  {
+   "word": "chemical",
+   "pos": "名詞",
+   "meaningJa": "化学物質",
+   "distractors": [
+    "金属",
+    "鉱山",
+    "細胞"
+   ],
+   "exampleEn": "Some chemicals are dangerous to touch.",
+   "exampleJa": "化学物質の中には触ると危険なものもある。"
+  },
+  {
+   "word": "substance",
+   "pos": "名詞",
+   "meaningJa": "物質",
+   "distractors": [
+    "空間",
+    "速度",
+    "密度"
+   ],
+   "exampleEn": "Water is a common substance on earth.",
+   "exampleJa": "水は地球上でありふれた物質だ。"
+  },
+  {
+   "word": "liquid",
+   "pos": "名詞",
+   "meaningJa": "液体",
+   "distractors": [
+    "気体",
+    "粉",
+    "炎"
+   ],
+   "exampleEn": "Ice turns into liquid in a warm room.",
+   "exampleJa": "氷は暖かい部屋では液体になる。"
+  },
+  {
+   "word": "solid",
+   "pos": "形容詞",
+   "meaningJa": "固体の",
+   "distractors": [
+    "液体の",
+    "透明な",
+    "新鮮な"
+   ],
+   "exampleEn": "At low temperatures, water becomes solid.",
+   "exampleJa": "低温では水は固体になる。"
+  },
+  {
+   "word": "supply",
+   "pos": "動詞",
+   "meaningJa": "供給する",
+   "distractors": [
+    "要求する",
+    "拒む",
+    "借りる"
+   ],
+   "exampleEn": "The city supplies clean water to homes.",
+   "exampleJa": "市は家庭にきれいな水を供給している。"
+  },
+  {
+   "word": "consume",
+   "pos": "動詞",
+   "meaningJa": "消費する",
+   "distractors": [
+    "蓄える",
+    "配る",
+    "数える"
+   ],
+   "exampleEn": "Old lights consume more electricity.",
+   "exampleJa": "古い照明はより多くの電気を消費する。"
+  },
+  {
+   "word": "prevent",
+   "pos": "動詞",
+   "meaningJa": "防ぐ",
+   "distractors": [
+    "許す",
+    "勧める",
+    "認める"
+   ],
+   "exampleEn": "Washing your hands prevents illness.",
+   "exampleJa": "手を洗うことは病気を防ぐ。"
+  },
+  {
+   "word": "destroy",
+   "pos": "動詞",
+   "meaningJa": "破壊する",
+   "distractors": [
+    "建てる",
+    "修理する",
+    "支える"
+   ],
+   "exampleEn": "The storm destroyed many houses.",
+   "exampleJa": "その嵐は多くの家を破壊した。"
+  },
+  {
+   "word": "disaster",
+   "pos": "名詞",
+   "meaningJa": "災害",
+   "distractors": [
+    "奇跡",
+    "祭り",
+    "事件"
+   ],
+   "exampleEn": "We keep water at home in case of a disaster.",
+   "exampleJa": "私たちは災害に備えて家に水を置いている。"
+  },
+  {
+   "word": "drought",
+   "pos": "名詞",
+   "meaningJa": "干ばつ",
+   "distractors": [
+    "豪雨",
+    "台風",
+    "猛暑"
+   ],
+   "exampleEn": "The long drought killed many crops.",
+   "exampleJa": "長い干ばつで多くの作物が枯れた。"
+  },
+  {
+   "word": "shortage",
+   "pos": "名詞",
+   "meaningJa": "不足",
+   "distractors": [
+    "余り",
+    "割合",
+    "合計"
+   ],
+   "exampleEn": "There is a water shortage this summer.",
+   "exampleJa": "今年の夏は水不足だ。"
+  },
+  {
+   "word": "infection",
+   "pos": "名詞",
+   "meaningJa": "感染",
+   "distractors": [
+    "回復",
+    "遺伝",
+    "消毒"
+   ],
+   "exampleEn": "Masks help to stop infection.",
+   "exampleJa": "マスクは感染を止めるのに役立つ。"
+  },
+  {
+   "word": "surgery",
+   "pos": "名詞",
+   "meaningJa": "手術",
+   "distractors": [
+    "検査",
+    "点滴",
+    "包帯"
+   ],
+   "exampleEn": "She had surgery on her knee.",
+   "exampleJa": "彼女はひざの手術を受けた。"
+  },
+  {
+   "word": "mental",
+   "pos": "形容詞",
+   "meaningJa": "精神の",
+   "distractors": [
+    "経済の",
+    "政治の",
+    "伝統的な"
+   ],
+   "exampleEn": "Sleep is important for mental health.",
+   "exampleJa": "睡眠は精神の健康にとって大切だ。"
+  },
+  {
+   "word": "physical",
+   "pos": "形容詞",
+   "meaningJa": "身体の",
+   "distractors": [
+    "化学の",
+    "経済の",
+    "地域の"
+   ],
+   "exampleEn": "Soccer is good physical exercise.",
+   "exampleJa": "サッカーはよい身体運動だ。"
+  },
+  {
+   "word": "harmful",
+   "pos": "形容詞",
+   "meaningJa": "有害な",
+   "distractors": [
+    "役に立つ",
+    "無料の",
+    "静かな"
+   ],
+   "exampleEn": "Smoking is harmful to your body.",
+   "exampleJa": "喫煙は体に有害だ。"
+  },
+  {
+   "word": "stress",
+   "pos": "名詞",
+   "meaningJa": "ストレス",
+   "distractors": [
+    "勇気",
+    "才能",
+    "習慣"
+   ],
+   "exampleEn": "Music helps me forget my stress.",
+   "exampleJa": "音楽は私がストレスを忘れるのに役立つ。"
+  },
+  {
+   "word": "vaccine",
+   "pos": "名詞",
+   "meaningJa": "ワクチン",
+   "distractors": [
+    "包帯",
+    "体温計",
+    "消毒液"
+   ],
+   "exampleEn": "The new vaccine is safe for children.",
+   "exampleJa": "その新しいワクチンは子どもにも安全だ。"
+  },
+  {
+   "word": "transport",
+   "pos": "名詞",
+   "meaningJa": "輸送",
+   "distractors": [
+    "通信",
+    "建設",
+    "観光"
+   ],
+   "exampleEn": "Public transport in this city is cheap.",
+   "exampleJa": "この都市の公共交通機関は安い。"
+  },
+  {
+   "word": "departure",
+   "pos": "名詞",
+   "meaningJa": "出発",
+   "distractors": [
+    "到着",
+    "乗り換え",
+    "見送り"
+   ],
+   "exampleEn": "The departure time has changed.",
+   "exampleJa": "出発時刻が変わった。"
+  },
+  {
+   "word": "destination",
+   "pos": "名詞",
+   "meaningJa": "目的地",
+   "distractors": [
+    "出発地",
+    "近道",
+    "境界"
+   ],
+   "exampleEn": "We reached our destination before dark.",
+   "exampleJa": "私たちは暗くなる前に目的地に着いた。"
+  },
+  {
+   "word": "reserve",
+   "pos": "動詞",
+   "meaningJa": "予約する",
+   "distractors": [
+    "取り消す",
+    "返品する",
+    "支払う"
+   ],
+   "exampleEn": "I reserved a table for four.",
+   "exampleJa": "私は4人分のテーブルを予約した。"
+  },
+  {
+   "word": "century",
+   "pos": "名詞",
+   "meaningJa": "世紀",
+   "distractors": [
+    "世代",
+    "瞬間",
+    "期限"
+   ],
+   "exampleEn": "This castle was built in the 16th century.",
+   "exampleJa": "この城は16世紀に建てられた。"
+  },
+  {
+   "word": "heritage",
+   "pos": "名詞",
+   "meaningJa": "遺産",
+   "distractors": [
+    "財布",
+    "観光",
+    "寄付"
+   ],
+   "exampleEn": "The island is a World Heritage site.",
+   "exampleJa": "その島は世界遺産だ。"
+  },
+  {
+   "word": "communicate",
+   "pos": "動詞",
+   "meaningJa": "意思を伝え合う",
+   "distractors": [
+    "命令する",
+    "黙る",
+    "うなずく"
+   ],
+   "exampleEn": "We communicated with each other by e-mail.",
+   "exampleJa": "私たちはメールで互いに連絡を取り合った。"
+  },
+  {
+   "word": "gradually",
+   "pos": "副詞",
+   "meaningJa": "徐々に",
+   "distractors": [
+    "突然",
+    "まったく",
+    "まれに"
+   ],
+   "exampleEn": "The weather is gradually getting warmer.",
+   "exampleJa": "天気は徐々に暖かくなっている。"
+  },
+  {
+   "word": "influence",
+   "pos": "名詞",
+   "meaningJa": "影響",
+   "distractors": [
+    "印象",
+    "証拠",
+    "協力"
+   ],
+   "exampleEn": "His teacher had a big influence on him.",
+   "exampleJa": "彼の先生は彼に大きな影響を与えた。"
+  },
+  {
+   "word": "carry out",
+   "pos": "熟語",
+   "meaningJa": "(計画などを)実行する",
+   "distractors": [
+    "持ち帰る",
+    "取り消す",
+    "引き受ける"
+   ],
+   "exampleEn": "The team carried out the experiment again.",
+   "exampleJa": "チームはその実験をもう一度実行した。"
+  }
+ ]
+}

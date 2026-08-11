@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --font-jp:
+    -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI",
+    "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@theme inline {
+  --font-sans: var(--font-jp);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  font-family: var(--font-jp);
+  font-feature-settings: "palt";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}

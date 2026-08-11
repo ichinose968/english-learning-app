@@ -1,0 +1,3187 @@
+{
+ "level": "C1",
+ "generatedAt": "2026-08-11T10:16:07.970Z",
+ "count": 265,
+ "words": [
+  {
+   "word": "affinity",
+   "pos": "名詞",
+   "meaningJa": "親近感、相性",
+   "distractors": [
+    "強い敵意",
+    "無関心",
+    "妥協"
+   ],
+   "exampleEn": "She felt an instant affinity with her new colleague.",
+   "exampleJa": "彼女は新しい同僚にすぐ親近感を覚えた。"
+  },
+  {
+   "word": "ambivalent",
+   "pos": "形容詞",
+   "meaningJa": "相反する感情を抱いた",
+   "distractors": [
+    "まったく無関心な",
+    "確信に満ちた",
+    "独断的な"
+   ],
+   "exampleEn": "He is ambivalent about moving abroad with his family.",
+   "exampleJa": "彼は家族と海外へ移ることに複雑な気持ちを抱いている。"
+  },
+  {
+   "word": "apathy",
+   "pos": "名詞",
+   "meaningJa": "無関心",
+   "distractors": [
+    "共感",
+    "熱意",
+    "嫌悪"
+   ],
+   "exampleEn": "Public apathy toward local elections is growing.",
+   "exampleJa": "地元選挙への人々の無関心が広がっている。"
+  },
+  {
+   "word": "aloof",
+   "pos": "形容詞",
+   "meaningJa": "打ち解けない、超然とした",
+   "distractors": [
+    "社交的な",
+    "短気な",
+    "従順な"
+   ],
+   "exampleEn": "He remained aloof at the family gathering.",
+   "exampleJa": "彼は親族の集まりでも打ち解けないままだった。"
+  },
+  {
+   "word": "amiable",
+   "pos": "形容詞",
+   "meaningJa": "愛想のよい",
+   "distractors": [
+    "気難しい",
+    "抜け目のない",
+    "内気な"
+   ],
+   "exampleEn": "Our new neighbour is an amiable old man.",
+   "exampleJa": "新しい隣人は愛想のよい老人だ。"
+  },
+  {
+   "word": "animosity",
+   "pos": "名詞",
+   "meaningJa": "強い敵意",
+   "distractors": [
+    "親密さ",
+    "郷愁",
+    "慰め"
+   ],
+   "exampleEn": "There has been animosity between the two brothers for years.",
+   "exampleJa": "その兄弟の間には長年敵意がある。"
+  },
+  {
+   "word": "astute",
+   "pos": "形容詞",
+   "meaningJa": "抜け目のない、鋭い",
+   "distractors": [
+    "寛大な",
+    "陽気な",
+    "質素な"
+   ],
+   "exampleEn": "She is an astute judge of character.",
+   "exampleJa": "彼女は人を見る目が鋭い。"
+  },
+  {
+   "word": "austere",
+   "pos": "形容詞",
+   "meaningJa": "厳格で質素な",
+   "distractors": [
+    "派手な",
+    "甘くて寛大な",
+    "快活な"
+   ],
+   "exampleEn": "They led an austere life in the countryside.",
+   "exampleJa": "彼らは田舎で質素な生活を送った。"
+  },
+  {
+   "word": "belittle",
+   "pos": "動詞",
+   "meaningJa": "見下してけなす",
+   "distractors": [
+    "甘やかす",
+    "和解させる",
+    "切望する"
+   ],
+   "exampleEn": "Don't belittle your daughter's efforts.",
+   "exampleJa": "娘の努力を見下してけなしてはいけない。"
+  },
+  {
+   "word": "bereaved",
+   "pos": "形容詞",
+   "meaningJa": "近親を亡くした",
+   "distractors": [
+    "疎遠になった",
+    "裕福な",
+    "座りがちの"
+   ],
+   "exampleEn": "The bereaved family thanked the visitors quietly.",
+   "exampleJa": "遺族は訪問者に静かに礼を述べた。"
+  },
+  {
+   "word": "blissful",
+   "pos": "形容詞",
+   "meaningJa": "至福の",
+   "distractors": [
+    "意気消沈した",
+    "物思いにふけった",
+    "刺激的な匂いの"
+   ],
+   "exampleEn": "They spent a blissful weekend by the lake.",
+   "exampleJa": "二人は湖畔で至福の週末を過ごした。"
+  },
+  {
+   "word": "brood",
+   "pos": "動詞",
+   "meaningJa": "くよくよ思い悩む",
+   "distractors": [
+    "顔をしかめる",
+    "むさぼり食う",
+    "お返しをする"
+   ],
+   "exampleEn": "He brooded over the quarrel all night.",
+   "exampleJa": "彼は一晩中その口論をくよくよ考えていた。"
+  },
+  {
+   "word": "camaraderie",
+   "pos": "名詞",
+   "meaningJa": "仲間意識",
+   "distractors": [
+    "憤り",
+    "気質",
+    "雑用"
+   ],
+   "exampleEn": "There is a strong camaraderie among the kitchen staff.",
+   "exampleJa": "厨房のスタッフの間には強い仲間意識がある。"
+  },
+  {
+   "word": "candid",
+   "pos": "形容詞",
+   "meaningJa": "率直な",
+   "distractors": [
+    "口が重い",
+    "悪意のある",
+    "自己満足の"
+   ],
+   "exampleEn": "To be candid, I didn't enjoy the meal.",
+   "exampleJa": "率直に言うと、その食事は楽しめなかった。"
+  },
+  {
+   "word": "chastise",
+   "pos": "動詞",
+   "meaningJa": "厳しく責める",
+   "distractors": [
+    "育てる",
+    "味わう",
+    "屈する"
+   ],
+   "exampleEn": "His mother chastised him for lying.",
+   "exampleJa": "母は嘘をついた彼を厳しく責めた。"
+  },
+  {
+   "word": "complacent",
+   "pos": "形容詞",
+   "meaningJa": "独りよがりに満足した",
+   "distractors": [
+    "用心深い",
+    "落胆した",
+    "細心の"
+   ],
+   "exampleEn": "Success made him complacent.",
+   "exampleJa": "成功して彼は自己満足に陥った。"
+  },
+  {
+   "word": "condescending",
+   "pos": "形容詞",
+   "meaningJa": "見下した、恩着せがましい",
+   "distractors": [
+    "気の合う",
+    "近親を亡くした",
+    "栄養のある"
+   ],
+   "exampleEn": "I hate his condescending tone.",
+   "exampleJa": "彼の見下したような口調が嫌だ。"
+  },
+  {
+   "word": "congenial",
+   "pos": "形容詞",
+   "meaningJa": "気の合う、心地よい",
+   "distractors": [
+    "敵意に満ちた",
+    "質素な",
+    "大喜びの"
+   ],
+   "exampleEn": "We found the atmosphere of the café congenial.",
+   "exampleJa": "そのカフェの雰囲気は私たちに心地よかった。"
+  },
+  {
+   "word": "contempt",
+   "pos": "名詞",
+   "meaningJa": "軽蔑",
+   "distractors": [
+    "称賛",
+    "共感",
+    "あこがれ"
+   ],
+   "exampleEn": "She looked at him with contempt.",
+   "exampleJa": "彼女は軽蔑の目で彼を見た。"
+  },
+  {
+   "word": "cordial",
+   "pos": "形容詞",
+   "meaningJa": "心のこもった",
+   "distractors": [
+    "冷淡な",
+    "奇抜な",
+    "退屈な"
+   ],
+   "exampleEn": "We received a cordial welcome from her parents.",
+   "exampleJa": "彼女の両親から心のこもった歓迎を受けた。"
+  },
+  {
+   "word": "culinary",
+   "pos": "形容詞",
+   "meaningJa": "料理の",
+   "distractors": [
+    "父方の",
+    "座りがちの",
+    "社交的な"
+   ],
+   "exampleEn": "He has remarkable culinary skills.",
+   "exampleJa": "彼は見事な料理の腕を持っている。"
+  },
+  {
+   "word": "dejected",
+   "pos": "形容詞",
+   "meaningJa": "落胆した",
+   "distractors": [
+    "活気あふれる",
+    "抜け目のない",
+    "口に合う"
+   ],
+   "exampleEn": "He came home dejected after the interview.",
+   "exampleJa": "面接の後、彼は落胆して帰宅した。"
+  },
+  {
+   "word": "delectable",
+   "pos": "形容詞",
+   "meaningJa": "とてもおいしい",
+   "distractors": [
+    "栄養のある",
+    "刺激臭のある",
+    "質素な"
+   ],
+   "exampleEn": "The chef served a delectable dessert.",
+   "exampleJa": "シェフはとてもおいしいデザートを出した。"
+  },
+  {
+   "word": "demeanor",
+   "pos": "名詞",
+   "meaningJa": "ふるまい、態度",
+   "distractors": [
+    "血縁関係",
+    "苦情",
+    "疲労"
+   ],
+   "exampleEn": "Her calm demeanor put the children at ease.",
+   "exampleJa": "彼女の落ち着いたふるまいが子どもたちを安心させた。"
+  },
+  {
+   "word": "despondent",
+   "pos": "形容詞",
+   "meaningJa": "意気消沈した",
+   "distractors": [
+    "陽気な",
+    "寛大な",
+    "派手な"
+   ],
+   "exampleEn": "He grew despondent about his marriage.",
+   "exampleJa": "彼は結婚生活について意気消沈していった。"
+  },
+  {
+   "word": "disgruntled",
+   "pos": "形容詞",
+   "meaningJa": "不満げな",
+   "distractors": [
+    "至福の",
+    "内気な",
+    "裕福な"
+   ],
+   "exampleEn": "Disgruntled customers complained about the service.",
+   "exampleJa": "不満げな客たちがサービスに苦情を言った。"
+  },
+  {
+   "word": "eccentric",
+   "pos": "形容詞",
+   "meaningJa": "風変わりな、奇抜な",
+   "distractors": [
+    "平凡な",
+    "几帳面な",
+    "貧しい"
+   ],
+   "exampleEn": "My uncle is a charming but eccentric man.",
+   "exampleJa": "叔父は魅力的だが風変わりな人だ。"
+  },
+  {
+   "word": "elated",
+   "pos": "形容詞",
+   "meaningJa": "大喜びの",
+   "distractors": [
+    "疎遠な",
+    "いらだった",
+    "静かな"
+   ],
+   "exampleEn": "She was elated by the news of the birth.",
+   "exampleJa": "彼女は出産の知らせに大喜びした。"
+  },
+  {
+   "word": "endearing",
+   "pos": "形容詞",
+   "meaningJa": "愛らしい、人に慕われる",
+   "distractors": [
+    "気味の悪い",
+    "厳格な",
+    "疲れさせる"
+   ],
+   "exampleEn": "His shyness is oddly endearing.",
+   "exampleJa": "彼の内気さは妙に愛らしい。"
+  },
+  {
+   "word": "estranged",
+   "pos": "形容詞",
+   "meaningJa": "疎遠になった",
+   "distractors": [
+    "親密な",
+    "裕福な",
+    "近親を亡くした"
+   ],
+   "exampleEn": "He is estranged from his father.",
+   "exampleJa": "彼は父と疎遠になっている。"
+  },
+  {
+   "word": "euphoria",
+   "pos": "名詞",
+   "meaningJa": "強い幸福感",
+   "distractors": [
+    "深い後悔",
+    "無関心",
+    "疲労"
+   ],
+   "exampleEn": "The wedding day passed in a state of euphoria.",
+   "exampleJa": "結婚式の日は幸福感に包まれて過ぎた。"
+  },
+  {
+   "word": "exasperated",
+   "pos": "形容詞",
+   "meaningJa": "ひどくいらだった",
+   "distractors": [
+    "至福の",
+    "口の重い",
+    "栄養のある"
+   ],
+   "exampleEn": "The mother sounded exasperated on the phone.",
+   "exampleJa": "母は電話でひどくいらだった声だった。"
+  },
+  {
+   "word": "exuberant",
+   "pos": "形容詞",
+   "meaningJa": "活気あふれる",
+   "distractors": [
+    "陰気な",
+    "質素な",
+    "用心深い"
+   ],
+   "exampleEn": "The children were exuberant on the last day of term.",
+   "exampleJa": "学期最後の日、子どもたちは活気あふれていた。"
+  },
+  {
+   "word": "fervent",
+   "pos": "形容詞",
+   "meaningJa": "熱烈な",
+   "distractors": [
+    "冷淡な",
+    "率直な",
+    "座りがちの"
+   ],
+   "exampleEn": "She is a fervent supporter of home cooking.",
+   "exampleJa": "彼女は家庭料理の熱烈な支持者だ。"
+  },
+  {
+   "word": "flamboyant",
+   "pos": "形容詞",
+   "meaningJa": "派手な",
+   "distractors": [
+    "地味で質素な",
+    "内気な",
+    "細心の"
+   ],
+   "exampleEn": "He wore a flamboyant jacket to the party.",
+   "exampleJa": "彼は派手な上着でパーティーに行った。"
+  },
+  {
+   "word": "forlorn",
+   "pos": "形容詞",
+   "meaningJa": "寂しげな、見捨てられた",
+   "distractors": [
+    "陽気な",
+    "裕福な",
+    "とてもおいしい"
+   ],
+   "exampleEn": "The empty house looked forlorn.",
+   "exampleJa": "空き家は寂しげに見えた。"
+  },
+  {
+   "word": "frugal",
+   "pos": "形容詞",
+   "meaningJa": "倹約な、質素な",
+   "distractors": [
+    "浪費癖のある",
+    "派手な",
+    "短気な"
+   ],
+   "exampleEn": "They live a frugal but happy life.",
+   "exampleJa": "彼らは質素だが幸せな生活を送っている。"
+  },
+  {
+   "word": "gaunt",
+   "pos": "形容詞",
+   "meaningJa": "やせ衰えた",
+   "distractors": [
+    "筋骨たくましい",
+    "丸々と太った",
+    "血色のよい"
+   ],
+   "exampleEn": "Illness had left him pale and gaunt.",
+   "exampleJa": "病気で彼は青白くやせ衰えていた。"
+  },
+  {
+   "word": "gregarious",
+   "pos": "形容詞",
+   "meaningJa": "社交的な",
+   "distractors": [
+    "打ち解けない",
+    "気難しい",
+    "洞察力のある"
+   ],
+   "exampleEn": "Her gregarious nature makes parties easy for her.",
+   "exampleJa": "社交的な性格のおかげで彼女はパーティーが得意だ。"
+  },
+  {
+   "word": "grievance",
+   "pos": "名詞",
+   "meaningJa": "不満、苦情",
+   "distractors": [
+    "慰め",
+    "仲間意識",
+    "調味料"
+   ],
+   "exampleEn": "Staff aired their grievances about long hours.",
+   "exampleJa": "職員は長時間労働への不満を訴えた。"
+  },
+  {
+   "word": "indulge",
+   "pos": "動詞",
+   "meaningJa": "(欲望に)ふける、思う存分楽しむ",
+   "distractors": [
+    "我慢する",
+    "節約する",
+    "拒む"
+   ],
+   "exampleEn": "On Sundays I indulge in a long breakfast.",
+   "exampleJa": "日曜日には長い朝食を思う存分楽しむ。"
+  },
+  {
+   "word": "infatuation",
+   "pos": "名詞",
+   "meaningJa": "一時的な熱中、のぼせ",
+   "distractors": [
+    "深い信頼",
+    "敵意",
+    "孤独"
+   ],
+   "exampleEn": "His infatuation with her lasted only a month.",
+   "exampleJa": "彼の彼女への熱中は1か月しか続かなかった。"
+  },
+  {
+   "word": "inhibition",
+   "pos": "名詞",
+   "meaningJa": "(心理的)抑制、ためらい",
+   "distractors": [
+    "衝動",
+    "気質",
+    "和解"
+   ],
+   "exampleEn": "After a glass of wine he lost his inhibitions.",
+   "exampleJa": "ワイン1杯で彼は遠慮がなくなった。"
+  },
+  {
+   "word": "intimacy",
+   "pos": "名詞",
+   "meaningJa": "親密さ",
+   "distractors": [
+    "軽蔑",
+    "疎外",
+    "熱意"
+   ],
+   "exampleEn": "The couple rebuilt their intimacy slowly.",
+   "exampleJa": "夫婦は少しずつ親密さを取り戻した。"
+  },
+  {
+   "word": "irritable",
+   "pos": "形容詞",
+   "meaningJa": "怒りっぽい",
+   "distractors": [
+    "愛想のよい",
+    "物思いにふけった",
+    "至福の"
+   ],
+   "exampleEn": "Lack of sleep makes him irritable.",
+   "exampleJa": "睡眠不足で彼は怒りっぽくなる。"
+  },
+  {
+   "word": "jovial",
+   "pos": "形容詞",
+   "meaningJa": "陽気で快活な",
+   "distractors": [
+    "むっつりした",
+    "厳格な",
+    "質素な"
+   ],
+   "exampleEn": "Our jovial host kept everyone laughing.",
+   "exampleJa": "陽気な主人がみんなを笑わせ続けた。"
+  },
+  {
+   "word": "kinship",
+   "pos": "名詞",
+   "meaningJa": "血縁関係",
+   "distractors": [
+    "敵対関係",
+    "苦情",
+    "気質"
+   ],
+   "exampleEn": "They can prove kinship through old records.",
+   "exampleJa": "古い記録で血縁関係を証明できる。"
+  },
+  {
+   "word": "lenient",
+   "pos": "形容詞",
+   "meaningJa": "寛大な、甘い",
+   "distractors": [
+    "厳格な",
+    "抜け目のない",
+    "内気な"
+   ],
+   "exampleEn": "His parents were lenient about bedtime.",
+   "exampleJa": "彼の親は就寝時間について寛大だった。"
+  },
+  {
+   "word": "loathe",
+   "pos": "動詞",
+   "meaningJa": "ひどく嫌う",
+   "distractors": [
+    "切望する",
+    "崇拝する",
+    "甘やかす"
+   ],
+   "exampleEn": "I loathe the smell of boiled cabbage.",
+   "exampleJa": "私はゆでたキャベツの匂いがひどく嫌いだ。"
+  },
+  {
+   "word": "malicious",
+   "pos": "形容詞",
+   "meaningJa": "悪意のある",
+   "distractors": [
+    "率直な",
+    "気の合う",
+    "細心の"
+   ],
+   "exampleEn": "Malicious rumours spread through the neighbourhood.",
+   "exampleJa": "悪意のあるうわさが近所に広まった。"
+  },
+  {
+   "word": "meticulous",
+   "pos": "形容詞",
+   "meaningJa": "細心の、綿密な",
+   "distractors": [
+    "ぞんざいな",
+    "派手な",
+    "寛大な"
+   ],
+   "exampleEn": "She keeps meticulous records of household spending.",
+   "exampleJa": "彼女は家計を綿密に記録している。"
+  },
+  {
+   "word": "obnoxious",
+   "pos": "形容詞",
+   "meaningJa": "実に不快な",
+   "distractors": [
+    "愛らしい",
+    "物思いにふけった",
+    "倹約な"
+   ],
+   "exampleEn": "His obnoxious behaviour ruined the dinner.",
+   "exampleJa": "彼の実に不快な振る舞いが夕食を台無しにした。"
+  },
+  {
+   "word": "palatable",
+   "pos": "形容詞",
+   "meaningJa": "口に合う、受け入れやすい",
+   "distractors": [
+    "消化しにくい",
+    "刺激臭の強い",
+    "豪華な"
+   ],
+   "exampleEn": "Add lemon to make the soup more palatable.",
+   "exampleJa": "レモンを加えてスープを口に合うようにする。"
+  },
+  {
+   "word": "pamper",
+   "pos": "動詞",
+   "meaningJa": "甘やかす、大事にしすぎる",
+   "distractors": [
+    "厳しく罰する",
+    "くよくよ考える",
+    "打ち明ける"
+   ],
+   "exampleEn": "Grandparents love to pamper their grandchildren.",
+   "exampleJa": "祖父母は孫を甘やかしたがる。"
+  },
+  {
+   "word": "paternal",
+   "pos": "形容詞",
+   "meaningJa": "父親の、父方の",
+   "distractors": [
+    "母方の",
+    "独身の",
+    "近親を亡くした"
+   ],
+   "exampleEn": "He inherited the house from his paternal grandmother.",
+   "exampleJa": "彼は父方の祖母から家を相続した。"
+  },
+  {
+   "word": "pensive",
+   "pos": "形容詞",
+   "meaningJa": "物思いに沈んだ",
+   "distractors": [
+    "大喜びの",
+    "怒りっぽい",
+    "社交的な"
+   ],
+   "exampleEn": "She sat by the window in a pensive mood.",
+   "exampleJa": "彼女は物思いに沈んで窓辺に座っていた。"
+  },
+  {
+   "word": "perceptive",
+   "pos": "形容詞",
+   "meaningJa": "洞察力のある",
+   "distractors": [
+    "鈍感な",
+    "寛大な",
+    "派手な"
+   ],
+   "exampleEn": "Her perceptive remark surprised us.",
+   "exampleJa": "彼女の洞察力のある発言に驚いた。"
+  },
+  {
+   "word": "placid",
+   "pos": "形容詞",
+   "meaningJa": "穏やかな、落ち着いた",
+   "distractors": [
+    "短気な",
+    "質素な",
+    "派手な"
+   ],
+   "exampleEn": "The baby has a placid temperament.",
+   "exampleJa": "その赤ん坊は穏やかな気質だ。"
+  },
+  {
+   "word": "poignant",
+   "pos": "形容詞",
+   "meaningJa": "心を打つ、痛切な",
+   "distractors": [
+    "退屈な",
+    "刺激臭のある",
+    "豪華な"
+   ],
+   "exampleEn": "The letter was a poignant reminder of his mother.",
+   "exampleJa": "その手紙は母を思い出させる痛切なものだった。"
+  },
+  {
+   "word": "pungent",
+   "pos": "形容詞",
+   "meaningJa": "(味や匂いが)刺激の強い",
+   "distractors": [
+    "淡泊な",
+    "とてもおいしい",
+    "栄養価の高い"
+   ],
+   "exampleEn": "The kitchen was filled with the pungent smell of garlic.",
+   "exampleJa": "台所はニンニクの刺激的な匂いで満ちていた。"
+  },
+  {
+   "word": "rapport",
+   "pos": "名詞",
+   "meaningJa": "打ち解けた信頼関係",
+   "distractors": [
+    "敵意",
+    "郷愁",
+    "抑制"
+   ],
+   "exampleEn": "The teacher built a good rapport with the parents.",
+   "exampleJa": "教師は保護者と良好な信頼関係を築いた。"
+  },
+  {
+   "word": "reciprocate",
+   "pos": "動詞",
+   "meaningJa": "(好意に)報いる、お返しをする",
+   "distractors": [
+    "拒絶する",
+    "甘やかす",
+    "見下す"
+   ],
+   "exampleEn": "He was kind, and I wanted to reciprocate.",
+   "exampleJa": "彼は親切で、私もお返しをしたかった。"
+  },
+  {
+   "word": "remorse",
+   "pos": "名詞",
+   "meaningJa": "深い後悔、自責",
+   "distractors": [
+    "憤り",
+    "至福",
+    "郷愁"
+   ],
+   "exampleEn": "He showed no remorse for hurting her.",
+   "exampleJa": "彼は彼女を傷つけたことに何の後悔も示さなかった。"
+  },
+  {
+   "word": "reticent",
+   "pos": "形容詞",
+   "meaningJa": "口が重い、控えめな",
+   "distractors": [
+    "率直な",
+    "社交的な",
+    "短気な"
+   ],
+   "exampleEn": "He is reticent about his private life.",
+   "exampleJa": "彼は私生活について口が重い。"
+  },
+  {
+   "word": "savor",
+   "pos": "動詞",
+   "meaningJa": "じっくり味わう",
+   "distractors": [
+    "むさぼり食う",
+    "下ごしらえをする",
+    "漬け込む"
+   ],
+   "exampleEn": "Savor each bite of the homemade bread.",
+   "exampleJa": "手作りパンを一口ずつ味わって。"
+  },
+  {
+   "word": "sumptuous",
+   "pos": "形容詞",
+   "meaningJa": "豪華な、ぜいたくな",
+   "distractors": [
+    "質素な",
+    "口に合う",
+    "栄養のある"
+   ],
+   "exampleEn": "They served a sumptuous meal at the wedding.",
+   "exampleJa": "結婚式では豪華な食事が出された。"
+  },
+  {
+   "word": "wholesome",
+   "pos": "形容詞",
+   "meaningJa": "健康によい、健全な",
+   "distractors": [
+    "有害で不健全な",
+    "豪華な",
+    "刺激臭のある"
+   ],
+   "exampleEn": "The children were given wholesome home-cooked food.",
+   "exampleJa": "子どもたちには体によい手料理が与えられた。"
+  },
+  {
+   "word": "solace",
+   "pos": "名詞",
+   "meaningJa": "慰め",
+   "distractors": [
+    "苦情",
+    "気質",
+    "敵意"
+   ],
+   "exampleEn": "He found solace in his grandmother's letters.",
+   "exampleJa": "彼は祖母の手紙に慰めを見いだした。"
+  },
+  {
+   "word": "solitude",
+   "pos": "名詞",
+   "meaningJa": "ひとりでいること、孤独",
+   "distractors": [
+    "混雑",
+    "仲間意識",
+    "疲労"
+   ],
+   "exampleEn": "She enjoys the solitude of early mornings.",
+   "exampleJa": "彼女は早朝のひとりの時間を楽しむ。"
+  },
+  {
+   "word": "squabble",
+   "pos": "動詞",
+   "meaningJa": "つまらないことで口論する",
+   "distractors": [
+    "和解する",
+    "打ち明ける",
+    "甘やかす"
+   ],
+   "exampleEn": "The children squabbled over the last piece of cake.",
+   "exampleJa": "子どもたちは最後のケーキをめぐって口論した。"
+  },
+  {
+   "word": "succumb",
+   "pos": "動詞",
+   "meaningJa": "屈する、負ける",
+   "distractors": [
+    "抵抗する",
+    "育てる",
+    "味わう"
+   ],
+   "exampleEn": "He finally succumbed to the temptation of dessert.",
+   "exampleJa": "彼はついにデザートの誘惑に負けた。"
+  },
+  {
+   "word": "sullen",
+   "pos": "形容詞",
+   "meaningJa": "むっつりと不機嫌な",
+   "distractors": [
+    "快活な",
+    "率直な",
+    "裕福な"
+   ],
+   "exampleEn": "The teenager sat in sullen silence at dinner.",
+   "exampleJa": "その十代の子は夕食でむっつりと黙って座っていた。"
+  },
+  {
+   "word": "tantalizing",
+   "pos": "形容詞",
+   "meaningJa": "じれったいほど魅力的な",
+   "distractors": [
+    "退屈きわまる",
+    "実に不快な",
+    "質素な"
+   ],
+   "exampleEn": "A tantalizing aroma drifted from the kitchen.",
+   "exampleJa": "じれったいほど食欲をそそる香りが台所から漂ってきた。"
+  },
+  {
+   "word": "tedious",
+   "pos": "形容詞",
+   "meaningJa": "長々と退屈な",
+   "distractors": [
+    "心を打つ",
+    "活気ある",
+    "細心の"
+   ],
+   "exampleEn": "Ironing is a tedious chore.",
+   "exampleJa": "アイロン掛けは退屈な家事だ。"
+  },
+  {
+   "word": "temperament",
+   "pos": "名詞",
+   "meaningJa": "気質、性向",
+   "distractors": [
+    "血縁関係",
+    "慰め",
+    "姿勢"
+   ],
+   "exampleEn": "The two brothers differ in temperament.",
+   "exampleJa": "兄弟二人は気質が違う。"
+  },
+  {
+   "word": "vex",
+   "pos": "動詞",
+   "meaningJa": "いらだたせる、悩ませる",
+   "distractors": [
+    "慰める",
+    "甘やかす",
+    "お返しをする"
+   ],
+   "exampleEn": "The delay vexed the waiting guests.",
+   "exampleJa": "遅れが待っている客をいらだたせた。"
+  },
+  {
+   "word": "vibrant",
+   "pos": "形容詞",
+   "meaningJa": "活気に満ちた",
+   "distractors": [
+    "陰気な",
+    "質素な",
+    "口の重い"
+   ],
+   "exampleEn": "The market was vibrant with colour and noise.",
+   "exampleJa": "市場は色と音で活気に満ちていた。"
+  },
+  {
+   "word": "gullible",
+   "pos": "形容詞",
+   "meaningJa": "だまされやすい",
+   "distractors": [
+    "抜け目のない",
+    "気難しい",
+    "寛大な"
+   ],
+   "exampleEn": "He is gullible enough to believe any diet advice.",
+   "exampleJa": "彼はどんなダイエット情報も信じるほどだまされやすい。"
+  },
+  {
+   "word": "wary",
+   "pos": "形容詞",
+   "meaningJa": "用心深い、警戒している",
+   "distractors": [
+    "無頓着な",
+    "陽気な",
+    "派手な"
+   ],
+   "exampleEn": "She is wary of strangers at the door.",
+   "exampleJa": "彼女は玄関先の見知らぬ人を警戒している。"
+  },
+  {
+   "word": "wince",
+   "pos": "動詞",
+   "meaningJa": "(痛みで)顔をしかめる",
+   "distractors": [
+    "ほほえむ",
+    "むさぼり食う",
+    "くよくよ考える"
+   ],
+   "exampleEn": "He winced as the doctor touched his shoulder.",
+   "exampleJa": "医者が肩に触れると彼は顔をしかめた。"
+  },
+  {
+   "word": "yearn",
+   "pos": "動詞",
+   "meaningJa": "切にあこがれる",
+   "distractors": [
+    "ためらう",
+    "ひどく嫌う",
+    "和解する"
+   ],
+   "exampleEn": "She yearned for her mother's cooking.",
+   "exampleJa": "彼女は母の料理を切望した。"
+  },
+  {
+   "word": "affluent",
+   "pos": "形容詞",
+   "meaningJa": "裕福な",
+   "distractors": [
+    "質素な",
+    "疎遠な",
+    "栄養のある"
+   ],
+   "exampleEn": "They moved to an affluent suburb.",
+   "exampleJa": "彼らは裕福な郊外に移った。"
+  },
+  {
+   "word": "abode",
+   "pos": "名詞",
+   "meaningJa": "住居",
+   "distractors": [
+    "家事",
+    "家系",
+    "食器"
+   ],
+   "exampleEn": "Welcome to my humble abode.",
+   "exampleJa": "わが粗末な住居へようこそ。"
+  },
+  {
+   "word": "clutter",
+   "pos": "名詞",
+   "meaningJa": "散らかった物、雑然",
+   "distractors": [
+    "調味料",
+    "姿勢",
+    "疲労"
+   ],
+   "exampleEn": "The kitchen table disappeared under the clutter.",
+   "exampleJa": "台所のテーブルは散らかった物の下に消えた。"
+  },
+  {
+   "word": "cuisine",
+   "pos": "名詞",
+   "meaningJa": "(その土地の)料理、料理法",
+   "distractors": [
+    "食欲",
+    "調味料",
+    "消化"
+   ],
+   "exampleEn": "Thai cuisine relies on fresh herbs.",
+   "exampleJa": "タイ料理は新鮮なハーブに頼っている。"
+  },
+  {
+   "word": "condiment",
+   "pos": "名詞",
+   "meaningJa": "薬味、調味料",
+   "distractors": [
+    "前菜",
+    "台所用品",
+    "残飯"
+   ],
+   "exampleEn": "Salt and pepper are the simplest condiments.",
+   "exampleJa": "塩と胡椒は最も単純な調味料だ。"
+  },
+  {
+   "word": "garnish",
+   "pos": "動詞",
+   "meaningJa": "(料理に)飾りを添える",
+   "distractors": [
+    "とろ火で煮る",
+    "漬け込む",
+    "むさぼり食う"
+   ],
+   "exampleEn": "Garnish the soup with fresh parsley.",
+   "exampleJa": "スープに新鮮なパセリを添えなさい。"
+  },
+  {
+   "word": "simmer",
+   "pos": "動詞",
+   "meaningJa": "とろ火で煮る",
+   "distractors": [
+    "強火で炒める",
+    "飾りを添える",
+    "じっくり味わう"
+   ],
+   "exampleEn": "Let the sauce simmer for twenty minutes.",
+   "exampleJa": "ソースを20分とろ火で煮なさい。"
+  },
+  {
+   "word": "marinate",
+   "pos": "動詞",
+   "meaningJa": "(肉などを)漬け込む",
+   "distractors": [
+    "蒸す",
+    "飾りを添える",
+    "消化する"
+   ],
+   "exampleEn": "Marinate the chicken in yogurt overnight.",
+   "exampleJa": "鶏肉を一晩ヨーグルトに漬け込みなさい。"
+  },
+  {
+   "word": "devour",
+   "pos": "動詞",
+   "meaningJa": "むさぼり食う",
+   "distractors": [
+    "ちびちび味わう",
+    "吐き出す",
+    "漬け込む"
+   ],
+   "exampleEn": "The hungry boys devoured the whole pizza.",
+   "exampleJa": "空腹の少年たちはピザを丸ごとむさぼり食った。"
+  },
+  {
+   "word": "metabolism",
+   "pos": "名詞",
+   "meaningJa": "新陳代謝",
+   "distractors": [
+    "免疫",
+    "姿勢",
+    "疲労"
+   ],
+   "exampleEn": "Regular exercise can boost your metabolism.",
+   "exampleJa": "定期的な運動は新陳代謝を高める。"
+  },
+  {
+   "word": "ailment",
+   "pos": "名詞",
+   "meaningJa": "(軽い)病気、不調",
+   "distractors": [
+    "傷跡",
+    "疲労",
+    "治療法"
+   ],
+   "exampleEn": "She treats minor ailments with herbal tea.",
+   "exampleJa": "彼女は軽い不調をハーブティーで手当てする。"
+  },
+  {
+   "word": "sedentary",
+   "pos": "形容詞",
+   "meaningJa": "座りがちで運動不足の",
+   "distractors": [
+    "遊牧の",
+    "栄養価の高い",
+    "短気な"
+   ],
+   "exampleEn": "A sedentary lifestyle harms your health.",
+   "exampleJa": "座りがちな生活は健康を害する。"
+  },
+  {
+   "word": "slouch",
+   "pos": "動詞",
+   "meaningJa": "前かがみでだらしなく座る",
+   "distractors": [
+    "背筋を伸ばす",
+    "顔をしかめる",
+    "口論する"
+   ],
+   "exampleEn": "Don't slouch at the dinner table.",
+   "exampleJa": "食卓でだらしなく前かがみに座らないで。"
+  },
+  {
+   "word": "dote on",
+   "pos": "熟語",
+   "meaningJa": "~を溺愛する",
+   "distractors": [
+    "~を冷たく突き放す",
+    "~を見下す",
+    "~を我慢する"
+   ],
+   "exampleEn": "She dotes on her youngest grandson.",
+   "exampleJa": "彼女は末の孫を溺愛している。"
+  },
+  {
+   "word": "make amends",
+   "pos": "熟語",
+   "meaningJa": "償いをする",
+   "distractors": [
+    "言い訳をする",
+    "仲介する",
+    "見て見ぬふりをする"
+   ],
+   "exampleEn": "He sent flowers to make amends.",
+   "exampleJa": "彼は償いのために花を送った。"
+  },
+  {
+   "word": "get on someone's nerves",
+   "pos": "熟語",
+   "meaningJa": "人の神経に障る",
+   "distractors": [
+    "人を励ます",
+    "人を油断させる",
+    "人の面倒を見る"
+   ],
+   "exampleEn": "His humming gets on my nerves.",
+   "exampleJa": "彼の鼻歌は私の神経に障る。"
+  },
+  {
+   "word": "have a soft spot for",
+   "pos": "熟語",
+   "meaningJa": "~に目がない、~が大好きである",
+   "distractors": [
+    "~を苦手にしている",
+    "~を疑っている",
+    "~を軽蔑している"
+   ],
+   "exampleEn": "I have a soft spot for homemade cake.",
+   "exampleJa": "私は手作りケーキに目がない。"
+  },
+  {
+   "word": "see eye to eye",
+   "pos": "熟語",
+   "meaningJa": "意見が一致する",
+   "distractors": [
+    "目を合わせない",
+    "直接会う",
+    "相手を見下す"
+   ],
+   "exampleEn": "We don't see eye to eye on raising children.",
+   "exampleJa": "子育てについて私たちは意見が一致しない。"
+  },
+  {
+   "word": "tie the knot",
+   "pos": "熟語",
+   "meaningJa": "結婚する",
+   "distractors": [
+    "離婚する",
+    "約束を破る",
+    "引っ越す"
+   ],
+   "exampleEn": "They tied the knot last spring.",
+   "exampleJa": "二人は昨春結婚した。"
+  },
+  {
+   "word": "austerity",
+   "pos": "名詞",
+   "meaningJa": "緊縮財政",
+   "distractors": [
+    "好景気",
+    "過剰生産",
+    "慈善事業"
+   ],
+   "exampleEn": "The government imposed austerity measures to reduce the national debt.",
+   "exampleJa": "政府は国家債務を減らすため緊縮策を実施した。"
+  },
+  {
+   "word": "incumbent",
+   "pos": "形容詞",
+   "meaningJa": "現職の",
+   "distractors": [
+    "引退した",
+    "名誉職の",
+    "暫定の"
+   ],
+   "exampleEn": "The incumbent mayor is expected to win re-election.",
+   "exampleJa": "現職の市長が再選するとみられている。"
+  },
+  {
+   "word": "litigation",
+   "pos": "名詞",
+   "meaningJa": "訴訟",
+   "distractors": [
+    "交渉",
+    "和解金",
+    "立法"
+   ],
+   "exampleEn": "The dispute ended in years of costly litigation.",
+   "exampleJa": "その紛争は何年もの費用のかかる訴訟に終わった。"
+  },
+  {
+   "word": "arbitration",
+   "pos": "名詞",
+   "meaningJa": "仲裁",
+   "distractors": [
+    "起訴",
+    "選挙運動",
+    "投票"
+   ],
+   "exampleEn": "The two companies agreed to settle the dispute through arbitration.",
+   "exampleJa": "両社は仲裁によって紛争を解決することに合意した。"
+  },
+  {
+   "word": "mandate",
+   "pos": "名詞",
+   "meaningJa": "(選挙で与えられた)権限、委任",
+   "distractors": [
+    "拒否権",
+    "禁輸措置",
+    "判例"
+   ],
+   "exampleEn": "The party claimed a clear mandate from the voters.",
+   "exampleJa": "その党は有権者から明確な支持と権限を得たと主張した。"
+  },
+  {
+   "word": "coalition",
+   "pos": "名詞",
+   "meaningJa": "連立、連合",
+   "distractors": [
+    "分裂",
+    "独占",
+    "反乱"
+   ],
+   "exampleEn": "Three parties formed a coalition government.",
+   "exampleJa": "三つの政党が連立政権を樹立した。"
+  },
+  {
+   "word": "jurisdiction",
+   "pos": "名詞",
+   "meaningJa": "管轄権",
+   "distractors": [
+    "証言",
+    "陪審員",
+    "判決"
+   ],
+   "exampleEn": "The case falls outside the court's jurisdiction.",
+   "exampleJa": "その事件は裁判所の管轄外である。"
+  },
+  {
+   "word": "indict",
+   "pos": "動詞",
+   "meaningJa": "起訴する",
+   "distractors": [
+    "無罪にする",
+    "保釈する",
+    "減刑する"
+   ],
+   "exampleEn": "The grand jury voted to indict him on fraud charges.",
+   "exampleJa": "大陪審は詐欺の容疑で彼を起訴することを決めた。"
+  },
+  {
+   "word": "plaintiff",
+   "pos": "名詞",
+   "meaningJa": "原告",
+   "distractors": [
+    "被告",
+    "証人",
+    "弁護士"
+   ],
+   "exampleEn": "The plaintiff is seeking damages of ten million yen.",
+   "exampleJa": "原告は1千万円の損害賠償を求めている。"
+  },
+  {
+   "word": "testimony",
+   "pos": "名詞",
+   "meaningJa": "証言",
+   "distractors": [
+    "判決",
+    "告訴状",
+    "弁論術"
+   ],
+   "exampleEn": "Her testimony contradicted the police report.",
+   "exampleJa": "彼女の証言は警察の報告と矛盾していた。"
+  },
+  {
+   "word": "acquit",
+   "pos": "動詞",
+   "meaningJa": "無罪を宣告する",
+   "distractors": [
+    "起訴する",
+    "拘留する",
+    "尋問する"
+   ],
+   "exampleEn": "The court acquitted him for lack of evidence.",
+   "exampleJa": "証拠不十分のため法廷は彼を無罪とした。"
+  },
+  {
+   "word": "felony",
+   "pos": "名詞",
+   "meaningJa": "重罪",
+   "distractors": [
+    "軽い過失",
+    "民事訴訟",
+    "罰金刑"
+   ],
+   "exampleEn": "Armed robbery is treated as a felony in this state.",
+   "exampleJa": "この州では武装強盗は重罪として扱われる。"
+  },
+  {
+   "word": "statute",
+   "pos": "名詞",
+   "meaningJa": "法令",
+   "distractors": [
+    "慣習",
+    "前例",
+    "契約書"
+   ],
+   "exampleEn": "The practice is banned under a federal statute.",
+   "exampleJa": "その慣行は連邦法令の下で禁止されている。"
+  },
+  {
+   "word": "embargo",
+   "pos": "名詞",
+   "meaningJa": "禁輸措置",
+   "distractors": [
+    "貿易協定",
+    "関税引き下げ",
+    "為替介入"
+   ],
+   "exampleEn": "An oil embargo was imposed on the regime.",
+   "exampleJa": "その政権に対して石油の禁輸措置がとられた。"
+  },
+  {
+   "word": "stagnation",
+   "pos": "名詞",
+   "meaningJa": "停滞",
+   "distractors": [
+    "急成長",
+    "暴落",
+    "変動"
+   ],
+   "exampleEn": "The economy suffered a decade of stagnation.",
+   "exampleJa": "経済は10年にわたる停滞に苦しんだ。"
+  },
+  {
+   "word": "monetary",
+   "pos": "形容詞",
+   "meaningJa": "金融の、通貨の",
+   "distractors": [
+    "経済成長の",
+    "産業の",
+    "課税の"
+   ],
+   "exampleEn": "The central bank eased its monetary policy.",
+   "exampleJa": "中央銀行は金融政策を緩和した。"
+  },
+  {
+   "word": "remuneration",
+   "pos": "名詞",
+   "meaningJa": "報酬",
+   "distractors": [
+    "退職",
+    "昇進",
+    "求人"
+   ],
+   "exampleEn": "Executives received generous remuneration last year.",
+   "exampleJa": "役員たちは昨年多額の報酬を受け取った。"
+  },
+  {
+   "word": "entrepreneurship",
+   "pos": "名詞",
+   "meaningJa": "起業家精神",
+   "distractors": [
+    "職人の技術",
+    "官僚主義",
+    "相続財産"
+   ],
+   "exampleEn": "The city promotes entrepreneurship among young people.",
+   "exampleJa": "市は若者の起業家精神を奨励している。"
+  },
+  {
+   "word": "procurement",
+   "pos": "名詞",
+   "meaningJa": "調達",
+   "distractors": [
+    "廃棄",
+    "在庫切れ",
+    "監査"
+   ],
+   "exampleEn": "Public procurement rules require open bidding.",
+   "exampleJa": "公共調達の規則は公開入札を求めている。"
+  },
+  {
+   "word": "liquidate",
+   "pos": "動詞",
+   "meaningJa": "(会社を)清算する",
+   "distractors": [
+    "合併する",
+    "上場する",
+    "増資する"
+   ],
+   "exampleEn": "The board decided to liquidate the failing subsidiary.",
+   "exampleJa": "取締役会は経営不振の子会社を清算することを決めた。"
+  },
+  {
+   "word": "collateral",
+   "pos": "名詞",
+   "meaningJa": "担保",
+   "distractors": [
+    "頭金",
+    "利息",
+    "手数料"
+   ],
+   "exampleEn": "He used his house as collateral for the loan.",
+   "exampleJa": "彼は融資の担保として自宅を差し出した。"
+  },
+  {
+   "word": "dividend",
+   "pos": "名詞",
+   "meaningJa": "配当金",
+   "distractors": [
+    "賃料",
+    "元金",
+    "手当"
+   ],
+   "exampleEn": "The company cut its annual dividend by half.",
+   "exampleJa": "その会社は年間配当を半分に減らした。"
+  },
+  {
+   "word": "equity",
+   "pos": "名詞",
+   "meaningJa": "株主資本、公平さ",
+   "distractors": [
+    "負債",
+    "在庫",
+    "関税"
+   ],
+   "exampleEn": "The firm raised capital by issuing new equity.",
+   "exampleJa": "その企業は新株を発行して資本を調達した。"
+  },
+  {
+   "word": "leverage",
+   "pos": "名詞",
+   "meaningJa": "影響力、てこ入れ",
+   "distractors": [
+    "妥協",
+    "摩擦",
+    "空白"
+   ],
+   "exampleEn": "Unions have little leverage in the current market.",
+   "exampleJa": "現在の市場で労組にはほとんど影響力がない。"
+  },
+  {
+   "word": "lucrative",
+   "pos": "形容詞",
+   "meaningJa": "儲かる、有利な",
+   "distractors": [
+    "高価な",
+    "節約的な",
+    "慈善的な"
+   ],
+   "exampleEn": "He left teaching for a more lucrative career in finance.",
+   "exampleJa": "彼は教職を辞め、より儲かる金融の仕事に移った。"
+  },
+  {
+   "word": "viable",
+   "pos": "形容詞",
+   "meaningJa": "実行可能な",
+   "distractors": [
+    "目に見える",
+    "好意的な",
+    "一時的な"
+   ],
+   "exampleEn": "Solar power is now a commercially viable option.",
+   "exampleJa": "太陽光発電は今では商業的に実行可能な選択肢だ。"
+  },
+  {
+   "word": "constituency",
+   "pos": "名詞",
+   "meaningJa": "選挙区、支持者層",
+   "distractors": [
+    "議事日程",
+    "内閣",
+    "政党綱領"
+   ],
+   "exampleEn": "She has represented this constituency for ten years.",
+   "exampleJa": "彼女は10年間この選挙区の代表を務めている。"
+  },
+  {
+   "word": "referendum",
+   "pos": "名詞",
+   "meaningJa": "国民投票",
+   "distractors": [
+    "記者会見",
+    "議会の解散",
+    "選挙違反"
+   ],
+   "exampleEn": "The treaty was approved in a national referendum.",
+   "exampleJa": "その条約は国民投票で承認された。"
+  },
+  {
+   "word": "partisan",
+   "pos": "形容詞",
+   "meaningJa": "党派心の強い",
+   "distractors": [
+    "中立の",
+    "議会の",
+    "保守的な"
+   ],
+   "exampleEn": "The debate became bitterly partisan.",
+   "exampleJa": "その討論は激しい党派対立に陥った。"
+  },
+  {
+   "word": "lobby",
+   "pos": "動詞",
+   "meaningJa": "(議員などに)働きかける",
+   "distractors": [
+    "立候補する",
+    "抗議行進する",
+    "棄権する"
+   ],
+   "exampleEn": "Industry groups lobbied against the new tax.",
+   "exampleJa": "業界団体は新税に反対して働きかけた。"
+  },
+  {
+   "word": "impeach",
+   "pos": "動詞",
+   "meaningJa": "弾劾する",
+   "distractors": [
+    "任命する",
+    "就任する",
+    "亡命する"
+   ],
+   "exampleEn": "Congress voted to impeach the president.",
+   "exampleJa": "議会は大統領を弾劾することを決議した。"
+  },
+  {
+   "word": "sanction",
+   "pos": "名詞",
+   "meaningJa": "制裁",
+   "distractors": [
+    "同盟",
+    "賠償金",
+    "停戦"
+   ],
+   "exampleEn": "Economic sanctions were lifted after the agreement.",
+   "exampleJa": "合意の後、経済制裁が解除された。"
+  },
+  {
+   "word": "ratify",
+   "pos": "動詞",
+   "meaningJa": "批准する",
+   "distractors": [
+    "破棄する",
+    "起草する",
+    "延期する"
+   ],
+   "exampleEn": "Parliament has yet to ratify the trade deal.",
+   "exampleJa": "議会はまだ通商協定を批准していない。"
+  },
+  {
+   "word": "legislature",
+   "pos": "名詞",
+   "meaningJa": "立法機関、議会",
+   "distractors": [
+    "司法制度",
+    "官庁",
+    "有権者"
+   ],
+   "exampleEn": "The bill passed the state legislature by a wide margin.",
+   "exampleJa": "その法案は州議会を大差で通過した。"
+  },
+  {
+   "word": "sovereignty",
+   "pos": "名詞",
+   "meaningJa": "主権",
+   "distractors": [
+    "中立",
+    "領土問題",
+    "忠誠心"
+   ],
+   "exampleEn": "The islands' sovereignty remains in dispute.",
+   "exampleJa": "その島々の主権は依然として争われている。"
+  },
+  {
+   "word": "autonomy",
+   "pos": "名詞",
+   "meaningJa": "自治、自律性",
+   "distractors": [
+    "依存",
+    "独占",
+    "統合"
+   ],
+   "exampleEn": "The region was granted greater autonomy.",
+   "exampleJa": "その地域はより大きな自治を認められた。"
+  },
+  {
+   "word": "authoritarian",
+   "pos": "形容詞",
+   "meaningJa": "権威主義的な",
+   "distractors": [
+    "寛容な",
+    "合法な",
+    "保守的な"
+   ],
+   "exampleEn": "The country slid into authoritarian rule.",
+   "exampleJa": "その国は権威主義的な支配へと転落した。"
+  },
+  {
+   "word": "oppression",
+   "pos": "名詞",
+   "meaningJa": "抑圧",
+   "distractors": [
+    "解放",
+    "繁栄",
+    "譲歩"
+   ],
+   "exampleEn": "They fled political oppression in their homeland.",
+   "exampleJa": "彼らは祖国での政治的抑圧から逃れた。"
+  },
+  {
+   "word": "dissent",
+   "pos": "名詞",
+   "meaningJa": "異議、反対意見",
+   "distractors": [
+    "賛同",
+    "沈黙",
+    "妥協"
+   ],
+   "exampleEn": "The government tolerates little dissent.",
+   "exampleJa": "政府は異議をほとんど許容しない。"
+  },
+  {
+   "word": "advocacy",
+   "pos": "名詞",
+   "meaningJa": "擁護、支持活動",
+   "distractors": [
+    "非難",
+    "中立",
+    "傍観"
+   ],
+   "exampleEn": "She is known for her advocacy of children's rights.",
+   "exampleJa": "彼女は子どもの権利の擁護活動で知られている。"
+  },
+  {
+   "word": "disparity",
+   "pos": "名詞",
+   "meaningJa": "格差、相違",
+   "distractors": [
+    "一致",
+    "均衡",
+    "多様性"
+   ],
+   "exampleEn": "The report highlights the disparity in incomes.",
+   "exampleJa": "その報告書は所得格差を浮き彫りにしている。"
+  },
+  {
+   "word": "plagiarism",
+   "pos": "名詞",
+   "meaningJa": "盗用、盗作",
+   "distractors": [
+    "引用",
+    "校閲",
+    "誤植"
+   ],
+   "exampleEn": "The student was expelled for plagiarism.",
+   "exampleJa": "その学生は盗作のため退学になった。"
+  },
+  {
+   "word": "lay off",
+   "pos": "熟語",
+   "meaningJa": "(一時)解雇する",
+   "distractors": [
+    "昇進させる",
+    "研修する",
+    "転勤させる"
+   ],
+   "exampleEn": "The factory laid off 300 workers last month.",
+   "exampleJa": "その工場は先月300人の労働者を解雇した。"
+  },
+  {
+   "word": "subordinate",
+   "pos": "名詞",
+   "meaningJa": "部下",
+   "distractors": [
+    "同僚",
+    "上司",
+    "取引先"
+   ],
+   "exampleEn": "A good manager listens to his subordinates.",
+   "exampleJa": "優れた管理者は部下の話に耳を傾ける。"
+  },
+  {
+   "word": "hierarchy",
+   "pos": "名詞",
+   "meaningJa": "階層制度",
+   "distractors": [
+    "派閥",
+    "均衡",
+    "連携"
+   ],
+   "exampleEn": "The company has a rigid corporate hierarchy.",
+   "exampleJa": "その会社には厳格な組織の階層構造がある。"
+  },
+  {
+   "word": "compliance",
+   "pos": "名詞",
+   "meaningJa": "法令遵守",
+   "distractors": [
+    "違反",
+    "免除",
+    "抗議"
+   ],
+   "exampleEn": "All branches must ensure compliance with the new rules.",
+   "exampleJa": "全支店は新規則の遵守を徹底しなければならない。"
+  },
+  {
+   "word": "streamline",
+   "pos": "動詞",
+   "meaningJa": "合理化する",
+   "distractors": [
+    "多角化する",
+    "中断する",
+    "委託する"
+   ],
+   "exampleEn": "The firm streamlined its approval process.",
+   "exampleJa": "その会社は承認手続きを合理化した。"
+  },
+  {
+   "word": "monopoly",
+   "pos": "名詞",
+   "meaningJa": "独占",
+   "distractors": [
+    "競争",
+    "共同出資",
+    "自由貿易"
+   ],
+   "exampleEn": "The company once held a monopoly on rail travel.",
+   "exampleJa": "その会社はかつて鉄道輸送を独占していた。"
+  },
+  {
+   "word": "proprietary",
+   "pos": "形容詞",
+   "meaningJa": "専有の、独自の",
+   "distractors": [
+    "公共の",
+    "一時的な",
+    "標準的な"
+   ],
+   "exampleEn": "The software uses a proprietary file format.",
+   "exampleJa": "そのソフトは独自のファイル形式を使っている。"
+  },
+  {
+   "word": "patent",
+   "pos": "名詞",
+   "meaningJa": "特許",
+   "distractors": [
+    "商標",
+    "著作権侵害",
+    "認可証"
+   ],
+   "exampleEn": "They filed a patent for the new battery.",
+   "exampleJa": "彼らは新型電池の特許を出願した。"
+  },
+  {
+   "word": "infringement",
+   "pos": "名詞",
+   "meaningJa": "侵害",
+   "distractors": [
+    "保護",
+    "登録",
+    "譲渡"
+   ],
+   "exampleEn": "The lawsuit alleges copyright infringement.",
+   "exampleJa": "その訴訟は著作権侵害を主張している。"
+  },
+  {
+   "word": "precedent",
+   "pos": "名詞",
+   "meaningJa": "前例、判例",
+   "distractors": [
+    "例外",
+    "慣習法の廃止",
+    "陪審の構成"
+   ],
+   "exampleEn": "The ruling sets an important legal precedent.",
+   "exampleJa": "その判決は重要な法的判例となる。"
+  },
+  {
+   "word": "bail",
+   "pos": "名詞",
+   "meaningJa": "保釈金、保釈",
+   "distractors": [
+    "罰金",
+    "賠償金",
+    "手数料"
+   ],
+   "exampleEn": "He was released on bail of one million yen.",
+   "exampleJa": "彼は100万円の保釈金で釈放された。"
+  },
+  {
+   "word": "embezzle",
+   "pos": "動詞",
+   "meaningJa": "横領する",
+   "distractors": [
+    "脱税する",
+    "密輸する",
+    "偽造する"
+   ],
+   "exampleEn": "The accountant embezzled funds for years.",
+   "exampleJa": "その経理担当者は何年も資金を横領していた。"
+  },
+  {
+   "word": "illicit",
+   "pos": "形容詞",
+   "meaningJa": "不法な、違法な",
+   "distractors": [
+    "公然の",
+    "合法な",
+    "匿名の"
+   ],
+   "exampleEn": "Police seized a large amount of illicit drugs.",
+   "exampleJa": "警察は大量の違法薬物を押収した。"
+  },
+  {
+   "word": "crackdown",
+   "pos": "名詞",
+   "meaningJa": "取り締まり",
+   "distractors": [
+    "規制緩和",
+    "恩赦",
+    "暴動"
+   ],
+   "exampleEn": "The city launched a crackdown on illegal parking.",
+   "exampleJa": "市は違法駐車の取り締まりを始めた。"
+  },
+  {
+   "word": "enact",
+   "pos": "動詞",
+   "meaningJa": "(法律を)制定する",
+   "distractors": [
+    "廃止する",
+    "違反する",
+    "解釈する"
+   ],
+   "exampleEn": "Parliament enacted a law banning the practice.",
+   "exampleJa": "議会はその慣行を禁じる法律を制定した。"
+  },
+  {
+   "word": "repeal",
+   "pos": "動詞",
+   "meaningJa": "(法律を)廃止する",
+   "distractors": [
+    "可決する",
+    "改正する",
+    "公布する"
+   ],
+   "exampleEn": "Activists demanded that the old law be repealed.",
+   "exampleJa": "活動家たちは旧法の廃止を要求した。"
+  },
+  {
+   "word": "deregulation",
+   "pos": "名詞",
+   "meaningJa": "規制緩和",
+   "distractors": [
+    "国有化",
+    "課税強化",
+    "保護貿易"
+   ],
+   "exampleEn": "Deregulation opened the market to new entrants.",
+   "exampleJa": "規制緩和により市場が新規参入者に開かれた。"
+  },
+  {
+   "word": "privatize",
+   "pos": "動詞",
+   "meaningJa": "民営化する",
+   "distractors": [
+    "国有化する",
+    "分割する",
+    "閉鎖する"
+   ],
+   "exampleEn": "The government plans to privatize the railway.",
+   "exampleJa": "政府は鉄道を民営化する計画だ。"
+  },
+  {
+   "word": "bailout",
+   "pos": "名詞",
+   "meaningJa": "(公的資金による)救済措置",
+   "distractors": [
+    "倒産",
+    "買収提案",
+    "増税"
+   ],
+   "exampleEn": "The banks received a massive government bailout.",
+   "exampleJa": "銀行は政府による大規模な救済を受けた。"
+  },
+  {
+   "word": "default",
+   "pos": "動詞",
+   "meaningJa": "債務不履行になる",
+   "distractors": [
+    "返済する",
+    "借り換える",
+    "出資する"
+   ],
+   "exampleEn": "The country nearly defaulted on its loans.",
+   "exampleJa": "その国は融資の債務不履行寸前だった。"
+  },
+  {
+   "word": "levy",
+   "pos": "動詞",
+   "meaningJa": "(税などを)課す",
+   "distractors": [
+    "免除する",
+    "徴収を延期する",
+    "還付する"
+   ],
+   "exampleEn": "A new tax was levied on luxury goods.",
+   "exampleJa": "高級品に新たな税が課された。"
+  },
+  {
+   "word": "loophole",
+   "pos": "名詞",
+   "meaningJa": "(法律の)抜け穴",
+   "distractors": [
+    "前例",
+    "附則",
+    "罰則"
+   ],
+   "exampleEn": "Wealthy investors exploited a tax loophole.",
+   "exampleJa": "裕福な投資家が税制の抜け穴を利用した。"
+  },
+  {
+   "word": "windfall",
+   "pos": "名詞",
+   "meaningJa": "思いがけない大金",
+   "distractors": [
+    "損失",
+    "借金",
+    "相続税"
+   ],
+   "exampleEn": "Oil firms enjoyed a windfall from higher prices.",
+   "exampleJa": "石油会社は価格上昇による思わぬ利益を得た。"
+  },
+  {
+   "word": "electorate",
+   "pos": "名詞",
+   "meaningJa": "有権者(全体)",
+   "distractors": [
+    "議員団",
+    "陪審員",
+    "納税者"
+   ],
+   "exampleEn": "The electorate is deeply divided over the issue.",
+   "exampleJa": "有権者はその問題で深く分裂している。"
+  },
+  {
+   "word": "veto",
+   "pos": "動詞",
+   "meaningJa": "拒否権を行使する",
+   "distractors": [
+    "承認する",
+    "提案する",
+    "棄権する"
+   ],
+   "exampleEn": "The president vetoed the spending bill.",
+   "exampleJa": "大統領はその歳出法案に拒否権を行使した。"
+  },
+  {
+   "word": "censorship",
+   "pos": "名詞",
+   "meaningJa": "検閲",
+   "distractors": [
+    "報道の自由",
+    "世論調査",
+    "広報活動"
+   ],
+   "exampleEn": "Journalists protested against media censorship.",
+   "exampleJa": "記者たちは報道の検閲に抗議した。"
+  },
+  {
+   "word": "surveillance",
+   "pos": "名詞",
+   "meaningJa": "監視",
+   "distractors": [
+    "保護",
+    "捜索",
+    "尋問"
+   ],
+   "exampleEn": "The suspect was kept under constant surveillance.",
+   "exampleJa": "容疑者は絶えず監視下に置かれていた。"
+  },
+  {
+   "word": "whistleblower",
+   "pos": "名詞",
+   "meaningJa": "内部告発者",
+   "distractors": [
+    "広報担当者",
+    "密輸業者",
+    "仲裁人"
+   ],
+   "exampleEn": "A whistleblower exposed the accounting fraud.",
+   "exampleJa": "内部告発者が会計不正を暴露した。"
+  },
+  {
+   "word": "accountability",
+   "pos": "名詞",
+   "meaningJa": "説明責任",
+   "distractors": [
+    "秘密保持",
+    "中立性",
+    "効率性"
+   ],
+   "exampleEn": "Voters are demanding greater accountability from politicians.",
+   "exampleJa": "有権者は政治家により大きな説明責任を求めている。"
+  },
+  {
+   "word": "nepotism",
+   "pos": "名詞",
+   "meaningJa": "縁故主義",
+   "distractors": [
+    "実力主義",
+    "官僚主義",
+    "保護主義"
+   ],
+   "exampleEn": "He was accused of nepotism for hiring his nephew.",
+   "exampleJa": "彼は甥を雇ったことで縁故主義だと非難された。"
+  },
+  {
+   "word": "stipulate",
+   "pos": "動詞",
+   "meaningJa": "(契約などで)規定する",
+   "distractors": [
+    "推測する",
+    "撤回する",
+    "交渉する"
+   ],
+   "exampleEn": "The contract stipulates a three-month notice period.",
+   "exampleJa": "契約は3か月の予告期間を規定している。"
+  },
+  {
+   "word": "allege",
+   "pos": "動詞",
+   "meaningJa": "(証拠なしに)主張する",
+   "distractors": [
+    "証明する",
+    "否認する",
+    "白状する"
+   ],
+   "exampleEn": "The report alleges that officials took bribes.",
+   "exampleJa": "その報告は職員が賄賂を受け取ったと主張している。"
+  },
+  {
+   "word": "detain",
+   "pos": "動詞",
+   "meaningJa": "拘留する",
+   "distractors": [
+    "釈放する",
+    "追跡する",
+    "尋問する"
+   ],
+   "exampleEn": "Police detained two men for questioning.",
+   "exampleJa": "警察は取り調べのため2人の男を拘留した。"
+  },
+  {
+   "word": "deport",
+   "pos": "動詞",
+   "meaningJa": "国外追放する",
+   "distractors": [
+    "亡命を認める",
+    "入国を許可する",
+    "帰化させる"
+   ],
+   "exampleEn": "He was deported after his visa expired.",
+   "exampleJa": "彼はビザが切れた後に国外追放された。"
+  },
+  {
+   "word": "asylum",
+   "pos": "名詞",
+   "meaningJa": "(政治的)保護、亡命",
+   "distractors": [
+    "国籍",
+    "査証",
+    "移住"
+   ],
+   "exampleEn": "The refugees applied for political asylum.",
+   "exampleJa": "難民たちは政治的保護を申請した。"
+  },
+  {
+   "word": "marginalize",
+   "pos": "動詞",
+   "meaningJa": "疎外する、周辺に追いやる",
+   "distractors": [
+    "統合する",
+    "誇張する",
+    "補償する"
+   ],
+   "exampleEn": "The policy marginalized rural communities.",
+   "exampleJa": "その政策は地方の地域社会を疎外した。"
+  },
+  {
+   "word": "mitigate",
+   "pos": "動詞",
+   "meaningJa": "緩和する、軽減する",
+   "distractors": [
+    "悪化させる",
+    "誘発する",
+    "遅らせる"
+   ],
+   "exampleEn": "Steps were taken to mitigate the economic damage.",
+   "exampleJa": "経済的損害を軽減するための措置がとられた。"
+  },
+  {
+   "word": "exacerbate",
+   "pos": "動詞",
+   "meaningJa": "悪化させる",
+   "distractors": [
+    "和らげる",
+    "明らかにする",
+    "見過ごす"
+   ],
+   "exampleEn": "Tax cuts may exacerbate the budget shortfall.",
+   "exampleJa": "減税は財政の不足をさらに悪化させかねない。"
+  },
+  {
+   "word": "curtail",
+   "pos": "動詞",
+   "meaningJa": "削減する、短縮する",
+   "distractors": [
+    "拡大する",
+    "継続する",
+    "委任する"
+   ],
+   "exampleEn": "The firm curtailed spending on advertising.",
+   "exampleJa": "その会社は広告費を削減した。"
+  },
+  {
+   "word": "bolster",
+   "pos": "動詞",
+   "meaningJa": "強化する、支える",
+   "distractors": [
+    "崩壊させる",
+    "隠す",
+    "遅らせる"
+   ],
+   "exampleEn": "The plan is designed to bolster consumer confidence.",
+   "exampleJa": "その計画は消費者の信頼を強化するためのものだ。"
+  },
+  {
+   "word": "undermine",
+   "pos": "動詞",
+   "meaningJa": "徐々に弱体化させる",
+   "distractors": [
+    "支える",
+    "誇張する",
+    "監督する"
+   ],
+   "exampleEn": "The scandal undermined public trust in the party.",
+   "exampleJa": "そのスキャンダルは党への国民の信頼を損なった。"
+  },
+  {
+   "word": "scrutiny",
+   "pos": "名詞",
+   "meaningJa": "精査、綿密な調査",
+   "distractors": [
+    "無関心",
+    "概要",
+    "推測"
+   ],
+   "exampleEn": "The deal came under close scrutiny by regulators.",
+   "exampleJa": "その取引は規制当局の厳しい精査を受けた。"
+  },
+  {
+   "word": "consensus",
+   "pos": "名詞",
+   "meaningJa": "(意見の)一致、総意",
+   "distractors": [
+    "対立",
+    "多数決",
+    "妥協案"
+   ],
+   "exampleEn": "The committee reached a consensus after long debate.",
+   "exampleJa": "委員会は長い議論の後で合意に達した。"
+  },
+  {
+   "word": "convene",
+   "pos": "動詞",
+   "meaningJa": "(会議を)招集する",
+   "distractors": [
+    "解散する",
+    "延期する",
+    "欠席する"
+   ],
+   "exampleEn": "The council will convene an emergency session.",
+   "exampleJa": "議会は緊急会議を招集する。"
+  },
+  {
+   "word": "ubiquitous",
+   "pos": "形容詞",
+   "meaningJa": "至る所にある",
+   "distractors": [
+    "非常に珍しい",
+    "一時的で短命な",
+    "目に見えない"
+   ],
+   "exampleEn": "Smartphones have become ubiquitous in modern classrooms.",
+   "exampleJa": "スマートフォンは現代の教室では至る所にある存在になった。"
+  },
+  {
+   "word": "paradigm",
+   "pos": "名詞",
+   "meaningJa": "(思考の)枠組み、模範",
+   "distractors": [
+    "逆説、矛盾した表現",
+    "要約、概略",
+    "副産物"
+   ],
+   "exampleEn": "The discovery forced scientists to abandon the old paradigm.",
+   "exampleJa": "その発見は科学者たちに古い枠組みを捨てさせた。"
+  },
+  {
+   "word": "empirical",
+   "pos": "形容詞",
+   "meaningJa": "実証的な、経験に基づく",
+   "distractors": [
+    "理論上のみの",
+    "儀礼的な",
+    "比喩的な"
+   ],
+   "exampleEn": "There is little empirical evidence for that claim.",
+   "exampleJa": "その主張を裏づける実証的な証拠はほとんどない。"
+  },
+  {
+   "word": "anomaly",
+   "pos": "名詞",
+   "meaningJa": "異常、変則",
+   "distractors": [
+    "前兆、きざし",
+    "類似点",
+    "比率"
+   ],
+   "exampleEn": "The satellite detected a temperature anomaly over the ocean.",
+   "exampleJa": "衛星は海上の気温の異常を検出した。"
+  },
+  {
+   "word": "catalyst",
+   "pos": "名詞",
+   "meaningJa": "触媒、促進要因",
+   "distractors": [
+    "障壁、妨げ",
+    "副作用",
+    "代用品"
+   ],
+   "exampleEn": "The report acted as a catalyst for political reform.",
+   "exampleJa": "その報告書は政治改革の促進要因となった。"
+  },
+  {
+   "word": "proliferate",
+   "pos": "動詞",
+   "meaningJa": "急増する、増殖する",
+   "distractors": [
+    "徐々に消える",
+    "分裂して弱まる",
+    "硬化する"
+   ],
+   "exampleEn": "Online misinformation has proliferated in recent years.",
+   "exampleJa": "近年、ネット上の誤情報が急増している。"
+  },
+  {
+   "word": "deplete",
+   "pos": "動詞",
+   "meaningJa": "枯渇させる、激減させる",
+   "distractors": [
+    "補充する",
+    "希釈する",
+    "封鎖する"
+   ],
+   "exampleEn": "Overfishing has depleted stocks of cod.",
+   "exampleJa": "乱獲がタラの資源を枯渇させた。"
+  },
+  {
+   "word": "resilient",
+   "pos": "形容詞",
+   "meaningJa": "回復力のある、しなやかで強い",
+   "distractors": [
+    "壊れやすい",
+    "従順な",
+    "無関心な"
+   ],
+   "exampleEn": "Coral reefs are less resilient than we once assumed.",
+   "exampleJa": "サンゴ礁はかつて考えられていたほど回復力があるわけではない。"
+  },
+  {
+   "word": "degrade",
+   "pos": "動詞",
+   "meaningJa": "劣化させる、分解する",
+   "distractors": [
+    "精製する",
+    "増幅する",
+    "冷却する"
+   ],
+   "exampleEn": "Plastic bags degrade very slowly in seawater.",
+   "exampleJa": "ビニール袋は海水中で非常にゆっくりと分解する。"
+  },
+  {
+   "word": "sediment",
+   "pos": "名詞",
+   "meaningJa": "堆積物、沈殿物",
+   "distractors": [
+    "蒸気、水蒸気",
+    "鉱脈",
+    "気流"
+   ],
+   "exampleEn": "Layers of sediment reveal the lake's long history.",
+   "exampleJa": "堆積物の層はその湖の長い歴史を明らかにする。"
+  },
+  {
+   "word": "terrestrial",
+   "pos": "形容詞",
+   "meaningJa": "陸生の、地球の",
+   "distractors": [
+    "水中に生息する",
+    "夜行性の",
+    "高山性の"
+   ],
+   "exampleEn": "Many terrestrial species cannot survive rising temperatures.",
+   "exampleJa": "多くの陸生種は気温上昇に耐えられない。"
+  },
+  {
+   "word": "dormant",
+   "pos": "形容詞",
+   "meaningJa": "休眠中の、活動していない",
+   "distractors": [
+    "絶滅した",
+    "伝染性の",
+    "満開の"
+   ],
+   "exampleEn": "The volcano has been dormant for two centuries.",
+   "exampleJa": "その火山は2世紀にわたり休眠状態にある。"
+  },
+  {
+   "word": "symbiosis",
+   "pos": "名詞",
+   "meaningJa": "共生",
+   "distractors": [
+    "寄生による搾取",
+    "自然淘汰",
+    "突然の絶滅"
+   ],
+   "exampleEn": "The fungus and the tree exist in a close symbiosis.",
+   "exampleJa": "その菌類と樹木は密接な共生関係にある。"
+  },
+  {
+   "word": "genome",
+   "pos": "名詞",
+   "meaningJa": "ゲノム、全遺伝情報",
+   "distractors": [
+    "神経系",
+    "細胞膜",
+    "血統書"
+   ],
+   "exampleEn": "Researchers have sequenced the entire genome of the plant.",
+   "exampleJa": "研究者たちはその植物の全ゲノムを解読した。"
+  },
+  {
+   "word": "mutation",
+   "pos": "名詞",
+   "meaningJa": "突然変異",
+   "distractors": [
+    "交配、異種交配",
+    "退化した器官",
+    "遺伝的類似"
+   ],
+   "exampleEn": "A single mutation made the virus more transmissible.",
+   "exampleJa": "たった一つの突然変異でそのウイルスは感染しやすくなった。"
+  },
+  {
+   "word": "pathogen",
+   "pos": "名詞",
+   "meaningJa": "病原体",
+   "distractors": [
+    "抗生物質",
+    "栄養素",
+    "抗体"
+   ],
+   "exampleEn": "The new filter removes airborne pathogens.",
+   "exampleJa": "その新しいフィルターは空気中の病原体を除去する。"
+  },
+  {
+   "word": "benign",
+   "pos": "形容詞",
+   "meaningJa": "良性の、優しい",
+   "distractors": [
+    "致命的な",
+    "伝染性の",
+    "慢性化した"
+   ],
+   "exampleEn": "Fortunately, the tumour turned out to be benign.",
+   "exampleJa": "幸いにも腫瘍は良性であることが判明した。"
+  },
+  {
+   "word": "malignant",
+   "pos": "形容詞",
+   "meaningJa": "悪性の",
+   "distractors": [
+    "無害な",
+    "一時的な",
+    "遺伝性の"
+   ],
+   "exampleEn": "Early screening can detect malignant cells.",
+   "exampleJa": "早期検診によって悪性の細胞を発見できる。"
+  },
+  {
+   "word": "acute",
+   "pos": "形容詞",
+   "meaningJa": "急性の、深刻な",
+   "distractors": [
+    "長期にわたる",
+    "軽微な",
+    "再発しやすい"
+   ],
+   "exampleEn": "The patient was admitted with acute respiratory failure.",
+   "exampleJa": "その患者は急性呼吸不全で入院した。"
+  },
+  {
+   "word": "susceptible",
+   "pos": "形容詞",
+   "meaningJa": "影響を受けやすい、感染しやすい",
+   "distractors": [
+    "免疫のある",
+    "無菌の",
+    "反抗的な"
+   ],
+   "exampleEn": "Older adults are more susceptible to infection.",
+   "exampleJa": "高齢者はより感染しやすい。"
+  },
+  {
+   "word": "immunity",
+   "pos": "名詞",
+   "meaningJa": "免疫",
+   "distractors": [
+    "炎症",
+    "副作用",
+    "抵抗運動"
+   ],
+   "exampleEn": "Vaccination builds immunity without causing illness.",
+   "exampleJa": "ワクチン接種は病気を起こさずに免疫を作る。"
+  },
+  {
+   "word": "prognosis",
+   "pos": "名詞",
+   "meaningJa": "予後、見通し",
+   "distractors": [
+    "診断名",
+    "処方箋",
+    "問診票"
+   ],
+   "exampleEn": "With early treatment, the prognosis is excellent.",
+   "exampleJa": "早期に治療すれば予後は極めて良好だ。"
+  },
+  {
+   "word": "alleviate",
+   "pos": "動詞",
+   "meaningJa": "(苦痛などを)軽減する",
+   "distractors": [
+    "麻痺させる",
+    "誘発する",
+    "診断する"
+   ],
+   "exampleEn": "The drug alleviates symptoms but does not cure the disease.",
+   "exampleJa": "その薬は症状を軽減するが病気を治すわけではない。"
+  },
+  {
+   "word": "contagious",
+   "pos": "形容詞",
+   "meaningJa": "感染性の、伝染する",
+   "distractors": [
+    "遺伝的な",
+    "栄養価の高い",
+    "無症状の"
+   ],
+   "exampleEn": "Measles is highly contagious among unvaccinated children.",
+   "exampleJa": "はしかは未接種の子どもの間で非常に感染性が高い。"
+  },
+  {
+   "word": "therapeutic",
+   "pos": "形容詞",
+   "meaningJa": "治療上の、治療効果のある",
+   "distractors": [
+    "予防を目的とした",
+    "診断のための",
+    "実験段階の"
+   ],
+   "exampleEn": "Gardening can have a therapeutic effect on the mind.",
+   "exampleJa": "園芸は心に治療的な効果をもたらしうる。"
+  },
+  {
+   "word": "encryption",
+   "pos": "名詞",
+   "meaningJa": "暗号化",
+   "distractors": [
+    "圧縮",
+    "複製",
+    "翻訳"
+   ],
+   "exampleEn": "The app uses end-to-end encryption for all messages.",
+   "exampleJa": "そのアプリは全メッセージに端末間の暗号化を用いている。"
+  },
+  {
+   "word": "automation",
+   "pos": "名詞",
+   "meaningJa": "自動化",
+   "distractors": [
+    "外注、委託",
+    "規制緩和",
+    "民営化"
+   ],
+   "exampleEn": "Automation has transformed the shipping industry.",
+   "exampleJa": "自動化は海運業を一変させた。"
+  },
+  {
+   "word": "obsolete",
+   "pos": "形容詞",
+   "meaningJa": "時代遅れの、廃れた",
+   "distractors": [
+    "最新の",
+    "互換性のある",
+    "高価な"
+   ],
+   "exampleEn": "Fax machines are almost obsolete in most offices.",
+   "exampleJa": "ファクスは大半の職場でほぼ時代遅れになっている。"
+  },
+  {
+   "word": "scalable",
+   "pos": "形容詞",
+   "meaningJa": "規模を拡大できる",
+   "distractors": [
+    "修理可能な",
+    "持ち運びできる",
+    "再生可能な"
+   ],
+   "exampleEn": "The startup needs a scalable business model.",
+   "exampleJa": "そのスタートアップには規模拡大できる事業モデルが必要だ。"
+  },
+  {
+   "word": "interface",
+   "pos": "名詞",
+   "meaningJa": "接触面、操作画面",
+   "distractors": [
+    "回路基板",
+    "保存領域",
+    "電源装置"
+   ],
+   "exampleEn": "The software has a clean and intuitive interface.",
+   "exampleJa": "そのソフトは簡潔で直感的な操作画面を備えている。"
+  },
+  {
+   "word": "redundant",
+   "pos": "形容詞",
+   "meaningJa": "余剰の、冗長な",
+   "distractors": [
+    "不足している",
+    "必須の",
+    "精密な"
+   ],
+   "exampleEn": "The system keeps redundant backups in two locations.",
+   "exampleJa": "そのシステムは2か所に冗長なバックアップを保持している。"
+  },
+  {
+   "word": "calibrate",
+   "pos": "動詞",
+   "meaningJa": "(機器を)校正する、調整する",
+   "distractors": [
+    "分解する",
+    "溶接する",
+    "梱包する"
+   ],
+   "exampleEn": "Technicians calibrate the sensors every six months.",
+   "exampleJa": "技術者は半年ごとにセンサーを校正する。"
+  },
+  {
+   "word": "simulate",
+   "pos": "動詞",
+   "meaningJa": "模擬する、シミュレーションする",
+   "distractors": [
+    "刺激して活性化する",
+    "即興で作る",
+    "誇張して伝える"
+   ],
+   "exampleEn": "The program simulates the flow of air over a wing.",
+   "exampleJa": "そのプログラムは翼上の空気の流れを模擬する。"
+  },
+  {
+   "word": "retrofit",
+   "pos": "動詞",
+   "meaningJa": "(既存の物に)改修して取り付ける",
+   "distractors": [
+    "解体して撤去する",
+    "新規に設計する",
+    "下請けに出す"
+   ],
+   "exampleEn": "Old buildings can be retrofitted with better insulation.",
+   "exampleJa": "古い建物はより良い断熱材を後付けで改修できる。"
+  },
+  {
+   "word": "logistics",
+   "pos": "名詞",
+   "meaningJa": "物流、後方支援",
+   "distractors": [
+    "会計監査",
+    "広告戦略",
+    "人材育成"
+   ],
+   "exampleEn": "The company specialises in cold-chain logistics.",
+   "exampleJa": "その会社は低温物流を専門としている。"
+  },
+  {
+   "word": "propulsion",
+   "pos": "名詞",
+   "meaningJa": "推進、推進力",
+   "distractors": [
+    "制動装置",
+    "浮力",
+    "摩擦抵抗"
+   ],
+   "exampleEn": "The ship uses electric propulsion to cut emissions.",
+   "exampleJa": "その船は排出量を削減するため電気推進を用いている。"
+  },
+  {
+   "word": "aerodynamic",
+   "pos": "形容詞",
+   "meaningJa": "空気力学的な、空気抵抗の少ない",
+   "distractors": [
+    "電磁的な",
+    "耐水性の",
+    "熱伝導性の"
+   ],
+   "exampleEn": "The new train has a highly aerodynamic nose.",
+   "exampleJa": "その新型列車は空気抵抗の少ない先頭部を持つ。"
+  },
+  {
+   "word": "maritime",
+   "pos": "形容詞",
+   "meaningJa": "海の、海事の",
+   "distractors": [
+    "航空関連の",
+    "国境地帯の",
+    "内陸の"
+   ],
+   "exampleEn": "The treaty settles a long maritime dispute.",
+   "exampleJa": "その条約は長年の海洋紛争を解決する。"
+  },
+  {
+   "word": "expedite",
+   "pos": "動詞",
+   "meaningJa": "(手続きを)迅速に進める",
+   "distractors": [
+    "延期する",
+    "撤回する",
+    "委任する"
+   ],
+   "exampleEn": "Extra staff were hired to expedite visa applications.",
+   "exampleJa": "ビザ申請を迅速化するため追加の職員が雇われた。"
+  },
+  {
+   "word": "traverse",
+   "pos": "動詞",
+   "meaningJa": "横断する、渡る",
+   "distractors": [
+    "包囲する",
+    "掘り進む",
+    "漂流する"
+   ],
+   "exampleEn": "The pipeline traverses three mountain ranges.",
+   "exampleJa": "そのパイプラインは三つの山脈を横断している。"
+  },
+  {
+   "word": "artifact",
+   "pos": "名詞",
+   "meaningJa": "(古代の)遺物、人工物",
+   "distractors": [
+    "化石燃料",
+    "伝承、口承",
+    "建築現場"
+   ],
+   "exampleEn": "Bronze artifacts were unearthed near the temple.",
+   "exampleJa": "寺院の近くで青銅の遺物が発掘された。"
+  },
+  {
+   "word": "secular",
+   "pos": "形容詞",
+   "meaningJa": "世俗の、宗教と無関係な",
+   "distractors": [
+    "神聖な",
+    "封建的な",
+    "保守的な"
+   ],
+   "exampleEn": "France maintains a strictly secular school system.",
+   "exampleJa": "フランスは厳格に世俗的な学校制度を維持している。"
+  },
+  {
+   "word": "cosmopolitan",
+   "pos": "形容詞",
+   "meaningJa": "国際的な、多様な文化が混じる",
+   "distractors": [
+    "田舎風の",
+    "伝統に固執する",
+    "閉鎖的な"
+   ],
+   "exampleEn": "Singapore is a strikingly cosmopolitan city.",
+   "exampleJa": "シンガポールは際立って国際的な都市だ。"
+  },
+  {
+   "word": "connoisseur",
+   "pos": "名詞",
+   "meaningJa": "目利き、鑑識家",
+   "distractors": [
+    "収集品の贋作者",
+    "初心者",
+    "批評される側の作家"
+   ],
+   "exampleEn": "He is a connoisseur of Renaissance painting.",
+   "exampleJa": "彼はルネサンス絵画の目利きだ。"
+  },
+  {
+   "word": "narrative",
+   "pos": "名詞",
+   "meaningJa": "物語、語り口",
+   "distractors": [
+    "筋書きのない実験劇",
+    "注釈",
+    "脚色されていない統計"
+   ],
+   "exampleEn": "The museum presents a new narrative of the war.",
+   "exampleJa": "その博物館は戦争についての新しい語りを提示している。"
+  },
+  {
+   "word": "repertoire",
+   "pos": "名詞",
+   "meaningJa": "レパートリー、持ち芸",
+   "distractors": [
+    "観客の反応",
+    "舞台装置",
+    "即興演奏"
+   ],
+   "exampleEn": "The quartet added two modern works to its repertoire.",
+   "exampleJa": "その四重奏団は現代作品2曲をレパートリーに加えた。"
+  },
+  {
+   "word": "eloquent",
+   "pos": "形容詞",
+   "meaningJa": "雄弁な",
+   "distractors": [
+    "口ごもる",
+    "無愛想な",
+    "冗長で退屈な"
+   ],
+   "exampleEn": "She gave an eloquent defence of press freedom.",
+   "exampleJa": "彼女は報道の自由を雄弁に擁護した。"
+  },
+  {
+   "word": "nuance",
+   "pos": "名詞",
+   "meaningJa": "微妙な差異、ニュアンス",
+   "distractors": [
+    "明白な矛盾",
+    "要点",
+    "誤訳"
+   ],
+   "exampleEn": "Translation often loses the nuances of the original.",
+   "exampleJa": "翻訳では原文の微妙な差異が失われがちだ。"
+  },
+  {
+   "word": "connotation",
+   "pos": "名詞",
+   "meaningJa": "言外の意味、含み",
+   "distractors": [
+    "語源",
+    "発音記号",
+    "文法的誤り"
+   ],
+   "exampleEn": "The word carries negative connotations in politics.",
+   "exampleJa": "その語は政治の場では否定的な含みを持つ。"
+  },
+  {
+   "word": "discourse",
+   "pos": "名詞",
+   "meaningJa": "談話、議論",
+   "distractors": [
+    "沈黙の合意",
+    "独り言",
+    "脚注"
+   ],
+   "exampleEn": "Social media has coarsened public discourse.",
+   "exampleJa": "ソーシャルメディアは公共の議論を粗雑にした。"
+  },
+  {
+   "word": "rhetoric",
+   "pos": "名詞",
+   "meaningJa": "修辞、巧みな言葉遣い",
+   "distractors": [
+    "韻律の分析",
+    "計算能力",
+    "身振り言語"
+   ],
+   "exampleEn": "Behind the rhetoric there was no concrete plan.",
+   "exampleJa": "美辞麗句の裏に具体的な計画はなかった。"
+  },
+  {
+   "word": "plausible",
+   "pos": "形容詞",
+   "meaningJa": "もっともらしい、ありそうな",
+   "distractors": [
+    "ばかげた",
+    "証明済みの",
+    "許容できる"
+   ],
+   "exampleEn": "That is the most plausible explanation so far.",
+   "exampleJa": "それが今のところ最ももっともらしい説明だ。"
+  },
+  {
+   "word": "inherent",
+   "pos": "形容詞",
+   "meaningJa": "本来備わっている、固有の",
+   "distractors": [
+    "外部から加えられた",
+    "偶発的な",
+    "相続による"
+   ],
+   "exampleEn": "There are inherent risks in any surgery.",
+   "exampleJa": "どんな手術にも本質的な危険が伴う。"
+  },
+  {
+   "word": "arbitrary",
+   "pos": "形容詞",
+   "meaningJa": "恣意的な、勝手な",
+   "distractors": [
+    "綿密に根拠づけられた",
+    "平均的な",
+    "中立的な"
+   ],
+   "exampleEn": "The deadline seems completely arbitrary.",
+   "exampleJa": "その締め切りはまったく恣意的に見える。"
+  },
+  {
+   "word": "rigorous",
+   "pos": "形容詞",
+   "meaningJa": "厳密な、徹底した",
+   "distractors": [
+    "大まかな",
+    "柔軟な",
+    "時代遅れの"
+   ],
+   "exampleEn": "The drug underwent rigorous clinical testing.",
+   "exampleJa": "その薬は厳密な臨床試験を受けた。"
+  },
+  {
+   "word": "discrepancy",
+   "pos": "名詞",
+   "meaningJa": "食い違い、不一致",
+   "distractors": [
+    "完全な一致",
+    "偏見",
+    "省略記号"
+   ],
+   "exampleEn": "Auditors found a discrepancy in the accounts.",
+   "exampleJa": "監査人は帳簿に食い違いを見つけた。"
+  },
+  {
+   "word": "correlation",
+   "pos": "名詞",
+   "meaningJa": "相関(関係)",
+   "distractors": [
+    "因果の証明",
+    "誤差の範囲",
+    "例外事項"
+   ],
+   "exampleEn": "There is a strong correlation between income and health.",
+   "exampleJa": "収入と健康の間には強い相関がある。"
+  },
+  {
+   "word": "inference",
+   "pos": "名詞",
+   "meaningJa": "推論、推定",
+   "distractors": [
+    "直接の観察",
+    "干渉、妨害",
+    "引用"
+   ],
+   "exampleEn": "We can only draw an inference from indirect evidence.",
+   "exampleJa": "我々は間接証拠から推論するしかない。"
+  },
+  {
+   "word": "threshold",
+   "pos": "名詞",
+   "meaningJa": "閾値、境目",
+   "distractors": [
+    "上限なしの範囲",
+    "中心値",
+    "傾き"
+   ],
+   "exampleEn": "Pollution exceeded the legal threshold in July.",
+   "exampleJa": "7月に汚染は法定の閾値を超えた。"
+  },
+  {
+   "word": "magnitude",
+   "pos": "名詞",
+   "meaningJa": "規模、大きさ",
+   "distractors": [
+    "頻度",
+    "持続時間",
+    "方向"
+   ],
+   "exampleEn": "Few grasped the magnitude of the crisis.",
+   "exampleJa": "その危機の規模を理解した者はほとんどいなかった。"
+  },
+  {
+   "word": "fluctuate",
+   "pos": "動詞",
+   "meaningJa": "変動する",
+   "distractors": [
+    "一定に保たれる",
+    "蓄積する",
+    "逆流する"
+   ],
+   "exampleEn": "Oil prices fluctuated wildly last quarter.",
+   "exampleJa": "前四半期、原油価格は激しく変動した。"
+  },
+  {
+   "word": "offset",
+   "pos": "動詞",
+   "meaningJa": "相殺する、埋め合わせる",
+   "distractors": [
+    "累積させる",
+    "延期する",
+    "転嫁して拒む"
+   ],
+   "exampleEn": "The airline plants trees to offset its emissions.",
+   "exampleJa": "その航空会社は排出量を相殺するため木を植えている。"
+  },
+  {
+   "word": "attribute",
+   "pos": "動詞",
+   "meaningJa": "~のせいだとする、~に帰する",
+   "distractors": [
+    "撤回する",
+    "比較して並べる",
+    "分配する"
+   ],
+   "exampleEn": "Scientists attribute the warming to human activity.",
+   "exampleJa": "科学者たちは温暖化を人間の活動によるものとしている。"
+  },
+  {
+   "word": "curb",
+   "pos": "動詞",
+   "meaningJa": "抑制する、制限する",
+   "distractors": [
+    "奨励する",
+    "公表する",
+    "延長する"
+   ],
+   "exampleEn": "The city introduced rules to curb noise at night.",
+   "exampleJa": "市は夜間の騒音を抑制する規則を導入した。"
+  },
+  {
+   "word": "advocate",
+   "pos": "動詞",
+   "meaningJa": "擁護する、主張する",
+   "distractors": [
+    "非難する",
+    "黙認する",
+    "仲裁する"
+   ],
+   "exampleEn": "Doctors advocate earlier screening for the disease.",
+   "exampleJa": "医師たちはその病気のより早期の検診を提唱している。"
+  },
+  {
+   "word": "contingent",
+   "pos": "形容詞",
+   "meaningJa": "~次第の、条件つきの",
+   "distractors": [
+    "継続中の",
+    "相互に矛盾する",
+    "近接した"
+   ],
+   "exampleEn": "Funding is contingent on the results of the trial.",
+   "exampleJa": "資金提供は試験の結果次第である。"
+  },
+  {
+   "word": "prevalent",
+   "pos": "形容詞",
+   "meaningJa": "広く見られる、流行している",
+   "distractors": [
+    "以前より減った",
+    "禁じられた",
+    "局地的な"
+   ],
+   "exampleEn": "The disease is most prevalent in tropical regions.",
+   "exampleJa": "その病気は熱帯地域で最も広く見られる。"
+  },
+  {
+   "word": "unprecedented",
+   "pos": "形容詞",
+   "meaningJa": "前例のない",
+   "distractors": [
+    "予定通りの",
+    "繰り返し起こる",
+    "時代を先取りした"
+   ],
+   "exampleEn": "The heatwave was unprecedented in recorded history.",
+   "exampleJa": "その熱波は記録に残る歴史上前例のないものだった。"
+  },
+  {
+   "word": "imminent",
+   "pos": "形容詞",
+   "meaningJa": "差し迫った",
+   "distractors": [
+    "遠い将来の",
+    "避けられた",
+    "内在する"
+   ],
+   "exampleEn": "Residents were warned of an imminent eruption.",
+   "exampleJa": "住民は差し迫った噴火を警告された。"
+  },
+  {
+   "word": "volatile",
+   "pos": "形容詞",
+   "meaningJa": "不安定な、変わりやすい",
+   "distractors": [
+    "安定して穏やかな",
+    "粘り気のある",
+    "無臭の"
+   ],
+   "exampleEn": "The currency has been highly volatile this year.",
+   "exampleJa": "その通貨は今年きわめて不安定だ。"
+  },
+  {
+   "word": "robust",
+   "pos": "形容詞",
+   "meaningJa": "頑丈な、堅固な",
+   "distractors": [
+    "もろい",
+    "簡素な",
+    "柔軟に曲がる"
+   ],
+   "exampleEn": "We need a robust system that survives power cuts.",
+   "exampleJa": "停電にも耐える頑丈なシステムが必要だ。"
+  },
+  {
+   "word": "intricate",
+   "pos": "形容詞",
+   "meaningJa": "複雑に入り組んだ",
+   "distractors": [
+    "単純明快な",
+    "粗削りな",
+    "対称的な"
+   ],
+   "exampleEn": "The carving shows an intricate floral pattern.",
+   "exampleJa": "その彫刻は複雑に入り組んだ花模様を示している。"
+  },
+  {
+   "word": "ambiguous",
+   "pos": "形容詞",
+   "meaningJa": "曖昧な、多義的な",
+   "distractors": [
+    "明確に定義された",
+    "野心的な",
+    "中立の"
+   ],
+   "exampleEn": "The wording of the contract is deliberately ambiguous.",
+   "exampleJa": "その契約の文言は意図的に曖昧にされている。"
+  },
+  {
+   "word": "conducive",
+   "pos": "形容詞",
+   "meaningJa": "(~の)助けとなる、資する",
+   "distractors": [
+    "妨げとなる",
+    "導電性の",
+    "従属的な"
+   ],
+   "exampleEn": "A quiet room is conducive to concentration.",
+   "exampleJa": "静かな部屋は集中を助ける。"
+  },
+  {
+   "word": "cutting-edge",
+   "pos": "形容詞",
+   "meaningJa": "最先端の",
+   "distractors": [
+    "使い古された",
+    "切実な",
+    "低予算の"
+   ],
+   "exampleEn": "The lab uses cutting-edge imaging technology.",
+   "exampleJa": "その研究所は最先端の画像技術を使っている。"
+  },
+  {
+   "word": "emit",
+   "pos": "動詞",
+   "meaningJa": "(光・熱・ガスを)放出する",
+   "distractors": [
+    "吸収する",
+    "反射して返す",
+    "貯蔵する"
+   ],
+   "exampleEn": "Cement production emits vast amounts of CO2.",
+   "exampleJa": "セメント生産は膨大な量の二酸化炭素を放出する。"
+  },
+  {
+   "word": "phase out",
+   "pos": "熟語",
+   "meaningJa": "段階的に廃止する",
+   "distractors": [
+    "一気に導入する",
+    "徐々に増やす",
+    "一時的に停止する"
+   ],
+   "exampleEn": "The country plans to phase out coal by 2035.",
+   "exampleJa": "その国は2035年までに石炭を段階的に廃止する計画だ。"
+  },
+  {
+   "word": "rule out",
+   "pos": "熟語",
+   "meaningJa": "除外する、可能性を否定する",
+   "distractors": [
+    "優先して選ぶ",
+    "支配下に置く",
+    "延期する"
+   ],
+   "exampleEn": "Doctors have ruled out an infection.",
+   "exampleJa": "医師たちは感染の可能性を除外した。"
+  },
+  {
+   "word": "in the wake of",
+   "pos": "熟語",
+   "meaningJa": "~の直後に、~を受けて",
+   "distractors": [
+    "~に先立って",
+    "~の代わりに",
+    "~にもかかわらず"
+   ],
+   "exampleEn": "Aid arrived in the wake of the earthquake.",
+   "exampleJa": "地震の直後に支援が到着した。"
+  }
+ ]
+}
