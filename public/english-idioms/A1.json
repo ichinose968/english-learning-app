@@ -1,0 +1,6795 @@
+{
+ "level": "A1",
+ "generatedAt": "2026-08-11T15:37:31.031Z",
+ "count": 167,
+ "words": [
+  {
+   "word": "get in",
+   "pos": "句動詞",
+   "meaningJa": "（車などに）乗り込む、中に入る",
+   "distractors": [
+    "（電車から）降りる",
+    "外に出る",
+    "家に帰り着く"
+   ],
+   "exampleEn": "My father opened the door, and I got in the car quickly.",
+   "exampleJa": "父がドアを開けて、私は素早く車に乗り込みました。",
+   "ipa": "/ˌɡet ˈɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "get out",
+     "meaningJa": "外に出る"
+    },
+    {
+     "word": "enter",
+     "meaningJa": "入る"
+    },
+    {
+     "word": "board",
+     "meaningJa": "乗り込む"
+    }
+   ]
+  },
+  {
+   "word": "get out",
+   "pos": "句動詞",
+   "meaningJa": "外に出る、（車から）降りる",
+   "distractors": [
+    "（車などに）乗り込む",
+    "（バスに）乗る",
+    "〜に到着する"
+   ],
+   "exampleEn": "The taxi stopped, and we got out in front of the hotel.",
+   "exampleJa": "タクシーが止まり、私たちはホテルの前で降りました。",
+   "ipa": "/ˌɡet ˈaʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "get in",
+     "meaningJa": "乗り込む"
+    },
+    {
+     "word": "exit",
+     "meaningJa": "出る"
+    },
+    {
+     "word": "leave",
+     "meaningJa": "去る"
+    }
+   ]
+  },
+  {
+   "word": "get to",
+   "pos": "句動詞",
+   "meaningJa": "〜に着く、到着する",
+   "distractors": [
+    "起きる",
+    "（バスに）乗る",
+    "準備をする"
+   ],
+   "exampleEn": "How can I get to the station from this hotel?",
+   "exampleJa": "このホテルから駅へはどうやって行けばいいですか。",
+   "ipa": "/ˈɡet tuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "arrive at",
+     "meaningJa": "到着する"
+    },
+    {
+     "word": "reach",
+     "meaningJa": "到達する"
+    },
+    {
+     "word": "leave",
+     "meaningJa": "出発する"
+    }
+   ]
+  },
+  {
+   "word": "get home",
+   "pos": "慣用表現",
+   "meaningJa": "家に着く、帰宅する",
+   "distractors": [
+    "準備をする",
+    "結婚する",
+    "（バスに）乗る"
+   ],
+   "exampleEn": "I usually get home at seven and have dinner with my family.",
+   "exampleJa": "私はたいてい7時に家に着いて、家族と夕食を食べます。",
+   "ipa": "/ˌɡet ˈhoʊm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "come home",
+     "meaningJa": "帰宅する"
+    },
+    {
+     "word": "get back",
+     "meaningJa": "戻る"
+    },
+    {
+     "word": "leave home",
+     "meaningJa": "家を出る"
+    }
+   ]
+  },
+  {
+   "word": "get there",
+   "pos": "慣用表現",
+   "meaningJa": "そこに着く、たどり着く",
+   "distractors": [
+    "起きる",
+    "準備をする",
+    "結婚する"
+   ],
+   "exampleEn": "The museum is far, so we will get there by bus.",
+   "exampleJa": "博物館は遠いので、私たちはバスでそこに行きます。",
+   "ipa": "/ˌɡet ˈðer/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "arrive",
+     "meaningJa": "到着する"
+    },
+    {
+     "word": "get to",
+     "meaningJa": "〜に着く"
+    },
+    {
+     "word": "reach",
+     "meaningJa": "到達する"
+    }
+   ]
+  },
+  {
+   "word": "get ready",
+   "pos": "コロケーション",
+   "meaningJa": "準備をする、支度をする",
+   "distractors": [
+    "結婚する",
+    "起きる",
+    "（電車から）降りる"
+   ],
+   "exampleEn": "Hurry up and get ready for school, or you will be late.",
+   "exampleJa": "急いで学校へ行く支度をしなさい。さもないと遅れますよ。",
+   "ipa": "/ˌɡet ˈredi/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "prepare",
+     "meaningJa": "準備する"
+    },
+    {
+     "word": "be ready for",
+     "meaningJa": "〜の準備ができている"
+    },
+    {
+     "word": "ready",
+     "meaningJa": "準備ができた"
+    }
+   ]
+  },
+  {
+   "word": "go into",
+   "pos": "句動詞",
+   "meaningJa": "〜の中に入る",
+   "distractors": [
+    "上がる、のぼる",
+    "立ち去る",
+    "戻る、帰る"
+   ],
+   "exampleEn": "She opened the door and went into the room quietly.",
+   "exampleJa": "彼女はドアを開けて、静かに部屋の中に入りました。",
+   "ipa": "/ˈɡoʊ ˈɪntuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "enter",
+     "meaningJa": "入る"
+    },
+    {
+     "word": "come into",
+     "meaningJa": "入ってくる"
+    },
+    {
+     "word": "go out",
+     "meaningJa": "外へ出る"
+    }
+   ]
+  },
+  {
+   "word": "go up",
+   "pos": "句動詞",
+   "meaningJa": "上がる、のぼる",
+   "distractors": [
+    "下がる、降りる",
+    "〜の中に入る",
+    "立ち去る"
+   ],
+   "exampleEn": "We went up to the fifth floor to see the city.",
+   "exampleJa": "私たちは街を見るために5階まで上がりました。",
+   "ipa": "/ˌɡoʊ ˈʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Finance",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "go down",
+     "meaningJa": "下がる"
+    },
+    {
+     "word": "rise",
+     "meaningJa": "上がる"
+    },
+    {
+     "word": "increase",
+     "meaningJa": "増加する"
+    }
+   ]
+  },
+  {
+   "word": "go down",
+   "pos": "句動詞",
+   "meaningJa": "下がる、降りる",
+   "distractors": [
+    "上がる、のぼる",
+    "戻る、帰る",
+    "外出する"
+   ],
+   "exampleEn": "Go down these stairs, and you will see the exit.",
+   "exampleJa": "この階段を降りると、出口が見えます。",
+   "ipa": "/ˌɡoʊ ˈdaʊn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Finance",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "go up",
+     "meaningJa": "上がる"
+    },
+    {
+     "word": "fall",
+     "meaningJa": "落ちる"
+    },
+    {
+     "word": "decrease",
+     "meaningJa": "減少する"
+    }
+   ]
+  },
+  {
+   "word": "go away",
+   "pos": "句動詞",
+   "meaningJa": "立ち去る、どこかへ行ってしまう",
+   "distractors": [
+    "戻ってくる",
+    "〜の中に入る",
+    "上がる、のぼる"
+   ],
+   "exampleEn": "The big dog barked, and the little cat went away quickly.",
+   "exampleJa": "大きな犬がほえると、小さな猫はすぐに立ち去りました。",
+   "ipa": "/ˌɡoʊ əˈweɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "leave",
+     "meaningJa": "去る"
+    },
+    {
+     "word": "disappear",
+     "meaningJa": "消える"
+    },
+    {
+     "word": "stay",
+     "meaningJa": "とどまる"
+    }
+   ]
+  },
+  {
+   "word": "come into",
+   "pos": "句動詞",
+   "meaningJa": "〜の中に入ってくる",
+   "distractors": [
+    "戻ってくる",
+    "〜の出身である",
+    "（夢などが）実現する"
+   ],
+   "exampleEn": "A small bird came into my room through the window.",
+   "exampleJa": "小さな鳥が窓から私の部屋に入ってきました。",
+   "ipa": "/ˈkʌm ˈɪntuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "go into",
+     "meaningJa": "〜の中に入る"
+    },
+    {
+     "word": "enter",
+     "meaningJa": "入る"
+    },
+    {
+     "word": "come out",
+     "meaningJa": "出てくる"
+    }
+   ]
+  },
+  {
+   "word": "come home",
+   "pos": "慣用表現",
+   "meaningJa": "家に帰ってくる",
+   "distractors": [
+    "外出する",
+    "学校へ行く",
+    "立ち去る"
+   ],
+   "exampleEn": "My mother comes home at six and cooks dinner for us.",
+   "exampleJa": "母は6時に帰宅して、私たちに夕食を作ってくれます。",
+   "ipa": "/ˌkʌm ˈhoʊm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "get home",
+     "meaningJa": "家に着く"
+    },
+    {
+     "word": "go home",
+     "meaningJa": "家に帰る"
+    },
+    {
+     "word": "leave home",
+     "meaningJa": "家を出る"
+    }
+   ]
+  },
+  {
+   "word": "run away",
+   "pos": "句動詞",
+   "meaningJa": "逃げる、逃げ出す",
+   "distractors": [
+    "〜を使い果たす",
+    "（人に）偶然出会う",
+    "捨てる"
+   ],
+   "exampleEn": "The little rabbit saw the dog and ran away into the forest.",
+   "exampleJa": "小さなウサギは犬を見て、森の中へ逃げていきました。",
+   "ipa": "/ˌrʌn əˈweɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Literary"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "runaway",
+     "meaningJa": "逃亡者"
+    },
+    {
+     "word": "escape",
+     "meaningJa": "逃げる"
+    },
+    {
+     "word": "flee",
+     "meaningJa": "逃走する"
+    }
+   ]
+  },
+  {
+   "word": "look like",
+   "pos": "句動詞",
+   "meaningJa": "〜に似ている、〜のように見える",
+   "distractors": [
+    "〜を見る",
+    "〜を探す",
+    "気をつける、注意する"
+   ],
+   "exampleEn": "People often say that I look like my mother very much.",
+   "exampleJa": "私は母にとてもよく似ているとよく言われます。",
+   "ipa": "/ˈlʊk laɪk/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "resemble",
+     "meaningJa": "似ている"
+    },
+    {
+     "word": "seem",
+     "meaningJa": "〜のようだ"
+    },
+    {
+     "word": "appear",
+     "meaningJa": "見える"
+    }
+   ]
+  },
+  {
+   "word": "look around",
+   "pos": "句動詞",
+   "meaningJa": "見て回る、あたりを見回す",
+   "distractors": [
+    "〜を探す",
+    "〜の世話をする",
+    "気をつける、注意する"
+   ],
+   "exampleEn": "We looked around the old town and took many pictures.",
+   "exampleJa": "私たちは古い町を見て回り、たくさん写真を撮りました。",
+   "ipa": "/ˌlʊk əˈraʊnd/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "look for",
+     "meaningJa": "探す"
+    },
+    {
+     "word": "browse",
+     "meaningJa": "見て回る"
+    },
+    {
+     "word": "explore",
+     "meaningJa": "探索する"
+    }
+   ]
+  },
+  {
+   "word": "ask for",
+   "pos": "句動詞",
+   "meaningJa": "〜を求める、〜をくださいと頼む",
+   "distractors": [
+    "〜を待つ",
+    "〜の代金を払う",
+    "〜を探す"
+   ],
+   "exampleEn": "She asked for some water because she was very thirsty.",
+   "exampleJa": "彼女はとてものどが渇いていたので、水をくださいと頼みました。",
+   "ipa": "/ˈæsk fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "request",
+     "meaningJa": "要求する"
+    },
+    {
+     "word": "demand",
+     "meaningJa": "強く求める"
+    },
+    {
+     "word": "offer",
+     "meaningJa": "提供する"
+    }
+   ]
+  },
+  {
+   "word": "pay for",
+   "pos": "句動詞",
+   "meaningJa": "〜の代金を払う",
+   "distractors": [
+    "〜を求める、〜をくれと頼む",
+    "〜を待つ",
+    "〜を探す"
+   ],
+   "exampleEn": "I will pay for lunch today because it is your birthday.",
+   "exampleJa": "今日はあなたの誕生日なので、昼食代は私が払います。",
+   "ipa": "/ˈpeɪ fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Finance",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "payment",
+     "meaningJa": "支払い"
+    },
+    {
+     "word": "purchase",
+     "meaningJa": "購入する"
+    },
+    {
+     "word": "charge",
+     "meaningJa": "請求する"
+    }
+   ]
+  },
+  {
+   "word": "play with",
+   "pos": "句動詞",
+   "meaningJa": "〜と遊ぶ、〜で遊ぶ",
+   "distractors": [
+    "〜に賛成する",
+    "〜と一緒に住む",
+    "〜と一緒に働く"
+   ],
+   "exampleEn": "I often play with my friends in the park after school.",
+   "exampleJa": "私は放課後、よく公園で友達と遊びます。",
+   "ipa": "/ˈpleɪ wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "play",
+     "meaningJa": "遊ぶ"
+    },
+    {
+     "word": "toy",
+     "meaningJa": "おもちゃ"
+    },
+    {
+     "word": "enjoy",
+     "meaningJa": "楽しむ"
+    }
+   ]
+  },
+  {
+   "word": "agree with",
+   "pos": "句動詞",
+   "meaningJa": "〜に賛成する",
+   "distractors": [
+    "〜と遊ぶ",
+    "〜と一緒に住む",
+    "〜から始まる"
+   ],
+   "exampleEn": "I agree with your idea. Let's have the party on Saturday.",
+   "exampleJa": "あなたの考えに賛成です。土曜日にパーティーをしましょう。",
+   "ipa": "/əˈɡriː wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "agreement",
+     "meaningJa": "合意"
+    },
+    {
+     "word": "disagree with",
+     "meaningJa": "〜に反対する"
+    },
+    {
+     "word": "approve",
+     "meaningJa": "賛成する"
+    }
+   ]
+  },
+  {
+   "word": "live with",
+   "pos": "句動詞",
+   "meaningJa": "〜と一緒に住む",
+   "distractors": [
+    "〜と遊ぶ",
+    "〜に賛成する",
+    "〜と一緒に働く"
+   ],
+   "exampleEn": "I live with my parents and my grandmother in Osaka.",
+   "exampleJa": "私は大阪で両親と祖母と一緒に住んでいます。",
+   "ipa": "/ˈlɪv wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "live",
+     "meaningJa": "住む"
+    },
+    {
+     "word": "share",
+     "meaningJa": "共有する"
+    },
+    {
+     "word": "move in",
+     "meaningJa": "引っ越してくる"
+    }
+   ]
+  },
+  {
+   "word": "talk to",
+   "pos": "句動詞",
+   "meaningJa": "〜に話しかける、〜と話す",
+   "distractors": [
+    "〜について話す",
+    "〜について考える",
+    "〜から連絡をもらう"
+   ],
+   "exampleEn": "I want to talk to you about the school festival.",
+   "exampleJa": "学園祭についてあなたと話したいのですが。",
+   "ipa": "/ˈtɔːk tuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "speak to",
+     "meaningJa": "〜に話しかける"
+    },
+    {
+     "word": "talk with",
+     "meaningJa": "〜と話し合う"
+    },
+    {
+     "word": "chat",
+     "meaningJa": "おしゃべりする"
+    }
+   ]
+  },
+  {
+   "word": "think of",
+   "pos": "句動詞",
+   "meaningJa": "〜を思いつく",
+   "distractors": [
+    "〜について話す",
+    "〜から連絡をもらう",
+    "〜に賛成する"
+   ],
+   "exampleEn": "I can't think of a good name for my new dog.",
+   "exampleJa": "新しく飼った犬のいい名前が思いつきません。",
+   "ipa": "/ˈθɪŋk əv/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Education",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "think about",
+     "meaningJa": "〜について考える"
+    },
+    {
+     "word": "come up with",
+     "meaningJa": "思いつく"
+    },
+    {
+     "word": "imagine",
+     "meaningJa": "想像する"
+    }
+   ]
+  },
+  {
+   "word": "speak to",
+   "pos": "句動詞",
+   "meaningJa": "〜と話す、〜に話しかける",
+   "distractors": [
+    "〜に手紙を書く",
+    "〜から連絡をもらう",
+    "〜を書き留める"
+   ],
+   "exampleEn": "May I speak to Mr. Brown? This is Ken speaking.",
+   "exampleJa": "ブラウンさんとお話しできますか。こちらはケンです。",
+   "ipa": "/ˈspiːk tuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "talk to",
+     "meaningJa": "〜に話しかける"
+    },
+    {
+     "word": "speak with",
+     "meaningJa": "〜と話す"
+    },
+    {
+     "word": "address",
+     "meaningJa": "話しかける"
+    }
+   ]
+  },
+  {
+   "word": "hear from",
+   "pos": "句動詞",
+   "meaningJa": "〜から連絡をもらう、便りがある",
+   "distractors": [
+    "〜のことを聞いて知っている",
+    "〜に手紙を書く",
+    "〜に話しかける"
+   ],
+   "exampleEn": "I was glad to hear from my old friend in London.",
+   "exampleJa": "ロンドンにいる古い友人から連絡をもらってうれしかったです。",
+   "ipa": "/ˈhɪr frʌm/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "hear about",
+     "meaningJa": "〜について聞く"
+    },
+    {
+     "word": "contact",
+     "meaningJa": "連絡する"
+    },
+    {
+     "word": "reply",
+     "meaningJa": "返事する"
+    }
+   ]
+  },
+  {
+   "word": "write to",
+   "pos": "句動詞",
+   "meaningJa": "〜に手紙を書く",
+   "distractors": [
+    "〜を書き留める、メモする",
+    "〜から連絡をもらう",
+    "電話をかけ直す"
+   ],
+   "exampleEn": "I write to my grandmother every month because she lives far away.",
+   "exampleJa": "祖母は遠くに住んでいるので、私は毎月祖母に手紙を書きます。",
+   "ipa": "/ˈraɪt tuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "write back",
+     "meaningJa": "返事を書く"
+    },
+    {
+     "word": "letter",
+     "meaningJa": "手紙"
+    },
+    {
+     "word": "email",
+     "meaningJa": "メール"
+    }
+   ]
+  },
+  {
+   "word": "call back",
+   "pos": "句動詞",
+   "meaningJa": "電話をかけ直す",
+   "distractors": [
+    "〜を返す",
+    "戻ってくる",
+    "〜に手紙を書く"
+   ],
+   "exampleEn": "Mr. Sato is out now. Can you call back later?",
+   "exampleJa": "佐藤さんは今外出しています。後でかけ直してもらえますか。",
+   "ipa": "/ˌkɔːl ˈbæk/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "call up",
+     "meaningJa": "電話をかける"
+    },
+    {
+     "word": "return a call",
+     "meaningJa": "折り返し電話する"
+    },
+    {
+     "word": "phone",
+     "meaningJa": "電話する"
+    }
+   ]
+  },
+  {
+   "word": "eat out",
+   "pos": "句動詞",
+   "meaningJa": "外食する",
+   "distractors": [
+    "外出する、出かける",
+    "（調べて）わかる",
+    "気をつける、注意する"
+   ],
+   "exampleEn": "My family eats out at a nice restaurant every Friday evening.",
+   "exampleJa": "私の家族は毎週金曜日の夜、すてきなレストランで外食します。",
+   "ipa": "/ˌiːt ˈaʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Travel"
+   ],
+   "themes": [
+    "Food",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "dine out",
+     "meaningJa": "外食する"
+    },
+    {
+     "word": "restaurant",
+     "meaningJa": "レストラン"
+    },
+    {
+     "word": "cook",
+     "meaningJa": "料理する"
+    }
+   ]
+  },
+  {
+   "word": "fall down",
+   "pos": "句動詞",
+   "meaningJa": "転ぶ、倒れる",
+   "distractors": [
+    "横になる",
+    "座る",
+    "〜を書き留める"
+   ],
+   "exampleEn": "Be careful on the wet floor, or you will fall down.",
+   "exampleJa": "ぬれた床では気をつけて。転んでしまいますよ。",
+   "ipa": "/ˌfɔːl ˈdaʊn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "fall",
+     "meaningJa": "落ちる"
+    },
+    {
+     "word": "trip",
+     "meaningJa": "つまずく"
+    },
+    {
+     "word": "stand up",
+     "meaningJa": "立ち上がる"
+    }
+   ]
+  },
+  {
+   "word": "belong to",
+   "pos": "句動詞",
+   "meaningJa": "〜に所属している、〜のものである",
+   "distractors": [
+    "〜を聞く",
+    "〜に話しかける",
+    "〜によろしくと伝える"
+   ],
+   "exampleEn": "I belong to the tennis club, and we practice every Tuesday.",
+   "exampleJa": "私はテニス部に所属していて、毎週火曜日に練習します。",
+   "ipa": "/bɪˈlɔːŋ tuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "belonging",
+     "meaningJa": "所属、持ち物"
+    },
+    {
+     "word": "own",
+     "meaningJa": "所有する"
+    },
+    {
+     "word": "member",
+     "meaningJa": "会員"
+    }
+   ]
+  },
+  {
+   "word": "dress up",
+   "pos": "句動詞",
+   "meaningJa": "おしゃれをする、正装する",
+   "distractors": [
+    "起きる",
+    "急ぐ",
+    "成長する、大人になる"
+   ],
+   "exampleEn": "We all dressed up for my cousin's wedding party last Sunday.",
+   "exampleJa": "先週の日曜日、私たちはみんな、いとこの結婚式のためにおしゃれをしました。",
+   "ipa": "/ˌdres ˈʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "dress",
+     "meaningJa": "服を着る"
+    },
+    {
+     "word": "dress down",
+     "meaningJa": "くだけた服装をする"
+    },
+    {
+     "word": "costume",
+     "meaningJa": "衣装"
+    }
+   ]
+  },
+  {
+   "word": "work for",
+   "pos": "句動詞",
+   "meaningJa": "〜に勤めている、〜で働いている",
+   "distractors": [
+    "〜と一緒に働く",
+    "一生懸命働く",
+    "（計画などが）うまくいく"
+   ],
+   "exampleEn": "My father has worked for a car company for twenty years.",
+   "exampleJa": "父は自動車会社に20年間勤めています。",
+   "ipa": "/ˈwɜːrk fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "employ",
+     "meaningJa": "雇う"
+    },
+    {
+     "word": "employer",
+     "meaningJa": "雇い主"
+    },
+    {
+     "word": "employee",
+     "meaningJa": "従業員"
+    }
+   ]
+  },
+  {
+   "word": "work with",
+   "pos": "句動詞",
+   "meaningJa": "〜と一緒に働く",
+   "distractors": [
+    "〜に勤めている",
+    "一生懸命働く",
+    "（計画などが）うまくいく"
+   ],
+   "exampleEn": "I like to work with Ken because he is very kind.",
+   "exampleJa": "ケンはとても親切なので、私は彼と一緒に働くのが好きです。",
+   "ipa": "/ˈwɜːrk wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "cooperate",
+     "meaningJa": "協力する"
+    },
+    {
+     "word": "colleague",
+     "meaningJa": "同僚"
+    },
+    {
+     "word": "collaborate",
+     "meaningJa": "共同で行う"
+    }
+   ]
+  },
+  {
+   "word": "begin with",
+   "pos": "句動詞",
+   "meaningJa": "〜から始まる、〜で始める",
+   "distractors": [
+    "〜に賛成する",
+    "〜と一緒に住む",
+    "〜と遊ぶ"
+   ],
+   "exampleEn": "The movie begins with a beautiful song about the sea.",
+   "exampleJa": "その映画は海についての美しい歌で始まります。",
+   "ipa": "/bɪˈɡɪn wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "start with",
+     "meaningJa": "〜から始める"
+    },
+    {
+     "word": "end with",
+     "meaningJa": "〜で終わる"
+    },
+    {
+     "word": "beginning",
+     "meaningJa": "始まり"
+    }
+   ]
+  },
+  {
+   "word": "arrive at",
+   "pos": "句動詞",
+   "meaningJa": "（駅・建物などの場所に）到着する",
+   "distractors": [
+    "〜へ向けて出発する",
+    "（乗り物に）乗る",
+    "〜を探す"
+   ],
+   "exampleEn": "We arrived at the airport two hours before the flight.",
+   "exampleJa": "私たちは飛行機の出発の2時間前に空港に着きました。",
+   "ipa": "/əˈraɪv æt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Travel",
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "arrive in",
+     "meaningJa": "(都市などに)到着する"
+    },
+    {
+     "word": "arrival",
+     "meaningJa": "到着"
+    },
+    {
+     "word": "depart",
+     "meaningJa": "出発する"
+    }
+   ]
+  },
+  {
+   "word": "arrive in",
+   "pos": "句動詞",
+   "meaningJa": "（都市・国などに）到着する",
+   "distractors": [
+    "〜へ向けて出発する",
+    "（車などに）乗り込む",
+    "〜に住んでいる"
+   ],
+   "exampleEn": "My uncle will arrive in Tokyo at ten tomorrow morning.",
+   "exampleJa": "おじは明日の朝10時に東京に到着します。",
+   "ipa": "/əˈraɪv ɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Travel",
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "arrive at",
+     "meaningJa": "(場所に)到着する"
+    },
+    {
+     "word": "arrival",
+     "meaningJa": "到着"
+    },
+    {
+     "word": "leave",
+     "meaningJa": "出発する"
+    }
+   ]
+  },
+  {
+   "word": "say hello to",
+   "pos": "慣用表現",
+   "meaningJa": "〜によろしくと伝える、〜にあいさつする",
+   "distractors": [
+    "〜にさよならを言う",
+    "〜に手紙を書く",
+    "〜から連絡をもらう"
+   ],
+   "exampleEn": "When you see your grandmother, please say hello to her for me.",
+   "exampleJa": "おばあさんに会ったら、私からよろしくと伝えてください。",
+   "ipa": "/ˌseɪ həˈloʊ tuː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "greet",
+     "meaningJa": "あいさつする"
+    },
+    {
+     "word": "give one's regards",
+     "meaningJa": "よろしく伝える"
+    },
+    {
+     "word": "hello",
+     "meaningJa": "こんにちは"
+    }
+   ]
+  },
+  {
+   "word": "stay home",
+   "pos": "慣用表現",
+   "meaningJa": "家にいる、家で過ごす",
+   "distractors": [
+    "夜ふかしして起きている",
+    "ホテルに滞在する",
+    "外食する"
+   ],
+   "exampleEn": "It rained all day, so we stayed home and watched movies.",
+   "exampleJa": "一日中雨だったので、私たちは家にいて映画を見ました。",
+   "ipa": "/ˌsteɪ ˈhoʊm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "stay in",
+     "meaningJa": "家の中にいる"
+    },
+    {
+     "word": "go out",
+     "meaningJa": "外出する"
+    },
+    {
+     "word": "home",
+     "meaningJa": "家"
+    }
+   ]
+  },
+  {
+   "word": "stay in",
+   "pos": "句動詞",
+   "meaningJa": "外出しないで家の中にいる",
+   "distractors": [
+    "夜ふかしして起きている",
+    "立ち去る",
+    "外食する"
+   ],
+   "exampleEn": "I will stay in tonight because I have a lot of homework.",
+   "exampleJa": "宿題がたくさんあるので、今夜は家にいます。",
+   "ipa": "/ˌsteɪ ˈɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "stay home",
+     "meaningJa": "家にいる"
+    },
+    {
+     "word": "go out",
+     "meaningJa": "外出する"
+    },
+    {
+     "word": "remain",
+     "meaningJa": "とどまる"
+    }
+   ]
+  },
+  {
+   "word": "turn left",
+   "pos": "コロケーション",
+   "meaningJa": "左に曲がる",
+   "distractors": [
+    "右に曲がる",
+    "まっすぐ進む",
+    "引き返す"
+   ],
+   "exampleEn": "Turn left at the bank, and you will see the post office.",
+   "exampleJa": "銀行のところで左に曲がると、郵便局が見えます。",
+   "ipa": "/ˌtɜːrn ˈleft/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "turn right",
+     "meaningJa": "右に曲がる"
+    },
+    {
+     "word": "go straight",
+     "meaningJa": "まっすぐ進む"
+    },
+    {
+     "word": "on the left",
+     "meaningJa": "左側に"
+    }
+   ]
+  },
+  {
+   "word": "turn right",
+   "pos": "コロケーション",
+   "meaningJa": "右に曲がる",
+   "distractors": [
+    "左に曲がる",
+    "まっすぐ進む",
+    "引き返す"
+   ],
+   "exampleEn": "Go along this street and turn right at the second corner.",
+   "exampleJa": "この通りを進んで、2つ目の角で右に曲がってください。",
+   "ipa": "/ˌtɜːrn ˈraɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "turn left",
+     "meaningJa": "左に曲がる"
+    },
+    {
+     "word": "go straight",
+     "meaningJa": "まっすぐ進む"
+    },
+    {
+     "word": "on the right",
+     "meaningJa": "右側に"
+    }
+   ]
+  },
+  {
+   "word": "go straight",
+   "pos": "コロケーション",
+   "meaningJa": "まっすぐ進む",
+   "distractors": [
+    "左に曲がる",
+    "右に曲がる",
+    "戻る、引き返す"
+   ],
+   "exampleEn": "Go straight for two blocks, and the station is on your right.",
+   "exampleJa": "2ブロックまっすぐ進むと、駅は右側にあります。",
+   "ipa": "/ˌɡoʊ ˈstreɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "turn left",
+     "meaningJa": "左に曲がる"
+    },
+    {
+     "word": "straight",
+     "meaningJa": "まっすぐに"
+    },
+    {
+     "word": "direction",
+     "meaningJa": "方向"
+    }
+   ]
+  },
+  {
+   "word": "welcome to",
+   "pos": "慣用表現",
+   "meaningJa": "〜へようこそ",
+   "distractors": [
+    "〜に所属している",
+    "〜によろしくと伝える",
+    "〜を聞く"
+   ],
+   "exampleEn": "Welcome to our school! Let me show you around today.",
+   "exampleJa": "私たちの学校へようこそ。今日は私が案内します。",
+   "ipa": "/ˈwelkəm tuː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "welcome",
+     "meaningJa": "歓迎する"
+    },
+    {
+     "word": "greeting",
+     "meaningJa": "あいさつ"
+    },
+    {
+     "word": "host",
+     "meaningJa": "主催者"
+    }
+   ]
+  },
+  {
+   "word": "take a walk",
+   "pos": "コロケーション",
+   "meaningJa": "散歩をする",
+   "distractors": [
+    "写真を撮る",
+    "休憩する",
+    "バスに乗る"
+   ],
+   "exampleEn": "My grandfather takes a walk in the park every morning.",
+   "exampleJa": "祖父は毎朝公園を散歩します。",
+   "ipa": "/ˌteɪk ə ˈwɔːk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "go for a walk",
+     "meaningJa": "散歩に行く"
+    },
+    {
+     "word": "walk",
+     "meaningJa": "歩く"
+    },
+    {
+     "word": "stroll",
+     "meaningJa": "ぶらぶら歩く"
+    }
+   ]
+  },
+  {
+   "word": "take a look",
+   "pos": "コロケーション",
+   "meaningJa": "ちょっと見てみる",
+   "distractors": [
+    "写真を撮る",
+    "散歩をする",
+    "休憩する"
+   ],
+   "exampleEn": "Take a look at this picture. My cat is sleeping in a box.",
+   "exampleJa": "この写真をちょっと見てください。うちの猫が箱の中で寝ています。",
+   "ipa": "/ˌteɪk ə ˈlʊk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "have a look",
+     "meaningJa": "ちょっと見る"
+    },
+    {
+     "word": "look",
+     "meaningJa": "見る"
+    },
+    {
+     "word": "check",
+     "meaningJa": "確認する"
+    }
+   ]
+  },
+  {
+   "word": "take a break",
+   "pos": "コロケーション",
+   "meaningJa": "休憩する",
+   "distractors": [
+    "散歩をする",
+    "風呂に入る",
+    "バスに乗る"
+   ],
+   "exampleEn": "We studied for two hours, so let's take a break now.",
+   "exampleJa": "2時間勉強したので、今から休憩しましょう。",
+   "ipa": "/ˌteɪk ə ˈbreɪk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "take a rest",
+     "meaningJa": "休息をとる"
+    },
+    {
+     "word": "rest",
+     "meaningJa": "休む"
+    },
+    {
+     "word": "break",
+     "meaningJa": "休憩"
+    }
+   ]
+  },
+  {
+   "word": "take the bus",
+   "pos": "コロケーション",
+   "meaningJa": "バスに乗る、バスを利用する",
+   "distractors": [
+    "休憩する",
+    "写真を撮る",
+    "散歩をする"
+   ],
+   "exampleEn": "I usually take the bus to school when it rains hard.",
+   "exampleJa": "雨が強いとき、私はたいていバスで学校に行きます。",
+   "ipa": "/ˌteɪk ðə ˈbʌs/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "take a train",
+     "meaningJa": "電車に乗る"
+    },
+    {
+     "word": "ride",
+     "meaningJa": "乗る"
+    },
+    {
+     "word": "bus stop",
+     "meaningJa": "バス停"
+    }
+   ]
+  },
+  {
+   "word": "take care",
+   "pos": "慣用表現",
+   "meaningJa": "気をつける、（別れのあいさつで）お元気で",
+   "distractors": [
+    "休憩する",
+    "楽しむ",
+    "散歩をする"
+   ],
+   "exampleEn": "It was nice to see you. Take care, and see you soon!",
+   "exampleJa": "会えてよかったです。お元気で。また近いうちに会いましょう。",
+   "ipa": "/ˌteɪk ˈker/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "take care of",
+     "meaningJa": "〜の世話をする"
+    },
+    {
+     "word": "careful",
+     "meaningJa": "注意深い"
+    },
+    {
+     "word": "look after",
+     "meaningJa": "世話をする"
+    }
+   ]
+  },
+  {
+   "word": "have fun",
+   "pos": "コロケーション",
+   "meaningJa": "楽しむ",
+   "distractors": [
+    "朝食を食べる",
+    "風邪をひいている",
+    "時間がある"
+   ],
+   "exampleEn": "Have fun at the party, and come home before nine.",
+   "exampleJa": "パーティーを楽しんできてね。9時前には帰ってきなさい。",
+   "ipa": "/ˌhæv ˈfʌn/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "have a good time",
+     "meaningJa": "楽しい時間を過ごす"
+    },
+    {
+     "word": "enjoy oneself",
+     "meaningJa": "楽しく過ごす"
+    },
+    {
+     "word": "fun",
+     "meaningJa": "楽しみ"
+    }
+   ]
+  },
+  {
+   "word": "have breakfast",
+   "pos": "コロケーション",
+   "meaningJa": "朝食を食べる",
+   "distractors": [
+    "昼食を食べる",
+    "夕食を食べる",
+    "楽しむ"
+   ],
+   "exampleEn": "I have breakfast at seven with my family every day.",
+   "exampleJa": "私は毎日7時に家族と朝食を食べます。",
+   "ipa": "/ˌhæv ˈbrekfəst/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "have lunch",
+     "meaningJa": "昼食を食べる"
+    },
+    {
+     "word": "breakfast",
+     "meaningJa": "朝食"
+    },
+    {
+     "word": "eat",
+     "meaningJa": "食べる"
+    }
+   ]
+  },
+  {
+   "word": "have lunch",
+   "pos": "コロケーション",
+   "meaningJa": "昼食を食べる",
+   "distractors": [
+    "朝食を食べる",
+    "夕食を食べる",
+    "休憩する"
+   ],
+   "exampleEn": "Let's have lunch together at the new restaurant near the station.",
+   "exampleJa": "駅の近くの新しいレストランで一緒に昼食を食べましょう。",
+   "ipa": "/ˌhæv ˈlʌntʃ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "have dinner",
+     "meaningJa": "夕食を食べる"
+    },
+    {
+     "word": "lunch",
+     "meaningJa": "昼食"
+    },
+    {
+     "word": "eat out",
+     "meaningJa": "外食する"
+    }
+   ]
+  },
+  {
+   "word": "have dinner",
+   "pos": "コロケーション",
+   "meaningJa": "夕食を食べる",
+   "distractors": [
+    "朝食を食べる",
+    "昼食を食べる",
+    "外食する"
+   ],
+   "exampleEn": "We had dinner at my grandmother's house last Sunday evening.",
+   "exampleJa": "先週の日曜日の夜、私たちは祖母の家で夕食を食べました。",
+   "ipa": "/ˌhæv ˈdɪnər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "have lunch",
+     "meaningJa": "昼食を食べる"
+    },
+    {
+     "word": "dinner",
+     "meaningJa": "夕食"
+    },
+    {
+     "word": "supper",
+     "meaningJa": "夕食"
+    }
+   ]
+  },
+  {
+   "word": "have a cold",
+   "pos": "コロケーション",
+   "meaningJa": "風邪をひいている",
+   "distractors": [
+    "楽しい時間を過ごす",
+    "時間がある",
+    "頭が痛い"
+   ],
+   "exampleEn": "I have a cold, so I will stay in bed today.",
+   "exampleJa": "風邪をひいているので、今日はベッドで寝ています。",
+   "ipa": "/ˌhæv ə ˈkoʊld/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "catch a cold",
+     "meaningJa": "風邪をひく"
+    },
+    {
+     "word": "cold",
+     "meaningJa": "風邪"
+    },
+    {
+     "word": "have a fever",
+     "meaningJa": "熱がある"
+    }
+   ]
+  },
+  {
+   "word": "have a good time",
+   "pos": "コロケーション",
+   "meaningJa": "楽しい時間を過ごす",
+   "distractors": [
+    "朝食を食べる",
+    "時間がある",
+    "風邪をひいている"
+   ],
+   "exampleEn": "We had a good time at the beach last weekend.",
+   "exampleJa": "先週末、私たちはビーチで楽しい時間を過ごしました。",
+   "ipa": "/ˌhæv ə ɡʊd ˈtaɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "have fun",
+     "meaningJa": "楽しむ"
+    },
+    {
+     "word": "enjoy oneself",
+     "meaningJa": "楽しく過ごす"
+    },
+    {
+     "word": "good time",
+     "meaningJa": "楽しい時間"
+    }
+   ]
+  },
+  {
+   "word": "have time",
+   "pos": "コロケーション",
+   "meaningJa": "時間がある",
+   "distractors": [
+    "楽しい時間を過ごす",
+    "風邪をひいている",
+    "昼食を食べる"
+   ],
+   "exampleEn": "Do you have time this afternoon? I want to talk with you.",
+   "exampleJa": "今日の午後、時間はありますか。あなたと話したいのです。",
+   "ipa": "/ˌhæv ˈtaɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "spend time",
+     "meaningJa": "時間を過ごす"
+    },
+    {
+     "word": "free time",
+     "meaningJa": "自由時間"
+    },
+    {
+     "word": "busy",
+     "meaningJa": "忙しい"
+    }
+   ]
+  },
+  {
+   "word": "have got",
+   "pos": "慣用表現",
+   "meaningJa": "〜を持っている（have の口語表現）",
+   "distractors": [
+    "〜しなければならない",
+    "楽しい時間を過ごす",
+    "風邪をひいている"
+   ],
+   "exampleEn": "I have got two dogs and a cat at home.",
+   "exampleJa": "私は家に犬2匹と猫1匹を飼っています。",
+   "ipa": "/ˌhæv ˈɡɑːt/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "have",
+     "meaningJa": "持っている"
+    },
+    {
+     "word": "own",
+     "meaningJa": "所有する"
+    },
+    {
+     "word": "possess",
+     "meaningJa": "所持する"
+    }
+   ]
+  },
+  {
+   "word": "make friends",
+   "pos": "コロケーション",
+   "meaningJa": "友達になる、友達を作る",
+   "distractors": [
+    "間違える",
+    "決心する",
+    "ベッドを整える"
+   ],
+   "exampleEn": "I want to make friends with the new student from Australia.",
+   "exampleJa": "私はオーストラリアから来た新しい生徒と友達になりたいです。",
+   "ipa": "/ˌmeɪk ˈfrendz/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "friend",
+     "meaningJa": "友達"
+    },
+    {
+     "word": "friendship",
+     "meaningJa": "友情"
+    },
+    {
+     "word": "get to know",
+     "meaningJa": "知り合いになる"
+    }
+   ]
+  },
+  {
+   "word": "make a mistake",
+   "pos": "コロケーション",
+   "meaningJa": "間違える",
+   "distractors": [
+    "友達になる",
+    "決心する",
+    "ベッドを整える"
+   ],
+   "exampleEn": "Don't worry. Everyone makes a mistake when they learn something new.",
+   "exampleJa": "心配しないで。新しいことを学ぶときは、だれでも間違えます。",
+   "ipa": "/ˌmeɪk ə mɪˈsteɪk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "mistake",
+     "meaningJa": "間違い"
+    },
+    {
+     "word": "error",
+     "meaningJa": "誤り"
+    },
+    {
+     "word": "correct",
+     "meaningJa": "訂正する"
+    }
+   ]
+  },
+  {
+   "word": "do your homework",
+   "pos": "コロケーション",
+   "meaningJa": "宿題をする",
+   "distractors": [
+    "最善を尽くす",
+    "皿を洗う",
+    "家事をする"
+   ],
+   "exampleEn": "Do your homework first, and then you can play video games.",
+   "exampleJa": "まず宿題をしなさい。そうすればテレビゲームをしていいですよ。",
+   "ipa": "/ˌduː jɔːr ˈhoʊmwɜːrk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Education",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "homework",
+     "meaningJa": "宿題"
+    },
+    {
+     "word": "assignment",
+     "meaningJa": "課題"
+    },
+    {
+     "word": "study",
+     "meaningJa": "勉強する"
+    }
+   ]
+  },
+  {
+   "word": "do your best",
+   "pos": "コロケーション",
+   "meaningJa": "最善を尽くす、全力を尽くす",
+   "distractors": [
+    "宿題をする",
+    "皿を洗う",
+    "家事をする"
+   ],
+   "exampleEn": "Do your best in the game tomorrow. I will watch you.",
+   "exampleJa": "明日の試合では全力を尽くしてね。見に行くよ。",
+   "ipa": "/ˌduː jɔːr ˈbest/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Education",
+    "Sports",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "do one's best",
+     "meaningJa": "全力を尽くす"
+    },
+    {
+     "word": "try hard",
+     "meaningJa": "懸命に努力する"
+    },
+    {
+     "word": "effort",
+     "meaningJa": "努力"
+    }
+   ]
+  },
+  {
+   "word": "go to school",
+   "pos": "コロケーション",
+   "meaningJa": "学校へ行く、学校に通う",
+   "distractors": [
+    "寝る、床につく",
+    "仕事に行く",
+    "買い物に行く"
+   ],
+   "exampleEn": "My brother and I go to school by bike every day.",
+   "exampleJa": "兄と私は毎日自転車で学校に通っています。",
+   "ipa": "/ˌɡoʊ tə ˈskuːl/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Education",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "school",
+     "meaningJa": "学校"
+    },
+    {
+     "word": "attend",
+     "meaningJa": "通う"
+    },
+    {
+     "word": "go to work",
+     "meaningJa": "仕事に行く"
+    }
+   ]
+  },
+  {
+   "word": "go to work",
+   "pos": "コロケーション",
+   "meaningJa": "仕事に行く、出勤する",
+   "distractors": [
+    "学校へ行く",
+    "寝る、床につく",
+    "散歩に行く"
+   ],
+   "exampleEn": "My mother goes to work by train at eight every morning.",
+   "exampleJa": "母は毎朝8時に電車で仕事に行きます。",
+   "ipa": "/ˌɡoʊ tə ˈwɜːrk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "commute",
+     "meaningJa": "通勤する"
+    },
+    {
+     "word": "work",
+     "meaningJa": "仕事"
+    },
+    {
+     "word": "go to school",
+     "meaningJa": "学校へ行く"
+    }
+   ]
+  },
+  {
+   "word": "go camping",
+   "pos": "コロケーション",
+   "meaningJa": "キャンプに行く",
+   "distractors": [
+    "釣りに行く",
+    "泳ぎに行く",
+    "旅行に行く"
+   ],
+   "exampleEn": "We will go camping in the mountains with my uncle next weekend.",
+   "exampleJa": "来週末、私たちはおじと一緒に山へキャンプに行きます。",
+   "ipa": "/ˌɡoʊ ˈkæmpɪŋ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Nature",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "camping",
+     "meaningJa": "キャンプ"
+    },
+    {
+     "word": "camp",
+     "meaningJa": "野営する"
+    },
+    {
+     "word": "hiking",
+     "meaningJa": "ハイキング"
+    }
+   ]
+  },
+  {
+   "word": "go for a walk",
+   "pos": "慣用表現",
+   "meaningJa": "散歩に行く",
+   "distractors": [
+    "買い物に行く",
+    "旅行に行く",
+    "泳ぎに行く"
+   ],
+   "exampleEn": "It is a beautiful day. Let's go for a walk in the park.",
+   "exampleJa": "今日はいい天気ですね。公園へ散歩に行きましょう。",
+   "ipa": "/ˌɡoʊ fər ə ˈwɔːk/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "take a walk",
+     "meaningJa": "散歩をする"
+    },
+    {
+     "word": "walk",
+     "meaningJa": "歩く"
+    },
+    {
+     "word": "stroll",
+     "meaningJa": "散策"
+    }
+   ]
+  },
+  {
+   "word": "go on a trip",
+   "pos": "慣用表現",
+   "meaningJa": "旅行に行く",
+   "distractors": [
+    "散歩に行く",
+    "キャンプに行く",
+    "買い物に行く"
+   ],
+   "exampleEn": "My family will go on a trip to Kyoto this fall.",
+   "exampleJa": "私の家族はこの秋、京都へ旅行に行きます。",
+   "ipa": "/ˌɡoʊ ɑːn ə ˈtrɪp/",
+   "posEn": "Idiom",
+   "domains": [
+    "Travel",
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "take a trip",
+     "meaningJa": "旅行する"
+    },
+    {
+     "word": "travel",
+     "meaningJa": "旅行する"
+    },
+    {
+     "word": "journey",
+     "meaningJa": "旅"
+    }
+   ]
+  },
+  {
+   "word": "ride a bike",
+   "pos": "コロケーション",
+   "meaningJa": "自転車に乗る",
+   "distractors": [
+    "バスに乗る",
+    "車を運転する",
+    "電車に乗る"
+   ],
+   "exampleEn": "I learned to ride a bike when I was five years old.",
+   "exampleJa": "私は5歳のときに自転車に乗れるようになりました。",
+   "ipa": "/ˌraɪd ə ˈbaɪk/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Sports",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "bike",
+     "meaningJa": "自転車"
+    },
+    {
+     "word": "cycling",
+     "meaningJa": "サイクリング"
+    },
+    {
+     "word": "ride",
+     "meaningJa": "乗る"
+    }
+   ]
+  },
+  {
+   "word": "ask a question",
+   "pos": "コロケーション",
+   "meaningJa": "質問をする",
+   "distractors": [
+    "〜を求める、〜をくれと頼む",
+    "質問に答える",
+    "間違える"
+   ],
+   "exampleEn": "Please raise your hand if you want to ask a question.",
+   "exampleJa": "質問をしたい人は手を挙げてください。",
+   "ipa": "/ˌæsk ə ˈkwestʃən/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "question",
+     "meaningJa": "質問"
+    },
+    {
+     "word": "answer",
+     "meaningJa": "答える"
+    },
+    {
+     "word": "inquire",
+     "meaningJa": "尋ねる"
+    }
+   ]
+  },
+  {
+   "word": "watch tv",
+   "pos": "コロケーション",
+   "meaningJa": "テレビを見る",
+   "distractors": [
+    "音楽を聞く",
+    "映画を見に行く",
+    "写真を撮る"
+   ],
+   "exampleEn": "I watch TV for one hour after dinner every day.",
+   "exampleJa": "私は毎日夕食の後に1時間テレビを見ます。",
+   "ipa": "/ˌwɑːtʃ ˌtiː ˈviː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "television",
+     "meaningJa": "テレビ"
+    },
+    {
+     "word": "on tv",
+     "meaningJa": "テレビで"
+    },
+    {
+     "word": "program",
+     "meaningJa": "番組"
+    }
+   ]
+  },
+  {
+   "word": "talk on the phone",
+   "pos": "慣用表現",
+   "meaningJa": "電話で話す",
+   "distractors": [
+    "〜について話す",
+    "〜に話しかける",
+    "電話をかけ直す"
+   ],
+   "exampleEn": "My sister talks on the phone with her friend every night.",
+   "exampleJa": "姉は毎晩友達と電話で話します。",
+   "ipa": "/ˌtɔːk ɑːn ðə ˈfoʊn/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "on the phone",
+     "meaningJa": "電話中で"
+    },
+    {
+     "word": "call",
+     "meaningJa": "電話する"
+    },
+    {
+     "word": "phone",
+     "meaningJa": "電話"
+    }
+   ]
+  },
+  {
+   "word": "brush your teeth",
+   "pos": "コロケーション",
+   "meaningJa": "歯をみがく",
+   "distractors": [
+    "髪をとかす",
+    "手を洗う",
+    "顔を洗う"
+   ],
+   "exampleEn": "Brush your teeth after every meal and before you go to bed.",
+   "exampleJa": "毎食後と寝る前に歯をみがきなさい。",
+   "ipa": "/ˌbrʌʃ jɔːr ˈtiːθ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "toothbrush",
+     "meaningJa": "歯ブラシ"
+    },
+    {
+     "word": "teeth",
+     "meaningJa": "歯"
+    },
+    {
+     "word": "wash your hands",
+     "meaningJa": "手を洗う"
+    }
+   ]
+  },
+  {
+   "word": "wash your hands",
+   "pos": "コロケーション",
+   "meaningJa": "手を洗う",
+   "distractors": [
+    "歯をみがく",
+    "顔を洗う",
+    "皿を洗う"
+   ],
+   "exampleEn": "Please wash your hands with soap before you eat your lunch.",
+   "exampleJa": "昼食を食べる前に、せっけんで手を洗ってください。",
+   "ipa": "/ˌwɑːʃ jɔːr ˈhændz/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "wash",
+     "meaningJa": "洗う"
+    },
+    {
+     "word": "hand",
+     "meaningJa": "手"
+    },
+    {
+     "word": "hygiene",
+     "meaningJa": "衛生"
+    }
+   ]
+  },
+  {
+   "word": "spend time",
+   "pos": "コロケーション",
+   "meaningJa": "時間を過ごす",
+   "distractors": [
+    "お金を使う",
+    "時間がある",
+    "時間を節約する"
+   ],
+   "exampleEn": "I like to spend time with my family on weekends.",
+   "exampleJa": "私は週末に家族と時間を過ごすのが好きです。",
+   "ipa": "/ˌspend ˈtaɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "spend",
+     "meaningJa": "費やす"
+    },
+    {
+     "word": "have time",
+     "meaningJa": "時間がある"
+    },
+    {
+     "word": "waste time",
+     "meaningJa": "時間を無駄にする"
+    }
+   ]
+  },
+  {
+   "word": "work hard",
+   "pos": "コロケーション",
+   "meaningJa": "一生懸命働く、熱心に取り組む",
+   "distractors": [
+    "〜に勤めている",
+    "〜と一緒に働く",
+    "（計画などが）うまくいく"
+   ],
+   "exampleEn": "She works hard every day to become a good doctor.",
+   "exampleJa": "彼女はいい医者になるために毎日一生懸命がんばっています。",
+   "ipa": "/ˌwɜːrk ˈhɑːrd/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "hardworking",
+     "meaningJa": "勤勉な"
+    },
+    {
+     "word": "effort",
+     "meaningJa": "努力"
+    },
+    {
+     "word": "do one's best",
+     "meaningJa": "全力を尽くす"
+    }
+   ]
+  },
+  {
+   "word": "work together",
+   "pos": "コロケーション",
+   "meaningJa": "一緒に働く、協力する",
+   "distractors": [
+    "運動する",
+    "〜に取り組む",
+    "うまくいく"
+   ],
+   "exampleEn": "We work together to clean our classroom every Friday afternoon.",
+   "exampleJa": "私たちは毎週金曜日の午後、協力して教室を掃除します。",
+   "ipa": "/ˌwɜːrk təˈɡeðər/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "cooperate",
+     "meaningJa": "協力する"
+    },
+    {
+     "word": "teamwork",
+     "meaningJa": "チームワーク"
+    },
+    {
+     "word": "collaborate",
+     "meaningJa": "共同で行う"
+    }
+   ]
+  },
+  {
+   "word": "would like to",
+   "pos": "慣用表現",
+   "meaningJa": "〜したい(丁寧な言い方)",
+   "distractors": [
+    "〜することができる",
+    "〜するつもりだ",
+    "〜の仕方を知っている"
+   ],
+   "exampleEn": "I would like to have a cup of tea with you.",
+   "exampleJa": "あなたと一緒に紅茶を一杯いただきたいです。",
+   "ipa": "/ˌwʊd ˈlaɪk tuː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "want to",
+     "meaningJa": "〜したい"
+    },
+    {
+     "word": "would love to",
+     "meaningJa": "ぜひ〜したい"
+    },
+    {
+     "word": "prefer",
+     "meaningJa": "〜のほうを好む"
+    }
+   ]
+  },
+  {
+   "word": "be late for",
+   "pos": "イディオム",
+   "meaningJa": "〜に遅れる",
+   "distractors": [
+    "〜の準備ができている",
+    "〜が得意だ",
+    "〜でいっぱいだ"
+   ],
+   "exampleEn": "Hurry up, or you will be late for school again.",
+   "exampleJa": "急ぎなさい、さもないとまた学校に遅れますよ。",
+   "ipa": "/bi ˈleɪt fɔːr/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "late",
+     "meaningJa": "遅れた"
+    },
+    {
+     "word": "on time",
+     "meaningJa": "時間通りに"
+    },
+    {
+     "word": "delay",
+     "meaningJa": "遅れ"
+    }
+   ]
+  },
+  {
+   "word": "be ready for",
+   "pos": "イディオム",
+   "meaningJa": "〜の準備ができている",
+   "distractors": [
+    "〜に遅れる",
+    "〜でいっぱいだ",
+    "〜で有名だ"
+   ],
+   "exampleEn": "Are you ready for the big English test tomorrow morning?",
+   "exampleJa": "明日の朝の大事な英語のテストの準備はできていますか。",
+   "ipa": "/bi ˈredi fɔːr/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "get ready",
+     "meaningJa": "準備をする"
+    },
+    {
+     "word": "ready",
+     "meaningJa": "準備ができた"
+    },
+    {
+     "word": "prepare",
+     "meaningJa": "準備する"
+    }
+   ]
+  },
+  {
+   "word": "be full of",
+   "pos": "イディオム",
+   "meaningJa": "〜でいっぱいだ",
+   "distractors": [
+    "〜で有名だ",
+    "〜と異なる",
+    "〜の準備ができている"
+   ],
+   "exampleEn": "The big box is full of old books and pictures.",
+   "exampleJa": "その大きな箱は古い本と写真でいっぱいです。",
+   "ipa": "/bi ˈfʊl əv/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "full",
+     "meaningJa": "いっぱいの"
+    },
+    {
+     "word": "be filled with",
+     "meaningJa": "〜で満たされている"
+    },
+    {
+     "word": "empty",
+     "meaningJa": "空の"
+    }
+   ]
+  },
+  {
+   "word": "be famous for",
+   "pos": "イディオム",
+   "meaningJa": "〜で有名だ",
+   "distractors": [
+    "〜でいっぱいだ",
+    "〜が得意だ",
+    "〜に興味がある"
+   ],
+   "exampleEn": "Kyoto is famous for its beautiful old temples and gardens.",
+   "exampleJa": "京都は美しい古いお寺と庭園で有名です。",
+   "ipa": "/bi ˈfeɪməs fɔːr/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "famous",
+     "meaningJa": "有名な"
+    },
+    {
+     "word": "fame",
+     "meaningJa": "名声"
+    },
+    {
+     "word": "be known for",
+     "meaningJa": "〜で知られる"
+    }
+   ]
+  },
+  {
+   "word": "be afraid of",
+   "pos": "イディオム",
+   "meaningJa": "〜を恐れている、〜が怖い",
+   "distractors": [
+    "〜に興味がある",
+    "〜と異なる",
+    "〜でいっぱいだ"
+   ],
+   "exampleEn": "My little brother is very afraid of big black dogs.",
+   "exampleJa": "私の弟は大きな黒い犬をとても怖がっています。",
+   "ipa": "/bi əˈfreɪd əv/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "afraid",
+     "meaningJa": "恐れて"
+    },
+    {
+     "word": "fear",
+     "meaningJa": "恐怖"
+    },
+    {
+     "word": "scared",
+     "meaningJa": "怖がって"
+    }
+   ]
+  },
+  {
+   "word": "be different from",
+   "pos": "イディオム",
+   "meaningJa": "〜と異なる、〜と違う",
+   "distractors": [
+    "〜で有名だ",
+    "〜を恐れている",
+    "〜が得意だ"
+   ],
+   "exampleEn": "My idea is different from yours, but both are good.",
+   "exampleJa": "私の考えはあなたのとは違いますが、どちらも良いです。",
+   "ipa": "/bi ˈdɪfrənt frʌm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "difference",
+     "meaningJa": "違い"
+    },
+    {
+     "word": "differ",
+     "meaningJa": "異なる"
+    },
+    {
+     "word": "be similar to",
+     "meaningJa": "〜に似ている"
+    }
+   ]
+  },
+  {
+   "word": "be careful",
+   "pos": "コロケーション",
+   "meaningJa": "気をつける、注意する",
+   "distractors": [
+    "〜の準備ができている",
+    "〜に遅れる",
+    "〜を恐れている"
+   ],
+   "exampleEn": "Please be careful when you cross this busy street at night.",
+   "exampleJa": "夜にこの交通量の多い通りを渡るときは気をつけてください。",
+   "ipa": "/bi ˈkerfl/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "careful",
+     "meaningJa": "注意深い"
+    },
+    {
+     "word": "carefully",
+     "meaningJa": "注意深く"
+    },
+    {
+     "word": "careless",
+     "meaningJa": "不注意な"
+    }
+   ]
+  },
+  {
+   "word": "know how to",
+   "pos": "慣用表現",
+   "meaningJa": "〜の仕方を知っている",
+   "distractors": [
+    "〜するつもりだ",
+    "〜したい(丁寧な言い方)",
+    "〜が得意だ"
+   ],
+   "exampleEn": "Do you know how to make a paper crane like this?",
+   "exampleJa": "このような折り鶴の作り方を知っていますか。",
+   "ipa": "/ˌnoʊ ˈhaʊ tuː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "know-how",
+     "meaningJa": "ノウハウ"
+    },
+    {
+     "word": "be able to",
+     "meaningJa": "〜できる"
+    },
+    {
+     "word": "learn",
+     "meaningJa": "学ぶ"
+    }
+   ]
+  },
+  {
+   "word": "at the moment",
+   "pos": "前置詞句",
+   "meaningJa": "今のところ、ちょうど今",
+   "distractors": [
+    "同時に",
+    "最初は",
+    "ついに"
+   ],
+   "exampleEn": "I am reading a very interesting book at the moment.",
+   "exampleJa": "私はちょうど今、とても面白い本を読んでいます。",
+   "ipa": "/ət ðə ˈmoʊmənt/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "right now",
+     "meaningJa": "今すぐ"
+    },
+    {
+     "word": "currently",
+     "meaningJa": "現在"
+    },
+    {
+     "word": "moment",
+     "meaningJa": "瞬間"
+    }
+   ]
+  },
+  {
+   "word": "at the weekend",
+   "pos": "前置詞句",
+   "meaningJa": "週末に",
+   "distractors": [
+    "夜に",
+    "今のところ",
+    "同時に"
+   ],
+   "exampleEn": "I often play tennis with my father at the weekend.",
+   "exampleJa": "私は週末によく父とテニスをします。",
+   "ipa": "/ət ðə ˈwiːkend/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "on weekends",
+     "meaningJa": "週末に"
+    },
+    {
+     "word": "weekend",
+     "meaningJa": "週末"
+    },
+    {
+     "word": "weekday",
+     "meaningJa": "平日"
+    }
+   ]
+  },
+  {
+   "word": "at university",
+   "pos": "前置詞句",
+   "meaningJa": "大学で",
+   "distractors": [
+    "学校で",
+    "職場で",
+    "家で"
+   ],
+   "exampleEn": "My big sister studies science at university in Tokyo now.",
+   "exampleJa": "私の姉は今、東京の大学で科学を勉強しています。",
+   "ipa": "/ət ˌjuːnɪˈvɜːrsəti/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "university",
+     "meaningJa": "大学"
+    },
+    {
+     "word": "college",
+     "meaningJa": "大学"
+    },
+    {
+     "word": "at school",
+     "meaningJa": "学校で"
+    }
+   ]
+  },
+  {
+   "word": "in bed",
+   "pos": "前置詞句",
+   "meaningJa": "ベッドで、寝て",
+   "distractors": [
+    "授業中に",
+    "家で",
+    "街で"
+   ],
+   "exampleEn": "I was in bed with a cold all day yesterday.",
+   "exampleJa": "私は昨日、風邪で一日中ベッドで寝ていました。",
+   "ipa": "/ɪn ˈbed/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "bed",
+     "meaningJa": "ベッド"
+    },
+    {
+     "word": "go to bed",
+     "meaningJa": "寝る"
+    },
+    {
+     "word": "asleep",
+     "meaningJa": "眠って"
+    }
+   ]
+  },
+  {
+   "word": "in class",
+   "pos": "前置詞句",
+   "meaningJa": "授業中に",
+   "distractors": [
+    "ベッドで",
+    "〜の前で",
+    "街で"
+   ],
+   "exampleEn": "Please don't use your phone in class, said the teacher.",
+   "exampleJa": "「授業中に電話を使わないでください」と先生は言いました。",
+   "ipa": "/ɪn ˈklæs/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "class",
+     "meaningJa": "授業"
+    },
+    {
+     "word": "classroom",
+     "meaningJa": "教室"
+    },
+    {
+     "word": "lesson",
+     "meaningJa": "授業"
+    }
+   ]
+  },
+  {
+   "word": "in the future",
+   "pos": "前置詞句",
+   "meaningJa": "将来、未来に",
+   "distractors": [
+    "過去に",
+    "最初は",
+    "今のところ"
+   ],
+   "exampleEn": "I want to be an animal doctor in the future.",
+   "exampleJa": "私は将来、動物のお医者さんになりたいです。",
+   "ipa": "/ɪn ðə ˈfjuːtʃər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Technology"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "future",
+     "meaningJa": "未来"
+    },
+    {
+     "word": "in the past",
+     "meaningJa": "過去に"
+    },
+    {
+     "word": "someday",
+     "meaningJa": "いつか"
+    }
+   ]
+  },
+  {
+   "word": "in the past",
+   "pos": "前置詞句",
+   "meaningJa": "過去に、昔は",
+   "distractors": [
+    "将来",
+    "今のところ",
+    "ついに"
+   ],
+   "exampleEn": "In the past, people wrote many letters to their friends.",
+   "exampleJa": "昔、人々は友達にたくさんの手紙を書きました。",
+   "ipa": "/ɪn ðə ˈpæst/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "History",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "past",
+     "meaningJa": "過去"
+    },
+    {
+     "word": "in the future",
+     "meaningJa": "将来"
+    },
+    {
+     "word": "previously",
+     "meaningJa": "以前は"
+    }
+   ]
+  },
+  {
+   "word": "in town",
+   "pos": "前置詞句",
+   "meaningJa": "街で、町に",
+   "distractors": [
+    "いなかで",
+    "家で",
+    "大学で"
+   ],
+   "exampleEn": "There is a new bookstore in town near the park.",
+   "exampleJa": "街の公園の近くに新しい本屋があります。",
+   "ipa": "/ɪn ˈtaʊn/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "town",
+     "meaningJa": "町"
+    },
+    {
+     "word": "downtown",
+     "meaningJa": "中心街"
+    },
+    {
+     "word": "in the country",
+     "meaningJa": "いなかで"
+    }
+   ]
+  },
+  {
+   "word": "in my opinion",
+   "pos": "前置詞句",
+   "meaningJa": "私の意見では",
+   "distractors": [
+    "実は",
+    "例えば",
+    "ところで"
+   ],
+   "exampleEn": "In my opinion, this is the best movie of the year.",
+   "exampleJa": "私の意見では、これは今年一番の映画です。",
+   "ipa": "/ɪn maɪ əˈpɪnjən/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "TOEFL",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "opinion",
+     "meaningJa": "意見"
+    },
+    {
+     "word": "point of view",
+     "meaningJa": "見解"
+    },
+    {
+     "word": "I think",
+     "meaningJa": "私は思う"
+    }
+   ]
+  },
+  {
+   "word": "in the country",
+   "pos": "前置詞句",
+   "meaningJa": "いなかで",
+   "distractors": [
+    "街で",
+    "海辺で",
+    "世界中で"
+   ],
+   "exampleEn": "My grandparents live in the country and grow rice there.",
+   "exampleJa": "私の祖父母はいなかに住んでいて、そこで米を作っています。",
+   "ipa": "/ɪn ðə ˈkʌntri/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Nature",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "countryside",
+     "meaningJa": "いなか"
+    },
+    {
+     "word": "rural",
+     "meaningJa": "田舎の"
+    },
+    {
+     "word": "in town",
+     "meaningJa": "町で"
+    }
+   ]
+  },
+  {
+   "word": "on holiday",
+   "pos": "前置詞句",
+   "meaningJa": "休暇中で",
+   "distractors": [
+    "時間どおりに",
+    "電話で",
+    "テレビで"
+   ],
+   "exampleEn": "My family is on holiday at the beach this week.",
+   "exampleJa": "私の家族は今週、海辺で休暇中です。",
+   "ipa": "/ɑːn ˈhɑːlədeɪ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "holiday",
+     "meaningJa": "休日"
+    },
+    {
+     "word": "on vacation",
+     "meaningJa": "休暇中で(米)"
+    },
+    {
+     "word": "vacation",
+     "meaningJa": "休暇"
+    }
+   ]
+  },
+  {
+   "word": "on vacation",
+   "pos": "前置詞句",
+   "meaningJa": "休暇中で(主にアメリカ英語)",
+   "distractors": [
+    "時間どおりに",
+    "徒歩で",
+    "インターネットで"
+   ],
+   "exampleEn": "We went to Okinawa on vacation last summer with friends.",
+   "exampleJa": "私たちは去年の夏、友達と休暇で沖縄に行きました。",
+   "ipa": "/ɑːn veɪˈkeɪʃn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Entertainment",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "vacation",
+     "meaningJa": "休暇"
+    },
+    {
+     "word": "on holiday",
+     "meaningJa": "休暇中で(英)"
+    },
+    {
+     "word": "travel",
+     "meaningJa": "旅行"
+    }
+   ]
+  },
+  {
+   "word": "on tv",
+   "pos": "前置詞句",
+   "meaningJa": "テレビで",
+   "distractors": [
+    "インターネットで",
+    "電話で",
+    "時間どおりに"
+   ],
+   "exampleEn": "I watched a funny animal show on TV last night.",
+   "exampleJa": "私は昨夜、テレビで面白い動物番組を見ました。",
+   "ipa": "/ɑːn ˌtiː ˈviː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "News"
+   ],
+   "themes": [
+    "Entertainment",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "watch tv",
+     "meaningJa": "テレビを見る"
+    },
+    {
+     "word": "television",
+     "meaningJa": "テレビ"
+    },
+    {
+     "word": "broadcast",
+     "meaningJa": "放送"
+    }
+   ]
+  },
+  {
+   "word": "on the internet",
+   "pos": "前置詞句",
+   "meaningJa": "インターネットで",
+   "distractors": [
+    "テレビで",
+    "電話で",
+    "徒歩で"
+   ],
+   "exampleEn": "You can find many English videos on the internet for free.",
+   "exampleJa": "インターネットでは無料でたくさんの英語の動画を見つけられます。",
+   "ipa": "/ɑːn ði ˈɪntərnet/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Technical",
+    "Casual"
+   ],
+   "themes": [
+    "Technology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "internet",
+     "meaningJa": "インターネット"
+    },
+    {
+     "word": "online",
+     "meaningJa": "オンラインで"
+    },
+    {
+     "word": "website",
+     "meaningJa": "ウェブサイト"
+    }
+   ]
+  },
+  {
+   "word": "on the phone",
+   "pos": "前置詞句",
+   "meaningJa": "電話で、電話中で",
+   "distractors": [
+    "テレビで",
+    "インターネットで",
+    "時間どおりに"
+   ],
+   "exampleEn": "My mother is on the phone with my aunt now.",
+   "exampleJa": "母は今、おばと電話中です。",
+   "ipa": "/ɑːn ðə ˈfoʊn/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "talk on the phone",
+     "meaningJa": "電話で話す"
+    },
+    {
+     "word": "call",
+     "meaningJa": "電話"
+    },
+    {
+     "word": "phone",
+     "meaningJa": "電話"
+    }
+   ]
+  },
+  {
+   "word": "on the left",
+   "pos": "前置詞句",
+   "meaningJa": "左側に",
+   "distractors": [
+    "右側に",
+    "床の上に",
+    "海辺で"
+   ],
+   "exampleEn": "The post office is on the left, next to the bank.",
+   "exampleJa": "郵便局は左側の、銀行の隣にあります。",
+   "ipa": "/ɑːn ðə ˈleft/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "on the right",
+     "meaningJa": "右側に"
+    },
+    {
+     "word": "turn left",
+     "meaningJa": "左に曲がる"
+    },
+    {
+     "word": "left",
+     "meaningJa": "左"
+    }
+   ]
+  },
+  {
+   "word": "on the right",
+   "pos": "前置詞句",
+   "meaningJa": "右側に",
+   "distractors": [
+    "左側に",
+    "床の上に",
+    "〜の前で"
+   ],
+   "exampleEn": "Turn at the corner, and you will see the shop on the right.",
+   "exampleJa": "角を曲がると、右側にその店が見えます。",
+   "ipa": "/ɑːn ðə ˈraɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "on the left",
+     "meaningJa": "左側に"
+    },
+    {
+     "word": "turn right",
+     "meaningJa": "右に曲がる"
+    },
+    {
+     "word": "right",
+     "meaningJa": "右"
+    }
+   ]
+  },
+  {
+   "word": "on the floor",
+   "pos": "前置詞句",
+   "meaningJa": "床の上に",
+   "distractors": [
+    "左側に",
+    "海辺で",
+    "ベッドで"
+   ],
+   "exampleEn": "Please don't leave your school bag on the floor here.",
+   "exampleJa": "ここの床の上に通学かばんを置きっぱなしにしないでください。",
+   "ipa": "/ɑːn ðə ˈflɔːr/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "floor",
+     "meaningJa": "床"
+    },
+    {
+     "word": "ground",
+     "meaningJa": "地面"
+    },
+    {
+     "word": "on the ground",
+     "meaningJa": "地面に"
+    }
+   ]
+  },
+  {
+   "word": "on the beach",
+   "pos": "前置詞句",
+   "meaningJa": "海辺で、浜辺で",
+   "distractors": [
+    "床の上に",
+    "いなかで",
+    "街で"
+   ],
+   "exampleEn": "The children played with a big ball on the beach.",
+   "exampleJa": "子どもたちは浜辺で大きなボールで遊びました。",
+   "ipa": "/ɑːn ðə ˈbiːtʃ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Nature",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "beach",
+     "meaningJa": "浜辺"
+    },
+    {
+     "word": "seaside",
+     "meaningJa": "海辺"
+    },
+    {
+     "word": "swim",
+     "meaningJa": "泳ぐ"
+    }
+   ]
+  },
+  {
+   "word": "on weekends",
+   "pos": "前置詞句",
+   "meaningJa": "週末に(毎週末)",
+   "distractors": [
+    "夜に",
+    "休暇中で",
+    "時間どおりに"
+   ],
+   "exampleEn": "I clean my room and wash the dog on weekends.",
+   "exampleJa": "私は週末に部屋を掃除して犬を洗います。",
+   "ipa": "/ɑːn ˈwiːkendz/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "at the weekend",
+     "meaningJa": "週末に(英)"
+    },
+    {
+     "word": "weekend",
+     "meaningJa": "週末"
+    },
+    {
+     "word": "weekday",
+     "meaningJa": "平日"
+    }
+   ]
+  },
+  {
+   "word": "after that",
+   "pos": "前置詞句",
+   "meaningJa": "その後で",
+   "distractors": [
+    "放課後に",
+    "まず最初に",
+    "同時に"
+   ],
+   "exampleEn": "We had dinner, and after that we watched a movie.",
+   "exampleJa": "私たちは夕食を食べて、その後で映画を見ました。",
+   "ipa": "/ˌæftər ˈðæt/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "afterward",
+     "meaningJa": "その後"
+    },
+    {
+     "word": "then",
+     "meaningJa": "それから"
+    },
+    {
+     "word": "before that",
+     "meaningJa": "その前に"
+    }
+   ]
+  },
+  {
+   "word": "for lunch",
+   "pos": "前置詞句",
+   "meaningJa": "昼食に",
+   "distractors": [
+    "長い間",
+    "初めて",
+    "少しの間"
+   ],
+   "exampleEn": "I usually have rice balls and soup for lunch at school.",
+   "exampleJa": "私は学校で昼食にたいていおにぎりとスープを食べます。",
+   "ipa": "/fər ˈlʌntʃ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "have lunch",
+     "meaningJa": "昼食を食べる"
+    },
+    {
+     "word": "lunch",
+     "meaningJa": "昼食"
+    },
+    {
+     "word": "for dinner",
+     "meaningJa": "夕食に"
+    }
+   ]
+  },
+  {
+   "word": "for a long time",
+   "pos": "前置詞句",
+   "meaningJa": "長い間",
+   "distractors": [
+    "初めて",
+    "少しの間",
+    "昼食に"
+   ],
+   "exampleEn": "We talked for a long time about our summer plans.",
+   "exampleJa": "私たちは夏の計画について長い間話しました。",
+   "ipa": "/fər ə ˈlɔːŋ taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "History"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "for a while",
+     "meaningJa": "しばらくの間"
+    },
+    {
+     "word": "long",
+     "meaningJa": "長い"
+    },
+    {
+     "word": "a long time ago",
+     "meaningJa": "ずっと昔に"
+    }
+   ]
+  },
+  {
+   "word": "for the first time",
+   "pos": "前置詞句",
+   "meaningJa": "初めて",
+   "distractors": [
+    "長い間",
+    "少しの間",
+    "例えば"
+   ],
+   "exampleEn": "I saw snow for the first time when I was ten.",
+   "exampleJa": "私は10歳のときに初めて雪を見ました。",
+   "ipa": "/fər ðə ˈfɜːrst taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "News",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "History"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "first",
+     "meaningJa": "最初の"
+    },
+    {
+     "word": "first of all",
+     "meaningJa": "まず最初に"
+    },
+    {
+     "word": "again",
+     "meaningJa": "再び"
+    }
+   ]
+  },
+  {
+   "word": "for a moment",
+   "pos": "前置詞句",
+   "meaningJa": "少しの間、ちょっとの間",
+   "distractors": [
+    "長い間",
+    "初めて",
+    "昼食に"
+   ],
+   "exampleEn": "Excuse me, can I use your pen for a moment, please?",
+   "exampleJa": "すみません、少しの間ペンをお借りできますか。",
+   "ipa": "/fər ə ˈmoʊmənt/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "moment",
+     "meaningJa": "瞬間"
+    },
+    {
+     "word": "just a minute",
+     "meaningJa": "ちょっと待って"
+    },
+    {
+     "word": "briefly",
+     "meaningJa": "短時間"
+    }
+   ]
+  },
+  {
+   "word": "out of",
+   "pos": "前置詞句",
+   "meaningJa": "〜の外へ、〜から外に",
+   "distractors": [
+    "〜のために(原因)",
+    "〜から離れて",
+    "〜の隣に"
+   ],
+   "exampleEn": "The cat jumped out of the box and ran away.",
+   "exampleJa": "猫は箱から飛び出して逃げていきました。",
+   "ipa": "/ˈaʊt əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "into",
+     "meaningJa": "〜の中へ"
+    },
+    {
+     "word": "get out of",
+     "meaningJa": "〜から出る"
+    },
+    {
+     "word": "outside",
+     "meaningJa": "外側"
+    }
+   ]
+  },
+  {
+   "word": "away from",
+   "pos": "前置詞句",
+   "meaningJa": "〜から離れて",
+   "distractors": [
+    "〜の外へ",
+    "〜の近くに",
+    "〜の前で"
+   ],
+   "exampleEn": "Please stay away from the hot fire, children, it is dangerous.",
+   "exampleJa": "子どもたち、危ないので熱い火から離れていてください。",
+   "ipa": "/əˈweɪ frʌm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "far away",
+     "meaningJa": "遠く離れて"
+    },
+    {
+     "word": "close to",
+     "meaningJa": "〜の近くに"
+    },
+    {
+     "word": "apart",
+     "meaningJa": "離れて"
+    }
+   ]
+  },
+  {
+   "word": "close to",
+   "pos": "前置詞句",
+   "meaningJa": "〜の近くに",
+   "distractors": [
+    "〜から離れて",
+    "〜の前で",
+    "〜の外へ"
+   ],
+   "exampleEn": "Our school is close to the sea, so we can walk there.",
+   "exampleJa": "私たちの学校は海の近くにあるので、歩いてそこへ行けます。",
+   "ipa": "/ˈkloʊs tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "near",
+     "meaningJa": "近くに"
+    },
+    {
+     "word": "next to",
+     "meaningJa": "〜の隣に"
+    },
+    {
+     "word": "far from",
+     "meaningJa": "〜から遠く"
+    }
+   ]
+  },
+  {
+   "word": "far away",
+   "pos": "慣用表現",
+   "meaningJa": "遠く離れて",
+   "distractors": [
+    "〜の近くに",
+    "あそこに",
+    "こちらに"
+   ],
+   "exampleEn": "My best friend moved to a town far away last year.",
+   "exampleJa": "私の親友は去年、遠く離れた町へ引っ越しました。",
+   "ipa": "/ˌfɑːr əˈweɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Literary"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "away from",
+     "meaningJa": "〜から離れて"
+    },
+    {
+     "word": "distant",
+     "meaningJa": "遠い"
+    },
+    {
+     "word": "nearby",
+     "meaningJa": "近くの"
+    }
+   ]
+  },
+  {
+   "word": "over here",
+   "pos": "慣用表現",
+   "meaningJa": "こちらに、ここに",
+   "distractors": [
+    "あそこに",
+    "遠く離れて",
+    "右側に"
+   ],
+   "exampleEn": "Please come over here and look at this funny picture.",
+   "exampleJa": "こちらに来て、この面白い写真を見てください。",
+   "ipa": "/ˌoʊvər ˈhɪr/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "over there",
+     "meaningJa": "あちらに"
+    },
+    {
+     "word": "here",
+     "meaningJa": "ここに"
+    },
+    {
+     "word": "this way",
+     "meaningJa": "こちらへ"
+    }
+   ]
+  },
+  {
+   "word": "more than",
+   "pos": "慣用表現",
+   "meaningJa": "〜より多い、〜以上",
+   "distractors": [
+    "たくさんの",
+    "多すぎる",
+    "〜のような"
+   ],
+   "exampleEn": "There are more than thirty students in our English class.",
+   "exampleJa": "私たちの英語のクラスには30人より多くの生徒がいます。",
+   "ipa": "/ˈmɔːr ðən/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Finance"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "less than",
+     "meaningJa": "〜より少ない"
+    },
+    {
+     "word": "over",
+     "meaningJa": "〜を超えて"
+    },
+    {
+     "word": "at least",
+     "meaningJa": "少なくとも"
+    }
+   ]
+  },
+  {
+   "word": "such as",
+   "pos": "前置詞句",
+   "meaningJa": "〜のような、例えば〜など",
+   "distractors": [
+    "〜より多い",
+    "〜のために(原因)",
+    "〜から離れて"
+   ],
+   "exampleEn": "I like winter sports such as skiing, skating, and snowboarding.",
+   "exampleJa": "私はスキー、スケート、スノーボードのようなウィンタースポーツが好きです。",
+   "ipa": "/ˈsʌtʃ əz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEFL",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "for example",
+     "meaningJa": "例えば"
+    },
+    {
+     "word": "like",
+     "meaningJa": "〜のような"
+    },
+    {
+     "word": "including",
+     "meaningJa": "〜を含めて"
+    }
+   ]
+  },
+  {
+   "word": "first of all",
+   "pos": "慣用表現",
+   "meaningJa": "まず最初に",
+   "distractors": [
+    "ところで",
+    "その後で",
+    "実は"
+   ],
+   "exampleEn": "First of all, let's wash our hands before we cook.",
+   "exampleJa": "まず最初に、料理をする前に手を洗いましょう。",
+   "ipa": "/ˌfɜːrst əv ˈɔːl/",
+   "posEn": "Idiom",
+   "domains": [
+    "Academic",
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "firstly",
+     "meaningJa": "第一に"
+    },
+    {
+     "word": "to begin with",
+     "meaningJa": "まず初めに"
+    },
+    {
+     "word": "finally",
+     "meaningJa": "最後に"
+    }
+   ]
+  },
+  {
+   "word": "not at all",
+   "pos": "慣用表現",
+   "meaningJa": "全然〜ない",
+   "distractors": [
+    "まだ〜ない",
+    "もちろん",
+    "今すぐ"
+   ],
+   "exampleEn": "I am not tired at all after the long walk.",
+   "exampleJa": "長い散歩の後でも、私は全然疲れていません。",
+   "ipa": "/ˌnɑːt ət ˈɔːl/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "at all",
+     "meaningJa": "まったく"
+    },
+    {
+     "word": "you're welcome",
+     "meaningJa": "どういたしまして"
+    },
+    {
+     "word": "no way",
+     "meaningJa": "ありえない"
+    }
+   ]
+  },
+  {
+   "word": "not yet",
+   "pos": "慣用表現",
+   "meaningJa": "まだ〜ない",
+   "distractors": [
+    "全然〜ない",
+    "今すぐ",
+    "もちろん"
+   ],
+   "exampleEn": "\"Have you finished your homework?\" \"No, not yet, I need more time.\"",
+   "exampleJa": "「宿題は終わった？」「いいえ、まだです。もう少し時間が必要です」",
+   "ipa": "/ˌnɑːt ˈjet/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "yet",
+     "meaningJa": "まだ"
+    },
+    {
+     "word": "already",
+     "meaningJa": "すでに"
+    },
+    {
+     "word": "still",
+     "meaningJa": "まだ"
+    }
+   ]
+  },
+  {
+   "word": "one day",
+   "pos": "慣用表現",
+   "meaningJa": "ある日",
+   "distractors": [
+    "毎日",
+    "一日中",
+    "昨夜"
+   ],
+   "exampleEn": "One day, a little white cat came to our small garden.",
+   "exampleJa": "ある日、小さな白い猫が私たちの小さな庭にやって来ました。",
+   "ipa": "/ˌwʌn ˈdeɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "Literary",
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "History",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "some day",
+     "meaningJa": "いつか"
+    },
+    {
+     "word": "once",
+     "meaningJa": "かつて"
+    },
+    {
+     "word": "a long time ago",
+     "meaningJa": "ずっと昔に"
+    }
+   ]
+  },
+  {
+   "word": "some day",
+   "pos": "慣用表現",
+   "meaningJa": "いつか(将来)",
+   "distractors": [
+    "毎日",
+    "一日中",
+    "今すぐ"
+   ],
+   "exampleEn": "I want to visit Australia and see koalas some day.",
+   "exampleJa": "私はいつかオーストラリアに行ってコアラを見たいです。",
+   "ipa": "/ˈsʌm deɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Literary"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "one day",
+     "meaningJa": "ある日"
+    },
+    {
+     "word": "someday",
+     "meaningJa": "いつの日か"
+    },
+    {
+     "word": "in the future",
+     "meaningJa": "将来"
+    }
+   ]
+  },
+  {
+   "word": "every week",
+   "pos": "慣用表現",
+   "meaningJa": "毎週",
+   "distractors": [
+    "毎日",
+    "一日中",
+    "一晩中"
+   ],
+   "exampleEn": "We have a swimming lesson every week on Wednesday afternoon.",
+   "exampleJa": "私たちは毎週水曜日の午後に水泳のレッスンがあります。",
+   "ipa": "/ˌevri ˈwiːk/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "once a week",
+     "meaningJa": "週に一度"
+    },
+    {
+     "word": "weekly",
+     "meaningJa": "毎週の"
+    },
+    {
+     "word": "every day",
+     "meaningJa": "毎日"
+    }
+   ]
+  },
+  {
+   "word": "all day",
+   "pos": "慣用表現",
+   "meaningJa": "一日中",
+   "distractors": [
+    "一晩中",
+    "毎日",
+    "30分"
+   ],
+   "exampleEn": "It rained all day yesterday, so we played cards inside the house.",
+   "exampleJa": "昨日は一日中雨だったので、私たちは家の中でトランプをしました。",
+   "ipa": "/ˌɔːl ˈdeɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "all day long",
+     "meaningJa": "一日中"
+    },
+    {
+     "word": "all night",
+     "meaningJa": "一晩中"
+    },
+    {
+     "word": "whole day",
+     "meaningJa": "丸一日"
+    }
+   ]
+  },
+  {
+   "word": "all night",
+   "pos": "慣用表現",
+   "meaningJa": "一晩中",
+   "distractors": [
+    "一日中",
+    "毎日",
+    "昨夜"
+   ],
+   "exampleEn": "The baby cried all night, so my mother is very tired.",
+   "exampleJa": "赤ちゃんが一晩中泣いていたので、母はとても疲れています。",
+   "ipa": "/ˌɔːl ˈnaɪt/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "all day",
+     "meaningJa": "一日中"
+    },
+    {
+     "word": "overnight",
+     "meaningJa": "一晩中"
+    },
+    {
+     "word": "stay up late",
+     "meaningJa": "夜更かしする"
+    }
+   ]
+  },
+  {
+   "word": "all over the world",
+   "pos": "前置詞句",
+   "meaningJa": "世界中で",
+   "distractors": [
+    "いなかで",
+    "街で",
+    "一日中"
+   ],
+   "exampleEn": "People all over the world enjoy watching soccer games on TV.",
+   "exampleJa": "世界中の人々がテレビでサッカーの試合を見て楽しんでいます。",
+   "ipa": "/ˌɔːl oʊvər ðə ˈwɜːrld/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Environment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "around the world",
+     "meaningJa": "世界中を"
+    },
+    {
+     "word": "worldwide",
+     "meaningJa": "世界的に"
+    },
+    {
+     "word": "global",
+     "meaningJa": "世界的な"
+    }
+   ]
+  },
+  {
+   "word": "around the world",
+   "pos": "前置詞句",
+   "meaningJa": "世界中を(まわって)、世界一周で",
+   "distractors": [
+    "いなかで",
+    "海辺で",
+    "街で"
+   ],
+   "exampleEn": "My dream is to travel around the world by ship.",
+   "exampleJa": "私の夢は船で世界一周旅行をすることです。",
+   "ipa": "/əˌraʊnd ðə ˈwɜːrld/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "News",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Environment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "all over the world",
+     "meaningJa": "世界中で"
+    },
+    {
+     "word": "worldwide",
+     "meaningJa": "世界規模の"
+    },
+    {
+     "word": "global",
+     "meaningJa": "地球規模の"
+    }
+   ]
+  },
+  {
+   "word": "half an hour",
+   "pos": "慣用表現",
+   "meaningJa": "30分",
+   "distractors": [
+    "週に一度",
+    "一日中",
+    "長い間"
+   ],
+   "exampleEn": "The bus will come in half an hour, so let's wait here.",
+   "exampleJa": "バスは30分後に来るので、ここで待ちましょう。",
+   "ipa": "/ˌhæf ən ˈaʊər/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "hour",
+     "meaningJa": "時間"
+    },
+    {
+     "word": "thirty minutes",
+     "meaningJa": "30分"
+    },
+    {
+     "word": "quarter",
+     "meaningJa": "15分"
+    }
+   ]
+  },
+  {
+   "word": "once a week",
+   "pos": "慣用表現",
+   "meaningJa": "週に一度",
+   "distractors": [
+    "毎日",
+    "一日中",
+    "30分"
+   ],
+   "exampleEn": "I go to piano lessons once a week on Saturday morning.",
+   "exampleJa": "私は週に一度、土曜日の朝にピアノのレッスンに行きます。",
+   "ipa": "/ˌwʌns ə ˈwiːk/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "every week",
+     "meaningJa": "毎週"
+    },
+    {
+     "word": "weekly",
+     "meaningJa": "毎週の"
+    },
+    {
+     "word": "twice a week",
+     "meaningJa": "週に二度"
+    }
+   ]
+  },
+  {
+   "word": "years old",
+   "pos": "慣用表現",
+   "meaningJa": "〜歳",
+   "distractors": [
+    "30分",
+    "昨夜",
+    "週に一度"
+   ],
+   "exampleEn": "My little brother is seven years old and loves trains.",
+   "exampleJa": "私の弟は7歳で、電車が大好きです。",
+   "ipa": "/ˈjɪrz oʊld/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "age",
+     "meaningJa": "年齢"
+    },
+    {
+     "word": "at the age of",
+     "meaningJa": "〜歳のときに"
+    },
+    {
+     "word": "birthday",
+     "meaningJa": "誕生日"
+    }
+   ]
+  },
+  {
+   "word": "a cup of",
+   "pos": "コロケーション",
+   "meaningJa": "カップ1杯の",
+   "distractors": [
+    "コップ1杯の",
+    "1切れの",
+    "びん1本の"
+   ],
+   "exampleEn": "My grandfather drinks a cup of green tea every morning.",
+   "exampleJa": "祖父は毎朝、カップ1杯の緑茶を飲みます。",
+   "ipa": "/ə ˈkʌp əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "cup",
+     "meaningJa": "カップ"
+    },
+    {
+     "word": "a glass of",
+     "meaningJa": "コップ1杯の"
+    },
+    {
+     "word": "coffee",
+     "meaningJa": "コーヒー"
+    }
+   ]
+  },
+  {
+   "word": "a glass of",
+   "pos": "コロケーション",
+   "meaningJa": "コップ1杯の",
+   "distractors": [
+    "カップ1杯の",
+    "びん1本の",
+    "1切れの"
+   ],
+   "exampleEn": "She drank a glass of cold water after the race.",
+   "exampleJa": "彼女はレースの後、コップ1杯の冷たい水を飲みました。",
+   "ipa": "/ə ˈɡlæs əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "glass",
+     "meaningJa": "コップ"
+    },
+    {
+     "word": "a cup of",
+     "meaningJa": "カップ1杯の"
+    },
+    {
+     "word": "water",
+     "meaningJa": "水"
+    }
+   ]
+  },
+  {
+   "word": "a piece of",
+   "pos": "コロケーション",
+   "meaningJa": "1切れの、1つの",
+   "distractors": [
+    "1組の",
+    "カップ1杯の",
+    "びん1本の"
+   ],
+   "exampleEn": "Would you like a piece of this chocolate cake, Emma?",
+   "exampleJa": "エマ、このチョコレートケーキを1切れいかがですか。",
+   "ipa": "/ə ˈpiːs əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "piece",
+     "meaningJa": "一片"
+    },
+    {
+     "word": "a slice of",
+     "meaningJa": "一切れの"
+    },
+    {
+     "word": "a pair of",
+     "meaningJa": "一組の"
+    }
+   ]
+  },
+  {
+   "word": "a pair of",
+   "pos": "コロケーション",
+   "meaningJa": "1組の、一対の",
+   "distractors": [
+    "1切れの",
+    "コップ1杯の",
+    "〜の一員"
+   ],
+   "exampleEn": "I bought a new pair of shoes for the school trip.",
+   "exampleJa": "私は修学旅行のために新しい靴を1足買いました。",
+   "ipa": "/ə ˈper əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "pair",
+     "meaningJa": "一対"
+    },
+    {
+     "word": "a piece of",
+     "meaningJa": "1つの"
+    },
+    {
+     "word": "shoes",
+     "meaningJa": "靴"
+    }
+   ]
+  },
+  {
+   "word": "a bottle of",
+   "pos": "コロケーション",
+   "meaningJa": "びん1本の",
+   "distractors": [
+    "カップ1杯の",
+    "1切れの",
+    "1組の"
+   ],
+   "exampleEn": "Please buy a bottle of water at the station shop.",
+   "exampleJa": "駅の売店で水を1本買ってきてください。",
+   "ipa": "/ə ˈbɑːtl əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "bottle",
+     "meaningJa": "びん"
+    },
+    {
+     "word": "a glass of",
+     "meaningJa": "コップ1杯の"
+    },
+    {
+     "word": "water",
+     "meaningJa": "水"
+    }
+   ]
+  },
+  {
+   "word": "a member of",
+   "pos": "コロケーション",
+   "meaningJa": "〜の一員、〜のメンバー",
+   "distractors": [
+    "1組の",
+    "1切れの",
+    "たくさんの"
+   ],
+   "exampleEn": "My sister is a member of the school tennis club.",
+   "exampleJa": "私の姉は学校のテニス部の一員です。",
+   "ipa": "/ə ˈmembər əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "member",
+     "meaningJa": "会員"
+    },
+    {
+     "word": "membership",
+     "meaningJa": "会員資格"
+    },
+    {
+     "word": "belong to",
+     "meaningJa": "〜に所属する"
+    }
+   ]
+  },
+  {
+   "word": "anything else",
+   "pos": "慣用表現",
+   "meaningJa": "(疑問文などで)他に何か",
+   "distractors": [
+    "何か別のもの",
+    "誰か別の人",
+    "お互い"
+   ],
+   "exampleEn": "Would you like anything else with your sandwich and juice today?",
+   "exampleJa": "今日はサンドイッチとジュースと一緒に、他に何かいかがですか。",
+   "ipa": "/ˌeniθɪŋ ˈels/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "something else",
+     "meaningJa": "何か別のもの"
+    },
+    {
+     "word": "else",
+     "meaningJa": "ほかに"
+    },
+    {
+     "word": "anything",
+     "meaningJa": "何か"
+    }
+   ]
+  },
+  {
+   "word": "something else",
+   "pos": "慣用表現",
+   "meaningJa": "何か別のもの",
+   "distractors": [
+    "誰か別の人",
+    "お互い",
+    "〜の一員"
+   ],
+   "exampleEn": "I don't like this color, so please show me something else.",
+   "exampleJa": "この色は好きではないので、何か別のものを見せてください。",
+   "ipa": "/ˌsʌmθɪŋ ˈels/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "anything else",
+     "meaningJa": "他に何か"
+    },
+    {
+     "word": "someone else",
+     "meaningJa": "誰か別の人"
+    },
+    {
+     "word": "other",
+     "meaningJa": "ほかの"
+    }
+   ]
+  },
+  {
+   "word": "someone else",
+   "pos": "慣用表現",
+   "meaningJa": "誰か別の人",
+   "distractors": [
+    "何か別のもの",
+    "お互い",
+    "〜の一員"
+   ],
+   "exampleEn": "Please ask someone else because I don't know the answer.",
+   "exampleJa": "私は答えを知らないので、誰か別の人に聞いてください。",
+   "ipa": "/ˌsʌmwʌn ˈels/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "something else",
+     "meaningJa": "何か別のもの"
+    },
+    {
+     "word": "everyone else",
+     "meaningJa": "他のみんな"
+    },
+    {
+     "word": "another",
+     "meaningJa": "別の"
+    }
+   ]
+  },
+  {
+   "word": "too many",
+   "pos": "慣用表現",
+   "meaningJa": "多すぎる(数)",
+   "distractors": [
+    "多すぎる(量)",
+    "たくさんの",
+    "2〜3の"
+   ],
+   "exampleEn": "There are too many cars on this road in the morning.",
+   "exampleJa": "朝はこの道路に車が多すぎます。",
+   "ipa": "/ˌtuː ˈmeni/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "too much",
+     "meaningJa": "多すぎる(量)"
+    },
+    {
+     "word": "many",
+     "meaningJa": "多くの"
+    },
+    {
+     "word": "few",
+     "meaningJa": "少ない"
+    }
+   ]
+  },
+  {
+   "word": "what kind of",
+   "pos": "慣用表現",
+   "meaningJa": "どんな種類の",
+   "distractors": [
+    "何時に",
+    "〜はどうですか",
+    "いくつの"
+   ],
+   "exampleEn": "What kind of music do you listen to at home?",
+   "exampleJa": "あなたは家でどんな種類の音楽を聴きますか。",
+   "ipa": "/ˌwʌt ˈkaɪnd əv/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "kind",
+     "meaningJa": "種類"
+    },
+    {
+     "word": "what sort of",
+     "meaningJa": "どんな種類の"
+    },
+    {
+     "word": "type",
+     "meaningJa": "型"
+    }
+   ]
+  },
+  {
+   "word": "what time",
+   "pos": "慣用表現",
+   "meaningJa": "何時に",
+   "distractors": [
+    "どんな種類の",
+    "どのくらいの長さ",
+    "どのくらいの頻度で"
+   ],
+   "exampleEn": "What time do you usually get up on school days?",
+   "exampleJa": "学校のある日は、たいてい何時に起きますか。",
+   "ipa": "/ˌwʌt ˈtaɪm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "time",
+     "meaningJa": "時間"
+    },
+    {
+     "word": "when",
+     "meaningJa": "いつ"
+    },
+    {
+     "word": "o'clock",
+     "meaningJa": "〜時"
+    }
+   ]
+  },
+  {
+   "word": "how long",
+   "pos": "慣用表現",
+   "meaningJa": "どのくらいの長さ、どのくらいの間",
+   "distractors": [
+    "どのくらいの頻度で",
+    "何時に",
+    "いくつの"
+   ],
+   "exampleEn": "How long does it take to walk to the station?",
+   "exampleJa": "駅まで歩いてどのくらいかかりますか。",
+   "ipa": "/ˌhaʊ ˈlɔːŋ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "how far",
+     "meaningJa": "どのくらい遠く"
+    },
+    {
+     "word": "how often",
+     "meaningJa": "どのくらいの頻度で"
+    },
+    {
+     "word": "length",
+     "meaningJa": "長さ"
+    }
+   ]
+  },
+  {
+   "word": "how often",
+   "pos": "慣用表現",
+   "meaningJa": "どのくらいの頻度で、何回",
+   "distractors": [
+    "どのくらいの長さ",
+    "いくら(値段)",
+    "何歳"
+   ],
+   "exampleEn": "How often do you play video games in a week?",
+   "exampleJa": "あなたは1週間にどのくらいの頻度でテレビゲームをしますか。",
+   "ipa": "/ˌhaʊ ˈɔːfn/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "how long",
+     "meaningJa": "どのくらいの間"
+    },
+    {
+     "word": "often",
+     "meaningJa": "しばしば"
+    },
+    {
+     "word": "frequency",
+     "meaningJa": "頻度"
+    }
+   ]
+  },
+  {
+   "word": "why don't you",
+   "pos": "慣用表現",
+   "meaningJa": "〜したらどうですか(提案)",
+   "distractors": [
+    "何時に",
+    "どのくらいの頻度で",
+    "どんな種類の"
+   ],
+   "exampleEn": "Why don't you join our music club? It is fun.",
+   "exampleJa": "私たちの音楽クラブに入ったらどうですか。楽しいですよ。",
+   "ipa": "/ˌwaɪ ˈdoʊnt juː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "how about",
+     "meaningJa": "〜はどうですか"
+    },
+    {
+     "word": "shall we",
+     "meaningJa": "〜しましょうか"
+    },
+    {
+     "word": "suggest",
+     "meaningJa": "提案する"
+    }
+   ]
+  },
+  {
+   "word": "no problem",
+   "pos": "慣用表現",
+   "meaningJa": "問題ないよ、どういたしまして",
+   "distractors": [
+    "もちろん",
+    "すみません(呼びかけ)",
+    "おやすみなさい"
+   ],
+   "exampleEn": "\"Thank you for carrying my bag.\" \"No problem, happy to help.\"",
+   "exampleJa": "「かばんを運んでくれてありがとう」「問題ないよ、喜んで」",
+   "ipa": "/ˌnoʊ ˈprɑːbləm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "you're welcome",
+     "meaningJa": "どういたしまして"
+    },
+    {
+     "word": "of course",
+     "meaningJa": "もちろん"
+    },
+    {
+     "word": "don't worry",
+     "meaningJa": "心配しないで"
+    }
+   ]
+  },
+  {
+   "word": "good afternoon",
+   "pos": "慣用表現",
+   "meaningJa": "こんにちは(午後のあいさつ)",
+   "distractors": [
+    "おはようございます",
+    "こんばんは",
+    "おやすみなさい"
+   ],
+   "exampleEn": "Good afternoon, Ms. Green. How are you and your family today?",
+   "exampleJa": "グリーン先生、こんにちは。今日はあなたとご家族はお元気ですか。",
+   "ipa": "/ˌɡʊd æftərˈnuːn/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "good morning",
+     "meaningJa": "おはよう"
+    },
+    {
+     "word": "good evening",
+     "meaningJa": "こんばんは"
+    },
+    {
+     "word": "greeting",
+     "meaningJa": "あいさつ"
+    }
+   ]
+  },
+  {
+   "word": "good evening",
+   "pos": "慣用表現",
+   "meaningJa": "こんばんは",
+   "distractors": [
+    "おはようございます",
+    "こんにちは(午後のあいさつ)",
+    "おやすみなさい"
+   ],
+   "exampleEn": "Good evening, and welcome to our small restaurant. This way, please.",
+   "exampleJa": "こんばんは、私たちの小さなレストランへようこそ。こちらへどうぞ。",
+   "ipa": "/ˌɡʊd ˈiːvnɪŋ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "good afternoon",
+     "meaningJa": "こんにちは"
+    },
+    {
+     "word": "good night",
+     "meaningJa": "おやすみ"
+    },
+    {
+     "word": "greeting",
+     "meaningJa": "あいさつ"
+    }
+   ]
+  },
+  {
+   "word": "good idea",
+   "pos": "慣用表現",
+   "meaningJa": "いい考えだね",
+   "distractors": [
+    "その通りです",
+    "どういたしまして",
+    "心配しないで"
+   ],
+   "exampleEn": "\"Let's go to the beach this weekend.\" \"That's a good idea!\"",
+   "exampleJa": "「今週末、海に行こうよ。」「それはいい考えだね!」",
+   "ipa": "/ˌɡʊd aɪˈdiːə/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "idea",
+     "meaningJa": "考え"
+    },
+    {
+     "word": "suggestion",
+     "meaningJa": "提案"
+    },
+    {
+     "word": "that's right",
+     "meaningJa": "その通り"
+    }
+   ]
+  },
+  {
+   "word": "see you later",
+   "pos": "慣用表現",
+   "meaningJa": "またあとでね",
+   "distractors": [
+    "はじめまして",
+    "どういたしまして",
+    "よい一日を"
+   ],
+   "exampleEn": "I have to go home now. See you later, Tom!",
+   "exampleJa": "もう家に帰らないと。またあとでね、トム!",
+   "ipa": "/ˌsiː juː ˈleɪtər/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "see you soon",
+     "meaningJa": "近いうちにまた"
+    },
+    {
+     "word": "goodbye",
+     "meaningJa": "さようなら"
+    },
+    {
+     "word": "later",
+     "meaningJa": "あとで"
+    }
+   ]
+  },
+  {
+   "word": "see you soon",
+   "pos": "慣用表現",
+   "meaningJa": "近いうちにまた会おうね",
+   "distractors": [
+    "はじめまして",
+    "お元気ですか?",
+    "ちょっと待って"
+   ],
+   "exampleEn": "Thank you for the party. I had a great time. See you soon!",
+   "exampleJa": "パーティーをありがとう。とても楽しかったです。近いうちにまた会いましょう!",
+   "ipa": "/ˌsiː juː ˈsuːn/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "see you later",
+     "meaningJa": "またあとで"
+    },
+    {
+     "word": "goodbye",
+     "meaningJa": "さようなら"
+    },
+    {
+     "word": "soon",
+     "meaningJa": "すぐに"
+    }
+   ]
+  },
+  {
+   "word": "thank you very much",
+   "pos": "慣用表現",
+   "meaningJa": "本当にありがとうございます",
+   "distractors": [
+    "どういたしまして",
+    "ごめんなさい",
+    "おめでとうございます"
+   ],
+   "exampleEn": "Thank you very much for your help. This bag is very heavy.",
+   "exampleJa": "手伝ってくれて本当にありがとうございます。このかばんはとても重いんです。",
+   "ipa": "/ˌθæŋk juː ˌveri ˈmʌtʃ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "thanks a lot",
+     "meaningJa": "どうもありがとう"
+    },
+    {
+     "word": "thank you",
+     "meaningJa": "ありがとう"
+    },
+    {
+     "word": "you're welcome",
+     "meaningJa": "どういたしまして"
+    }
+   ]
+  },
+  {
+   "word": "thanks a lot",
+   "pos": "慣用表現",
+   "meaningJa": "どうもありがとう",
+   "distractors": [
+    "どういたしまして",
+    "気にしないで",
+    "ごめんなさい"
+   ],
+   "exampleEn": "Thanks a lot for the birthday present. I really like it.",
+   "exampleJa": "誕生日プレゼントを本当にありがとう。とても気に入ったよ。",
+   "ipa": "/ˌθæŋks ə ˈlɑːt/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "thank you very much",
+     "meaningJa": "本当にありがとう"
+    },
+    {
+     "word": "thanks",
+     "meaningJa": "ありがとう"
+    },
+    {
+     "word": "appreciate",
+     "meaningJa": "感謝する"
+    }
+   ]
+  },
+  {
+   "word": "you're welcome",
+   "pos": "慣用表現",
+   "meaningJa": "どういたしまして",
+   "distractors": [
+    "ようこそ、いらっしゃい",
+    "ありがとうございます",
+    "お先にどうぞ"
+   ],
+   "exampleEn": "\"Thank you for the nice dinner.\" \"You're welcome. Please come again.\"",
+   "exampleJa": "「すてきな夕食をありがとうございました。」「どういたしまして。また来てくださいね。」",
+   "ipa": "/jʊr ˈwelkəm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "no problem",
+     "meaningJa": "問題ないよ"
+    },
+    {
+     "word": "not at all",
+     "meaningJa": "どういたしまして"
+    },
+    {
+     "word": "thank you",
+     "meaningJa": "ありがとう"
+    }
+   ]
+  },
+  {
+   "word": "happy birthday",
+   "pos": "慣用表現",
+   "meaningJa": "お誕生日おめでとう",
+   "distractors": [
+    "あけましておめでとう",
+    "ご結婚おめでとう",
+    "よい一日を"
+   ],
+   "exampleEn": "Happy birthday, Mika! This present is for you. Open it now.",
+   "exampleJa": "お誕生日おめでとう、ミカ!このプレゼントはあなたにだよ。今開けてみて。",
+   "ipa": "/ˌhæpi ˈbɜːrθdeɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "birthday",
+     "meaningJa": "誕生日"
+    },
+    {
+     "word": "congratulations",
+     "meaningJa": "おめでとう"
+    },
+    {
+     "word": "celebrate",
+     "meaningJa": "祝う"
+    }
+   ]
+  },
+  {
+   "word": "have a nice day",
+   "pos": "慣用表現",
+   "meaningJa": "よい一日を",
+   "distractors": [
+    "おやすみなさい",
+    "はじめまして",
+    "お大事に"
+   ],
+   "exampleEn": "\"Goodbye, Mr. Brown. Have a nice day!\" \"Thanks, you too.\"",
+   "exampleJa": "「さようなら、ブラウンさん。よい一日を!」「ありがとう、あなたもね。」",
+   "ipa": "/ˌhæv ə ˈnaɪs deɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "take care",
+     "meaningJa": "気をつけて"
+    },
+    {
+     "word": "goodbye",
+     "meaningJa": "さようなら"
+    },
+    {
+     "word": "good luck",
+     "meaningJa": "幸運を"
+    }
+   ]
+  },
+  {
+   "word": "don't worry",
+   "pos": "慣用表現",
+   "meaningJa": "心配しないで",
+   "distractors": [
+    "あきらめないで",
+    "気をつけて",
+    "静かにして"
+   ],
+   "exampleEn": "\"I can't find my key.\" \"Don't worry. Let's look for it together.\"",
+   "exampleJa": "「かぎが見つからないの。」「心配しないで。いっしょに探そう。」",
+   "ipa": "/ˌdoʊnt ˈwɜːri/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "worry",
+     "meaningJa": "心配する"
+    },
+    {
+     "word": "no problem",
+     "meaningJa": "問題ない"
+    },
+    {
+     "word": "take it easy",
+     "meaningJa": "気楽にね"
+    }
+   ]
+  },
+  {
+   "word": "me too",
+   "pos": "慣用表現",
+   "meaningJa": "私もです",
+   "distractors": [
+    "その通りです",
+    "どういたしまして",
+    "もちろんです"
+   ],
+   "exampleEn": "\"I like soccer very much.\" \"Me too! Let's play together after school.\"",
+   "exampleJa": "「私はサッカーが大好きです。」「私もです!放課後にいっしょにやろうよ。」",
+   "ipa": "/ˌmiː ˈtuː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "so do I",
+     "meaningJa": "私もそうです"
+    },
+    {
+     "word": "neither do I",
+     "meaningJa": "私も〜でない"
+    },
+    {
+     "word": "too",
+     "meaningJa": "〜もまた"
+    }
+   ]
+  },
+  {
+   "word": "that's right",
+   "pos": "慣用表現",
+   "meaningJa": "その通りです",
+   "distractors": [
+    "わかった、いいよ",
+    "それは違います",
+    "どうしたの?"
+   ],
+   "exampleEn": "\"Is this bus for the station?\" \"That's right. Please get on.\"",
+   "exampleJa": "「このバスは駅に行きますか?」「その通りです。どうぞ乗ってください。」",
+   "ipa": "/ˌðæts ˈraɪt/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "exactly",
+     "meaningJa": "まさに"
+    },
+    {
+     "word": "correct",
+     "meaningJa": "正しい"
+    },
+    {
+     "word": "that's wrong",
+     "meaningJa": "それは違う"
+    }
+   ]
+  },
+  {
+   "word": "what's wrong",
+   "pos": "慣用表現",
+   "meaningJa": "どうしたの?",
+   "distractors": [
+    "お元気ですか?",
+    "今何時ですか?",
+    "これは何ですか?"
+   ],
+   "exampleEn": "\"What's wrong, Emi? You look sad.\" \"I lost my new pen.\"",
+   "exampleJa": "「どうしたの、エミ?悲しそうだね。」「新しいペンをなくしたの。」",
+   "ipa": "/ˌwʌts ˈrɔːŋ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "what's the matter",
+     "meaningJa": "どうしたのですか"
+    },
+    {
+     "word": "wrong",
+     "meaningJa": "具合が悪い"
+    },
+    {
+     "word": "problem",
+     "meaningJa": "問題"
+    }
+   ]
+  },
+  {
+   "word": "just a minute",
+   "pos": "慣用表現",
+   "meaningJa": "ちょっと待って",
+   "distractors": [
+    "はい、どうぞ",
+    "もう一度言ってください",
+    "急いで"
+   ],
+   "exampleEn": "\"Dinner is ready!\" \"Just a minute, Mom. I'm washing my hands now.\"",
+   "exampleJa": "「夕食ができたわよ!」「ちょっと待って、お母さん。今手を洗っているの。」",
+   "ipa": "/ˌdʒʌst ə ˈmɪnɪt/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "just a moment",
+     "meaningJa": "少々お待ちを"
+    },
+    {
+     "word": "wait",
+     "meaningJa": "待つ"
+    },
+    {
+     "word": "hold on",
+     "meaningJa": "少し待つ"
+    }
+   ]
+  },
+  {
+   "word": "here you are",
+   "pos": "慣用表現",
+   "meaningJa": "はい、どうぞ(物を渡すとき)",
+   "distractors": [
+    "ちょっと待って",
+    "いらっしゃいませ",
+    "こちらへどうぞ"
+   ],
+   "exampleEn": "\"Can I use your pencil?\" \"Sure. Here you are.\" \"Thank you.\"",
+   "exampleJa": "「えんぴつを使ってもいい?」「いいよ。はい、どうぞ。」「ありがとう。」",
+   "ipa": "/ˌhɪr juː ˈɑːr/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "here it is",
+     "meaningJa": "はいこれです"
+    },
+    {
+     "word": "give",
+     "meaningJa": "渡す"
+    },
+    {
+     "word": "take",
+     "meaningJa": "受け取る"
+    }
+   ]
+  },
+  {
+   "word": "i'm sorry",
+   "pos": "慣用表現",
+   "meaningJa": "ごめんなさい",
+   "distractors": [
+    "すみません(人に呼びかけるとき)",
+    "ありがとうございます",
+    "どういたしまして"
+   ],
+   "exampleEn": "\"I'm sorry. I broke your cup.\" \"That's OK. Don't worry.\"",
+   "exampleJa": "「ごめんなさい。あなたのカップを割ってしまいました。」「大丈夫。気にしないで。」",
+   "ipa": "/aɪm ˈsɑːri/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "sorry",
+     "meaningJa": "すまなく思って"
+    },
+    {
+     "word": "apologize",
+     "meaningJa": "謝る"
+    },
+    {
+     "word": "excuse me",
+     "meaningJa": "すみません"
+    }
+   ]
+  },
+  {
+   "word": "how are you",
+   "pos": "慣用表現",
+   "meaningJa": "お元気ですか?",
+   "distractors": [
+    "おいくつですか?",
+    "あなたは誰ですか?",
+    "どうしたの?"
+   ],
+   "exampleEn": "\"Good morning, Ms. Sato. How are you?\" \"I'm fine, thank you.\"",
+   "exampleJa": "「おはようございます、佐藤先生。お元気ですか?」「元気です、ありがとう。」",
+   "ipa": "/ˌhaʊ ɑːr ˈjuː/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "how do you do",
+     "meaningJa": "はじめまして"
+    },
+    {
+     "word": "fine",
+     "meaningJa": "元気な"
+    },
+    {
+     "word": "greeting",
+     "meaningJa": "あいさつ"
+    }
+   ]
+  },
+  {
+   "word": "post office",
+   "pos": "コロケーション",
+   "meaningJa": "郵便局",
+   "distractors": [
+    "警察署",
+    "消防署",
+    "市役所"
+   ],
+   "exampleEn": "Where is the post office? I want to send this letter to my friend.",
+   "exampleJa": "郵便局はどこですか?この手紙を友達に送りたいのです。",
+   "ipa": "/ˈpoʊst ˌɔːfɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "post",
+     "meaningJa": "郵便"
+    },
+    {
+     "word": "mail",
+     "meaningJa": "郵便物"
+    },
+    {
+     "word": "stamp",
+     "meaningJa": "切手"
+    }
+   ]
+  },
+  {
+   "word": "living room",
+   "pos": "コロケーション",
+   "meaningJa": "居間、リビング",
+   "distractors": [
+    "寝室",
+    "浴室",
+    "食堂(ダイニングルーム)"
+   ],
+   "exampleEn": "My family watches TV together in the living room after dinner.",
+   "exampleJa": "私の家族は夕食後、居間でいっしょにテレビを見ます。",
+   "ipa": "/ˈlɪvɪŋ ˌruːm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "bedroom",
+     "meaningJa": "寝室"
+    },
+    {
+     "word": "kitchen",
+     "meaningJa": "台所"
+    },
+    {
+     "word": "house",
+     "meaningJa": "家"
+    }
+   ]
+  },
+  {
+   "word": "mobile phone",
+   "pos": "コロケーション",
+   "meaningJa": "携帯電話",
+   "distractors": [
+    "電話番号",
+    "公衆電話",
+    "目覚まし時計"
+   ],
+   "exampleEn": "I use my mobile phone every day to talk with my friends.",
+   "exampleJa": "私は毎日、友達と話すために携帯電話を使います。",
+   "ipa": "/ˌmoʊbl ˈfoʊn/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Technical",
+    "Casual"
+   ],
+   "themes": [
+    "Technology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "cell phone",
+     "meaningJa": "携帯電話(米)"
+    },
+    {
+     "word": "smartphone",
+     "meaningJa": "スマートフォン"
+    },
+    {
+     "word": "phone number",
+     "meaningJa": "電話番号"
+    }
+   ]
+  },
+  {
+   "word": "phone number",
+   "pos": "コロケーション",
+   "meaningJa": "電話番号",
+   "distractors": [
+    "携帯電話",
+    "部屋番号",
+    "郵便番号"
+   ],
+   "exampleEn": "What is your phone number? I will call you tonight.",
+   "exampleJa": "あなたの電話番号は何番ですか?今夜電話します。",
+   "ipa": "/ˈfoʊn ˌnʌmbər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "mobile phone",
+     "meaningJa": "携帯電話"
+    },
+    {
+     "word": "call",
+     "meaningJa": "電話する"
+    },
+    {
+     "word": "address",
+     "meaningJa": "住所"
+    }
+   ]
+  },
+  {
+   "word": "swimming pool",
+   "pos": "コロケーション",
+   "meaningJa": "(水泳用の)プール",
+   "distractors": [
+    "体育館",
+    "テニスコート",
+    "野球場"
+   ],
+   "exampleEn": "It is very hot today. Let's go to the swimming pool!",
+   "exampleJa": "今日はとても暑いね。プールに行こうよ!",
+   "ipa": "/ˈswɪmɪŋ ˌpuːl/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel",
+    "Casual"
+   ],
+   "themes": [
+    "Sports",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "swim",
+     "meaningJa": "泳ぐ"
+    },
+    {
+     "word": "swimming",
+     "meaningJa": "水泳"
+    },
+    {
+     "word": "pool",
+     "meaningJa": "プール"
+    }
+   ]
+  },
+  {
+   "word": "best friend",
+   "pos": "コロケーション",
+   "meaningJa": "親友",
+   "distractors": [
+    "クラスメート(同級生)",
+    "隣人(近所の人)",
+    "文通友達(ペンパル)"
+   ],
+   "exampleEn": "Yuki is my best friend. We walk to school together every morning.",
+   "exampleJa": "ユキは私の親友です。私たちは毎朝いっしょに歩いて学校へ行きます。",
+   "ipa": "/ˌbest ˈfrend/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "friend",
+     "meaningJa": "友達"
+    },
+    {
+     "word": "friendship",
+     "meaningJa": "友情"
+    },
+    {
+     "word": "make friends",
+     "meaningJa": "友達になる"
+    }
+   ]
+  }
+ ],
+ "enrichedAt": "2026-08-11T21:15:43.682Z"
+}

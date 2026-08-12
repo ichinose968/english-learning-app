@@ -1,7 +1,7 @@
 {
  "level": "B1",
- "generatedAt": "2026-08-11T10:44:33.198Z",
- "count": 120,
+ "generatedAt": "2026-08-11T14:39:25.784Z",
+ "count": 598,
  "items": [
   {
    "id": "B1-0",
@@ -1562,6 +1562,6220 @@
    ],
    "answerIndex": 1,
    "explanationJa": "look for 〜 は「〜を探す」。look after は「〜の世話をする」、look into は「〜を調査する」、look up は「(語句を)調べる/見上げる」で、物を探す意味にはなりません。訳:「パスポートを探しているんだ。どこかで見なかった?」"
+  },
+  {
+   "id": "B1-120",
+   "topic": "時制",
+   "question": "I ____ my report already, so I have time to help you this afternoon.",
+   "choices": [
+    "finish",
+    "have finished",
+    "am finishing",
+    "had finished"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "already（もう）は「〜し終えてしまった」という現在完了の完了用法と結びつく。finish は現在形で完了の意味を表せず、am finishing は今まさに進行中の動作、had finished は過去のある時点までの完了を表すが、この文には基準となる過去の時点がないので誤り。和訳：私はもうレポートを書き終えたので、今日の午後は手伝う時間があります。"
+  },
+  {
+   "id": "B1-121",
+   "topic": "時制",
+   "question": "I ____ that new coffee shop near the station yesterday.",
+   "choices": [
+    "have visited",
+    "have been visiting",
+    "had visited",
+    "visited"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "yesterday のように過去の一点を指す副詞は現在完了と一緒に使えないので、過去形 visited が正解。have visited、have been visiting は現在完了系なので yesterday と共起できず、had visited は「それ以前の過去」を示す基準時が必要。和訳：私は昨日、駅の近くのあの新しいコーヒー店に行きました。"
+  },
+  {
+   "id": "B1-122",
+   "topic": "時制",
+   "question": "We ____ each other for more than ten years, so I know his family well.",
+   "choices": [
+    "have known",
+    "know",
+    "are knowing",
+    "had known"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "for ten years という期間が現在まで続いているので現在完了の継続用法 have known を使う。know は状態動詞なので進行形 are knowing にはできず、現在形 know では期間を表せない。had known は過去の時点までの継続で、現在の話には合わない。和訳：私たちは十年以上の付き合いなので、私は彼の家族をよく知っています。"
+  },
+  {
+   "id": "B1-123",
+   "topic": "時制",
+   "question": "She ____ in Kyoto since she graduated from university.",
+   "choices": [
+    "lives",
+    "lived",
+    "has lived",
+    "is living"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "since ...（〜以来）は起点を示し、そこから現在まで続く状態は現在完了の継続用法で表す。lives は現在の事実だけ、lived は過去で切れてしまい、is living は一時的な今の状況を表すだけで「〜以来ずっと」を表せない。和訳：彼女は大学を卒業してからずっと京都に住んでいます。"
+  },
+  {
+   "id": "B1-124",
+   "topic": "時制",
+   "question": "The train from Osaka ____ yet, so we still have a few minutes.",
+   "choices": [
+    "didn't arrive",
+    "isn't arriving",
+    "hadn't arrived",
+    "hasn't arrived"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "否定文の yet（まだ〜していない）は現在完了の完了用法とセットで使う。didn't arrive は過去の事実、isn't arriving は予定の否定、hadn't arrived は過去の基準時までの未完了で、いずれも「今の時点でまだ着いていない」を表せない。和訳：大阪からの電車はまだ着いていないので、私たちにはまだ数分あります。"
+  },
+  {
+   "id": "B1-125",
+   "topic": "時制",
+   "question": "A: Would you like some cake?  B: No, thanks. I ____ lunch.",
+   "choices": [
+    "have just finished",
+    "just finish",
+    "had just finished",
+    "am just finishing"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "just（たった今）は現在完了の完了用法と結びつき、「今まさに終えたところだ」という現在への影響を表す。just finish は習慣を表す現在形、had just finished は過去の基準時が必要、am just finishing は「今食べ終えつつある」で、断る理由としては不自然。和訳：A: ケーキはいかがですか。B: いえ、結構です。ちょうど昼食を食べ終えたところなので。"
+  },
+  {
+   "id": "B1-126",
+   "topic": "時制",
+   "question": "My eyes hurt because I ____ at this screen since nine o'clock this morning.",
+   "choices": [
+    "look",
+    "looked",
+    "have been looking",
+    "had been looking"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "since 以下が起点を示し、今も続いている動作なので現在完了進行形 have been looking を使う。look は習慣、looked は過去で終わった動作、had been looking は過去の時点まで続いた動作で、現在も続いている状況には合わない。和訳：今朝の九時からずっとこの画面を見続けているので、目が痛いです。"
+  },
+  {
+   "id": "B1-127",
+   "topic": "時制",
+   "question": "How long ____ for the bus? You look really cold.",
+   "choices": [
+    "are you waiting",
+    "have you been waiting",
+    "did you wait",
+    "had you waited"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「今も待っている状態が始まってからどれくらいか」を尋ねるので現在完了進行形が正しい。are you waiting は現在の一時的な動作だけで期間を問えず、did you wait は待つ行為が終わったことを前提とし、had you waited は過去の基準時が必要。和訳：どのくらいバスを待っているのですか。とても寒そうですね。"
+  },
+  {
+   "id": "B1-128",
+   "topic": "時制",
+   "question": "When I got to the platform, the last train ____ .",
+   "choices": [
+    "had already left",
+    "has already left",
+    "already leaves",
+    "was already leaving"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「ホームに着いた」という過去の時点よりさらに前に起きた出来事なので、大過去を表す過去完了 had already left を使う。has already left は現在が基準、already leaves は現在の習慣、was already leaving は「出発しつつあった」で、already と共に完了した事実を述べる文脈に合わない。和訳：私がホームに着いたときには、最終電車はもう出てしまっていました。"
+  },
+  {
+   "id": "B1-129",
+   "topic": "時制",
+   "question": "Until I moved to Hokkaido, I ____ so much snow in my life.",
+   "choices": [
+    "haven't seen",
+    "didn't see",
+    "wasn't seeing",
+    "had never seen"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「北海道に引っ越すまで」という過去の時点を基準に、それ以前の経験がなかったことを述べるので過去完了の経験用法 had never seen が正解。haven't seen は現在が基準、didn't see は単なる過去の事実で経験の意味が出ず、wasn't seeing は see が状態的な知覚動詞で進行形になじまない。和訳：北海道に引っ越すまで、私は人生であんなにたくさんの雪を見たことがありませんでした。"
+  },
+  {
+   "id": "B1-130",
+   "topic": "時制",
+   "question": "By the time she retired, she ____ at the same hospital for thirty years.",
+   "choices": [
+    "has worked",
+    "works",
+    "had worked",
+    "was working"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「退職した時点」までの三十年間の継続なので過去完了の継続用法を使う。has worked は現在までの継続、works は現在の習慣、was working は退職時に進行中だったことしか表さず、for thirty years という期間の到達点を示せない。和訳：退職するまでに、彼女は同じ病院で三十年間働いていました。"
+  },
+  {
+   "id": "B1-131",
+   "topic": "時制",
+   "question": "The ground was wet when we woke up because it ____ all night.",
+   "choices": [
+    "has been raining",
+    "had been raining",
+    "is raining",
+    "rains"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「起きたとき」という過去の時点まで一晩中続いていた動作なので過去完了進行形 had been raining が正解。has been raining は現在までの継続、is raining と rains は現在の話で、was wet という過去の文と時間関係が合わない。和訳：一晩中雨が降り続いていたので、私たちが起きたとき地面はぬれていました。"
+  },
+  {
+   "id": "B1-132",
+   "topic": "時制",
+   "question": "A: The phone is ringing.  B: OK, I ____ it.",
+   "choices": [
+    "am going to answer",
+    "answer",
+    "am answering",
+    "'ll answer"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "その場で決めた意志は will で表す。be going to は前から決めていた予定、現在進行形 am answering も取り決め済みの予定を表すので、電話が鳴った瞬間の判断には使えない。answer は現在形で習慣を表す。和訳：A: 電話が鳴っているよ。B: わかった、私が出るね。"
+  },
+  {
+   "id": "B1-133",
+   "topic": "時制",
+   "question": "I bought the tickets last week. We ____ the museum on Sunday.",
+   "choices": [
+    "are going to visit",
+    "will visit",
+    "visit",
+    "would visit"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "チケットを買ってあるので、すでに決まっている予定を表す be going to が適切。will はその場で決めた意志や単なる予測、visit は時刻表的な確定事項に使う現在形、would visit は過去から見た未来で、今の予定を述べる文には合わない。和訳：先週チケットを買いました。私たちは日曜日にその博物館へ行く予定です。"
+  },
+  {
+   "id": "B1-134",
+   "topic": "時制",
+   "question": "Look at those dark clouds. It ____ .",
+   "choices": [
+    "will rain",
+    "is going to rain",
+    "rains",
+    "would rain"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "目の前の兆候（黒い雲）から判断する近い未来は be going to で表す。will は根拠のない予測や意志、rains は一般的な事実や習慣、would rain は過去から見た未来で、今の状況を根拠にした予測にはならない。和訳：あの黒い雲を見てごらん。雨が降りそうだよ。"
+  },
+  {
+   "id": "B1-135",
+   "topic": "時制",
+   "question": "I can't join you tomorrow evening. I ____ dinner with my host family at seven.",
+   "choices": [
+    "have",
+    "will have had",
+    "'m having",
+    "had"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "人と約束して決まっている個人的な予定は現在進行形で表せる。have は現在の習慣、will have had は未来のある時点までの完了、had は過去で、明日の約束を表せない。和訳：明日の夜は一緒に行けません。七時にホストファミリーと夕食をとることになっているので。"
+  },
+  {
+   "id": "B1-136",
+   "topic": "時制",
+   "question": "Please turn off your phone. The concert ____ start.",
+   "choices": [
+    "is about to",
+    "is about",
+    "will about to",
+    "is going"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "be about to do は「まさに〜しようとしている」という直前の未来を表す。is about の後に動詞の原形は続かず、will about to や is going も形として成立しない（is going to なら可）。和訳：携帯電話の電源をお切りください。コンサートがまもなく始まります。"
+  },
+  {
+   "id": "B1-137",
+   "topic": "時制",
+   "question": "Don't call me at eight tomorrow morning. I ____ to work then.",
+   "choices": [
+    "drive",
+    "will have driven",
+    "would drive",
+    "will be driving"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "未来のある時点で進行中の動作は未来進行形 will be driving で表す。drive は現在の習慣、will have driven は未来完了で「その時までに運転し終えている」、would drive は過去から見た未来なので、明日の八時に進行中の動作を表せない。和訳：明日の朝八時には電話しないでください。そのときは車で通勤中なので。"
+  },
+  {
+   "id": "B1-138",
+   "topic": "時制",
+   "question": "I'll send you a message as soon as I ____ at the airport.",
+   "choices": [
+    "will arrive",
+    "am arriving",
+    "arrive",
+    "will have arrived"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "as soon as が導く時を表す副詞節では、未来のことでも現在形で表す。will arrive や will have arrived のように未来形を使うのは誤りで、am arriving は取り決め済みの予定を表す用法でこの節には合わない。和訳：空港に着いたらすぐにあなたにメッセージを送ります。"
+  },
+  {
+   "id": "B1-139",
+   "topic": "時制",
+   "question": "If it ____ tomorrow, the school festival will be held indoors.",
+   "choices": [
+    "will rain",
+    "rains",
+    "is raining",
+    "rained"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "条件を表す副詞節の中では未来のことも現在形で表すので rains が正解。will rain は副詞節では使えず、rained は仮定法や過去の話になり、is raining は今まさに降っている状況を指す。和訳：もし明日雨が降れば、学園祭は屋内で行われます。"
+  },
+  {
+   "id": "B1-140",
+   "topic": "時制",
+   "question": "Nobody knows when the typhoon ____ the island.",
+   "choices": [
+    "reaches",
+    "is reaching",
+    "will reach",
+    "reached"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "この when 節は knows の目的語になる名詞節なので、未来のことは will を使って表す。時を表す副詞節ではないため reaches のように現在形にする必要はなく、is reaching は確定した予定、reached は過去で、未来の予測には合わない。和訳：その台風がいつ島に到達するのか、誰にもわかりません。"
+  },
+  {
+   "id": "B1-141",
+   "topic": "時制",
+   "question": "That red bicycle ____ to my brother, not to me.",
+   "choices": [
+    "belongs",
+    "is belonging",
+    "has been belonging",
+    "belong"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "belong は所属を表す状態動詞なので進行形にせず、主語が三人称単数なので belongs とする。is belonging、has been belonging はどちらも進行形なので不可、belong は三単現の s が抜けている。和訳：あの赤い自転車は私のものではなく、兄のものです。"
+  },
+  {
+   "id": "B1-142",
+   "topic": "時制",
+   "question": "Everyone says the boy ____ his grandfather when he smiles.",
+   "choices": [
+    "is resembling",
+    "has been resembling",
+    "resemble",
+    "resembles"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "resemble は「似ている」という状態を表す動詞なので進行形にできず、現在形で使う。is resembling と has been resembling は進行形なので不可、resemble は三単現の s が必要。和訳：その男の子は笑うとおじいさんに似ている、とみんなが言います。"
+  },
+  {
+   "id": "B1-143",
+   "topic": "時制",
+   "question": "I'd love to come, but I ____ enough money for the trip right now.",
+   "choices": [
+    "am not having",
+    "don't have",
+    "haven't been having",
+    "didn't have"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "所有を表す have は状態動詞なので進行形にできず、現在の話なので don't have とする。am not having と haven't been having は進行形で不可、didn't have は過去の話になり right now と合わない。和訳：ぜひ行きたいのですが、今は旅行するだけのお金がありません。"
+  },
+  {
+   "id": "B1-144",
+   "topic": "時制",
+   "question": "There ____ a small bookshop on this corner, but it closed five years ago.",
+   "choices": [
+    "used to be",
+    "was used to be",
+    "is used to being",
+    "used to being"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "used to do は「昔は〜だった（今は違う）」という過去の状態を表し、後ろは動詞の原形。was used to be は形として成立せず、is used to being は「〜することに慣れている」という別の意味、used to being も be used to -ing の形が崩れている。和訳：この角には昔小さな書店がありましたが、五年前に閉店しました。"
+  },
+  {
+   "id": "B1-145",
+   "topic": "時制",
+   "question": "Every summer when I was a child, my father ____ me to the river to catch fish.",
+   "choices": [
+    "will take",
+    "would have taken",
+    "would take",
+    "was taking"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "過去に繰り返された習慣的な行為は would do で表せる。will take は未来、would have taken は「〜したのに」という過去の推量や仮定、was taking は過去のある時点で進行中だった動作を表し、毎年の習慣にはならない。和訳：子どもの頃、夏になるといつも父は私を川へ魚を捕りに連れて行ってくれました。"
+  },
+  {
+   "id": "B1-146",
+   "topic": "時制",
+   "question": "After three months in London, Kenji ____ on the left side of the road.",
+   "choices": [
+    "used to drive",
+    "is used to driving",
+    "used to driving",
+    "is used to drive"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be used to -ing は「〜することに慣れている」という現在の状態を表す。used to drive は「昔はよく運転した（今はしない）」という別の意味、used to driving と is used to drive はどちらも形が崩れている。和訳：ロンドンで三か月過ごして、健二は道路の左側を運転することに慣れました。"
+  },
+  {
+   "id": "B1-147",
+   "topic": "時制",
+   "question": "My grandmother ____ very shy, but now she talks to everyone.",
+   "choices": [
+    "would be",
+    "is used to be",
+    "would have been",
+    "used to be"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "過去の状態が今は違うことを表すのは used to で、状態を表す be 動詞に would は使えない。is used to be は形が誤り（be used to の後ろは名詞か -ing）、would have been は過去についての推量になる。和訳：祖母は昔はとても内気でしたが、今では誰とでも話します。"
+  },
+  {
+   "id": "B1-148",
+   "topic": "時制",
+   "question": "She said that she ____ her umbrella on the bus the day before.",
+   "choices": [
+    "had left",
+    "has left",
+    "leaves",
+    "will leave"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "主節が said と過去なので、それより前の出来事は時制を一つ下げて過去完了にする。has left は現在完了で時制の一致に反し、leaves は現在形、will leave は未来形で、the day before という過去の時点と合わない。和訳：彼女は前の日にバスに傘を置き忘れたと言いました。"
+  },
+  {
+   "id": "B1-149",
+   "topic": "時制",
+   "question": "Tom told me that he ____ busy that week and couldn't see me.",
+   "choices": [
+    "is",
+    "was",
+    "has been",
+    "will be"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "間接話法では主節の told に合わせて従属節の時制も過去にずらす（時制の後退）。直接話法の I am busy が was になる。is、has been、will be はいずれも時制の一致を無視しており、続く couldn't とも合わない。和訳：トムはその週は忙しくて私に会えないと言いました。"
+  },
+  {
+   "id": "B1-150",
+   "topic": "時制",
+   "question": "The weather forecast said that it ____ colder over the weekend.",
+   "choices": [
+    "will get",
+    "gets",
+    "has got",
+    "would get"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "主節が said と過去なので、直接話法の will は would に後退する。will get は時制の一致に反し、gets は現在の習慣、has got は現在完了で、過去に述べられた予報の内容を表せない。和訳：天気予報では、週末にかけてもっと寒くなると言っていました。"
+  },
+  {
+   "id": "B1-151",
+   "topic": "時制",
+   "question": "My parents ____ this house in 1998 and we have lived here ever since.",
+   "choices": [
+    "have bought",
+    "have been buying",
+    "bought",
+    "had bought"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "in 1998 という過去の一点を示す語句は現在完了と共に使えないので過去形 bought が正解。have bought と have been buying は現在完了系なので不可、had bought はさらに前の過去を示す基準時が必要。和訳：両親は一九九八年にこの家を買い、私たちはそれ以来ずっとここに住んでいます。"
+  },
+  {
+   "id": "B1-152",
+   "topic": "時制",
+   "question": "This is the first time I ____ Japanese curry. It's delicious!",
+   "choices": [
+    "try",
+    "have tried",
+    "tried",
+    "am trying"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "This is the first time の後は「今までに〜したことがある」という経験を表す現在完了を使うのが決まった形。try は現在形、tried は過去形で経験の意味が出ず、am trying は今の動作を述べるだけ。和訳：日本のカレーを食べるのはこれが初めてです。とてもおいしいですね。"
+  },
+  {
+   "id": "B1-153",
+   "topic": "時制",
+   "question": "It ____ three years since we last met at the conference.",
+   "choices": [
+    "has been",
+    "is being",
+    "was",
+    "has been being"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "It has been ... since ... で「〜してから…が経つ」を表す。is being は一時的な様子を表す形で時間の経過には使えず、was は過去で切れてしまい、has been being は不自然な形。和訳：あの学会で最後にお会いしてから三年が経ちます。"
+  },
+  {
+   "id": "B1-154",
+   "topic": "時制",
+   "question": "I ____ three emails this morning, and I still have two more to write.",
+   "choices": [
+    "have been writing",
+    "am writing",
+    "have written",
+    "write"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「三通書き終えた」という完了した数や結果を言うときは現在完了形を使い、動作の継続を強調する現在完了進行形は使わない。am writing は今書いている最中、write は習慣を表す。和訳：今朝はメールを三通書きましたが、まだあと二通書かなければなりません。"
+  },
+  {
+   "id": "B1-155",
+   "topic": "時制",
+   "question": "After the guests ____ , we started cleaning the room.",
+   "choices": [
+    "have left",
+    "were leaving",
+    "leave",
+    "had left"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「掃除を始めた」という過去の出来事より前に起きたことなので過去完了で表す。have left は現在完了で過去の文と合わず、were leaving は進行中の動作、leave は現在形で時間関係を示せない。和訳：客が帰った後、私たちは部屋の掃除を始めました。"
+  },
+  {
+   "id": "B1-156",
+   "topic": "時制",
+   "question": "By the time the ambulance arrived, someone ____ first aid to the injured man.",
+   "choices": [
+    "had already given",
+    "has already given",
+    "already gives",
+    "would already give"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "by the time ... arrived という過去の時点までに完了していた動作なので過去完了を使う。has already given は現在が基準、already gives は現在の習慣、would already give は過去から見た未来で、完了の意味を表せない。和訳：救急車が到着するまでには、誰かがそのけが人に応急手当をし終えていました。"
+  },
+  {
+   "id": "B1-157",
+   "topic": "時制",
+   "question": "____ the copy machine later? I need to use it for about ten minutes.",
+   "choices": [
+    "Will you use",
+    "Will you be using",
+    "Do you use",
+    "Are you used to using"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "未来進行形の疑問文は相手の意志を問わず、予定や成り行きを丁寧に尋ねるときに使う。Will you use は「使ってくれますか」という依頼にも取れて不自然、Do you use は習慣を尋ねる形、Are you used to using は「使うことに慣れているか」という別の意味になる。和訳：後でコピー機を使う予定はありますか。十分ほど使いたいのですが。"
+  },
+  {
+   "id": "B1-158",
+   "topic": "時制",
+   "question": "We won't start the game unless the rain ____ .",
+   "choices": [
+    "will stop",
+    "will have stopped",
+    "stops",
+    "stopped"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "unless は条件を表す副詞節を導くので、未来のことでも現在形で表す。will stop や will have stopped のように未来形は使えず、stopped は過去や仮定法になってしまう。和訳：雨がやまない限り、私たちは試合を始めません。"
+  },
+  {
+   "id": "B1-159",
+   "topic": "時制",
+   "question": "A lot of things have changed in this town since I ____ high school.",
+   "choices": [
+    "have finished",
+    "finish",
+    "had finished",
+    "finished"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "since が導く節は起点となる過去の一点を示すので過去形を使い、主節はそこから現在までの変化を表す現在完了にする。have finished は現在完了で起点を示せず、finish は現在形、had finished はさらに前の過去を示す基準時が必要。和訳：私が高校を卒業してから、この町では多くのことが変わりました。"
+  },
+  {
+   "id": "B1-160",
+   "topic": "助動詞",
+   "question": "The lights are on and I can hear music. Someone ____ at home.",
+   "choices": [
+    "can be",
+    "must be",
+    "should be",
+    "would be"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "目に見える根拠から「〜に違いない」と強く推量するときは must を使う。肯定文の can be は「〜でありうる」という理論上の可能性、should be は「当然〜のはずだ」という期待、would be は仮定や推測を和らげる表現で、確信を表す文脈には合わない。和訳：明かりがついていて音楽も聞こえます。誰かが家にいるに違いありません。"
+  },
+  {
+   "id": "B1-161",
+   "topic": "助動詞",
+   "question": "That ____ Mr. Tanaka. He is in Osaka on business until Friday.",
+   "choices": [
+    "mustn't be",
+    "may not be",
+    "shouldn't be",
+    "can't be"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「〜のはずがない」という強い否定の推量は can't be で表す。mustn't は「〜してはいけない」という禁止、may not be は「〜でないかもしれない」という弱い推量、shouldn't be は「〜であるべきでない」という意味になる。和訳：あれが田中さんのはずがありません。彼は金曜まで大阪に出張中です。"
+  },
+  {
+   "id": "B1-162",
+   "topic": "助動詞",
+   "question": "I'm not sure where my glasses are. They ____ be in the car.",
+   "choices": [
+    "might",
+    "must",
+    "can",
+    "will have to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "確信のない推量は might（〜かもしれない）で表す。must は「〜に違いない」で I'm not sure と矛盾し、肯定文の can は個別の事柄の推量には使えず、will have to は「〜しなければならないだろう」という義務の意味になる。和訳：眼鏡がどこにあるかわかりません。車の中にあるかもしれません。"
+  },
+  {
+   "id": "B1-163",
+   "topic": "助動詞",
+   "question": "Take an umbrella. It ____ rain later this evening, according to the forecast.",
+   "choices": [
+    "can",
+    "must",
+    "could",
+    "should"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "could は「〜する可能性がある」という控えめな推量を表す。肯定文の can は「〜することがありうる」という一般的な性質を述べる用法で個別の予報には合わず、must は確信、should は「当然〜するはずだ」という期待を表す。和訳：傘を持って行きなさい。予報によると、今晩遅くに雨が降るかもしれません。"
+  },
+  {
+   "id": "B1-164",
+   "topic": "助動詞",
+   "question": "The ground is completely white. It ____ heavily during the night.",
+   "choices": [
+    "must snow",
+    "should have snowed",
+    "can have snowed",
+    "must have snowed"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "今の状況から過去の出来事を「〜したに違いない」と推量するときは must have p.p. を使う。must snow は現在の推量、should have snowed は「〜すべきだったのに」という後悔や実現しなかった期待、can have p.p. は肯定文では通常使わない。和訳：地面が真っ白です。夜の間に大雪が降ったに違いありません。"
+  },
+  {
+   "id": "B1-165",
+   "topic": "助動詞",
+   "question": "She ____ my message. Her phone was switched off all day.",
+   "choices": [
+    "can't have read",
+    "mustn't have read",
+    "shouldn't have read",
+    "can't read"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "過去について「〜したはずがない」と否定的に推量するときは can't have p.p. を使う。mustn't have p.p. はこの意味では用いず、shouldn't have read は「読むべきではなかった」という非難、can't read は現在の能力や可能性の否定になる。和訳：彼女が私のメッセージを読んだはずがありません。彼女の携帯は一日中電源が切れていたのですから。"
+  },
+  {
+   "id": "B1-166",
+   "topic": "助動詞",
+   "question": "I can't find my wallet anywhere. I ____ it at the restaurant.",
+   "choices": [
+    "may leave",
+    "must leave",
+    "may have left",
+    "should leave"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "過去について「〜したかもしれない」と推量するときは may have p.p. を使う。may leave は現在や未来の推量、must leave は「出発しなければならない」という義務、should leave は「置いてくるべきだ」という助言になり、いずれも過去の推量にならない。和訳：財布がどこにも見つかりません。レストランに置いてきてしまったのかもしれません。"
+  },
+  {
+   "id": "B1-167",
+   "topic": "助動詞",
+   "question": "I feel terrible today. I ____ so late last night.",
+   "choices": [
+    "shouldn't stay up",
+    "shouldn't have stayed up",
+    "mustn't have stayed up",
+    "couldn't have stayed up"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "shouldn't have p.p. は「〜すべきではなかったのに（実際はしてしまった）」という後悔を表す。shouldn't stay up は現在や今後の助言、mustn't have stayed up はこの意味では使わず、couldn't have stayed up は「起きていられたはずがない」という過去の推量になる。和訳：今日は気分が最悪です。昨夜あんなに夜更かしすべきではありませんでした。"
+  },
+  {
+   "id": "B1-168",
+   "topic": "助動詞",
+   "question": "You ____ me that the deadline had changed. Now the report is late.",
+   "choices": [
+    "ought to have told",
+    "ought to tell",
+    "ought not to have told",
+    "must have told"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "ought to have p.p. は「〜すべきだったのに（しなかった）」という非難を表す。ought to tell は今後の助言、ought not to have told は「言うべきではなかった」と意味が逆、must have told は「言ったに違いない」という過去の推量になる。和訳：締め切りが変わったことを私に伝えるべきだったのに。おかげで報告書が遅れています。"
+  },
+  {
+   "id": "B1-169",
+   "topic": "助動詞",
+   "question": "You ____ take photos in this museum. It is strictly forbidden.",
+   "choices": [
+    "don't have to",
+    "need not",
+    "shouldn't have to",
+    "mustn't"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "mustn't は「〜してはいけない」という強い禁止を表す。don't have to と need not はどちらも「〜する必要がない」という不必要の意味で、禁止とは正反対。shouldn't have to は「〜する義務を負うべきでない」という別の意味になる。和訳：この博物館では写真を撮ってはいけません。厳しく禁止されています。"
+  },
+  {
+   "id": "B1-170",
+   "topic": "助動詞",
+   "question": "There were no buses that night, so we ____ walk home.",
+   "choices": [
+    "must",
+    "had to",
+    "must have",
+    "should"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "must には過去形がないので、過去の義務や必要は had to で表す。must は現在の義務、must have は後ろに過去分詞が必要で「〜したに違いない」という推量、should は「〜すべきだ」という助言になる。和訳：その晩はバスがなかったので、私たちは歩いて帰らなければなりませんでした。"
+  },
+  {
+   "id": "B1-171",
+   "topic": "助動詞",
+   "question": "If you want to enter the university, you ____ take the exam in February.",
+   "choices": [
+    "must to",
+    "will must",
+    "are having to",
+    "will have to"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "未来の義務は will have to で表す。must は助動詞なので will must のように助動詞を重ねられず、must to のように to も付かない。have to は状態を表すので are having to という進行形も不自然。和訳：その大学に入りたいなら、二月に試験を受けなければなりません。"
+  },
+  {
+   "id": "B1-172",
+   "topic": "助動詞",
+   "question": "You ____ bring your own towel. The hotel provides one for every guest.",
+   "choices": [
+    "don't need to",
+    "need not to",
+    "don't need",
+    "must not"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "need to の否定形は don't need to で「〜する必要はない」という意味。need not to は形が誤りで、正しくは need not bring。don't need の後ろに動詞の原形は続かず、must not は「〜してはいけない」という禁止になる。和訳：タオルを持参する必要はありません。ホテルが宿泊客全員に用意しています。"
+  },
+  {
+   "id": "B1-173",
+   "topic": "助動詞",
+   "question": "You look pale. I think you ____ see a doctor.",
+   "choices": [
+    "would",
+    "should",
+    "could have",
+    "must have"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "should は「〜したほうがよい、〜すべきだ」という助言を表す。would は仮定や過去の習慣、could have は「〜できたのに」という過去の可能性、must have は「〜したに違いない」という過去の推量で、いずれも助言にならない。和訳：顔色が悪いですね。医者に診てもらったほうがいいと思います。"
+  },
+  {
+   "id": "B1-174",
+   "topic": "助動詞",
+   "question": "Students ____ hand in their assignments by Friday, according to the syllabus.",
+   "choices": [
+    "ought",
+    "ought to be",
+    "ought to",
+    "ought have to"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "ought to は後ろに動詞の原形を伴って「〜すべきだ」という義務や当然を表す。ought だけでは to が抜けており、ought to be の後ろには原形 hand は続かず、ought have to という形も存在しない。和訳：シラバスによると、学生は金曜日までに課題を提出すべきです。"
+  },
+  {
+   "id": "B1-175",
+   "topic": "助動詞",
+   "question": "You ____ leave now, or you'll miss the last bus.",
+   "choices": [
+    "had better",
+    "had better to",
+    "would better",
+    "have better"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "had better は後ろに動詞の原形を伴い、「〜したほうがよい（さもないと困る）」という強めの忠告を表す。had better to のように to は入らず、would better や have better という形もない。和訳：もう出たほうがいいですよ。さもないと最終バスに乗り遅れます。"
+  },
+  {
+   "id": "B1-176",
+   "topic": "助動詞",
+   "question": "You ____ tell anyone about the surprise party.",
+   "choices": [
+    "had not better",
+    "hadn't better to",
+    "had better don't",
+    "had better not"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "had better の否定は not を better の直後に置いて had better not do とする。had not better、hadn't better to、had better don't はいずれも語順や形が誤り。和訳：サプライズパーティーのことは誰にも言わないほうがいいですよ。"
+  },
+  {
+   "id": "B1-177",
+   "topic": "助動詞",
+   "question": "Why ____ join our study group? We meet every Tuesday.",
+   "choices": [
+    "don't you to",
+    "you don't",
+    "don't you",
+    "not you"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "Why don't you do ...? は「〜してはどうですか」という提案の決まった形で、後ろは動詞の原形。don't you to のように to は入らず、you don't では疑問文の語順にならず、not you も形として成立しない。和訳：私たちの勉強会に参加してはどうですか。毎週火曜日に集まっています。"
+  },
+  {
+   "id": "B1-178",
+   "topic": "助動詞",
+   "question": "____ we take a short break now? We've been working for two hours.",
+   "choices": [
+    "Will",
+    "Shall",
+    "Do",
+    "Would"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "Shall we ...? は「（一緒に）〜しませんか」と相手を誘う表現。Will we ...? は単なる未来の予測を尋ねる形で勧誘にならず、Do we ...? は事実確認、Would we ...? も誘いの意味にはならない。和訳：そろそろ少し休憩しませんか。もう二時間も作業していますから。"
+  },
+  {
+   "id": "B1-179",
+   "topic": "助動詞",
+   "question": "____ I use your dictionary for a moment, Professor Smith?",
+   "choices": [
+    "Will",
+    "Shall",
+    "May",
+    "Must"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "May I ...? は目上の人に許可を求めるときの丁寧な言い方。Will I ...? は自分の未来を尋ねる形、Shall I ...? は「〜しましょうか」という申し出、Must I ...? は「〜しなければならないのか」という義務の確認になる。和訳：スミス先生、少しの間、辞書をお借りしてもよろしいですか。"
+  },
+  {
+   "id": "B1-180",
+   "topic": "助動詞",
+   "question": "____ you tell me how to get to the city hall, please?",
+   "choices": [
+    "Could",
+    "Should",
+    "May",
+    "Must"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "Could you ...? は丁寧に依頼するときの形。Should you ...? は依頼にならず、May you ...? という依頼の形は英語にはなく（May I なら許可）、Must you ...? は「どうしても〜しなければならないのか」という詰問になる。和訳：市役所への行き方を教えていただけますか。"
+  },
+  {
+   "id": "B1-181",
+   "topic": "助動詞",
+   "question": "My sister is only five, but she ____ already read English books.",
+   "choices": [
+    "can to",
+    "can",
+    "is able",
+    "could"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "現在の能力は can＋動詞の原形で表す。can to のように to は付かず、is able は to が抜けていて不完全（is able to read なら正しい）。could は過去の能力や控えめな推量を表し、現在の話には合わない。和訳：妹はまだ五歳ですが、もう英語の本を読むことができます。"
+  },
+  {
+   "id": "B1-182",
+   "topic": "助動詞",
+   "question": "When I was younger, I ____ swim across this lake without stopping.",
+   "choices": [
+    "could",
+    "was able",
+    "can",
+    "could have"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "過去に「いつでも〜できた」という一般的な能力は could で表す。was able は to が抜けていて不完全、can は現在の能力、could have は後ろに過去分詞が必要で「〜できたのに」という意味になる。和訳：若い頃、私は休まずにこの湖を泳いで渡ることができました。"
+  },
+  {
+   "id": "B1-183",
+   "topic": "助動詞",
+   "question": "The fire spread quickly, but everyone ____ escape through the back door.",
+   "choices": [
+    "could",
+    "can",
+    "was able to",
+    "could have"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "過去の一回限りの場面で「実際に〜できた」という達成を表すときは was/were able to を使い、could は使わない。can は現在の能力、could have escape は形が誤りで、could have escaped なら「逃げられたのに（逃げなかった）」という意味になる。和訳：火はすぐに燃え広がりましたが、全員が裏口から逃げることができました。"
+  },
+  {
+   "id": "B1-184",
+   "topic": "助動詞",
+   "question": "If you practice every day, you ____ play this piece by the concert.",
+   "choices": [
+    "will can",
+    "will be able to",
+    "can able to",
+    "are able"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "助動詞を二つ並べることはできないので、未来の能力は will be able to で表す。will can は助動詞の重複、can able to は形の誤り、are able は to が抜けているうえ未来の意味も出せない。和訳：毎日練習すれば、コンサートまでにこの曲を弾けるようになるでしょう。"
+  },
+  {
+   "id": "B1-185",
+   "topic": "助動詞",
+   "question": "I called her three times, but I ____ reach her.",
+   "choices": [
+    "can't",
+    "was able to",
+    "couldn't have",
+    "couldn't"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "一回限りの場面でも、否定で「〜できなかった」と言うときは couldn't を使える。can't は現在の話、was able to は肯定なので but と矛盾し、couldn't have は後ろに過去分詞が必要で「〜したはずがない」という推量になる。和訳：三回電話しましたが、彼女に連絡がつきませんでした。"
+  },
+  {
+   "id": "B1-186",
+   "topic": "助動詞",
+   "question": "On Sundays my grandfather ____ sit under the tree and read the newspaper for hours.",
+   "choices": [
+    "would",
+    "will",
+    "would have",
+    "should"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "would は「昔はよく〜したものだ」という過去の習慣を表す。will は現在の習性や未来、would have は後ろに過去分詞が必要で仮定や推量の意味、should は義務や助言になる。和訳：日曜日になると、祖父はよく木の下に座って何時間も新聞を読んでいたものです。"
+  },
+  {
+   "id": "B1-187",
+   "topic": "助動詞",
+   "question": "I ____ ask you a few questions about your new product, if you have time.",
+   "choices": [
+    "would like",
+    "would like to",
+    "would rather to",
+    "am liking to"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "would like to do は「〜したいのですが」という丁寧な願望を表す。would like の後ろに動詞の原形は続かず、would rather の後ろには to を付けない（would rather ask なら可）。like は状態動詞なので進行形 am liking も不可。和訳：お時間があれば、御社の新製品について少し質問させていただきたいのですが。"
+  },
+  {
+   "id": "B1-188",
+   "topic": "助動詞",
+   "question": "A: I can't open this jar.  B: ____ it for you.",
+   "choices": [
+    "I open",
+    "I'm opening",
+    "I would open",
+    "I'll open"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "その場で申し出るときは意志を表す will を使う。I open は現在の習慣、I'm opening は前から決まっていた予定、I would open は仮定の話になり、目の前の相手への申し出にはならない。和訳：A: この瓶が開けられないんだ。B: 私が開けてあげるよ。"
+  },
+  {
+   "id": "B1-189",
+   "topic": "助動詞",
+   "question": "It's dark in here. ____ turn on the light for you?",
+   "choices": [
+    "Do I",
+    "Will I",
+    "Shall I",
+    "May I"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "Shall I ...? は「（私が）〜しましょうか」と相手のために申し出る表現。Do I は事実確認、Will I は自分の未来を尋ねる形、May I は自分がしたいことの許可を求める形で、for you と結びつく申し出にはならない。和訳：ここは暗いですね。明かりをつけましょうか。"
+  },
+  {
+   "id": "B1-190",
+   "topic": "助動詞",
+   "question": "He studied abroad for six years, so he ____ speak English fluently.",
+   "choices": [
+    "may well to",
+    "may well",
+    "well may to",
+    "may be well"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "may well do は「〜するのももっともだ、十分〜でありうる」という意味で、後ろは動詞の原形。may well to のように to は入らず、well may to や may be well も形として成立しない。和訳：彼は六年間留学していたのですから、英語を流暢に話すのももっともです。"
+  },
+  {
+   "id": "B1-191",
+   "topic": "助動詞",
+   "question": "The meeting ____ finish before lunch, but I can't promise.",
+   "choices": [
+    "will probably",
+    "probably will not",
+    "is probably",
+    "will be probably"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "probably のような頻度や確信の副詞は助動詞 will と本動詞の間に置くので will probably finish となる。probably will not は意味が逆、is probably の後ろに原形 finish は続かず、will be probably も語順と形が誤り。和訳：会議はおそらく昼食前に終わるでしょうが、約束はできません。"
+  },
+  {
+   "id": "B1-192",
+   "topic": "助動詞",
+   "question": "I'm not certain about the schedule, but the guest speaker ____ arrive a little late.",
+   "choices": [
+    "must possibly",
+    "can possibly",
+    "might possibly",
+    "should possibly"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "might は控えめな推量を表し、possibly のような可能性を弱める副詞と自然に結びつく。must は確信を表すので possibly と矛盾し、肯定文の can possibly は個別の予測に使いにくく、should possibly も「当然〜のはずだ」という意味と合わない。和訳：予定ははっきりしませんが、ゲストスピーカーは少し遅れて到着するかもしれません。"
+  },
+  {
+   "id": "B1-193",
+   "topic": "助動詞",
+   "question": "According to the new safety rule, every visitor ____ wear a helmet inside the factory.",
+   "choices": [
+    "should have worn",
+    "doesn't have to",
+    "may not",
+    "must"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "規則による強い義務は must で表す。should have worn は「着用すべきだったのに」という過去への非難、doesn't have to は「〜する必要がない」という不必要、may not は「〜してはいけない」という禁止で、着用義務を表せない。和訳：新しい安全規則によると、来訪者は全員、工場内でヘルメットを着用しなければなりません。"
+  },
+  {
+   "id": "B1-194",
+   "topic": "助動詞",
+   "question": "____ finish the whole report today, or can I send it tomorrow morning?",
+   "choices": [
+    "Do I have to",
+    "Do I must",
+    "Must I to",
+    "Am I supposed"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "must には do を使った疑問文がないので、義務を尋ねるときは have to を使って Do I have to ...? とする。Do I must は助動詞に do を重ねた誤り、Must I to は to が余分、Am I supposed は to が抜けている。和訳：報告書を今日中に全部仕上げなければなりませんか、それとも明日の朝に送ってもいいですか。"
+  },
+  {
+   "id": "B1-195",
+   "topic": "助動詞",
+   "question": "The road is wet everywhere. It ____ while we were in the cinema.",
+   "choices": [
+    "must rain",
+    "must have been raining",
+    "should have rained",
+    "can have rained"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "過去のある期間に続いていた動作を「〜していたに違いない」と推量するときは must have been -ing を使う。must rain は現在の推量、should have rained は「降るはずだったのに」という実現しなかった期待、can have p.p. は肯定文では通常使わない。和訳：道路がどこもぬれています。私たちが映画館にいる間、ずっと雨が降っていたに違いありません。"
+  },
+  {
+   "id": "B1-196",
+   "topic": "助動詞",
+   "question": "Passengers ____ use mobile phones during takeoff and landing.",
+   "choices": [
+    "might not",
+    "don't have to",
+    "may not",
+    "needn't"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "may not は規則などで「〜してはいけない」という不許可を表す。might not は「〜しないかもしれない」という推量、don't have to と needn't は「〜する必要がない」という不必要で、禁止の意味にはならない。和訳：乗客は離陸時と着陸時に携帯電話を使用してはいけません。"
+  },
+  {
+   "id": "B1-197",
+   "topic": "助動詞",
+   "question": "The train ____ here ten minutes ago, but it still hasn't come.",
+   "choices": [
+    "must arrive",
+    "should arrive",
+    "can have arrived",
+    "should have arrived"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "should have p.p. は「当然〜しているはずなのに（実際はしていない）」という実現しなかった期待を表す。must arrive と should arrive は現在や未来の話で ten minutes ago と合わず、can have arrived は肯定文では通常使わない形。和訳：電車は十分前にここに着いているはずなのに、まだ来ていません。"
+  },
+  {
+   "id": "B1-198",
+   "topic": "受動態",
+   "question": "These machines ____ in this factory every day.",
+   "choices": [
+    "clean",
+    "cleaning",
+    "are cleaned",
+    "are cleaning"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主語 machines は「洗浄される」側なので、現在の受動態 be動詞＋過去分詞 are cleaned が正しい。clean や are cleaning は能動で「機械が何かを洗う」という意味になり不自然。cleaning だけでは述語にならない。訳: これらの機械は毎日この工場で洗浄される。"
+  },
+  {
+   "id": "B1-199",
+   "topic": "受動態",
+   "question": "The old bridge ____ by a strong typhoon in 1998.",
+   "choices": [
+    "was destroyed",
+    "destroyed",
+    "was destroying",
+    "has destroyed"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "in 1998 という過去の時を表す語句があり、by ... が動作主を示しているので過去の受動態 was＋過去分詞。destroyed や has destroyed は能動で「橋が壊した」意味になり、was destroying も能動の過去進行形。訳: その古い橋は1998年に強い台風によって破壊された。"
+  },
+  {
+   "id": "B1-200",
+   "topic": "受動態",
+   "question": "The exam results ____ on the school website next Monday.",
+   "choices": [
+    "will announce",
+    "will be announcing",
+    "are announced",
+    "will be announced"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "next Monday の未来のことで、results は「発表される」側なので will be＋過去分詞。will announce と will be announcing は能動。are announced は現在の習慣を表す形で、未来の一回の出来事には合わない。訳: 試験の結果は来週の月曜日に学校のウェブサイトで発表される。"
+  },
+  {
+   "id": "B1-201",
+   "topic": "受動態",
+   "question": "Be careful. The floor ____ right now, so it is still wet.",
+   "choices": [
+    "is cleaning",
+    "is being cleaned",
+    "has cleaned",
+    "was cleaned"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "right now と今まさに進行中の動作で、床は掃除される側なので進行形の受動態 is being＋過去分詞。is cleaning と has cleaned は能動、was cleaned は過去のことなので今の状況に合わない。訳: 気をつけて。床は今ちょうど掃除されているところで、まだぬれている。"
+  },
+  {
+   "id": "B1-202",
+   "topic": "受動態",
+   "question": "While the road ____, we had to use a different route.",
+   "choices": [
+    "was repairing",
+    "was being repaired",
+    "repaired",
+    "has been repaired"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "過去のある期間に「修理されている最中」だったので、過去進行形の受動態 was being＋過去分詞。was repairing と repaired は能動で「道路が修理する」意味になり、has been repaired は現在完了なので過去の場面と合わない。訳: 道路が修理されている間、私たちは別の道を使わなければならなかった。"
+  },
+  {
+   "id": "B1-203",
+   "topic": "受動態",
+   "question": "My smartphone ____ twice since I bought it last year.",
+   "choices": [
+    "repaired",
+    "is repaired",
+    "has repaired",
+    "has been repaired"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "since ... があるので現在完了、しかも携帯は「修理される」側なので has been＋過去分詞。has repaired と repaired は能動、is repaired は現在の事実を表すだけで「2回」という経験を表せない。訳: 私のスマートフォンは昨年買ってから2回修理された。"
+  },
+  {
+   "id": "B1-204",
+   "topic": "受動態",
+   "question": "When we arrived at the hall, all the tickets ____ out.",
+   "choices": [
+    "had been sold",
+    "were selling",
+    "have been sold",
+    "had sold"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「着いた」時点よりも前に売り切れていたので、過去完了の受動態 had been＋過去分詞。had sold と were selling は能動で「チケットが売った」意味になる。have been sold は現在完了なので過去の時点との前後関係を表せない。訳: 私たちがホールに着いたときには、チケットはすべて売り切れていた。"
+  },
+  {
+   "id": "B1-205",
+   "topic": "受動態",
+   "question": "This app is very simple. It ____ without any special training.",
+   "choices": [
+    "can use",
+    "can used",
+    "can be used",
+    "can being used"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "助動詞を含む受動態は 助動詞＋be＋過去分詞。can use は能動で「アプリが何かを使う」意味になり、can used と can being used は形として誤り。訳: このアプリはとても簡単だ。特別な訓練なしで使うことができる。"
+  },
+  {
+   "id": "B1-206",
+   "topic": "受動態",
+   "question": "All the reports must ____ before Friday afternoon.",
+   "choices": [
+    "be finished",
+    "finish",
+    "finishing",
+    "been finished"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "must の後は動詞の原形が来るので、受動態にするときは be＋過去分詞の形。finish は能動で「報告書が仕上げる」意味になり、finishing と been finished は助動詞の直後に置けない形。訳: 報告書はすべて金曜の午後までに仕上げられなければならない。"
+  },
+  {
+   "id": "B1-207",
+   "topic": "受動態",
+   "question": "The application form should ____ to the office by March 5.",
+   "choices": [
+    "send",
+    "sending",
+    "be sent",
+    "been sent"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "用紙は「送られる」側なので should be＋過去分詞。send は能動、sending と been sent は助動詞の直後には置けない。訳: 申込用紙は3月5日までに事務室へ送られるべきだ。"
+  },
+  {
+   "id": "B1-208",
+   "topic": "受動態",
+   "question": "My brother is interested ____ collecting old coins from around the world.",
+   "choices": [
+    "for",
+    "in",
+    "on",
+    "with"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be interested in ... で「…に興味がある」。感情を表す受動表現は by ではなく決まった前置詞をとるものが多く、ここでは in 以外は使えない。訳: 兄は世界中の古い硬貨を集めることに興味がある。"
+  },
+  {
+   "id": "B1-209",
+   "topic": "受動態",
+   "question": "Kyoto is known ____ people all over the world as a city of old temples.",
+   "choices": [
+    "by",
+    "with",
+    "for",
+    "to"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "be known to＋人 で「(人)に知られている」。be known for は「(特徴)で知られる」で後ろに人は来ず、be known by は「(判断材料)によってわかる」という別の意味になる。訳: 京都は古い寺の街として世界中の人々に知られている。"
+  },
+  {
+   "id": "B1-210",
+   "topic": "受動態",
+   "question": "When we woke up, the whole garden ____ snow.",
+   "choices": [
+    "covered with",
+    "was covering",
+    "covers with",
+    "was covered with"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "be covered with ... で「…で覆われている」。covered with だけでは be動詞がなく述語にならず、was covering と covers は能動で「庭が覆う」という意味になってしまう。訳: 目が覚めると、庭全体が雪で覆われていた。"
+  },
+  {
+   "id": "B1-211",
+   "topic": "受動態",
+   "question": "Everyone ____ the news that the famous singer would retire.",
+   "choices": [
+    "surprised at",
+    "was surprised at",
+    "was surprising at",
+    "surprised by"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be surprised at ... で「…に驚く」。人が驚くときは受動態で表す。surprised at や surprised by は be動詞が抜けており、was surprising は「驚かせていた」という能動の意味になる。訳: その有名な歌手が引退するという知らせにみんな驚いた。"
+  },
+  {
+   "id": "B1-212",
+   "topic": "受動態",
+   "question": "Our teacher was satisfied ____ the results of the class project.",
+   "choices": [
+    "in",
+    "for",
+    "with",
+    "to"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be satisfied with ... で「…に満足している」。感情を表す受動表現がとる前置詞は決まっており、in, for, to では表せない。訳: 先生はクラスのプロジェクトの結果に満足していた。"
+  },
+  {
+   "id": "B1-213",
+   "topic": "受動態",
+   "question": "The baby ____ by her grandmother while her parents were abroad.",
+   "choices": [
+    "was looked after",
+    "looked after",
+    "was looked",
+    "was after looked"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "look after は2語で1つの他動詞のように働くので、受動態にしても after を落とさず be looked after とする。looked after は能動、was looked は after が抜けており、was after looked は語順が誤り。訳: 両親が海外にいる間、その赤ちゃんは祖母に世話をされた。"
+  },
+  {
+   "id": "B1-214",
+   "topic": "受動態",
+   "question": "Don't worry. Everything ____ of by the hotel staff.",
+   "choices": [
+    "will take care",
+    "is taking care",
+    "will be taken care",
+    "has taken care"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "take care of ... の受動態は be taken care of。空所の後に of が残っているので will be taken care が入る。他はすべて能動で「すべてが世話をする」という意味になってしまう。訳: 心配いりません。すべてホテルのスタッフが面倒を見てくれます。"
+  },
+  {
+   "id": "B1-215",
+   "topic": "受動態",
+   "question": "He ____ at by his classmates when he made a mistake in his speech.",
+   "choices": [
+    "laughed",
+    "was laughing",
+    "laughed at",
+    "was laughed"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "laugh at ... の受動態は be laughed at。空所の後に at があるので was laughed が正しく、laughed at では at が重なってしまう。laughed と was laughing は能動。訳: 彼はスピーチで間違えたとき、クラスメートに笑われた。"
+  },
+  {
+   "id": "B1-216",
+   "topic": "受動態",
+   "question": "I ____ a beautiful watch by my uncle on my birthday.",
+   "choices": [
+    "was given",
+    "was gave",
+    "gave",
+    "was given to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "give A B(AにBを与える)の受動態で人を主語にすると be given＋物 の形になる。was gave は形が誤り、gave は能動、後ろに物が続くときは to を入れない。訳: 私は誕生日におじから素敵な腕時計をもらった。"
+  },
+  {
+   "id": "B1-217",
+   "topic": "受動態",
+   "question": "A free ticket ____ to every student who joined the tour.",
+   "choices": [
+    "gave",
+    "was given",
+    "giving",
+    "has given"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "give A B の受動態で物を主語にすると be given to＋人 となり、人の前に to が必要になる。gave と has given は能動で「チケットが与えた」意味になり、giving だけでは述語にならない。訳: 無料のチケットがツアーに参加したすべての生徒に配られた。"
+  },
+  {
+   "id": "B1-218",
+   "topic": "受動態",
+   "question": "He ____ captain of the soccer team last year.",
+   "choices": [
+    "elected",
+    "was elected",
+    "was elected to",
+    "was electing"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "elect O C(OをCに選ぶ)の受動態は be elected C で、補語の C はそのまま後ろに残る。to は不要で、elected と was electing は能動になってしまう。訳: 彼は昨年サッカー部のキャプテンに選ばれた。"
+  },
+  {
+   "id": "B1-219",
+   "topic": "受動態",
+   "question": "The students ____ to clean the classroom after school.",
+   "choices": [
+    "were made",
+    "made",
+    "were let",
+    "were making"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "使役動詞 make は能動では原形不定詞をとるが、受動態にすると to が現れて be made to do の形になる。let には受動態がなく be allowed to を使う。made と were making は能動。訳: 生徒たちは放課後に教室を掃除させられた。"
+  },
+  {
+   "id": "B1-220",
+   "topic": "受動態",
+   "question": "It ____ that the new stadium will be finished by next spring.",
+   "choices": [
+    "says",
+    "is saying",
+    "said",
+    "is said"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "It is said that ... で「…と言われている」という公的で客観的な言い方になる。形式主語 It を使った受動態なので、能動の says, said, is saying は入らない。訳: 新しい競技場は来春までに完成すると言われている。"
+  },
+  {
+   "id": "B1-221",
+   "topic": "受動態",
+   "question": "The actor ____ to be living in a small village in Italy.",
+   "choices": [
+    "says",
+    "is saying",
+    "is said",
+    "said"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "It is said that he is living ... は He is said to be living ... と書き換えられる。人を主語にしても受動態のままなので is said が正しく、能動の says, said, is saying は不可。訳: その俳優はイタリアの小さな村に住んでいると言われている。"
+  },
+  {
+   "id": "B1-222",
+   "topic": "受動態",
+   "question": "My cousin ____ last June and now lives in Osaka.",
+   "choices": [
+    "got marry",
+    "married with",
+    "was marrying",
+    "got married"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「結婚する」は get married で表し、get＋過去分詞は変化を表す受動表現。marry は他動詞なので married with は誤りで、got marry も形が誤り。訳: いとこは昨年の6月に結婚し、今は大阪に住んでいる。"
+  },
+  {
+   "id": "B1-223",
+   "topic": "受動態",
+   "question": "Two workers ____ when the machine suddenly stopped.",
+   "choices": [
+    "got injure",
+    "injured",
+    "got injured",
+    "were injuring"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "get＋過去分詞で「…される」という出来事としての受動を表す。injured と were injuring は能動で「作業員がけがをさせた」という意味になり、got injure は形が誤り。訳: 機械が突然止まったとき、2人の作業員がけがをした。"
+  },
+  {
+   "id": "B1-224",
+   "topic": "受動態",
+   "question": "In my part-time job, we ____ every two weeks.",
+   "choices": [
+    "pay",
+    "get paid",
+    "are paying",
+    "get pay"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「給料をもらう」は get paid。私たちは支払われる側なので受動の形が必要で、pay と are paying は能動、get pay は過去分詞になっておらず誤り。訳: 私のアルバイトでは、2週間ごとに給料が支払われる。"
+  },
+  {
+   "id": "B1-225",
+   "topic": "受動態",
+   "question": "My bicycle ____ in front of the station yesterday.",
+   "choices": [
+    "was stolen",
+    "stole",
+    "was stealing",
+    "has stolen"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "誰が盗んだかわからないときは、動作主を示さずにすむ受動態を使うのが自然。stole, has stolen, was stealing はいずれも能動で「自転車が盗んだ」意味になってしまう。訳: 昨日、駅前で私の自転車が盗まれた。"
+  },
+  {
+   "id": "B1-226",
+   "topic": "受動態",
+   "question": "When ____ this castle built?",
+   "choices": [
+    "was",
+    "did",
+    "has",
+    "is"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "built は過去分詞で受動態を作るので、疑問文では be動詞を主語の前に出す。did なら原形 build、has なら been、is では過去の時を表せない。訳: この城はいつ建てられたのですか。"
+  },
+  {
+   "id": "B1-227",
+   "topic": "受動態",
+   "question": "Tom was angry because he ____ to the party.",
+   "choices": [
+    "didn't invite",
+    "wasn't invited",
+    "hasn't invited",
+    "wasn't inviting"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "トムは招待される側なので受動態の否定 wasn't invited。didn't invite と hasn't invited は能動で「トムが招待しなかった」意味になり、wasn't inviting も能動の進行形。訳: トムは自分がパーティーに招待されなかったので怒っていた。"
+  },
+  {
+   "id": "B1-228",
+   "topic": "受動態",
+   "question": "The window is broken. It ____ by last night's strong wind.",
+   "choices": [
+    "must break",
+    "must have broken",
+    "must have been broken",
+    "must be breaking"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "過去のことへの強い推量は must have＋過去分詞で表し、さらに窓は「割られる」側なので受動を重ねて must have been broken となる。must have broken は能動で「窓が何かを割った」意味になる。訳: 窓が割れている。昨夜の強風で割られたに違いない。"
+  },
+  {
+   "id": "B1-229",
+   "topic": "受動態",
+   "question": "There is still a lot of work ____ before the concert starts.",
+   "choices": [
+    "doing",
+    "to doing",
+    "done",
+    "to be done"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "work は「される」側なので、後ろから修飾する不定詞も受動の形 to be＋過去分詞にする。doing と to doing は形が誤りで、done だけでは「すでに終わった仕事」の意味になってしまう。訳: コンサートが始まる前にまだやるべき仕事がたくさん残っている。"
+  },
+  {
+   "id": "B1-230",
+   "topic": "受動態",
+   "question": "The station ____ with tourists during the holiday season.",
+   "choices": [
+    "crowded",
+    "was crowding",
+    "was crowded",
+    "crowds"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be crowded with ... で「…で混雑している」。前置詞は by ではなく with を使う。crowded だけでは be動詞がなく、was crowding と crowds は能動になってしまう。訳: 連休の間、その駅は観光客で混雑していた。"
+  },
+  {
+   "id": "B1-231",
+   "topic": "受動態",
+   "question": "The new student ____ to kindly by everyone in the class.",
+   "choices": [
+    "spoke",
+    "was spoken",
+    "was speaking",
+    "spoken"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "speak to ...(に話しかける)の受動態は be spoken to で、to を落とさない。spoke と was speaking は能動、spoken だけでは be動詞がない。訳: その転校生はクラスのみんなから親切に話しかけられた。"
+  },
+  {
+   "id": "B1-232",
+   "topic": "受動態",
+   "question": "The man ____ to enter the building at about ten o'clock.",
+   "choices": [
+    "saw",
+    "was seeing",
+    "seen",
+    "was seen"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "知覚動詞 see は能動では原形不定詞をとる(see him enter)が、受動態にすると to が現れて be seen to do となる。saw と was seeing は能動、seen だけでは be動詞がない。訳: その男性は10時ごろ建物に入るところを目撃された。"
+  },
+  {
+   "id": "B1-233",
+   "topic": "受動態",
+   "question": "She ____ up by her grandparents in a small fishing town.",
+   "choices": [
+    "was brought",
+    "brought",
+    "was bringing",
+    "has brought"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "bring up(育てる)の受動態は be brought up で、up を落とさない。brought, has brought, was bringing はいずれも能動で「彼女が育てた」意味になる。訳: 彼女は小さな漁師町で祖父母に育てられた。"
+  },
+  {
+   "id": "B1-234",
+   "topic": "受動態",
+   "question": "All the members ____ an email about the schedule change by the manager yesterday.",
+   "choices": [
+    "sent",
+    "were sent",
+    "were sending",
+    "have sent"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "send A B の受動態で人を主語にすると be sent＋物 の形になる。by the manager が動作主を示しているので能動の sent, were sending, have sent は入らない。訳: メンバー全員が昨日、部長から予定変更についてのメールを送られた。"
+  },
+  {
+   "id": "B1-235",
+   "topic": "受動態",
+   "question": "____ the tickets be bought online, or do we have to go to the office?",
+   "choices": [
+    "Can",
+    "Do",
+    "Are",
+    "Have"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "助動詞を含む受動態の疑問文は 助動詞＋主語＋be＋過去分詞 の語順。be bought があるので Can が入る。Do なら原形 buy、Are なら bought の形、Have なら been が必要になる。訳: チケットはオンラインで買えますか、それとも事務所に行かなければなりませんか。"
+  },
+  {
+   "id": "B1-236",
+   "topic": "受動態",
+   "question": "The window was broken ____ a stone, not by a ball.",
+   "choices": [
+    "by",
+    "of",
+    "with",
+    "from"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "受動態で行為をした人を表すときは by だが、使われた道具や手段を表すときは with を使う。文の後半の by a ball と対比されている点にも注意。訳: その窓はボールではなく石で割られた。"
+  },
+  {
+   "id": "B1-237",
+   "topic": "受動態",
+   "question": "This kind of paper ____ from recycled milk cartons.",
+   "choices": [
+    "produces",
+    "is producing",
+    "has produced",
+    "is produced"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "誰が作るかを言う必要がない一般的な説明では受動態が自然で、紙は「作られる」側なので is＋過去分詞。produces, is producing, has produced はいずれも能動で「紙が作る」意味になる。訳: この種類の紙は回収された牛乳パックから作られる。"
+  },
+  {
+   "id": "B1-238",
+   "topic": "不定詞・動名詞",
+   "question": "She wants ____ a nurse and work in a children's hospital.",
+   "choices": [
+    "be",
+    "to be",
+    "being",
+    "been"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "want は目的語に to 不定詞をとる。ここでの to be は「…になること」を表す名詞的用法。原形の be、動名詞の being、過去分詞の been は want の目的語にできない。訳: 彼女は看護師になって子ども病院で働きたいと思っている。"
+  },
+  {
+   "id": "B1-239",
+   "topic": "不定詞・動名詞",
+   "question": "I'm really hungry. Is there anything ____ in the fridge?",
+   "choices": [
+    "eat",
+    "eating",
+    "for eat",
+    "to eat"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "名詞 anything を後ろから修飾する形容詞的用法の不定詞。something や anything を修飾する語句は後ろに置く。eating では「食べている何か」となり意味が合わず、for eat は形が誤り。訳: 本当におなかがすいた。冷蔵庫に何か食べる物はある。"
+  },
+  {
+   "id": "B1-240",
+   "topic": "不定詞・動名詞",
+   "question": "She left home an hour early ____ a good seat on the train.",
+   "choices": [
+    "to get",
+    "getting",
+    "for getting",
+    "got"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「…するために」という目的を表す副詞的用法の不定詞。in order to get と言い換えられる。getting や for getting では目的の意味を表せず、got は文の形が崩れる。訳: 彼女は電車でよい席を取るために1時間早く家を出た。"
+  },
+  {
+   "id": "B1-241",
+   "topic": "不定詞・動名詞",
+   "question": "He studied very hard and grew up ____ one of the best doctors in the country.",
+   "choices": [
+    "being",
+    "for being",
+    "to be",
+    "been"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "grow up to be ... は「成長して…になる」という結果を表す副詞的用法。live to be ninety(90歳まで生きる)も同じ型。being や for being では結果の意味を表せない。訳: 彼は熱心に勉強し、成長して国内有数の医師になった。"
+  },
+  {
+   "id": "B1-242",
+   "topic": "不定詞・動名詞",
+   "question": "I was very glad ____ that you had passed the entrance exam.",
+   "choices": [
+    "hearing",
+    "hear",
+    "to hear",
+    "for hearing"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "感情を表す形容詞の後の不定詞は「…して」という原因や理由を表す副詞的用法。be glad to do, be sorry to do などの形で使う。hearing や for hearing はこの型では使わない。訳: あなたが入学試験に合格したと聞いてとてもうれしかった。"
+  },
+  {
+   "id": "B1-243",
+   "topic": "不定詞・動名詞",
+   "question": "She must be very kind ____ up her seat to an elderly passenger.",
+   "choices": [
+    "to give",
+    "giving",
+    "for giving",
+    "gave"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「…するとは」と判断の根拠を表す副詞的用法の不定詞。must be kind to do の形で「…するとは親切に違いない」となる。giving や for giving では根拠を表せない。訳: お年寄りの乗客に席を譲るとは、彼女はとても親切なのだろう。"
+  },
+  {
+   "id": "B1-244",
+   "topic": "不定詞・動名詞",
+   "question": "We decided ____ the school trip because of the typhoon.",
+   "choices": [
+    "canceling",
+    "to cancel",
+    "cancel",
+    "to canceling"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "decide は目的語に to 不定詞だけをとる動詞で、hope, promise, refuse も同じ仲間。動名詞 canceling は目的語にできず、原形 cancel も置けない。訳: 台風のため、私たちは修学旅行を中止することに決めた。"
+  },
+  {
+   "id": "B1-245",
+   "topic": "不定詞・動名詞",
+   "question": "My brother promised ____ me with my math homework tonight.",
+   "choices": [
+    "helping",
+    "help",
+    "for helping",
+    "to help"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "promise はこれからすることを目的語にとるので to 不定詞を使う。decide や refuse も同じ型で、動名詞 helping や for helping は目的語にできない。訳: 兄は今夜、数学の宿題を手伝うと約束してくれた。"
+  },
+  {
+   "id": "B1-246",
+   "topic": "不定詞・動名詞",
+   "question": "We really enjoyed ____ along the river last weekend.",
+   "choices": [
+    "to walk",
+    "walk",
+    "to walking",
+    "walking"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "enjoy は目的語に動名詞だけをとる動詞で、finish, avoid, mind, give up も同じ仲間。to walk のような不定詞は目的語にできない。訳: 先週末、私たちは川沿いを歩くのを本当に楽しんだ。"
+  },
+  {
+   "id": "B1-247",
+   "topic": "不定詞・動名詞",
+   "question": "Would you mind ____ the window? It is getting cold in here.",
+   "choices": [
+    "to close",
+    "close",
+    "closing",
+    "to closing"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "mind は動名詞を目的語にとる動詞で、Would you mind -ing? は「…していただけませんか」という丁寧な依頼になる。to close は不可。訳: 窓を閉めていただけませんか。ここは寒くなってきました。"
+  },
+  {
+   "id": "B1-248",
+   "topic": "不定詞・動名詞",
+   "question": "Please remember ____ the door when you leave the house.",
+   "choices": [
+    "to lock",
+    "locking",
+    "lock",
+    "to locking"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "remember to do は「これから…するのを忘れずにいる」、remember -ing は「…したのを覚えている」。ここは出かけるときにこれからする動作なので to lock。訳: 家を出るときは忘れずに鍵をかけてください。"
+  },
+  {
+   "id": "B1-249",
+   "topic": "不定詞・動名詞",
+   "question": "I'll never forget ____ the Northern Lights in Finland five years ago.",
+   "choices": [
+    "to see",
+    "seeing",
+    "see",
+    "to seeing"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "forget -ing は「(過去に)…したことを忘れる」。five years ago と過去の経験を述べているので seeing。forget to do は「これから…するのを忘れる」で時が合わない。訳: 5年前にフィンランドでオーロラを見たことを私は決して忘れないだろう。"
+  },
+  {
+   "id": "B1-250",
+   "topic": "不定詞・動名詞",
+   "question": "The door wouldn't open, so I tried ____ it hard, and it finally moved.",
+   "choices": [
+    "pushing",
+    "to push",
+    "push",
+    "to pushing"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "try -ing は「試しに…してみる」、try to do は「…しようと努力する」。実際に押してみたら動いたという文脈なので pushing が正しい。訳: ドアが開かなかったので、試しに強く押してみると、ようやく動いた。"
+  },
+  {
+   "id": "B1-251",
+   "topic": "不定詞・動名詞",
+   "question": "On the way home, we stopped ____ some milk at the supermarket.",
+   "choices": [
+    "buying",
+    "to buy",
+    "buy",
+    "for buy"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "stop to do は「…するために立ち止まる、立ち寄る」で不定詞は目的を表す副詞的用法、stop -ing は「…するのをやめる」。スーパーに寄った文脈なので to buy。訳: 帰り道に、私たちはスーパーで牛乳を買うために立ち寄った。"
+  },
+  {
+   "id": "B1-252",
+   "topic": "不定詞・動名詞",
+   "question": "I regret ____ him the truth. He looked really shocked.",
+   "choices": [
+    "to tell",
+    "tell",
+    "to telling",
+    "telling"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "regret -ing は「…したことを後悔する」、regret to do は「残念ながら…する」でこれから言う内容に使う。すでに話したことへの後悔なので telling。訳: 彼に本当のことを言ったのを後悔している。彼はとてもショックを受けた様子だった。"
+  },
+  {
+   "id": "B1-253",
+   "topic": "不定詞・動名詞",
+   "question": "Could you show me ____ this coffee machine?",
+   "choices": [
+    "how use",
+    "how using",
+    "how to use",
+    "that use"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "疑問詞＋to 不定詞で「どう使えばよいか」という名詞のかたまりを作り、show の目的語になる。how use や how using は形が誤り。訳: このコーヒーメーカーの使い方を教えてもらえますか。"
+  },
+  {
+   "id": "B1-254",
+   "topic": "不定詞・動名詞",
+   "question": "I had no idea ____ when the computer suddenly stopped.",
+   "choices": [
+    "what do",
+    "what to do",
+    "what doing",
+    "to what do"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "what to do で「何をすべきか」という意味の名詞句になる。疑問詞の後に to 不定詞を続ける形で、what do や what doing は形が誤り。訳: コンピューターが突然止まったとき、私は何をすればいいのか全くわからなかった。"
+  },
+  {
+   "id": "B1-255",
+   "topic": "不定詞・動名詞",
+   "question": "He is proud of ____ the first prize in the contest the year before.",
+   "choices": [
+    "win",
+    "to win",
+    "having won",
+    "to have won"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "前置詞 of の後には動名詞が来る。さらに述語動詞 is proud より前の出来事なので、完了動名詞 having＋過去分詞を使う。前置詞の後に不定詞は置けない。訳: 彼はその前の年にコンテストで一等賞を取ったことを誇りに思っている。"
+  },
+  {
+   "id": "B1-256",
+   "topic": "不定詞・動名詞",
+   "question": "____ is dangerous to swim in this river after heavy rain.",
+   "choices": [
+    "That",
+    "There",
+    "This",
+    "It"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "to 不定詞句を後ろに回し、形式主語 It を文頭に立てる。That や This は形式主語にならず、There is の構文にも当てはまらない。訳: 大雨の後にこの川で泳ぐのは危険だ。"
+  },
+  {
+   "id": "B1-257",
+   "topic": "不定詞・動名詞",
+   "question": "I found ____ difficult to explain my idea in English.",
+   "choices": [
+    "it",
+    "that",
+    "this",
+    "them"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "find O C の O に不定詞句を直接置く代わりに、形式目的語 it を立てて真の目的語 to explain ... を後ろに回す。that, this, them は形式目的語として使えない。訳: 私は自分の考えを英語で説明するのが難しいとわかった。"
+  },
+  {
+   "id": "B1-258",
+   "topic": "不定詞・動名詞",
+   "question": "It was impossible ____ to finish the report in one day.",
+   "choices": [
+    "of him",
+    "to him",
+    "for him",
+    "that he"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "不定詞の意味上の主語は普通 for＋人 で表す。difficult, easy, impossible など人の性質を表さない形容詞では of は使えない。訳: 彼が1日でその報告書を仕上げるのは不可能だった。"
+  },
+  {
+   "id": "B1-259",
+   "topic": "不定詞・動名詞",
+   "question": "It was very careless ____ to leave your wallet on the train.",
+   "choices": [
+    "for you",
+    "to you",
+    "that you",
+    "of you"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "kind, careless, foolish など人の性質を評価する形容詞のときは、不定詞の意味上の主語を of＋人 で表す。for you は使えない。訳: 電車に財布を置き忘れるとは、あなたはとても不注意だった。"
+  },
+  {
+   "id": "B1-260",
+   "topic": "不定詞・動名詞",
+   "question": "This box is ____ heavy for me to carry alone.",
+   "choices": [
+    "so",
+    "too",
+    "very",
+    "enough"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "too ... to do で「…すぎて〜できない」。so ... to do や very ... to do という形はなく、enough は形容詞の後ろに置くので語順が合わない。訳: この箱は重すぎて、私一人では運べない。"
+  },
+  {
+   "id": "B1-261",
+   "topic": "不定詞・動名詞",
+   "question": "He is ____ to travel abroad by himself.",
+   "choices": [
+    "old enough",
+    "enough old",
+    "too old",
+    "so old"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "enough は形容詞や副詞の後ろに置き、... enough to do で「…するのに十分〜だ」となる。enough old は語順が誤り、too old to では「年を取りすぎてできない」と意味が逆になる。訳: 彼は一人で海外旅行ができる年齢だ。"
+  },
+  {
+   "id": "B1-262",
+   "topic": "不定詞・動名詞",
+   "question": "She was so tired that she couldn't walk any farther. = She was ____ walk any farther.",
+   "choices": [
+    "too tired to",
+    "so tired to",
+    "tired enough to",
+    "very tired to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "so ... that 主語 can't do は too ... to do で書き換えられる。so ... to や very ... to という形はなく、enough to では「十分できる」と意味が逆になる。訳: 彼女はとても疲れていて、それ以上歩けなかった。"
+  },
+  {
+   "id": "B1-263",
+   "topic": "不定詞・動名詞",
+   "question": "The teacher made us ____ the classroom after the party.",
+   "choices": [
+    "to clean",
+    "cleaning",
+    "cleaned",
+    "clean"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "使役動詞 make は make＋O＋原形不定詞の形をとるので to は付けない。受動態 be made to clean になると to が現れる点も合わせて覚えるとよい。訳: 先生はパーティーの後、私たちに教室を掃除させた。"
+  },
+  {
+   "id": "B1-264",
+   "topic": "不定詞・動名詞",
+   "question": "My parents didn't let me ____ out late at night.",
+   "choices": [
+    "to go",
+    "going",
+    "go",
+    "gone"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "let も make と同じく let＋O＋原形不定詞の形をとる。to go や going は目的格補語として使えない。訳: 両親は夜遅くに私が外出するのを許してくれなかった。"
+  },
+  {
+   "id": "B1-265",
+   "topic": "不定詞・動名詞",
+   "question": "I'll have my brother ____ you to the station.",
+   "choices": [
+    "to drive",
+    "drive",
+    "driving",
+    "driven"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "使役動詞 have は have＋O＋原形不定詞で「(人)に…してもらう」。目的語が物のときは have＋物＋過去分詞になるが、ここでは目的語が人なので原形を使う。訳: 弟に駅まで車で送ってもらいます。"
+  },
+  {
+   "id": "B1-266",
+   "topic": "不定詞・動名詞",
+   "question": "I heard someone ____ my name in the crowd.",
+   "choices": [
+    "to call",
+    "called",
+    "to calling",
+    "call"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "知覚動詞 hear は hear＋O＋原形不定詞で、動作の全体を聞いたことを表す。to call は不可で、called を使うなら I heard my name called のように受動の形にする必要がある。訳: 人混みの中で誰かが私の名前を呼ぶのが聞こえた。"
+  },
+  {
+   "id": "B1-267",
+   "topic": "不定詞・動名詞",
+   "question": "My classmates helped me ____ the desks to the next room.",
+   "choices": [
+    "carry",
+    "carrying",
+    "carried",
+    "to carrying"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "help は help＋O＋(to) do の形をとり、原形不定詞でも to 不定詞でもよい。carrying や carried はこの型では使えない。訳: クラスメートが机を隣の部屋へ運ぶのを手伝ってくれた。"
+  },
+  {
+   "id": "B1-268",
+   "topic": "不定詞・動名詞",
+   "question": "I finally got my little sister ____ her room before dinner.",
+   "choices": [
+    "clean",
+    "to clean",
+    "cleaned",
+    "cleans"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "get は get＋O＋to do の形で「…させる、…してもらう」を表す。make, let, have が原形不定詞をとるのに対し、get だけは to が必要になる。訳: 私はようやく妹に夕食前に部屋を片づけさせた。"
+  },
+  {
+   "id": "B1-269",
+   "topic": "不定詞・動名詞",
+   "question": "My father is good at ____ furniture out of old wood.",
+   "choices": [
+    "make",
+    "to make",
+    "making",
+    "made"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "at は前置詞なので後ろには動名詞が来る。be good at -ing で「…するのが得意だ」。前置詞の後に不定詞 to make は置けない。訳: 父は古材から家具を作るのが得意だ。"
+  },
+  {
+   "id": "B1-270",
+   "topic": "不定詞・動名詞",
+   "question": "I'm looking forward to ____ you again next summer.",
+   "choices": [
+    "see",
+    "seeing",
+    "be seen",
+    "have seen"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "look forward to の to は不定詞の to ではなく前置詞なので、後ろは動名詞になる。to see としないよう注意する。訳: 来年の夏にまたお会いできるのを楽しみにしています。"
+  },
+  {
+   "id": "B1-271",
+   "topic": "不定詞・動名詞",
+   "question": "After three months in Tokyo, she is used to ____ crowded trains every morning.",
+   "choices": [
+    "take",
+    "be taken",
+    "taking",
+    "took"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be used to -ing は「…することに慣れている」で、この to は前置詞なので動名詞が続く。used to do(以前は…したものだ)と混同して原形を入れないこと。訳: 東京で3か月過ごして、彼女は毎朝混雑した電車に乗ることに慣れた。"
+  },
+  {
+   "id": "B1-272",
+   "topic": "不定詞・動名詞",
+   "question": "Instead of ____ a taxi, we walked to the hotel along the beach.",
+   "choices": [
+    "taking",
+    "take",
+    "to take",
+    "taken"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "instead of は前置詞のはたらきをするので後ろは動名詞になる。to take や原形 take は置けない。訳: タクシーに乗る代わりに、私たちは浜辺沿いにホテルまで歩いた。"
+  },
+  {
+   "id": "B1-273",
+   "topic": "不定詞・動名詞",
+   "question": "I don't like ____ using my computer without asking me first.",
+   "choices": [
+    "he",
+    "he is",
+    "of him",
+    "his"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "動名詞の意味上の主語は所有格(くだけた言い方では目的格)で表し、his using ... で「彼が使うこと」となる。主格の he を動名詞の前に置くことはできない。訳: 私は彼が断りもなく私のパソコンを使うのが好きではない。"
+  },
+  {
+   "id": "B1-274",
+   "topic": "不定詞・動名詞",
+   "question": "It is no use ____ about the mistake now. Let's think about how to fix it.",
+   "choices": [
+    "to complain",
+    "complain",
+    "complaining",
+    "complained"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "It is no use -ing で「…しても無駄だ」という慣用表現になる。この形では不定詞 to complain は使わない。訳: 今その間違いについて文句を言っても仕方がない。どう直すかを考えよう。"
+  },
+  {
+   "id": "B1-275",
+   "topic": "不定詞・動名詞",
+   "question": "The last scene was so sad that I couldn't help ____.",
+   "choices": [
+    "to cry",
+    "crying",
+    "cry",
+    "cried"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "cannot help -ing で「…せずにはいられない」。help の後は動名詞で、to cry は使えない(同じ意味を表すなら cannot help but cry の形になる)。訳: 最後の場面がとても悲しくて、私は泣かずにはいられなかった。"
+  },
+  {
+   "id": "B1-276",
+   "topic": "不定詞・動名詞",
+   "question": "She spent three hours ____ for a present for her sister.",
+   "choices": [
+    "looking",
+    "to look",
+    "look",
+    "to looking"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "spend＋時間＋-ing で「…して時間を過ごす、…するのに時間を費やす」。この型では不定詞 to look は使わない。訳: 彼女は妹へのプレゼントを探すのに3時間を費やした。"
+  },
+  {
+   "id": "B1-277",
+   "topic": "不定詞・動名詞",
+   "question": "I'm too tired today. I don't feel like ____ out tonight.",
+   "choices": [
+    "to go",
+    "go",
+    "gone",
+    "going"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "feel like -ing で「…したい気がする」。like は前置詞なので後ろには動名詞が来る。訳: 今日は疲れすぎている。今夜は外出する気になれない。"
+  },
+  {
+   "id": "B1-278",
+   "topic": "分詞",
+   "question": "Don't wake the ____ baby. She finally fell asleep ten minutes ago.",
+   "choices": [
+    "slept",
+    "sleep",
+    "sleeping",
+    "to sleep"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "名詞を前から修飾して「〜している」という能動の意味を表すのは現在分詞なので sleeping が正解。sleep は動詞の原形のままで名詞を修飾できず、slept は自動詞の過去分詞で「眠られた」という受け身の意味を作れない。to sleep は「これから眠るための」という意味になり文脈に合わない。訳: 眠っている赤ちゃんを起こさないで。10分前にやっと寝ついたのだから。"
+  },
+  {
+   "id": "B1-279",
+   "topic": "分詞",
+   "question": "I cut my finger on a ____ glass in the kitchen sink.",
+   "choices": [
+    "broken",
+    "breaking",
+    "break",
+    "broke"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "glass は「割られた」側なので、受け身の意味を表す過去分詞 broken が名詞を前から修飾する。breaking は「割っている」という能動の意味になり、コップが何かを割ることになってしまう。break は原形、broke は過去形で、そのままの形で名詞を修飾することはできない。訳: 台所の流しで割れたガラスのコップで指を切ってしまった。"
+  },
+  {
+   "id": "B1-280",
+   "topic": "分詞",
+   "question": "Look at those ____ leaves. Autumn is really here.",
+   "choices": [
+    "fall",
+    "fell",
+    "to fall",
+    "falling"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "leaves は落ちる側なので、能動の意味の現在分詞 falling で前から修飾する。fall は原形、fell は過去形で名詞を修飾する形ではない。to fall だと「これから落ちるための葉」となり不自然。訳: あの落ちてくる葉を見て。本当に秋になったね。"
+  },
+  {
+   "id": "B1-281",
+   "topic": "分詞",
+   "question": "The woman ____ the piano over there is my aunt.",
+   "choices": [
+    "plays",
+    "playing",
+    "played",
+    "play"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "語句を伴う分詞は名詞のうしろに置いて後ろから修飾する。woman は弾く側なので現在分詞 playing。plays や play を入れると文の動詞が二つになり、すでにある is と衝突する。played は「弾かれた」という受け身になり意味が通らない。訳: あそこでピアノを弾いている女性は私のおばです。"
+  },
+  {
+   "id": "B1-282",
+   "topic": "分詞",
+   "question": "I received a letter ____ in English from my host family.",
+   "choices": [
+    "writing",
+    "written",
+    "wrote",
+    "to write"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "手紙は「書かれる」側なので、過去分詞 written が後ろから letter を修飾する。writing は「書いている」という能動の意味になり、手紙が何かを書くことになってしまう。wrote は過去形で修飾語にはならない。訳: ホストファミリーから英語で書かれた手紙を受け取った。"
+  },
+  {
+   "id": "B1-283",
+   "topic": "分詞",
+   "question": "Most of the students ____ for the bus were wearing school uniforms.",
+   "choices": [
+    "waited",
+    "wait",
+    "to wait",
+    "waiting"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "students は待つ側なので現在分詞 waiting が後ろから修飾する。waited や wait を選ぶと、主節の動詞 were wearing と合わせて動詞が二つ並んでしまう。to wait は「これから待つための生徒」となり意味が通らない。訳: バスを待っている生徒のほとんどは制服を着ていた。"
+  },
+  {
+   "id": "B1-284",
+   "topic": "分詞",
+   "question": "The soccer match last night was really ____. Nobody left before the end.",
+   "choices": [
+    "exciting",
+    "excited",
+    "excite",
+    "to excite"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "試合は人を「わくわくさせる」側なので、-ing 形の exciting を使う。excited は「人がわくわくしている」状態を表すので、主語が物や出来事のときには使えない。excite は動詞の原形なので be動詞のあとには置けない。訳: 昨夜のサッカーの試合は本当にわくわくするものだった。終わりまで誰も帰らなかった。"
+  },
+  {
+   "id": "B1-285",
+   "topic": "分詞",
+   "question": "My little brother was ____ when he heard he could go to the zoo.",
+   "choices": [
+    "exciting",
+    "excites",
+    "excited",
+    "to excite"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主語が人で「わくわくさせられた」側なので、過去分詞 excited を使う。exciting にすると「弟は(人をわくわくさせるような)わくわくする人だった」という別の意味になる。訳: 弟は動物園に行けると聞いてわくわくした。"
+  },
+  {
+   "id": "B1-286",
+   "topic": "分詞",
+   "question": "The speech went on for two hours, and everyone in the hall looked ____.",
+   "choices": [
+    "boring",
+    "bore",
+    "to bore",
+    "bored"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "聴衆は「退屈させられた」側なので過去分詞 bored。boring を選ぶと「会場の全員が(人を)退屈させる人に見えた」という意味になってしまう。bore は動詞の原形で look のあとの補語にはならない。訳: 演説は2時間も続き、会場の全員が退屈そうだった。"
+  },
+  {
+   "id": "B1-287",
+   "topic": "分詞",
+   "question": "The result of the election was ____ to many people.",
+   "choices": [
+    "surprised",
+    "surprising",
+    "surprise to",
+    "to surprise"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "結果は人を「驚かせる」側なので -ing 形の surprising を使う。surprised は人が驚いた状態を表すので、主語が result のここでは使えない。訳: 選挙の結果は多くの人にとって驚くべきものだった。"
+  },
+  {
+   "id": "B1-288",
+   "topic": "分詞",
+   "question": "I was ____ by the map at the station, so I asked a station worker for help.",
+   "choices": [
+    "confusing",
+    "confuses",
+    "confused",
+    "to confuse"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主語 I は地図によって「混乱させられた」側なので過去分詞 confused を使う。confusing にすると「私は人を混乱させる存在だ」という意味になり、by 以下ともつながらない。訳: 駅の地図に戸惑ったので、駅員に助けを求めた。"
+  },
+  {
+   "id": "B1-289",
+   "topic": "分詞",
+   "question": "I saw a man ____ into the empty house late at night.",
+   "choices": [
+    "going",
+    "went",
+    "goes",
+    "to go"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "知覚動詞 see は「O＋現在分詞」で「Oが〜しているのを見る」を表すので going が正解。知覚動詞のあとに to不定詞は置けないので to go は不可。went や goes は動詞の形のままなので目的格補語にはなれない。訳: 夜遅く、男が空き家に入っていくのを見た。"
+  },
+  {
+   "id": "B1-290",
+   "topic": "分詞",
+   "question": "I heard my name ____ from behind, so I turned around.",
+   "choices": [
+    "called",
+    "calling",
+    "to call",
+    "call"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "my name は「呼ばれる」側なので、知覚動詞 hear のあとは過去分詞 called。calling にすると名前が誰かを呼んでいることになる。知覚動詞のあとに to call の形は使えない。訳: 後ろから名前を呼ばれるのが聞こえたので、振り返った。"
+  },
+  {
+   "id": "B1-291",
+   "topic": "分詞",
+   "question": "We watched the children ____ in the pool for almost an hour.",
+   "choices": [
+    "to swim",
+    "swum",
+    "swimming",
+    "swam"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "watch＋O＋現在分詞で「Oが〜しているのをずっと見る」を表す。to swim は知覚動詞のあとでは使えず、swum は過去分詞で「泳がれる」という受け身になり意味が通らない。swam は過去形なので補語にならない。訳: 私たちは子どもたちがプールで泳いでいるのを1時間近く見ていた。"
+  },
+  {
+   "id": "B1-292",
+   "topic": "分詞",
+   "question": "I'm going to have my hair ____ before the interview on Friday.",
+   "choices": [
+    "cutting",
+    "cut",
+    "to cut",
+    "cuts"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "have＋O＋過去分詞で「Oを〜してもらう」という使役の意味を表す。髪は切られる側なので過去分詞 cut(原形と同じ形)を使う。cutting だと髪が何かを切ることになり、to cut の形は have では使えない。訳: 金曜の面接の前に髪を切ってもらうつもりだ。"
+  },
+  {
+   "id": "B1-293",
+   "topic": "分詞",
+   "question": "It took a week to get my broken laptop ____.",
+   "choices": [
+    "repairing",
+    "repair",
+    "to repair",
+    "repaired"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "get＋O＋過去分詞で「Oを〜してもらう、〜される」を表す。ノートパソコンは修理される側なので repaired。repairing だとパソコンが何かを修理することになり、to repair では「修理するために」という別の意味の不定詞になってしまう。訳: 壊れたノートパソコンを直してもらうのに1週間かかった。"
+  },
+  {
+   "id": "B1-294",
+   "topic": "分詞",
+   "question": "She had her bag ____ on a crowded train in Osaka.",
+   "choices": [
+    "stealing",
+    "stolen",
+    "steal",
+    "to steal"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "have＋O＋過去分詞は「Oを〜される」という被害の意味も表す。bag は盗まれる側なので過去分詞 stolen。stealing だとかばんが何かを盗むことになる。訳: 彼女は大阪の混んだ電車でかばんを盗まれた。"
+  },
+  {
+   "id": "B1-295",
+   "topic": "分詞",
+   "question": "I'm sorry to have kept you ____ so long.",
+   "choices": [
+    "waiting",
+    "waited",
+    "to wait",
+    "wait"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "keep＋O＋現在分詞で「Oを〜している状態にしておく」。you は待つ側なので waiting。waited だと「待たれた」という受け身になり意味が通らず、keep のあとに to wait の形は使えない。訳: こんなに長くお待たせしてすみません。"
+  },
+  {
+   "id": "B1-296",
+   "topic": "分詞",
+   "question": "He left his bike ____ outside the station, and it was gone the next morning.",
+   "choices": [
+    "unlocking",
+    "unlock",
+    "unlocked",
+    "to unlock"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "leave＋O＋過去分詞で「Oを〜された状態のままにしておく」。自転車は鍵をかけられる側なので過去分詞 unlocked。unlocking だと自転車が何かの鍵を開けることになる。訳: 彼は駅の外に自転車を施錠しないまま置いておき、翌朝それはなくなっていた。"
+  },
+  {
+   "id": "B1-297",
+   "topic": "分詞",
+   "question": "Don't leave the water ____ while you brush your teeth.",
+   "choices": [
+    "run",
+    "to run",
+    "ran",
+    "running"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "leave＋O＋現在分詞で「Oを〜しているままにする」。水は流れている側なので running。run や ran は動詞の形のままで補語にならず、leave のあとに to run の形は使えない。訳: 歯を磨いている間、水を出しっぱなしにしてはいけない。"
+  },
+  {
+   "id": "B1-298",
+   "topic": "分詞",
+   "question": "____ along the beach, I found a beautiful shell.",
+   "choices": [
+    "Walk",
+    "To walk",
+    "Walked",
+    "Walking"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「〜していたとき」という時を表す分詞構文で、意味上の主語 I は歩く側なので現在分詞 Walking。Walked は受け身の意味になり主語と合わず、To walk では「歩くために貝殻を見つけた」という不自然な意味になる。訳: 浜辺を歩いていたとき、きれいな貝殻を見つけた。"
+  },
+  {
+   "id": "B1-299",
+   "topic": "分詞",
+   "question": "____ very tired after the long flight, she went to bed early.",
+   "choices": [
+    "Feel",
+    "To feel",
+    "Feeling",
+    "Felt"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「〜だったので」という理由を表す分詞構文。意味上の主語 she は感じる側なので現在分詞 Feeling を使う。Felt は受け身の意味になり主語と合わない。訳: 長いフライトのあととても疲れていたので、彼女は早く寝た。"
+  },
+  {
+   "id": "B1-300",
+   "topic": "分詞",
+   "question": "He sat by the window, ____ at the rain outside.",
+   "choices": [
+    "looking",
+    "looked",
+    "to look",
+    "look"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜しながら」という付帯状況を表す分詞構文。主語 He は見る側なので現在分詞 looking。looked を入れると接続詞がないのに動詞が二つ並んでしまう。訳: 彼は窓のそばに座って、外の雨を眺めていた。"
+  },
+  {
+   "id": "B1-301",
+   "topic": "分詞",
+   "question": "____ from the top of the hill, the town looks like a toy village.",
+   "choices": [
+    "Seeing",
+    "Seen",
+    "To see",
+    "See"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "分詞構文の意味上の主語は the town で、町は「見られる」側なので過去分詞 Seen を使う。Seeing にすると町が何かを見ることになってしまう。訳: 丘の上から見ると、その町はおもちゃの村のように見える。"
+  },
+  {
+   "id": "B1-302",
+   "topic": "分詞",
+   "question": "____ his homework the night before, he had nothing to do on Sunday.",
+   "choices": [
+    "Having finished",
+    "Finishing",
+    "Finished",
+    "To finish"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "主節よりも前に完了した事柄は Having＋過去分詞の完了形の分詞構文で表す。Finishing では主節と同時のことになり、the night before という時のずれを表せない。Finished は受け身の意味になり主語 he と合わない。訳: 前の晩に宿題を終わらせていたので、彼は日曜日にすることが何もなかった。"
+  },
+  {
+   "id": "B1-303",
+   "topic": "分詞",
+   "question": "____ the city twice before, he knew his way to the old castle very well.",
+   "choices": [
+    "Visiting",
+    "Visited",
+    "Being visited",
+    "Having visited"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "主節より前の経験を表すので、完了形の分詞構文 Having visited を使う。Visited や Being visited は受け身の意味になり「彼が訪問される」ことになってしまう。Visiting では主節と同時の意味になり before と合わない。訳: 前にその街を2度訪れたことがあったので、彼は古い城への道をよく知っていた。"
+  },
+  {
+   "id": "B1-304",
+   "topic": "分詞",
+   "question": "____ in simple English, this book is perfect for beginners.",
+   "choices": [
+    "Writing",
+    "Written",
+    "To write",
+    "Having written"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "本は「書かれる」側なので、過去分詞で始まる受動の分詞構文を使う。本来は Being written だが、Being はふつう省略される。Writing や Having written は能動で、本が何かを書くことになってしまう。訳: やさしい英語で書かれているので、この本は初心者にぴったりだ。"
+  },
+  {
+   "id": "B1-305",
+   "topic": "分詞",
+   "question": "____ by tall buildings, the small park gets very little sunlight.",
+   "choices": [
+    "Surrounding",
+    "Having surrounded",
+    "Surrounded",
+    "To surround"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "公園はビルに「囲まれる」側なので過去分詞 Surrounded で始める受動の分詞構文。Surrounding や Having surrounded では公園がビルを囲むことになり、by 以下ともつながらない。訳: 高いビルに囲まれているので、その小さな公園にはほとんど日が当たらない。"
+  },
+  {
+   "id": "B1-306",
+   "topic": "分詞",
+   "question": "____ what to say, I just kept quiet during the meeting.",
+   "choices": [
+    "Knowing not",
+    "Not to know",
+    "Not knowing",
+    "Don't knowing"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "分詞構文を否定するときは not を分詞の直前に置くので Not knowing。Knowing not の語順は誤りで、Don't knowing のように命令文の形にすることもできない。Not to know では「知らないために」という不自然な意味になる。訳: 何を言えばよいか分からなかったので、会議の間ずっと黙っていた。"
+  },
+  {
+   "id": "B1-307",
+   "topic": "分詞",
+   "question": "____ about the change of the room, she went to the old meeting room.",
+   "choices": [
+    "Not telling",
+    "Not having been told",
+    "Not been told",
+    "Not having told"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「知らされていなかったので」は主節より前に起きた受け身の内容なので、完了形の受動分詞構文 having been told を使い、否定の not をその前に置く。Not telling や Not having told は能動で「彼女が伝えなかった」という意味になり、Not been told は having が欠けている。訳: 部屋の変更を知らされていなかったので、彼女は前の会議室へ行ってしまった。"
+  },
+  {
+   "id": "B1-308",
+   "topic": "分詞",
+   "question": "She was listening to music with her eyes ____.",
+   "choices": [
+    "closing",
+    "close",
+    "to close",
+    "closed"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "with＋O＋分詞で付帯状況を表す。目は「閉じられた」状態なので過去分詞 closed。closing にすると目が何かを閉じることになってしまう。訳: 彼女は目を閉じて音楽を聴いていた。"
+  },
+  {
+   "id": "B1-309",
+   "topic": "分詞",
+   "question": "He ran into the shop with the engine still ____.",
+   "choices": [
+    "running",
+    "run",
+    "to run",
+    "ran"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "with＋O＋現在分詞で「Oが〜している状態で」を表す。エンジンは動いている側なので running。run や ran はこの形の補語にはならない。訳: 彼はエンジンをかけたまま店に駆け込んだ。"
+  },
+  {
+   "id": "B1-310",
+   "topic": "分詞",
+   "question": "The manager listened to us with his arms ____.",
+   "choices": [
+    "folding",
+    "folded",
+    "fold",
+    "to fold"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "腕は「組まれた」状態なので、with＋O＋過去分詞の形にして folded を使う。folding だと腕が何かを組むことになる。訳: 部長は腕を組んで私たちの話を聞いた。"
+  },
+  {
+   "id": "B1-311",
+   "topic": "分詞",
+   "question": "____ from his accent, he must be from Osaka.",
+   "choices": [
+    "Judged",
+    "To judge",
+    "Judging",
+    "Judge"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "judging from 〜 は「〜から判断すると」という慣用的な分詞構文で、意味上の主語が文の主語と一致しなくても使える決まった形。Judged と受け身にすることはできない。訳: なまりから判断すると、彼は大阪の出身にちがいない。"
+  },
+  {
+   "id": "B1-312",
+   "topic": "分詞",
+   "question": "Generally ____, people in this country eat dinner quite early.",
+   "choices": [
+    "speaking",
+    "spoken",
+    "speak",
+    "to speak"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "generally speaking「一般的に言えば」は慣用的な分詞構文で、現在分詞 speaking を使う決まった形。spoken にすると受け身の意味になり成り立たない。訳: 一般的に言えば、この国の人たちは夕食をかなり早くとる。"
+  },
+  {
+   "id": "B1-313",
+   "topic": "分詞",
+   "question": "The pictures ____ at the school festival were all drawn by first-year students.",
+   "choices": [
+    "showing",
+    "to show",
+    "show",
+    "shown"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "絵は「展示される」側なので、過去分詞 shown が後ろから pictures を修飾する。showing にすると絵が何かを見せることになり、show では主節の動詞 were と二重になってしまう。訳: 学園祭で展示された絵は、すべて1年生が描いたものだった。"
+  },
+  {
+   "id": "B1-314",
+   "topic": "分詞",
+   "question": "The typhoon hit the town, ____ many houses under water.",
+   "choices": [
+    "left",
+    "leave",
+    "to leave",
+    "leaving"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「そして〜した」という結果を表す分詞構文で、主語 The typhoon は leave する側なので現在分詞 leaving。left や leave では接続詞がないのに動詞が二つ並んでしまい、to leave では「水につけるために襲った」という不自然な目的の意味になる。訳: 台風が町を襲い、多くの家を水につけた。"
+  },
+  {
+   "id": "B1-315",
+   "topic": "分詞",
+   "question": "After the test, Ken came home with a ____ look on his face.",
+   "choices": [
+    "disappointed",
+    "disappointing",
+    "disappoint",
+    "to disappoint"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "look(表情)は人の気持ちを映すもので、がっかりさせられた感情を表すので -ed 形の disappointed を使う。disappointing にすると「見る人をがっかりさせるような表情」という別の意味になる。訳: テストのあと、ケンはがっかりした顔で帰ってきた。"
+  },
+  {
+   "id": "B1-316",
+   "topic": "分詞",
+   "question": "Are you ____ in joining our volunteer group this summer?",
+   "choices": [
+    "interesting",
+    "interest",
+    "interested",
+    "to interest"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "人が「興味を持たされている」状態なので be interested in の形にする。interesting は「(人にとって)おもしろい」の意味で、物や事を主語にして使う。訳: この夏、私たちのボランティア団体に参加することに興味はありますか。"
+  },
+  {
+   "id": "B1-317",
+   "topic": "分詞",
+   "question": "I bought a ____ car because a new one was too expensive.",
+   "choices": [
+    "using",
+    "used",
+    "use",
+    "to use"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "車は「使われた」側なので、過去分詞 used が名詞を前から修飾して「中古の」の意味になる。using では車が何かを使うことになり、use は原形なので名詞を修飾できない。訳: 新車は高すぎたので中古車を買った。"
+  },
+  {
+   "id": "B1-318",
+   "topic": "関係詞",
+   "question": "The doctor ____ examined my grandmother was very kind.",
+   "choices": [
+    "which",
+    "who",
+    "whom",
+    "whose"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "先行詞が人 The doctor で、関係詞節の中では examined の主語になるので主格の who を使う。whom は目的格、whose は所有格であとに名詞が続き、which は物を先行詞にとる。訳: 祖母を診てくれた医師はとても親切だった。"
+  },
+  {
+   "id": "B1-319",
+   "topic": "関係詞",
+   "question": "This is the train ____ goes to the airport.",
+   "choices": [
+    "who",
+    "whose",
+    "whom",
+    "which"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が物 the train で、節の中では goes の主語なので主格の which(that も可)。who や whom は人を先行詞にとり、whose は直後に名詞が必要。訳: これが空港へ行く電車です。"
+  },
+  {
+   "id": "B1-320",
+   "topic": "関係詞",
+   "question": "The man ____ I met at the conference works for a car company.",
+   "choices": [
+    "whom",
+    "whose",
+    "which",
+    "what"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞が人で、関係詞節の中では met の目的語なので目的格の whom を使う(who や that、省略も可)。whose のあとには名詞が必要で、which は物を先行詞にとる。what は先行詞を含むので前に名詞があるときには使えない。訳: 会議で会った男性は自動車会社に勤めている。"
+  },
+  {
+   "id": "B1-321",
+   "topic": "関係詞",
+   "question": "The camera ____ my uncle gave me still works well.",
+   "choices": [
+    "who",
+    "whose",
+    "which",
+    "what"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "先行詞 The camera は物で、節の中では gave の目的語にあたるので目的格の which を使う。what は先行詞を含む関係代名詞なので、前に先行詞があるときには使えない。訳: おじがくれたカメラはまだよく動く。"
+  },
+  {
+   "id": "B1-322",
+   "topic": "関係詞",
+   "question": "The e-mail ____ this morning was from my old friend.",
+   "choices": [
+    "I got it",
+    "that I got it",
+    "I got",
+    "which I got it"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "目的格の関係代名詞は省略でき、名詞のあとに主語＋動詞を直接続けられる(接触節)。ただし節の中に目的語 it を残してはいけないので、I got it や that I got it は誤り。訳: 今朝受け取ったメールは古い友人からのものだった。"
+  },
+  {
+   "id": "B1-323",
+   "topic": "関係詞",
+   "question": "I have a friend ____ father is a professional photographer.",
+   "choices": [
+    "whose",
+    "who",
+    "whom",
+    "which"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "直後に名詞 father が続き「その人の父」という所有の関係なので、所有格の whose を使う。who は主格、whom は目的格で、どちらも直後に名詞を置くことはできない。訳: 私には父がプロの写真家をしている友人がいる。"
+  },
+  {
+   "id": "B1-324",
+   "topic": "関係詞",
+   "question": "We stayed in a hotel ____ windows looked out on the sea.",
+   "choices": [
+    "which",
+    "of which",
+    "that",
+    "whose"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が物であっても「その〜」という所有の関係は whose で表せる。of which を使うなら the windows of which のように the が必要で、of which windows とは言えない。which や that は直後に名詞を置けない。訳: 私たちは窓から海が見えるホテルに泊まった。"
+  },
+  {
+   "id": "B1-325",
+   "topic": "関係詞",
+   "question": "This is the house ____ the famous writer lived for thirty years.",
+   "choices": [
+    "which",
+    "in which",
+    "that",
+    "of which"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "live は自動詞で live in the house となるため in が必要で、前置詞を関係代名詞の前に置いて in which とする(where でも同じ意味)。which や that だけでは前置詞が足りず、節が不完全なままになる。訳: ここが、その有名な作家が30年間住んでいた家だ。"
+  },
+  {
+   "id": "B1-326",
+   "topic": "関係詞",
+   "question": "The woman ____ I spoke on the phone was very polite.",
+   "choices": [
+    "to whom",
+    "to who",
+    "whom to",
+    "which to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "speak to 〜 の to が必要で、前置詞の直後に置く関係代名詞は目的格なので to whom となる。前置詞のあとに主格の who は使えず、whom to のような語順にもならない。訳: 電話で話した女性はとても丁寧だった。"
+  },
+  {
+   "id": "B1-327",
+   "topic": "関係詞",
+   "question": "This is the pen ____ I write all my letters with.",
+   "choices": [
+    "with that",
+    "what",
+    "which",
+    "whose"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "前置詞 with を文末に残す形では、関係代名詞は which(that や省略も可)を使う。that は前置詞の直後には置けないので with that は誤り。what は先行詞 the pen があるときには使えない。訳: これが、私が手紙を全部書くのに使っているペンだ。"
+  },
+  {
+   "id": "B1-328",
+   "topic": "関係詞",
+   "question": "I still remember the small town ____ I spent my childhood.",
+   "choices": [
+    "which",
+    "where",
+    "that",
+    "what"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "先行詞が場所を表し、あとに主語も目的語も欠けていない完全な文が続くので関係副詞 where を使う。which や that を使うなら in which のように前置詞が必要になる。訳: 私は子ども時代を過ごした小さな町を今でも覚えている。"
+  },
+  {
+   "id": "B1-329",
+   "topic": "関係詞",
+   "question": "Do you remember the day ____ we first met at the station?",
+   "choices": [
+    "which",
+    "where",
+    "what",
+    "when"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が時を表す the day で、あとに完全な文が続くので関係副詞 when。where は場所を表す先行詞に使い、which は節の中に主語や目的語の欠けがあるときに使う。訳: 私たちが駅で初めて会った日を覚えていますか。"
+  },
+  {
+   "id": "B1-330",
+   "topic": "関係詞",
+   "question": "That is the reason ____ she decided to change jobs.",
+   "choices": [
+    "which",
+    "what",
+    "how",
+    "why"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が the reason のときに対応する関係副詞は why。how は the reason とは一緒に使えず、which を使うなら for which の形にする必要がある。訳: それが彼女が転職を決めた理由だ。"
+  },
+  {
+   "id": "B1-331",
+   "topic": "関係詞",
+   "question": "Please tell me ____ you solved this math problem.",
+   "choices": [
+    "the way how",
+    "how",
+    "which",
+    "what"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜する方法」は how または the way のどちらか一方を使い、the way how と重ねて使うことはできない。which や what では「どうやって」という方法の意味を表せない。訳: この数学の問題をどうやって解いたのか教えてください。"
+  },
+  {
+   "id": "B1-332",
+   "topic": "関係詞",
+   "question": "This is ____ I bought my first guitar.",
+   "choices": [
+    "which",
+    "that",
+    "where",
+    "what"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "関係副詞 where は先行詞 the place を省略して「〜する場所」の意味でそのまま使える。which や that は前に先行詞が必要で、what は名詞のかたまりを作るので「場所」の意味にはならない。訳: ここが私が初めてのギターを買った店だ。"
+  },
+  {
+   "id": "B1-333",
+   "topic": "関係詞",
+   "question": "____ he said at the meeting surprised everyone.",
+   "choices": [
+    "What",
+    "That",
+    "Which",
+    "Who"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞を含んで「〜すること」という名詞のかたまりを作るのは関係代名詞 what。which や that には先行詞が必要で、単独で主語のかたまりを作ることはできない。訳: 彼が会議で言ったことはみんなを驚かせた。"
+  },
+  {
+   "id": "B1-334",
+   "topic": "関係詞",
+   "question": "Show me ____ you have in your right hand.",
+   "choices": [
+    "what",
+    "which",
+    "that",
+    "whose"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "show の目的語になる「〜するもの」を先行詞なしで表せるのは what だけ。which や that は前に先行詞が必要で、whose のあとには名詞が続く。訳: 右手に持っているものを見せて。"
+  },
+  {
+   "id": "B1-335",
+   "topic": "関係詞",
+   "question": "He is ____ is called a walking dictionary.",
+   "choices": [
+    "who",
+    "which",
+    "that",
+    "what"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "what is called 〜 で「いわゆる〜」という決まった言い方。what が先行詞を含むので前に名詞がなくても成り立つ。who や which、that はいずれも先行詞を必要とする。訳: 彼はいわゆる生き字引だ。"
+  },
+  {
+   "id": "B1-336",
+   "topic": "関係詞",
+   "question": "My aunt, ____ lives in Canada, sends me a card every winter.",
+   "choices": [
+    "that",
+    "who",
+    "which",
+    "whom"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "コンマつきの非制限用法では that を使えず、先行詞が人で節の中の主語になるので who を選ぶ。whom は目的格、which は物を先行詞にとる。訳: おばはカナダに住んでいて、毎年冬に私にカードを送ってくれる。"
+  },
+  {
+   "id": "B1-337",
+   "topic": "関係詞",
+   "question": "He gave me an old watch, ____ had belonged to his grandfather.",
+   "choices": [
+    "that",
+    "what",
+    "which",
+    "whose"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "コンマのあとで物を先行詞にとり、補足説明を加える非制限用法には which を使う。非制限用法で that は使えず、what は先行詞を含むので前に名詞があるときには使えない。訳: 彼は古い腕時計をくれたが、それは彼の祖父のものだった。"
+  },
+  {
+   "id": "B1-338",
+   "topic": "関係詞",
+   "question": "She passed the exam on her first try, ____ made her parents very happy.",
+   "choices": [
+    "what",
+    "that",
+    "which",
+    "it"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "前の文全体を受けて「そしてそのことが」と続けるときは、非制限用法の which を使う。it を入れると接続詞がないのに文が二つ並んでしまい、that や what はこの用法では使えない。訳: 彼女は一度で試験に合格し、そのことが両親をとても喜ばせた。"
+  },
+  {
+   "id": "B1-339",
+   "topic": "関係詞",
+   "question": "Kyoto, ____ I visited last spring, is famous for its old temples.",
+   "choices": [
+    "that",
+    "which",
+    "where",
+    "what"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "Kyoto は固有名詞でそれだけで対象が決まるため、コンマつきの非制限用法で補足する。visited の目的語が欠けているので関係副詞 where ではなく関係代名詞 which を使い、非制限用法では that は使えない。訳: 京都は、私が去年の春に訪れたところだが、古い寺で有名だ。"
+  },
+  {
+   "id": "B1-340",
+   "topic": "関係詞",
+   "question": "Do you know the boy ____ playing the guitar over there?",
+   "choices": [
+    "is",
+    "he is",
+    "which is",
+    "who is"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞が人で節の中の主語になる関係代名詞は主格の who で、主格は省略できないので who is とする。is だけでは動詞が二つ並び、he is のように代名詞を残すこともできない。which は物を先行詞にとる。訳: 向こうでギターを弾いている男の子を知っていますか。"
+  },
+  {
+   "id": "B1-341",
+   "topic": "関係詞",
+   "question": "This is the most interesting book ____ I have ever read.",
+   "choices": [
+    "that",
+    "what",
+    "who",
+    "whose"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞に最上級がついているときは関係代名詞 that が好まれる。what は先行詞を含むので前に名詞があるときには使えず、who は人が先行詞、whose のあとには名詞が必要。訳: これは私がこれまで読んだ中で最もおもしろい本だ。"
+  },
+  {
+   "id": "B1-342",
+   "topic": "関係詞",
+   "question": "The only thing ____ matters now is your health.",
+   "choices": [
+    "what",
+    "that",
+    "who",
+    "whose"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "the only や thing がついた先行詞のあとでは、関係代名詞に that を使うのがふつう。what は先行詞を含むので The only thing のあとには置けない。訳: 今大事な唯一のことはあなたの健康だ。"
+  },
+  {
+   "id": "B1-343",
+   "topic": "関係詞",
+   "question": "All ____ I want is a quiet weekend at home.",
+   "choices": [
+    "what",
+    "which one",
+    "that",
+    "whose"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "先行詞が all のときは関係代名詞に that を使うのがふつうで、しばしば省略もされる。what は先行詞を含むので all のあとには続かない。訳: 私が望むのは家で静かに過ごす週末だけだ。"
+  },
+  {
+   "id": "B1-344",
+   "topic": "関係詞",
+   "question": "Look at the girl and her dog ____ are running along the river.",
+   "choices": [
+    "that",
+    "who",
+    "which",
+    "what"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞に人と動物や物の両方が含まれるときは、関係代名詞に that を使う。who は人だけ、which は人以外だけを受けるので、両方をまとめて受けることはできない。訳: 川沿いを走っている女の子と犬を見て。"
+  },
+  {
+   "id": "B1-345",
+   "topic": "関係詞",
+   "question": "____ wants to join the trip should tell me by Friday.",
+   "choices": [
+    "Who",
+    "Whomever",
+    "Whatever",
+    "Whoever"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「〜する人は誰でも」を表す複合関係代名詞は whoever。節の中で wants の主語になるので、目的格の whomever は使えない。Whatever は物や事を指す。訳: 旅行に参加したい人は誰でも、金曜までに私に伝えてください。"
+  },
+  {
+   "id": "B1-346",
+   "topic": "関係詞",
+   "question": "You can order ____ you like; it's my treat today.",
+   "choices": [
+    "however",
+    "whoever",
+    "whenever",
+    "whatever"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "order の目的語になり「〜するものは何でも」を表すのは whatever。however や whenever は副詞のはたらきをするので目的語にはなれず、whoever は人を指す。訳: 好きなものを何でも注文していいよ。今日は私のおごりだ。"
+  },
+  {
+   "id": "B1-347",
+   "topic": "関係詞",
+   "question": "____ I visit my grandmother, she makes me an apple pie.",
+   "choices": [
+    "Whenever",
+    "Wherever",
+    "However",
+    "Whoever"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜するときはいつでも」と時を表す複合関係副詞は whenever。Wherever は場所、However は程度や方法、Whoever は人を表すので文意に合わない。訳: 祖母を訪ねると、いつも私にアップルパイを作ってくれる。"
+  },
+  {
+   "id": "B1-348",
+   "topic": "関係詞",
+   "question": "My little dog follows me ____ I go in the house.",
+   "choices": [
+    "whatever",
+    "whenever",
+    "wherever",
+    "whoever"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "go とつながって「私が行くところはどこへでも」という場所を表すのは wherever。whatever は名詞のはたらきをするので go の後ろには合わず、whenever では「行くときはいつでも」となり in the house とつながらない。訳: うちの小さな犬は、家の中で私が行くところはどこへでもついてくる。"
+  },
+  {
+   "id": "B1-349",
+   "topic": "関係詞",
+   "question": "____ tired you are, you should never drive too fast.",
+   "choices": [
+    "Whatever",
+    "However",
+    "Whenever",
+    "Whoever"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "however は直後に形容詞や副詞を置いて「どんなに〜でも」を表す。Whatever のあとには名詞が来るので tired とはつながらず、Whenever や Whoever では意味が通らない。訳: どんなに疲れていても、スピードを出しすぎて運転してはいけない。"
+  },
+  {
+   "id": "B1-350",
+   "topic": "関係詞",
+   "question": "He is a man ____ I think is honest enough for the job.",
+   "choices": [
+    "who",
+    "whom",
+    "which",
+    "whose"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "I think を取り除くと who is honest となり、関係代名詞は is の主語なので主格の who を使う。直後に I think があるため目的格の whom を選びたくなるが、I think は挿入された部分にすぎない。訳: 彼はその仕事に十分ふさわしいほど誠実だと私が思う人物だ。"
+  },
+  {
+   "id": "B1-351",
+   "topic": "関係詞",
+   "question": "March 3 is the day ____ we hold the school festival every year.",
+   "choices": [
+    "in which",
+    "on which",
+    "which",
+    "at which"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "日付を表す語には on that day のように on が対応するので on which とする(when でも同じ)。which だけでは前置詞が欠けて節が不完全になり、in や at は日付には合わない。訳: 3月3日は毎年学園祭を開く日だ。"
+  },
+  {
+   "id": "B1-352",
+   "topic": "関係詞",
+   "question": "Summer is the season ____ this town gets the most visitors.",
+   "choices": [
+    "which",
+    "where",
+    "what",
+    "when"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞 the season は時を表し、あとに完全な文が続くので関係副詞 when を使う。where は場所を表す先行詞に使い、which を使うなら in which の形が必要。訳: 夏はこの町に最も多くの観光客が来る季節だ。"
+  },
+  {
+   "id": "B1-353",
+   "topic": "関係詞",
+   "question": "I have twenty classmates, ____ come to school by bike.",
+   "choices": [
+    "most of them",
+    "most of who",
+    "most of whom",
+    "most of that"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "コンマのあとに文をつなぐには関係代名詞が必要で、前置詞 of のあとなので目的格の whom を使う。most of them では接続詞がないのに文が二つ並んでしまい、前置詞のあとに who や that は置けない。訳: 私には20人のクラスメートがいて、そのほとんどが自転車で通学している。"
+  },
+  {
+   "id": "B1-354",
+   "topic": "関係詞",
+   "question": "Tokyo is not ____ it was fifty years ago.",
+   "choices": [
+    "which",
+    "that",
+    "what",
+    "how"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "what は先行詞を含んで「〜であるもの、〜である姿」を表し、what it was で「かつての姿」の意味になる。前に先行詞がないので which や that は使えず、how では方法の意味になってしまう。訳: 東京は50年前の東京とは違う。"
+  },
+  {
+   "id": "B1-355",
+   "topic": "関係詞",
+   "question": "The bags ____ on the table belong to the tour guide.",
+   "choices": [
+    "which is",
+    "that is",
+    "who are",
+    "which are"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "先行詞 The bags は物で複数なので、関係代名詞は which(または that)を使い、動詞も先行詞の数に合わせて are にする。which is や that is では単数の動詞になり合わず、who は人を先行詞にとる。訳: テーブルの上にあるかばんはツアーガイドのものだ。"
+  },
+  {
+   "id": "B1-356",
+   "topic": "関係詞",
+   "question": "Next month we're moving to Sendai, ____ my wife grew up.",
+   "choices": [
+    "which",
+    "where",
+    "that",
+    "when"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "固有名詞のあとにコンマを置く非制限用法で、場所について補足しており、あとが完全な文なので関係副詞 where を使う。which を使うなら in which の形が必要で、非制限用法で that は使えない。訳: 来月、妻が育った仙台に引っ越します。"
+  },
+  {
+   "id": "B1-357",
+   "topic": "関係詞",
+   "question": "Everything ____ happened that night is still a mystery.",
+   "choices": [
+    "that",
+    "what",
+    "who",
+    "it"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "先行詞が everything のときは関係代名詞に that を使うのがふつう。what は先行詞を含むので everything のあとには置けず、it を入れると接続詞がないまま文が二つ並んでしまう。訳: あの夜に起きたことはすべて今も謎のままだ。"
+  },
+  {
+   "id": "B1-358",
+   "topic": "比較",
+   "question": "This year's summer festival was ____ exciting as the one we went to last August.",
+   "choices": [
+    "so",
+    "more",
+    "as",
+    "very"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「as + 原級 + as」で「~と同じくらい…」を表す。肯定文では最初の as を使い、so は not so ... as のように否定文でしか使えない。more は比較級の形で than を伴い、very は原級比較の枠に入らない。訳：今年の夏祭りは、去年の8月に行ったものと同じくらい楽しかった。"
+  },
+  {
+   "id": "B1-359",
+   "topic": "比較",
+   "question": "The final exam was not ____ difficult as I had expected.",
+   "choices": [
+    "so",
+    "very",
+    "too",
+    "much"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "否定文では not so ... as の形が使える(not as ... as も同意)。very / too / much は as と組んで比較の型を作れない。訳：期末試験は思っていたほど難しくなかった。"
+  },
+  {
+   "id": "B1-360",
+   "topic": "比較",
+   "question": "The new action movie was not as ____ as the first one.",
+   "choices": [
+    "more exciting",
+    "most exciting",
+    "excitingly",
+    "exciting"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "as ... as の間に入るのは形容詞・副詞の原級。比較級 more exciting や最上級 most exciting は入れられない。ここは be動詞の補語なので副詞 excitingly も不可。訳：その新しいアクション映画は1作目ほど面白くなかった。"
+  },
+  {
+   "id": "B1-361",
+   "topic": "比較",
+   "question": "The traffic on this road is even ____ today than it was yesterday.",
+   "choices": [
+    "bad",
+    "worse",
+    "worst",
+    "more bad"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "than があるので比較級が必要。bad の比較級は不規則変化で worse であり、more bad という形はない。worst は最上級なので than とは結びつかない。訳：この道路の渋滞は昨日よりも今日のほうがさらにひどい。"
+  },
+  {
+   "id": "B1-362",
+   "topic": "比較",
+   "question": "This model is ____ expensive than that one, so I can afford it.",
+   "choices": [
+    "less",
+    "fewer",
+    "little",
+    "least"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "劣等比較は「less + 原級 + than」で「~より…でない」。fewer は数えられる名詞の数を比べるときに使う。little は原級、least は最上級なので than とは合わない。訳：この機種はあちらより値段が安いので、私にも買える。"
+  },
+  {
+   "id": "B1-363",
+   "topic": "比較",
+   "question": "Among all the students in my class, Mei writes ____ essays.",
+   "choices": [
+    "good",
+    "better",
+    "the best",
+    "best"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "3つ以上の中で「最も~」は the + 最上級。ここは名詞 essays を修飾する形容詞なので the が必要で、無冠詞の best は使えない。good は原級、better は2者比較の比較級。訳：クラスの全生徒の中で、メイがいちばん上手な小論文を書く。"
+  },
+  {
+   "id": "B1-364",
+   "topic": "比較",
+   "question": "Mt. Fuji is the highest mountain ____ Japan.",
+   "choices": [
+    "of",
+    "in",
+    "among",
+    "between"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "最上級の範囲が場所や集団を表す単数名詞(Japan, my class, the world など)のときは in を使う。of は of the four のように複数の要素を並べるときに使う。between は2者の間。訳：富士山は日本でいちばん高い山だ。"
+  },
+  {
+   "id": "B1-365",
+   "topic": "比較",
+   "question": "Saturday is the busiest day ____ the week at this café.",
+   "choices": [
+    "in",
+    "at",
+    "among",
+    "of"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "最上級の範囲が「複数の要素の集まり」を表すときは of を使う(of the week, of the three)。場所・組織を表す名詞に付く in と区別する。訳：この喫茶店では土曜日が一週間でいちばん忙しい日だ。"
+  },
+  {
+   "id": "B1-366",
+   "topic": "比較",
+   "question": "Kyoto is one of the most popular ____ among foreign tourists.",
+   "choices": [
+    "cities",
+    "city",
+    "the city",
+    "of city"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「one of the + 最上級 + 複数名詞」で「最も~な…のひとつ」。one of の後は必ず複数名詞になるので city は不可。訳：京都は外国人観光客に最も人気のある都市のひとつだ。"
+  },
+  {
+   "id": "B1-367",
+   "topic": "比較",
+   "question": "Your presentation today was ____ better than the one you gave last month.",
+   "choices": [
+    "very",
+    "so",
+    "much",
+    "too"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "比較級を強めるのは much / far / a lot / even / still。very は原級を強める語で比較級には使えない。so や too も比較級を直接強調できない。訳：今日のあなたの発表は、先月のものよりずっとよかった。"
+  },
+  {
+   "id": "B1-368",
+   "topic": "比較",
+   "question": "I thought the first novel was long, but the second one is ____ longer.",
+   "choices": [
+    "very",
+    "even",
+    "many",
+    "quite"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "even は比較級の前に置いて「さらに一層」の意味を加える強調語。very は原級専用、many は数を表す語、quite は比較級を直接強めない。訳：1作目の小説も長いと思ったが、2作目はさらに長い。"
+  },
+  {
+   "id": "B1-369",
+   "topic": "比較",
+   "question": "____ you practice the piano, the better you will play.",
+   "choices": [
+    "More",
+    "The most",
+    "Much more",
+    "The more"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「The + 比較級 ..., the + 比較級 ...」で「~すればするほど…」。前半にも the が必要なので More だけでは足りない。The most は最上級で構文に合わない。訳：ピアノを練習すればするほど、上手に弾けるようになる。"
+  },
+  {
+   "id": "B1-370",
+   "topic": "比較",
+   "question": "The sooner we leave the hotel, ____ we will get to the airport.",
+   "choices": [
+    "earlier",
+    "the earlier",
+    "the earliest",
+    "more early"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "The + 比較級 ..., the + 比較級 ... の後半にも the が要る。early の比較級は earlier で、more early とはしない。最上級では文意が通らない。訳：ホテルを早く出れば出るほど、それだけ早く空港に着く。"
+  },
+  {
+   "id": "B1-371",
+   "topic": "比較",
+   "question": "As December went on, the mornings became ____.",
+   "choices": [
+    "colder and colder",
+    "cold and cold",
+    "more and more cold",
+    "the colder and colder"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「比較級 and 比較級」で「ますます~」。cold のような短い語は -er and -er の形にし、more and more cold とはしない。原級を並べる cold and cold も誤り。訳：12月が進むにつれて、朝はますます寒くなった。"
+  },
+  {
+   "id": "B1-372",
+   "topic": "比較",
+   "question": "Finding a parking space near the station is becoming ____ difficult.",
+   "choices": [
+    "much and much",
+    "the more and more",
+    "more and more",
+    "many and many"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "difficult のようにつづりの長い形容詞は「more and more + 原級」で「ますます~」を表す。difficulter という形はないので -er and -er は使えず、the は不要。訳：駅の近くで駐車場所を見つけるのはますます難しくなってきている。"
+  },
+  {
+   "id": "B1-373",
+   "topic": "比較",
+   "question": "Their new meeting room is ____ as large as the old one.",
+   "choices": [
+    "two times more",
+    "double",
+    "twice more",
+    "twice"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "倍数は「倍数表現 + as + 原級 + as」の形で表し、2倍は twice as ... as。double はこの構文では使わず、twice more や two times more の形も誤り。訳：彼らの新しい会議室は、以前の部屋の2倍の広さだ。"
+  },
+  {
+   "id": "B1-374",
+   "topic": "比較",
+   "question": "This suitcase is three times ____ my backpack.",
+   "choices": [
+    "as heavy than",
+    "heavier as",
+    "as heavy as",
+    "heavy as"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "3倍以上の倍数は「~ times as + 原級 + as」。as と than を混ぜたり、比較級 heavier に as を続けたりはできない。最初の as も省略できない。訳：このスーツケースは私のリュックの3倍の重さだ。"
+  },
+  {
+   "id": "B1-375",
+   "topic": "比較",
+   "question": "My old phone's battery lasts only ____ as long as my new one's.",
+   "choices": [
+    "half",
+    "a half of",
+    "the half",
+    "half of"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "分数・倍数を表す語は as ... as の直前に置く。「半分」は half as ... as で、of や the は不要。訳：古い携帯の電池は、新しいものの半分しかもたない。"
+  },
+  {
+   "id": "B1-376",
+   "topic": "比較",
+   "question": "____ student in this class is as hardworking as Yuki.",
+   "choices": [
+    "Not any",
+    "No other",
+    "Any other",
+    "No others"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「No other + 単数名詞 + as 原級 as ~」で最上級と同じ意味を表す。No others は直後に名詞を置けず、Any other では否定の意味にならない。Not any は文頭の主語には使えない。訳：このクラスでユキほど勤勉な生徒はいない。"
+  },
+  {
+   "id": "B1-377",
+   "topic": "比較",
+   "question": "Osaka has more ramen shops than any other ____ in the region.",
+   "choices": [
+    "cities",
+    "the cities",
+    "of the city",
+    "city"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「比較級 ... than any other + 単数名詞」で最上級相当の意味を表す。any other の後は必ず単数形になる。訳：大阪はその地域のどの都市よりも多くのラーメン店がある。"
+  },
+  {
+   "id": "B1-378",
+   "topic": "比較",
+   "question": "Could you send me the sales report ____ possible?",
+   "choices": [
+    "as soon as",
+    "so soon as",
+    "as soon",
+    "sooner than"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「as + 原級 + as possible」で「できるだけ~」。2つ目の as を落とせず、肯定文では so ... as も使えない。sooner than では比較の相手が必要になる。訳：できるだけ早く売上報告書を送っていただけますか。"
+  },
+  {
+   "id": "B1-379",
+   "topic": "比較",
+   "question": "He ran ____ he could to catch the last bus.",
+   "choices": [
+    "so fast as",
+    "as fast than",
+    "as faster as",
+    "as fast as"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「as + 原級 + as one can」で「できるだけ~」を表し、as ... as possible と同じ意味になる。as と than は混ぜられず、間に入るのは原級なので faster は不可。訳：彼は最終バスに乗るためにできるだけ速く走った。"
+  },
+  {
+   "id": "B1-380",
+   "topic": "比較",
+   "question": "The population of this city is larger than ____ of Yokohama.",
+   "choices": [
+    "it",
+    "those",
+    "that",
+    "this"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "比較の対象をそろえるため、繰り返しになる the population を that で受ける。単数名詞の代用なので those は不可。it は of ~ という修飾語句を伴って前の名詞を代用することができない。訳：この市の人口は横浜の人口より多い。"
+  },
+  {
+   "id": "B1-381",
+   "topic": "比較",
+   "question": "The prices at this supermarket are lower than ____ at the shop across the street.",
+   "choices": [
+    "those",
+    "that",
+    "them",
+    "it"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "受ける名詞 prices が複数なので those を使う。that は単数名詞の代用。them や it は後ろに修飾語句を伴ってこの位置に置けない。訳：このスーパーの値段は、通りの向かいの店の値段より安い。"
+  },
+  {
+   "id": "B1-382",
+   "topic": "比較",
+   "question": "I prefer green tea ____ coffee when I study at night.",
+   "choices": [
+    "than",
+    "to",
+    "for",
+    "rather"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "prefer A to B で「BよりAを好む」。prefer はラテン語由来の比較を表す語なので than ではなく to を使う。訳：夜に勉強するときは、コーヒーより緑茶のほうが好きだ。"
+  },
+  {
+   "id": "B1-383",
+   "topic": "比較",
+   "question": "This new camera is superior ____ the older model in low light.",
+   "choices": [
+    "than",
+    "from",
+    "as",
+    "to"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "superior はラテン比較級で、比較の相手は than ではなく to で示す(be superior to ~)。同じ仲間に inferior, senior, junior がある。訳：この新しいカメラは、暗い場所では旧型より優れている。"
+  },
+  {
+   "id": "B1-384",
+   "topic": "比較",
+   "question": "Their delivery service is in no way ____ ours.",
+   "choices": [
+    "inferior than",
+    "more inferior than",
+    "inferior to",
+    "inferior from"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be inferior to ~ で「~より劣っている」。inferior 自体が比較の意味を含むので more は付けず、than も使わない。in no way は「決して~ない」。訳：彼らの配送サービスは決して当社のものに劣ってはいない。"
+  },
+  {
+   "id": "B1-385",
+   "topic": "比較",
+   "question": "Ms. Tanaka joined the company two years before I did, so she is ____ me.",
+   "choices": [
+    "older to",
+    "senior to",
+    "senior than",
+    "elder to"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "senior もラテン比較級なので be senior to ~ の形をとり、than は使えない。older や elder は to を伴わない。訳：田中さんは私より2年早く入社しているので、私の先輩にあたる。"
+  },
+  {
+   "id": "B1-386",
+   "topic": "比較",
+   "question": "Of the three hiking routes, this one is ____.",
+   "choices": [
+    "short",
+    "shorter",
+    "more short",
+    "the shortest"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "Of the three とあり3つ以上の比較なので the + 最上級を使う。2者の比較なら shorter だがここでは不可。short の比較級は shorter で、more short という形はない。訳：3つの登山ルートのうち、これがいちばん短い。"
+  },
+  {
+   "id": "B1-387",
+   "topic": "比較",
+   "question": "I have two brothers, and Ken is ____ of the two.",
+   "choices": [
+    "taller",
+    "tallest",
+    "the taller",
+    "the tallest"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "2者のうち「~なほう」は the + 比較級。of the two で対象が限定されるため the が必要になる。3つ以上ではないので最上級は使わない。訳：私には兄弟が2人いて、ケンはそのうちの背が高いほうだ。"
+  },
+  {
+   "id": "B1-388",
+   "topic": "比較",
+   "question": "This is ____ the most useful app I have ever downloaded.",
+   "choices": [
+    "by far",
+    "very",
+    "more",
+    "too"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "最上級を強めるのは by far や much で、the の前に置く。very を使うときは the very best のように the の後に置くため、この位置では不可。more は比較級用。訳：これは私が今までダウンロードした中で断然いちばん役に立つアプリだ。"
+  },
+  {
+   "id": "B1-389",
+   "topic": "比較",
+   "question": "There were ____ people at the concert as we had expected.",
+   "choices": [
+    "as much",
+    "as many",
+    "so many",
+    "as more"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "数えられる名詞 people の数を比べるので as many ... as。as much は量や不可算名詞に使う。肯定文で so many ... as は使えず、as more という形もない。訳：コンサートには予想していたのと同じくらい多くの人がいた。"
+  },
+  {
+   "id": "B1-390",
+   "topic": "比較",
+   "question": "His score on the math test was much higher than ____.",
+   "choices": [
+    "I",
+    "me",
+    "my",
+    "mine"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "比べているのは「彼の点数」と「私の点数」なので、my score を1語で表す所有代名詞 mine を使う。I や me では点数と人を比べることになり、比較対象がそろわない。訳：彼の数学の点数は私の点数よりずっと高かった。"
+  },
+  {
+   "id": "B1-391",
+   "topic": "比較",
+   "question": "Lake Kasumigaura is the ____ largest lake in Japan.",
+   "choices": [
+    "two",
+    "more",
+    "second",
+    "secondly"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「~番目に…な」は the + 序数 + 最上級で表す。基数の two や副詞の secondly は使えない。more は比較級を作る語で最上級とは併用しない。訳：霞ヶ浦は日本で2番目に大きい湖だ。"
+  },
+  {
+   "id": "B1-392",
+   "topic": "比較",
+   "question": "Could you speak a little ____, please? I can't follow you.",
+   "choices": [
+    "more slowly",
+    "slowlier",
+    "most slowly",
+    "slower than"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "-ly で終わる副詞の比較級は more + 副詞で作り、slowlier という形はない。a little は比較級を弱める強調語。比較の相手がないので最上級や than は不要。訳：もう少しゆっくり話していただけますか。ついていけません。"
+  },
+  {
+   "id": "B1-393",
+   "topic": "比較",
+   "question": "This museum had ____ visitors last year than the year before.",
+   "choices": [
+    "less",
+    "fewer",
+    "little",
+    "the fewest"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "visitors は数えられる名詞なので、少ないことを表す比較級は fewer。less は量や数えられない名詞に使う。little は原級、the fewest は最上級で than とは結びつかない。訳：この博物館は昨年、その前の年より来館者が少なかった。"
+  },
+  {
+   "id": "B1-394",
+   "topic": "比較",
+   "question": "Nothing is ____ than being healthy.",
+   "choices": [
+    "important",
+    "as important",
+    "the most important",
+    "more important"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「否定語 + 比較級 + than ~」で最上級と同じ意味を表す。than があるので比較級 more important が必要。as important とするなら than ではなく as が続く。訳：健康でいることほど大切なものはない。"
+  },
+  {
+   "id": "B1-395",
+   "topic": "比較",
+   "question": "My sister is three years ____ than I am.",
+   "choices": [
+    "old",
+    "elder",
+    "older",
+    "the older"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "差を表す three years は比較級の直前に置き、比較級は older を使う。elder は名詞の前でのみ使う語で than とは併用できない。比較対象が限定されていないので the は不要。訳：姉は私より3歳年上だ。"
+  },
+  {
+   "id": "B1-396",
+   "topic": "比較",
+   "question": "I prefer ____ at home to eating out on weekends.",
+   "choices": [
+    "cooking",
+    "cook",
+    "to cook",
+    "cooked"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "prefer A to B の A と B は同じ形にそろえる。to の後が eating という動名詞なので、前も動名詞 cooking にする。to cook では前置詞の to と重なり形が合わない。訳：週末は外食するより家で料理するほうが好きだ。"
+  },
+  {
+   "id": "B1-397",
+   "topic": "比較",
+   "question": "This is the best musical I ____ seen.",
+   "choices": [
+    "never have",
+    "have ever",
+    "had ever",
+    "ever"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「the + 最上級 + (that) + 主語 + have ever + 過去分詞」で「今までに~した中で最も…」。主節が現在形 This is なので現在完了 have ever seen を使い、過去完了は合わない。訳：これは私が今まで見た中でいちばんよいミュージカルだ。"
+  },
+  {
+   "id": "B1-398",
+   "topic": "仮定法",
+   "question": "If it ____ tomorrow, we will cancel the picnic.",
+   "choices": [
+    "will rain",
+    "rains",
+    "rained",
+    "would rain"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "実際に起こりうる条件を表す直説法の文。if 節の中では未来のことでも現在形で表すので will rain は不可。rained や would rain は事実に反する仮定を表す仮定法の形で、主節の will と合わない。訳：明日雨が降ったら、ピクニックは中止にします。"
+  },
+  {
+   "id": "B1-399",
+   "topic": "仮定法",
+   "question": "If I ____ you, I would apologize to her right away.",
+   "choices": [
+    "am",
+    "have been",
+    "will be",
+    "were"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "現在の事実に反する仮定(仮定法過去)なので、be動詞は主語に関係なく were を使う。If I were you は助言をするときの定型表現。直説法の am や will be は主節の would と対応しない。訳：もし私があなたなら、すぐに彼女に謝るだろう。"
+  },
+  {
+   "id": "B1-400",
+   "topic": "仮定法",
+   "question": "If I had more free time, I ____ a new language.",
+   "choices": [
+    "would learn",
+    "will learn",
+    "would have learned",
+    "learn"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "仮定法過去は「If + 動詞の過去形, would/could/might + 動詞の原形」。現在の事実に反する仮定なので would learn。would have learned は過去の事実に反する仮定に使う形。訳：もっと自由な時間があれば、新しい言語を学ぶのに。"
+  },
+  {
+   "id": "B1-401",
+   "topic": "仮定法",
+   "question": "If she ____ my phone number, she would call me tonight.",
+   "choices": [
+    "knows",
+    "had known",
+    "knew",
+    "would know"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主節が would + 原形なので仮定法過去。if 節の動詞は過去形 knew にする。if 節の中に would は入れないのが原則で、had known にすると過去の事実に反する仮定になり主節と合わない。訳：彼女が私の電話番号を知っていれば、今夜電話をくれるだろうに。"
+  },
+  {
+   "id": "B1-402",
+   "topic": "仮定法",
+   "question": "If we ____ the hotel earlier, we would have caught the last ferry.",
+   "choices": [
+    "left",
+    "have left",
+    "had left",
+    "would leave"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主節が would have + 過去分詞なので、過去の事実に反する仮定を表す仮定法過去完了。if 節は had + 過去分詞にする。単なる過去形 left では主節と時制が対応しない。訳：もっと早くホテルを出ていたら、最終フェリーに間に合っただろうに。"
+  },
+  {
+   "id": "B1-403",
+   "topic": "仮定法",
+   "question": "If the weather had been better last Sunday, we ____ to the beach.",
+   "choices": [
+    "would have gone",
+    "would go",
+    "will go",
+    "had gone"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "if 節が had been という仮定法過去完了なので、主節は would/could/might + have + 過去分詞。過去の事実に反する内容なので would go では時制が合わない。訳：先週の日曜、天気がもっとよかったら、私たちは海に行っただろうに。"
+  },
+  {
+   "id": "B1-404",
+   "topic": "仮定法",
+   "question": "If I had a car, I ____ you to the airport tomorrow.",
+   "choices": [
+    "can drive",
+    "could drive",
+    "could have driven",
+    "drove"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "仮定法過去の主節では would のほかに could / might も使え、後には動詞の原形が続く。can drive は直説法の形で仮定法の if 節と対応しない。could have driven は過去の事実に反する仮定。訳：車を持っていれば、明日空港まで送ってあげられるのに。"
+  },
+  {
+   "id": "B1-405",
+   "topic": "仮定法",
+   "question": "If you had asked Mr. Lee for advice, he ____ you.",
+   "choices": [
+    "might help",
+    "may help",
+    "might be helping",
+    "might have helped"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "if 節が had asked なので仮定法過去完了。主節は might have + 過去分詞で「~したかもしれないのに」という過去の推量を表す。might help では現在の仮定になってしまう。訳：リーさんに助言を求めていたら、彼は助けてくれたかもしれないのに。"
+  },
+  {
+   "id": "B1-406",
+   "topic": "仮定法",
+   "question": "I wish I ____ how to play the guitar.",
+   "choices": [
+    "know",
+    "have known",
+    "knew",
+    "will know"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "I wish + 仮定法過去で「今~であればいいのに」という現在の事実に反する願望を表す。動詞は過去形 knew にする。wish の後に現在形や未来形は続かない。訳：ギターの弾き方を知っていればいいのに。"
+  },
+  {
+   "id": "B1-407",
+   "topic": "仮定法",
+   "question": "I wish I ____ harder for the entrance exam last year.",
+   "choices": [
+    "studied",
+    "had studied",
+    "have studied",
+    "would study"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "過去の事柄に対する後悔・願望は I wish + 過去完了(had + 過去分詞)。last year という過去を示す語句が手がかり。studied では現在の願望になってしまう。訳：去年の入学試験に向けて、もっと一生懸命勉強していればよかった。"
+  },
+  {
+   "id": "B1-408",
+   "topic": "仮定法",
+   "question": "I wish I ____ come to your birthday party tonight, but I have to work.",
+   "choices": [
+    "can",
+    "will",
+    "could have",
+    "could"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "I wish + could + 動詞の原形で「今~できればいいのに」という現在の願望を表す。wish の後に can や will は使えない。could have come は過去に実現しなかったことを表す形で、tonight とは合わない。訳：今夜あなたの誕生日会に行けたらいいのに、でも仕事があるんだ。"
+  },
+  {
+   "id": "B1-409",
+   "topic": "仮定法",
+   "question": "He talks as if he ____ everything about computers, but he is only a beginner.",
+   "choices": [
+    "knows",
+    "knew",
+    "has known",
+    "would know"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "as if + 仮定法過去で「実際はそうでないのに、まるで~であるかのように」。主節 talks と同じ時のことなので過去形 knew を使う。後半の but 以下から事実に反することが分かる。訳：彼はまるでコンピュータのことを何でも知っているかのように話すが、実はまだ初心者だ。"
+  },
+  {
+   "id": "B1-410",
+   "topic": "仮定法",
+   "question": "She turned pale and looked as though she ____ a ghost.",
+   "choices": [
+    "sees",
+    "saw",
+    "had seen",
+    "would see"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主節の時(looked)より前の出来事を「まるで~したかのように」と言うときは as though + 過去完了(had + 過去分詞)。同じ時のことなら過去形を使うが、幽霊を見たのは青ざめる前の出来事。訳：彼女は青ざめて、まるで幽霊を見たかのような顔をしていた。"
+  },
+  {
+   "id": "B1-411",
+   "topic": "仮定法",
+   "question": "If I were you, I ____ that job offer without hesitating.",
+   "choices": [
+    "would accept",
+    "will accept",
+    "accepted",
+    "would have accepted"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "If I were you は助言の定型表現で、主節は would + 動詞の原形。現在の話なので would have accepted(過去の事実に反する仮定)は使えず、直説法の will accept も if I were you とは対応しない。訳：私があなたなら、ためらわずにその内定を受けるだろう。"
+  },
+  {
+   "id": "B1-412",
+   "topic": "仮定法",
+   "question": "If you ____ see Nancy at the library, please tell her to call me.",
+   "choices": [
+    "would",
+    "might",
+    "must",
+    "should"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「If + 主語 + should + 原形」は「万一~ならば」と実現の可能性が低い未来の仮定を表し、主節に命令文を続けることができる。if 節に would は原則として置かない。訳：万一図書館でナンシーを見かけたら、私に電話するよう伝えてください。"
+  },
+  {
+   "id": "B1-413",
+   "topic": "仮定法",
+   "question": "If the sun ____ rise in the west, I would still keep my promise.",
+   "choices": [
+    "was to",
+    "were to",
+    "is to",
+    "would"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「If + 主語 + were to + 原形」はほとんどありえない未来の仮定を表す。主語が三人称単数でも was to ではなく were to を使う。is to は直説法の予定を表す形。訳：たとえ太陽が西から昇るようなことがあっても、私は約束を守るだろう。"
+  },
+  {
+   "id": "B1-414",
+   "topic": "仮定法",
+   "question": "____ I in your position, I would ask my teacher for help.",
+   "choices": [
+    "Was",
+    "If",
+    "Were",
+    "Should"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "If I were in your position の if が省略され、were が主語の前に出た倒置形。仮定法では was ではなく were を使うので Was は不可。If なら後ろに主語+動詞の語順が必要。訳：私があなたの立場なら、先生に助けを求めるだろう。"
+  },
+  {
+   "id": "B1-415",
+   "topic": "仮定法",
+   "question": "____ I known about the schedule change, I would have come earlier.",
+   "choices": [
+    "If",
+    "Had",
+    "Have",
+    "Should"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "If I had known ... の if が省略され、had が主語の前に出た倒置形。主節が would have come なので過去の事実に反する仮定であり、Have では時制が合わない。If なら I had known の語順が必要。訳：予定の変更を知っていたら、もっと早く来たのに。"
+  },
+  {
+   "id": "B1-416",
+   "topic": "仮定法",
+   "question": "____ you need any further information, please contact our support team.",
+   "choices": [
+    "Should",
+    "Would",
+    "Were",
+    "Had"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "If you should need ... の if が省略され、should が前に出た倒置形で、案内文などで使う丁寧な表現。Were なら Were you to need、Had なら過去完了の形が必要になる。訳：さらに情報が必要でしたら、当社のサポートチームまでご連絡ください。"
+  },
+  {
+   "id": "B1-417",
+   "topic": "仮定法",
+   "question": "Without water, no living thing ____ survive on this planet.",
+   "choices": [
+    "will",
+    "can",
+    "could have",
+    "could"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "without ~ は「~がなければ」の意味で If it were not for ~ と同じ働きをする。現在の事実に反する仮定なので主節は could + 原形。could have + 過去分詞は過去の仮定に使う形。訳：水がなければ、この惑星でどんな生き物も生きられないだろう。"
+  },
+  {
+   "id": "B1-418",
+   "topic": "仮定法",
+   "question": "But for the traffic jam, we ____ the opening song of the concert.",
+   "choices": [
+    "do not miss",
+    "would not miss",
+    "would not have missed",
+    "had not missed"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "but for ~ は「~がなかったら」で、if 節の代わりに条件を表す。実際には渋滞があって聞き逃したという過去の事実に反する仮定なので、主節は would not have + 過去分詞。訳：渋滞がなかったら、私たちはコンサートの1曲目を聞き逃さずにすんだのに。"
+  },
+  {
+   "id": "B1-419",
+   "topic": "仮定法",
+   "question": "If it ____ not for my smartphone, I would get lost in this city every day.",
+   "choices": [
+    "were",
+    "was",
+    "is",
+    "had been"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "If it were not for ~「~がなければ」は現在の事実に反する仮定の定型表現。主節が would get なので現在の仮定であり、過去の場合に使う If it had not been for ~ は合わない。訳：スマートフォンがなければ、私はこの街で毎日道に迷うだろう。"
+  },
+  {
+   "id": "B1-420",
+   "topic": "仮定法",
+   "question": "If it ____ for the firefighters' quick action, the whole building would have burned down.",
+   "choices": [
+    "were not",
+    "had not been",
+    "is not",
+    "has not been"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "主節が would have burned down なので過去の事実に反する仮定。「~がなかったら」は If it had not been for ~ を使う。現在の仮定なら If it were not for ~ になる。訳：消防士たちの素早い行動がなかったら、建物全体が焼け落ちていただろう。"
+  },
+  {
+   "id": "B1-421",
+   "topic": "仮定法",
+   "question": "____ it not for your kindness, I would give up this project today.",
+   "choices": [
+    "Had",
+    "If",
+    "Should",
+    "Were"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "If it were not for ~ の if が省略された倒置形 Were it not for ~。主節が would + 原形なので現在の事実に反する仮定であり、過去を表す Had it not been for ~ とは区別する。訳：あなたの親切がなければ、私は今日この計画をあきらめてしまうだろう。"
+  },
+  {
+   "id": "B1-422",
+   "topic": "仮定法",
+   "question": "____ it not been for the doctor's warning, my father would have kept smoking.",
+   "choices": [
+    "Had",
+    "Were",
+    "Should",
+    "If"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "If it had not been for ~ の if が省略された倒置形 Had it not been for ~。been があることと主節の would have kept から、過去の事実に反する仮定だと分かる。訳：医者の忠告がなかったら、父はたばこを吸い続けていただろう。"
+  },
+  {
+   "id": "B1-423",
+   "topic": "仮定法",
+   "question": "It's already eleven o'clock. It's time you ____ to bed.",
+   "choices": [
+    "go",
+    "have gone",
+    "went",
+    "will go"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「It is time + 主語 + 動詞の過去形」で「もう~してもよいころだ」。形は過去形でも内容は現在のことを指す仮定法。現在形や未来形はこの構文では使わない。訳：もう11時だ。そろそろ寝る時間だよ。"
+  },
+  {
+   "id": "B1-424",
+   "topic": "仮定法",
+   "question": "I wish it ____ raining so that we could go out for a walk.",
+   "choices": [
+    "stops",
+    "would stop",
+    "will stop",
+    "had stopped"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "I wish + 主語 + would + 原形は、これからそうなってほしいという願望やいらだちを表す。wish の後に現在形 stops や未来形 will stop は続かない。had stopped は過去への願望になる。訳：雨がやんでくれたらいいのに。そうすれば散歩に出かけられるのに。"
+  },
+  {
+   "id": "B1-425",
+   "topic": "仮定法",
+   "question": "If I had taken the earlier train, I ____ at the office now.",
+   "choices": [
+    "will be",
+    "would have been",
+    "was",
+    "would be"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "if 節は過去の事実に反する仮定(had taken)だが、主節は now があるので現在のことを述べる混合仮定法。主節は would + 原形にする。would have been では過去のことになり now と合わない。訳：もっと早い電車に乗っていたら、今ごろ会社にいるだろうに。"
+  },
+  {
+   "id": "B1-426",
+   "topic": "仮定法",
+   "question": "Suppose you ____ a million yen in the lottery, what would you do with it?",
+   "choices": [
+    "won",
+    "win",
+    "will win",
+    "would win"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "suppose は if と同じように仮定を導く語。後半が would do という仮定法過去なので、動詞は過去形 won にする。現在形や未来形では主節と対応しない。訳：宝くじで100万円当たったとしたら、あなたはそのお金をどうしますか。"
+  },
+  {
+   "id": "B1-427",
+   "topic": "仮定法",
+   "question": "What ____ you do if you lost your passport during the trip?",
+   "choices": [
+    "would",
+    "will",
+    "did",
+    "have"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "if 節が過去形 lost なので仮定法過去の疑問文。主節は would + 動詞の原形にする。will do では現実に起こりうる条件(直説法)の形になり、if 節の過去形と合わない。訳：旅行中にパスポートをなくしたら、あなたはどうしますか。"
+  },
+  {
+   "id": "B1-428",
+   "topic": "仮定法",
+   "question": "If only I ____ my umbrella this morning! Now I'm soaking wet.",
+   "choices": [
+    "bring",
+    "would bring",
+    "had brought",
+    "have brought"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "If only ~ は I wish ~ と同じで強い願望や後悔を表す。this morning という過去のことなので had + 過去分詞にする。現在形や would では過去の後悔を表せない。訳：今朝、傘を持ってきていればよかったのに。今はずぶ濡れだ。"
+  },
+  {
+   "id": "B1-429",
+   "topic": "仮定法",
+   "question": "I'm not good at basketball. I wish I ____ ten centimeters taller.",
+   "choices": [
+    "am",
+    "will be",
+    "have been",
+    "were"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "I wish の後の be動詞は、主語が I や三人称単数でも were を使うのが仮定法の原則。現在の事実に反する願望なので、直説法の am や will be は使えない。訳：私はバスケットボールが苦手だ。あと10センチ背が高ければいいのに。"
+  },
+  {
+   "id": "B1-430",
+   "topic": "仮定法",
+   "question": "If you should have any questions about the tour, ____ the staff at the front desk.",
+   "choices": [
+    "ask",
+    "asked",
+    "would ask",
+    "asking"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "If ... should ~「万一~なら」の主節には命令文を置くことができる。命令文なので動詞は原形 ask。would ask や過去形では文が命令の形にならない。訳：ツアーについて万一質問があれば、フロントの係員に尋ねてください。"
+  },
+  {
+   "id": "B1-431",
+   "topic": "仮定法",
+   "question": "If Dr. Brown ____ here now, he could explain these test results to us.",
+   "choices": [
+    "is",
+    "has been",
+    "were",
+    "would be"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "主節が could + 原形なので現在の事実に反する仮定。仮定法過去では主語が三人称単数でも was ではなく were を使う。if 節の中に would は置かない。訳：ブラウン先生が今ここにいれば、この検査結果を説明してくれるだろうに。"
+  },
+  {
+   "id": "B1-432",
+   "topic": "仮定法",
+   "question": "If you finish your homework before dinner, you ____ watch the game on TV.",
+   "choices": [
+    "could",
+    "can",
+    "would",
+    "might have"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "実際に起こりうる条件を述べる直説法の文なので、主節には can や will を使う。if 節が現在形 finish であることが手がかり。could や would は事実に反する仮定を表す形で、この文脈には合わない。訳：夕食前に宿題を終えたら、テレビで試合を見ていいよ。"
+  },
+  {
+   "id": "B1-433",
+   "topic": "仮定法",
+   "question": "I wish I ____ to your wedding last month, but I was working overseas.",
+   "choices": [
+    "can come",
+    "could come",
+    "would come",
+    "could have come"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "過去に実現しなかったことへの願望は I wish + could have + 過去分詞。last month や was working という過去の記述が手がかり。could come では現在の願望になる。訳：先月あなたの結婚式に行けたらよかったのだけれど、海外で働いていたんだ。"
+  },
+  {
+   "id": "B1-434",
+   "topic": "仮定法",
+   "question": "Luckily I had a map with me; otherwise I ____ my way in the forest.",
+   "choices": [
+    "lose",
+    "would lose",
+    "had lost",
+    "would have lost"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "otherwise は「そうでなければ」の意味で、if 節の代わりに条件を表す。実際には地図を持っていたという過去の事実に反する仮定なので、would have + 過去分詞を使う。訳：幸い地図を持っていた。そうでなければ森で道に迷っていただろう。"
+  },
+  {
+   "id": "B1-435",
+   "topic": "仮定法",
+   "question": "If my parents ____ so strict, I would go to the concert with you.",
+   "choices": [
+    "are not",
+    "were not",
+    "had not been",
+    "would not be"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "主節が would go なので現在の事実に反する仮定。if 節は過去形 were not にする。had not been では過去の仮定になり主節と時制が対応しない。if 節に would は入れない。訳：両親がこんなに厳しくなければ、あなたと一緒にコンサートに行くのに。"
+  },
+  {
+   "id": "B1-436",
+   "topic": "仮定法",
+   "question": "If we asked Ms. Kim, she ____ agree to help us with the event.",
+   "choices": [
+    "might",
+    "might have",
+    "must",
+    "can"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "仮定法過去の主節では would のほかに might + 原形も使え、「~かもしれないのに」という控えめな推量を表す。might have agreed は過去の仮定、can は直説法の形で if 節の過去形と合わない。訳：キムさんに頼めば、イベントを手伝うことに同意してくれるかもしれない。"
+  },
+  {
+   "id": "B1-437",
+   "topic": "仮定法",
+   "question": "If I ____ Chinese when I was a student, I could work at our Shanghai office now.",
+   "choices": [
+    "study",
+    "studied",
+    "had studied",
+    "would study"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "混合仮定法。when I was a student という過去の事実に反する仮定なので if 節は had + 過去分詞、主節は now があるので could + 原形になる。studied では現在の仮定になり過去を表す語句と合わない。訳：学生のときに中国語を勉強していたら、今は上海オフィスで働けるのに。"
+  },
+  {
+   "id": "B1-438",
+   "topic": "前置詞",
+   "question": "The library closes ____ 8 p.m. on weekdays, so we should hurry.",
+   "choices": [
+    "in",
+    "at",
+    "on",
+    "for"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "時刻を表す語（8 p.m.）にはatを使う。inは月・年・季節など長い期間、onは日付・曜日、forは期間の長さ（for two hours）に使うため不適。全文訳：図書館は平日は午後8時に閉まるので、急いだほうがいい。"
+  },
+  {
+   "id": "B1-439",
+   "topic": "前置詞",
+   "question": "My grandmother was born ____ the summer of 1952 in a small village.",
+   "choices": [
+    "at",
+    "on",
+    "in",
+    "by"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "季節や年（the summer of 1952）にはinを使う。atは時刻や一時点、onは日付・曜日、byは「〜までには」という期限を表すので不適。全文訳：私の祖母は1952年の夏に小さな村で生まれた。"
+  },
+  {
+   "id": "B1-440",
+   "topic": "前置詞",
+   "question": "Please send me the report ____ Friday; after that it will be too late.",
+   "choices": [
+    "by",
+    "until",
+    "during",
+    "since"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜までに（期限）」はbyで表す。untilは「〜までずっと」と動作の継続を表し、sendのような一回で終わる動作には使えない。duringは期間中、sinceは起点なので不適。全文訳：金曜日までに報告書を送ってください。それを過ぎると遅すぎます。"
+  },
+  {
+   "id": "B1-441",
+   "topic": "前置詞",
+   "question": "The shop stayed open ____ midnight because of the special sale.",
+   "choices": [
+    "by",
+    "until",
+    "in",
+    "for"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "stay openのように状態が続く動詞には「〜までずっと」を表すuntilを使う。byは「〜までには」で完了の期限を示すため状態の継続には合わない。in、forも文脈に合わない。全文訳：特別セールのため、その店は深夜まで開いていた。"
+  },
+  {
+   "id": "B1-442",
+   "topic": "前置詞",
+   "question": "He waited at the station ____ almost two hours before the bus arrived.",
+   "choices": [
+    "during",
+    "while",
+    "for",
+    "since"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "「2時間」のような期間の長さにはforを使う。duringはthe holidayのような特定の期間を表す名詞と結びつく。whileは接続詞なので節を導く必要があり、sinceは起点を表すので不適。全文訳：彼はバスが来るまで、駅でほぼ2時間待った。"
+  },
+  {
+   "id": "B1-443",
+   "topic": "前置詞",
+   "question": "I fell asleep several times ____ the long presentation yesterday.",
+   "choices": [
+    "for",
+    "during",
+    "while",
+    "since"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "the long presentationという特定の期間を表す名詞の前ではduringを使い、「その間に」という意味になる。forは数量で表す期間の長さに使う。whileは接続詞、sinceは起点なので不適。全文訳：昨日、私は長いプレゼンテーションの間に何度か眠ってしまった。"
+  },
+  {
+   "id": "B1-444",
+   "topic": "前置詞",
+   "question": "We have lived in this town ____ 2015, and we still love it.",
+   "choices": [
+    "from",
+    "since",
+    "for",
+    "in"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "現在完了で「〜以来ずっと」と過去の起点から現在までの継続を表すときはsinceを使う。fromは起点を示すだけで継続の意味を持たず、通常は現在完了と共に使わない。forは期間の長さなので不適。全文訳：私たちは2015年からこの町に住んでいて、今もここが大好きだ。"
+  },
+  {
+   "id": "B1-445",
+   "topic": "前置詞",
+   "question": "The new timetable will be in use ____ next Monday to the end of March.",
+   "choices": [
+    "since",
+    "for",
+    "from",
+    "during"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "from A to Bで「AからBまで」という起点と終点を示す。sinceは現在完了と共に使い、to〜と組み合わせる形は取らない。for、duringは期間を表すので不適。全文訳：新しい時刻表は来週の月曜日から3月末まで使われる。"
+  },
+  {
+   "id": "B1-446",
+   "topic": "前置詞",
+   "question": "Your order will be delivered ____ three business days at the latest.",
+   "choices": [
+    "within",
+    "among",
+    "between",
+    "through"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜以内に」という期限の範囲を表すのはwithin。in three daysは「今から3日後に」という意味になり「以内」ではない。among、betweenは位置関係、throughは通過を表すので不適。全文訳：ご注文は遅くとも3営業日以内に配達されます。"
+  },
+  {
+   "id": "B1-447",
+   "topic": "前置詞",
+   "question": "She is waiting for you ____ the entrance of the museum.",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "into"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "入口のような一地点として捉える場所にはatを使う。inは空間の内部、onは接触している面、intoは内部への移動を表すので不適。全文訳：彼女は博物館の入口であなたを待っている。"
+  },
+  {
+   "id": "B1-448",
+   "topic": "前置詞",
+   "question": "There were a lot of fingerprints ____ the glass door of the office.",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "over"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "表面に接触していることを表すにはonを使う。inは内部、atは地点、overは覆う・上方を表すので、ドアの表面についた指紋にはonが適切。全文訳：オフィスのガラスのドアにはたくさんの指紋がついていた。"
+  },
+  {
+   "id": "B1-449",
+   "topic": "前置詞",
+   "question": "The children ran ____ the classroom as soon as the rain started.",
+   "choices": [
+    "in",
+    "into",
+    "at",
+    "on"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "外から内部への移動にはintoを使う。inは「〜の中にある」という位置を表す語で、runと組み合わせると移動の方向が示せない。at、onも方向を表さないので不適。全文訳：雨が降り出すとすぐに、子どもたちは教室の中へ走り込んだ。"
+  },
+  {
+   "id": "B1-450",
+   "topic": "前置詞",
+   "question": "This train is bound ____ Osaka, but it does not stop at every station.",
+   "choices": [
+    "to",
+    "for",
+    "at",
+    "into"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be bound for〜で「〜行きである」という決まった言い方。leave for、start forと同様に、目的地に向かうことを表すのはfor。toは到達点を示すが、boundとは結びつかない。全文訳：この電車は大阪行きだが、すべての駅に停まるわけではない。"
+  },
+  {
+   "id": "B1-451",
+   "topic": "前置詞",
+   "question": "The cat jumped ____ the roof of the car and refused to come down.",
+   "choices": [
+    "into",
+    "onto",
+    "in",
+    "at"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "表面への移動を表すにはonto（on＋to）を使う。intoは内部への移動なので屋根の上には合わない。in、atは移動の方向を示さないので不適。全文訳：その猫は車の屋根の上に飛び乗り、降りようとしなかった。"
+  },
+  {
+   "id": "B1-452",
+   "topic": "前置詞",
+   "question": "You have to choose ____ the two plans before the deadline.",
+   "choices": [
+    "among",
+    "between",
+    "in",
+    "of"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "2つのものについて述べるときはbetweenを使う。amongは3つ以上の集団の中でという意味なのでthe two plansには合わない。in、ofでは選択の対象を示せない。全文訳：あなたは締め切りまでに2つの計画のどちらかを選ばなければならない。"
+  },
+  {
+   "id": "B1-453",
+   "topic": "前置詞",
+   "question": "This song is very popular ____ young people in many countries.",
+   "choices": [
+    "between",
+    "among",
+    "with each",
+    "in between"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "young peopleという3人以上の集団の中でという意味なのでamongを使う。betweenは2者間に用いる。with eachやin betweenは文法的に成立しない。全文訳：この歌は多くの国の若者の間でとても人気がある。"
+  },
+  {
+   "id": "B1-454",
+   "topic": "前置詞",
+   "question": "A large bird was flying ____ our heads while we were having lunch outside.",
+   "choices": [
+    "above",
+    "on",
+    "in",
+    "onto"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "接触せずに離れて上方にあることを表すのはabove。onは接触が必要で、inは内部、ontoは表面への移動を表すので不適。全文訳：外で昼食をとっている間、大きな鳥が私たちの頭上を飛んでいた。"
+  },
+  {
+   "id": "B1-455",
+   "topic": "前置詞",
+   "question": "The temperature stayed ____ zero all day, so the lake did not freeze.",
+   "choices": [
+    "under",
+    "below",
+    "down",
+    "beneath of"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "数値や基準より下であることを表すときはbelowを使う。underは真下や覆われている状態を表し、温度や水準にはbelowが標準。downは前置詞としてこの用法を持たず、beneath ofは誤り。全文訳：気温は一日中0度より上のままだったので、湖は凍らなかった。"
+  },
+  {
+   "id": "B1-456",
+   "topic": "前置詞",
+   "question": "I usually go to school ____ bike, but today I took the bus.",
+   "choices": [
+    "with",
+    "on a",
+    "by",
+    "in"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "交通手段を表すときはby＋無冠詞の名詞（by bike / by car / by train）を使う。with は道具、on a bikeは「自転車にまたがって」という位置の言い方で、by bikeが手段の定型表現。inは車内などに使う。全文訳：私はふだん自転車で学校へ行くが、今日はバスに乗った。"
+  },
+  {
+   "id": "B1-457",
+   "topic": "前置詞",
+   "question": "He cut the thick rope ____ a small knife he found in the garage.",
+   "choices": [
+    "by",
+    "with",
+    "in",
+    "through"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "道具を用いて何かをするときはwithを使う。byは手段・方法を表すが、具体的な道具にはwithが正しい。in、throughは道具を示さないので不適。全文訳：彼はガレージで見つけた小さなナイフで太いロープを切った。"
+  },
+  {
+   "id": "B1-458",
+   "topic": "前置詞",
+   "question": "Please write your answers ____ English, not in your own language.",
+   "choices": [
+    "by",
+    "with",
+    "in",
+    "on"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "言語や表現手段（言葉・鉛筆のインクなど）はinで表す（in English / in ink）。byは交通手段や行為者、withは道具に使うので不適。全文訳：自分の母語ではなく、英語で答えを書いてください。"
+  },
+  {
+   "id": "B1-459",
+   "topic": "前置詞",
+   "question": "This traditional box is made ____ wood, and you can still see the pattern.",
+   "choices": [
+    "of",
+    "from",
+    "into",
+    "by"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "材料が見た目で分かる場合はbe made ofを使う。be made fromは原料が変質して分からない場合（Wine is made from grapes.）、be made intoは「〜に作り変えられる」という逆の関係を表す。全文訳：この伝統的な箱は木でできていて、今でも木目が見える。"
+  },
+  {
+   "id": "B1-460",
+   "topic": "前置詞",
+   "question": "In this factory, old plastic bottles are made ____ warm clothes.",
+   "choices": [
+    "of",
+    "from",
+    "into",
+    "with"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "A is made into Bで「AがBに作り変えられる」という意味になり、主語が材料の側にくる。be made of / be made fromは主語が製品の側にくるので、bottlesが主語のこの文には合わない。全文訳：この工場では、古いペットボトルが暖かい衣類に作り変えられている。"
+  },
+  {
+   "id": "B1-461",
+   "topic": "前置詞",
+   "question": "The game was canceled ____ the heavy snow last weekend.",
+   "choices": [
+    "because",
+    "because of",
+    "although",
+    "so"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "the heavy snowという名詞句が続くので群前置詞because ofを使う。becauseは接続詞で節（S＋V）が必要。althoughは譲歩の接続詞、soは等位接続詞なので不適。全文訳：先週末、大雪のせいで試合は中止になった。"
+  },
+  {
+   "id": "B1-462",
+   "topic": "前置詞",
+   "question": "The flight was delayed ____ a technical problem with the engine.",
+   "choices": [
+    "due to",
+    "due",
+    "because",
+    "since"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "名詞句を導く群前置詞due toが正しい。dueだけでは前置詞にならず、because、sinceは接続詞なので後ろに節が必要。全文訳：エンジンの技術的な問題のため、その便は遅れた。"
+  },
+  {
+   "id": "B1-463",
+   "topic": "前置詞",
+   "question": "____ your kind advice, I was able to finish the project on time.",
+   "choices": [
+    "Thanks",
+    "Thanks to",
+    "Because",
+    "Though"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜のおかげで」という良い結果の原因を表すのは群前置詞thanks to。thanksだけでは前置詞にならない。Because、Thoughは接続詞なので節が必要。全文訳：あなたの親切な助言のおかげで、私は計画を予定通り終えることができた。"
+  },
+  {
+   "id": "B1-464",
+   "topic": "前置詞",
+   "question": "____ the bad weather, the outdoor concert was held as planned.",
+   "choices": [
+    "Although",
+    "Even though",
+    "In spite of",
+    "However"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "the bad weatherという名詞句が続くので前置詞句in spite ofを使う。Although、Even thoughは接続詞で節が必要。Howeverは接続副詞なので不適。全文訳：悪天候にもかかわらず、野外コンサートは予定通り開催された。"
+  },
+  {
+   "id": "B1-465",
+   "topic": "前置詞",
+   "question": "____ having little experience, she managed the team very well.",
+   "choices": [
+    "Although",
+    "Despite",
+    "Even if",
+    "Because"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "despiteは前置詞なので名詞や動名詞（having）を直接続けられる。Although、Even if、Becauseは接続詞で、後ろにS＋Vの節が必要なので不適。全文訳：経験がほとんどないにもかかわらず、彼女はチームをとてもうまくまとめた。"
+  },
+  {
+   "id": "B1-466",
+   "topic": "前置詞",
+   "question": "____ the weather report, it will be sunny and warm tomorrow.",
+   "choices": [
+    "According to",
+    "According",
+    "Depending",
+    "As to say"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜によれば」と情報源を示すのは群前置詞according to。accordingだけでは前置詞として働かず、depending、as to sayもこの意味では使えない。全文訳：天気予報によれば、明日は晴れて暖かくなるだろう。"
+  },
+  {
+   "id": "B1-467",
+   "topic": "前置詞",
+   "question": "I ordered green tea ____ coffee because I wanted to sleep well.",
+   "choices": [
+    "instead",
+    "instead of",
+    "except that",
+    "rather"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜の代わりに」と名詞を続けるにはinstead ofを使う。insteadは副詞で単独で文末などに置く。except thatは接続詞句、ratherも名詞を直接導けない。全文訳：よく眠りたかったので、私はコーヒーではなく緑茶を注文した。"
+  },
+  {
+   "id": "B1-468",
+   "topic": "前置詞",
+   "question": "____ the monthly fee, you also have to pay for the equipment.",
+   "choices": [
+    "In addition",
+    "In addition to",
+    "Besides of",
+    "Except"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "名詞を続けて「〜に加えて」と言うにはin addition toを使う。in additionは副詞句で単独用法。besides ofは誤り（besidesが正しい形）。exceptは「〜を除いて」で意味が逆になる。全文訳：月額料金に加えて、機器の代金も支払わなければならない。"
+  },
+  {
+   "id": "B1-469",
+   "topic": "前置詞",
+   "question": "The rule applies to all members ____ their age or experience.",
+   "choices": [
+    "regardless of",
+    "regarding to",
+    "in spite",
+    "apart"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜に関係なく」を表す群前置詞はregardless of。regarding toは誤り（regardingが正しい）。in spiteはofが必要、apartもofが必要なので不適。全文訳：その規則は年齢や経験に関係なく、すべての会員に適用される。"
+  },
+  {
+   "id": "B1-470",
+   "topic": "前置詞",
+   "question": "____ cost, the new system is much better than the old one.",
+   "choices": [
+    "In term of",
+    "In terms of",
+    "On terms of",
+    "By term of"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜の観点では」を表す定型表現はin terms ofで、termは必ず複数形になる。in term of、on terms of、by term ofはいずれも誤った形。全文訳：費用の面では、新しいシステムは古いものよりずっと優れている。"
+  },
+  {
+   "id": "B1-471",
+   "topic": "前置詞",
+   "question": "She left the office without ____ goodbye to anyone.",
+   "choices": [
+    "say",
+    "to say",
+    "saying",
+    "said"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "withoutは前置詞なので、後ろには名詞か動名詞（-ing）が来る。原形sayや不定詞to say、過去分詞saidは前置詞の目的語になれない。全文訳：彼女は誰にもさよならを言わずにオフィスを出て行った。"
+  },
+  {
+   "id": "B1-472",
+   "topic": "前置詞",
+   "question": "This is the house ____ which my grandfather lived for fifty years.",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "by"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "元の文がlive in the houseなので、前置詞＋関係代名詞ではin whichとなる。live on / at / by the houseとは言わないため他は不適。全文訳：これは私の祖父が50年間住んでいた家だ。"
+  },
+  {
+   "id": "B1-473",
+   "topic": "前置詞",
+   "question": "Whether we go camping or not depends ____ tomorrow's weather.",
+   "choices": [
+    "of",
+    "in",
+    "on",
+    "to"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "depend onで「〜次第である、〜に左右される」という動詞と前置詞の決まった組み合わせ。depend of / in / toとは言わない。全文訳：キャンプに行くかどうかは明日の天気次第だ。"
+  },
+  {
+   "id": "B1-474",
+   "topic": "前置詞",
+   "question": "The committee consists ____ ten members from different departments.",
+   "choices": [
+    "in",
+    "of",
+    "with",
+    "from"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "consist ofで「〜から成る」という決まった組み合わせ。consist inは「〜にある（本質）」という別の意味で、ten membersを目的語には取らない。consist with / fromは誤り。全文訳：その委員会は異なる部署から来た10名の委員で構成されている。"
+  },
+  {
+   "id": "B1-475",
+   "topic": "前置詞",
+   "question": "My sister has applied ____ a part-time job at the bookstore.",
+   "choices": [
+    "to",
+    "for",
+    "on",
+    "with"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "apply for〜で「〜に応募する」という組み合わせ。apply toは「（規則が）当てはまる、〜に申し込む（機関）」で、jobには使わない。apply on / withは誤り。全文訳：姉は書店のアルバイトに応募した。"
+  },
+  {
+   "id": "B1-476",
+   "topic": "前置詞",
+   "question": "Many people are afraid ____ speaking in front of a large audience.",
+   "choices": [
+    "of",
+    "from",
+    "with",
+    "to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "be afraid ofで「〜を恐れる」という形容詞と前置詞の組み合わせ。afraid from / with / toとは言わない。またofの後は動名詞speakingになる点にも注意。全文訳：多くの人は大勢の聴衆の前で話すことを怖がる。"
+  },
+  {
+   "id": "B1-477",
+   "topic": "前置詞",
+   "question": "His opinion is quite different ____ mine, but we still get along well.",
+   "choices": [
+    "to",
+    "of",
+    "from",
+    "with"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be different fromで「〜と異なる」という組み合わせ。be similar toとの混同でtoを選びやすいが、differentはfromを取る。different of / withは誤り。全文訳：彼の意見は私のものとかなり違うが、それでも私たちは仲良くやっている。"
+  },
+  {
+   "id": "B1-478",
+   "topic": "前置詞",
+   "question": "Scientists are still looking for a solution ____ this environmental problem.",
+   "choices": [
+    "of",
+    "to",
+    "for",
+    "on"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "a solution to〜で「〜に対する解決策」という名詞と前置詞の組み合わせ。solveの名詞形だからといってofやforは使わない。an answer to、a key toも同じ型。全文訳：科学者たちはこの環境問題の解決策をいまだに探している。"
+  },
+  {
+   "id": "B1-479",
+   "topic": "前置詞",
+   "question": "There has been a sharp increase ____ the number of foreign tourists.",
+   "choices": [
+    "of",
+    "for",
+    "in",
+    "to"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "an increase in〜で「〜における増加」という組み合わせ。増減する対象・分野はinで示す（a decrease in / a change in）。ofは「〜の増加分」という数量を示すときで文脈に合わない。全文訳：外国人観光客の数が急激に増加している。"
+  },
+  {
+   "id": "B1-480",
+   "topic": "前置詞",
+   "question": "Everyone came to the meeting ____ Mr. Smith, who was on a business trip.",
+   "choices": [
+    "besides",
+    "except",
+    "in addition to",
+    "including"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜を除いて」と全体から1つを引く意味はexcept。besidesとin addition toは「〜に加えて」と加える意味、includingは「〜を含めて」なので、出張中で来ていないという文脈に合わない。全文訳：出張中だったスミスさんを除いて、全員が会議に来た。"
+  },
+  {
+   "id": "B1-481",
+   "topic": "前置詞",
+   "question": "We are going to visit our cousins ____ next week.",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "—（無前置詞）"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "next week、last night、this morning、every dayなどnext / last / this / everyがついた時の表現には前置詞をつけない。in / on / atはいずれも不要。全文訳：私たちは来週いとこたちを訪ねる予定だ。"
+  },
+  {
+   "id": "B1-482",
+   "topic": "接続詞",
+   "question": "Hurry up, ____ you will miss the last train home.",
+   "choices": [
+    "and",
+    "or",
+    "so",
+    "but"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「命令文, or ...」で「〜しなさい、さもないと…」という意味になる。andは「そうすれば」と良い結果を導くので、乗り遅れるという悪い結果には合わない。so、butは命令文に続くこの型を作らない。全文訳：急ぎなさい、さもないと家に帰る終電に乗り遅れますよ。"
+  },
+  {
+   "id": "B1-483",
+   "topic": "接続詞",
+   "question": "Read this manual carefully, ____ you will understand how the machine works.",
+   "choices": [
+    "and",
+    "or",
+    "but",
+    "for"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「命令文, and ...」で「〜しなさい、そうすれば…」という良い結果を導く。orは「さもないと」で悪い結果を示すため文意に合わない。but、forはこの型を作らない。全文訳：この説明書を注意深く読みなさい、そうすればこの機械の仕組みが分かるでしょう。"
+  },
+  {
+   "id": "B1-484",
+   "topic": "接続詞",
+   "question": "He must be at home, ____ the lights in his room are on.",
+   "choices": [
+    "so",
+    "for",
+    "but",
+    "or"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "等位接続詞forは「というのは〜だから」と、前に述べた判断の根拠を後から付け加える。soは結果を導くので因果が逆になる。but、orは意味が通らない。全文訳：彼は家にいるにちがいない、というのも彼の部屋の明かりがついているからだ。"
+  },
+  {
+   "id": "B1-485",
+   "topic": "接続詞",
+   "question": "I'm not sure ____ he will come to the party or not.",
+   "choices": [
+    "that",
+    "if",
+    "whether",
+    "what"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "直後に...or notが続く形を取れるのはwhether。ifも「〜かどうか」を表せるが、if ... or notの語順（直後にor not）は避けられ、またbe sureの後の名詞節にはwhetherが自然。thatは「〜ということ」、whatは名詞節内で欠けた要素が必要なので不適。全文訳：彼がパーティーに来るかどうか、私にはよく分からない。"
+  },
+  {
+   "id": "B1-486",
+   "topic": "接続詞",
+   "question": "____ the museum is free on Sundays surprised many visitors.",
+   "choices": [
+    "That",
+    "If",
+    "Whether or",
+    "What that"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜ということ」という事実を表す名詞節を作り、主語になれるのはthat節。ifが導く名詞節は原則として主語の位置に置けない。Whether orは形が不完全、What thatは誤り。全文訳：その博物館が日曜日は無料だということは、多くの来館者を驚かせた。"
+  },
+  {
+   "id": "B1-487",
+   "topic": "接続詞",
+   "question": "Please turn off the lights ____ you leave the room.",
+   "choices": [
+    "while",
+    "before",
+    "until",
+    "by the time"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「部屋を出る前に電気を消す」という順序なのでbeforeが適切。whileは「〜している間」、untilは「〜までずっと」、by the timeは「〜するまでには」で、いずれも消灯と退室の前後関係を正しく表さない。全文訳：部屋を出る前に電気を消してください。"
+  },
+  {
+   "id": "B1-488",
+   "topic": "接続詞",
+   "question": "I will call you ____ I arrive at the airport.",
+   "choices": [
+    "as soon as",
+    "by the time",
+    "since",
+    "while"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「〜するとすぐに」を表すのはas soon as。by the timeは「〜するまでには」、sinceは「〜以来」、whileは「〜している間」で、到着直後に電話するという意味にならない。全文訳：空港に着いたらすぐにあなたに電話します。"
+  },
+  {
+   "id": "B1-489",
+   "topic": "接続詞",
+   "question": "____ we got to the theater, the movie had already started.",
+   "choices": [
+    "Until",
+    "By the time",
+    "As long as",
+    "While"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「〜するまでには（もう…していた）」と過去完了と結びつくのはby the time。untilは継続の終点、as long asは条件、whileは同時進行を表すので、すでに始まっていたという文脈に合わない。全文訳：私たちが劇場に着いたときには、映画はすでに始まっていた。"
+  },
+  {
+   "id": "B1-490",
+   "topic": "接続詞",
+   "question": "____ it was getting dark, we decided to set up the tent quickly.",
+   "choices": [
+    "Since",
+    "Although",
+    "Unless",
+    "So that"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "ここでのsinceは「〜なので」と理由を表し、聞き手も知っている事情を先に述べる型。Althoughは譲歩、Unlessは条件で意味が逆になる。So thatは目的で文頭のこの位置には合わない。全文訳：暗くなってきていたので、私たちは急いでテントを張ることにした。"
+  },
+  {
+   "id": "B1-491",
+   "topic": "接続詞",
+   "question": "____ you are old enough to vote, you should think about politics.",
+   "choices": [
+    "Now that",
+    "In case",
+    "Even if",
+    "So that"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "now that〜は「今や〜だから」と新しく生じた事情を理由として示す。In caseは「〜に備えて」、Even ifは譲歩、So thatは目的なので、投票できる年齢になったという理由を示すこの文には合わない。全文訳：もう投票できる年齢なのだから、政治について考えるべきだ。"
+  },
+  {
+   "id": "B1-492",
+   "topic": "接続詞",
+   "question": "____ he studied very hard, he could not pass the exam.",
+   "choices": [
+    "Despite",
+    "In spite of",
+    "Even though",
+    "Because of"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "後ろにhe studiedというS＋Vの節が続くので、接続詞Even thoughを使う。Despite、In spite of、Because ofはいずれも前置詞（句）で名詞・動名詞しか続けられない。全文訳：彼はとても一生懸命勉強したが、試験に合格できなかった。"
+  },
+  {
+   "id": "B1-493",
+   "topic": "接続詞",
+   "question": "I will go hiking tomorrow ____ it rains heavily.",
+   "choices": [
+    "even though",
+    "even if",
+    "although",
+    "whereas"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "even ifは「たとえ〜だとしても」と仮定の譲歩を表し、まだ起きていない未来の想定に使う。even thoughとalthoughは実際に起きている事実の譲歩なので、明日の未定の雨には合わない。whereasは対比を表す。全文訳：たとえ大雨が降っても、私は明日ハイキングに行くつもりだ。"
+  },
+  {
+   "id": "B1-494",
+   "topic": "接続詞",
+   "question": "My brother likes quiet places, ____ I prefer busy cities.",
+   "choices": [
+    "whereas",
+    "because",
+    "unless",
+    "in case"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "whereasは2つの事柄を「〜だが一方…」と対比する接続詞。becauseは理由、unlessは条件、in caseは備えを表すので、好みの違いを並べるこの文には合わない。全文訳：兄は静かな場所が好きだが、一方で私はにぎやかな都会のほうが好きだ。"
+  },
+  {
+   "id": "B1-495",
+   "topic": "接続詞",
+   "question": "You cannot enter the laboratory ____ you wear these safety glasses.",
+   "choices": [
+    "if",
+    "unless",
+    "as long as",
+    "in case"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "unlessは「〜しない限り」という否定の条件を表す。ifでは「かければ入れない」となり意味が逆。as long asは「〜する限り（は）」で肯定条件、in caseは備えなので不適。全文訳：この保護メガネをかけない限り、実験室に入ることはできない。"
+  },
+  {
+   "id": "B1-496",
+   "topic": "接続詞",
+   "question": "You can use my computer ____ you save your files before you finish.",
+   "choices": [
+    "unless",
+    "as long as",
+    "even if",
+    "in order that"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "as long asは「〜しさえすれば」という条件を表す。unlessは「〜しない限り」で意味が逆になる。even ifは譲歩、in order thatは目的なので不適。全文訳：終わる前にファイルを保存しさえすれば、私のパソコンを使っていいですよ。"
+  },
+  {
+   "id": "B1-497",
+   "topic": "接続詞",
+   "question": "Take an umbrella with you ____ it rains this afternoon.",
+   "choices": [
+    "in case",
+    "unless",
+    "so that",
+    "although"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "in caseは「〜するといけないので、〜に備えて」という用心を表す。unlessは否定条件、so thatは目的、althoughは譲歩なので、雨に備えて傘を持つという文意に合わない。全文訳：午後に雨が降るといけないので、傘を持って行きなさい。"
+  },
+  {
+   "id": "B1-498",
+   "topic": "接続詞",
+   "question": "____ that you finish your homework, you may watch TV tonight.",
+   "choices": [
+    "Provided",
+    "Providing of",
+    "In spite",
+    "Except"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "provided (that)は「〜という条件で」を表す接続詞。providing ofという形はなく、In spiteはofが必要な前置詞句、Exceptは「〜を除いて」なので不適。全文訳：宿題を終わらせるという条件で、今夜はテレビを見てもよい。"
+  },
+  {
+   "id": "B1-499",
+   "topic": "接続詞",
+   "question": "____ you have made your decision, you should not change it easily.",
+   "choices": [
+    "Once",
+    "While",
+    "Whether",
+    "So that"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "onceは「いったん〜すれば」という条件・時を表す接続詞。Whileは同時進行、Whetherは「〜かどうか」、So thatは目的なので、決断した後の話をするこの文には合わない。全文訳：いったん決断したのなら、簡単にそれを変えるべきではない。"
+  },
+  {
+   "id": "B1-500",
+   "topic": "接続詞",
+   "question": "She spoke slowly ____ everyone in the room could understand her.",
+   "choices": [
+    "so that",
+    "such that",
+    "in order to",
+    "so as"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "so that S can〜で「Sが〜できるように」という目的を表す。such thatはこの型を作らない。in order toとso asは後ろに動詞の原形（to do）が必要で、S＋Vの節は続けられない。全文訳：部屋にいる全員が理解できるように、彼女はゆっくり話した。"
+  },
+  {
+   "id": "B1-501",
+   "topic": "接続詞",
+   "question": "The box was ____ heavy that I could not lift it by myself.",
+   "choices": [
+    "such",
+    "so",
+    "too",
+    "very"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "so＋形容詞＋that節で「とても〜なので…」を表す。suchは後ろに名詞句（such a heavy box）が必要。tooはto不定詞と、veryはthat節と結びつかない。全文訳：その箱はとても重かったので、私は一人で持ち上げられなかった。"
+  },
+  {
+   "id": "B1-502",
+   "topic": "接続詞",
+   "question": "It was ____ an exciting game that nobody left before the end.",
+   "choices": [
+    "so",
+    "such",
+    "very",
+    "too"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "such a/an＋形容詞＋名詞＋that節の型。名詞gameを含むのでsuchが正しく、soの場合はso exciting a gameという語順になる。very、tooはthat節と結びつかない。全文訳：とてもわくわくする試合だったので、終わる前に帰る人は誰もいなかった。"
+  },
+  {
+   "id": "B1-503",
+   "topic": "接続詞",
+   "question": "Both my sister and I ____ interested in learning Spanish this year.",
+   "choices": [
+    "is",
+    "am",
+    "are",
+    "was"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "both A and Bは複数扱いなので動詞はare。is、am、wasはいずれも単数に対応する形なので不適。全文訳：姉と私は二人とも、今年スペイン語を学ぶことに興味がある。"
+  },
+  {
+   "id": "B1-504",
+   "topic": "接続詞",
+   "question": "Not only the students but also the teacher ____ surprised at the news.",
+   "choices": [
+    "were",
+    "are",
+    "was",
+    "have"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "not only A but also Bでは動詞はBに一致する。ここでBはthe teacherと単数なのでwasになる。wereとareは複数形、haveは意味が通らない。全文訳：生徒たちだけでなく先生も、そのニュースに驚いた。"
+  },
+  {
+   "id": "B1-505",
+   "topic": "接続詞",
+   "question": "Neither the manager ____ the staff members knew about the sudden change.",
+   "choices": [
+    "or",
+    "nor",
+    "and",
+    "but"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "neither A nor Bで「AもBも〜ない」という相関接続詞。neitherと組むのはnorであり、orはeitherと組む。and、butはこの型を作らない。全文訳：部長もスタッフも、その突然の変更については知らなかった。"
+  },
+  {
+   "id": "B1-506",
+   "topic": "接続詞",
+   "question": "Either you or your brother ____ to be at home when the delivery comes.",
+   "choices": [
+    "have",
+    "has",
+    "having",
+    "are"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "either A or Bでは動詞は近いほうの主語Bに一致する。ここではyour brotherと単数なのでhasになる。have、areは複数に対応する形、havingは動詞として機能しない。全文訳：配達が来るときには、あなたかお兄さんのどちらかが家にいなければならない。"
+  },
+  {
+   "id": "B1-507",
+   "topic": "接続詞",
+   "question": "When the class ____ , I will show you the new library.",
+   "choices": [
+    "will end",
+    "ends",
+    "will be ended",
+    "is ending"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "時を表す副詞節の中では、未来のことでも現在形で表す。will endやwill be endedは副詞節では使えない。is endingも進行の意味が不要で不適。全文訳：授業が終わったら、新しい図書館を案内します。"
+  },
+  {
+   "id": "B1-508",
+   "topic": "接続詞",
+   "question": "If it ____ tomorrow, the school trip will be postponed.",
+   "choices": [
+    "will snow",
+    "snows",
+    "is snow",
+    "will be snowing"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "条件を表すif節の中では未来のことも現在形で表すのでsnowsが正しい。will snowやwill be snowingは条件の副詞節では使えず、is snowは形が誤り。全文訳：もし明日雪が降ったら、遠足は延期されるだろう。"
+  },
+  {
+   "id": "B1-509",
+   "topic": "接続詞",
+   "question": "I don't know when he ____ back from his business trip in Germany.",
+   "choices": [
+    "comes",
+    "came",
+    "will come",
+    "is come"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "このwhen節は「いつ〜するか」という名詞節（know の目的語）なので、未来のことはwill comeで表す。現在形にするのは時・条件の副詞節の場合だけ。cameは過去、is comeは誤った形。全文訳：彼がいつドイツ出張から戻るのか、私は知らない。"
+  },
+  {
+   "id": "B1-510",
+   "topic": "接続詞",
+   "question": "The concert was canceled ____ the singer's illness.",
+   "choices": [
+    "because",
+    "because of",
+    "so",
+    "since"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "the singer's illnessという名詞句が続くので前置詞句because ofを使う。because、sinceは接続詞なので節が必要。soは結果を導く等位接続詞なので不適。全文訳：歌手の病気のため、そのコンサートは中止になった。"
+  },
+  {
+   "id": "B1-511",
+   "topic": "接続詞",
+   "question": "The room was small; ____ , it was clean and comfortable.",
+   "choices": [
+    "but",
+    "although",
+    "however",
+    "despite"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "セミコロンの後に置いてカンマを伴い前文と対比するのは接続副詞however。butは等位接続詞で通常この位置に置かない。althoughは接続詞で節をつなぐ形、despiteは前置詞なので不適。全文訳：その部屋は狭かったが、清潔で快適だった。"
+  },
+  {
+   "id": "B1-512",
+   "topic": "接続詞",
+   "question": "____ he was walking along the beach, he found a beautiful shell.",
+   "choices": [
+    "As",
+    "If",
+    "Unless",
+    "So"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "ここでのasは「〜しているときに」という時を表す用法。Ifは条件、Unlessは否定条件、Soは結果を導く語なので、浜辺を歩いていたときにという状況説明には合わない。全文訳：彼は浜辺を歩いていたときに、美しい貝殻を見つけた。"
+  },
+  {
+   "id": "B1-513",
+   "topic": "接続詞",
+   "question": "____ she is a doctor, she knows a lot about this kind of medicine.",
+   "choices": [
+    "As",
+    "While",
+    "Whether",
+    "Unless"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "ここでのasは「〜なので」という理由を表す用法。Whileは対比や同時進行、Whetherは「〜かどうか」、Unlessは否定条件なので、医者だから詳しいという因果関係を示せない。全文訳：彼女は医者なので、この種の薬についてよく知っている。"
+  },
+  {
+   "id": "B1-514",
+   "topic": "接続詞",
+   "question": "____ time went by, the town changed more and more.",
+   "choices": [
+    "While",
+    "As",
+    "When",
+    "Until"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "asには「〜するにつれて」という比例の用法があり、変化の進行と並行する変化を表す。Whileは「〜する間」で並行はするが比例の意味を持たず、Whenは一時点、Untilは終点なので不適。全文訳：時が経つにつれて、その町はますます変化していった。"
+  },
+  {
+   "id": "B1-515",
+   "topic": "接続詞",
+   "question": "Do exactly ____ I told you, and the experiment will succeed.",
+   "choices": [
+    "as",
+    "that",
+    "so",
+    "like that"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "ここでのasは「〜のように、〜の通りに」という様態を表す接続詞。thatは様態を表せず、soも節を導けない。like thatは代名詞thatを含み、後ろにI told youを続けられない。全文訳：私が言った通りに正確にやりなさい、そうすれば実験は成功します。"
+  },
+  {
+   "id": "B1-516",
+   "topic": "接続詞",
+   "question": "The data was incomplete; ____ , the team could not publish the results.",
+   "choices": [
+    "moreover",
+    "therefore",
+    "otherwise",
+    "however"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "前文が原因で後文が結果なので、「したがって」を表すthereforeが適切。moreoverは追加、otherwiseは「さもなければ」、howeverは逆接なので論理関係が合わない。全文訳：データが不完全だった。したがって、そのチームは結果を発表できなかった。"
+  },
+  {
+   "id": "B1-517",
+   "topic": "接続詞",
+   "question": "The hotel is close to the station; ____ , the staff speak three languages.",
+   "choices": [
+    "therefore",
+    "otherwise",
+    "moreover",
+    "however"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "利点をもう一つ付け加えているので「さらに」を表すmoreoverが適切。thereforeは結果、otherwiseは「さもなければ」、howeverは逆接なので、良い点を並べるこの文脈に合わない。全文訳：そのホテルは駅に近い。さらに、スタッフは3か国語を話す。"
+  },
+  {
+   "id": "B1-518",
+   "topic": "接続詞",
+   "question": "Write your name on the form; ____ , we cannot process your application.",
+   "choices": [
+    "moreover",
+    "otherwise",
+    "therefore",
+    "besides"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "otherwiseは「さもなければ」と、前文の指示に従わなかった場合の結果を示す。moreoverとbesidesは追加、thereforeは順当な結果を表すので、条件を満たさない場合を述べるこの文には合わない。全文訳：用紙に名前を書いてください。さもないと、申請を処理することができません。"
+  },
+  {
+   "id": "B1-519",
+   "topic": "冠詞・名詞",
+   "question": "At the bus stop I met ____ old man who was carrying a large suitcase.",
+   "choices": [
+    "a",
+    "an",
+    "the",
+    "(冠詞なし)"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "初めて話題に出る可算名詞の単数形には a / an を付ける。old は母音で始まるので an になる。the は既出のものや文脈上特定されるものに使い、初出のこの場面には合わない。可算名詞の単数形を無冠詞で使うこともできない。和訳: バス停で、大きなスーツケースを運んでいる一人の年配の男性に会った。"
+  },
+  {
+   "id": "B1-520",
+   "topic": "冠詞・名詞",
+   "question": "My grandfather has to take this medicine twice ____ day.",
+   "choices": [
+    "the",
+    "one",
+    "of",
+    "a"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "a には「〜につき」という意味があり、twice a day で「1日に2回」を表す。the day は特定の日を指し、one day は「ある日」、of は語法として成り立たない。和訳: 祖父はこの薬を1日に2回飲まなければならない。"
+  },
+  {
+   "id": "B1-521",
+   "topic": "冠詞・名詞",
+   "question": "____ sun was already going down when we reached the top of the mountain.",
+   "choices": [
+    "The",
+    "A",
+    "An",
+    "(冠詞なし)"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "sun は世界に一つしかないものなので the を付ける。唯一のものには「いくつかあるうちの一つ」を表す a / an は使えず、可算名詞なので無冠詞にもできない。和訳: 私たちが山頂に着いたとき、太陽はもう沈みかけていた。"
+  },
+  {
+   "id": "B1-522",
+   "topic": "冠詞・名詞",
+   "question": "Could you pass me ____ salt on the table, please?",
+   "choices": [
+    "a",
+    "(冠詞なし)",
+    "the",
+    "an"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "on the table という修飾語によって「どの塩か」が特定されるので the を使う。初めて話題に出る名詞でも、限定する語句が付けば the になる。salt は不可算名詞なので a / an は付けられない。和訳: テーブルの上の塩を取ってくれますか。"
+  },
+  {
+   "id": "B1-523",
+   "topic": "冠詞・名詞",
+   "question": "____ dogs are said to be more loyal than cats.",
+   "choices": [
+    "The",
+    "A",
+    "An",
+    "(冠詞なし)"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「犬というものは一般に」という総称を表すときは、複数形を無冠詞で使う。The dogs にすると特定の犬たちの話になり、一般論にならない。a / an は複数形には付かない。和訳: 犬は猫よりも忠実だと言われている。"
+  },
+  {
+   "id": "B1-524",
+   "topic": "冠詞・名詞",
+   "question": "____ water freezes at zero degrees Celsius.",
+   "choices": [
+    "The",
+    "(冠詞なし)",
+    "A",
+    "An"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "water は物質名詞で、性質を一般的に述べるときは無冠詞で使う。The water にすると特定の場所の水を指すことになり、一般的な事実の説明に合わない。不可算名詞に a / an は付けられない。和訳: 水はセ氏0度で凍る。"
+  },
+  {
+   "id": "B1-525",
+   "topic": "冠詞・名詞",
+   "question": "My sister goes to ____ school by bike every morning.",
+   "choices": [
+    "a",
+    "the",
+    "(冠詞なし)",
+    "an"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "go to school は「授業を受けに通う」という建物本来の目的を表す機能表現で、冠詞を付けない。the school とすると建物そのものに行く意味になり、通学の意味が薄れる。和訳: 姉は毎朝自転車で学校に通っている。"
+  },
+  {
+   "id": "B1-526",
+   "topic": "冠詞・名詞",
+   "question": "We usually go to the airport by ____ because it is cheaper than the train.",
+   "choices": [
+    "car",
+    "a car",
+    "the car",
+    "cars"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "交通手段を表す by の後は無冠詞の単数形にする。by a car / by the car / by cars とは言わない。特定の車を指したいときは in the car のように別の形を使う。和訳: 電車より安いので、私たちはたいてい車で空港へ行く。"
+  },
+  {
+   "id": "B1-527",
+   "topic": "冠詞・名詞",
+   "question": "Let me give you ____ advice before your job interview.",
+   "choices": [
+    "a piece of",
+    "an",
+    "a few",
+    "many"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "advice は不可算名詞なので an advice とは言えず、数えるときは a piece of advice の形にする。a few と many は可算名詞の複数形に使う語で、advice には付けられない。和訳: 就職の面接の前に、一つ助言をさせてください。"
+  },
+  {
+   "id": "B1-528",
+   "topic": "冠詞・名詞",
+   "question": "After the race the players drank three ____ water.",
+   "choices": [
+    "glass of",
+    "glasses",
+    "glasses of",
+    "of glasses"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "water は不可算名詞なので容器を単位にして数え、three glasses of water となる。three に合わせて glass を複数形にし、さらに of が必要である。glasses だけでは「めがね」の意味になってしまう。和訳: レースのあと、選手たちはコップ3杯の水を飲んだ。"
+  },
+  {
+   "id": "B1-529",
+   "topic": "冠詞・名詞",
+   "question": "She had only ____ bread and a cup of tea for breakfast.",
+   "choices": [
+    "a bread",
+    "a slice of",
+    "two breads",
+    "a slice"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "bread は不可算名詞なので a bread や breads とは言えない。薄切り1枚は a slice of bread と表す。a slice だけでは of が足りず、後ろの bread につながらない。和訳: 彼女は朝食にパン1枚と紅茶1杯しかとらなかった。"
+  },
+  {
+   "id": "B1-530",
+   "topic": "冠詞・名詞",
+   "question": "The city website gives us ____ information about local events.",
+   "choices": [
+    "many",
+    "a few",
+    "an",
+    "a lot of"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "information は不可算名詞なので、可算名詞用の many や a few は使えず、an も付けられない。a lot of は可算・不可算どちらにも使えるので正解となる。much でも同じ意味を表せる。和訳: 市のウェブサイトは地域の行事について多くの情報を教えてくれる。"
+  },
+  {
+   "id": "B1-531",
+   "topic": "冠詞・名詞",
+   "question": "There ____ not much furniture in our new office yet.",
+   "choices": [
+    "are",
+    "were",
+    "is",
+    "have"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "furniture は不可算名詞で単数扱いなので There is が正しい。are / were は複数名詞に使う形で、yet があるので過去形も文意に合わない。there 構文で have は使えない。和訳: 新しいオフィスにはまだ家具があまりない。"
+  },
+  {
+   "id": "B1-532",
+   "topic": "冠詞・名詞",
+   "question": "The news about the accident ____ really shocking.",
+   "choices": [
+    "was",
+    "were",
+    "are",
+    "have been"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "news は語尾が s でも不可算名詞で単数扱いをする。過去の出来事についての記述なので was が正しい。were / are / have been はいずれも複数主語に対応する形である。和訳: その事故のニュースは本当に衝撃的だった。"
+  },
+  {
+   "id": "B1-533",
+   "topic": "冠詞・名詞",
+   "question": "Our teacher gave us so ____ homework that we could not go out at all.",
+   "choices": [
+    "many",
+    "few",
+    "a lot",
+    "much"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "homework は不可算名詞なので、量の多さは much で表す。many と few は可算名詞用である。a lot は so a lot homework のような形では使えず、so much / so many の形にする必要がある。和訳: 先生が宿題をたくさん出したので、私たちはまったく外出できなかった。"
+  },
+  {
+   "id": "B1-534",
+   "topic": "冠詞・名詞",
+   "question": "I still have a lot of ____ to finish before Friday.",
+   "choices": [
+    "works",
+    "work",
+    "a work",
+    "the works"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「仕事」の意味の work は不可算名詞なので複数形にしない。a work は「作品」、works は「作品群」や「工場」という別の意味になってしまう。和訳: 私は金曜までに終わらせなければならない仕事がまだたくさんある。"
+  },
+  {
+   "id": "B1-535",
+   "topic": "冠詞・名詞",
+   "question": "We still have ____ minutes before the train leaves, so let's buy something to drink.",
+   "choices": [
+    "little",
+    "a little",
+    "few",
+    "a few"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「まだ数分ある」と肯定的に述べているので a few を使う。few は「ほとんどない」という否定的な意味になり、飲み物を買う流れと合わない。little / a little は不可算名詞用で、minutes には使えない。和訳: 電車が出るまでまだ数分あるので、何か飲み物を買おう。"
+  },
+  {
+   "id": "B1-536",
+   "topic": "冠詞・名詞",
+   "question": "____ students came to the extra lesson, so the teacher looked disappointed.",
+   "choices": [
+    "A few",
+    "A little",
+    "Few",
+    "Little"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "先生ががっかりしたという流れから「ほとんど来なかった」という否定的な意味の Few が正しい。A few は「少しは来た」という肯定的な意味で文意に合わない。little / a little は不可算名詞に使う。和訳: 補習に来た生徒はほとんどいなかったので、先生はがっかりした様子だった。"
+  },
+  {
+   "id": "B1-537",
+   "topic": "冠詞・名詞",
+   "question": "There is ____ milk left in the bottle, but it is enough for my coffee.",
+   "choices": [
+    "a little",
+    "little",
+    "a few",
+    "few"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「コーヒーには十分だ」と続くので「少しはある」という意味の a little が正しい。little だと「ほとんどない」となり後半と矛盾する。milk は不可算名詞なので few / a few は使えない。和訳: 瓶に牛乳が少し残っているが、コーヒーに入れるには十分だ。"
+  },
+  {
+   "id": "B1-538",
+   "topic": "冠詞・名詞",
+   "question": "He has ____ interest in politics, so he never reads that page of the newspaper.",
+   "choices": [
+    "a little",
+    "little",
+    "a few",
+    "few"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "そのページを決して読まないという内容から「関心がほとんどない」という否定的な little が正しい。a little だと「少しは関心がある」となり矛盾する。interest はここでは不可算なので few / a few は使えない。和訳: 彼は政治にほとんど関心がないので、新聞のそのページを決して読まない。"
+  },
+  {
+   "id": "B1-539",
+   "topic": "冠詞・名詞",
+   "question": "Don't hurry. We have ____ of time before the movie starts.",
+   "choices": [
+    "plenty",
+    "many",
+    "few",
+    "a number"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "plenty of ＋名詞で「たくさんの」を表し、可算名詞にも不可算名詞にも使える。many of / few of は後ろに the などで限定された複数名詞が必要で、不可算の time には合わない。a number of も複数名詞用である。和訳: 急がなくていい。映画が始まるまで時間はたっぷりある。"
+  },
+  {
+   "id": "B1-540",
+   "topic": "冠詞・名詞",
+   "question": "The dentist told me that my ____ were in very good condition.",
+   "choices": [
+    "tooth",
+    "tooths",
+    "teeths",
+    "teeth"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "tooth の複数形は不規則変化で teeth になる。were があるので複数形が必要で、単数の tooth は使えない。tooths や teeths という形は存在しない。和訳: 歯医者は私の歯はとても良い状態だと言った。"
+  },
+  {
+   "id": "B1-541",
+   "topic": "冠詞・名詞",
+   "question": "Three ____ were playing with a ball in the park near my house.",
+   "choices": [
+    "childs",
+    "children",
+    "childrens",
+    "child"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "child の複数形は不規則変化で children になる。childs や childrens という形はない。Three に続くので単数形の child も使えない。和訳: 3人の子どもが家の近くの公園でボール遊びをしていた。"
+  },
+  {
+   "id": "B1-542",
+   "topic": "冠詞・名詞",
+   "question": "The farmer keeps about fifty ____ on the hill behind his house.",
+   "choices": [
+    "sheeps",
+    "sheepes",
+    "sheep",
+    "a sheep"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "sheep は単数形と複数形が同じ形の名詞で、複数でも sheep のままである。sheeps や sheepes という形はない。fifty があるので a sheep も不可である。和訳: その農場主は家の裏の丘で羊を50頭ほど飼っている。"
+  },
+  {
+   "id": "B1-543",
+   "topic": "冠詞・名詞",
+   "question": "Many ____ visit this shrine during the New Year holidays.",
+   "choices": [
+    "Japaneses",
+    "Japan",
+    "Japanese",
+    "a Japanese"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "Japanese は単複同形で、「日本人（複数）」も Japanese のままである。Japaneses という形はなく、Japan は国名なので many の後には置けない。many の後に単数の a Japanese も置けない。和訳: 多くの日本人が正月休みにこの神社を訪れる。"
+  },
+  {
+   "id": "B1-544",
+   "topic": "冠詞・名詞",
+   "question": "A number of visitors ____ waiting in front of the museum.",
+   "choices": [
+    "are",
+    "is",
+    "was",
+    "has"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "a number of ＋複数名詞は「いくつもの、多くの」という意味で複数扱いになるため are を使う。一方 the number of ＋複数名詞は「〜の数」という意味で単数扱いになり is を使う。この区別に注意する。和訳: 大勢の来館者が博物館の前で待っている。"
+  },
+  {
+   "id": "B1-545",
+   "topic": "冠詞・名詞",
+   "question": "My new glasses ____ too heavy, so I want to change them.",
+   "choices": [
+    "is",
+    "was",
+    "has been",
+    "are"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "glasses（めがね）は2つの部分から成る名詞で常に複数扱いをするので are が正しい。文末が them で受けていることからも複数と分かる。is / was / has been はいずれも単数主語用の形である。和訳: 新しいめがねは重すぎるので、替えたい。"
+  },
+  {
+   "id": "B1-546",
+   "topic": "冠詞・名詞",
+   "question": "The city has built new houses for ____ poor.",
+   "choices": [
+    "a",
+    "the",
+    "(冠詞なし)",
+    "an"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "the ＋形容詞で「〜な人々」という意味を表し、the poor は「貧しい人々」となる。a poor / an poor という言い方はなく、無冠詞では人々を表す意味にならない。the rich, the young も同じ用法である。和訳: 市は貧しい人々のために新しい住宅を建てた。"
+  },
+  {
+   "id": "B1-547",
+   "topic": "冠詞・名詞",
+   "question": "We spent our summer holiday walking in ____ Alps.",
+   "choices": [
+    "a",
+    "(冠詞なし)",
+    "the",
+    "an"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "山脈・海洋・河川などの固有名詞には the を付ける（the Alps, the Pacific, the Thames）。複数形の固有名詞に a / an は付けられず、無冠詞にもしない。和訳: 私たちは夏休みをアルプス山中を歩いて過ごした。"
+  },
+  {
+   "id": "B1-548",
+   "topic": "冠詞・名詞",
+   "question": "____ Mount Fuji is covered with snow from late autumn to spring.",
+   "choices": [
+    "(冠詞なし)",
+    "The",
+    "A",
+    "An"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "単独の山の名前には冠詞を付けない。the が付くのは the Alps のような山脈や海洋・河川などである。固有名詞に a / an を付けることもできない。和訳: 富士山は晩秋から春まで雪に覆われている。"
+  },
+  {
+   "id": "B1-549",
+   "topic": "冠詞・名詞",
+   "question": "I lost my umbrella yesterday, so I have to buy a new ____ .",
+   "choices": [
+    "it",
+    "ones",
+    "them",
+    "one"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "同じ種類の中の「別の一つ」を指すときは one を使う。it は「なくしたまさにその傘」を指すので買うことはできない。ones と them は複数を指すので a new に続かない。和訳: 昨日傘をなくしたので、新しいものを買わなければならない。"
+  },
+  {
+   "id": "B1-550",
+   "topic": "冠詞・名詞",
+   "question": "These shoes are too small. Do you have any bigger ____ ?",
+   "choices": [
+    "one",
+    "it",
+    "them",
+    "ones"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "複数名詞 shoes を受けて「同じ種類の別のもの（複数）」を指すので ones を使う。one は単数を指す語で複数の靴には合わない。it や them は「まさにその靴」を指し、bigger の後には置けない。和訳: この靴は小さすぎます。もっと大きいものはありますか。"
+  },
+  {
+   "id": "B1-551",
+   "topic": "冠詞・名詞",
+   "question": "This cake is delicious. May I have ____ piece?",
+   "choices": [
+    "other",
+    "another",
+    "the other",
+    "others"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "不特定の「もう一つの」は another（an ＋ other）で表す。the other は「残りの一つ」で、残りが1個と決まっている場合に使う。others は複数を表す代名詞で名詞の前には置けず、other も単数の可算名詞の前には使えない。和訳: このケーキはおいしい。もう一切れもらってもいいですか。"
+  },
+  {
+   "id": "B1-552",
+   "topic": "冠詞・名詞",
+   "question": "I have two uncles. One lives in Osaka, and ____ lives in Sapporo.",
+   "choices": [
+    "another",
+    "others",
+    "the other",
+    "other"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "2人のうち一方を One で表すと、残りは自動的に特定されるので the other を使う。another は3つ以上あるうちの「不特定のもう一つ」に使う。others は複数を指し、other だけでは代名詞として使えない。和訳: 私にはおじが2人いる。1人は大阪に、もう1人は札幌に住んでいる。"
+  },
+  {
+   "id": "B1-553",
+   "topic": "冠詞・名詞",
+   "question": "Please help ____ to the cookies on the table.",
+   "choices": [
+    "yourself",
+    "you",
+    "your",
+    "yours"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "help oneself to ... で「〜を自由に取って食べる」という意味の決まった表現で、主語 you に合わせて再帰代名詞 yourself を使う。help you では「あなたを助ける」となり意味をなさない。your は所有格、yours は所有代名詞である。和訳: テーブルの上のクッキーを自由に召し上がってください。"
+  },
+  {
+   "id": "B1-554",
+   "topic": "冠詞・名詞",
+   "question": "The children enjoyed ____ very much at the summer camp.",
+   "choices": [
+    "themselves",
+    "them",
+    "theirs",
+    "their"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "enjoy oneself で「楽しむ」という意味になり、主語 The children に合わせて themselves を使う。enjoy は目的語が必要な他動詞だが、them では「他の人たちを楽しんだ」という意味になってしまう。同じ再帰代名詞の用法に by oneself（独力で）がある。和訳: 子どもたちはサマーキャンプでとても楽しんだ。"
+  },
+  {
+   "id": "B1-555",
+   "topic": "冠詞・名詞",
+   "question": "This is ____ ; he bought it last month.",
+   "choices": [
+    "the car of John",
+    "John car",
+    "John of car",
+    "John's car"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "人を表す名詞の所有はアポストロフィ ＋ s を付けて John's car とする。無生物には of を使うが、人に the car of John を使うのは不自然である。名詞を並べただけの John car や John of car は誤りである。和訳: これはジョンの車だ。彼は先月それを買った。"
+  },
+  {
+   "id": "B1-556",
+   "topic": "冠詞・名詞",
+   "question": "The earthquake damaged ____ , so the family could not live there any more.",
+   "choices": [
+    "the house's the roof",
+    "the roof house",
+    "the roof of the house",
+    "the house of roof"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "無生物の所有や所属は of を使い、the roof of the house（その家の屋根）の語順になる。of の前後を入れ替えた the house of roof は意味が通らず、the house's the roof のように所有格と the を重ねることもできない。和訳: 地震で家の屋根が壊れ、その家族はもうそこに住めなくなった。"
+  },
+  {
+   "id": "B1-557",
+   "topic": "冠詞・名詞",
+   "question": "Every student in this class ____ his or her own tablet computer.",
+   "choices": [
+    "have",
+    "has",
+    "are having",
+    "having"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "every ＋単数名詞は単数扱いなので動詞は has になる。each や either も同様に単数扱いをする。have や are having は複数主語に対応する形で、having だけでは述語動詞にならない。和訳: このクラスの生徒は全員、自分のタブレット端末を持っている。"
+  },
+  {
+   "id": "B1-558",
+   "topic": "語法・熟語",
+   "question": "Could you look ____ my dog while I am away next week?",
+   "choices": [
+    "for",
+    "after",
+    "into",
+    "up"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "look after ... で「〜の世話をする」という意味になる。look for は「〜を探す」、look into は「〜を調査する」、look up は「（辞書などで）調べる」で、留守中に犬を頼む文脈に合わない。和訳: 来週私が留守の間、犬の世話をしてくれませんか。"
+  },
+  {
+   "id": "B1-559",
+   "topic": "語法・熟語",
+   "question": "The meeting was put ____ until next Monday because of the typhoon.",
+   "choices": [
+    "out",
+    "down",
+    "away",
+    "off"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "put off ... で「〜を延期する」という意味になり、until next Monday とよく結び付く。put out は「（火を）消す」、put down は「置く、書き留める」、put away は「片づける」である。和訳: 台風のため、会議は次の月曜まで延期された。"
+  },
+  {
+   "id": "B1-560",
+   "topic": "語法・熟語",
+   "question": "He finally gave ____ smoking after his doctor warned him.",
+   "choices": [
+    "up",
+    "in",
+    "off",
+    "away"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "give up ＋ -ing で「〜するのをやめる」という意味になる。give in は「屈する、降参する」、give off は「（においや光を）出す」、give away は「ただで与える」で意味が異なる。和訳: 医者に警告されて、彼はついにたばこをやめた。"
+  },
+  {
+   "id": "B1-561",
+   "topic": "語法・熟語",
+   "question": "We ran ____ paper in the middle of printing the report.",
+   "choices": [
+    "out",
+    "out from",
+    "out of",
+    "off"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "run out of ＋名詞で「〜を切らす、使い果たす」という意味になり、目的語を続けるには of が必要である。run out を目的語なしで使う場合は The paper ran out のように、なくなるものが主語になる。和訳: 報告書を印刷している途中で紙を切らしてしまった。"
+  },
+  {
+   "id": "B1-562",
+   "topic": "語法・熟語",
+   "question": "She came ____ a good idea for the school festival.",
+   "choices": [
+    "up to",
+    "out with",
+    "along with",
+    "up with"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "come up with ... で「（考えや案）を思いつく」という意味になる。come up to は「〜に近づく、〜に達する」、come along with は「〜と一緒に来る」で意味が違う。和訳: 彼女は学園祭のよい案を思いついた。"
+  },
+  {
+   "id": "B1-563",
+   "topic": "語法・熟語",
+   "question": "I don't need this box any more. Could you put ____ , please?",
+   "choices": [
+    "away it",
+    "it away",
+    "away of it",
+    "it to away"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "動詞 ＋ 副詞型の句動詞では、目的語が代名詞のときは必ず動詞と副詞の間に置くので put it away の語順になる。名詞なら put the box away でも put away the box でもよいが、put away it は誤りである。和訳: この箱はもう要りません。片づけてもらえますか。"
+  },
+  {
+   "id": "B1-564",
+   "topic": "語法・熟語",
+   "question": "It took her a week to make ____ mind about the job offer.",
+   "choices": [
+    "her up",
+    "up of her",
+    "up her",
+    "up hers"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "make up one's mind で「決心する」という意味になる。up は副詞、her は mind に付く所有格なので make up her mind の語順が正しい。her は mind と切り離せないため、up の前に出すことはできない。和訳: 彼女はその仕事の話について決心するのに1週間かかった。"
+  },
+  {
+   "id": "B1-565",
+   "topic": "語法・熟語",
+   "question": "More than two hundred students took part ____ the volunteer activity.",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "to"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "take part in ... で「〜に参加する」という意味になり、前置詞は in で固定されている。同じ意味の participate in も in を使う。on / at / to は使えない。和訳: 200人以上の生徒がそのボランティア活動に参加した。"
+  },
+  {
+   "id": "B1-566",
+   "topic": "語法・熟語",
+   "question": "Let's keep ____ touch with each other after graduation.",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "by"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "keep in touch with ... で「〜と連絡を取り合う」という決まった表現である。touch の前の前置詞は in で固定されており、on touch や at touch という言い方はない。和訳: 卒業後もお互い連絡を取り合いましょう。"
+  },
+  {
+   "id": "B1-567",
+   "topic": "語法・熟語",
+   "question": "She ____ me that she would be a little late for the party.",
+   "choices": [
+    "said",
+    "spoke",
+    "told",
+    "talked"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "tell は tell ＋人＋ that 節の形をとり、人を直接目的語にできる。say は said to me that ... のように to が必要で、me を直接続けられない。speak と talk は後ろに that 節をとらない。和訳: 彼女は私に、パーティーに少し遅れると言った。"
+  },
+  {
+   "id": "B1-568",
+   "topic": "語法・熟語",
+   "question": "Could you ____ me your bike for an hour? Mine is broken.",
+   "choices": [
+    "borrow",
+    "lend",
+    "rent",
+    "return"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "「（人に物を）貸す」は lend ＋人＋物の形で表す。borrow は「無料で借りる」で意味が逆であり、rent は「有料で貸借する」、return は「返す」で文脈に合わない。和訳: 1時間自転車を貸してくれませんか。私のは壊れているんです。"
+  },
+  {
+   "id": "B1-569",
+   "topic": "語法・熟語",
+   "question": "I was ____ to the radio when the earthquake happened.",
+   "choices": [
+    "hearing",
+    "heard",
+    "listened",
+    "listening"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "listen to ... は「意識して耳を傾ける」という意味で、後ろの to と結び付く。hear は「自然に聞こえる」という意味で to を伴わず、進行形にもしにくい。listened では was ＋ -ing の進行形の形にならない。和訳: 地震が起きたとき、私はラジオを聞いていた。"
+  },
+  {
+   "id": "B1-570",
+   "topic": "語法・熟語",
+   "question": "My brother ____ the soccer game on TV until midnight.",
+   "choices": [
+    "looked",
+    "saw at",
+    "watched",
+    "listened"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "動きのあるものを注意して見続けるときは watch を使い、テレビの試合観戦にはこれが最も適する。look は後ろに at が必要で、saw at という形は存在しない。listened は「聞く」で意味が合わない。和訳: 兄は真夜中までテレビでそのサッカーの試合を見ていた。"
+  },
+  {
+   "id": "B1-571",
+   "topic": "語法・熟語",
+   "question": "Gasoline prices have ____ sharply since last summer.",
+   "choices": [
+    "risen",
+    "raised",
+    "rose",
+    "been risen"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "「（ものが）上がる」は自動詞 rise で、活用は rise-rose-risen。have に続くので過去分詞 risen が正しい。raise は「〜を上げる」という他動詞で目的語が必要であり、自動詞の rise は受け身 been risen にできない。和訳: ガソリン価格は昨年の夏から急激に上がっている。"
+  },
+  {
+   "id": "B1-572",
+   "topic": "語法・熟語",
+   "question": "My cat likes to ____ on the sofa all afternoon.",
+   "choices": [
+    "lay",
+    "laid",
+    "lying",
+    "lie"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「横になる」は自動詞 lie（lie-lay-lain）で、to の後なので原形 lie を使う。lay は「〜を置く、横たえる」という他動詞の原形、または lie の過去形であり、laid は lay の過去形・過去分詞である。和訳: うちの猫は午後じゅうソファで寝そべっているのが好きだ。"
+  },
+  {
+   "id": "B1-573",
+   "topic": "語法・熟語",
+   "question": "The news of his return made everyone in the office ____ .",
+   "choices": [
+    "happily",
+    "happy",
+    "happiness",
+    "to be happily"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "make ＋ O ＋ C（形容詞）で「Oを〜の状態にする」という第5文型になる。補語の位置には形容詞 happy を置く。副詞 happily や名詞 happiness は補語にできない。和訳: 彼が戻るという知らせは、オフィスの全員を喜ばせた。"
+  },
+  {
+   "id": "B1-574",
+   "topic": "語法・熟語",
+   "question": "I'm sorry to have kept you ____ for such a long time.",
+   "choices": [
+    "wait",
+    "waited",
+    "to wait",
+    "waiting"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "keep ＋ O ＋ -ing で「Oを〜している状態にしておく」という意味になり、keep ... waiting で「〜を待たせる」となる。you は自分で待つ側なので過去分詞 waited は不自然で、keep は to 不定詞を補語にとらない。和訳: こんなに長くお待たせしてすみません。"
+  },
+  {
+   "id": "B1-575",
+   "topic": "語法・熟語",
+   "question": "The teacher made us ____ the classroom after lunch.",
+   "choices": [
+    "to clean",
+    "cleaning",
+    "clean",
+    "cleaned"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "使役動詞 make ＋ O ＋ 原形不定詞で「Oに（強制的に）〜させる」という意味になる。to clean や cleaning は続けられず、cleaned にすると「掃除された状態にする」という別の意味になってしまう。和訳: 先生は昼食後、私たちに教室を掃除させた。"
+  },
+  {
+   "id": "B1-576",
+   "topic": "語法・熟語",
+   "question": "I had my bicycle ____ at the shop near the station yesterday.",
+   "choices": [
+    "repaired",
+    "repair",
+    "repairing",
+    "to repair"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "have ＋ O ＋ 過去分詞で「Oを〜してもらう」という意味になる。自転車は修理される側なので過去分詞 repaired を使う。原形 repair にすると my bicycle が修理する側になってしまい意味が通らない。和訳: 昨日、駅の近くの店で自転車を修理してもらった。"
+  },
+  {
+   "id": "B1-577",
+   "topic": "語法・熟語",
+   "question": "I could not get my brother ____ his mind about the trip.",
+   "choices": [
+    "change",
+    "to change",
+    "changing",
+    "changed"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "get は使役の意味でも to 不定詞をとり、get ＋ O ＋ to do の形になる。原形不定詞をとるのは make / have / let で、get は例外である点に注意する。changed では「変えられる」という受け身の意味になる。和訳: 旅行について、弟の考えを変えさせることはできなかった。"
+  },
+  {
+   "id": "B1-578",
+   "topic": "語法・熟語",
+   "question": "My sister helped me ____ my math homework last night.",
+   "choices": [
+    "do",
+    "doing",
+    "done",
+    "to doing"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "help ＋ O ＋ (to) do の形で「Oが〜するのを手伝う」を表し、原形不定詞でも to 不定詞でもよい。ここでは原形 do が正しい。doing や done、to doing はこの形では使えない。和訳: 昨夜、姉が数学の宿題を手伝ってくれた。"
+  },
+  {
+   "id": "B1-579",
+   "topic": "語法・熟語",
+   "question": "This museum is worth ____ at least twice.",
+   "choices": [
+    "visit",
+    "to visit",
+    "visited",
+    "visiting"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "be worth ＋ -ing で「〜する価値がある」という意味になる。worth は前置詞のように働くので後ろは動名詞になり、原形や to 不定詞、過去分詞は続かない。和訳: この博物館は少なくとも2回は訪れる価値がある。"
+  },
+  {
+   "id": "B1-580",
+   "topic": "語法・熟語",
+   "question": "We are supposed ____ at the station at seven tomorrow morning.",
+   "choices": [
+    "meet",
+    "to meet",
+    "meeting",
+    "met"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "be supposed to do で「〜することになっている、〜するはずだ」という意味になる。to の後は原形なので to meet が正しく、meeting や met は続けられない。和訳: 私たちは明朝7時に駅で待ち合わせることになっている。"
+  },
+  {
+   "id": "B1-581",
+   "topic": "語法・熟語",
+   "question": "I was about ____ the office when my phone rang.",
+   "choices": [
+    "leave",
+    "leaving",
+    "to leave",
+    "left"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be about to do で「まさに〜しようとしている」という意味になる。この慣用表現では about の後に必ず to 不定詞が続き、be about leaving や be about leave とは言わない。和訳: 私が会社を出ようとしたとき、電話が鳴った。"
+  },
+  {
+   "id": "B1-582",
+   "topic": "語法・熟語",
+   "question": "She is capable ____ solving such difficult problems by herself.",
+   "choices": [
+    "to",
+    "for",
+    "of",
+    "in"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "be capable of ＋ -ing で「〜する能力がある」という意味になり、前置詞は of で固定されている。同じ意味の be able to do では to 不定詞を使うので、形の違いに注意する。和訳: 彼女はそのような難問を自分一人で解く力がある。"
+  },
+  {
+   "id": "B1-583",
+   "topic": "語法・熟語",
+   "question": "Who is ____ charge of the sales department now?",
+   "choices": [
+    "in",
+    "on",
+    "at",
+    "under"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "in charge of ... で「〜を担当して、〜の責任者で」という意味になる。前置詞は in で固定されており、on charge of や at charge of という表現はない。和訳: 今は誰が営業部を担当しているのですか。"
+  },
+  {
+   "id": "B1-584",
+   "topic": "語法・熟語",
+   "question": "I'm sorry. I took your umbrella ____ mistake.",
+   "choices": [
+    "on",
+    "in",
+    "with",
+    "by"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "by mistake で「間違って、うっかり」という意味になる。on mistake や with mistake という言い方はない。対になる表現として on purpose（わざと）を覚えるとよい。和訳: すみません、間違ってあなたの傘を持って行ってしまいました。"
+  },
+  {
+   "id": "B1-585",
+   "topic": "語法・熟語",
+   "question": "He didn't break the window ____ purpose; it was an accident.",
+   "choices": [
+    "by",
+    "on",
+    "in",
+    "for"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "on purpose で「わざと、故意に」という意味になる。by purpose や for purpose という形はない。by mistake（間違って）と対にして押さえる。和訳: 彼はわざと窓を割ったのではない。事故だった。"
+  },
+  {
+   "id": "B1-586",
+   "topic": "語法・熟語",
+   "question": "The ambulance arrived just ____ time to save the man's life.",
+   "choices": [
+    "on",
+    "in",
+    "at",
+    "by"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "in time は「間に合って」という意味で、to save ... と続けて「助けるのにぎりぎり間に合って」を表す。on time は「時間どおりに（定刻に）」という意味で、just と共に使ってこの意味にはならない。和訳: 救急車はその男性の命を救うのにぎりぎり間に合って到着した。"
+  },
+  {
+   "id": "B1-587",
+   "topic": "語法・熟語",
+   "question": "Could you ____ a look at my report before the meeting?",
+   "choices": [
+    "do",
+    "see",
+    "take",
+    "make"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "take a look (at ...) で「〜をちょっと見る」という定型的な組み合わせになる（have a look も可）。do / see / make を look と組み合わせる言い方はない。和訳: 会議の前に私の報告書に目を通してもらえますか。"
+  },
+  {
+   "id": "B1-588",
+   "topic": "語法・熟語",
+   "question": "The new tax will have a big effect ____ small companies.",
+   "choices": [
+    "on",
+    "to",
+    "in",
+    "for"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "have an effect on ... で「〜に影響を与える」という意味になり、前置詞は on で固定されている。動詞 affect を使えば affect small companies と前置詞なしで表せる。和訳: 新しい税は中小企業に大きな影響を与えるだろう。"
+  },
+  {
+   "id": "B1-589",
+   "topic": "語法・熟語",
+   "question": "A great deal of information ____ been collected for this research.",
+   "choices": [
+    "have",
+    "are",
+    "were",
+    "has"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "a great deal of は不可算名詞に付いて「多くの」を表す。information は不可算名詞で単数扱いなので has been collected となる。have / are / were は複数主語に対応する形である。和訳: この研究のために多くの情報が集められてきた。"
+  },
+  {
+   "id": "B1-590",
+   "topic": "語法・熟語",
+   "question": "The heavy snow badly ____ the train service this morning.",
+   "choices": [
+    "effected",
+    "effect",
+    "affect",
+    "affected"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "「〜に影響を与える」という動詞は affect で、this morning とあるので過去形 affected を使う。effect は主に名詞「影響」であり、動詞としては「（変化を）もたらす」という硬い意味になる。和訳: 今朝の大雪は電車の運行にひどい影響を与えた。"
+  },
+  {
+   "id": "B1-591",
+   "topic": "語法・熟語",
+   "question": "It was so dark in the room that I could ____ see anything.",
+   "choices": [
+    "hard",
+    "hardly",
+    "harder",
+    "hardest"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "hardly は「ほとんど〜ない」という準否定の副詞で、暗くて見えないという文脈に合う。hard は「熱心に、激しく」という意味で、could hard see とは言えない。比較級・最上級もここでは使えない。和訳: 部屋がとても暗かったので、私はほとんど何も見えなかった。"
+  },
+  {
+   "id": "B1-592",
+   "topic": "語法・熟語",
+   "question": "____ all of the students passed the final exam.",
+   "choices": [
+    "Most",
+    "Mostly",
+    "Almost",
+    "The most"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "almost は副詞なので all を修飾して almost all of ... の形で使える。most は Most of the students のように直接 of を続ける語で、all と並べては使えない。mostly は「主に」、the most は最上級で意味が違う。和訳: 生徒のほとんど全員が期末試験に合格した。"
+  },
+  {
+   "id": "B1-593",
+   "topic": "語法・熟語",
+   "question": "This small car is very ____ ; it uses very little gasoline.",
+   "choices": [
+    "economical",
+    "economic",
+    "economy",
+    "economics"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "economical は「（燃費などが）経済的な、節約になる」という意味で、ガソリンをあまり使わないという説明に合う。economic は「経済の、経済学の」という意味で、economy と economics は名詞である。和訳: この小型車はとても経済的だ。ガソリンをほとんど使わない。"
+  },
+  {
+   "id": "B1-594",
+   "topic": "語法・熟語",
+   "question": "I'd rather ____ at home tonight than go out in this rain.",
+   "choices": [
+    "stay",
+    "to stay",
+    "staying",
+    "stayed"
+   ],
+   "answerIndex": 0,
+   "explanationJa": "would rather ＋原形で「むしろ〜したい」という意味になる。than の後が原形の go out であることからも、前も原形にそろえる必要が分かる。to stay や staying は続けられない。和訳: 今夜はこの雨の中を出かけるより、家にいたい。"
+  },
+  {
+   "id": "B1-595",
+   "topic": "語法・熟語",
+   "question": "You'd better ____ late for the interview tomorrow.",
+   "choices": [
+    "not to be",
+    "be not",
+    "don't be",
+    "not be"
+   ],
+   "answerIndex": 3,
+   "explanationJa": "had better の否定は had better not ＋原形で、not は better の直後に置く。not to be や be not、don't be は誤りである。had better は「〜したほうがよい」という強い忠告を表す。和訳: 明日の面接に遅れないほうがいいよ。"
+  },
+  {
+   "id": "B1-596",
+   "topic": "語法・熟語",
+   "question": "There ____ a small bookshop on this corner, but it closed last year.",
+   "choices": [
+    "is used to be",
+    "was used to be",
+    "used to be",
+    "used to being"
+   ],
+   "answerIndex": 2,
+   "explanationJa": "used to ＋原形で「以前は〜だった」という過去の状態を表し、There used to be ... で「以前は〜があった」となる。be used to ＋ -ing は「〜に慣れている」という別の表現で、形も意味も異なる。和訳: 以前この角に小さな書店があったが、昨年閉店した。"
+  },
+  {
+   "id": "B1-597",
+   "topic": "語法・熟語",
+   "question": "Would you like ____ another cup of coffee?",
+   "choices": [
+    "have",
+    "to have",
+    "having",
+    "had"
+   ],
+   "answerIndex": 1,
+   "explanationJa": "would like to ＋原形で「〜したい、〜しませんか」という丁寧な表現になる。like の後は to 不定詞が必要で、原形の have や having、had は続けられない。和訳: コーヒーをもう一杯いかがですか。"
   }
  ]
 }

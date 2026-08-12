@@ -43,9 +43,9 @@ export function SetupPanel({ level, interests, onLevelChange, onInterestsChange 
             <button
               key={l.key}
               onClick={() => onLevelChange(l.key)}
-              className={`rounded-xl border px-4 py-3 text-left transition-colors ${
+              className={`rounded-2xl border px-4 py-3 text-left transition-colors ${
                 level === l.key
-                  ? "border-indigo-500 bg-indigo-50 dark:border-indigo-400 dark:bg-indigo-950"
+                  ? "border-[#4A99EA] bg-[#4A99EA]/10"
                   : "border-zinc-200 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
               }`}
             >
@@ -70,7 +70,7 @@ export function SetupPanel({ level, interests, onLevelChange, onInterestsChange 
               onClick={() => toggleInterest(t)}
               className={`rounded-full border px-3 py-1 text-xs transition-colors ${
                 interests.includes(t)
-                  ? "border-indigo-500 bg-indigo-50 text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300"
+                  ? "border-[#4A99EA] bg-[#4A99EA]/10 text-[#4A99EA]"
                   : "border-zinc-200 text-zinc-600 hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-400"
               }`}
             >
@@ -82,7 +82,7 @@ export function SetupPanel({ level, interests, onLevelChange, onInterestsChange 
             .map((t) => (
               <span
                 key={t}
-                className="flex items-center gap-1 rounded-full border border-indigo-500 bg-indigo-50 px-3 py-1 text-xs text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300"
+                className="flex items-center gap-1 rounded-full border border-[#4A99EA] bg-[#4A99EA]/10 px-3 py-1 text-xs text-[#4A99EA]"
               >
                 {t}
                 <button onClick={() => toggleInterest(t)} aria-label={`${t}を削除`}>
@@ -99,7 +99,7 @@ export function SetupPanel({ level, interests, onLevelChange, onInterestsChange 
               if (e.key === "Enter") addCustom();
             }}
             placeholder="自由入力 (例: 宇宙、サッカー)"
-            className="flex-1 rounded-lg border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-indigo-400 dark:border-zinc-700"
+            className="flex-1 rounded-lg border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
           />
           <button
             onClick={addCustom}

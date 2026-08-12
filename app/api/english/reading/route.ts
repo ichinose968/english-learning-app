@@ -6,7 +6,7 @@ import {
   missingApiKey,
   LEVEL_PROMPT,
 } from "@/lib/english/generate";
-import { LEVELS, ReadingResult } from "@/lib/english/types";
+import { LEVELS, READING_LENGTHS, ReadingResult } from "@/lib/english/types";
 
 export const maxDuration = 120;
 
@@ -47,11 +47,25 @@ const SCHEMA = {
   additionalProperties: false,
 } as const;
 
-const SYSTEM = `あなたは英語長文読解アプリの教材ジェネレーターである。学習者の興味と語彙レベルに合わせたオリジナルの英文と設問を生成する。
+// 勉強目的ごとの文体・題材・設問の指示
+const PURPOSE_PROMPT: Record<string, string> = {
+  general: "文体は自由。学習者の興味テーマを題材の中心にした、自然で面白い読み物にする。",
+  toeic:
+    "文体はTOEIC Part 7の読解文に寄せる。ビジネスメール、社内告知、広告、記事、報告書などの実務文書形式を1つ選んで書く(宛先や日付などの体裁も再現する)。設問は内容一致・詳細確認・書き手の意図を問う形式にする。興味テーマは題材に無理なく絡められる場合のみ使う。",
+  toefl:
+    "文体はTOEFLリーディングに寄せる。自然科学・社会科学・歴史などのアカデミックな説明文で、論理展開を明確にする。設問は要旨・推論・パラフレーズを問う形式にする。興味テーマに近い学術分野を選んでよい。",
+  eiken:
+    "文体は英検の長文問題に寄せる。段落構成の明確な説明文または意見文にする。設問は各段落の要旨と詳細を問う形式にする。",
+  business:
+    "ビジネスの実務場面(会議、交渉、メール、プレゼン、市場分析)を舞台にした文章にする。ビジネスで頻出する表現を自然に織り込む。",
+  news: "新聞・ニュース記事の文体で書く(見出し的なタイトル、リード文、本文の構成)。時事的な話題を扱う(架空の出来事でよい)。",
+};
+
+const SYSTEM = `あなたは英語長文読解アプリの教材ジェネレーターである。学習者の勉強目的・興味・語彙レベルに合わせたオリジナルの英文と設問を生成する。
 
 ルール:
 - passageEn は指定レベルの語彙・文法で書いた自然で面白い英文。指定の語数に収める。学習者の興味テーマから1つ選ぶか自然に組み合わせる
-- 「ターゲット単語」が与えられた場合、全てのターゲット単語を本文中で必ず1回以上、自然な文脈で使う。ターゲット単語の各出現箇所は **word** のように前後を ** で囲む(活用形で使った場合も囲む)。ターゲット単語以外は囲まない
+- 「ターゲット単語」が与えられた場合、全てのターゲット単語を本文中で必ず1回以上、自然な文脈で使う。ターゲット単語が主役になるよう、それらが自然に登場する題材と筋書きを先に決めてから本文を書く。ターゲット単語の各出現箇所は **word** のように前後を ** で囲む(活用形で使った場合も囲む)。ターゲット単語以外は囲まない
 - title は本文の内容を表す英語タイトル
 - translationJa は本文全体の自然な和訳
 - glossary にはターゲット単語全てに加え、そのレベルの学習者がつまずきそうな語句を3〜5個載せる(word は本文中の表記、meaningJa は文脈での意味)
@@ -61,6 +75,8 @@ export async function POST(req: NextRequest) {
   let body: {
     level: string;
     interests?: string[];
+    purpose?: string;
+    length?: string;
     targetWords?: { word: string; meaningJa: string }[];
   };
   try {
@@ -77,14 +93,22 @@ export async function POST(req: NextRequest) {
   }
 
   const interests = (body.interests ?? []).slice(0, 10);
+  // 長さの指定があればレベル既定の語数より優先する
+  const lengthDef = READING_LENGTHS.find((l) => l.key === body.length);
+  const passageWords = lengthDef?.words ?? levelDef.passageWords;
   const targets = (body.targetWords ?? []).slice(0, 8);
 
+  const purposeInstruction =
+    PURPOSE_PROMPT[body.purpose ?? "general"] ?? PURPOSE_PROMPT.general;
+
   const user = `レベル: ${levelDesc}
-本文の語数: ${levelDef.passageWords}
+本文の語数: ${passageWords}
+
+勉強目的に応じた文体・設問の指示: ${purposeInstruction}
 
 学習者の興味テーマ: ${interests.length > 0 ? interests.join(" / ") : "(指定なし。一般的に面白いテーマでよい)"}
 
-ターゲット単語(学習者が単語クイズで間違えた復習対象。全て本文に組み込み ** で囲む):
+ターゲット単語(学習者がいま学習中・要復習の単語。全て本文に組み込み ** で囲む):
 ${
     targets.length > 0
       ? targets.map((t) => `- ${t.word} (${t.meaningJa})`).join("\n")

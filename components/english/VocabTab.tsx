@@ -1,33 +1,59 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
   BookOpen,
+  Circle,
   Flame,
   Gauge,
+  List,
   Loader2,
+  MessageCircle,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
   RefreshCw,
+  RotateCcw,
+  SlidersHorizontal,
   TrendingDown,
   TrendingUp,
+  X,
 } from "lucide-react";
 import {
+  applyEdit,
+  CardFieldKey,
+  DOMAIN_LABEL_JA,
   EnglishData,
   Level,
   LEVELS,
+  THEME_LABEL_JA,
+  ManualStatus,
   VocabAction,
+  VocabSettings,
   WordDbEntry,
+  WordEdit,
 } from "@/lib/english/types";
+import { CardDetailSheet, rectOf, SheetOrigin } from "./CardDetailSheet";
+import { ConfirmButton } from "./ConfirmButton";
+import { clearStatusOverride, setStatusOverride } from "@/lib/english/progress";
+import { CardFilterSheet } from "./CardFilterSheet";
+import { Sheet } from "./Sheet";
 import {
   buildIndex,
   buildQueue,
+  DbKind,
   dbStats,
+  dbStatsAsOf,
   estimatePlacement,
   evaluateLevelShift,
   fetchAllWordDbs,
   LEVEL_ORDER,
   LEVEL_SHIFT_WINDOW,
   PLACEMENT_SIZE,
+  STATUS_BADGE,
+  wordStatus,
+  QuizMode,
   samplePlacementWord,
   WordDbMap,
 } from "@/lib/english/worddb";
@@ -43,11 +69,17 @@ type Phase =
   | "placement"
   | "placementDone"
   | "idle"
-  | "quiz"
-  | "done";
-type Mode = "normal" | "weak";
+  | "quiz";
 
-const QUIZ_SIZE = 10;
+const MODE_TABS: { key: QuizMode; label: string }[] = [
+  { key: "random", label: "ランダム" },
+  { key: "review", label: "要復習" },
+  { key: "new", label: "未学習" },
+  { key: "learning", label: "学習中" },
+  { key: "mastered", label: "学習済み" },
+];
+// キューを使い切るたびに補充する単位 (出題自体は無限に続く)
+const BATCH_SIZE = 10;
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -59,10 +91,10 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 const ACTION_LABEL: Record<VocabAction, string> = {
-  known: "知っていた",
-  unsure_correct: "怪しい → 正解",
-  unsure_wrong: "怪しい → 誤答",
-  unknown: "知らなかった",
+  known: "Mastered",
+  unsure_correct: "Fuzzy → 正解",
+  unsure_wrong: "Fuzzy → 誤答",
+  unknown: "New",
 };
 
 function isCorrect(action: VocabAction): boolean {
@@ -74,126 +106,665 @@ function levelLabel(level: Level): string {
   return def ? `${def.key} ${def.label}` : level;
 }
 
-// 1単語分のカード (自己判定 → 必要なら4択 → 意味の確認)。
+// 出題対象のレベル。手動設定なら選んだレベル、自動なら測定した1レベル
+function activeLevels(
+  settings: VocabSettings,
+  measured: Level | null,
+): Level[] {
+  if (settings.levelMode === "manual") return settings.manualLevels;
+  return measured ? [measured] : [];
+}
+
+// ---- スワイプ中のエフェクト (○=青 / ×=赤 / ?=グレー) ----
+
+type SwipeDir = "known" | "unknown" | "unsure";
+
+// 影の色。ライト・ダークどちらの地の上でも見える濃さにする
+const SWIPE_GLOW: Record<SwipeDir, (a: number) => string> = {
+  known: (a) => `rgba(74, 153, 234, ${a})`,
+  unknown: (a) => `rgba(239, 68, 68, ${a})`,
+  unsure: (a) => `rgba(113, 113, 122, ${a})`,
+};
+
+// スワイプ中に出す大きな文字。位置と傾き、最大サイズは向きごとに変える
+// (max は文字数に合わせた値。これ以上大きくするとカードの幅からはみ出す)
+const SWIPE_HINT: Record<
+  SwipeDir,
+  { text: string; cls: string; rotate: number; origin: string; max: number }
+> = {
+  known: {
+    text: "Mastered",
+    cls: "left-4 top-9",
+    rotate: -10,
+    origin: "0% 50%",
+    max: 27,
+  },
+  unknown: {
+    text: "New",
+    cls: "right-5 top-9",
+    rotate: 10,
+    origin: "100% 50%",
+    max: 46,
+  },
+  unsure: {
+    text: "Fuzzy",
+    cls: "left-1/2 top-8",
+    rotate: 0,
+    origin: "50% 0%",
+    max: 40,
+  },
+};
+
+// カードの周囲に出すグラデーションの影。指を離す直前がいちばん濃くなる
+function swipeShadow(dir: SwipeDir, t: number): string {
+  const glow = SWIPE_GLOW[dir];
+  const e = t * t; // 終盤で強くする
+  return `0 0 ${22 + 52 * e}px ${2 + 10 * e}px ${glow(0.1 + 0.3 * e)}`;
+}
+
+// 1単語分のカード (Tinder風)。スワイプまたは下部の5ボタンで回答する。
+// 回答するとカードが裏返って意味を表示し、「次へ」でカードが飛んでいく。
 // 状態のリセットは親が key={item.word} を変えることで行う
 function WordCard({
   item,
+  note,
   onAction,
   onNext,
-  nextLabel,
+  onRefresh,
+  onSaveNote,
+  onSaveEdit,
+  onUndo,
+  skipReveal,
+  cardFields,
+  status,
+  onSetStatus,
 }: {
   item: WordDbEntry;
+  note: string | undefined;
+  // 回答後に解説を飛ばして次へ進むか (○ / × 別)
+  skipReveal: { known: boolean; unknown: boolean };
   onAction: (action: VocabAction) => void;
   onNext: () => void;
-  nextLabel: string;
+  onRefresh: () => void;
+  onSaveNote: (text: string) => void;
+  onSaveEdit: (patch: WordEdit) => void;
+  onUndo: (action: VocabAction) => void;
+  cardFields: Record<CardFieldKey, boolean>;
+  status: { label: string; cls: string; manual: ManualStatus | null };
+  onSetStatus: (next: ManualStatus | null) => void;
 }) {
   const [step, setStep] = useState<"ask" | "choices" | "reveal">("ask");
   const [choices, setChoices] = useState<string[]>([]);
   const [picked, setPicked] = useState<number | null>(null);
   const [action, setAction] = useState<VocabAction | null>(null);
+  // ドラッグ (スワイプ) の状態
+  const [drag, setDrag] = useState<{ x: number; y: number } | null>(null);
+  const startRef = useRef<{ x: number; y: number } | null>(null);
+  // 退出アニメーションの向き
+  const [exit, setExit] = useState<"left" | "right" | "up" | null>(null);
+  const [flip, setFlip] = useState(false);
+  // カード詳細。メモボタンから開いたときはメモを編集状態にする
+  const [detailOpen, setDetailOpen] = useState(false);
+  const [detailEdit, setDetailEdit] = useState<"note" | undefined>(undefined);
+  // 詳細を開くアニメーションの開始位置 (カード / ↑ボタン / 下部のボタン列)
+  const [detailOrigin, setDetailOrigin] = useState<SheetOrigin | undefined>();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<HTMLButtonElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
 
-  const finish = (a: VocabAction) => {
-    setAction(a);
-    setStep("reveal");
-    onAction(a);
+  const openDetail = (edit?: "note") => {
+    const card = rectOf(cardRef.current);
+    setDetailOrigin(
+      card
+        ? {
+            card,
+            arrow: rectOf(arrowRef.current),
+            buttons: rectOf(buttonsRef.current),
+          }
+        : undefined,
+    );
+    setDetailEdit(edit);
+    setDetailOpen(true);
   };
 
+  const SWIPE_THRESHOLD = 110;
+
+  // 裏返してから内容を差し替える (めくる演出)
+  const flipTo = (next: "choices" | "reveal") => {
+    setFlip(true);
+    window.setTimeout(() => {
+      setStep(next);
+      setFlip(false);
+    }, 160);
+  };
+
+  const answer = (a: VocabAction) => {
+    setAction(a);
+    onAction(a);
+    setDrag(null);
+    // 設定がオンなら解説を見せず、そのまま次のカードへ送る
+    if (
+      (a === "known" && skipReveal.known) ||
+      (a === "unknown" && skipReveal.unknown)
+    ) {
+      setExit(a === "known" ? "right" : "left");
+      window.setTimeout(onNext, 220);
+      return;
+    }
+    flipTo("reveal");
+  };
+
+  const openChoices = () => {
+    setChoices(shuffle([item.meaningJa, ...item.distractors]));
+    setPicked(null);
+    setDrag(null);
+    flipTo("choices");
+  };
+
+  // 4択を開いたのをやめて表に戻す。まだ回答は記録していないので取り消すものはない
+  const cancelChoices = () => {
+    setFlip(true);
+    window.setTimeout(() => {
+      setStep("ask");
+      setPicked(null);
+      setDrag(null);
+      setFlip(false);
+    }, 160);
+  };
+
+  // 回答を取り消してカードの表側に戻す
+  const flipBack = () => {
+    if (!action) return;
+    onUndo(action);
+    setFlip(true);
+    window.setTimeout(() => {
+      setStep("ask");
+      setAction(null);
+      setPicked(null);
+      setDrag(null);
+      setFlip(false);
+    }, 160);
+  };
+
+  // 「次へ」: 回答の向きにカードを飛ばしてから次の単語へ
+  const flyOut = () => {
+    setExit(
+      action === "known" ? "right" : action === "unknown" ? "left" : "up",
+    );
+    window.setTimeout(onNext, 220);
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if ((step !== "ask" && step !== "reveal") || exit) return;
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    startRef.current = { x: e.clientX, y: e.clientY };
+    setDrag({ x: 0, y: 0 });
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!startRef.current) return;
+    setDrag({
+      x: e.clientX - startRef.current.x,
+      y: e.clientY - startRef.current.y,
+    });
+  };
+  const onPointerUp = () => {
+    if (!drag) return;
+    startRef.current = null;
+    // 回答後はどの向きにスワイプしても次のカードへ進む
+    if (step === "reveal") {
+      if (
+        Math.abs(drag.x) > SWIPE_THRESHOLD ||
+        Math.abs(drag.y) > SWIPE_THRESHOLD
+      ) {
+        setExit(drag.x >= 0 ? "right" : "left");
+        window.setTimeout(onNext, 220);
+      } else {
+        setDrag(null);
+      }
+      return;
+    }
+    if (drag.x > SWIPE_THRESHOLD) answer("known");
+    else if (drag.x < -SWIPE_THRESHOLD) answer("unknown");
+    else if (drag.y < -SWIPE_THRESHOLD) openChoices();
+    else setDrag(null);
+  };
+
+  // スワイプの向きと強さ (0〜1)。カードのグラデーション影とボタンの反転に使う
+  const swipe: { dir: SwipeDir; t: number } | null = (() => {
+    // 裏面はどちらへスワイプしても「次のカードへ」なので、向きによらず → と同じ扱いにする
+    if (step === "reveal") {
+      if (exit) return { dir: "known", t: 1 };
+      if (!drag) return null;
+      const d = Math.max(Math.abs(drag.x), Math.abs(drag.y));
+      if (d < 12) return null;
+      return { dir: "known", t: Math.min(1, d / SWIPE_THRESHOLD) };
+    }
+    if (exit) {
+      const dir: SwipeDir =
+        exit === "right" ? "known" : exit === "left" ? "unknown" : "unsure";
+      return { dir, t: 1 };
+    }
+    if (!drag || step !== "ask") return null;
+    const ax = Math.abs(drag.x);
+    const ay = Math.abs(drag.y);
+    if (ax < 12 && ay < 12) return null;
+    if (ax >= ay) {
+      return {
+        dir: drag.x > 0 ? "known" : "unknown",
+        t: Math.min(1, ax / SWIPE_THRESHOLD),
+      };
+    }
+    // 上方向だけが「怪しい」。下向きのドラッグにはエフェクトを出さない
+    if (drag.y > 0) return null;
+    return { dir: "unsure", t: Math.min(1, ay / SWIPE_THRESHOLD) };
+  })();
+
+  // ボタンの色を反転させるのは、そのまま指を離せば確定する強さになってから
+  const lit = (dir: SwipeDir) => swipe?.dir === dir && swipe.t >= 0.35;
+
+  // 指を離せば確定する強さに達した瞬間だけ、短く振動させる (対応端末のみ)
+  const swipeDir = swipe?.dir ?? null;
+  const swipeT = swipe?.t ?? 0;
+  const buzzed = useRef(false);
+  useEffect(() => {
+    if (swipeT >= 1 && !buzzed.current) {
+      buzzed.current = true;
+      navigator.vibrate?.(14);
+    } else if (swipeT < 0.9) {
+      buzzed.current = false;
+    }
+  }, [swipeDir, swipeT]);
+
+  const fxTransition = drag
+    ? "transform 0.07s linear, box-shadow 0.07s linear, opacity 0.1s linear, background-color 0.12s ease-out, color 0.12s ease-out"
+    : "transform 0.3s cubic-bezier(0.2, 1.5, 0.4, 1), box-shadow 0.25s ease-out, opacity 0.2s ease-out, background-color 0.15s ease-out, color 0.15s ease-out";
+
+  // 狙っている向き以外のボタンは、引っぱるほど消えていく
+  const fadedOut = swipe ? Math.max(0, 1 - swipe.t * 2.2) : 1;
+
+  // 反応中のボタンは大きく + 発光させ、他のボタンは縮めて消す。
+  // off はその場面で使えないボタン (4択中の ? と →)。押せないことが分かるよう薄くする
+  const buttonFx = (dir: SwipeDir, off = false): React.CSSProperties => {
+    const on = swipe?.dir === dir;
+    const t = on ? swipe.t : 0;
+    return {
+      transform: `scale(${on ? 1 + 0.42 * t * t : swipe ? 0.86 : 1})`,
+      boxShadow: on
+        ? `0 0 ${10 + 46 * t * t}px ${SWIPE_GLOW[dir](0.2 + 0.6 * t)}`
+        : undefined,
+      opacity: off ? 0.25 : on ? 1 : fadedOut,
+      transition: fxTransition,
+    };
+  };
+
+  // ↺ と 💬 はどの向きにも対応しないので、スワイプ中は一律で消す
+  const neutralFx: React.CSSProperties = {
+    transform: `scale(${swipe ? 0.86 : 1})`,
+    opacity: fadedOut,
+    transition: fxTransition,
+  };
+
+  // ← は表に戻す役。4択を開いているあいだも押せる (まだ回答していないので取り消すものはない)
+  const backLabel =
+    step === "ask"
+      ? "New"
+      : step === "choices"
+        ? "4択をやめてカードの表に戻る"
+        : "回答を取り消してカードの表に戻る";
+
+  // スワイプ中に出す大きな文字。引っぱるほど大きく、濃くなる。
+  // 裏面のスワイプは回答ではなく「次へ」なので、文字は出さずに色とボタンだけ反応させる
+  const hint =
+    swipe && swipe.t >= 0.18 && !exit && step === "ask"
+      ? SWIPE_HINT[swipe.dir]
+      : null;
+
+  const transform = exit
+    ? exit === "right"
+      ? "translate(140%, -40px) rotate(18deg)"
+      : exit === "left"
+        ? "translate(-140%, -40px) rotate(-18deg)"
+        : "translate(0, -140%)"
+    : drag
+      ? `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x * 0.05}deg) scale(${
+          1 + 0.05 * swipeT * swipeT
+        })`
+      : undefined;
+
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="mb-5 text-center">
-        <p className="text-3xl font-semibold tracking-tight">{item.word}</p>
-        <p className="mt-1 text-xs text-zinc-400">{item.pos}</p>
+    <div className="flex min-h-0 flex-1 flex-col">
+      {/* 背面のカード (奥行きの演出) */}
+      <div className="relative min-h-0 flex-1">
+        <div className="absolute inset-x-3 bottom-[-8px] top-2 rounded-2xl border border-zinc-200 dark:border-zinc-800" />
+        <div
+          ref={cardRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          style={{
+            transform:
+              `${transform ?? ""} ${flip ? "scaleX(0.02)" : ""}`.trim() ||
+              undefined,
+            transition:
+              drag && !exit
+                ? "box-shadow 0.12s linear"
+                : "transform 0.22s ease-out, opacity 0.22s ease-out, box-shadow 0.22s ease-out",
+            opacity: exit ? 0 : 1,
+            boxShadow: swipe ? swipeShadow(swipe.dir, swipe.t) : undefined,
+            touchAction: "none",
+          }}
+          // カードだけはダークテーマでも白地・黒文字にする (紙の単語カードに寄せる)
+          className="absolute inset-0 flex select-none flex-col justify-center overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900"
+        >
+          {/* 背景画像 (カード詳細で設定)。文字が読めるよう薄くしてカードの地色に重ねる */}
+          {item.bgImage && (
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-0 rounded-2xl bg-cover bg-center opacity-40"
+              style={{ backgroundImage: `url(${item.bgImage})` }}
+            />
+          )}
+
+          {/* スワイプの向きへ広がる色。引っぱるほどカード全体が染まる */}
+          {swipe && (
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-0 rounded-2xl"
+              style={{
+                background: `radial-gradient(circle at ${
+                  swipe.dir === "known"
+                    ? "100% 50%"
+                    : swipe.dir === "unknown"
+                      ? "0% 50%"
+                      : "50% 0%"
+                }, ${SWIPE_GLOW[swipe.dir](0.22 * swipe.t)} 0%, ${SWIPE_GLOW[
+                  swipe.dir
+                ](0)} 70%)`,
+              }}
+            />
+          )}
+
+          {hint && swipe && (
+            <span
+              aria-hidden
+              className={`pointer-events-none absolute z-20 whitespace-nowrap font-black uppercase italic tracking-tighter ${hint.cls}`}
+              style={{
+                fontSize: `${hint.max * (0.32 + 0.68 * swipe.t)}px`,
+                lineHeight: 1,
+                opacity: Math.min(1, (swipe.t - 0.12) * 3),
+                color: SWIPE_GLOW[swipe.dir](1),
+                transformOrigin: hint.origin,
+                transform: `${
+                  swipe.dir === "unsure" ? "translateX(-50%) " : ""
+                }rotate(${hint.rotate * swipe.t}deg)`,
+                textShadow: `0 0 ${4 + 14 * swipe.t}px ${SWIPE_GLOW[swipe.dir](
+                  0.45,
+                )}`,
+              }}
+            >
+              {hint.text}
+            </span>
+          )}
+
+          {step === "ask" ? (
+            <div className="relative z-10 space-y-3 py-4 text-center">
+              {cardFields.word && (
+                <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+              )}
+              {(cardFields.ipa || cardFields.pos) && (
+                <p className="text-xs text-zinc-400">
+                  {[cardFields.ipa && item.ipa, cardFields.pos && item.pos]
+                    .filter(Boolean)
+                    .join("  ")}
+                </p>
+              )}
+              {cardFields.meaning && (
+                <p className="text-lg">{item.meaningJa}</p>
+              )}
+              {cardFields.tags &&
+                (item.exams?.length ||
+                  item.domains?.length ||
+                  item.themes?.length) && (
+                  <div className="flex flex-wrap justify-center gap-1.5">
+                    {[
+                      ...(item.exams ?? []),
+                      ...(item.domains ?? []).map(
+                        (d) => DOMAIN_LABEL_JA[d] ?? d,
+                      ),
+                      ...(item.themes ?? []).map((t) => THEME_LABEL_JA[t] ?? t),
+                    ].map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-600"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              {/* 答えが分かってしまうため、表面では英文だけ出す */}
+              {cardFields.example && (
+                <p className="text-sm">{item.exampleEn}</p>
+              )}
+              {cardFields.related &&
+                item.related &&
+                item.related.length > 0 && (
+                  <p className="text-xs text-zinc-500">
+                    {item.related.map((r) => r.word).join(" ・ ")}
+                  </p>
+                )}
+              {cardFields.note && note && (
+                <p className="text-xs text-zinc-500">メモ: {note}</p>
+              )}
+            </div>
+          ) : (
+            <div className="relative z-10 py-4 text-center">
+              <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+              {/* 回答後も表と同じ情報 (発音記号・品詞) を出す */}
+              <p className="mt-1 text-xs text-zinc-400">
+                {[item.ipa, item.pos].filter(Boolean).join("  ")}
+              </p>
+            </div>
+          )}
+
+          {step === "choices" && (
+            <div className="relative z-10 grid gap-2">
+              <p className="mb-1 text-center text-xs text-zinc-500">
+                意味はどれ？
+              </p>
+              {choices.map((c, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    if (picked !== null) return;
+                    setPicked(i);
+                    setAction(
+                      c === item.meaningJa ? "unsure_correct" : "unsure_wrong",
+                    );
+                    onAction(
+                      c === item.meaningJa ? "unsure_correct" : "unsure_wrong",
+                    );
+                    flipTo("reveal");
+                  }}
+                  className="rounded-full border border-zinc-300 px-4 py-2.5 text-left text-sm transition-colors hover:border-zinc-400 hover:bg-zinc-50"
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {step === "reveal" && action && (
+            <div className="relative z-10 space-y-3">
+              <p
+                className={`text-center text-sm font-bold ${
+                  isCorrect(action) ? "text-[#4A99EA]" : "text-red-500"
+                }`}
+              >
+                {ACTION_LABEL[action]}
+                {action === "unsure_wrong" && picked !== null && (
+                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                    選択: {choices[picked]}
+                  </span>
+                )}
+              </p>
+              <div className="rounded-2xl bg-zinc-100 p-3 text-sm">
+                <p className="font-bold">{item.meaningJa}</p>
+                <p className="mt-1 text-zinc-600">{item.exampleEn}</p>
+                <p className="mt-0.5 text-xs text-zinc-500">{item.exampleJa}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Tinder風: カード右下の ↑ でカードの詳細を開く */}
+          <button
+            ref={arrowRef}
+            onClick={() => openDetail()}
+            onPointerDown={(e) => e.stopPropagation()}
+            aria-label="カードの詳細を見る"
+            className="absolute bottom-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-600 transition-colors hover:bg-zinc-50"
+          >
+            <ArrowUp size={20} strokeWidth={2.5} />
+          </button>
+
+          {note && step !== "choices" && (
+            <p className="relative z-10 mt-3 rounded-2xl border border-zinc-200 px-3 py-2 text-xs text-zinc-500">
+              メモ: {note}
+            </p>
+          )}
+        </div>
       </div>
 
-      {step === "ask" && (
-        <div className="grid gap-2">
-          <button
-            onClick={() => finish("known")}
-            className="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 dark:hover:bg-emerald-900"
-          >
-            知っている
-          </button>
-          <button
-            onClick={() => {
-              setChoices(shuffle([item.meaningJa, ...item.distractors]));
+      {/* Tinder風の操作ボタン (更新 / × / ? / ○ / コメント) */}
+      <div
+        ref={buttonsRef}
+        className="mt-4 flex shrink-0 items-center justify-center gap-3"
+      >
+        <button
+          onClick={onRefresh}
+          title="別の単語を出す"
+          aria-label="別の単語を出す"
+          style={neutralFx}
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-500 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-black dark:hover:bg-zinc-900"
+        >
+          <RotateCcw size={20} />
+        </button>
+        <button
+          onClick={() =>
+            step === "ask"
+              ? answer("unknown")
+              : step === "choices"
+                ? cancelChoices()
+                : flipBack()
+          }
+          title={backLabel}
+          aria-label={backLabel}
+          style={buttonFx("unknown")}
+          className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500 disabled:opacity-30 ${
+            lit("unknown")
+              ? "bg-red-500 text-white"
+              : "bg-white text-red-500 hover:bg-red-500/10 dark:bg-black"
+          }`}
+        >
+          {step === "ask" ? (
+            <X size={28} strokeWidth={3} />
+          ) : (
+            <ArrowLeft size={28} strokeWidth={3} />
+          )}
+        </button>
+        <button
+          onClick={openChoices}
+          disabled={step !== "ask"}
+          title="Fuzzy"
+          aria-label="Fuzzy"
+          style={buttonFx("unsure", step !== "ask")}
+          className={`flex h-14 w-14 items-center justify-center rounded-full border-2 border-zinc-900 text-lg font-bold disabled:opacity-30 dark:border-white ${
+            lit("unsure")
+              ? "bg-zinc-900 text-white dark:bg-white dark:text-black"
+              : "bg-white hover:bg-zinc-100 dark:bg-black dark:text-white dark:hover:bg-zinc-900"
+          }`}
+        >
+          ?
+        </button>
+        <button
+          onClick={() => (step === "ask" ? answer("known") : flyOut())}
+          disabled={step === "choices"}
+          title={step === "ask" ? "Mastered" : "次のカードへ"}
+          aria-label={step === "ask" ? "Mastered" : "次のカードへ"}
+          style={buttonFx("known", step === "choices")}
+          className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#4A99EA] disabled:opacity-30 ${
+            lit("known")
+              ? "bg-[#4A99EA] text-white"
+              : "bg-white text-[#4A99EA] hover:bg-[#4A99EA]/10 dark:bg-black"
+          }`}
+        >
+          {step === "ask" ? (
+            <Circle size={26} strokeWidth={3} />
+          ) : (
+            <ArrowRight size={28} strokeWidth={3} />
+          )}
+        </button>
+        <button
+          onClick={() => openDetail("note")}
+          title="メモを書く"
+          aria-label="メモを書く"
+          style={neutralFx}
+          className={`flex h-12 w-12 items-center justify-center rounded-full border bg-white hover:bg-zinc-50 dark:bg-black dark:hover:bg-zinc-900 ${
+            note
+              ? "border-[#4A99EA] text-[#4A99EA]"
+              : "border-zinc-300 text-zinc-500 dark:border-zinc-700"
+          }`}
+        >
+          <MessageCircle size={20} />
+        </button>
+      </div>
+
+      {detailOpen && (
+        <CardDetailSheet
+          item={item}
+          note={note}
+          onClose={() => setDetailOpen(false)}
+          onSaveEdit={onSaveEdit}
+          onSaveNote={onSaveNote}
+          initialEdit={detailEdit}
+          origin={detailOrigin}
+          status={status}
+          onSetStatus={onSetStatus}
+          onAnswer={(kind) => {
+            setDetailOpen(false);
+            // 回答済みなら取り消してから回答し直す (詳細では常に3ボタンを出す)
+            if (step === "reveal" && action) {
+              onUndo(action);
+              setAction(null);
               setPicked(null);
-              setStep("choices");
-            }}
-            className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-800 hover:bg-amber-100 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-300 dark:hover:bg-amber-900"
-          >
-            知っているか怪しい (4択で確認)
-          </button>
-          <button
-            onClick={() => finish("unknown")}
-            className="rounded-lg border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-800 hover:bg-rose-100 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-300 dark:hover:bg-rose-900"
-          >
-            知らない
-          </button>
-        </div>
-      )}
-
-      {step === "choices" && (
-        <div className="grid gap-2">
-          <p className="mb-1 text-center text-xs text-zinc-500">意味はどれ？</p>
-          {choices.map((c, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                if (picked !== null) return;
-                setPicked(i);
-                finish(c === item.meaningJa ? "unsure_correct" : "unsure_wrong");
-              }}
-              className="rounded-lg border border-zinc-200 px-4 py-2.5 text-left text-sm transition-colors hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:hover:border-zinc-500 dark:hover:bg-zinc-800"
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {step === "reveal" && action && (
-        <div className="space-y-3">
-          <p
-            className={`text-center text-sm font-medium ${
-              isCorrect(action) ? "text-emerald-600" : "text-rose-600"
-            }`}
-          >
-            {ACTION_LABEL[action]}
-            {action === "unsure_wrong" && picked !== null && (
-              <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                選択: {choices[picked]}
-              </span>
-            )}
-          </p>
-          <div className="rounded-lg bg-zinc-50 p-3 text-sm dark:bg-zinc-800">
-            <p className="font-medium">
-              {item.word} = {item.meaningJa}
-            </p>
-            <p className="mt-1 text-zinc-600 dark:text-zinc-300">{item.exampleEn}</p>
-            <p className="mt-0.5 text-xs text-zinc-500">{item.exampleJa}</p>
-          </div>
-          <button
-            onClick={onNext}
-            className="w-full rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white hover:bg-indigo-500"
-          >
-            {nextLabel}
-          </button>
-        </div>
+              setStep("ask");
+            }
+            if (kind === "known") answer("known");
+            else if (kind === "unknown") answer("unknown");
+            else openChoices();
+          }}
+        />
       )}
     </div>
   );
 }
 
 export function VocabTab({ data, setData }: Props) {
+  // 出題範囲は「スワイプ設定」で決める (語彙 / イディオム / 両方)
+  const kind = data.settings.vocab.cardSource;
+  const unit = kind === "idioms" ? "個" : "語";
+  const kindLabel = kind === "idioms" ? "イディオム" : "単語";
+  const [filterOpen, setFilterOpen] = useState(false);
   const [dbs, setDbs] = useState<WordDbMap | null>(null);
   const [dbError, setDbError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
-  const [mode, setMode] = useState<Mode>("normal");
+  const [mode, setMode] = useState<QuizMode>("random");
+  // タブを切り替えたときのスライド方向 (右のタブへ動いたら正)
+  const [slideFrom, setSlideFrom] = useState(24);
   const [queue, setQueue] = useState<WordDbEntry[]>([]);
   const [index, setIndex] = useState(0);
-  const [sessionResults, setSessionResults] = useState<
-    { word: WordDbEntry; action: VocabAction }[]
-  >([]);
+  // セッション中の回答数と正解数 (無限出題なので件数だけ持つ)
   const [shiftMsg, setShiftMsg] = useState<string | null>(null);
   // レベル測定の状態
   const [pLadder, setPLadder] = useState(2);
@@ -207,37 +778,95 @@ export function VocabTab({ data, setData }: Props) {
 
   useEffect(() => {
     let cancelled = false;
-    fetchAllWordDbs()
+    fetchAllWordDbs(kind)
       .then((d) => {
         if (cancelled) return;
         setDbs(d);
+        // 出題対象レベルが決まっていれば、ボタンを押さずにランダム出題を始める
+        const lvs = activeLevels(data.settings.vocab, data.vocabLevel.current);
+        if (lvs.length > 0) {
+          const q = buildQueue(
+            d,
+            lvs,
+            data.vocab,
+            data.settings.vocab,
+            "random",
+            BATCH_SIZE,
+            new Date(),
+          );
+          setMode("random");
+          setQueue(q);
+          setIndex(0);
+          setPhase("quiz");
+          return;
+        }
         setPhase("idle");
       })
       .catch((e) => {
-        if (!cancelled) setDbError(e instanceof Error ? e.message : "読み込み失敗");
+        if (!cancelled)
+          setDbError(e instanceof Error ? e.message : "読み込み失敗");
       });
     return () => {
       cancelled = true;
     };
-  }, []);
+    // 初回ロード時のみ自動出題する (data を依存に入れると回答のたびに作り直してしまう)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [kind]);
 
   const vocabLevel = data.vocabLevel;
+  // 出題対象のレベル。自動なら測定値の1つ、手動なら設定で選んだぶんすべて
+  const levels = activeLevels(data.settings.vocab, vocabLevel.current);
   const now = new Date();
   const stats =
-    dbs && vocabLevel.current
-      ? dbStats(dbs, vocabLevel.current, data.vocab, data.settings.vocab, now)
+    dbs && levels.length > 0
+      ? dbStats(dbs, levels, data.vocab, data.settings.vocab, now)
       : null;
 
+  // 先週比 (7日前時点の統計を回答履歴から復元して差分を出す)
+  const deltas = useMemo(() => {
+    if (!dbs || levels.length === 0) return null;
+    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const past = dbStatsAsOf(
+      dbs,
+      levels,
+      data.vocab,
+      data.settings.vocab,
+      weekAgo,
+    );
+    const cur = dbStats(
+      dbs,
+      levels,
+      data.vocab,
+      data.settings.vocab,
+      new Date(),
+    );
+    return {
+      mastered: cur.mastered - past.mastered,
+      learning: cur.learning - past.learning,
+      review: cur.review + cur.stale - (past.review + past.stale),
+      new: cur.new - past.new,
+    };
+    // levels は settings と測定値から毎回作り直すので、依存はその元だけを見る
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dbs, vocabLevel.current, data.vocab, data.settings.vocab]);
+
   // 学習記録を更新する。countRecent が真なら直近正解率のウィンドウにも加える
-  const record = (word: WordDbEntry, action: VocabAction, countRecent: boolean) => {
+  const record = (
+    word: WordDbEntry,
+    action: VocabAction,
+    countRecent: boolean,
+  ) => {
     const nowIso = new Date().toISOString();
     const correct = isCorrect(action);
     const wordLevel =
       wordIndex?.get(word.word)?.level ?? vocabLevel.current ?? "B1";
-    setSessionResults((prev) => [...prev, { word, action }]);
     setData((prev) => {
-      const e = prev.vocab[word.word];
-      const history = [...(e?.history ?? []), { t: nowIso, r: action }].slice(-50);
+      // 回答したら、カード詳細で手動指定したステータスは外して記録どおりに戻す
+      const prevEntry = prev.vocab[word.word];
+      const e = prevEntry ? clearStatusOverride(prevEntry) : undefined;
+      const history = [...(e?.history ?? []), { t: nowIso, r: action }].slice(
+        -50,
+      );
       return {
         ...prev,
         vocab: {
@@ -249,12 +878,16 @@ export function VocabTab({ data, setData }: Props) {
             knownCount: (e?.knownCount ?? 0) + (action === "known" ? 1 : 0),
             unsureCount:
               (e?.unsureCount ?? 0) +
-              (action === "unsure_correct" || action === "unsure_wrong" ? 1 : 0),
-            unknownCount: (e?.unknownCount ?? 0) + (action === "unknown" ? 1 : 0),
-            correctCount: (e?.correctCount ?? 0) + (action === "unsure_correct" ? 1 : 0),
-            wrongCount: (e?.wrongCount ?? 0) + (action === "unsure_wrong" ? 1 : 0),
+              (action === "unsure_correct" || action === "unsure_wrong"
+                ? 1
+                : 0),
+            unknownCount:
+              (e?.unknownCount ?? 0) + (action === "unknown" ? 1 : 0),
+            correctCount:
+              (e?.correctCount ?? 0) + (action === "unsure_correct" ? 1 : 0),
+            wrongCount:
+              (e?.wrongCount ?? 0) + (action === "unsure_wrong" ? 1 : 0),
             needsReview: !correct,
-            lastCorrectAt: correct ? nowIso : (e?.lastCorrectAt ?? null),
             lastSeenAt: nowIso,
             history,
           },
@@ -262,7 +895,9 @@ export function VocabTab({ data, setData }: Props) {
         vocabLevel: countRecent
           ? {
               ...prev.vocabLevel,
-              recent: [...prev.vocabLevel.recent, correct].slice(-LEVEL_SHIFT_WINDOW),
+              recent: [...prev.vocabLevel.recent, correct].slice(
+                -LEVEL_SHIFT_WINDOW,
+              ),
             }
           : prev.vocabLevel,
         stats: {
@@ -287,7 +922,6 @@ export function VocabTab({ data, setData }: Props) {
     setPSeen(seen);
     setPItem(item);
     setPCount(0);
-    setSessionResults([]);
     setPhase("placement");
   };
 
@@ -330,54 +964,165 @@ export function VocabTab({ data, setData }: Props) {
 
   // ---- 通常の出題 ----
 
-  const start = (m: Mode) => {
-    if (!dbs || !vocabLevel.current) return;
+  // 直前の回答を取り消す (カードの表側に戻るときに記録も巻き戻す)
+  const undoAnswer = (
+    word: string,
+    action: VocabAction,
+    countedRecent: boolean,
+  ) => {
+    const correct = isCorrect(action);
+    setData((prev) => {
+      const e = prev.vocab[word];
+      if (!e) return prev;
+      const history = e.history.slice(0, -1);
+      const last = history[history.length - 1];
+      return {
+        ...prev,
+        vocab: {
+          ...prev.vocab,
+          [word]: {
+            ...e,
+            knownCount: e.knownCount - (action === "known" ? 1 : 0),
+            unsureCount:
+              e.unsureCount -
+              (action === "unsure_correct" || action === "unsure_wrong"
+                ? 1
+                : 0),
+            unknownCount: e.unknownCount - (action === "unknown" ? 1 : 0),
+            correctCount:
+              e.correctCount - (action === "unsure_correct" ? 1 : 0),
+            wrongCount: e.wrongCount - (action === "unsure_wrong" ? 1 : 0),
+            needsReview: last
+              ? last.r === "unsure_wrong" || last.r === "unknown"
+              : false,
+            lastSeenAt: last ? last.t : e.lastSeenAt,
+            history,
+          },
+        },
+        vocabLevel: countedRecent
+          ? { ...prev.vocabLevel, recent: prev.vocabLevel.recent.slice(0, -1) }
+          : prev.vocabLevel,
+        stats: {
+          ...prev.stats,
+          vocabAnswered: Math.max(0, prev.stats.vocabAnswered - 1),
+          vocabCorrect: Math.max(
+            0,
+            prev.stats.vocabCorrect - (correct ? 1 : 0),
+          ),
+        },
+      };
+    });
+  };
+
+  // カード詳細で編集した内容を保存する (DBの値を上書きする)
+  const saveEdit = (word: string, patch: WordEdit) => {
+    setData((prev) => ({
+      ...prev,
+      edits: { ...prev.edits, [word]: { ...prev.edits[word], ...patch } },
+    }));
+  };
+
+  // 単語ごとのメモを保存する (空文字なら削除)
+  const saveNote = (word: string, text: string) => {
+    setData((prev) => {
+      const notes = { ...prev.notes };
+      if (text) notes[word] = text;
+      else delete notes[word];
+      return { ...prev, notes };
+    });
+  };
+
+  // カード詳細に出すステータス。手動指定があればそれを、無ければ学習記録から導く
+  const statusOf = (word: string) => ({
+    ...STATUS_BADGE[wordStatus(data.vocab[word], data.settings.vocab, new Date())],
+    manual: data.vocab[word]?.statusOverride ?? null,
+  });
+  const setStatusOf =
+    (def: WordDbEntry) => (next: ManualStatus | null) =>
+      setData((prev) =>
+        setStatusOverride(
+          prev,
+          def,
+          wordIndex?.get(def.word)?.level ?? vocabLevel.current ?? "B1",
+          next,
+        ),
+      );
+
+  // モードを切り替える (出題はそのまま続く)
+  const switchMode = (m: QuizMode) => {
+    if (!dbs || levels.length === 0) return;
+    const from = MODE_TABS.findIndex((t) => t.key === mode);
+    const to = MODE_TABS.findIndex((t) => t.key === m);
+    setSlideFrom(to >= from ? 24 : -24);
     const q = buildQueue(
       dbs,
-      vocabLevel.current,
+      levels,
       data.vocab,
       data.settings.vocab,
       m,
-      QUIZ_SIZE,
+      BATCH_SIZE,
       new Date(),
     );
-    if (q.length === 0) return;
     setMode(m);
     setQueue(q);
     setIndex(0);
-    setSessionResults([]);
     setShiftMsg(null);
     setPhase("quiz");
   };
 
+  // 次の1問へ。キューを使い切ったら補充して無限に出題を続ける
   const next = () => {
-    if (index + 1 >= queue.length) {
-      // セッション終了時に直近正解率でレベルを自動調整する
-      const shift = evaluateLevelShift(data.vocabLevel);
-      if (shift) {
-        setData((prev) => ({
-          ...prev,
-          vocabLevel: { current: shift.next, recent: [] },
-        }));
-        setShiftMsg(
-          shift.direction === "up"
-            ? `直近の正解率が${Math.round(shift.acc * 100)}%と高いため、単語レベルを ${levelLabel(shift.next)} に上げました。`
-            : `直近の正解率が${Math.round(shift.acc * 100)}%のため、単語レベルを ${levelLabel(shift.next)} に下げました。`,
-        );
-      }
-      setPhase("done");
-    } else {
+    if (index + 1 < queue.length) {
       setIndex(index + 1);
+      return;
     }
+    if (!dbs || levels.length === 0) return;
+    // 補充のタイミングで直近正解率によるレベル自動調整を判定する (手動設定のときは行わない)
+    let nextLevels = levels;
+    const shift =
+      mode === "random" && data.settings.vocab.levelMode === "auto"
+        ? evaluateLevelShift(data.vocabLevel)
+        : null;
+    if (shift) {
+      nextLevels = [shift.next];
+      setData((prev) => ({
+        ...prev,
+        vocabLevel: { current: shift.next, recent: [] },
+      }));
+      setShiftMsg(
+        shift.direction === "up"
+          ? `直近の正解率が${Math.round(shift.acc * 100)}%と高いため、単語レベルを ${levelLabel(shift.next)} に上げました。`
+          : `直近の正解率が${Math.round(shift.acc * 100)}%のため、単語レベルを ${levelLabel(shift.next)} に下げました。`,
+      );
+    }
+    // 直前に出した語がすぐ再登場しないように除外して補充する
+    const q = buildQueue(
+      dbs,
+      nextLevels,
+      data.vocab,
+      data.settings.vocab,
+      mode,
+      BATCH_SIZE,
+      new Date(),
+      new Set(queue.map((w) => w.word)),
+    );
+    const refilled =
+      q.length > 0
+        ? q
+        : buildQueue(
+            dbs,
+            nextLevels,
+            data.vocab,
+            data.settings.vocab,
+            mode,
+            BATCH_SIZE,
+            new Date(),
+          );
+    setQueue(refilled);
+    setIndex(0);
   };
 
   const resetPlacement = () => {
-    if (
-      !window.confirm(
-        "単語レベルを再測定します。学習記録は保持されます。よろしいですか？",
-      )
-    )
-      return;
     setData((prev) => ({ ...prev, vocabLevel: { current: null, recent: [] } }));
     setPhase("idle");
   };
@@ -386,7 +1131,7 @@ export function VocabTab({ data, setData }: Props) {
 
   if (dbError) {
     return (
-      <div className="rounded-xl border border-rose-200 bg-white p-6 text-center text-sm text-rose-600 dark:border-rose-900 dark:bg-zinc-900">
+      <div className="rounded-2xl border border-red-500/40 bg-white p-6 text-center text-sm text-red-500 dark:bg-black">
         {dbError}
       </div>
     );
@@ -394,19 +1139,38 @@ export function VocabTab({ data, setData }: Props) {
 
   if (!dbs || phase === "loading") {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-zinc-900">
-        <Loader2 className="animate-spin text-indigo-500" size={28} />
+      <div className="flex flex-col items-center gap-3 rounded-2xl border border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-black">
+        <Loader2 className="animate-spin text-[#4A99EA]" size={28} />
         <p className="text-sm text-zinc-500">単語データベースを読み込み中...</p>
       </div>
     );
   }
 
-  // 未測定 → 測定フロー
-  if (vocabLevel.current === null && phase !== "placement" && phase !== "placementDone") {
+  // イディオム部門は語彙タブで測定した単語レベルを使う
+  if (kind === "idioms" && vocabLevel.current === null) {
     return (
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
-        <Gauge className="mx-auto text-indigo-500" size={28} />
-        <h3 className="mt-2 text-base font-semibold">まず単語レベルを測定します</h3>
+      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
+        <Gauge className="mx-auto text-[#4A99EA]" size={28} />
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+          イディオムの出題には単語レベルを使います。先に「語彙」タブでレベル測定
+          ({PLACEMENT_SIZE}問) を行ってください。
+        </p>
+      </div>
+    );
+  }
+
+  // 未測定 → 測定フロー
+  if (
+    vocabLevel.current === null &&
+    phase !== "placement" &&
+    phase !== "placementDone"
+  ) {
+    return (
+      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
+        <Gauge className="mx-auto text-[#4A99EA]" size={28} />
+        <h3 className="mt-2 text-base font-semibold">
+          まず単語レベルを測定します
+        </h3>
         <p className="mx-auto mt-1 max-w-md text-sm text-zinc-600 dark:text-zinc-300">
           {PLACEMENT_SIZE}問に答えると、あなたの単語レベル (A1〜C1)
           を判定します。正解すると次は難しい単語、間違えると易しい単語が出る方式です。
@@ -416,7 +1180,7 @@ export function VocabTab({ data, setData }: Props) {
         </p>
         <button
           onClick={startPlacement}
-          className="mt-4 rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-indigo-500"
+          className="mt-4 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
         >
           測定をはじめる ({PLACEMENT_SIZE}問)
         </button>
@@ -426,7 +1190,7 @@ export function VocabTab({ data, setData }: Props) {
 
   if (phase === "placement" && pItem) {
     return (
-      <div className="space-y-3">
+      <div className="flex h-full flex-col gap-3">
         <div className="flex items-center justify-between text-sm text-zinc-500">
           <span>
             レベル測定 {pCount + 1} / {PLACEMENT_SIZE} 問
@@ -437,10 +1201,26 @@ export function VocabTab({ data, setData }: Props) {
         </div>
         <WordCard
           key={pItem.word}
-          item={pItem}
+          item={applyEdit(pItem, data.edits[pItem.word])}
+          note={data.notes[pItem.word]}
+          status={statusOf(pItem.word)}
+          onSetStatus={setStatusOf(pItem)}
           onAction={onPlacementAction}
           onNext={onPlacementNext}
-          nextLabel={pCount + 1 >= PLACEMENT_SIZE ? "判定を見る" : "次へ"}
+          onRefresh={onPlacementNext}
+          onSaveNote={(text) => saveNote(pItem.word, text)}
+          onSaveEdit={(patch) => saveEdit(pItem.word, patch)}
+          cardFields={data.settings.vocab.cardFields}
+          onUndo={(a) => {
+            undoAnswer(pItem.word, a, false);
+            const next = pTrack.slice(0, -1);
+            setPTrack(next);
+            setPLadder(next.length > 0 ? next[next.length - 1] : 2);
+          }}
+          skipReveal={{
+            known: data.settings.vocab.skipRevealOnKnown,
+            unknown: data.settings.vocab.skipRevealOnUnknown,
+          }}
         />
       </div>
     );
@@ -449,9 +1229,9 @@ export function VocabTab({ data, setData }: Props) {
   if (phase === "placementDone" && placementResult) {
     const def = LEVELS.find((l) => l.key === placementResult);
     return (
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
         <p className="text-sm text-zinc-500">あなたの単語レベル</p>
-        <p className="mt-2 text-4xl font-semibold text-indigo-600 dark:text-indigo-400">
+        <p className="mt-2 text-4xl font-semibold text-[#4A99EA]">
           {placementResult}
           <span className="ml-2 text-2xl">{def?.label}</span>
         </p>
@@ -462,7 +1242,7 @@ export function VocabTab({ data, setData }: Props) {
         </p>
         <button
           onClick={() => setPhase("idle")}
-          className="mt-5 rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-indigo-500"
+          className="mt-5 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
         >
           学習をはじめる
         </button>
@@ -470,115 +1250,249 @@ export function VocabTab({ data, setData }: Props) {
     );
   }
 
-  if (phase === "quiz" && queue[index]) {
-    const item = queue[index];
-    const correctSoFar = sessionResults.filter((r) => isCorrect(r.action)).length;
-    return (
-      <div className="space-y-3">
-        <div className="flex items-center justify-between text-sm text-zinc-500">
-          <span>
-            {index + 1} / {queue.length} 語
-            {mode === "weak" && (
-              <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-700 dark:bg-amber-950 dark:text-amber-300">
-                苦手演習
+  // 学習履歴の数値表示は一旦取り下げ (再実装の可能性あり)。統計はタブの件数にのみ使う
+  const statsRowRetired = stats && (
+    <div className="rounded-2xl border border-zinc-200 bg-white px-2 py-4 dark:border-zinc-800 dark:bg-black">
+      <div className="flex justify-around">
+        {[
+          {
+            key: "mastered" as const,
+            label: "学習済み",
+            sub: stats.preknown > 0 ? `+既知${stats.preknown}` : null,
+            value: stats.mastered,
+            ring: "border-[#4A99EA]",
+            good: (d: number) => d > 0,
+          },
+          {
+            key: "learning" as const,
+            label: "学習中",
+            sub: null,
+            value: stats.learning,
+            ring: "border-zinc-900 dark:border-white",
+            good: (d: number) => d > 0,
+          },
+          {
+            key: "review" as const,
+            label: "要復習",
+            sub: null,
+            value: stats.review + stats.stale,
+            ring: "border-red-500",
+            good: (d: number) => d < 0,
+          },
+          {
+            key: "new" as const,
+            label: "未学習",
+            sub: null,
+            value: stats.new,
+            ring: "border-zinc-300 dark:border-zinc-700",
+            good: (d: number) => d < 0,
+          },
+        ].map((c) => {
+          const d = deltas ? deltas[c.key] : 0;
+          return (
+            <div key={c.label} className="flex flex-col items-center gap-1.5">
+              <div
+                className={`flex h-14 w-14 items-center justify-center rounded-full border-2 text-base font-bold tabular-nums ${c.ring}`}
+              >
+                {c.value}
+              </div>
+              <span className="text-[11px] text-zinc-500">
+                {c.label}
+                {c.sub && <span className="ml-0.5 text-zinc-400">{c.sub}</span>}
+              </span>
+              <span
+                className={`text-[11px] font-medium tabular-nums ${
+                  d === 0
+                    ? "text-zinc-300 dark:text-zinc-600"
+                    : c.good(d)
+                      ? "text-[#4A99EA]"
+                      : "text-red-500"
+                }`}
+              >
+                {d > 0 ? `+${d}` : d}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-1 text-center text-[10px] text-zinc-400">
+        {vocabLevel.current ? `${levelLabel(vocabLevel.current)} ・ ` : ""}
+        下段は先週比
+      </p>
+    </div>
+  );
+
+  // 出題方法の切替タブ
+  // 件数は buildQueue が同じモードで拾う範囲に合わせる
+  const modeCount: Record<QuizMode, number | null> = {
+    random: null,
+    review: stats ? stats.review + stats.stale : null,
+    new: stats ? stats.new : null,
+    learning: stats ? stats.learning : null,
+    // 「学習済み」には初見で除外したぶんも含める
+    mastered: stats ? stats.mastered + stats.preknown : null,
+  };
+  const modeTabs = (
+    <div className="flex items-stretch border-b border-zinc-200 dark:border-zinc-800">
+      <button
+        onClick={() => setFilterOpen((v) => !v)}
+        aria-label="スワイプ設定"
+        aria-expanded={filterOpen}
+        className="mr-1 flex w-11 shrink-0 items-center justify-center text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+      >
+        <SlidersHorizontal size={20} />
+      </button>
+      {/* タブは5つあって画面幅に収まらないので横スクロールで選ぶ */}
+      <div
+        className="flex min-w-0 flex-1 items-stretch overflow-x-auto overflow-y-hidden scroll-smooth"
+        style={{
+          scrollbarWidth: "none",
+          // iOS で指を離したあとも慣性で流れるようにする
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {MODE_TABS.map((t) => (
+          <button
+            key={t.key}
+            onClick={(e) => {
+              switchMode(t.key);
+              // 端のタブを押しても隠れないよう、押したタブを中央まで滑らせる
+              e.currentTarget.scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+                block: "nearest",
+              });
+            }}
+            className={`relative shrink-0 whitespace-nowrap px-3.5 py-3 text-sm transition-colors ${
+              mode === t.key
+                ? "font-bold"
+                : "text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+            }`}
+          >
+            {t.label}
+            {modeCount[t.key] !== null && (
+              <span className="ml-1 text-[10px] text-zinc-400">
+                {modeCount[t.key]}
               </span>
             )}
-          </span>
-          <span>{correctSoFar} 正解</span>
-        </div>
-        <WordCard
-          key={item.word}
-          item={item}
-          onAction={(a) => record(item, a, mode === "normal")}
-          onNext={next}
-          nextLabel={index + 1 >= queue.length ? "結果を見る" : "次へ"}
-        />
+            {mode === t.key && (
+              <span className="absolute inset-x-2 bottom-0 h-1 rounded-full bg-[#4A99EA]" />
+            )}
+          </button>
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 
-  if (phase === "done") {
-    const counts = {
-      known: sessionResults.filter((r) => r.action === "known").length,
-      unsure_correct: sessionResults.filter((r) => r.action === "unsure_correct").length,
-      unsure_wrong: sessionResults.filter((r) => r.action === "unsure_wrong").length,
-      unknown: sessionResults.filter((r) => r.action === "unknown").length,
-    };
-    const missed = sessionResults.filter((r) => !isCorrect(r.action));
+  if (phase === "quiz") {
+    const item = queue[index];
     return (
-      <div className="space-y-4">
-        <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="text-center text-sm text-zinc-500">結果</p>
-          <div className="mx-auto mt-3 grid max-w-sm grid-cols-2 gap-2 text-sm">
-            <div className="rounded-lg bg-emerald-50 p-2.5 text-center dark:bg-emerald-950">
-              <p className="text-xs text-emerald-700 dark:text-emerald-400">知っていた</p>
-              <p className="text-xl font-semibold text-emerald-700 dark:text-emerald-300">
-                {counts.known}
-              </p>
-            </div>
-            <div className="rounded-lg bg-emerald-50 p-2.5 text-center dark:bg-emerald-950">
-              <p className="text-xs text-emerald-700 dark:text-emerald-400">怪しい → 正解</p>
-              <p className="text-xl font-semibold text-emerald-700 dark:text-emerald-300">
-                {counts.unsure_correct}
-              </p>
-            </div>
-            <div className="rounded-lg bg-rose-50 p-2.5 text-center dark:bg-rose-950">
-              <p className="text-xs text-rose-700 dark:text-rose-400">怪しい → 誤答</p>
-              <p className="text-xl font-semibold text-rose-700 dark:text-rose-300">
-                {counts.unsure_wrong}
-              </p>
-            </div>
-            <div className="rounded-lg bg-rose-50 p-2.5 text-center dark:bg-rose-950">
-              <p className="text-xs text-rose-700 dark:text-rose-400">知らなかった</p>
-              <p className="text-xl font-semibold text-rose-700 dark:text-rose-300">
-                {counts.unknown}
-              </p>
-            </div>
-          </div>
-
-          {shiftMsg && (
-            <div className="mt-4 flex items-start gap-2 rounded-lg bg-indigo-50 p-3 text-left text-sm text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">
-              {shiftMsg.includes("上げました") ? (
-                <TrendingUp size={16} className="mt-0.5 shrink-0" />
-              ) : (
-                <TrendingDown size={16} className="mt-0.5 shrink-0" />
-              )}
-              <span>{shiftMsg}</span>
-            </div>
-          )}
-
-          {missed.length > 0 && (
-            <div className="mt-4 rounded-lg bg-amber-50 p-3 text-left text-sm dark:bg-amber-950">
-              <p className="font-medium text-amber-800 dark:text-amber-300">
-                復習リストに追加 (長文読解の題材にも使われます)
-              </p>
-              <ul className="mt-1 space-y-0.5 text-amber-700 dark:text-amber-400">
-                {missed.map((r) => (
-                  <li key={r.word.word}>
-                    {r.word.word} = {r.word.meaningJa}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:justify-center">
+      <div className="flex h-full flex-col gap-3">
+        {/* スワイプ設定は上のタブの下から、画面の下へ向けて開く */}
+        <Sheet
+          side="bottom"
+          open={filterOpen}
+          onClose={() => setFilterOpen(false)}
+          top={138}
+          bottom={0}
+        >
+          <CardFilterSheet
+            settings={data.settings.vocab}
+            setData={setData}
+            onChange={(next) =>
+              setData((prev) => ({
+                ...prev,
+                settings: { ...prev.settings, vocab: next },
+              }))
+            }
+            onClose={() => setFilterOpen(false)}
+          />
+        </Sheet>
+        {modeTabs}
+        {shiftMsg && (
+          <div className="flex items-start gap-2 rounded-2xl bg-[#4A99EA]/10 p-3 text-sm text-[#4A99EA]">
+            {shiftMsg.includes("上げました") ? (
+              <TrendingUp size={16} className="mt-0.5 shrink-0" />
+            ) : (
+              <TrendingDown size={16} className="mt-0.5 shrink-0" />
+            )}
+            <span className="flex-1">{shiftMsg}</span>
             <button
-              onClick={() => start("normal")}
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-500"
+              onClick={() => setShiftMsg(null)}
+              className="shrink-0 text-xs underline"
             >
-              <RefreshCw size={15} /> 次の{QUIZ_SIZE}語へ
+              閉じる
             </button>
-            {stats && stats.mistaken > 0 && (
-              <button
-                onClick={() => start("weak")}
-                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-amber-400 px-5 py-2.5 text-sm font-medium text-amber-700 hover:bg-amber-50 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-950"
-              >
-                <Flame size={15} /> 苦手演習
-              </button>
+          </div>
+        )}
+        {item ? (
+          <div
+            key={mode}
+            style={{ "--tab-slide-from": `${slideFrom}px` } as React.CSSProperties}
+            className="tab-slide flex min-h-0 flex-1 flex-col"
+          >
+            <WordCard
+              key={item.word}
+              item={applyEdit(item, data.edits[item.word])}
+              note={data.notes[item.word]}
+              status={statusOf(item.word)}
+              onSetStatus={setStatusOf(item)}
+              onAction={(a) => {
+                record(item, a, mode === "random" && kind === "words");
+              }}
+              onNext={next}
+              onRefresh={next}
+              onSaveNote={(text) => saveNote(item.word, text)}
+              onSaveEdit={(patch) => saveEdit(item.word, patch)}
+              cardFields={data.settings.vocab.cardFields}
+              onUndo={(a) => {
+                undoAnswer(item.word, a, mode === "random" && kind === "words");
+              }}
+              skipReveal={{
+                known: data.settings.vocab.skipRevealOnKnown,
+                unknown: data.settings.vocab.skipRevealOnUnknown,
+              }}
+            />
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-center dark:border-zinc-800 dark:bg-black">
+            <Flame
+              className="mx-auto text-zinc-300 dark:text-zinc-600"
+              size={28}
+            />
+            {levels.length === 0 ? (
+              // 自動設定なのにまだ測定していない (手動から切り替えた直後など)
+              <>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                  単語レベルがまだ測定されていません。
+                </p>
+                <button
+                  onClick={startPlacement}
+                  className="mt-3 rounded-full bg-[#4A99EA] px-5 py-2 text-sm font-medium text-white hover:bg-[#3d87d4]"
+                >
+                  レベルを測定する ({PLACEMENT_SIZE}問)
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                  {mode === "review"
+                    ? `要復習の${kindLabel}はありません。`
+                    : mode === "new"
+                      ? `出題対象レベルの未学習${unit}はもうありません。`
+                      : mode === "learning"
+                        ? `学習中の${kindLabel}はありません。`
+                        : mode === "mastered"
+                          ? `学習済みの${kindLabel}はまだありません。`
+                          : `出題できる${unit}がありません。`}
+                </p>
+                <p className="mt-1 text-xs text-zinc-400">
+                  ほかの出題方法を選んでください。
+                </p>
+              </>
             )}
           </div>
-        </div>
+        )}
       </div>
     );
   }
@@ -587,82 +1501,56 @@ export function VocabTab({ data, setData }: Props) {
   const recentAcc =
     vocabLevel.recent.length > 0
       ? Math.round(
-          (vocabLevel.recent.filter(Boolean).length / vocabLevel.recent.length) * 100,
+          (vocabLevel.recent.filter(Boolean).length /
+            vocabLevel.recent.length) *
+            100,
         )
       : null;
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3 dark:border-indigo-900 dark:bg-indigo-950">
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-[#4A99EA]/40 bg-[#4A99EA]/10 px-4 py-3">
         <div className="flex items-center gap-2 text-sm">
-          <Activity size={16} className="text-indigo-600 dark:text-indigo-400" />
-          <span className="font-medium text-indigo-900 dark:text-indigo-200">
-            単語レベル: {vocabLevel.current ? levelLabel(vocabLevel.current) : "未測定"}
+          <Activity size={16} className="text-[#4A99EA]" />
+          <span className="font-medium text-[#4A99EA]">
+            単語レベル:{" "}
+            {vocabLevel.current ? levelLabel(vocabLevel.current) : "未測定"}
           </span>
-          {recentAcc !== null && (
-            <span className="text-xs text-indigo-700 dark:text-indigo-400">
+          {kind === "words" && recentAcc !== null && (
+            <span className="text-xs text-[#4A99EA]">
               直近{vocabLevel.recent.length}問の正解率 {recentAcc}%
             </span>
           )}
+          {kind === "idioms" && (
+            <span className="text-xs text-[#4A99EA]">
+              (語彙タブで測定・自動調整)
+            </span>
+          )}
         </div>
-        <button
-          onClick={resetPlacement}
-          className="text-xs text-indigo-600 underline dark:text-indigo-400"
-        >
-          再測定する
-        </button>
+        {kind === "words" && (
+          <ConfirmButton
+            label="再測定する"
+            question="レベルを測り直しますか？ (学習記録は残ります)"
+            confirmLabel="測り直す"
+            className="text-xs text-[#4A99EA] underline dark:text-[#4A99EA]"
+            onConfirm={resetPlacement}
+          />
+        )}
       </div>
 
-      {stats && (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="text-xs text-zinc-500">習得済み</p>
-            <p className="mt-1 text-2xl font-semibold tabular-nums text-emerald-600">
-              {stats.mastered}
-            </p>
-          </div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="text-xs text-zinc-500">学習中</p>
-            <p className="mt-1 text-2xl font-semibold tabular-nums">{stats.learning}</p>
-          </div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="text-xs text-zinc-500">要復習</p>
-            <p className="mt-1 text-2xl font-semibold tabular-nums text-amber-600">
-              {stats.review + stats.stale}
-            </p>
-          </div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="text-xs text-zinc-500">未学習</p>
-            <p className="mt-1 text-2xl font-semibold tabular-nums">{stats.new}</p>
-          </div>
-        </div>
-      )}
-
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
-        <BookOpen className="mx-auto text-indigo-500" size={28} />
+      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
+        <BookOpen className="mx-auto text-[#4A99EA]" size={28} />
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-          「知っている / 怪しい / 知らない」で自己判定し、怪しい場合だけ4択で確認します。復習単語はレベルをまたいで再出題されます。
+          出題できる{kind === "words" ? "単語" : "イディオム"}
+          がありません。設定を見直すか、レベルを再測定してください。
         </p>
-        <p className="mt-1 text-xs text-zinc-400">
-          間違いが多い単語ほど頻繁に出題。「知っている」
-          {data.settings.vocab.masterKnownCount}回で出題から外れ、最終正解から
-          {data.settings.vocab.reviewIntervalDays}日で再出現します (設定タブで変更可)。
-        </p>
-        <div className="mt-4 flex flex-col justify-center gap-2 sm:flex-row">
-          <button
-            onClick={() => start("normal")}
-            className="rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-indigo-500"
-          >
-            {QUIZ_SIZE}語を出題する
-          </button>
-          <button
-            onClick={() => start("weak")}
-            disabled={!stats || stats.mistaken === 0}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-amber-400 px-6 py-2.5 text-sm font-medium text-amber-700 hover:bg-amber-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-950"
-          >
-            <Flame size={15} /> 苦手演習 ({stats?.mistaken ?? 0}語)
-          </button>
-        </div>
+        <button
+          onClick={() => switchMode("random")}
+          className="mt-4 rounded-full bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
+        >
+          <RefreshCw size={15} className="mr-1 inline" />
+          出題する
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,9717 @@
+{
+ "level": "B1",
+ "generatedAt": "2026-08-11T15:37:31.034Z",
+ "count": 270,
+ "words": [
+  {
+   "word": "add up",
+   "pos": "句動詞",
+   "meaningJa": "合計する",
+   "distractors": [
+    "延期する",
+    "取り除く",
+    "提出する"
+   ],
+   "exampleEn": "If you add up all the numbers, you will get one hundred.",
+   "exampleJa": "すべての数字を合計すると、100になります。",
+   "ipa": "/æd ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Finance",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "total",
+     "meaningJa": "合計する"
+    },
+    {
+     "word": "add up to",
+     "meaningJa": "合計～になる"
+    }
+   ]
+  },
+  {
+   "word": "base on",
+   "pos": "句動詞",
+   "meaningJa": "～に基づく",
+   "distractors": [
+    "～に属する",
+    "～の存在を信じる",
+    "～に頼る"
+   ],
+   "exampleEn": "This movie is based on a true story that happened in 1990.",
+   "exampleJa": "この映画は1990年に起きた実話に基づいています。",
+   "ipa": "/beɪs ɑːn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Science",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be based on",
+     "meaningJa": "～に基づいている"
+    },
+    {
+     "word": "found on",
+     "meaningJa": "～を土台にする"
+    }
+   ]
+  },
+  {
+   "word": "blow away",
+   "pos": "句動詞",
+   "meaningJa": "～を吹き飛ばす",
+   "distractors": [
+    "(火を)吹き消す",
+    "爆発する",
+    "捨てる"
+   ],
+   "exampleEn": "The strong wind blew away my hat while I was walking along the beach.",
+   "exampleJa": "浜辺を歩いているとき、強い風で帽子が吹き飛ばされました。",
+   "ipa": "/bloʊ əˈweɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Nature",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "blow off",
+     "meaningJa": "吹き飛ばす"
+    },
+    {
+     "word": "impress",
+     "meaningJa": "感嘆させる"
+    }
+   ]
+  },
+  {
+   "word": "blow down",
+   "pos": "句動詞",
+   "meaningJa": "(風が)～を吹き倒す",
+   "distractors": [
+    "(火を)吹き消す",
+    "爆発させる",
+    "(建物を)取り壊す"
+   ],
+   "exampleEn": "The storm blew down several old trees in the park last night.",
+   "exampleJa": "昨夜の嵐で公園の古い木が何本か吹き倒されました。",
+   "ipa": "/bloʊ daʊn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Nature",
+    "Environment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "knock down",
+     "meaningJa": "倒す"
+    },
+    {
+     "word": "blow over",
+     "meaningJa": "吹き倒す、収まる"
+    }
+   ]
+  },
+  {
+   "word": "blow out",
+   "pos": "句動詞",
+   "meaningJa": "(火・ろうそくを)吹き消す",
+   "distractors": [
+    "爆発する",
+    "(風が木などを)吹き倒す",
+    "(風が)吹き飛ばす"
+   ],
+   "exampleEn": "She blew out all the candles on her birthday cake at once.",
+   "exampleJa": "彼女は誕生日ケーキのろうそくを一度に全部吹き消しました。",
+   "ipa": "/bloʊ aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Food"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "put out",
+     "meaningJa": "消す"
+    },
+    {
+     "word": "extinguish",
+     "meaningJa": "消火する"
+    }
+   ]
+  },
+  {
+   "word": "blow up",
+   "pos": "句動詞",
+   "meaningJa": "爆発する、爆破する",
+   "distractors": [
+    "(火を)吹き消す",
+    "(風が)吹き飛ばす",
+    "(風が木を)吹き倒す"
+   ],
+   "exampleEn": "The old bridge was blown up because it was too dangerous to use.",
+   "exampleJa": "その古い橋は使うには危険すぎたため、爆破されました。",
+   "ipa": "/bloʊ ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "News",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Science"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "explode",
+     "meaningJa": "爆発する"
+    },
+    {
+     "word": "inflate",
+     "meaningJa": "膨らませる"
+    }
+   ]
+  },
+  {
+   "word": "break up with",
+   "pos": "句動詞",
+   "meaningJa": "～と別れる",
+   "distractors": [
+    "～に追いつく",
+    "～とうまくやっていく",
+    "～と付き合う"
+   ],
+   "exampleEn": "She broke up with her boyfriend because he never listened to her.",
+   "exampleJa": "彼が全然話を聞いてくれないので、彼女は彼氏と別れました。",
+   "ipa": "/breɪk ʌp wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Family"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "split up with",
+     "meaningJa": "～と別れる"
+    },
+    {
+     "word": "go out with",
+     "meaningJa": "～と付き合う"
+    }
+   ]
+  },
+  {
+   "word": "call in",
+   "pos": "句動詞",
+   "meaningJa": "(専門家などを)呼ぶ",
+   "distractors": [
+    "～を必要とする",
+    "中止する",
+    "大声で呼ぶ"
+   ],
+   "exampleEn": "We had to call in an engineer because the heating system stopped working.",
+   "exampleJa": "暖房が動かなくなったので、技術者を呼ばなければなりませんでした。",
+   "ipa": "/kɔːl ɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Medical"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "send for",
+     "meaningJa": "～を呼びに行かせる"
+    },
+    {
+     "word": "call in sick",
+     "meaningJa": "電話で病欠を伝える"
+    }
+   ]
+  },
+  {
+   "word": "care for",
+   "pos": "句動詞",
+   "meaningJa": "～の世話をする",
+   "distractors": [
+    "～を必要とする",
+    "～を探す",
+    "～を待つ"
+   ],
+   "exampleEn": "She cares for her sick mother every day after work.",
+   "exampleJa": "彼女は仕事のあと、毎日病気の母親の世話をしています。",
+   "ipa": "/ker fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Medical",
+    "DailyLife"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "look after",
+     "meaningJa": "～の世話をする"
+    },
+    {
+     "word": "take care of",
+     "meaningJa": "～の面倒を見る"
+    }
+   ]
+  },
+  {
+   "word": "come along",
+   "pos": "句動詞",
+   "meaningJa": "一緒に来る、ついて行く",
+   "distractors": [
+    "(本などが)出版される",
+    "偶然見つける",
+    "意識を取り戻す"
+   ],
+   "exampleEn": "We are going to the beach this afternoon. Why don't you come along?",
+   "exampleJa": "今日の午後ビーチに行きます。一緒に来ませんか。",
+   "ipa": "/kʌm əˈlɔːŋ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "tag along",
+     "meaningJa": "ついて行く"
+    },
+    {
+     "word": "come with",
+     "meaningJa": "一緒に来る"
+    }
+   ]
+  },
+  {
+   "word": "come out",
+   "pos": "句動詞",
+   "meaningJa": "(本などが)出る、現れる",
+   "distractors": [
+    "一緒に来る",
+    "偶然出会う",
+    "実現する"
+   ],
+   "exampleEn": "Her new book will come out next month, and I can't wait to read it.",
+   "exampleJa": "彼女の新しい本が来月出るので、読むのが待ちきれません。",
+   "ipa": "/kʌm aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "News",
+    "DailyLife"
+   ],
+   "themes": [
+    "Entertainment",
+    "Art"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "be released",
+     "meaningJa": "発売される"
+    },
+    {
+     "word": "be published",
+     "meaningJa": "出版される"
+    }
+   ]
+  },
+  {
+   "word": "complain of",
+   "pos": "句動詞",
+   "meaningJa": "(痛みなど)を訴える",
+   "distractors": [
+    "～から成る",
+    "～のことを聞き知る",
+    "～を思い出させる"
+   ],
+   "exampleEn": "The patient complained of a bad headache and went to see the doctor.",
+   "exampleJa": "その患者はひどい頭痛を訴えて、医者に診てもらいに行きました。",
+   "ipa": "/kəmˈpleɪn əv/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Medical",
+    "DailyLife"
+   ],
+   "themes": [
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "complain about",
+     "meaningJa": "～について不平を言う"
+    },
+    {
+     "word": "report symptoms",
+     "meaningJa": "症状を伝える"
+    }
+   ]
+  },
+  {
+   "word": "cut up",
+   "pos": "句動詞",
+   "meaningJa": "細かく切る",
+   "distractors": [
+    "切り倒す、減らす",
+    "切り抜く",
+    "(供給などを)断つ"
+   ],
+   "exampleEn": "Please cut up the vegetables into small pieces for the soup.",
+   "exampleJa": "スープ用に野菜を小さく切ってください。",
+   "ipa": "/kʌt ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Food",
+    "Family"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "chop up",
+     "meaningJa": "刻む"
+    },
+    {
+     "word": "slice",
+     "meaningJa": "薄切りにする"
+    }
+   ]
+  },
+  {
+   "word": "give away",
+   "pos": "句動詞",
+   "meaningJa": "ただで与える、寄付する",
+   "distractors": [
+    "降参する",
+    "あきらめる",
+    "返す"
+   ],
+   "exampleEn": "She gave away most of her old clothes to people who needed them.",
+   "exampleJa": "彼女は古い服のほとんどを、必要としている人にただであげました。",
+   "ipa": "/ɡɪv əˈweɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Finance"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "donate",
+     "meaningJa": "寄付する"
+    },
+    {
+     "word": "hand out",
+     "meaningJa": "配る"
+    }
+   ]
+  },
+  {
+   "word": "go for",
+   "pos": "句動詞",
+   "meaningJa": "～を選ぶ、～しに行く",
+   "distractors": [
+    "よく調べる、復習する",
+    "(つらいこと)を経験する",
+    "(爆弾が)爆発する"
+   ],
+   "exampleEn": "It's a beautiful day, so let's go for a walk in the park.",
+   "exampleJa": "いい天気だから、公園へ散歩に行きましょう。",
+   "ipa": "/ɡoʊ fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Sports"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "opt for",
+     "meaningJa": "～を選ぶ"
+    },
+    {
+     "word": "choose",
+     "meaningJa": "選ぶ"
+    }
+   ]
+  },
+  {
+   "word": "go out with",
+   "pos": "句動詞",
+   "meaningJa": "～と付き合う",
+   "distractors": [
+    "～とうまくやっていく",
+    "～に追いつく",
+    "～と別れる"
+   ],
+   "exampleEn": "She has been going out with Tom for two years now.",
+   "exampleJa": "彼女はトムともう2年間付き合っています。",
+   "ipa": "/ɡoʊ aʊt wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Family"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "date",
+     "meaningJa": "付き合う"
+    },
+    {
+     "word": "break up with",
+     "meaningJa": "～と別れる"
+    }
+   ]
+  },
+  {
+   "word": "hang around",
+   "pos": "句動詞",
+   "meaningJa": "ぶらぶらする、うろつく",
+   "distractors": [
+    "(電話を)切る",
+    "(電話を切らずに)待つ",
+    "あきらめずに持ちこたえる"
+   ],
+   "exampleEn": "Some students were hanging around outside the station after school.",
+   "exampleJa": "放課後、何人かの生徒が駅の外でぶらぶらしていました。",
+   "ipa": "/hæŋ əˈraʊnd/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "hang out",
+     "meaningJa": "つるむ、たまる"
+    },
+    {
+     "word": "loiter",
+     "meaningJa": "うろつく"
+    }
+   ]
+  },
+  {
+   "word": "hang on",
+   "pos": "句動詞",
+   "meaningJa": "ちょっと待つ、しがみつく",
+   "distractors": [
+    "(電話を)切る",
+    "ぶらぶらする",
+    "(友達と)遊んで過ごす"
+   ],
+   "exampleEn": "Hang on a minute. I need to get my coat before we leave.",
+   "exampleJa": "ちょっと待って。出かける前にコートを取ってこないと。",
+   "ipa": "/hæŋ ɑːn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "hold on",
+     "meaningJa": "ちょっと待つ"
+    },
+    {
+     "word": "cling to",
+     "meaningJa": "しがみつく"
+    }
+   ]
+  },
+  {
+   "word": "join in",
+   "pos": "句動詞",
+   "meaningJa": "参加する、加わる",
+   "distractors": [
+    "記入する",
+    "(話に)割り込む",
+    "提出する"
+   ],
+   "exampleEn": "Everyone started singing, and soon the children joined in too.",
+   "exampleJa": "みんなが歌い始めると、すぐに子どもたちも加わりました。",
+   "ipa": "/dʒɔɪn ɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "participate in",
+     "meaningJa": "～に参加する"
+    },
+    {
+     "word": "take part in",
+     "meaningJa": "～に加わる"
+    }
+   ]
+  },
+  {
+   "word": "keep off",
+   "pos": "句動詞",
+   "meaningJa": "(芝生などに)入らない、近づかない",
+   "distractors": [
+    "～し続ける",
+    "(良い状態を)維持する",
+    "～に遅れずについていく"
+   ],
+   "exampleEn": "Please keep off the grass when you walk through this park.",
+   "exampleJa": "この公園を歩くときは、芝生に入らないでください。",
+   "ipa": "/kiːp ɔːf/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Legal"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "stay off",
+     "meaningJa": "近づかない"
+    },
+    {
+     "word": "keep away from",
+     "meaningJa": "～に近づかない"
+    }
+   ]
+  },
+  {
+   "word": "keep out",
+   "pos": "句動詞",
+   "meaningJa": "中に入らない、締め出す",
+   "distractors": [
+    "～し続ける",
+    "(良い状態を)維持する",
+    "～に遅れずについていく"
+   ],
+   "exampleEn": "The sign on the gate said, 'Danger! Keep out of this area.'",
+   "exampleJa": "門の看板には『危険、立ち入り禁止』と書いてありました。",
+   "ipa": "/kiːp aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Legal"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "shut out",
+     "meaningJa": "締め出す"
+    },
+    {
+     "word": "keep off",
+     "meaningJa": "立ち入らない"
+    }
+   ]
+  },
+  {
+   "word": "leave out",
+   "pos": "句動詞",
+   "meaningJa": "省く、除外する",
+   "distractors": [
+    "置き忘れる",
+    "～へ向けて出発する",
+    "捨てる"
+   ],
+   "exampleEn": "You left out an important word in this sentence, so it sounds strange.",
+   "exampleJa": "この文では大事な単語が抜けているので、不自然に聞こえます。",
+   "ipa": "/liːv aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "omit",
+     "meaningJa": "省略する"
+    },
+    {
+     "word": "exclude",
+     "meaningJa": "除外する"
+    }
+   ]
+  },
+  {
+   "word": "put back",
+   "pos": "句動詞",
+   "meaningJa": "元の場所に戻す",
+   "distractors": [
+    "延期する",
+    "(火を)消す",
+    "書き留める"
+   ],
+   "exampleEn": "After reading the book, please put it back on the shelf.",
+   "exampleJa": "本を読み終わったら、棚に戻してください。",
+   "ipa": "/pʊt bæk/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "return",
+     "meaningJa": "戻す"
+    },
+    {
+     "word": "replace",
+     "meaningJa": "元に戻す"
+    }
+   ]
+  },
+  {
+   "word": "put through",
+   "pos": "句動詞",
+   "meaningJa": "(電話を)つなぐ",
+   "distractors": [
+    "延期する",
+    "～を我慢する",
+    "(建物を)建てる"
+   ],
+   "exampleEn": "Hold on, please. I will put you through to the sales department.",
+   "exampleJa": "切らずにお待ちください。営業部におつなぎします。",
+   "ipa": "/pʊt θruː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Technology"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "connect",
+     "meaningJa": "つなぐ"
+    },
+    {
+     "word": "transfer a call",
+     "meaningJa": "電話を転送する"
+    }
+   ]
+  },
+  {
+   "word": "remind of",
+   "pos": "句動詞",
+   "meaningJa": "～に…を思い出させる",
+   "distractors": [
+    "(痛みなど)を訴える",
+    "～から成る",
+    "～のことを聞き知る"
+   ],
+   "exampleEn": "This old song always reminds me of my happy high school days.",
+   "exampleJa": "この古い歌を聞くと、いつも楽しかった高校時代を思い出します。",
+   "ipa": "/rɪˈmaɪnd əv/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Psychology",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "bring to mind",
+     "meaningJa": "思い起こさせる"
+    },
+    {
+     "word": "remind about",
+     "meaningJa": "～について念を押す"
+    }
+   ]
+  },
+  {
+   "word": "ring back",
+   "pos": "句動詞",
+   "meaningJa": "電話をかけ直す",
+   "distractors": [
+    "電話をかける",
+    "電話を切る",
+    "電話に出る"
+   ],
+   "exampleEn": "Mr. Smith is out now. Could you ring back in an hour?",
+   "exampleJa": "スミスはただいま外出しています。1時間後にかけ直していただけますか。",
+   "ipa": "/rɪŋ bæk/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Technology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "call back",
+     "meaningJa": "折り返し電話する"
+    },
+    {
+     "word": "ring up",
+     "meaningJa": "電話をかける"
+    }
+   ]
+  },
+  {
+   "word": "ring up",
+   "pos": "句動詞",
+   "meaningJa": "～に電話をかける",
+   "distractors": [
+    "電話をかけ直す",
+    "電話を切る",
+    "電話に出る"
+   ],
+   "exampleEn": "I'll ring you up tonight to talk about our plan for Saturday.",
+   "exampleJa": "土曜日の計画について話すために、今夜電話するね。",
+   "ipa": "/rɪŋ ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Technology",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "call",
+     "meaningJa": "電話する"
+    },
+    {
+     "word": "phone",
+     "meaningJa": "電話をかける"
+    }
+   ]
+  },
+  {
+   "word": "send back",
+   "pos": "句動詞",
+   "meaningJa": "送り返す、返品する",
+   "distractors": [
+    "(招待状などを)発送する",
+    "(医者などを)呼びにやる",
+    "提出する"
+   ],
+   "exampleEn": "The shirt was too small, so I sent it back to the store.",
+   "exampleJa": "シャツが小さすぎたので、店に送り返しました。",
+   "ipa": "/send bæk/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Finance"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "return",
+     "meaningJa": "返品する"
+    },
+    {
+     "word": "give back",
+     "meaningJa": "返す"
+    }
+   ]
+  },
+  {
+   "word": "show around",
+   "pos": "句動詞",
+   "meaningJa": "～を案内して回る",
+   "distractors": [
+    "現れる",
+    "見せびらかす",
+    "見送る"
+   ],
+   "exampleEn": "When you visit Kyoto, I will show you around the famous temples.",
+   "exampleJa": "京都に来たら、有名なお寺を案内してあげますね。",
+   "ipa": "/ʃoʊ əˈraʊnd/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Travel",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "give a tour",
+     "meaningJa": "案内する"
+    },
+    {
+     "word": "show over",
+     "meaningJa": "見て回らせる"
+    }
+   ]
+  },
+  {
+   "word": "start off",
+   "pos": "句動詞",
+   "meaningJa": "～から始める",
+   "distractors": [
+    "最初からやり直す",
+    "(事業を)立ち上げる",
+    "終わりにする"
+   ],
+   "exampleEn": "Let's start off the meeting with some good news from our team.",
+   "exampleJa": "私たちのチームからの良い知らせで会議を始めましょう。",
+   "ipa": "/stɑːrt ɔːf/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "begin with",
+     "meaningJa": "～から始める"
+    },
+    {
+     "word": "kick off",
+     "meaningJa": "開始する"
+    }
+   ]
+  },
+  {
+   "word": "stay behind",
+   "pos": "句動詞",
+   "meaningJa": "あとに残る、居残る",
+   "distractors": [
+    "夜遅くまで起きている",
+    "遅くまで外にいる",
+    "家にいる"
+   ],
+   "exampleEn": "The teacher asked me to stay behind after class to talk about my test.",
+   "exampleJa": "先生は、テストについて話すために放課後残るように私に言いました。",
+   "ipa": "/steɪ bɪˈhaɪnd/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "remain",
+     "meaningJa": "残る"
+    },
+    {
+     "word": "stay on",
+     "meaningJa": "居残る"
+    }
+   ]
+  },
+  {
+   "word": "take back",
+   "pos": "句動詞",
+   "meaningJa": "返品する、(言葉を)取り消す",
+   "distractors": [
+    "持ち去る",
+    "(飛行機が)離陸する",
+    "(趣味を)始める"
+   ],
+   "exampleEn": "This sweater doesn't fit, so I'm going to take it back to the shop.",
+   "exampleJa": "このセーターはサイズが合わないので、店に返品するつもりです。",
+   "ipa": "/teɪk bæk/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Finance",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "return",
+     "meaningJa": "返品する"
+    },
+    {
+     "word": "retract",
+     "meaningJa": "撤回する"
+    }
+   ]
+  },
+  {
+   "word": "wrap up",
+   "pos": "句動詞",
+   "meaningJa": "包む、(仕事を)終える",
+   "distractors": [
+    "片付ける",
+    "使い果たす",
+    "捨てる"
+   ],
+   "exampleEn": "Could you wrap up this present for my mother, please?",
+   "exampleJa": "母へのこのプレゼントを包んでいただけますか。",
+   "ipa": "/ræp ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "finish up",
+     "meaningJa": "終える"
+    },
+    {
+     "word": "conclude",
+     "meaningJa": "締めくくる"
+    }
+   ]
+  },
+  {
+   "word": "chill out",
+   "pos": "句動詞",
+   "meaningJa": "くつろぐ、リラックスする",
+   "distractors": [
+    "元気づける",
+    "着飾る",
+    "見せびらかす"
+   ],
+   "exampleEn": "After the long test, we chilled out at home and watched some funny videos.",
+   "exampleJa": "長いテストの後、私たちは家でくつろいで面白い動画を見た。",
+   "ipa": "/tʃɪl aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Health"
+   ],
+   "exams": [],
+   "related": [
+    {
+     "word": "relax",
+     "meaningJa": "リラックスする"
+    },
+    {
+     "word": "calm down",
+     "meaningJa": "落ち着く"
+    }
+   ]
+  },
+  {
+   "word": "give way",
+   "pos": "イディオム",
+   "meaningJa": "崩れる、道を譲る",
+   "distractors": [
+    "〜を返す",
+    "あきらめる",
+    "〜を配る"
+   ],
+   "exampleEn": "The old bridge gave way under the weight of the heavy truck.",
+   "exampleJa": "古い橋は重いトラックの重みで崩れた。",
+   "ipa": "/ɡɪv weɪ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "collapse",
+     "meaningJa": "崩れる"
+    },
+    {
+     "word": "yield",
+     "meaningJa": "譲る"
+    },
+    {
+     "word": "give way to",
+     "meaningJa": "～に取って代わられる"
+    }
+   ]
+  },
+  {
+   "word": "clear up",
+   "pos": "句動詞",
+   "meaningJa": "(天気が)晴れる、(問題を)解決する",
+   "distractors": [
+    "元気づける",
+    "速度を上げる",
+    "準備運動をする"
+   ],
+   "exampleEn": "The sky cleared up in the afternoon, so we went to the park.",
+   "exampleJa": "午後には空が晴れたので、私たちは公園に行った。",
+   "ipa": "/klɪr ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Nature",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "resolve",
+     "meaningJa": "解決する"
+    },
+    {
+     "word": "brighten up",
+     "meaningJa": "晴れてくる"
+    }
+   ]
+  },
+  {
+   "word": "drop by",
+   "pos": "句動詞",
+   "meaningJa": "立ち寄る",
+   "distractors": [
+    "(車から)降ろす",
+    "中退する",
+    "通り過ぎる"
+   ],
+   "exampleEn": "Feel free to drop by my office if you have any questions.",
+   "exampleJa": "質問があれば気軽に私のオフィスに立ち寄ってください。",
+   "ipa": "/drɑːp baɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "stop by",
+     "meaningJa": "立ち寄る"
+    },
+    {
+     "word": "come round",
+     "meaningJa": "訪ねて来る"
+    }
+   ]
+  },
+  {
+   "word": "get away",
+   "pos": "句動詞",
+   "meaningJa": "逃げる、離れる",
+   "distractors": [
+    "〜を乗り越える",
+    "〜を取り除く",
+    "〜と仲良くやっていく"
+   ],
+   "exampleEn": "I want to get away from the city and relax by the sea this weekend.",
+   "exampleJa": "今週末は都会を離れて海辺でのんびりしたい。",
+   "ipa": "/ɡet əˈweɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "escape",
+     "meaningJa": "逃げる"
+    },
+    {
+     "word": "break away",
+     "meaningJa": "抜け出す"
+    }
+   ]
+  },
+  {
+   "word": "get through",
+   "pos": "句動詞",
+   "meaningJa": "〜をやり終える、切り抜ける",
+   "distractors": [
+    "〜と仲良くやっていく",
+    "逃げる",
+    "起きる"
+   ],
+   "exampleEn": "I have to get through all this homework before the weekend.",
+   "exampleJa": "週末までにこの宿題を全部終わらせなければならない。",
+   "ipa": "/ɡet θruː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "complete",
+     "meaningJa": "やり終える"
+    },
+    {
+     "word": "survive",
+     "meaningJa": "切り抜ける"
+    }
+   ]
+  },
+  {
+   "word": "head for",
+   "pos": "句動詞",
+   "meaningJa": "〜に向かう",
+   "distractors": [
+    "〜につながる",
+    "〜に偶然出会う",
+    "〜を表す"
+   ],
+   "exampleEn": "After the meeting, we headed for the station to catch the last train.",
+   "exampleJa": "会議の後、終電に乗るために私たちは駅に向かった。",
+   "ipa": "/hed fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "make for",
+     "meaningJa": "～の方へ向かう"
+    },
+    {
+     "word": "head toward",
+     "meaningJa": "～に向かう"
+    }
+   ]
+  },
+  {
+   "word": "line up",
+   "pos": "句動詞",
+   "meaningJa": "一列に並ぶ",
+   "distractors": [
+    "元気づける",
+    "速度を上げる",
+    "夜更かしする"
+   ],
+   "exampleEn": "People lined up in front of the shop an hour before it opened.",
+   "exampleJa": "開店の1時間前から人々が店の前に並んだ。",
+   "ipa": "/laɪn ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "queue up",
+     "meaningJa": "列に並ぶ"
+    },
+    {
+     "word": "stand in line",
+     "meaningJa": "並んで待つ"
+    }
+   ]
+  },
+  {
+   "word": "log in",
+   "pos": "句動詞",
+   "meaningJa": "ログインする",
+   "distractors": [
+    "記入する",
+    "〜に参加する",
+    "〜を専攻する"
+   ],
+   "exampleEn": "You need a password to log in to the school website.",
+   "exampleJa": "学校のウェブサイトにログインするにはパスワードが必要だ。",
+   "ipa": "/lɔːɡ ɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Technical",
+    "Business"
+   ],
+   "themes": [
+    "Technology",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "sign in",
+     "meaningJa": "サインインする"
+    },
+    {
+     "word": "log out",
+     "meaningJa": "ログアウトする"
+    }
+   ]
+  },
+  {
+   "word": "look back on",
+   "pos": "句動詞",
+   "meaningJa": "〜を振り返る",
+   "distractors": [
+    "〜を見下す",
+    "〜を尊敬する",
+    "〜を調査する"
+   ],
+   "exampleEn": "When I look back on my high school days, I feel very happy.",
+   "exampleJa": "高校時代を振り返ると、とても幸せな気持ちになる。",
+   "ipa": "/lʊk bæk ɑːn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Psychology",
+    "History"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "reflect on",
+     "meaningJa": "～を振り返る"
+    },
+    {
+     "word": "reminisce about",
+     "meaningJa": "～を懐かしむ"
+    }
+   ]
+  },
+  {
+   "word": "look through",
+   "pos": "句動詞",
+   "meaningJa": "〜にざっと目を通す",
+   "distractors": [
+    "〜を尊敬する",
+    "〜を見下す",
+    "〜を探す"
+   ],
+   "exampleEn": "I looked through the magazine while I was waiting for the train.",
+   "exampleJa": "電車を待っている間、雑誌にざっと目を通した。",
+   "ipa": "/lʊk θruː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "skim",
+     "meaningJa": "ざっと読む"
+    },
+    {
+     "word": "go through",
+     "meaningJa": "目を通す"
+    }
+   ]
+  },
+  {
+   "word": "pass by",
+   "pos": "句動詞",
+   "meaningJa": "通り過ぎる",
+   "distractors": [
+    "亡くなる",
+    "気絶する",
+    "立ち寄る"
+   ],
+   "exampleEn": "Every morning, I pass by a small bakery that smells wonderful.",
+   "exampleJa": "毎朝、とてもいい香りのする小さなパン屋の前を通り過ぎる。",
+   "ipa": "/pæs baɪ/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Nature"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "go past",
+     "meaningJa": "通り過ぎる"
+    },
+    {
+     "word": "go by",
+     "meaningJa": "過ぎ去る"
+    }
+   ]
+  },
+  {
+   "word": "print out",
+   "pos": "句動詞",
+   "meaningJa": "〜を印刷する",
+   "distractors": [
+    "〜を指摘する",
+    "記入する",
+    "〜を試してみる"
+   ],
+   "exampleEn": "Please print out the report and bring two copies to the meeting.",
+   "exampleJa": "レポートを印刷して、会議にコピーを2部持ってきてください。",
+   "ipa": "/prɪnt aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Technical"
+   ],
+   "themes": [
+    "Technology",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "print off",
+     "meaningJa": "印刷する"
+    },
+    {
+     "word": "produce a hard copy",
+     "meaningJa": "紙に出力する"
+    }
+   ]
+  },
+  {
+   "word": "put together",
+   "pos": "句動詞",
+   "meaningJa": "〜を組み立てる、まとめる",
+   "distractors": [
+    "〜を我慢する",
+    "延期する",
+    "〜を着る"
+   ],
+   "exampleEn": "It took us two hours to put together the new bookshelf.",
+   "exampleJa": "新しい本棚を組み立てるのに2時間かかった。",
+   "ipa": "/pʊt təˈɡeðər/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Technical"
+   ],
+   "themes": [
+    "Work",
+    "Technology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "assemble",
+     "meaningJa": "組み立てる"
+    },
+    {
+     "word": "compile",
+     "meaningJa": "まとめる"
+    }
+   ]
+  },
+  {
+   "word": "show off",
+   "pos": "句動詞",
+   "meaningJa": "見せびらかす、自慢する",
+   "distractors": [
+    "〜を見送る",
+    "離陸する",
+    "(車から)降ろす"
+   ],
+   "exampleEn": "He bought a new car and drove around town to show it off.",
+   "exampleJa": "彼は新車を買い、見せびらかすために町を乗り回した。",
+   "ipa": "/ʃoʊ ɔːf/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "boast",
+     "meaningJa": "自慢する"
+    },
+    {
+     "word": "flaunt",
+     "meaningJa": "見せびらかす"
+    }
+   ]
+  },
+  {
+   "word": "speed up",
+   "pos": "句動詞",
+   "meaningJa": "速度を上げる",
+   "distractors": [
+    "並ぶ",
+    "準備運動をする",
+    "元気づける"
+   ],
+   "exampleEn": "The runner sped up in the last one hundred meters of the race.",
+   "exampleJa": "そのランナーはレースの最後の100メートルで速度を上げた。",
+   "ipa": "/spiːd ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Technical"
+   ],
+   "themes": [
+    "Work",
+    "Technology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "accelerate",
+     "meaningJa": "加速する"
+    },
+    {
+     "word": "slow down",
+     "meaningJa": "減速する"
+    }
+   ]
+  },
+  {
+   "word": "stare at",
+   "pos": "句動詞",
+   "meaningJa": "〜をじっと見つめる",
+   "distractors": [
+    "〜にざっと目を通す",
+    "〜を見下す",
+    "〜を尊敬する"
+   ],
+   "exampleEn": "It is not polite to stare at people on the train.",
+   "exampleJa": "電車の中で人をじっと見つめるのは失礼だ。",
+   "ipa": "/ster æt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "gaze at",
+     "meaningJa": "じっと見る"
+    },
+    {
+     "word": "glare at",
+     "meaningJa": "にらみつける"
+    }
+   ]
+  },
+  {
+   "word": "try out",
+   "pos": "句動詞",
+   "meaningJa": "〜を試してみる",
+   "distractors": [
+    "〜だと判明する",
+    "印刷する",
+    "〜を理解する"
+   ],
+   "exampleEn": "I want to try out the new smartphone before I decide to buy it.",
+   "exampleJa": "買うと決める前に新しいスマートフォンを試してみたい。",
+   "ipa": "/traɪ aʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Technology",
+    "Sports"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "test",
+     "meaningJa": "試す"
+    },
+    {
+     "word": "give it a go",
+     "meaningJa": "やってみる"
+    }
+   ]
+  },
+  {
+   "word": "warm up",
+   "pos": "句動詞",
+   "meaningJa": "準備運動をする、温める",
+   "distractors": [
+    "元気づける",
+    "(天気が)晴れる",
+    "速度を上げる"
+   ],
+   "exampleEn": "The players warmed up on the field for twenty minutes before the game.",
+   "exampleJa": "選手たちは試合前に20分間フィールドで準備運動をした。",
+   "ipa": "/wɔːrm ʌp/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Sports",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "heat up",
+     "meaningJa": "温める"
+    },
+    {
+     "word": "cool down",
+     "meaningJa": "クールダウンする"
+    }
+   ]
+  },
+  {
+   "word": "concentrate on",
+   "pos": "句動詞",
+   "meaningJa": "〜に集中する",
+   "distractors": [
+    "〜に頼る",
+    "〜を主張する",
+    "〜に参加する"
+   ],
+   "exampleEn": "I turned off my phone so I could concentrate on studying for the test.",
+   "exampleJa": "試験勉強に集中できるように携帯電話の電源を切った。",
+   "ipa": "/ˈkɑːnsntreɪt ɑːn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "focus on",
+     "meaningJa": "～に集中する"
+    },
+    {
+     "word": "devote oneself to",
+     "meaningJa": "～に専念する"
+    }
+   ]
+  },
+  {
+   "word": "insist on",
+   "pos": "句動詞",
+   "meaningJa": "〜を主張する、言い張る",
+   "distractors": [
+    "〜に集中する",
+    "〜に頼る",
+    "次に進む"
+   ],
+   "exampleEn": "He insisted on paying for dinner even though it was my birthday.",
+   "exampleJa": "私の誕生日だったのに、彼は夕食代を払うと言い張った。",
+   "ipa": "/ɪnˈsɪst ɑːn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Legal"
+   ],
+   "themes": [
+    "Work",
+    "Law"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "demand",
+     "meaningJa": "要求する"
+    },
+    {
+     "word": "persist in",
+     "meaningJa": "固執する"
+    }
+   ]
+  },
+  {
+   "word": "major in",
+   "pos": "句動詞",
+   "meaningJa": "〜を専攻する",
+   "distractors": [
+    "〜に参加する",
+    "〜に成功する",
+    "〜を卒業する"
+   ],
+   "exampleEn": "My sister majors in economics at a university in Tokyo.",
+   "exampleJa": "姉は東京の大学で経済学を専攻している。",
+   "ipa": "/ˈmeɪdʒər ɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Academic"
+   ],
+   "themes": [
+    "Education",
+    "Science"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "specialize in",
+     "meaningJa": "～を専門とする"
+    },
+    {
+     "word": "minor in",
+     "meaningJa": "～を副専攻する"
+    }
+   ]
+  },
+  {
+   "word": "recover from",
+   "pos": "句動詞",
+   "meaningJa": "〜から回復する",
+   "distractors": [
+    "〜を卒業する",
+    "〜に苦しむ",
+    "〜という結果になる"
+   ],
+   "exampleEn": "It took him a month to recover from the injury to his leg.",
+   "exampleJa": "彼が脚のけがから回復するのに1か月かかった。",
+   "ipa": "/rɪˈkʌvər frʌm/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Medical",
+    "Business"
+   ],
+   "themes": [
+    "Health",
+    "Finance"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "get over",
+     "meaningJa": "～から立ち直る"
+    },
+    {
+     "word": "bounce back",
+     "meaningJa": "回復する"
+    }
+   ]
+  },
+  {
+   "word": "participate in",
+   "pos": "句動詞",
+   "meaningJa": "〜に参加する",
+   "distractors": [
+    "〜を専攻する",
+    "〜に成功する",
+    "〜に集中する"
+   ],
+   "exampleEn": "More than one hundred students participated in the volunteer activity last Saturday.",
+   "exampleJa": "先週の土曜日、100人以上の生徒がボランティア活動に参加した。",
+   "ipa": "/pɑːrˈtɪsɪpeɪt ɪn/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "take part in",
+     "meaningJa": "～に参加する"
+    },
+    {
+     "word": "join in",
+     "meaningJa": "加わる"
+    }
+   ]
+  },
+  {
+   "word": "relate to",
+   "pos": "句動詞",
+   "meaningJa": "〜に関係がある",
+   "distractors": [
+    "〜に反応する、返答する",
+    "〜につながる",
+    "〜と競争する"
+   ],
+   "exampleEn": "This question relates to what we learned in the last lesson.",
+   "exampleJa": "この問題は前回の授業で学んだことに関係がある。",
+   "ipa": "/rɪˈleɪt tuː/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be connected with",
+     "meaningJa": "～と関係がある"
+    },
+    {
+     "word": "identify with",
+     "meaningJa": "～に共感する"
+    }
+   ]
+  },
+  {
+   "word": "compete with",
+   "pos": "句動詞",
+   "meaningJa": "〜と競争する",
+   "distractors": [
+    "〜について不平を言う",
+    "〜に関係がある",
+    "〜と仲良くやっていく"
+   ],
+   "exampleEn": "Small shops find it hard to compete with big online stores.",
+   "exampleJa": "小さな店は大手のオンラインストアと競争するのは難しいと感じている。",
+   "ipa": "/kəmˈpiːt wɪð/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Sports"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "compete against",
+     "meaningJa": "～と競う"
+    },
+    {
+     "word": "rival",
+     "meaningJa": "競り合う"
+    }
+   ]
+  },
+  {
+   "word": "complain about",
+   "pos": "句動詞",
+   "meaningJa": "〜について不平を言う",
+   "distractors": [
+    "〜のことで謝る",
+    "〜と競争する",
+    "〜を心配している"
+   ],
+   "exampleEn": "The guests complained about the noise coming from the room next door.",
+   "exampleJa": "宿泊客は隣の部屋からの騒音について苦情を言った。",
+   "ipa": "/kəmˈpleɪn əˈbaʊt/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "grumble about",
+     "meaningJa": "ぶつぶつ言う"
+    },
+    {
+     "word": "make a complaint",
+     "meaningJa": "苦情を言う"
+    }
+   ]
+  },
+  {
+   "word": "apologize for",
+   "pos": "句動詞",
+   "meaningJa": "〜のことで謝る",
+   "distractors": [
+    "〜について不平を言う",
+    "〜に申し込む",
+    "〜を心配している"
+   ],
+   "exampleEn": "I must apologize for being late to the meeting this morning.",
+   "exampleJa": "今朝の会議に遅刻したことを謝らなければならない。",
+   "ipa": "/əˈpɑːlədʒaɪz fɔːr/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "say sorry for",
+     "meaningJa": "～を謝る"
+    },
+    {
+     "word": "apologize to",
+     "meaningJa": "～に謝る"
+    }
+   ]
+  },
+  {
+   "word": "be named after",
+   "pos": "慣用表現",
+   "meaningJa": "〜にちなんで名付けられる",
+   "distractors": [
+    "〜として知られている",
+    "〜に基づいている",
+    "(親など)に似ている"
+   ],
+   "exampleEn": "This bridge was named after the engineer who designed it.",
+   "exampleJa": "この橋はそれを設計した技師にちなんで名付けられた。",
+   "ipa": "/bi neɪmd ˈæftər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "History",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "be called after",
+     "meaningJa": "～にちなんで呼ばれる"
+    },
+    {
+     "word": "name after",
+     "meaningJa": "～にちなんで名付ける"
+    }
+   ]
+  },
+  {
+   "word": "a bit of",
+   "pos": "慣用表現",
+   "meaningJa": "少しの〜",
+   "distractors": [
+    "大量の〜",
+    "さまざまな〜",
+    "一種の〜"
+   ],
+   "exampleEn": "Can you give me a bit of advice about my speech?",
+   "exampleJa": "スピーチについて少しアドバイスをもらえますか。",
+   "ipa": "/ə bɪt əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Food"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "a little",
+     "meaningJa": "少し"
+    },
+    {
+     "word": "a bit of a",
+     "meaningJa": "ちょっとした～"
+    }
+   ]
+  },
+  {
+   "word": "a kind of",
+   "pos": "慣用表現",
+   "meaningJa": "一種の〜",
+   "distractors": [
+    "少しの〜",
+    "大量の〜",
+    "幅広い〜"
+   ],
+   "exampleEn": "A tomato is a kind of fruit, though many people think it is a vegetable.",
+   "exampleJa": "トマトは一種の果物だが、多くの人は野菜だと思っている。",
+   "ipa": "/ə kaɪnd əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Science",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "a sort of",
+     "meaningJa": "一種の"
+    },
+    {
+     "word": "a type of",
+     "meaningJa": "～の一種"
+    }
+   ]
+  },
+  {
+   "word": "a little bit",
+   "pos": "慣用表現",
+   "meaningJa": "ほんの少し",
+   "distractors": [
+    "大量の〜",
+    "〜と同じくらい",
+    "せいぜい、多くても"
+   ],
+   "exampleEn": "I was a little bit nervous before my first presentation in English.",
+   "exampleJa": "初めての英語のプレゼンの前、私はほんの少し緊張していた。",
+   "ipa": "/ə ˈlɪtl bɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "slightly",
+     "meaningJa": "わずかに"
+    },
+    {
+     "word": "a bit",
+     "meaningJa": "少し"
+    }
+   ]
+  },
+  {
+   "word": "apart from",
+   "pos": "前置詞句",
+   "meaningJa": "〜は別として、〜を除いて",
+   "distractors": [
+    "〜と一緒に",
+    "〜だけでなく",
+    "〜など"
+   ],
+   "exampleEn": "Apart from the weather, everything about the trip was perfect.",
+   "exampleJa": "天気は別として、旅行のすべてが完璧だった。",
+   "ipa": "/əˈpɑːrt frʌm/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "aside from",
+     "meaningJa": "～は別として"
+    },
+    {
+     "word": "other than",
+     "meaningJa": "～以外の"
+    }
+   ]
+  },
+  {
+   "word": "a range of",
+   "pos": "慣用表現",
+   "meaningJa": "幅広い〜",
+   "distractors": [
+    "少しの〜",
+    "一種の〜",
+    "大量の〜"
+   ],
+   "exampleEn": "The store offers a range of products for students, from pens to laptops.",
+   "exampleJa": "その店はペンからノートパソコンまで、学生向けの幅広い商品を提供している。",
+   "ipa": "/ə reɪndʒ əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Science"
+   ],
+   "exams": [
+    "TOEIC",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "a variety of",
+     "meaningJa": "さまざまな"
+    },
+    {
+     "word": "a wide range of",
+     "meaningJa": "幅広い～"
+    }
+   ]
+  },
+  {
+   "word": "as much as",
+   "pos": "慣用表現",
+   "meaningJa": "〜と同じくらい",
+   "distractors": [
+    "まるで〜かのように",
+    "〜する限り、〜さえすれば",
+    "〜だけでなく"
+   ],
+   "exampleEn": "She loves soccer as much as her brother does, so they often practice together.",
+   "exampleJa": "彼女は兄と同じくらいサッカーが大好きなので、よく一緒に練習している。",
+   "ipa": "/əz mʌtʃ əz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education",
+    "Finance"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "as many as",
+     "meaningJa": "～もの数の"
+    },
+    {
+     "word": "no less than",
+     "meaningJa": "～ほども"
+    }
+   ]
+  },
+  {
+   "word": "as far as",
+   "pos": "慣用表現",
+   "meaningJa": "(範囲について)〜の限りでは、〜まで",
+   "distractors": [
+    "〜と同じくらい",
+    "まるで〜かのように",
+    "〜だけでなく"
+   ],
+   "exampleEn": "As far as I know, the meeting starts at ten tomorrow morning.",
+   "exampleJa": "私の知る限りでは、会議は明日の朝10時に始まる。",
+   "ipa": "/əz fɑːr əz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "as far as I know",
+     "meaningJa": "私の知る限り"
+    },
+    {
+     "word": "so far as",
+     "meaningJa": "～の限りでは"
+    }
+   ]
+  },
+  {
+   "word": "at risk",
+   "pos": "前置詞句",
+   "meaningJa": "危険にさらされて",
+   "distractors": [
+    "時々",
+    "せいぜい、多くても",
+    "すぐに"
+   ],
+   "exampleEn": "Many animals are at risk because their forests are disappearing quickly.",
+   "exampleJa": "森が急速に失われているため、多くの動物が危険にさらされている。",
+   "ipa": "/æt rɪsk/",
+   "posEn": "Phrase",
+   "domains": [
+    "Medical",
+    "News"
+   ],
+   "themes": [
+    "Health",
+    "Environment"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "in danger",
+     "meaningJa": "危険にさらされて"
+    },
+    {
+     "word": "at stake",
+     "meaningJa": "懸かって"
+    }
+   ]
+  },
+  {
+   "word": "at times",
+   "pos": "前置詞句",
+   "meaningJa": "時々",
+   "distractors": [
+    "ついに、ようやく",
+    "すぐに",
+    "遅くとも"
+   ],
+   "exampleEn": "Learning a new language is fun, but at times it can be difficult.",
+   "exampleJa": "新しい言語を学ぶのは楽しいが、時々難しく感じることもある。",
+   "ipa": "/æt taɪmz/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "sometimes",
+     "meaningJa": "時々"
+    },
+    {
+     "word": "from time to time",
+     "meaningJa": "時々"
+    }
+   ]
+  },
+  {
+   "word": "at most",
+   "pos": "前置詞句",
+   "meaningJa": "せいぜい、多くても",
+   "distractors": [
+    "遅くとも",
+    "少なくとも",
+    "ついに、ようやく"
+   ],
+   "exampleEn": "The walk from the station to the museum takes ten minutes at most.",
+   "exampleJa": "駅から博物館までは歩いてせいぜい10分だ。",
+   "ipa": "/æt moʊst/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Finance",
+    "Science"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "at least",
+     "meaningJa": "少なくとも"
+    },
+    {
+     "word": "no more than",
+     "meaningJa": "たった～"
+    }
+   ]
+  },
+  {
+   "word": "at the latest",
+   "pos": "前置詞句",
+   "meaningJa": "遅くとも",
+   "distractors": [
+    "せいぜい、多くても",
+    "できるだけ早く",
+    "ついに、ようやく"
+   ],
+   "exampleEn": "Please hand in your report by Friday at the latest.",
+   "exampleJa": "遅くとも金曜日までにはレポートを提出してください。",
+   "ipa": "/æt ðə ˈleɪtɪst/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "no later than",
+     "meaningJa": "遅くとも～までに"
+    },
+    {
+     "word": "at the earliest",
+     "meaningJa": "早くても"
+    }
+   ]
+  },
+  {
+   "word": "be supposed to",
+   "pos": "慣用表現",
+   "meaningJa": "〜することになっている",
+   "distractors": [
+    "まさに〜しようとしている",
+    "〜を心配している",
+    "〜に基づいている"
+   ],
+   "exampleEn": "You are supposed to take off your shoes before entering the room.",
+   "exampleJa": "その部屋に入る前に靴を脱ぐことになっている。",
+   "ipa": "/bi səˈpoʊzd tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "be expected to",
+     "meaningJa": "～すると期待される"
+    },
+    {
+     "word": "ought to",
+     "meaningJa": "～すべきだ"
+    }
+   ]
+  },
+  {
+   "word": "be known as",
+   "pos": "慣用表現",
+   "meaningJa": "〜として知られている",
+   "distractors": [
+    "〜にちなんで名付けられる",
+    "〜に基づいている",
+    "〜に気づいている"
+   ],
+   "exampleEn": "This area is known as one of the best places to see cherry blossoms.",
+   "exampleJa": "この地域は桜を見るのに最も良い場所の1つとして知られている。",
+   "ipa": "/bi noʊn əz/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "History"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "be famous for",
+     "meaningJa": "～で有名だ"
+    },
+    {
+     "word": "be regarded as",
+     "meaningJa": "～とみなされる"
+    }
+   ]
+  },
+  {
+   "word": "be aware of",
+   "pos": "慣用表現",
+   "meaningJa": "〜に気づいている、知っている",
+   "distractors": [
+    "〜を心配している",
+    "〜する能力がある",
+    "〜に基づいている"
+   ],
+   "exampleEn": "Drivers should be aware of the danger of using phones while driving.",
+   "exampleJa": "運転者は運転中に携帯電話を使う危険性に気づいているべきだ。",
+   "ipa": "/bi əˈwer əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Psychology",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be conscious of",
+     "meaningJa": "～を意識している"
+    },
+    {
+     "word": "realize",
+     "meaningJa": "気づく"
+    }
+   ]
+  },
+  {
+   "word": "be based on",
+   "pos": "慣用表現",
+   "meaningJa": "〜に基づいている",
+   "distractors": [
+    "〜として知られている",
+    "〜に気づいている",
+    "〜する能力がある"
+   ],
+   "exampleEn": "The movie is based on a true story that happened fifty years ago.",
+   "exampleJa": "その映画は50年前に起きた実話に基づいている。",
+   "ipa": "/bi beɪst ɑːn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Science",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be founded on",
+     "meaningJa": "～を土台にする"
+    },
+    {
+     "word": "be derived from",
+     "meaningJa": "～に由来する"
+    }
+   ]
+  },
+  {
+   "word": "be capable of",
+   "pos": "慣用表現",
+   "meaningJa": "〜する能力がある",
+   "distractors": [
+    "〜に気づいている",
+    "〜を心配している",
+    "〜することになっている"
+   ],
+   "exampleEn": "This new robot is capable of carrying heavy boxes up the stairs.",
+   "exampleJa": "この新しいロボットは重い箱を階段の上まで運ぶことができる。",
+   "ipa": "/bi ˈkeɪpəbl əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Technical"
+   ],
+   "themes": [
+    "Work",
+    "Technology"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be able to",
+     "meaningJa": "～できる"
+    },
+    {
+     "word": "have the ability to",
+     "meaningJa": "～する能力がある"
+    }
+   ]
+  },
+  {
+   "word": "be concerned about",
+   "pos": "慣用表現",
+   "meaningJa": "〜を心配している",
+   "distractors": [
+    "〜に気づいている",
+    "〜する能力がある",
+    "〜に基づいている"
+   ],
+   "exampleEn": "Many parents are concerned about how much time children spend online.",
+   "exampleJa": "多くの親は子どもがオンラインで過ごす時間の長さを心配している。",
+   "ipa": "/bi kənˈsɜːrnd əˈbaʊt/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "worry about",
+     "meaningJa": "～を心配する"
+    },
+    {
+     "word": "be concerned with",
+     "meaningJa": "～に関係している"
+    }
+   ]
+  },
+  {
+   "word": "be eager to",
+   "pos": "慣用表現",
+   "meaningJa": "〜することを熱望している、しきりに〜したがっている",
+   "distractors": [
+    "〜する可能性が高い",
+    "〜に慣れている",
+    "〜に責任がある"
+   ],
+   "exampleEn": "She is eager to learn French before her trip to Paris next summer.",
+   "exampleJa": "彼女は来年の夏のパリ旅行の前に、フランス語を学びたくてたまらない。",
+   "ipa": "/bi ˈiːɡər tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "be keen on",
+     "meaningJa": "～に熱心である"
+    },
+    {
+     "word": "be anxious to",
+     "meaningJa": "しきりに～したがる"
+    }
+   ]
+  },
+  {
+   "word": "be fond of",
+   "pos": "慣用表現",
+   "meaningJa": "〜が大好きである",
+   "distractors": [
+    "〜に慣れている",
+    "〜と似ている",
+    "〜を誇りに思っている"
+   ],
+   "exampleEn": "My grandmother is fond of growing roses in her small garden.",
+   "exampleJa": "私の祖母は小さな庭でバラを育てるのが大好きです。",
+   "ipa": "/bi fɑːnd əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "be keen on",
+     "meaningJa": "～が好きだ"
+    },
+    {
+     "word": "like very much",
+     "meaningJa": "とても好む"
+    }
+   ]
+  },
+  {
+   "word": "be keen on",
+   "pos": "慣用表現",
+   "meaningJa": "〜に熱心である、〜に夢中である",
+   "distractors": [
+    "〜と似ている",
+    "〜に責任がある",
+    "〜する価値がある"
+   ],
+   "exampleEn": "My brother is keen on playing video games with his friends every weekend.",
+   "exampleJa": "私の弟は毎週末、友達とテレビゲームをするのに夢中です。",
+   "ipa": "/bi kiːn ɑːn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "be into",
+     "meaningJa": "～に夢中だ"
+    },
+    {
+     "word": "be enthusiastic about",
+     "meaningJa": "～に熱心だ"
+    }
+   ]
+  },
+  {
+   "word": "be worth doing",
+   "pos": "慣用表現",
+   "meaningJa": "〜する価値がある",
+   "distractors": [
+    "〜しそうである",
+    "進んで〜する",
+    "〜に熱心である"
+   ],
+   "exampleEn": "This museum is worth visiting because it has so many famous paintings.",
+   "exampleJa": "この美術館は有名な絵画がとてもたくさんあるので、訪れる価値があります。",
+   "ipa": "/bi wɜːrθ ˈduːɪŋ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "be worthwhile",
+     "meaningJa": "やりがいがある"
+    },
+    {
+     "word": "deserve",
+     "meaningJa": "～に値する"
+    }
+   ]
+  },
+  {
+   "word": "by chance",
+   "pos": "前置詞句",
+   "meaningJa": "たまたま、偶然",
+   "distractors": [
+    "暗記して",
+    "一人で",
+    "はるかに"
+   ],
+   "exampleEn": "I met my old teacher by chance at the station yesterday afternoon.",
+   "exampleJa": "昨日の午後、駅で偶然昔の先生に会いました。",
+   "ipa": "/baɪ tʃæns/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "by accident",
+     "meaningJa": "偶然に"
+    },
+    {
+     "word": "on purpose",
+     "meaningJa": "わざと"
+    }
+   ]
+  },
+  {
+   "word": "by heart",
+   "pos": "前置詞句",
+   "meaningJa": "暗記して",
+   "distractors": [
+    "偶然に",
+    "手作業で",
+    "一人で"
+   ],
+   "exampleEn": "Our teacher told us to learn this poem by heart by next week.",
+   "exampleJa": "先生は来週までにこの詩を暗記するように言いました。",
+   "ipa": "/baɪ hɑːrt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education",
+    "Art"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "memorize",
+     "meaningJa": "暗記する"
+    },
+    {
+     "word": "learn by heart",
+     "meaningJa": "暗記する"
+    }
+   ]
+  },
+  {
+   "word": "by far",
+   "pos": "前置詞句",
+   "meaningJa": "はるかに、断然",
+   "distractors": [
+    "偶然に",
+    "暗記して",
+    "一人で"
+   ],
+   "exampleEn": "This is by far the best restaurant I have ever visited in this city.",
+   "exampleJa": "ここは私がこの街で訪れた中で断然一番いいレストランです。",
+   "ipa": "/baɪ fɑːr/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Science",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "much",
+     "meaningJa": "はるかに"
+    },
+    {
+     "word": "considerably",
+     "meaningJa": "かなり"
+    }
+   ]
+  },
+  {
+   "word": "by the time",
+   "pos": "慣用表現",
+   "meaningJa": "〜するまでには",
+   "distractors": [
+    "ところで",
+    "たとえ〜でも",
+    "〜だけれども"
+   ],
+   "exampleEn": "By the time we arrived at the station, the train had already left.",
+   "exampleJa": "私たちが駅に着くまでに、電車はすでに出発していました。",
+   "ipa": "/baɪ ðə taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "before",
+     "meaningJa": "～する前に"
+    },
+    {
+     "word": "by now",
+     "meaningJa": "今頃はもう"
+    }
+   ]
+  },
+  {
+   "word": "can't afford",
+   "pos": "慣用表現",
+   "meaningJa": "〜する(買う)余裕がない",
+   "distractors": [
+    "〜せずにはいられない",
+    "〜が我慢できない",
+    "〜が待ちきれない"
+   ],
+   "exampleEn": "We can't afford a new car this year, so we will keep the old one.",
+   "exampleJa": "今年は新車を買う余裕がないので、古い車を使い続けます。",
+   "ipa": "/kænt əˈfɔːrd/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Finance",
+    "Family"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be short of money",
+     "meaningJa": "お金が足りない"
+    },
+    {
+     "word": "afford to",
+     "meaningJa": "～する余裕がある"
+    }
+   ]
+  },
+  {
+   "word": "can't help doing",
+   "pos": "慣用表現",
+   "meaningJa": "〜せずにはいられない",
+   "distractors": [
+    "〜する余裕がない",
+    "〜が我慢できない",
+    "〜が待ちきれない"
+   ],
+   "exampleEn": "I can't help laughing whenever I watch this funny cat video.",
+   "exampleJa": "このおもしろい猫の動画を見るたびに、笑わずにはいられません。",
+   "ipa": "/kænt help ˈduːɪŋ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "cannot but do",
+     "meaningJa": "～せざるを得ない"
+    },
+    {
+     "word": "can't resist",
+     "meaningJa": "我慢できない"
+    }
+   ]
+  },
+  {
+   "word": "can't stand",
+   "pos": "慣用表現",
+   "meaningJa": "〜が我慢できない",
+   "distractors": [
+    "〜する余裕がない",
+    "〜せずにはいられない",
+    "〜が待ちきれない"
+   ],
+   "exampleEn": "She can't stand the hot weather, so she stays inside during summer.",
+   "exampleJa": "彼女は暑さが我慢できないので、夏の間は室内にいます。",
+   "ipa": "/kænt stænd/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "can't bear",
+     "meaningJa": "耐えられない"
+    },
+    {
+     "word": "be fed up with",
+     "meaningJa": "うんざりしている"
+    }
+   ]
+  },
+  {
+   "word": "can't wait",
+   "pos": "慣用表現",
+   "meaningJa": "〜が待ちきれない、〜が楽しみだ",
+   "distractors": [
+    "〜する余裕がない",
+    "〜せずにはいられない",
+    "〜が我慢できない"
+   ],
+   "exampleEn": "I can't wait to see my best friend again during the winter holidays.",
+   "exampleJa": "冬休みに親友にまた会えるのが待ちきれません。",
+   "ipa": "/kænt weɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "look forward to",
+     "meaningJa": "楽しみに待つ"
+    },
+    {
+     "word": "be excited about",
+     "meaningJa": "わくわくしている"
+    }
+   ]
+  },
+  {
+   "word": "caused by",
+   "pos": "コロケーション",
+   "meaningJa": "〜によって引き起こされる",
+   "distractors": [
+    "〜と比べると",
+    "〜に応えて",
+    "〜にもかかわらず"
+   ],
+   "exampleEn": "The delay was caused by heavy snow in the northern part of the country.",
+   "exampleJa": "その遅れは、国の北部での大雪によって引き起こされました。",
+   "ipa": "/kɔːzd baɪ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Science",
+    "Health"
+   ],
+   "exams": [
+    "TOEFL",
+    "TOEIC",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "due to",
+     "meaningJa": "～が原因で"
+    },
+    {
+     "word": "result from",
+     "meaningJa": "～から生じる"
+    }
+   ]
+  },
+  {
+   "word": "compared with",
+   "pos": "慣用表現",
+   "meaningJa": "〜と比べると",
+   "distractors": [
+    "〜によって引き起こされて",
+    "〜に加えて",
+    "〜の観点から"
+   ],
+   "exampleEn": "Compared with last year, vegetable prices have risen a lot this summer.",
+   "exampleJa": "昨年と比べると、今年の夏は野菜の値段がかなり上がりました。",
+   "ipa": "/kəmˈperd wɪð/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Science",
+    "Finance"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "compared to",
+     "meaningJa": "～と比べて"
+    },
+    {
+     "word": "in comparison with",
+     "meaningJa": "～と比較して"
+    }
+   ]
+  },
+  {
+   "word": "even if",
+   "pos": "慣用表現",
+   "meaningJa": "たとえ〜でも",
+   "distractors": [
+    "実際は〜だけれども",
+    "それでもなお",
+    "〜する場合に備えて"
+   ],
+   "exampleEn": "Even if it rains tomorrow, we will go camping as planned.",
+   "exampleJa": "たとえ明日雨が降っても、私たちは予定どおりキャンプに行きます。",
+   "ipa": "/ˈiːvn ɪf/",
+   "posEn": "Conjunction",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "even though",
+     "meaningJa": "～だけれども"
+    },
+    {
+     "word": "no matter what",
+     "meaningJa": "たとえ何があっても"
+    }
+   ]
+  },
+  {
+   "word": "even though",
+   "pos": "慣用表現",
+   "meaningJa": "〜であるのに、〜だけれども",
+   "distractors": [
+    "たとえ〜でも(仮定)",
+    "それでもなお",
+    "〜する場合に備えて"
+   ],
+   "exampleEn": "Even though he was tired, he finished writing the report before midnight.",
+   "exampleJa": "彼は疲れていたけれども、真夜中前にレポートを書き終えました。",
+   "ipa": "/ˈiːvn ðoʊ/",
+   "posEn": "Conjunction",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "although",
+     "meaningJa": "～だけれども"
+    },
+    {
+     "word": "despite the fact that",
+     "meaningJa": "～にもかかわらず"
+    }
+   ]
+  },
+  {
+   "word": "even so",
+   "pos": "慣用表現",
+   "meaningJa": "それでもなお、そうではあっても",
+   "distractors": [
+    "たとえ〜でも",
+    "〜であるのに",
+    "言い換えれば"
+   ],
+   "exampleEn": "The test was very difficult. Even so, most of the students passed it.",
+   "exampleJa": "テストはとても難しかった。それでも、生徒のほとんどが合格しました。",
+   "ipa": "/ˈiːvn soʊ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Politics"
+   ],
+   "exams": [
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "nevertheless",
+     "meaningJa": "それにもかかわらず"
+    },
+    {
+     "word": "still",
+     "meaningJa": "それでも"
+    }
+   ]
+  },
+  {
+   "word": "exactly the same",
+   "pos": "コロケーション",
+   "meaningJa": "まったく同じ",
+   "distractors": [
+    "〜と似ている",
+    "〜とは程遠い",
+    "あまりにも〜すぎる"
+   ],
+   "exampleEn": "Your bag is exactly the same as mine, so be careful not to mix them up.",
+   "exampleJa": "あなたのかばんは私のとまったく同じだから、取り違えないように気をつけて。",
+   "ipa": "/ɪɡˈzæktli ðə seɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Science",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "identical",
+     "meaningJa": "まったく同一の"
+    },
+    {
+     "word": "just the same",
+     "meaningJa": "まったく同じ"
+    }
+   ]
+  },
+  {
+   "word": "fail to do",
+   "pos": "コロケーション",
+   "meaningJa": "〜しそこなう、〜できない",
+   "distractors": [
+    "なんとか〜する",
+    "〜するつもりである",
+    "〜したい気がする"
+   ],
+   "exampleEn": "He failed to catch the last train, so he had to take a taxi.",
+   "exampleJa": "彼は終電に乗りそこなったので、タクシーに乗らなければなりませんでした。",
+   "ipa": "/feɪl tuː duː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "neglect to do",
+     "meaningJa": "～し忘れる"
+    },
+    {
+     "word": "be unable to",
+     "meaningJa": "～できない"
+    }
+   ]
+  },
+  {
+   "word": "far too",
+   "pos": "慣用表現",
+   "meaningJa": "あまりにも〜すぎる",
+   "distractors": [
+    "決して〜ではない",
+    "はるかに、断然",
+    "ますます"
+   ],
+   "exampleEn": "This jacket is far too expensive, so I will look for a cheaper one.",
+   "exampleJa": "この上着はあまりにも高すぎるので、もっと安いものを探します。",
+   "ipa": "/fɑːr tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Finance"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "much too",
+     "meaningJa": "あまりにも～すぎる"
+    },
+    {
+     "word": "way too",
+     "meaningJa": "はるかに～すぎる"
+    }
+   ]
+  },
+  {
+   "word": "fed up with",
+   "pos": "イディオム",
+   "meaningJa": "〜にうんざりしている",
+   "distractors": [
+    "〜を誇りに思っている",
+    "〜に夢中である",
+    "〜に慣れている"
+   ],
+   "exampleEn": "I'm fed up with waiting for the bus in this cold weather.",
+   "exampleJa": "この寒い中でバスを待つのはもううんざりです。",
+   "ipa": "/fed ʌp wɪð/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "sick of",
+     "meaningJa": "～にうんざりして"
+    },
+    {
+     "word": "tired of",
+     "meaningJa": "～に飽き飽きして"
+    }
+   ]
+  },
+  {
+   "word": "feel like doing",
+   "pos": "コロケーション",
+   "meaningJa": "〜したい気がする",
+   "distractors": [
+    "〜せずにはいられない",
+    "なんとか〜する",
+    "〜するつもりである"
+   ],
+   "exampleEn": "I feel like eating something sweet, so let's stop by the bakery.",
+   "exampleJa": "何か甘いものが食べたい気分だから、パン屋に寄って行こう。",
+   "ipa": "/fiːl laɪk ˈduːɪŋ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "be in the mood for",
+     "meaningJa": "～する気分だ"
+    },
+    {
+     "word": "want to",
+     "meaningJa": "～したい"
+    }
+   ]
+  },
+  {
+   "word": "for ages",
+   "pos": "前置詞句",
+   "meaningJa": "長い間、久しく",
+   "distractors": [
+    "無料で",
+    "今のところ",
+    "永遠に、これきり"
+   ],
+   "exampleEn": "I haven't seen my cousin for ages, so I'm going to visit her next month.",
+   "exampleJa": "いとこには長い間会っていないので、来月会いに行くつもりです。",
+   "ipa": "/fɔːr ˈeɪdʒɪz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "for a long time",
+     "meaningJa": "長い間"
+    },
+    {
+     "word": "for some time",
+     "meaningJa": "しばらくの間"
+    }
+   ]
+  },
+  {
+   "word": "for good",
+   "pos": "前置詞句",
+   "meaningJa": "永遠に、これを最後に(ずっと)",
+   "distractors": [
+    "無料で",
+    "しばらくの間",
+    "例えば"
+   ],
+   "exampleEn": "After twenty years abroad, he returned to his hometown for good.",
+   "exampleJa": "20年間海外で暮らした後、彼はもう戻らないつもりで故郷に帰りました。",
+   "ipa": "/fɔːr ɡʊd/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "forever",
+     "meaningJa": "永遠に"
+    },
+    {
+     "word": "permanently",
+     "meaningJa": "恒久的に"
+    }
+   ]
+  },
+  {
+   "word": "for instance",
+   "pos": "前置詞句",
+   "meaningJa": "例えば",
+   "distractors": [
+    "実際は",
+    "一般的に",
+    "特に"
+   ],
+   "exampleEn": "Many countries, for instance Japan and Italy, are famous for their food.",
+   "exampleJa": "多くの国、例えば日本やイタリアは、その食文化で有名です。",
+   "ipa": "/fɔːr ˈɪnstəns/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Science"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "for example",
+     "meaningJa": "例えば"
+    },
+    {
+     "word": "such as",
+     "meaningJa": "～のような"
+    }
+   ]
+  },
+  {
+   "word": "for life",
+   "pos": "前置詞句",
+   "meaningJa": "一生、生涯",
+   "distractors": [
+    "無料で",
+    "しばらくの間",
+    "今のところ"
+   ],
+   "exampleEn": "If you take good care of this watch, it will last you for life.",
+   "exampleJa": "この時計は大切に使えば、一生ものになりますよ。",
+   "ipa": "/fɔːr laɪf/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Legal"
+   ],
+   "themes": [
+    "Society",
+    "Law"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "for a lifetime",
+     "meaningJa": "一生涯"
+    },
+    {
+     "word": "lifelong",
+     "meaningJa": "生涯にわたる"
+    }
+   ]
+  },
+  {
+   "word": "for now",
+   "pos": "前置詞句",
+   "meaningJa": "今のところ、当分は",
+   "distractors": [
+    "今後はずっと",
+    "時々",
+    "長い間"
+   ],
+   "exampleEn": "For now, let's use the old computer until the new one arrives.",
+   "exampleJa": "新しいのが届くまで、今のところは古いコンピュータを使いましょう。",
+   "ipa": "/fɔːr naʊ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "for the time being",
+     "meaningJa": "当分の間"
+    },
+    {
+     "word": "temporarily",
+     "meaningJa": "一時的に"
+    }
+   ]
+  },
+  {
+   "word": "for some time",
+   "pos": "前置詞句",
+   "meaningJa": "かなり長い間、ここしばらく",
+   "distractors": [
+    "今のところ",
+    "時々",
+    "永遠に、これきり"
+   ],
+   "exampleEn": "She has been interested in photography for some time and wants a camera.",
+   "exampleJa": "彼女はかなり前から写真に興味があり、カメラを欲しがっています。",
+   "ipa": "/fɔːr sʌm taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "for a while",
+     "meaningJa": "しばらく"
+    },
+    {
+     "word": "for ages",
+     "meaningJa": "長い間"
+    }
+   ]
+  },
+  {
+   "word": "from time to time",
+   "pos": "前置詞句",
+   "meaningJa": "時々",
+   "distractors": [
+    "今後はずっと",
+    "今のところ",
+    "少しずつ"
+   ],
+   "exampleEn": "We still meet from time to time, although we live in different cities.",
+   "exampleJa": "別々の街に住んでいますが、私たちは今でも時々会っています。",
+   "ipa": "/frʌm taɪm tuː taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "occasionally",
+     "meaningJa": "時折"
+    },
+    {
+     "word": "at times",
+     "meaningJa": "時々"
+    }
+   ]
+  },
+  {
+   "word": "get used to",
+   "pos": "慣用表現",
+   "meaningJa": "〜に慣れる",
+   "distractors": [
+    "〜と知り合う",
+    "〜と連絡を取る",
+    "〜を乗り越える"
+   ],
+   "exampleEn": "It took me about a month to get used to my new job.",
+   "exampleJa": "新しい仕事に慣れるのに1か月ほどかかりました。",
+   "ipa": "/ɡet juːst tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Psychology",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "become accustomed to",
+     "meaningJa": "～に慣れる"
+    },
+    {
+     "word": "adapt to",
+     "meaningJa": "～に順応する"
+    }
+   ]
+  },
+  {
+   "word": "have in common",
+   "pos": "イディオム",
+   "meaningJa": "〜を共通して持つ、共通点がある",
+   "distractors": [
+    "まったくわからない",
+    "〜と関係がある",
+    "〜しなければならない"
+   ],
+   "exampleEn": "The two brothers have a lot in common, such as their love of music.",
+   "exampleJa": "その兄弟には音楽好きなど、共通点がたくさんあります。",
+   "ipa": "/hæv ɪn ˈkɑːmən/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "share",
+     "meaningJa": "共有する"
+    },
+    {
+     "word": "in common with",
+     "meaningJa": "～と共通して"
+    }
+   ]
+  },
+  {
+   "word": "have to do with",
+   "pos": "イディオム",
+   "meaningJa": "〜と関係がある",
+   "distractors": [
+    "共通点がある",
+    "まったくわからない",
+    "〜しなければならない"
+   ],
+   "exampleEn": "His new book has to do with the history of Japanese food.",
+   "exampleJa": "彼の新しい本は日本の食の歴史と関係があります。",
+   "ipa": "/hæv tuː duː wɪð/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Science"
+   ],
+   "exams": [
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "be related to",
+     "meaningJa": "～に関係がある"
+    },
+    {
+     "word": "be connected with",
+     "meaningJa": "～と関わりがある"
+    }
+   ]
+  },
+  {
+   "word": "hear of",
+   "pos": "句動詞",
+   "meaningJa": "〜のことを耳にする、〜を知っている",
+   "distractors": [
+    "〜から連絡をもらう",
+    "〜を最後まで聞く",
+    "〜を注意して聞く"
+   ],
+   "exampleEn": "Have you ever heard of this singer? She is very popular in Korea.",
+   "exampleJa": "この歌手のことを聞いたことがありますか。韓国でとても人気があります。",
+   "ipa": "/hɪr əv/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "hear about",
+     "meaningJa": "～について聞く"
+    },
+    {
+     "word": "know of",
+     "meaningJa": "～を知っている"
+    }
+   ]
+  },
+  {
+   "word": "if i were you",
+   "pos": "慣用表現",
+   "meaningJa": "もし私があなたなら",
+   "distractors": [
+    "たとえ〜でも",
+    "〜する場合に備えて",
+    "どんなことがあっても"
+   ],
+   "exampleEn": "If I were you, I would ask the teacher for help right away.",
+   "exampleJa": "もし私があなたなら、すぐに先生に助けを求めるでしょう。",
+   "ipa": "/ɪf aɪ wɜːr juː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "in your shoes",
+     "meaningJa": "あなたの立場なら"
+    },
+    {
+     "word": "my advice would be",
+     "meaningJa": "私の助言としては"
+    }
+   ]
+  },
+  {
+   "word": "in addition to",
+   "pos": "前置詞句",
+   "meaningJa": "〜に加えて",
+   "distractors": [
+    "〜の代わりに",
+    "〜にもかかわらず",
+    "〜が原因で"
+   ],
+   "exampleEn": "In addition to English, she can speak French and a little Spanish.",
+   "exampleJa": "英語に加えて、彼女はフランス語と少しスペイン語が話せます。",
+   "ipa": "/ɪn əˈdɪʃn tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "besides",
+     "meaningJa": "～に加えて"
+    },
+    {
+     "word": "as well as",
+     "meaningJa": "～だけでなく"
+    }
+   ]
+  },
+  {
+   "word": "in a way",
+   "pos": "前置詞句",
+   "meaningJa": "ある意味では",
+   "distractors": [
+    "一般的に",
+    "実際は",
+    "言い換えれば"
+   ],
+   "exampleEn": "In a way, losing that game was a good lesson for our team.",
+   "exampleJa": "ある意味では、あの試合に負けたことは私たちのチームにとって良い教訓でした。",
+   "ipa": "/ɪn ə weɪ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "in a sense",
+     "meaningJa": "ある意味では"
+    },
+    {
+     "word": "to some extent",
+     "meaningJa": "ある程度は"
+    }
+   ]
+  },
+  {
+   "word": "in case",
+   "pos": "慣用表現",
+   "meaningJa": "〜する場合に備えて",
+   "distractors": [
+    "〜するために",
+    "〜にもかかわらず",
+    "実際は"
+   ],
+   "exampleEn": "Take your umbrella in case it rains later this afternoon.",
+   "exampleJa": "午後遅くに雨が降る場合に備えて、傘を持って行きなさい。",
+   "ipa": "/ɪn keɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "just in case",
+     "meaningJa": "念のため"
+    },
+    {
+     "word": "in the event that",
+     "meaningJa": "～の場合には"
+    }
+   ]
+  },
+  {
+   "word": "in cash",
+   "pos": "前置詞句",
+   "meaningJa": "現金で",
+   "distractors": [
+    "在庫があって",
+    "合計で",
+    "前もって"
+   ],
+   "exampleEn": "This small shop only accepts payment in cash, not credit cards.",
+   "exampleJa": "この小さな店は現金払いのみで、クレジットカードは使えません。",
+   "ipa": "/ɪn kæʃ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Finance"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "by credit card",
+     "meaningJa": "クレジットカードで"
+    },
+    {
+     "word": "pay in cash",
+     "meaningJa": "現金で払う"
+    }
+   ]
+  },
+  {
+   "word": "in contrast",
+   "pos": "前置詞句",
+   "meaningJa": "対照的に",
+   "distractors": [
+    "〜に加えて",
+    "実際は",
+    "一般的に"
+   ],
+   "exampleEn": "My brother loves sports. In contrast, I prefer reading books at home.",
+   "exampleJa": "兄はスポーツが大好きです。対照的に、私は家で読書をするほうが好きです。",
+   "ipa": "/ɪn ˈkɑːntræst/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Science",
+    "Education"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "on the other hand",
+     "meaningJa": "他方では"
+    },
+    {
+     "word": "conversely",
+     "meaningJa": "逆に"
+    }
+   ]
+  },
+  {
+   "word": "in detail",
+   "pos": "前置詞句",
+   "meaningJa": "詳細に、詳しく",
+   "distractors": [
+    "一般的に",
+    "直接会って",
+    "実際は"
+   ],
+   "exampleEn": "The doctor explained the treatment in detail so that everyone could understand.",
+   "exampleJa": "医師はみんなが理解できるように、治療について詳しく説明しました。",
+   "ipa": "/ɪn dɪˈteɪl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "at length",
+     "meaningJa": "詳細に"
+    },
+    {
+     "word": "thoroughly",
+     "meaningJa": "徹底的に"
+    }
+   ]
+  },
+  {
+   "word": "in favour of",
+   "pos": "前置詞句",
+   "meaningJa": "〜に賛成して",
+   "distractors": [
+    "〜に反対して",
+    "〜を担当して",
+    "〜の代わりに"
+   ],
+   "exampleEn": "Most club members are in favour of practicing on Saturday mornings.",
+   "exampleJa": "クラブのメンバーのほとんどが、土曜の朝に練習することに賛成しています。",
+   "ipa": "/ɪn ˈfeɪvər əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "Legal"
+   ],
+   "themes": [
+    "Politics",
+    "Law"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "in support of",
+     "meaningJa": "～を支持して"
+    },
+    {
+     "word": "be opposed to",
+     "meaningJa": "～に反対している"
+    }
+   ]
+  },
+  {
+   "word": "in general",
+   "pos": "前置詞句",
+   "meaningJa": "一般的に、概して",
+   "distractors": [
+    "特に",
+    "詳細に",
+    "実際は"
+   ],
+   "exampleEn": "In general, vegetables are cheaper in summer than in winter here.",
+   "exampleJa": "一般的に、ここでは野菜は冬より夏のほうが安いです。",
+   "ipa": "/ɪn ˈdʒenrəl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "TOEFL",
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "generally speaking",
+     "meaningJa": "一般的に言えば"
+    },
+    {
+     "word": "on the whole",
+     "meaningJa": "概して"
+    }
+   ]
+  },
+  {
+   "word": "in other words",
+   "pos": "前置詞句",
+   "meaningJa": "言い換えれば、つまり",
+   "distractors": [
+    "例えば",
+    "対照的に",
+    "その一方で"
+   ],
+   "exampleEn": "The tickets are sold out. In other words, we can't see the show tonight.",
+   "exampleJa": "チケットは売り切れです。つまり、今夜はショーを見られません。",
+   "ipa": "/ɪn ˈʌðər wɜːrdz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "that is to say",
+     "meaningJa": "すなわち"
+    },
+    {
+     "word": "put another way",
+     "meaningJa": "言い換えれば"
+    }
+   ]
+  },
+  {
+   "word": "in particular",
+   "pos": "前置詞句",
+   "meaningJa": "特に、とりわけ",
+   "distractors": [
+    "一般的に",
+    "実際は",
+    "詳細に"
+   ],
+   "exampleEn": "I love Italian food, and pizza in particular is my favorite.",
+   "exampleJa": "イタリア料理が大好きで、特にピザがお気に入りです。",
+   "ipa": "/ɪn pərˈtɪkjələr/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "especially",
+     "meaningJa": "特に"
+    },
+    {
+     "word": "above all",
+     "meaningJa": "とりわけ"
+    }
+   ]
+  },
+  {
+   "word": "in person",
+   "pos": "前置詞句",
+   "meaningJa": "直接会って、本人が",
+   "distractors": [
+    "人前で",
+    "前もって",
+    "急いで"
+   ],
+   "exampleEn": "You need to go to the office in person to get your student card.",
+   "exampleJa": "学生証を受け取るには、直接窓口に行く必要があります。",
+   "ipa": "/ɪn ˈpɜːrsn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "face to face",
+     "meaningJa": "対面で"
+    },
+    {
+     "word": "online",
+     "meaningJa": "オンラインで"
+    }
+   ]
+  },
+  {
+   "word": "in public",
+   "pos": "前置詞句",
+   "meaningJa": "人前で、公衆の面前で",
+   "distractors": [
+    "直接会って",
+    "こっそりと、内密に",
+    "急いで"
+   ],
+   "exampleEn": "He is too shy to sing in public, but he sings well at home.",
+   "exampleJa": "彼は恥ずかしがり屋で人前では歌えませんが、家では上手に歌います。",
+   "ipa": "/ɪn ˈpʌblɪk/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Politics"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "in private",
+     "meaningJa": "内密に"
+    },
+    {
+     "word": "publicly",
+     "meaningJa": "公然と"
+    }
+   ]
+  },
+  {
+   "word": "in reality",
+   "pos": "前置詞句",
+   "meaningJa": "(見かけと違って)現実には",
+   "distractors": [
+    "一般的に",
+    "ある意味では",
+    "理論上は"
+   ],
+   "exampleEn": "The plan sounded easy, but in reality it took us three months.",
+   "exampleJa": "その計画は簡単そうに聞こえましたが、現実には3か月かかりました。",
+   "ipa": "/ɪn riˈæləti/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Science"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "in fact",
+     "meaningJa": "実際は"
+    },
+    {
+     "word": "actually",
+     "meaningJa": "実は"
+    }
+   ]
+  },
+  {
+   "word": "in recent years",
+   "pos": "前置詞句",
+   "meaningJa": "近年",
+   "distractors": [
+    "その間に",
+    "長い目で見れば",
+    "今後はずっと"
+   ],
+   "exampleEn": "In recent years, more and more people have started working from home.",
+   "exampleJa": "近年、ますます多くの人が在宅で働き始めています。",
+   "ipa": "/ɪn ˈriːsnt jɪrz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Technology"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "lately",
+     "meaningJa": "最近"
+    },
+    {
+     "word": "over the years",
+     "meaningJa": "長年にわたって"
+    }
+   ]
+  },
+  {
+   "word": "in response to",
+   "pos": "前置詞句",
+   "meaningJa": "〜に応えて、〜への返答として",
+   "distractors": [
+    "〜に加えて",
+    "〜にもかかわらず",
+    "〜を担当して"
+   ],
+   "exampleEn": "In response to many requests, the store now opens on Sundays too.",
+   "exampleJa": "多くの要望に応えて、その店は日曜日も営業するようになりました。",
+   "ipa": "/ɪn rɪˈspɑːns tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Work",
+    "Politics"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "in reply to",
+     "meaningJa": "～への返答として"
+    },
+    {
+     "word": "in reaction to",
+     "meaningJa": "～への反応として"
+    }
+   ]
+  },
+  {
+   "word": "in stock",
+   "pos": "前置詞句",
+   "meaningJa": "在庫があって",
+   "distractors": [
+    "特売中で",
+    "売りに出されて",
+    "現金で"
+   ],
+   "exampleEn": "I'm sorry, but that popular game is not in stock right now.",
+   "exampleJa": "申し訳ありませんが、その人気ゲームは今在庫がありません。",
+   "ipa": "/ɪn stɑːk/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Finance",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "out of stock",
+     "meaningJa": "在庫切れで"
+    },
+    {
+     "word": "available",
+     "meaningJa": "入手可能で"
+    }
+   ]
+  },
+  {
+   "word": "in terms of",
+   "pos": "前置詞句",
+   "meaningJa": "〜の観点から、〜の面では",
+   "distractors": [
+    "〜に加えて",
+    "〜と比べると",
+    "〜に応えて"
+   ],
+   "exampleEn": "In terms of price, this hotel is the best choice for students.",
+   "exampleJa": "価格の面では、このホテルが学生には一番の選択肢です。",
+   "ipa": "/ɪn tɜːrmz əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Science"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "from the perspective of",
+     "meaningJa": "～の観点から"
+    },
+    {
+     "word": "with regard to",
+     "meaningJa": "～に関して"
+    }
+   ]
+  },
+  {
+   "word": "in the meantime",
+   "pos": "前置詞句",
+   "meaningJa": "その間に",
+   "distractors": [
+    "結局は",
+    "間に合って",
+    "近年"
+   ],
+   "exampleEn": "Dinner will be ready at seven. In the meantime, please set the table.",
+   "exampleJa": "夕食は7時にできます。その間に、テーブルの準備をしてください。",
+   "ipa": "/ɪn ðə ˈmiːntaɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "meanwhile",
+     "meaningJa": "その間に"
+    },
+    {
+     "word": "for the time being",
+     "meaningJa": "当面は"
+    }
+   ]
+  },
+  {
+   "word": "in total",
+   "pos": "前置詞句",
+   "meaningJa": "合計で",
+   "distractors": [
+    "平均して",
+    "現金で",
+    "概して"
+   ],
+   "exampleEn": "In total, about two hundred people joined the charity event last Sunday.",
+   "exampleJa": "先週の日曜日、合計で約200人がチャリティーイベントに参加しました。",
+   "ipa": "/ɪn ˈtoʊtl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Finance",
+    "Science"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "altogether",
+     "meaningJa": "全部で"
+    },
+    {
+     "word": "in all",
+     "meaningJa": "合計で"
+    }
+   ]
+  },
+  {
+   "word": "in touch",
+   "pos": "前置詞句",
+   "meaningJa": "連絡を取り合って",
+   "distractors": [
+    "困った状態で",
+    "急いで",
+    "人前で"
+   ],
+   "exampleEn": "Even after graduation, I am still in touch with my high school teacher.",
+   "exampleJa": "卒業後も、私は高校の先生とまだ連絡を取り合っています。",
+   "ipa": "/ɪn tʌtʃ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "keep in touch",
+     "meaningJa": "連絡を取り続ける"
+    },
+    {
+     "word": "get in touch with",
+     "meaningJa": "～と連絡を取る"
+    }
+   ]
+  },
+  {
+   "word": "get in touch with",
+   "pos": "イディオム",
+   "meaningJa": "〜と連絡を取る",
+   "distractors": [
+    "〜に慣れる",
+    "〜と知り合う",
+    "〜を乗り越える"
+   ],
+   "exampleEn": "Please get in touch with me if you have any questions about the event.",
+   "exampleJa": "イベントについて質問があれば、私に連絡してください。",
+   "ipa": "/ɡet ɪn tʌtʃ wɪð/",
+   "posEn": "Idiom",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "contact",
+     "meaningJa": "連絡する"
+    },
+    {
+     "word": "reach out to",
+     "meaningJa": "～に連絡を取る"
+    }
+   ]
+  },
+  {
+   "word": "keep in touch",
+   "pos": "イディオム",
+   "meaningJa": "連絡を取り続ける",
+   "distractors": [
+    "〜に遅れずについていく",
+    "〜を近づけない",
+    "〜を秘密にしておく"
+   ],
+   "exampleEn": "Let's keep in touch by email after you move to Canada.",
+   "exampleJa": "カナダに引っ越した後も、メールで連絡を取り合いましょう。",
+   "ipa": "/kiːp ɪn tʌtʃ/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Family",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "stay in contact",
+     "meaningJa": "連絡を保つ"
+    },
+    {
+     "word": "keep someone posted",
+     "meaningJa": "近況を知らせる"
+    }
+   ]
+  },
+  {
+   "word": "just in case",
+   "pos": "慣用表現",
+   "meaningJa": "念のため",
+   "distractors": [
+    "ちょうど間に合って",
+    "実際は",
+    "今のところ"
+   ],
+   "exampleEn": "The weather looks fine, but take a jacket just in case.",
+   "exampleJa": "天気は良さそうですが、念のため上着を持って行きなさい。",
+   "ipa": "/dʒʌst ɪn keɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Society",
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "as a precaution",
+     "meaningJa": "用心のため"
+    },
+    {
+     "word": "in case",
+     "meaningJa": "～する場合に備えて"
+    }
+   ]
+  },
+  {
+   "word": "make a difference",
+   "pos": "イディオム",
+   "meaningJa": "違いを生む、効果がある",
+   "distractors": [
+    "決定する",
+    "努力する",
+    "道理にかなう"
+   ],
+   "exampleEn": "Even a small donation can make a difference to children in need.",
+   "exampleJa": "小さな寄付でも、困っている子どもたちにとって大きな違いを生むことがあります。",
+   "ipa": "/meɪk ə ˈdɪfrəns/",
+   "posEn": "Idiom",
+   "domains": [
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Environment"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "have an impact",
+     "meaningJa": "影響を与える"
+    },
+    {
+     "word": "count",
+     "meaningJa": "重要である"
+    }
+   ]
+  },
+  {
+   "word": "manage to do",
+   "pos": "コロケーション",
+   "meaningJa": "なんとか〜する、どうにか〜する",
+   "distractors": [
+    "〜しそこなう",
+    "〜するつもりである",
+    "〜したい気がする"
+   ],
+   "exampleEn": "We managed to catch the last bus although we left the party late.",
+   "exampleJa": "パーティーを出るのが遅くなりましたが、なんとか最終バスに間に合いました。",
+   "ipa": "/ˈmænɪdʒ tuː duː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "succeed in doing",
+     "meaningJa": "～することに成功する"
+    },
+    {
+     "word": "fail to do",
+     "meaningJa": "～しそこなう"
+    }
+   ]
+  },
+  {
+   "word": "mean to do",
+   "pos": "コロケーション",
+   "meaningJa": "〜するつもりである",
+   "distractors": [
+    "なんとか〜する",
+    "〜しそこなう",
+    "〜せずにはいられない"
+   ],
+   "exampleEn": "I didn't mean to break your favorite cup. I'm really sorry.",
+   "exampleJa": "あなたのお気に入りのカップを割るつもりはなかったんです。本当にごめんなさい。",
+   "ipa": "/miːn tuː duː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "intend to",
+     "meaningJa": "～するつもりだ"
+    },
+    {
+     "word": "plan to",
+     "meaningJa": "～する予定だ"
+    }
+   ]
+  },
+  {
+   "word": "no more than",
+   "pos": "慣用表現",
+   "meaningJa": "たった〜、〜しかない",
+   "distractors": [
+    "〜ほども(多く)",
+    "もはや〜ない",
+    "どんなことがあっても"
+   ],
+   "exampleEn": "The whole trip cost no more than fifty dollars, which surprised everyone.",
+   "exampleJa": "旅行全体でたった50ドルしかかからず、みんな驚きました。",
+   "ipa": "/noʊ mɔːr ðæn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Literary"
+   ],
+   "themes": [
+    "Education",
+    "Finance"
+   ],
+   "exams": [
+    "難関大入試",
+    "共通テスト",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "only",
+     "meaningJa": "たった"
+    },
+    {
+     "word": "no less than",
+     "meaningJa": "～ほども"
+    }
+   ]
+  },
+  {
+   "word": "no less than",
+   "pos": "慣用表現",
+   "meaningJa": "〜ほども(多く)、〜も",
+   "distractors": [
+    "たった〜しか(ない)",
+    "もはや〜ない",
+    "道理で〜なわけだ"
+   ],
+   "exampleEn": "No less than five hundred people came to see the school festival.",
+   "exampleJa": "500人もの人が学園祭を見に来ました。",
+   "ipa": "/noʊ les ðæn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Literary"
+   ],
+   "themes": [
+    "Education",
+    "Finance"
+   ],
+   "exams": [
+    "難関大入試",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "as much as",
+     "meaningJa": "～と同じくらい"
+    },
+    {
+     "word": "no more than",
+     "meaningJa": "たった～"
+    }
+   ]
+  },
+  {
+   "word": "no matter what",
+   "pos": "慣用表現",
+   "meaningJa": "たとえ何があっても",
+   "distractors": [
+    "もはや〜ない",
+    "道理で〜なわけだ",
+    "〜でさえない"
+   ],
+   "exampleEn": "No matter what happens, I will finish running this marathon race.",
+   "exampleJa": "たとえ何があっても、私はこのマラソンを完走します。",
+   "ipa": "/noʊ ˈmætər wɑːt/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "whatever happens",
+     "meaningJa": "何が起ころうと"
+    },
+    {
+     "word": "no matter how",
+     "meaningJa": "どんなに～でも"
+    }
+   ]
+  },
+  {
+   "word": "no wonder",
+   "pos": "慣用表現",
+   "meaningJa": "道理で〜なわけだ、〜も当然だ",
+   "distractors": [
+    "たとえ何があっても",
+    "もはや〜ない",
+    "必ずしも〜ではない"
+   ],
+   "exampleEn": "You stayed up all night? No wonder you look so tired today.",
+   "exampleJa": "徹夜したの？道理で今日はそんなに疲れて見えるわけだ。",
+   "ipa": "/noʊ ˈwʌndər/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "it's not surprising that",
+     "meaningJa": "～も驚くにあたらない"
+    },
+    {
+     "word": "naturally",
+     "meaningJa": "当然ながら"
+    }
+   ]
+  },
+  {
+   "word": "not even",
+   "pos": "慣用表現",
+   "meaningJa": "〜でさえない",
+   "distractors": [
+    "必ずしも〜ではない",
+    "もはや〜ない",
+    "たとえ何があっても"
+   ],
+   "exampleEn": "He was so busy that he did not even have time for lunch.",
+   "exampleJa": "彼はとても忙しくて、昼食をとる時間さえありませんでした。",
+   "ipa": "/nɑːt ˈiːvn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "not so much as",
+     "meaningJa": "～さえしない"
+    },
+    {
+     "word": "far from",
+     "meaningJa": "～どころではない"
+    }
+   ]
+  },
+  {
+   "word": "not necessarily",
+   "pos": "慣用表現",
+   "meaningJa": "必ずしも〜ではない",
+   "distractors": [
+    "〜でさえない",
+    "もはや〜ない",
+    "道理で〜なわけだ"
+   ],
+   "exampleEn": "Expensive restaurants do not necessarily serve the best food in town.",
+   "exampleJa": "高級レストランが必ずしも街で一番おいしい料理を出すとは限りません。",
+   "ipa": "/nɑːt ˌnesəˈserəli/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Science",
+    "Society"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "not always",
+     "meaningJa": "いつも～とは限らない"
+    },
+    {
+     "word": "not entirely",
+     "meaningJa": "完全に～ではない"
+    }
+   ]
+  },
+  {
+   "word": "not only ... but also",
+   "pos": "慣用表現",
+   "meaningJa": "〜だけでなく…も",
+   "distractors": [
+    "〜か…のどちらか",
+    "〜も…も〜ない",
+    "〜というよりむしろ…"
+   ],
+   "exampleEn": "She speaks not only English but also Chinese and Korean fluently.",
+   "exampleJa": "彼女は英語だけでなく、中国語と韓国語も流ちょうに話します。",
+   "ipa": "/nɑːt ˈoʊnli bʌt ˈɔːlsoʊ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "as well as",
+     "meaningJa": "～だけでなく"
+    },
+    {
+     "word": "in addition to",
+     "meaningJa": "～に加えて"
+    }
+   ]
+  },
+  {
+   "word": "on a regular basis",
+   "pos": "前置詞句",
+   "meaningJa": "定期的に",
+   "distractors": [
+    "平均して",
+    "予定どおりに",
+    "出張で"
+   ],
+   "exampleEn": "You should exercise on a regular basis to stay healthy and strong.",
+   "exampleJa": "健康で丈夫でいるためには、定期的に運動するべきです。",
+   "ipa": "/ɑːn ə ˈreɡjələr ˈbeɪsɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Medical"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "regularly",
+     "meaningJa": "定期的に"
+    },
+    {
+     "word": "routinely",
+     "meaningJa": "日常的に"
+    }
+   ]
+  },
+  {
+   "word": "on duty",
+   "pos": "前置詞句",
+   "meaningJa": "勤務中で、当番で",
+   "distractors": [
+    "非番で",
+    "出張で",
+    "予定どおりに"
+   ],
+   "exampleEn": "The nurse was on duty all night, so she is very tired now.",
+   "exampleJa": "その看護師は一晩中勤務していたので、今とても疲れています。",
+   "ipa": "/ɑːn ˈduːti/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Medical"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "off duty",
+     "meaningJa": "非番で"
+    },
+    {
+     "word": "at work",
+     "meaningJa": "勤務中で"
+    }
+   ]
+  },
+  {
+   "word": "off duty",
+   "pos": "前置詞句",
+   "meaningJa": "非番で、勤務時間外で",
+   "distractors": [
+    "勤務中で",
+    "出張で",
+    "予定より遅れて"
+   ],
+   "exampleEn": "The police officer helped the lost child even though he was off duty.",
+   "exampleJa": "その警察官は非番だったにもかかわらず、迷子の子どもを助けました。",
+   "ipa": "/ɔːf ˈduːti/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Medical"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "on duty",
+     "meaningJa": "勤務中で"
+    },
+    {
+     "word": "on leave",
+     "meaningJa": "休暇中で"
+    }
+   ]
+  },
+  {
+   "word": "on my own",
+   "pos": "前置詞句",
+   "meaningJa": "一人で、自力で",
+   "distractors": [
+    "わざと",
+    "途中で",
+    "勤務中で"
+   ],
+   "exampleEn": "After moving to Tokyo, I learned to cook on my own.",
+   "exampleJa": "東京に引っ越してから、自力で料理を覚えました。",
+   "ipa": "/ɑːn maɪ oʊn/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "by myself",
+     "meaningJa": "自分一人で"
+    },
+    {
+     "word": "independently",
+     "meaningJa": "独立して"
+    }
+   ]
+  },
+  {
+   "word": "on schedule",
+   "pos": "前置詞句",
+   "meaningJa": "予定どおりに",
+   "distractors": [
+    "予定より早く",
+    "予定より遅れて",
+    "定期的に"
+   ],
+   "exampleEn": "Despite the snow, all the trains are running on schedule today.",
+   "exampleJa": "雪にもかかわらず、今日はすべての電車が予定どおりに運行しています。",
+   "ipa": "/ɑːn ˈskedʒuːl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "ahead of schedule",
+     "meaningJa": "予定より早く"
+    },
+    {
+     "word": "behind schedule",
+     "meaningJa": "予定より遅れて"
+    }
+   ]
+  },
+  {
+   "word": "ahead of schedule",
+   "pos": "前置詞句",
+   "meaningJa": "予定より早く",
+   "distractors": [
+    "予定どおりに",
+    "予定より遅れて",
+    "時間ぎりぎりに"
+   ],
+   "exampleEn": "The construction of the new library finished two months ahead of schedule.",
+   "exampleJa": "新しい図書館の建設は予定より2か月早く終わりました。",
+   "ipa": "/əˈhed əv ˈskedʒuːl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "early",
+     "meaningJa": "早めに"
+    },
+    {
+     "word": "ahead of time",
+     "meaningJa": "前もって"
+    }
+   ]
+  },
+  {
+   "word": "behind schedule",
+   "pos": "前置詞句",
+   "meaningJa": "予定より遅れて",
+   "distractors": [
+    "予定どおりに",
+    "予定より早く",
+    "間に合って"
+   ],
+   "exampleEn": "The project is behind schedule because two members were sick last week.",
+   "exampleJa": "先週メンバー2人が病気だったため、プロジェクトは予定より遅れています。",
+   "ipa": "/bɪˈhaɪnd ˈskedʒuːl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "delayed",
+     "meaningJa": "遅延して"
+    },
+    {
+     "word": "fall behind",
+     "meaningJa": "遅れをとる"
+    }
+   ]
+  },
+  {
+   "word": "on the one hand",
+   "pos": "前置詞句",
+   "meaningJa": "一方では",
+   "distractors": [
+    "概して",
+    "途中で",
+    "ところで"
+   ],
+   "exampleEn": "On the one hand, city life is exciting; on the other hand, it is expensive.",
+   "exampleJa": "一方では都会の生活は刺激的ですが、他方ではお金がかかります。",
+   "ipa": "/ɑːn ðə wʌn hænd/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Education",
+    "Politics"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "on the other hand",
+     "meaningJa": "他方では"
+    },
+    {
+     "word": "in contrast",
+     "meaningJa": "対照的に"
+    }
+   ]
+  },
+  {
+   "word": "on the whole",
+   "pos": "前置詞句",
+   "meaningJa": "概して、全体的に見て",
+   "distractors": [
+    "途中で",
+    "その一方で",
+    "わざと"
+   ],
+   "exampleEn": "There were some problems, but on the whole the school trip was successful.",
+   "exampleJa": "いくつか問題はありましたが、概して修学旅行は成功でした。",
+   "ipa": "/ɑːn ðə hoʊl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "by and large",
+     "meaningJa": "概して"
+    },
+    {
+     "word": "generally",
+     "meaningJa": "一般に"
+    }
+   ]
+  },
+  {
+   "word": "or something",
+   "pos": "慣用表現",
+   "meaningJa": "〜か何か",
+   "distractors": [
+    "ある種の、何らかの",
+    "それで終わり",
+    "その上、さらに"
+   ],
+   "exampleEn": "If you are hungry, we can get a sandwich or something before the movie.",
+   "exampleJa": "おなかがすいているなら、映画の前にサンドイッチか何か買おうよ。",
+   "ipa": "/ɔːr ˈsʌmθɪŋ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [],
+   "related": [
+    {
+     "word": "or so",
+     "meaningJa": "～かそこら"
+    },
+    {
+     "word": "or whatever",
+     "meaningJa": "とか何とか"
+    }
+   ]
+  },
+  {
+   "word": "ought to",
+   "pos": "慣用表現",
+   "meaningJa": "〜すべきだ、〜したほうがよい",
+   "distractors": [
+    "むしろ〜したい",
+    "〜する傾向がある",
+    "きっと〜する"
+   ],
+   "exampleEn": "You ought to see a doctor if the pain does not go away soon.",
+   "exampleJa": "痛みがすぐに治まらないなら、医者に診てもらうべきだよ。",
+   "ipa": "/ˈɔːt tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "should",
+     "meaningJa": "～すべきだ"
+    },
+    {
+     "word": "be supposed to",
+     "meaningJa": "～することになっている"
+    }
+   ]
+  },
+  {
+   "word": "out of breath",
+   "pos": "前置詞句",
+   "meaningJa": "息を切らして",
+   "distractors": [
+    "故障中で",
+    "在庫切れで",
+    "失業中で"
+   ],
+   "exampleEn": "After running up the stairs to the fifth floor, I was completely out of breath.",
+   "exampleJa": "5階まで階段を駆け上がったら、完全に息が切れてしまった。",
+   "ipa": "/aʊt əv breθ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Sports"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "breathless",
+     "meaningJa": "息が切れて"
+    },
+    {
+     "word": "panting",
+     "meaningJa": "あえいで"
+    }
+   ]
+  },
+  {
+   "word": "out of control",
+   "pos": "前置詞句",
+   "meaningJa": "制御できなくなって、手に負えなくて",
+   "distractors": [
+    "時代遅れの",
+    "故障中で",
+    "息を切らして"
+   ],
+   "exampleEn": "The fire spread quickly and was soon out of control.",
+   "exampleJa": "火はあっという間に広がり、すぐに手がつけられなくなった。",
+   "ipa": "/aʊt əv kənˈtroʊl/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Environment"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "under control",
+     "meaningJa": "制御されて"
+    },
+    {
+     "word": "get out of hand",
+     "meaningJa": "手に負えなくなる"
+    }
+   ]
+  },
+  {
+   "word": "out of stock",
+   "pos": "前置詞句",
+   "meaningJa": "在庫切れで",
+   "distractors": [
+    "故障中で",
+    "失業中で",
+    "時代遅れの"
+   ],
+   "exampleEn": "I wanted to buy those shoes, but they were out of stock in my size.",
+   "exampleJa": "その靴を買いたかったが、私のサイズは在庫切れだった。",
+   "ipa": "/aʊt əv stɑːk/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Finance",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "in stock",
+     "meaningJa": "在庫があって"
+    },
+    {
+     "word": "sold out",
+     "meaningJa": "売り切れで"
+    }
+   ]
+  },
+  {
+   "word": "over and over",
+   "pos": "慣用表現",
+   "meaningJa": "何度も繰り返して",
+   "distractors": [
+    "長年にわたって",
+    "時間がたつにつれて",
+    "一つずつ、順番に"
+   ],
+   "exampleEn": "The little girl watched the same cartoon over and over all afternoon.",
+   "exampleJa": "その女の子は午後じゅう同じアニメを何度も繰り返し見た。",
+   "ipa": "/ˈoʊvər ənd ˈoʊvər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Education",
+    "Psychology"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "repeatedly",
+     "meaningJa": "繰り返し"
+    },
+    {
+     "word": "again and again",
+     "meaningJa": "何度も"
+    }
+   ]
+  },
+  {
+   "word": "over the years",
+   "pos": "前置詞句",
+   "meaningJa": "長年にわたって",
+   "distractors": [
+    "何度も繰り返して",
+    "突然",
+    "行ったり来たり"
+   ],
+   "exampleEn": "Over the years, this small town has changed into a busy city.",
+   "exampleJa": "長年の間に、この小さな町はにぎやかな都市に変わった。",
+   "ipa": "/ˈoʊvər ðə jɪrz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "History",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "over time",
+     "meaningJa": "時間がたつにつれて"
+    },
+    {
+     "word": "through the years",
+     "meaningJa": "長年を通じて"
+    }
+   ]
+  },
+  {
+   "word": "over time",
+   "pos": "前置詞句",
+   "meaningJa": "時間がたつにつれて",
+   "distractors": [
+    "今のところ",
+    "何度も繰り返して",
+    "遅かれ早かれ"
+   ],
+   "exampleEn": "Your English will improve over time if you practice a little every day.",
+   "exampleJa": "毎日少しずつ練習すれば、英語は時間とともに上達するよ。",
+   "ipa": "/ˈoʊvər taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Science",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "gradually",
+     "meaningJa": "徐々に"
+    },
+    {
+     "word": "in the long run",
+     "meaningJa": "長い目で見れば"
+    }
+   ]
+  },
+  {
+   "word": "point of view",
+   "pos": "慣用表現",
+   "meaningJa": "観点、考え方",
+   "distractors": [
+    "生き方、生活様式",
+    "〜の上昇、〜の増加",
+    "〜という事実"
+   ],
+   "exampleEn": "From my point of view, taking the train is better than driving.",
+   "exampleJa": "私の考えでは、車で行くより電車に乗るほうがいい。",
+   "ipa": "/pɔɪnt əv vjuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "perspective",
+     "meaningJa": "視点"
+    },
+    {
+     "word": "standpoint",
+     "meaningJa": "立場"
+    }
+   ]
+  },
+  {
+   "word": "prepared to do",
+   "pos": "慣用表現",
+   "meaningJa": "〜する用意がある、〜する覚悟がある",
+   "distractors": [
+    "〜する傾向がある",
+    "きっと〜する",
+    "〜すべきだ"
+   ],
+   "exampleEn": "She is prepared to work on weekends to finish the project on time.",
+   "exampleJa": "彼女はプロジェクトを期限内に終えるため、週末も働く用意がある。",
+   "ipa": "/prɪˈperd tuː duː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "be ready to",
+     "meaningJa": "～する用意がある"
+    },
+    {
+     "word": "be willing to",
+     "meaningJa": "～する気がある"
+    }
+   ]
+  },
+  {
+   "word": "quite a few",
+   "pos": "慣用表現",
+   "meaningJa": "かなり多くの",
+   "distractors": [
+    "ある種の、何らかの",
+    "最大〜まで",
+    "ある程度は"
+   ],
+   "exampleEn": "Quite a few students in my class have been abroad at least once.",
+   "exampleJa": "私のクラスのかなり多くの生徒が、少なくとも一度は海外に行ったことがある。",
+   "ipa": "/kwaɪt ə fjuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "a good many",
+     "meaningJa": "かなり多くの"
+    },
+    {
+     "word": "a number of",
+     "meaningJa": "いくつもの"
+    }
+   ]
+  },
+  {
+   "word": "raise money",
+   "pos": "コロケーション",
+   "meaningJa": "資金を集める",
+   "distractors": [
+    "生計を立てる",
+    "予約をする",
+    "苦情を言う"
+   ],
+   "exampleEn": "The students held a concert to raise money for the local hospital.",
+   "exampleJa": "生徒たちは地元の病院のための資金を集めるためにコンサートを開いた。",
+   "ipa": "/reɪz ˈmʌni/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Finance",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "fundraise",
+     "meaningJa": "資金調達する"
+    },
+    {
+     "word": "collect donations",
+     "meaningJa": "寄付を集める"
+    }
+   ]
+  },
+  {
+   "word": "rather than",
+   "pos": "慣用表現",
+   "meaningJa": "〜よりむしろ",
+   "distractors": [
+    "〜のおかげで",
+    "〜と一緒に",
+    "〜によれば"
+   ],
+   "exampleEn": "I usually walk to school rather than take the crowded bus.",
+   "exampleJa": "私は混んだバスに乗るよりむしろ歩いて学校へ行くことが多い。",
+   "ipa": "/ˈræðər ðæn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "instead of",
+     "meaningJa": "～の代わりに"
+    },
+    {
+     "word": "as opposed to",
+     "meaningJa": "～ではなく"
+    }
+   ]
+  },
+  {
+   "word": "related to",
+   "pos": "慣用表現",
+   "meaningJa": "〜に関連した",
+   "distractors": [
+    "〜のおかげで",
+    "〜よりむしろ",
+    "〜と一緒に"
+   ],
+   "exampleEn": "The teacher asked us to find news articles related to climate change.",
+   "exampleJa": "先生は気候変動に関連するニュース記事を探すよう私たちに言った。",
+   "ipa": "/rɪˈleɪtɪd tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Science",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "connected with",
+     "meaningJa": "～と関係のある"
+    },
+    {
+     "word": "relevant to",
+     "meaningJa": "～に関連がある"
+    }
+   ]
+  },
+  {
+   "word": "a rise in",
+   "pos": "コロケーション",
+   "meaningJa": "〜の上昇、〜の増加",
+   "distractors": [
+    "観点、考え方",
+    "〜という事実",
+    "生き方、生活様式"
+   ],
+   "exampleEn": "The news reported a rise in food prices across the country.",
+   "exampleJa": "ニュースは全国的な食品価格の上昇を報じた。",
+   "ipa": "/ə raɪz ɪn/",
+   "posEn": "Phrase",
+   "domains": [
+    "News",
+    "Academic"
+   ],
+   "themes": [
+    "Finance",
+    "Environment"
+   ],
+   "exams": [
+    "IELTS",
+    "TOEFL",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "an increase in",
+     "meaningJa": "～の増加"
+    },
+    {
+     "word": "a fall in",
+     "meaningJa": "～の減少"
+    }
+   ]
+  },
+  {
+   "word": "so far",
+   "pos": "慣用表現",
+   "meaningJa": "今のところ、これまでは",
+   "distractors": [
+    "遅かれ早かれ",
+    "すぐに、直ちに",
+    "はるばる、最後までずっと"
+   ],
+   "exampleEn": "So far, I have read three books during the summer vacation.",
+   "exampleJa": "今のところ、夏休み中に本を3冊読んだ。",
+   "ipa": "/soʊ fɑːr/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "up to now",
+     "meaningJa": "今まで"
+    },
+    {
+     "word": "until now",
+     "meaningJa": "これまで"
+    }
+   ]
+  },
+  {
+   "word": "some kind of",
+   "pos": "慣用表現",
+   "meaningJa": "ある種の、何らかの",
+   "distractors": [
+    "かなり多くの",
+    "〜か何か",
+    "ある程度は"
+   ],
+   "exampleEn": "There was some kind of festival in the park last weekend.",
+   "exampleJa": "先週末、公園で何かのお祭りがあった。",
+   "ipa": "/sʌm kaɪnd əv/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Science"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "a sort of",
+     "meaningJa": "一種の"
+    },
+    {
+     "word": "some sort of",
+     "meaningJa": "何らかの"
+    }
+   ]
+  },
+  {
+   "word": "sooner or later",
+   "pos": "慣用表現",
+   "meaningJa": "遅かれ早かれ",
+   "distractors": [
+    "今のところ",
+    "すぐに、直ちに",
+    "何度も繰り返して"
+   ],
+   "exampleEn": "Sooner or later, you will have to tell your parents the truth.",
+   "exampleJa": "遅かれ早かれ、両親に本当のことを話さなければならないよ。",
+   "ipa": "/ˈsuːnər ɔːr ˈleɪtər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "eventually",
+     "meaningJa": "いずれは"
+    },
+    {
+     "word": "a matter of time",
+     "meaningJa": "時間の問題"
+    }
+   ]
+  },
+  {
+   "word": "step by step",
+   "pos": "慣用表現",
+   "meaningJa": "一歩ずつ、着実に",
+   "distractors": [
+    "並んで",
+    "面と向かって",
+    "行ったり来たり"
+   ],
+   "exampleEn": "The teacher explained how to solve the problem step by step.",
+   "exampleJa": "先生はその問題の解き方を一歩ずつ順を追って説明した。",
+   "ipa": "/step baɪ step/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "gradually",
+     "meaningJa": "徐々に"
+    },
+    {
+     "word": "little by little",
+     "meaningJa": "少しずつ"
+    }
+   ]
+  },
+  {
+   "word": "inside out",
+   "pos": "慣用表現",
+   "meaningJa": "裏返しに",
+   "distractors": [
+    "逆さまに",
+    "面と向かって",
+    "並んで"
+   ],
+   "exampleEn": "He was in such a hurry that he wore his T-shirt inside out.",
+   "exampleJa": "彼はとても急いでいたので、Tシャツを裏返しに着てしまった。",
+   "ipa": "/ɪnˌsaɪd ˈaʊt/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "upside down",
+     "meaningJa": "逆さまに"
+    },
+    {
+     "word": "know inside out",
+     "meaningJa": "知り尽くしている"
+    }
+   ]
+  },
+  {
+   "word": "sure to do",
+   "pos": "慣用表現",
+   "meaningJa": "きっと〜する",
+   "distractors": [
+    "〜する用意がある",
+    "〜する傾向がある",
+    "むしろ〜したい"
+   ],
+   "exampleEn": "Take an umbrella because it is sure to rain this afternoon.",
+   "exampleJa": "今日の午後はきっと雨が降るから、傘を持って行きなさい。",
+   "ipa": "/ʃʊr tuː duː/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "be certain to",
+     "meaningJa": "確実に～する"
+    },
+    {
+     "word": "be bound to",
+     "meaningJa": "きっと～するはずだ"
+    }
+   ]
+  },
+  {
+   "word": "tell the truth",
+   "pos": "コロケーション",
+   "meaningJa": "本当のことを言う",
+   "distractors": [
+    "うそをつく",
+    "違いが分かる",
+    "秘密を守る"
+   ],
+   "exampleEn": "The boy finally decided to tell the truth about the broken window.",
+   "exampleJa": "少年はついに、割れた窓について本当のことを話す決心をした。",
+   "ipa": "/tel ðə truːθ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Legal"
+   ],
+   "themes": [
+    "Society",
+    "Law"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "be honest",
+     "meaningJa": "正直である"
+    },
+    {
+     "word": "tell a lie",
+     "meaningJa": "うそをつく"
+    }
+   ]
+  },
+  {
+   "word": "tend to do",
+   "pos": "慣用表現",
+   "meaningJa": "〜する傾向がある、〜しがちである",
+   "distractors": [
+    "きっと〜する",
+    "〜する用意がある",
+    "〜すべきだ"
+   ],
+   "exampleEn": "I tend to stay up late when I have no classes the next day.",
+   "exampleJa": "翌日授業がないと、私は夜ふかしする傾向がある。",
+   "ipa": "/tend tuː duː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Science",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "be inclined to",
+     "meaningJa": "～しがちである"
+    },
+    {
+     "word": "be likely to",
+     "meaningJa": "～しそうである"
+    }
+   ]
+  },
+  {
+   "word": "that's it",
+   "pos": "慣用表現",
+   "meaningJa": "それで終わり、それだけだ",
+   "distractors": [
+    "残念だ",
+    "信じられないかもしれないが",
+    "くつろいでください"
+   ],
+   "exampleEn": "You just push this button to start the machine, and that's it.",
+   "exampleJa": "このボタンを押して機械を動かすだけ、それで終わりだよ。",
+   "ipa": "/ðæts ɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "that's all",
+     "meaningJa": "それで全部だ"
+    },
+    {
+     "word": "that's enough",
+     "meaningJa": "もう十分だ"
+    }
+   ]
+  },
+  {
+   "word": "the fact that",
+   "pos": "慣用表現",
+   "meaningJa": "〜という事実",
+   "distractors": [
+    "観点、考え方",
+    "〜の上昇、〜の増加",
+    "〜のこととなると"
+   ],
+   "exampleEn": "The fact that he apologized quickly shows he is an honest person.",
+   "exampleJa": "彼がすぐに謝ったという事実は、彼が正直な人だということを示している。",
+   "ipa": "/ðə fækt ðæt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Legal"
+   ],
+   "themes": [
+    "Education",
+    "Law"
+   ],
+   "exams": [
+    "TOEFL",
+    "難関大入試",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "the idea that",
+     "meaningJa": "～という考え"
+    },
+    {
+     "word": "despite the fact that",
+     "meaningJa": "～にもかかわらず"
+    }
+   ]
+  },
+  {
+   "word": "to begin with",
+   "pos": "慣用表現",
+   "meaningJa": "まず第一に、初めに",
+   "distractors": [
+    "正直に言うと",
+    "ある程度は",
+    "その上、さらに"
+   ],
+   "exampleEn": "To begin with, let me explain the rules of this game.",
+   "exampleJa": "まず初めに、このゲームのルールを説明させてください。",
+   "ipa": "/tuː bɪˈɡɪn wɪð/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "first of all",
+     "meaningJa": "まず第一に"
+    },
+    {
+     "word": "for one thing",
+     "meaningJa": "一つには"
+    }
+   ]
+  },
+  {
+   "word": "to be honest",
+   "pos": "慣用表現",
+   "meaningJa": "正直に言うと",
+   "distractors": [
+    "まず第一に",
+    "ある程度は",
+    "遅かれ早かれ"
+   ],
+   "exampleEn": "To be honest, I did not enjoy the movie very much.",
+   "exampleJa": "正直に言うと、その映画はあまり楽しめなかった。",
+   "ipa": "/tuː bi ˈɑːnɪst/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "to tell the truth",
+     "meaningJa": "実を言うと"
+    },
+    {
+     "word": "frankly speaking",
+     "meaningJa": "率直に言えば"
+    }
+   ]
+  },
+  {
+   "word": "to tell the truth",
+   "pos": "慣用表現",
+   "meaningJa": "実を言うと",
+   "distractors": [
+    "まず第一に",
+    "ある程度は",
+    "その上、さらに"
+   ],
+   "exampleEn": "To tell the truth, I completely forgot about our meeting yesterday.",
+   "exampleJa": "実を言うと、昨日の打ち合わせのことをすっかり忘れていた。",
+   "ipa": "/tuː tel ðə truːθ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "to be honest",
+     "meaningJa": "正直に言うと"
+    },
+    {
+     "word": "in fact",
+     "meaningJa": "実際は"
+    }
+   ]
+  },
+  {
+   "word": "to some extent",
+   "pos": "慣用表現",
+   "meaningJa": "ある程度は",
+   "distractors": [
+    "まず第一に",
+    "正直に言うと",
+    "今のところ"
+   ],
+   "exampleEn": "I agree with your opinion to some extent, but not completely.",
+   "exampleJa": "あなたの意見にはある程度賛成だが、完全にではない。",
+   "ipa": "/tuː sʌm ɪkˈstent/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Science"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "partly",
+     "meaningJa": "部分的に"
+    },
+    {
+     "word": "in a way",
+     "meaningJa": "ある意味では"
+    }
+   ]
+  },
+  {
+   "word": "together with",
+   "pos": "前置詞句",
+   "meaningJa": "〜と一緒に",
+   "distractors": [
+    "〜のおかげで",
+    "〜によれば",
+    "〜の結果として"
+   ],
+   "exampleEn": "Please send the report together with the photos you took at the event.",
+   "exampleJa": "イベントで撮った写真と一緒に報告書を送ってください。",
+   "ipa": "/təˈɡeðər wɪð/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "along with",
+     "meaningJa": "～と一緒に"
+    },
+    {
+     "word": "in addition to",
+     "meaningJa": "～に加えて"
+    }
+   ]
+  },
+  {
+   "word": "too bad",
+   "pos": "慣用表現",
+   "meaningJa": "残念だ、気の毒だ",
+   "distractors": [
+    "それで終わり",
+    "〜はどうしたのか",
+    "信じられないかもしれないが"
+   ],
+   "exampleEn": "It's too bad that you cannot come to the party on Saturday.",
+   "exampleJa": "土曜日のパーティーに来られないなんて残念だ。",
+   "ipa": "/tuː bæd/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "what a shame",
+     "meaningJa": "なんて残念な"
+    },
+    {
+     "word": "unfortunately",
+     "meaningJa": "あいにく"
+    }
+   ]
+  },
+  {
+   "word": "under construction",
+   "pos": "前置詞句",
+   "meaningJa": "建設中で、工事中で",
+   "distractors": [
+    "体調が悪い",
+    "プレッシャーを受けて",
+    "制御されて"
+   ],
+   "exampleEn": "The new library is still under construction and will open next spring.",
+   "exampleJa": "新しい図書館はまだ建設中で、来年の春に開館する予定だ。",
+   "ipa": "/ˈʌndər kənˈstrʌkʃn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Technical"
+   ],
+   "themes": [
+    "Work",
+    "Technology"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "in progress",
+     "meaningJa": "進行中で"
+    },
+    {
+     "word": "being built",
+     "meaningJa": "建設中の"
+    }
+   ]
+  },
+  {
+   "word": "under control",
+   "pos": "前置詞句",
+   "meaningJa": "制御されて、収拾がついて",
+   "distractors": [
+    "建設中で",
+    "体調が悪い",
+    "プレッシャーを受けて"
+   ],
+   "exampleEn": "Don't worry. Everything is under control, and the event will start on time.",
+   "exampleJa": "心配しないで。すべて問題なく管理できていて、イベントは時間どおり始まるよ。",
+   "ipa": "/ˈʌndər kənˈtroʊl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Medical"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "out of control",
+     "meaningJa": "制御できなくなって"
+    },
+    {
+     "word": "in hand",
+     "meaningJa": "掌握して"
+    }
+   ]
+  },
+  {
+   "word": "under pressure",
+   "pos": "前置詞句",
+   "meaningJa": "プレッシャーを受けて",
+   "distractors": [
+    "建設中で",
+    "制御されて",
+    "体調が悪い"
+   ],
+   "exampleEn": "She works well under pressure, even when the deadline is very close.",
+   "exampleJa": "彼女は締め切りが迫っていても、プレッシャーの中でうまく仕事をする。",
+   "ipa": "/ˈʌndər ˈpreʃər/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Medical"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "stressed",
+     "meaningJa": "ストレスを受けて"
+    },
+    {
+     "word": "put pressure on",
+     "meaningJa": "～に圧力をかける"
+    }
+   ]
+  },
+  {
+   "word": "under the weather",
+   "pos": "イディオム",
+   "meaningJa": "体調が悪い",
+   "distractors": [
+    "建設中で",
+    "制御されて",
+    "プレッシャーを受けて"
+   ],
+   "exampleEn": "I'm feeling a little under the weather, so I will go home early today.",
+   "exampleJa": "少し体調が悪いので、今日は早く帰ります。",
+   "ipa": "/ˈʌndər ðə ˈweðər/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "Medical"
+   ],
+   "themes": [
+    "Health"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "feel unwell",
+     "meaningJa": "気分がすぐれない"
+    },
+    {
+     "word": "come down with",
+     "meaningJa": "病気にかかる"
+    }
+   ]
+  },
+  {
+   "word": "up to",
+   "pos": "前置詞句",
+   "meaningJa": "最大〜まで、〜次第で",
+   "distractors": [
+    "最新の",
+    "今まで、これまで",
+    "〜のおかげで"
+   ],
+   "exampleEn": "This small hall can hold up to two hundred people.",
+   "exampleJa": "この小ホールは最大200人まで収容できる。",
+   "ipa": "/ʌp tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Finance",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "as many as",
+     "meaningJa": "～もの数の"
+    },
+    {
+     "word": "depend on",
+     "meaningJa": "～次第である"
+    }
+   ]
+  },
+  {
+   "word": "up to now",
+   "pos": "慣用表現",
+   "meaningJa": "今まで、これまで",
+   "distractors": [
+    "最新の",
+    "最大〜まで",
+    "遅かれ早かれ"
+   ],
+   "exampleEn": "Up to now, we have had no problems with the new system.",
+   "exampleJa": "今までのところ、新しいシステムに問題は起きていない。",
+   "ipa": "/ʌp tuː naʊ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "so far",
+     "meaningJa": "今のところ"
+    },
+    {
+     "word": "until now",
+     "meaningJa": "これまで"
+    }
+   ]
+  },
+  {
+   "word": "way of life",
+   "pos": "慣用表現",
+   "meaningJa": "生き方、生活様式",
+   "distractors": [
+    "観点、考え方",
+    "〜という事実",
+    "〜の上昇、〜の増加"
+   ],
+   "exampleEn": "Living close to nature is an important part of their way of life.",
+   "exampleJa": "自然の近くで暮らすことは、彼らの生活様式の大切な一部だ。",
+   "ipa": "/weɪ əv laɪf/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "History"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "lifestyle",
+     "meaningJa": "生活様式"
+    },
+    {
+     "word": "quality of life",
+     "meaningJa": "生活の質"
+    }
+   ]
+  },
+  {
+   "word": "well known",
+   "pos": "慣用表現",
+   "meaningJa": "よく知られた、有名な",
+   "distractors": [
+    "最新の",
+    "時代遅れの",
+    "建設中で"
+   ],
+   "exampleEn": "This town is well known for its beautiful castle and old streets.",
+   "exampleJa": "この町は美しい城と古い町並みでよく知られている。",
+   "ipa": "/ˌwel ˈnoʊn/",
+   "posEn": "Adjective",
+   "domains": [
+    "News",
+    "Academic"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "famous",
+     "meaningJa": "有名な"
+    },
+    {
+     "word": "renowned",
+     "meaningJa": "名高い"
+    }
+   ]
+  },
+  {
+   "word": "what's more",
+   "pos": "慣用表現",
+   "meaningJa": "その上、さらに",
+   "distractors": [
+    "正直に言うと",
+    "その結果",
+    "実のところ"
+   ],
+   "exampleEn": "The hotel was cheap, and what's more, the breakfast was excellent.",
+   "exampleJa": "そのホテルは安く、その上、朝食が素晴らしかった。",
+   "ipa": "/wɑːts mɔːr/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "moreover",
+     "meaningJa": "さらに"
+    },
+    {
+     "word": "besides",
+     "meaningJa": "その上"
+    }
+   ]
+  },
+  {
+   "word": "when it comes to",
+   "pos": "慣用表現",
+   "meaningJa": "〜のこととなると",
+   "distractors": [
+    "〜のおかげで",
+    "〜によれば",
+    "〜という事実"
+   ],
+   "exampleEn": "When it comes to cooking, my brother is much better than I am.",
+   "exampleJa": "料理のこととなると、兄は私よりずっと上手だ。",
+   "ipa": "/wen ɪt kʌmz tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "as for",
+     "meaningJa": "～について言えば"
+    },
+    {
+     "word": "regarding",
+     "meaningJa": "～に関して"
+    }
+   ]
+  },
+  {
+   "word": "would rather",
+   "pos": "慣用表現",
+   "meaningJa": "むしろ〜したい",
+   "distractors": [
+    "〜すべきだ",
+    "〜する傾向がある",
+    "〜する用意がある"
+   ],
+   "exampleEn": "I would rather stay home tonight than go out in this rain.",
+   "exampleJa": "この雨の中出かけるより、今夜はむしろ家にいたい。",
+   "ipa": "/wʊd ˈræðər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "prefer to",
+     "meaningJa": "～のほうを好む"
+    },
+    {
+     "word": "rather than",
+     "meaningJa": "～よりむしろ"
+    }
+   ]
+  },
+  {
+   "word": "what's wrong with",
+   "pos": "慣用表現",
+   "meaningJa": "〜はどうしたのか、〜のどこが悪いのか",
+   "distractors": [
+    "それで終わり",
+    "残念だ",
+    "信じられないかもしれないが"
+   ],
+   "exampleEn": "What's wrong with your computer? The screen has been black for ten minutes.",
+   "exampleJa": "あなたのパソコン、どうしたの。画面が10分間真っ暗のままだよ。",
+   "ipa": "/wɑːts rɔːŋ wɪð/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "what's the matter with",
+     "meaningJa": "～はどうしたのか"
+    },
+    {
+     "word": "what's up with",
+     "meaningJa": "～はどうしたの"
+    }
+   ]
+  },
+  {
+   "word": "all at once",
+   "pos": "慣用表現",
+   "meaningJa": "一度に、一斉に",
+   "distractors": [
+    "とりわけ、何よりも",
+    "はるばる、最後までずっと",
+    "何度も繰り返して"
+   ],
+   "exampleEn": "The guests arrived all at once, so the small restaurant became very busy.",
+   "exampleJa": "客が一度に押し寄せたので、その小さなレストランはとても忙しくなった。",
+   "ipa": "/ɔːl æt wʌns/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Literary"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "suddenly",
+     "meaningJa": "突然"
+    },
+    {
+     "word": "simultaneously",
+     "meaningJa": "同時に"
+    }
+   ]
+  },
+  {
+   "word": "all the way",
+   "pos": "慣用表現",
+   "meaningJa": "はるばる、最後までずっと",
+   "distractors": [
+    "突然",
+    "とりわけ、何よりも",
+    "一度に、一斉に"
+   ],
+   "exampleEn": "He ran all the way to the station but still missed the train.",
+   "exampleJa": "彼は駅までずっと走ったが、それでも電車に乗り遅れた。",
+   "ipa": "/ɔːl ðə weɪ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "the whole distance",
+     "meaningJa": "全行程"
+    },
+    {
+     "word": "go all the way",
+     "meaningJa": "最後までやり通す"
+    }
+   ]
+  },
+  {
+   "word": "above all",
+   "pos": "慣用表現",
+   "meaningJa": "とりわけ、何よりも",
+   "distractors": [
+    "突然",
+    "一度に、一斉に",
+    "はるばる、最後までずっと"
+   ],
+   "exampleEn": "Above all, remember to stay calm during the emergency drill.",
+   "exampleJa": "何よりも、避難訓練の間は落ち着いていることを忘れないで。",
+   "ipa": "/əˈbʌv ɔːl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "英検",
+    "難関大入試"
+   ],
+   "related": [
+    {
+     "word": "most importantly",
+     "meaningJa": "最も重要なことに"
+    },
+    {
+     "word": "in particular",
+     "meaningJa": "特に"
+    }
+   ]
+  },
+  {
+   "word": "as far as i know",
+   "pos": "慣用表現",
+   "meaningJa": "私の知る限りでは",
+   "distractors": [
+    "実のところ",
+    "その結果",
+    "正直に言うと"
+   ],
+   "exampleEn": "As far as I know, the museum is closed on Mondays.",
+   "exampleJa": "私の知る限りでは、その博物館は月曜日は休みだ。",
+   "ipa": "/əz fɑːr əz aɪ noʊ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "to my knowledge",
+     "meaningJa": "私の知る限り"
+    },
+    {
+     "word": "as far as I'm concerned",
+     "meaningJa": "私としては"
+    }
+   ]
+  },
+  {
+   "word": "believe it or not",
+   "pos": "慣用表現",
+   "meaningJa": "信じられないかもしれないが",
+   "distractors": [
+    "私の知る限りでは",
+    "実を言うと",
+    "遅かれ早かれ"
+   ],
+   "exampleEn": "Believe it or not, my grandmother runs ten kilometers every morning.",
+   "exampleJa": "信じられないかもしれないが、私の祖母は毎朝10キロ走っている。",
+   "ipa": "/bɪˈliːv ɪt ɔːr nɑːt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "surprisingly",
+     "meaningJa": "驚いたことに"
+    },
+    {
+     "word": "strange as it may seem",
+     "meaningJa": "奇妙に思えるかもしれないが"
+    }
+   ]
+  },
+  {
+   "word": "make an excuse",
+   "pos": "コロケーション",
+   "meaningJa": "言い訳をする",
+   "distractors": [
+    "苦情を言う",
+    "努力する",
+    "確かめる"
+   ],
+   "exampleEn": "He made an excuse about the traffic when he arrived late again.",
+   "exampleJa": "彼はまた遅刻したとき、渋滞を言い訳にした。",
+   "ipa": "/meɪk ən ɪkˈskjuːs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "apologize for",
+     "meaningJa": "～を謝る"
+    },
+    {
+     "word": "justify",
+     "meaningJa": "正当化する"
+    }
+   ]
+  },
+  {
+   "word": "make a complaint",
+   "pos": "コロケーション",
+   "meaningJa": "苦情を言う",
+   "distractors": [
+    "言い訳をする",
+    "予約をする",
+    "決定する"
+   ],
+   "exampleEn": "She made a complaint to the hotel because her room was not clean.",
+   "exampleJa": "部屋が清潔でなかったので、彼女はホテルに苦情を言った。",
+   "ipa": "/meɪk ə kəmˈpleɪnt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Legal"
+   ],
+   "themes": [
+    "Work",
+    "Law"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "complain about",
+     "meaningJa": "～について不平を言う"
+    },
+    {
+     "word": "file a complaint",
+     "meaningJa": "苦情を申し立てる"
+    }
+   ]
+  },
+  {
+   "word": "make a promise",
+   "pos": "コロケーション",
+   "meaningJa": "約束をする",
+   "distractors": [
+    "決定する",
+    "言い訳をする",
+    "生計を立てる"
+   ],
+   "exampleEn": "I made a promise to help my little sister with her homework.",
+   "exampleJa": "妹の宿題を手伝うと約束した。",
+   "ipa": "/meɪk ə ˈprɑːmɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "keep a promise",
+     "meaningJa": "約束を守る"
+    },
+    {
+     "word": "break a promise",
+     "meaningJa": "約束を破る"
+    }
+   ]
+  },
+  {
+   "word": "make a living",
+   "pos": "コロケーション",
+   "meaningJa": "生計を立てる",
+   "distractors": [
+    "進歩する",
+    "間に合う、やり遂げる",
+    "努力する"
+   ],
+   "exampleEn": "It is not easy to make a living as a musician in a big city.",
+   "exampleJa": "大都市でミュージシャンとして生計を立てるのは簡単ではない。",
+   "ipa": "/meɪk ə ˈlɪvɪŋ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Finance"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "earn a living",
+     "meaningJa": "生計を立てる"
+    },
+    {
+     "word": "make ends meet",
+     "meaningJa": "やりくりする"
+    }
+   ]
+  },
+  {
+   "word": "make it",
+   "pos": "イディオム",
+   "meaningJa": "間に合う、うまくやり遂げる",
+   "distractors": [
+    "意味が通る",
+    "生計を立てる",
+    "言い訳をする"
+   ],
+   "exampleEn": "If we run to the station now, we can still make it.",
+   "exampleJa": "今から駅まで走れば、まだ間に合うよ。",
+   "ipa": "/meɪk ɪt/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "be on time",
+     "meaningJa": "時間に間に合う"
+    },
+    {
+     "word": "succeed",
+     "meaningJa": "成功する"
+    }
+   ]
+  },
+  {
+   "word": "make progress",
+   "pos": "コロケーション",
+   "meaningJa": "進歩する、はかどる",
+   "distractors": [
+    "努力する",
+    "決定する",
+    "苦情を言う"
+   ],
+   "exampleEn": "She is making progress in Spanish because she studies a little every day.",
+   "exampleJa": "彼女は毎日少しずつ勉強しているので、スペイン語が上達している。",
+   "ipa": "/meɪk ˈprɑːɡres/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "advance",
+     "meaningJa": "前進する"
+    },
+    {
+     "word": "move forward",
+     "meaningJa": "進展する"
+    }
+   ]
+  },
+  {
+   "word": "make yourself at home",
+   "pos": "慣用表現",
+   "meaningJa": "くつろいでください",
+   "distractors": [
+    "幸運を祈る",
+    "それで終わり",
+    "残念だ"
+   ],
+   "exampleEn": "Please come in and make yourself at home while I make some tea.",
+   "exampleJa": "どうぞ入って、お茶をいれる間くつろいでいてください。",
+   "ipa": "/meɪk jərˈself æt hoʊm/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Family",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "feel free",
+     "meaningJa": "遠慮なくどうぞ"
+    },
+    {
+     "word": "relax",
+     "meaningJa": "くつろぐ"
+    }
+   ]
+  },
+  {
+   "word": "keep a secret",
+   "pos": "コロケーション",
+   "meaningJa": "秘密を守る",
+   "distractors": [
+    "約束を守る",
+    "静かにしている",
+    "健康を保つ"
+   ],
+   "exampleEn": "Can you keep a secret? I'm planning a surprise party for Ken.",
+   "exampleJa": "秘密を守れる?ケンのためにサプライズパーティーを計画しているんだ。",
+   "ipa": "/kiːp ə ˈsiːkrət/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "let the cat out of the bag",
+     "meaningJa": "秘密を漏らす"
+    },
+    {
+     "word": "spill the beans",
+     "meaningJa": "秘密をばらす"
+    }
+   ]
+  },
+  {
+   "word": "keep a promise",
+   "pos": "コロケーション",
+   "meaningJa": "約束を守る",
+   "distractors": [
+    "秘密を守る",
+    "心に留めておく",
+    "〜から目を離さない"
+   ],
+   "exampleEn": "A good friend always keeps a promise, even when it is difficult.",
+   "exampleJa": "良い友人は、たとえ難しくても必ず約束を守る。",
+   "ipa": "/kiːp ə ˈprɑːmɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "keep one's word",
+     "meaningJa": "約束を守る"
+    },
+    {
+     "word": "break a promise",
+     "meaningJa": "約束を破る"
+    }
+   ]
+  },
+  {
+   "word": "keep an eye on",
+   "pos": "イディオム",
+   "meaningJa": "〜から目を離さない、〜を見守る",
+   "distractors": [
+    "心に留めておく",
+    "〜に近づかない",
+    "健康を保つ"
+   ],
+   "exampleEn": "Could you keep an eye on my bag while I buy the tickets?",
+   "exampleJa": "切符を買う間、かばんを見ていてもらえますか。",
+   "ipa": "/kiːp ən aɪ ɑːn/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Family",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "watch over",
+     "meaningJa": "見守る"
+    },
+    {
+     "word": "look after",
+     "meaningJa": "世話をする"
+    }
+   ]
+  },
+  {
+   "word": "keep fit",
+   "pos": "コロケーション",
+   "meaningJa": "健康を保つ",
+   "distractors": [
+    "静かにしている",
+    "秘密を守る",
+    "〜から目を離さない"
+   ],
+   "exampleEn": "My grandfather swims twice a week at the local pool to keep fit.",
+   "exampleJa": "祖父は健康を保つために、地元のプールで週に2回泳いでいる。",
+   "ipa": "/kiːp fɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Sports"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "stay in shape",
+     "meaningJa": "体型を維持する"
+    },
+    {
+     "word": "get in shape",
+     "meaningJa": "体を鍛える"
+    }
+   ]
+  },
+  {
+   "word": "keep in mind",
+   "pos": "イディオム",
+   "meaningJa": "心に留めておく",
+   "distractors": [
+    "〜から目を離さない",
+    "約束を守る",
+    "静かにしている"
+   ],
+   "exampleEn": "Keep in mind that the last bus leaves at eleven thirty.",
+   "exampleJa": "最終バスは11時半に出発することを覚えておいてね。",
+   "ipa": "/kiːp ɪn maɪnd/",
+   "posEn": "Idiom",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "bear in mind",
+     "meaningJa": "心に留めておく"
+    },
+    {
+     "word": "remember",
+     "meaningJa": "覚えておく"
+    }
+   ]
+  },
+  {
+   "word": "keep quiet",
+   "pos": "コロケーション",
+   "meaningJa": "静かにしている、黙っている",
+   "distractors": [
+    "健康を保つ",
+    "心に留めておく",
+    "〜に近づかない"
+   ],
+   "exampleEn": "The teacher asked us to keep quiet during the listening test.",
+   "exampleJa": "先生はリスニングテストの間は静かにしているよう私たちに言った。",
+   "ipa": "/kiːp ˈkwaɪət/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Education"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "stay silent",
+     "meaningJa": "黙っている"
+    },
+    {
+     "word": "keep a secret",
+     "meaningJa": "秘密を守る"
+    }
+   ]
+  },
+  {
+   "word": "keep away from",
+   "pos": "句動詞",
+   "meaningJa": "〜に近づかない、〜を避ける",
+   "distractors": [
+    "〜から目を離さない",
+    "心に留めておく",
+    "健康を保つ"
+   ],
+   "exampleEn": "Children should keep away from the river when it rains heavily.",
+   "exampleJa": "大雨のときには、子どもは川に近づかないようにすべきだ。",
+   "ipa": "/kiːp əˈweɪ frʌm/",
+   "posEn": "Phrasal Verb",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "stay away from",
+     "meaningJa": "～に近寄らない"
+    },
+    {
+     "word": "keep off",
+     "meaningJa": "立ち入らない"
+    }
+   ]
+  },
+  {
+   "word": "keep one's word",
+   "pos": "イディオム",
+   "meaningJa": "約束を守る、言ったことを実行する",
+   "distractors": [
+    "幸運を祈る",
+    "〜から目を離さない",
+    "心に留めておく"
+   ],
+   "exampleEn": "You can trust Tom because he always keeps his word.",
+   "exampleJa": "トムはいつも約束を守るので、信頼できるよ。",
+   "ipa": "/kiːp wʌnz wɜːrd/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "keep a promise",
+     "meaningJa": "約束を守る"
+    },
+    {
+     "word": "go back on one's word",
+     "meaningJa": "前言を翻す"
+    }
+   ]
+  },
+  {
+   "word": "keep one's fingers crossed",
+   "pos": "イディオム",
+   "meaningJa": "幸運を祈る",
+   "distractors": [
+    "約束を守る",
+    "秘密を守る",
+    "〜から目を離さない"
+   ],
+   "exampleEn": "I have a job interview tomorrow, so please keep your fingers crossed for me.",
+   "exampleJa": "明日面接があるから、うまくいくように祈っていてね。",
+   "ipa": "/kiːp wʌnz ˈfɪŋɡərz krɔːst/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "fingers crossed",
+     "meaningJa": "幸運を祈る"
+    },
+    {
+     "word": "wish someone luck",
+     "meaningJa": "幸運を祈る"
+    }
+   ]
+  },
+  {
+   "word": "break the rules",
+   "pos": "コロケーション",
+   "meaningJa": "規則を破る",
+   "distractors": [
+    "法律を犯す",
+    "約束を破る",
+    "記録を破る"
+   ],
+   "exampleEn": "If you break the rules of the library, you cannot borrow books for a month.",
+   "exampleJa": "図書館の規則を破ると、1か月間本を借りられなくなる。",
+   "ipa": "/breɪk ðə ruːlz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Legal",
+    "DailyLife"
+   ],
+   "themes": [
+    "Law",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "break the law",
+     "meaningJa": "法律を犯す"
+    },
+    {
+     "word": "follow the rules",
+     "meaningJa": "規則に従う"
+    }
+   ]
+  },
+  {
+   "word": "break the law",
+   "pos": "コロケーション",
+   "meaningJa": "法律を犯す",
+   "distractors": [
+    "規則を破る",
+    "約束を破る",
+    "記録を破る"
+   ],
+   "exampleEn": "You break the law if you ride a bike at night without a light.",
+   "exampleJa": "夜にライトをつけずに自転車に乗ると法律違反になる。",
+   "ipa": "/breɪk ðə lɔː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Legal",
+    "News"
+   ],
+   "themes": [
+    "Law",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "commit a crime",
+     "meaningJa": "罪を犯す"
+    },
+    {
+     "word": "abide by",
+     "meaningJa": "（規則を）守る"
+    }
+   ]
+  },
+  {
+   "word": "break a promise",
+   "pos": "コロケーション",
+   "meaningJa": "約束を破る",
+   "distractors": [
+    "法律を犯す",
+    "規則を破る",
+    "沈黙を破る"
+   ],
+   "exampleEn": "She never breaks a promise, so everyone in the class trusts her.",
+   "exampleJa": "彼女は決して約束を破らないので、クラスのみんなが彼女を信頼している。",
+   "ipa": "/breɪk ə ˈprɑːmɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "keep a promise",
+     "meaningJa": "約束を守る"
+    },
+    {
+     "word": "let someone down",
+     "meaningJa": "期待を裏切る"
+    }
+   ]
+  },
+  {
+   "word": "tell a lie",
+   "pos": "コロケーション",
+   "meaningJa": "うそをつく",
+   "distractors": [
+    "本当のことを言う",
+    "違いが分かる",
+    "秘密を打ち明ける"
+   ],
+   "exampleEn": "He told a lie about his age to join the basketball team.",
+   "exampleJa": "彼はバスケットボールチームに入るために年齢についてうそをついた。",
+   "ipa": "/tel ə laɪ/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Legal"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "tell the truth",
+     "meaningJa": "本当のことを言う"
+    },
+    {
+     "word": "lie",
+     "meaningJa": "うそをつく"
+    }
+   ]
+  },
+  {
+   "word": "tell the difference",
+   "pos": "コロケーション",
+   "meaningJa": "違いが分かる、見分ける",
+   "distractors": [
+    "うそをつく",
+    "本当のことを言う",
+    "秘密を打ち明ける"
+   ],
+   "exampleEn": "Can you tell the difference between butter and margarine by taste?",
+   "exampleJa": "味でバターとマーガリンの違いが分かりますか。",
+   "ipa": "/tel ðə ˈdɪfrəns/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Academic"
+   ],
+   "themes": [
+    "Science",
+    "Education"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "distinguish",
+     "meaningJa": "区別する"
+    },
+    {
+     "word": "tell apart",
+     "meaningJa": "見分ける"
+    }
+   ]
+  },
+  {
+   "word": "do exercise",
+   "pos": "コロケーション",
+   "meaningJa": "運動をする",
+   "distractors": [
+    "皿洗いをする",
+    "全力を尽くす",
+    "洗濯をする"
+   ],
+   "exampleEn": "Doctors say we should do exercise for at least thirty minutes every day.",
+   "exampleJa": "医者は毎日少なくとも30分は運動すべきだと言っている。",
+   "ipa": "/duː ˈeksərsaɪz/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "高校受験"
+   ],
+   "related": [
+    {
+     "word": "work out",
+     "meaningJa": "運動する"
+    },
+    {
+     "word": "keep fit",
+     "meaningJa": "健康を保つ"
+    }
+   ]
+  },
+  {
+   "word": "ask a favor",
+   "pos": "コロケーション",
+   "meaningJa": "頼み事をする、お願いをする",
+   "distractors": [
+    "頼みを聞いてあげる",
+    "助言を求める",
+    "道を尋ねる"
+   ],
+   "exampleEn": "May I ask a favor of you? I need someone to water my plants.",
+   "exampleJa": "お願いをしてもいいですか。植物に水をやってくれる人が必要なんです。",
+   "ipa": "/æsk ə ˈfeɪvər/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "do someone a favor",
+     "meaningJa": "人に親切にする"
+    },
+    {
+     "word": "request help",
+     "meaningJa": "助けを求める"
+    }
+   ]
+  },
+  {
+   "word": "give advice",
+   "pos": "コロケーション",
+   "meaningJa": "助言する",
+   "distractors": [
+    "手を貸す",
+    "スピーチをする",
+    "試しにやってみる"
+   ],
+   "exampleEn": "My teacher gave me some useful advice about studying abroad.",
+   "exampleJa": "先生は留学について役立つ助言をしてくれた。",
+   "ipa": "/ɡɪv ədˈvaɪs/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "offer suggestions",
+     "meaningJa": "提案をする"
+    },
+    {
+     "word": "take advice",
+     "meaningJa": "助言を受け入れる"
+    }
+   ]
+  },
+  {
+   "word": "give a hand",
+   "pos": "イディオム",
+   "meaningJa": "手を貸す、手伝う",
+   "distractors": [
+    "助言する",
+    "車で送ってあげる",
+    "試しにやってみる"
+   ],
+   "exampleEn": "Could you give me a hand with these heavy boxes?",
+   "exampleJa": "この重い箱を運ぶのに手を貸してもらえますか。",
+   "ipa": "/ɡɪv ə hænd/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "help out",
+     "meaningJa": "手伝う"
+    },
+    {
+     "word": "lend a hand",
+     "meaningJa": "手を貸す"
+    }
+   ]
+  },
+  {
+   "word": "give a speech",
+   "pos": "コロケーション",
+   "meaningJa": "スピーチをする",
+   "distractors": [
+    "助言する",
+    "手を貸す",
+    "〜を出産する"
+   ],
+   "exampleEn": "The captain gave a short speech before the final game started.",
+   "exampleJa": "主将は決勝戦が始まる前に短いスピーチをした。",
+   "ipa": "/ɡɪv ə spiːtʃ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "make a speech",
+     "meaningJa": "演説をする"
+    },
+    {
+     "word": "give a presentation",
+     "meaningJa": "プレゼンをする"
+    }
+   ]
+  },
+  {
+   "word": "give a presentation",
+   "pos": "コロケーション",
+   "meaningJa": "発表をする、プレゼンをする",
+   "distractors": [
+    "助言する",
+    "試しにやってみる",
+    "車で送ってあげる"
+   ],
+   "exampleEn": "Next week I have to give a presentation about my research in English.",
+   "exampleJa": "来週、英語で自分の研究について発表しなければならない。",
+   "ipa": "/ɡɪv ə ˌpriːznˈteɪʃn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "present",
+     "meaningJa": "発表する"
+    },
+    {
+     "word": "give a talk",
+     "meaningJa": "講演する"
+    }
+   ]
+  },
+  {
+   "word": "give birth to",
+   "pos": "コロケーション",
+   "meaningJa": "〜を出産する、〜を産む",
+   "distractors": [
+    "手を貸す",
+    "あきらめる",
+    "試しにやってみる"
+   ],
+   "exampleEn": "Our cat gave birth to four little kittens in the garage last night.",
+   "exampleJa": "うちの猫が昨夜ガレージで4匹の子猫を産んだ。",
+   "ipa": "/ɡɪv bɜːrθ tuː/",
+   "posEn": "Phrase",
+   "domains": [
+    "Medical",
+    "DailyLife"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "deliver a baby",
+     "meaningJa": "出産する"
+    },
+    {
+     "word": "bring into the world",
+     "meaningJa": "この世に送り出す"
+    }
+   ]
+  },
+  {
+   "word": "get in trouble",
+   "pos": "イディオム",
+   "meaningJa": "面倒なことになる、叱られる",
+   "distractors": [
+    "道に迷う",
+    "体を鍛える",
+    "〜を乗り越える"
+   ],
+   "exampleEn": "You will get in trouble if you use your phone during the exam.",
+   "exampleJa": "試験中に携帯電話を使うと、まずいことになるよ。",
+   "ipa": "/ɡet ɪn ˈtrʌbl/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Education",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "get into trouble",
+     "meaningJa": "面倒に巻き込まれる"
+    },
+    {
+     "word": "be told off",
+     "meaningJa": "叱られる"
+    }
+   ]
+  },
+  {
+   "word": "get in shape",
+   "pos": "イディオム",
+   "meaningJa": "体を鍛える、体調を整える",
+   "distractors": [
+    "面倒なことになる",
+    "道に迷う",
+    "〜と仲良くする"
+   ],
+   "exampleEn": "He goes to the gym every morning to get in shape for the marathon.",
+   "exampleJa": "彼はマラソンに向けて体を鍛えるために毎朝ジムに通っている。",
+   "ipa": "/ɡet ɪn ʃeɪp/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Medical"
+   ],
+   "themes": [
+    "Health",
+    "Sports"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "keep fit",
+     "meaningJa": "健康を保つ"
+    },
+    {
+     "word": "work out",
+     "meaningJa": "運動する"
+    }
+   ]
+  },
+  {
+   "word": "gain weight",
+   "pos": "コロケーション",
+   "meaningJa": "体重が増える、太る",
+   "distractors": [
+    "体重が減る",
+    "経験を積む",
+    "自信をつける"
+   ],
+   "exampleEn": "I gained weight during the winter because I ate too much and moved less.",
+   "exampleJa": "冬の間、食べすぎてあまり動かなかったので体重が増えた。",
+   "ipa": "/ɡeɪn weɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Medical",
+    "DailyLife"
+   ],
+   "themes": [
+    "Health",
+    "Food"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "put on weight",
+     "meaningJa": "太る"
+    },
+    {
+     "word": "lose weight",
+     "meaningJa": "やせる"
+    }
+   ]
+  },
+  {
+   "word": "lose one's temper",
+   "pos": "イディオム",
+   "meaningJa": "かっとなる、怒りを爆発させる",
+   "distractors": [
+    "時間がたつのを忘れる",
+    "体重が減る",
+    "道に迷う"
+   ],
+   "exampleEn": "The coach lost his temper when the players did not listen to him.",
+   "exampleJa": "選手たちが言うことを聞かなかったので、コーチはかっとなった。",
+   "ipa": "/luːz wʌnz ˈtempər/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "fly into a rage",
+     "meaningJa": "激怒する"
+    },
+    {
+     "word": "hit the roof",
+     "meaningJa": "かんかんに怒る"
+    }
+   ]
+  },
+  {
+   "word": "lose track of time",
+   "pos": "イディオム",
+   "meaningJa": "時間がたつのを忘れる",
+   "distractors": [
+    "かっとなる",
+    "体重が減る",
+    "道に迷う"
+   ],
+   "exampleEn": "I was reading such an exciting novel that I lost track of time.",
+   "exampleJa": "とても面白い小説を読んでいて、時間がたつのを忘れてしまった。",
+   "ipa": "/luːz træk əv taɪm/",
+   "posEn": "Idiom",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "lose track of",
+     "meaningJa": "～が分からなくなる"
+    },
+    {
+     "word": "time flies",
+     "meaningJa": "時が経つのは早い"
+    }
+   ]
+  },
+  {
+   "word": "pay a visit",
+   "pos": "コロケーション",
+   "meaningJa": "訪問する",
+   "distractors": [
+    "〜に注意を払う",
+    "勘定を払う",
+    "敬意を表する"
+   ],
+   "exampleEn": "We paid a visit to our grandmother in the hospital on Sunday.",
+   "exampleJa": "日曜日に入院中の祖母を見舞いに訪れた。",
+   "ipa": "/peɪ ə ˈvɪzɪt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Travel"
+   ],
+   "themes": [
+    "Work",
+    "Family"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "call on",
+     "meaningJa": "人を訪問する"
+    },
+    {
+     "word": "drop by",
+     "meaningJa": "立ち寄る"
+    }
+   ]
+  },
+  {
+   "word": "play a role",
+   "pos": "コロケーション",
+   "meaningJa": "役割を果たす",
+   "distractors": [
+    "いたずらをする",
+    "試合をする",
+    "楽器を演奏する"
+   ],
+   "exampleEn": "The internet plays an important role in our daily lives.",
+   "exampleJa": "インターネットは私たちの日常生活で重要な役割を果たしている。",
+   "ipa": "/pleɪ ə roʊl/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "play a part",
+     "meaningJa": "役割を担う"
+    },
+    {
+     "word": "play a role in",
+     "meaningJa": "～において役割を果たす"
+    }
+   ]
+  },
+  {
+   "word": "play a part",
+   "pos": "コロケーション",
+   "meaningJa": "役割を担う、一役買う",
+   "distractors": [
+    "いたずらをする",
+    "公平にふるまう",
+    "楽器を演奏する"
+   ],
+   "exampleEn": "Everyone in the team played a part in winning the championship.",
+   "exampleJa": "チームの全員が優勝に一役買った。",
+   "ipa": "/pleɪ ə pɑːrt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "News"
+   ],
+   "themes": [
+    "Society",
+    "Politics"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS"
+   ],
+   "related": [
+    {
+     "word": "play a role",
+     "meaningJa": "役割を果たす"
+    },
+    {
+     "word": "contribute to",
+     "meaningJa": "～の一因となる"
+    }
+   ]
+  },
+  {
+   "word": "take a seat",
+   "pos": "コロケーション",
+   "meaningJa": "座る、着席する",
+   "distractors": [
+    "昼寝をする",
+    "ちょっと見る",
+    "休憩する"
+   ],
+   "exampleEn": "Please take a seat and wait here until the doctor calls your name.",
+   "exampleJa": "お座りになって、医師が名前を呼ぶまでこちらでお待ちください。",
+   "ipa": "/teɪk ə siːt/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "DailyLife"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "sit down",
+     "meaningJa": "座る"
+    },
+    {
+     "word": "have a seat",
+     "meaningJa": "お掛けください"
+    }
+   ]
+  },
+  {
+   "word": "take a nap",
+   "pos": "コロケーション",
+   "meaningJa": "昼寝をする",
+   "distractors": [
+    "風呂に入る",
+    "散歩をする",
+    "席に着く"
+   ],
+   "exampleEn": "My father usually takes a nap for twenty minutes after lunch on Sundays.",
+   "exampleJa": "父は日曜日の昼食後、たいてい20分昼寝をする。",
+   "ipa": "/teɪk ə næp/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "doze off",
+     "meaningJa": "うとうとする"
+    },
+    {
+     "word": "have a rest",
+     "meaningJa": "休憩する"
+    }
+   ]
+  },
+  {
+   "word": "take a chance",
+   "pos": "コロケーション",
+   "meaningJa": "思い切ってやってみる",
+   "distractors": [
+    "休憩する",
+    "時間をかけてゆっくりやる",
+    "メモを取る"
+   ],
+   "exampleEn": "The plan may fail, but I want to take a chance and try it.",
+   "exampleJa": "計画は失敗するかもしれないが、思い切って挑戦してみたい。",
+   "ipa": "/teɪk ə tʃæns/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "take a risk",
+     "meaningJa": "危険を冒す"
+    },
+    {
+     "word": "gamble",
+     "meaningJa": "賭けに出る"
+    }
+   ]
+  },
+  {
+   "word": "take a risk",
+   "pos": "コロケーション",
+   "meaningJa": "危険を冒す",
+   "distractors": [
+    "行動を起こす",
+    "1日休みを取る",
+    "うまく利用する"
+   ],
+   "exampleEn": "He took a big risk when he left his job to start a company.",
+   "exampleJa": "彼は会社を始めるために仕事を辞めるという大きな危険を冒した。",
+   "ipa": "/teɪk ə rɪsk/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Finance",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "run the risk of",
+     "meaningJa": "～の危険を冒す"
+    },
+    {
+     "word": "take a chance",
+     "meaningJa": "思い切ってやる"
+    }
+   ]
+  },
+  {
+   "word": "take action",
+   "pos": "コロケーション",
+   "meaningJa": "行動を起こす",
+   "distractors": [
+    "交代で行う",
+    "深呼吸をする",
+    "気楽に構える"
+   ],
+   "exampleEn": "We must take action now to protect the environment for future generations.",
+   "exampleJa": "将来の世代のために環境を守るには、今行動を起こさなければならない。",
+   "ipa": "/teɪk ˈækʃn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Work",
+    "Politics"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "take measures",
+     "meaningJa": "対策を講じる"
+    },
+    {
+     "word": "act on",
+     "meaningJa": "～に基づいて行動する"
+    }
+   ]
+  },
+  {
+   "word": "take a deep breath",
+   "pos": "コロケーション",
+   "meaningJa": "深呼吸をする",
+   "distractors": [
+    "昼寝をする",
+    "メモを取る",
+    "交代で行う"
+   ],
+   "exampleEn": "Before the speech, she took a deep breath to calm herself down.",
+   "exampleJa": "スピーチの前に、彼女は気持ちを落ち着かせるために深呼吸をした。",
+   "ipa": "/teɪk ə diːp breθ/",
+   "posEn": "Phrase",
+   "domains": [
+    "Medical",
+    "DailyLife"
+   ],
+   "themes": [
+    "Health",
+    "Psychology"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "breathe deeply",
+     "meaningJa": "深く息をする"
+    },
+    {
+     "word": "calm down",
+     "meaningJa": "落ち着く"
+    }
+   ]
+  },
+  {
+   "word": "take one's time",
+   "pos": "慣用表現",
+   "meaningJa": "時間をかけてゆっくりやる",
+   "distractors": [
+    "1日休みを取る",
+    "交代で行う",
+    "思い切ってやってみる"
+   ],
+   "exampleEn": "There is no hurry, so please take your time and check everything carefully.",
+   "exampleJa": "急ぐ必要はないので、時間をかけてすべてを丁寧に確認してください。",
+   "ipa": "/teɪk wʌnz taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "go slowly",
+     "meaningJa": "ゆっくり進める"
+    },
+    {
+     "word": "hurry up",
+     "meaningJa": "急ぐ"
+    }
+   ]
+  },
+  {
+   "word": "work overtime",
+   "pos": "コロケーション",
+   "meaningJa": "残業する",
+   "distractors": [
+    "在宅で勤務する",
+    "締め切りに間に合わせる",
+    "事業を経営する"
+   ],
+   "exampleEn": "She had to work overtime last night to finish the report.",
+   "exampleJa": "彼女は報告書を仕上げるために、昨夜残業しなければならなかった。",
+   "ipa": "/wɜːrk ˈoʊvərtaɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Health"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "stay late",
+     "meaningJa": "遅くまで残る"
+    },
+    {
+     "word": "burn the midnight oil",
+     "meaningJa": "夜遅くまで働く"
+    }
+   ]
+  },
+  {
+   "word": "meet a deadline",
+   "pos": "コロケーション",
+   "meaningJa": "締め切りに間に合わせる",
+   "distractors": [
+    "残業する",
+    "事業を経営する",
+    "会う約束を取り付ける"
+   ],
+   "exampleEn": "We worked all night to meet the deadline for the new project.",
+   "exampleJa": "私たちは新しいプロジェクトの締め切りに間に合わせるために徹夜で働いた。",
+   "ipa": "/miːt ə ˈdedlaɪn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "Academic"
+   ],
+   "themes": [
+    "Work",
+    "Education"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "miss a deadline",
+     "meaningJa": "締め切りに遅れる"
+    },
+    {
+     "word": "be on time",
+     "meaningJa": "時間に間に合う"
+    }
+   ]
+  },
+  {
+   "word": "run a business",
+   "pos": "コロケーション",
+   "meaningJa": "事業を経営する",
+   "distractors": [
+    "~を使い果たす",
+    "~に偶然出会う",
+    "用事を済ませる"
+   ],
+   "exampleEn": "Her parents have run a small business in this town for twenty years.",
+   "exampleJa": "彼女の両親はこの町で20年間小さな事業を経営している。",
+   "ipa": "/rʌn ə ˈbɪznəs/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Finance"
+   ],
+   "exams": [
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "manage a company",
+     "meaningJa": "会社を経営する"
+    },
+    {
+     "word": "operate",
+     "meaningJa": "運営する"
+    }
+   ]
+  },
+  {
+   "word": "come to an end",
+   "pos": "イディオム",
+   "meaningJa": "終わる",
+   "distractors": [
+    "実現する",
+    "思いつく",
+    "偶然見つける"
+   ],
+   "exampleEn": "The summer vacation came to an end, and school started again.",
+   "exampleJa": "夏休みが終わり、また学校が始まった。",
+   "ipa": "/kʌm tuː ən end/",
+   "posEn": "Idiom",
+   "domains": [
+    "News",
+    "Literary"
+   ],
+   "themes": [
+    "History",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "finish",
+     "meaningJa": "終わる"
+    },
+    {
+     "word": "put an end to",
+     "meaningJa": "～に終止符を打つ"
+    }
+   ]
+  },
+  {
+   "word": "a waste of time",
+   "pos": "慣用表現",
+   "meaningJa": "時間の無駄",
+   "distractors": [
+    "とても簡単なこと",
+    "時間の問題であること",
+    "暇をつぶすこと"
+   ],
+   "exampleEn": "Watching TV all day is a waste of time when you have homework.",
+   "exampleJa": "宿題があるのに一日中テレビを見るのは時間の無駄だ。",
+   "ipa": "/ə weɪst əv taɪm/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "pointless",
+     "meaningJa": "無意味な"
+    },
+    {
+     "word": "time-consuming",
+     "meaningJa": "時間のかかる"
+    }
+   ]
+  },
+  {
+   "word": "break the ice",
+   "pos": "イディオム",
+   "meaningJa": "場の緊張をほぐす",
+   "distractors": [
+    "(本番前に)成功を祈る",
+    "約束を破る",
+    "関係を断つ"
+   ],
+   "exampleEn": "He told a funny story to break the ice at the start of the meeting.",
+   "exampleJa": "会議の初めに、彼は場の緊張をほぐすために面白い話をした。",
+   "ipa": "/breɪk ði aɪs/",
+   "posEn": "Idiom",
+   "domains": [
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Work"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "warm up the room",
+     "meaningJa": "場を和ませる"
+    },
+    {
+     "word": "make small talk",
+     "meaningJa": "雑談する"
+    }
+   ]
+  },
+  {
+   "word": "in the same boat",
+   "pos": "イディオム",
+   "meaningJa": "同じ(苦しい)立場にいる",
+   "distractors": [
+    "認識が一致している",
+    "好機を逃す",
+    "順調に進んでいる"
+   ],
+   "exampleEn": "Don't worry, we are all in the same boat because nobody finished the homework.",
+   "exampleJa": "心配しないで、誰も宿題を終えていないから、みんな同じ立場だよ。",
+   "ipa": "/ɪn ðə seɪm boʊt/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "share the same problem",
+     "meaningJa": "同じ問題を抱えている"
+    },
+    {
+     "word": "on the same page",
+     "meaningJa": "認識が一致して"
+    }
+   ]
+  },
+  {
+   "word": "once in a blue moon",
+   "pos": "イディオム",
+   "meaningJa": "ごくまれに",
+   "distractors": [
+    "時々",
+    "突然",
+    "遅かれ早かれ"
+   ],
+   "exampleEn": "My uncle lives abroad, so we only see him once in a blue moon.",
+   "exampleJa": "おじは海外に住んでいるので、私たちはごくまれにしか会えない。",
+   "ipa": "/wʌns ɪn ə bluː muːn/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "rarely",
+     "meaningJa": "めったに～ない"
+    },
+    {
+     "word": "hardly ever",
+     "meaningJa": "ほとんど～しない"
+    }
+   ]
+  },
+  {
+   "word": "better late than never",
+   "pos": "慣用表現",
+   "meaningJa": "遅れてもやらないよりはまし",
+   "distractors": [
+    "言うは易く行うは難し",
+    "習うより慣れよ",
+    "時が経つのは早い"
+   ],
+   "exampleEn": "He finally said sorry to her. Better late than never, I guess.",
+   "exampleJa": "彼はついに彼女に謝った。遅くてもやらないよりはましだと思う。",
+   "ipa": "/ˈbetər leɪt ðæn ˈnevər/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "it's never too late",
+     "meaningJa": "遅すぎることはない"
+    },
+    {
+     "word": "easier said than done",
+     "meaningJa": "言うは易く行うは難し"
+    }
+   ]
+  },
+  {
+   "word": "easier said than done",
+   "pos": "慣用表現",
+   "meaningJa": "言うは易く行うは難し",
+   "distractors": [
+    "遅れてもやらないよりはまし",
+    "習うより慣れよ",
+    "一石二鳥"
+   ],
+   "exampleEn": "Getting up at five every morning is easier said than done.",
+   "exampleJa": "毎朝5時に起きるのは、言うは易く行うは難しだ。",
+   "ipa": "/ˈiːziər sed ðæn dʌn/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Work",
+    "Psychology"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "in theory",
+     "meaningJa": "理論上は"
+    },
+    {
+     "word": "better late than never",
+     "meaningJa": "遅れてもやらないよりまし"
+    }
+   ]
+  },
+  {
+   "word": "cost an arm and a leg",
+   "pos": "イディオム",
+   "meaningJa": "非常に高くつく",
+   "distractors": [
+    "(本番前に)成功を祈る",
+    "人をからかう",
+    "壊れかけている"
+   ],
+   "exampleEn": "The new smartphone costs an arm and a leg, so I will wait for a sale.",
+   "exampleJa": "新しいスマートフォンは非常に高いので、セールを待つつもりだ。",
+   "ipa": "/kɔːst ən ɑːrm ənd ə leɡ/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "Business"
+   ],
+   "themes": [
+    "Finance"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "be expensive",
+     "meaningJa": "高価である"
+    },
+    {
+     "word": "break the bank",
+     "meaningJa": "大金がかかる"
+    }
+   ]
+  },
+  {
+   "word": "break a leg",
+   "pos": "イディオム",
+   "meaningJa": "(本番前の激励で)頑張って、成功を祈る",
+   "distractors": [
+    "人をからかう",
+    "非常に高くつく",
+    "場の緊張をほぐす"
+   ],
+   "exampleEn": "You have practiced enough for the play, so break a leg tonight!",
+   "exampleJa": "劇の練習は十分にしたのだから、今夜は頑張って！",
+   "ipa": "/breɪk ə leɡ/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "Literary"
+   ],
+   "themes": [
+    "Entertainment",
+    "Art"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "good luck",
+     "meaningJa": "幸運を祈る"
+    },
+    {
+     "word": "knock 'em dead",
+     "meaningJa": "思いきりやってこい"
+    }
+   ]
+  },
+  {
+   "word": "pull someone's leg",
+   "pos": "イディオム",
+   "meaningJa": "人をからかう、冗談を言う",
+   "distractors": [
+    "(本番前に)成功を祈る",
+    "非常に高くつく",
+    "散歩して足を伸ばす"
+   ],
+   "exampleEn": "Don't be angry. I was just pulling your leg about the test.",
+   "exampleJa": "怒らないで。テストのことは、ただからかっただけだよ。",
+   "ipa": "/pʊl ˈsʌmwʌnz leɡ/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual"
+   ],
+   "themes": [
+    "Society",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "tease",
+     "meaningJa": "からかう"
+    },
+    {
+     "word": "joke with",
+     "meaningJa": "冗談を言う"
+    }
+   ]
+  },
+  {
+   "word": "kill two birds with one stone",
+   "pos": "イディオム",
+   "meaningJa": "一石二鳥を実現する",
+   "distractors": [
+    "言うは易く行うは難し",
+    "めったにないこと",
+    "捕らぬ狸の皮算用をする"
+   ],
+   "exampleEn": "By walking to work, I save money and get exercise, killing two birds with one stone.",
+   "exampleJa": "歩いて通勤すればお金の節約と運動になり、一石二鳥だ。",
+   "ipa": "/kɪl tuː bɜːrdz wɪð wʌn stoʊn/",
+   "posEn": "Idiom",
+   "domains": [
+    "Business",
+    "Casual"
+   ],
+   "themes": [
+    "Work",
+    "Society"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "be efficient",
+     "meaningJa": "効率がよい"
+    },
+    {
+     "word": "serve two purposes",
+     "meaningJa": "二つの目的を果たす"
+    }
+   ]
+  },
+  {
+   "word": "raining cats and dogs",
+   "pos": "イディオム",
+   "meaningJa": "土砂降りの雨が降っている",
+   "distractors": [
+    "秘密をうっかり漏らす",
+    "激しくけんかする",
+    "体調がすぐれない"
+   ],
+   "exampleEn": "It was raining cats and dogs, so the soccer game was canceled.",
+   "exampleJa": "土砂降りの雨だったので、サッカーの試合は中止になった。",
+   "ipa": "/ˈreɪnɪŋ kæts ənd dɔːɡz/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual",
+    "DailyLife"
+   ],
+   "themes": [
+    "Nature",
+    "Environment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "pouring rain",
+     "meaningJa": "土砂降りの雨"
+    },
+    {
+     "word": "a downpour",
+     "meaningJa": "豪雨"
+    }
+   ]
+  },
+  {
+   "word": "not one's cup of tea",
+   "pos": "イディオム",
+   "meaningJa": "好みではない",
+   "distractors": [
+    "とても簡単なこと",
+    "生計を立てる手段",
+    "一番の得意分野"
+   ],
+   "exampleEn": "Horror movies are not my cup of tea, so let's watch something else.",
+   "exampleJa": "ホラー映画は好みではないので、何か別のものを見よう。",
+   "ipa": "/nɑːt wʌnz kʌp əv tiː/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "not to one's taste",
+     "meaningJa": "好みに合わない"
+    },
+    {
+     "word": "be keen on",
+     "meaningJa": "～が好きである"
+    }
+   ]
+  },
+  {
+   "word": "safe and sound",
+   "pos": "慣用表現",
+   "meaningJa": "無事に",
+   "distractors": [
+    "浮き沈み",
+    "賛成意見と反対意見",
+    "遅かれ早かれ"
+   ],
+   "exampleEn": "After the long storm, all the passengers arrived home safe and sound.",
+   "exampleJa": "長い嵐の後、乗客は全員無事に帰宅した。",
+   "ipa": "/seɪf ənd saʊnd/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "Travel"
+   ],
+   "themes": [
+    "Health",
+    "Family"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "unharmed",
+     "meaningJa": "無傷で"
+    },
+    {
+     "word": "in one piece",
+     "meaningJa": "無事に"
+    }
+   ]
+  },
+  {
+   "word": "ups and downs",
+   "pos": "慣用表現",
+   "meaningJa": "浮き沈み、良い時と悪い時",
+   "distractors": [
+    "無事に",
+    "賛成意見と反対意見",
+    "行ったり来たり"
+   ],
+   "exampleEn": "Every marriage has its ups and downs, but they are still happy together.",
+   "exampleJa": "どんな結婚生活にも浮き沈みはあるが、彼らは今も一緒に幸せに暮らしている。",
+   "ipa": "/ʌps ənd daʊnz/",
+   "posEn": "Phrase",
+   "domains": [
+    "DailyLife",
+    "News"
+   ],
+   "themes": [
+    "Psychology",
+    "Finance"
+   ],
+   "exams": [
+    "英検",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "highs and lows",
+     "meaningJa": "良い時と悪い時"
+    },
+    {
+     "word": "through thick and thin",
+     "meaningJa": "良い時も悪い時も"
+    }
+   ]
+  },
+  {
+   "word": "pros and cons",
+   "pos": "慣用表現",
+   "meaningJa": "賛否両論、長所と短所",
+   "distractors": [
+    "浮き沈み",
+    "無事に",
+    "こまごました物"
+   ],
+   "exampleEn": "Let's discuss the pros and cons of studying abroad before you decide.",
+   "exampleJa": "決める前に、留学の長所と短所について話し合おう。",
+   "ipa": "/proʊz ənd kɑːnz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Business"
+   ],
+   "themes": [
+    "Education",
+    "Work"
+   ],
+   "exams": [
+    "TOEFL",
+    "IELTS",
+    "TOEIC"
+   ],
+   "related": [
+    {
+     "word": "advantages and disadvantages",
+     "meaningJa": "長所と短所"
+    },
+    {
+     "word": "weigh up",
+     "meaningJa": "比較検討する"
+    }
+   ]
+  },
+  {
+   "word": "a couch potato",
+   "pos": "イディオム",
+   "meaningJa": "ソファでだらだらテレビばかり見ている人",
+   "distractors": [
+    "早起きの人",
+    "本の虫、読書好きの人",
+    "夜型の人"
+   ],
+   "exampleEn": "My brother is a couch potato who watches TV on the sofa all weekend.",
+   "exampleJa": "弟は週末ずっとソファでテレビを見ているぐうたらな人だ。",
+   "ipa": "/ə kaʊtʃ pəˈteɪtoʊ/",
+   "posEn": "Idiom",
+   "domains": [
+    "Casual"
+   ],
+   "themes": [
+    "Health",
+    "Entertainment"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "a lazy person",
+     "meaningJa": "怠け者"
+    },
+    {
+     "word": "binge-watch",
+     "meaningJa": "一気見する"
+    }
+   ]
+  },
+  {
+   "word": "fingers crossed",
+   "pos": "慣用表現",
+   "meaningJa": "幸運を祈る",
+   "distractors": [
+    "賛成の合図をする",
+    "手を貸す",
+    "降参する"
+   ],
+   "exampleEn": "I have a job interview tomorrow, so keep your fingers crossed for me.",
+   "exampleJa": "明日就職の面接があるので、うまくいくように祈っていてね。",
+   "ipa": "/ˈfɪŋɡərz krɔːst/",
+   "posEn": "Phrase",
+   "domains": [
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Society"
+   ],
+   "exams": [
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "keep one's fingers crossed",
+     "meaningJa": "幸運を祈る"
+    },
+    {
+     "word": "here's hoping",
+     "meaningJa": "そうなるといいね"
+    }
+   ]
+  },
+  {
+   "word": "what if",
+   "pos": "慣用表現",
+   "meaningJa": "もし~したらどうなるだろうか",
+   "distractors": [
+    "まるで~かのように",
+    "たとえ~だとしても",
+    "~でありさえすればなあ"
+   ],
+   "exampleEn": "What if it rains tomorrow? Should we cancel the picnic or not?",
+   "exampleJa": "もし明日雨が降ったらどうする？ピクニックは中止すべきかな。",
+   "ipa": "/wɑːt ɪf/",
+   "posEn": "Phrase",
+   "domains": [
+    "Academic",
+    "Casual"
+   ],
+   "themes": [
+    "Psychology",
+    "Science"
+   ],
+   "exams": [
+    "英検",
+    "共通テスト"
+   ],
+   "related": [
+    {
+     "word": "suppose that",
+     "meaningJa": "～だと仮定すると"
+    },
+    {
+     "word": "if only",
+     "meaningJa": "～でさえあればなあ"
+    }
+   ]
+  },
+  {
+   "word": "cause problems",
+   "pos": "コロケーション",
+   "meaningJa": "問題を引き起こす",
+   "distractors": [
+    "問題を解決する",
+    "決断を下す",
+    "苦情を言う"
+   ],
+   "exampleEn": "Using your phone too much at night can cause problems with your sleep.",
+   "exampleJa": "夜にスマートフォンを使いすぎると、睡眠に問題を引き起こすことがある。",
+   "ipa": "/kɔːz ˈprɑːbləmz/",
+   "posEn": "Phrase",
+   "domains": [
+    "Business",
+    "News"
+   ],
+   "themes": [
+    "Work",
+    "Environment"
+   ],
+   "exams": [
+    "TOEIC",
+    "TOEFL"
+   ],
+   "related": [
+    {
+     "word": "create difficulties",
+     "meaningJa": "困難を生む"
+    },
+    {
+     "word": "bring on",
+     "meaningJa": "引き起こす"
+    }
+   ]
+  },
+  {
+   "word": "within walking distance",
+   "pos": "前置詞句",
+   "meaningJa": "歩いて行ける距離に",
+   "distractors": [
+    "故障中で",
+    "前もって",
+    "わざと"
+   ],
+   "exampleEn": "Our hotel is within walking distance of the station and many restaurants.",
+   "exampleJa": "私たちのホテルは駅や多くのレストランから歩いて行ける距離にある。",
+   "ipa": "/wɪˈðɪn ˈwɔːkɪŋ ˈdɪstəns/",
+   "posEn": "Phrase",
+   "domains": [
+    "Travel",
+    "DailyLife"
+   ],
+   "themes": [
+    "Society"
+   ],
+   "exams": [
+    "TOEIC",
+    "英検"
+   ],
+   "related": [
+    {
+     "word": "nearby",
+     "meaningJa": "近くに"
+    },
+    {
+     "word": "just around the corner",
+     "meaningJa": "すぐ近くに"
+    }
+   ]
+  }
+ ],
+ "enrichedAt": "2026-08-11T21:15:43.686Z"
+}

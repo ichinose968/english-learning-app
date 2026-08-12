@@ -22,7 +22,9 @@ export function apiKeyErrorResponse() {
 // 失敗時は throw し、呼び出し側で handleGenerateError に渡す。
 export async function generateJson<T>(args: {
   system: string;
-  user: string;
+  // 単発の指示なら user、会話の続きなら messages を渡す (どちらか一方)
+  user?: string;
+  messages?: { role: "user" | "assistant"; content: string }[];
   schema: Record<string, unknown>;
   maxTokens?: number;
 }): Promise<T> {
@@ -31,7 +33,7 @@ export async function generateJson<T>(args: {
     model: MODEL,
     max_tokens: args.maxTokens ?? 16000,
     system: args.system,
-    messages: [{ role: "user", content: args.user }],
+    messages: args.messages ?? [{ role: "user", content: args.user ?? "" }],
     output_config: {
       format: { type: "json_schema", schema: args.schema },
     },
@@ -46,6 +48,25 @@ export async function generateJson<T>(args: {
 
   const text = response.content.find((b) => b.type === "text")?.text ?? "";
   return JSON.parse(text) as T;
+}
+
+// 会話用。構造化せずにテキストをそのまま返す
+export async function generateChatReply(args: {
+  system: string;
+  messages: { role: "user" | "assistant"; content: string }[];
+  maxTokens?: number;
+}): Promise<string> {
+  const client = new Anthropic();
+  const response = await client.messages.create({
+    model: MODEL,
+    max_tokens: args.maxTokens ?? 1024,
+    system: args.system,
+    messages: args.messages,
+  });
+  if (response.stop_reason === "refusal") {
+    throw new GenerateRefusalError();
+  }
+  return response.content.find((b) => b.type === "text")?.text ?? "";
 }
 
 export class GenerateRefusalError extends Error {
@@ -65,6 +86,19 @@ export function handleGenerateError(e: unknown, label: string) {
     return NextResponse.json(
       { error: "Anthropic APIの認証に失敗しました。.env.local の ANTHROPIC_API_KEY を確認してください。" },
       { status: 500 },
+    );
+  }
+  // 残高切れは 400 で返ってくる。原因が分かる文言にしないと解決できない
+  if (
+    e instanceof Anthropic.BadRequestError &&
+    /credit balance/i.test(String(e.message))
+  ) {
+    return NextResponse.json(
+      {
+        error:
+          "Anthropic APIの残高が不足しています。console.anthropic.com の Plans & Billing でクレジットを追加してください。",
+      },
+      { status: 402 },
     );
   }
   if (e instanceof Anthropic.RateLimitError) {

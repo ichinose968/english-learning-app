@@ -33,8 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    // html に高さを固定すると本文がはみ出しても伸びず、スマホで縦スクロールできなくなる
+    <html lang="ja" className="antialiased">
+      <body className="min-h-svh flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         {children}
       </body>
     </html>

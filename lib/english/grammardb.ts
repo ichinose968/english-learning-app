@@ -11,6 +11,17 @@ export async function fetchGrammarDb(level: Level): Promise<GrammarDb> {
   return (await res.json()) as GrammarDb;
 }
 
+// 複数レベルをまとめて1つの出題プールにする
+export interface GrammarPool {
+  levels: Level[];
+  items: GrammarDbItem[];
+}
+
+export async function fetchGrammarPool(levels: Level[]): Promise<GrammarPool> {
+  const dbs = await Promise.all(levels.map(fetchGrammarDb));
+  return { levels, items: dbs.flatMap((d) => d.items) };
+}
+
 function weightedSample<T>(pool: { item: T; w: number }[], count: number): T[] {
   const result: T[] = [];
   const rest = [...pool];
@@ -32,22 +43,23 @@ function weightedSample<T>(pool: { item: T; w: number }[], count: number): T[] {
 }
 
 // 出題キューを組む。
-// - topic 指定時はそのトピックのみ、おまかせ時は苦手トピックを重み3で優先
+// - topics を指定するとそのトピックだけ (複数可)。空ならおまかせで、苦手トピックを重み3で優先
 // - 未出題の問題を優先し、足りなければ出題済みから補充する
 export function buildGrammarQueue(
-  db: GrammarDb,
-  topic: string | null,
+  items: GrammarDbItem[],
+  topics: string[],
   weakTopics: string[],
   seenIds: string[],
   size: number,
 ): GrammarDbItem[] {
   const seen = new Set(seenIds);
-  const pool = topic ? db.items.filter((it) => it.topic === topic) : db.items;
+  const pool =
+    topics.length > 0 ? items.filter((it) => topics.includes(it.topic)) : items;
 
   const toWeighted = (items: GrammarDbItem[]) =>
     items.map((item) => ({
       item,
-      w: !topic && weakTopics.includes(item.topic) ? 3 : 1,
+      w: topics.length === 0 && weakTopics.includes(item.topic) ? 3 : 1,
     }));
 
   const unseen = pool.filter((it) => !seen.has(it.id));

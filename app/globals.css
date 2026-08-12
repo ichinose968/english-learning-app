@@ -23,3 +23,20 @@ body {
     color-scheme: dark;
   }
 }
+
+/* 画面上部のタブを切り替えたとき、中身が横から滑り込んでくる。
+   進む向きは --tab-slide-from で渡す (右のタブへ動くなら正、左のタブへ動くなら負) */
+@keyframes tab-slide {
+  from {
+    opacity: 0;
+    transform: translateX(var(--tab-slide-from, 24px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tab-slide {
+  animation: tab-slide 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}

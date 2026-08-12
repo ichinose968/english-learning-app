@@ -33,7 +33,7 @@ export function ChoiceQuestion({
   };
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
       <div className="mb-4">{prompt}</div>
       <div className="grid gap-2">
         {choices.map((c, i) => {
@@ -44,10 +44,10 @@ export function ChoiceQuestion({
               "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:hover:border-zinc-500 dark:hover:bg-zinc-800";
           } else if (i === correctIndex) {
             cls +=
-              "border-emerald-500 bg-emerald-50 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200";
+              "border-[#4A99EA] bg-[#4A99EA]/10 text-[#4A99EA]";
           } else if (i === selected) {
             cls +=
-              "border-rose-500 bg-rose-50 text-rose-900 dark:bg-rose-950 dark:text-rose-200";
+              "border-red-500 bg-red-500/10 text-red-500";
           } else {
             cls += "border-zinc-200 opacity-60 dark:border-zinc-700";
           }
@@ -66,11 +66,11 @@ export function ChoiceQuestion({
           <p className="flex items-center gap-1.5 text-sm font-medium">
             {selected === correctIndex ? (
               <>
-                <CheckCircle2 size={16} className="text-emerald-600" /> 正解
+                <CheckCircle2 size={16} className="text-[#4A99EA]" /> 正解
               </>
             ) : (
               <>
-                <XCircle size={16} className="text-rose-600" /> 不正解 (正解:{" "}
+                <XCircle size={16} className="text-red-500" /> 不正解 (正解:{" "}
                 {String.fromCharCode(65 + correctIndex)})
               </>
             )}
