@@ -46,13 +46,13 @@ export function GrammarTab({ data, setData }: Props) {
   const [index, setIndex] = useState(0);
   const [answeredCurrent, setAnsweredCurrent] = useState(false);
 
-  // 出題難易度。未設定なら長文設定のレベルに従う
+  // 出題難易度。未設定なら単語学習の測定値に追随する
+  // (初回設定でレベルを選ぶフローは廃止したので、settings.level は無いことがある。
+  //  測定もまだなら B1 から始める)
   const levels: Level[] =
     data.settings.grammarLevels.length > 0
       ? data.settings.grammarLevels
-      : data.settings.level
-        ? [data.settings.level]
-        : [];
+      : [data.vocabLevel.current ?? data.settings.level ?? "B1"];
   const levelKey = levels.join(",");
 
   // 読み込み完了時の自動出題で使う。読み込みをやり直さずに最新値を読むための控え

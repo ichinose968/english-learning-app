@@ -177,6 +177,12 @@ export function loadData(): EnglishData {
       grammarSeen: parsed.grammarSeen ?? [],
       readings: parsed.readings ?? [],
       chat: parsed.chat ?? [],
+      // 旧フロー (SetupPanel でレベルを選んで始める) を通ったユーザーと、
+      // 学習記録が既にあるユーザーには、チュートリアルを出さない
+      tutorialDone:
+        parsed.tutorialDone === true ||
+        parsed.settings?.level != null ||
+        Object.keys(vocab).length > 0,
       stats: parsed.stats ?? EMPTY_DATA.stats,
     };
   } catch {

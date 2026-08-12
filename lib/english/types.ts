@@ -413,6 +413,9 @@ export interface EnglishData {
   grammarSeen: string[]; // 出題済み問題id (直近300件。未出題を優先するため)
   readings: SavedReading[];
   chat: ChatMessage[]; // AIチャットの履歴 (直近50件)
+  // 初回チュートリアルを終えたか (スキップも「終えた」に含む)。
+  // 以前あった「はじめに設定してください」(SetupPanel) のゲートはこれに置き換えた
+  tutorialDone: boolean;
   stats: {
     vocabAnswered: number;
     vocabCorrect: number;
@@ -439,6 +442,7 @@ export const EMPTY_DATA: EnglishData = {
   grammarSeen: [],
   readings: [],
   chat: [],
+  tutorialDone: false,
   stats: { vocabAnswered: 0, vocabCorrect: 0, grammarAnswered: 0, grammarCorrect: 0 },
 };
 

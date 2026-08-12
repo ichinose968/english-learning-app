@@ -37,7 +37,8 @@ export function ChatTab({ data, setData }: Props) {
   const messages = data.chat;
   const chat = data.settings.chat;
   // 自動設定のときは単語学習で測ったレベルに合わせる
-  const autoLevel = data.vocabLevel.current ?? data.settings.level;
+  // 測定前かつ旧フローの settings.level も無ければ B1 から始める
+  const autoLevel = data.vocabLevel.current ?? data.settings.level ?? "B1";
   const activeLevel = chat.levelMode === "manual" ? chat.manualLevel : autoLevel;
 
   // 新しい発言が増えたら一覧の末尾へ。ページ自体は動かさない

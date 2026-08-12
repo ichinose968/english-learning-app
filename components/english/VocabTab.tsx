@@ -80,10 +80,10 @@ const MODE_TABS: { key: QuizMode; label: string }[] = [
 const BATCH_SIZE = 10;
 // カードが回りながら飛んでいく時間。globals.css の card-fly-* と必ず揃える。
 // 短すぎるとコピーを消すのが早すぎて、飛びきる前にアニメーションが切れる
-const EXIT_MS = 600;
+export const EXIT_MS = 600;
 
 // 飛んでいくカードのコピー。飛ばすと決めた瞬間の見た目をそのまま持たせる
-interface FlyingCard {
+export interface FlyingCard {
   item: WordDbEntry;
   note: string | undefined;
   dir: "left" | "right" | "up";
@@ -335,7 +335,7 @@ function NextCard({
 // 1単語分のカード (Tinder風)。スワイプまたは下部のボタンで回答する。
 // 回答するとカードが裏返って意味を表示し、「次へ」でカードが飛んでいく。
 // 状態のリセットは親が key={item.word} を変えることで行う
-function WordCard({
+export function WordCard({
   item,
   note,
   nextItem,

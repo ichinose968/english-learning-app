@@ -119,7 +119,8 @@ export function ReadingTab({ data, setData }: Props) {
     .map((e) => ({ word: e.word, meaningJa: e.meaningJa }));
 
   // 文章難易度。自動なら単語学習で測ったレベルに追随する
-  const autoLevel = data.vocabLevel.current ?? data.settings.level;
+  // 測定前かつ旧フローの settings.level も無ければ B1 から始める
+  const autoLevel = data.vocabLevel.current ?? data.settings.level ?? "B1";
   const activeLevel: Level | null =
     reading.levelMode === "manual" ? reading.manualLevel : autoLevel;
 

@@ -80,7 +80,9 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `components/english/ChatFilterSheet.tsx` … 「会話設定」全画面シート。AIの英語レベル（自動/手動）、会話量、会話トピック、添削の有無。ボイス側の設定はまだ無い。
 - `components/english/ReadingTab.tsx` … 読解。設定（出題テーマ / 文章難易度 / 文章の長さ / 勉強目的）を折りたたみでタブ内に持つ。本文に織り込む単語は前回結果が ×→△ の順に古いものから最大8語。タブ自体は設定・生成ボタン・長文リストだけで、本文は持たない。
 - `components/english/ReadingSheet.tsx` … 長文を画面いっぱい (`inset-3`) のポップアップで開く。本文・語注・和訳・設問をまとめて出し、右上の × で閉じる（開閉とも背面フェード＋パネル拡縮の対称アニメーション）。`renderPassage`（`**word**` をハイライトに変換）もここ。ハイライトは `wordAction` が解決できた語だけ下線付きのボタンになり、押すと単語詳細が開く。
-- `components/english/SetupPanel.tsx` / `ChoiceQuestion.tsx`。
+- `components/english/TutorialFlow.tsx` … 初回チュートリアル。`TutorialOverlay`（全画面: ようこそ / カード操作デモ / おわり）と `TutorialBanner`（タブ体験用の説明バナー）と `tutorialTabForStep()`。ステップ自体は EnglishApp が持つ。
+- `components/english/InterestsEditor.tsx` … 興味テーマの編集。設定 → 単語学習の設定 に置いてある（旧 SetupPanel から移設）。
+- `components/english/ChoiceQuestion.tsx`。
 
 ロジック
 - `lib/english/types.ts` … データモデルの中心。`VocabSettings`, `CardFieldKey`/`CARD_FIELDS`, `WordDbEntry`, `WORD_DOMAINS`/`WORD_THEMES`/`WORD_EXAMS`, `VocabEntry`, `WordEdit`＋`applyEdit()`, `EnglishData`, `READING_PURPOSES`。
@@ -110,6 +112,13 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 
 - ユーザーの編集は `EnglishData.edits` にオーバーライドとして保存し、DBファイル自体は書き換えない。DBを再生成しても編集が消えないため。
 - 単語・文法はAPIを呼ばない。生成待ちが体験を壊すので、事前生成DBから即出題する。
+- **初回は「はじめに設定してください」(SetupPanel) ではなくチュートリアルを出す**（`EnglishData.tutorialDone`。旧フローを通った既存ユーザーと学習記録のあるユーザーは storage.ts の移行で「済み」扱い）。
+  - 構成: ようこそ（全画面）→ カード操作デモ（全画面。**本物の `WordCard` を使い、回答は記録に残さない**）→ 単語 / 単語リスト / 文法 / 読解 / AI会話 の**タブ体験**（実タブに切り替え、説明バナーを出して実際に触らせる。単語のステップで本物の10問測定をそのまま実施）→ おわり（全画面）。
+  - **説明はスライドで先に読ませない。タブごとに実物を触らせる**（ユーザーの指定）。バナーはオーバーレイではなく**スクロールコンテナ先頭の通常フロー**に置く。オーバーレイにするとカード画面の回答ボタンなどを覆うため。邪魔ならスクロールで外へ送れる。
+  - ステップは EnglishApp が持つ（タブ切り替えと絡むため）。タブ体験のステップに入った瞬間だけ対象タブへ切り替え、以後ユーザーが他のタブを覗くのは自由。
+  - スキップ可。設定（歯車）の「チュートリアル」からいつでも見直せる（測定済みなら最後のボタンは「閉じる」になる）。
+  - デモカードは `TutorialFlow` 内の固定データ（DB読込を待たない）。`WordCard` / `FlyingCard` / `EXIT_MS` は VocabTab から export してある。飛んでいくコピーの扱いも本体と同じ。
+- `settings.level` は初回に選ばせなくなったので **null のままでも全機能が動く**。文法のおまかせは `vocabLevel.current ?? settings.level ?? "B1"`、読解・AI会話の自動レベルも同じフォールバック。興味テーマは設定 → 単語学習の設定 の `InterestsEditor` で編集する（空でも読解・会話のプロンプトは「指定なし」扱いで動く）。
 - レベルはユーザーが選ぶのではなく最初の10問で測り、以後は正答率で動的に上下させる。苦手タブの出題語も現在レベルに追随する。
 - 測定の10問目に答えた時点で、測ったレベルの最初のキューまで作ってしまう（`onPlacementNext`）。結果画面の「学習をはじめる」は `phase` を `quiz` にするだけ。
   - 以前はここで `idle` に落としていたが、`idle` の画面は「出題できる単語がありません。設定を見直すか、レベルを再測定してください」しか出さないので、測定を終えた直後に行き止まりに突き当たっていた。測定とキュー作成のあいだに `setData` の反映待ちを挟まないよう、レベルは state ではなく測定値 `est` から直接渡す。
@@ -296,12 +305,10 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 
 ### 引き継ぎ時点の状況（重要）
 
-開発リポジトリ (`~/Desktop/claudecode`) の `82af0d9` までをこちらへ反映した。
-反映したのは英語アプリの実装ファイルだけ:
-`app/globals.css` / `components/english/{CardDetailSheet,CardFilterSheet,EnglishApp,ReadingSheet,VocabTab,WordListView}.tsx`
-/ `lib/english/{speech,storage,types,worddb}.ts` / `scripts/check-english-queue.ts`。
-このリポジトリ固有の `app/layout.tsx`・`app/page.tsx`・`README.md`・`AGENTS.md`・`.claude/launch.json` と、
-この文書の2章・2.5章・7章冒頭は向こうからコピーしない。
+開発リポジトリ (`~/Desktop/claudecode`) の `20b831b` までをこちらへ反映した。
+反映は英語アプリの実装ファイルだけ。このリポジトリ固有の `app/layout.tsx`・`app/page.tsx`・
+`README.md`・`AGENTS.md`・`.claude/launch.json` と、この文書の2章・2.5章・7章冒頭は
+向こうからコピーしない。
 
 `npx tsc --noEmit` と `npx next build` は通る。eslint は9件 (7 errors / 2 warnings) で基準どおり。
 push は本番反映を伴うので、ユーザーの指示なく勝手に push しないこと。
@@ -354,7 +361,7 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
 - 飛んでいるコピーを**配列**にして、続けてスワイプしても前のカードが途中で消えないようにした。
 - **回答後の青の地色を 2.6倍**に濃くした（`cardTone()` の `fill`）。
 
-### さらに入れたもの（2026-08-13。**まだ本番に出していない**）
+### さらに入れたもの（2026-08-13。fd2ca9a で本番反映済み）
 
 1. **単語 / 例文の読み上げ**（`lib/english/speech.ts`）。ブラウザ内蔵の Web Speech API だけ。
    カードの表面と解説面、カード詳細の単語と例文、長文シートの本文、単語リストの各行にスピーカー。
@@ -370,6 +377,10 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
    これに置き換えた（6章参照）。`interval` / `dueAt` は storage.ts が読み込み時に掃除する。
 5. カードの飛行を **0.6s** に（ユーザー指定の体感1.5倍）。単語リストの列名は折り返さない。
    見出しクリックの並べ替え廃止・青の地色 2.6倍・飛行コピーの配列化はこの前のコミットから継続。
+6. **初回チュートリアル**（`TutorialFlow.tsx`）。「はじめに設定してください」(SetupPanel) の
+   ゲートを撤去して置き換えた。カード操作は本物の WordCard のデモ（記録なし）、
+   残りは実タブに切り替えて説明バナーを出す体験形式。単語力測定もチュートリアル内で実施。
+   詳細は5章。SetupPanel.tsx は削除、興味テーマは InterestsEditor として設定へ移設。
 
 **多エージェントのレビューで見つけて直したもの**（撤回済みの機能に関する指摘は省く）
 - 引いて閉じるの最小移動量が 6px で、ブラウザのタップ許容量より小さかった。
@@ -408,6 +419,11 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
   ただし**ブラウザペインはユーザーも触れる**。退避してから戻すまでのあいだにユーザーが
   カードに答えていると、戻した瞬間にその操作を巻き戻してしまう。
   戻す前に退避時点との差分を必ず確認すること（実際に、退避後に5件の回答が増えていた）。
+- **合成 PointerEvent は `setPointerCapture` で例外になり、WordCard のスワイプが始まらない。**
+  実在しない pointerId を渡すと throw するため（実指では起きない）。検証時は
+  `Element.prototype.setPointerCapture` を try/catch で包むパッチを当ててから dispatch する。
+  これを知らずに「影が赤い」を静的な地色 (26px 2px) だけ見て検証済みと誤認しかけた。
+  ドラッグ中の影は swipeShadow でぼかし・広がりが動く (35px 4.5px など) ので、値の形で区別する。
 - **ジェスチャ（ドラッグ・スワイプ）の検証は合成イベントでは不十分。** `dispatchEvent` で作った
   PointerEvent はブラウザのジェスチャ認識（スクロール判定 → pointercancel）を通らないので、
   「合成では動くのに実機で全く効かない」を実際にやった。`computer` の `left_click_drag`

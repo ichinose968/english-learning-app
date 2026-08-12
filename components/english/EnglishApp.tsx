@@ -13,13 +13,15 @@ import {
   PenLine,
   Settings,
 } from "lucide-react";
-import {
-  EnglishData,
-  EMPTY_DATA,
-  Level,
-} from "@/lib/english/types";
+import { EnglishData, EMPTY_DATA } from "@/lib/english/types";
 import { clearData, loadData, saveData } from "@/lib/english/storage";
-import { SetupPanel } from "./SetupPanel";
+import { InterestsEditor } from "./InterestsEditor";
+import {
+  TUTORIAL_STEP_COUNT,
+  TutorialBanner,
+  TutorialOverlay,
+  tutorialTabForStep,
+} from "./TutorialFlow";
 import { VocabTab } from "./VocabTab";
 import { GrammarTab } from "./GrammarTab";
 import { ReadingTab } from "./ReadingTab";
@@ -69,13 +71,41 @@ export function EnglishApp() {
   useEffect(() => {
     contentRef.current?.scrollTo(0, 0);
   }, [tab]);
-  // 初期設定画面用の一時状態
-  const [draftLevel, setDraftLevel] = useState<Level | null>(null);
-  const [draftInterests, setDraftInterests] = useState<string[]>([]);
+  // チュートリアル。初回 (tutorialDone が false) は自動で始まり、設定からも見直せる。
+  // ステップをここで持つのは、タブ体験のステップで実タブを切り替えるため。
+  // 0=ようこそ / 1=カード操作デモ (全画面) / 2〜6=各タブの体験 (バナー) / 7=おわり (全画面)
+  const [tourStep, setTourStep] = useState<number | null>(null);
+  const goTourStep = (n: number) => {
+    if (n >= TUTORIAL_STEP_COUNT) {
+      finishTutorial();
+      return;
+    }
+    const next = Math.max(0, n);
+    setTourStep(next);
+    // タブ体験のステップに入った瞬間、そのタブへ切り替える。
+    // 以後ユーザーが他のタブを覗くのは自由 (強制的に戻したりしない)
+    const target = tutorialTabForStep(next);
+    if (target) setTab(target);
+  };
+  const finishTutorial = () => {
+    setTourStep(null);
+    setTab("vocab");
+    setData((prev) => ({ ...prev, tutorialDone: true }));
+  };
+  const tourNav = tourStep !== null && {
+    step: tourStep,
+    measured: data.vocabLevel.current !== null,
+    onNext: () => goTourStep(tourStep + 1),
+    onBack: () => goTourStep(tourStep - 1),
+    onSkip: finishTutorial,
+  };
 
   useEffect(() => {
-    setData(loadData());
+    const d = loadData();
+    setData(d);
     setLoaded(true);
+    // 初回だけチュートリアルを自動で始める
+    if (!d.tutorialDone) setTourStep(0);
   }, []);
 
   useEffect(() => {
@@ -92,36 +122,6 @@ export function EnglishApp() {
     return (
       <div className="px-4 py-24 text-center text-sm text-zinc-500">
         読み込み中...
-      </div>
-    );
-  }
-
-  // 初期設定 (レベル未設定なら最初に選ばせる)
-  if (data.settings.level === null) {
-    return (
-      <div className="m-4 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-black">
-        <h2 className="text-lg font-semibold">はじめに設定してください</h2>
-        <p className="mb-5 mt-1 text-sm text-zinc-500">
-          レベルと興味に合わせて、AIが単語・文法・長文の教材を自動生成します。あとから設定タブで変更できます。
-        </p>
-        <SetupPanel
-          level={draftLevel}
-          interests={draftInterests}
-          onLevelChange={setDraftLevel}
-          onInterestsChange={setDraftInterests}
-        />
-        <button
-          disabled={draftLevel === null}
-          onClick={() =>
-            setData((prev) => ({
-              ...prev,
-              settings: { ...prev.settings, level: draftLevel, interests: draftInterests },
-            }))
-          }
-          className="mt-6 w-full rounded-lg bg-[#4A99EA] py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4] disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          この設定ではじめる
-        </button>
       </div>
     );
   }
@@ -160,6 +160,22 @@ export function EnglishApp() {
             <ChevronRight size={16} className="ml-auto shrink-0 text-zinc-400" />
           </button>
         ))}
+        <button
+          onClick={() => {
+            closeSettings();
+            goTourStep(0);
+          }}
+          className="flex w-full items-center gap-3 px-4 py-4 text-left hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+        >
+          <BookOpen size={18} className="text-[#4A99EA]" />
+          <span className="text-sm font-medium">
+            チュートリアル
+            <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+              使い方をもう一度見る
+            </span>
+          </span>
+          <ChevronRight size={16} className="ml-auto shrink-0 text-zinc-400" />
+        </button>
       </div>
     </div>
   );
@@ -194,6 +210,21 @@ export function EnglishApp() {
             出題範囲 (語彙 / イディオム) と出題条件、スワイプ時の表示項目は、カード画面の左上のボタン「スワイプ設定」から変更します。
           </p>
         </div>
+      </div>
+      <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
+        <h3 className="text-sm font-medium">興味のあるテーマ</h3>
+        <p className="mb-3 mt-0.5 text-xs text-zinc-500">
+          長文読解とAI会話の「おまかせ」の題材に使われます。
+        </p>
+        <InterestsEditor
+          interests={data.settings.interests}
+          onChange={(interests) =>
+            setData((prev) => ({
+              ...prev,
+              settings: { ...prev.settings, interests },
+            }))
+          }
+        />
       </div>
     </div>
   );
@@ -257,6 +288,11 @@ export function EnglishApp() {
         ref={contentRef}
         className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto px-4 py-4"
       >
+      {/* タブ体験のステップでは、タブの中身の上に説明バナーを通常フローで置く
+          (オーバーレイにするとカード画面の回答ボタンなどを覆ってしまう) */}
+      {tourNav && tutorialTabForStep(tourNav.step) && (
+        <TutorialBanner {...tourNav} />
+      )}
       {tab === "vocab" && <VocabTab data={data} setData={setData} />}
       {tab === "database" && <WordListView data={data} setData={setData} />}
       {tab === "grammar" && <GrammarTab data={data} setData={setData} />}
@@ -322,6 +358,11 @@ export function EnglishApp() {
           })}
         </div>
       </nav>
+
+      {/* 最初と最後だけ全画面 (z-[60])。閉じた瞬間にそのまま単語タブが出る */}
+      {tourNav && !tutorialTabForStep(tourNav.step) && (
+        <TutorialOverlay {...tourNav} />
+      )}
     </div>
   );
 }
