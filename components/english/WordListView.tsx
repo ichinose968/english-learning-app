@@ -11,6 +11,7 @@ import {
   Plus,
   Search,
   Trash2,
+  Volume2,
   X,
 } from "lucide-react";
 import {
@@ -34,6 +35,7 @@ import {
   WordDbMap,
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
+import { primeSpeech, speak } from "@/lib/english/speech";
 import { CardDetailSheet } from "./CardDetailSheet";
 
 const PAGE_SIZE = 100;
@@ -779,10 +781,27 @@ export function WordListView({ data, setData }: Props) {
                 const cell = (key: SortKey) => {
                   switch (key) {
                     case "word":
+                      // 2行構成。1行目に単語とスピーカー、2行目に品詞・レベル。
+                      // 1行に全部並べると長い語で横幅を食うので、縦に分ける (ユーザー指定)
                       return (
-                        <span>
-                          <span className="font-medium">{def.word}</span>
-                          <span className="ml-1.5 text-[10px] text-zinc-400">
+                        <span className="inline-flex flex-col gap-0.5">
+                          <span className="inline-flex items-center gap-1.5">
+                            <span className="font-medium">{def.word}</span>
+                            <button
+                              type="button"
+                              aria-label={`${def.word} を読み上げる`}
+                              onClick={(e) => {
+                                // 行のクリックはカード詳細を開くので、ここで止める
+                                e.stopPropagation();
+                                primeSpeech();
+                                speak(def.word);
+                              }}
+                              className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-zinc-200 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+                            >
+                              <Volume2 size={14} />
+                            </button>
+                          </span>
+                          <span className="text-[10px] text-zinc-400">
                             {def.pos}・{lv}
                           </span>
                         </span>
