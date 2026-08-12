@@ -162,12 +162,111 @@ function swipeShadow(dir: SwipeDir, t: number): string {
   return `0 0 ${22 + 52 * e}px ${2 + 10 * e}px ${glow(0.1 + 0.3 * e)}`;
 }
 
+// カードの表面。今のカードと、その後ろに重ねる次のカードで共用する
+function CardFront({
+  item,
+  note,
+  cardFields,
+}: {
+  item: WordDbEntry;
+  note: string | undefined;
+  cardFields: Record<CardFieldKey, boolean>;
+}) {
+  return (
+    <div className="relative z-10 space-y-3 py-4 text-center">
+      {cardFields.word && (
+        <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+      )}
+      {(cardFields.ipa || cardFields.pos) && (
+        <p className="text-xs text-zinc-400">
+          {[cardFields.ipa && item.ipa, cardFields.pos && item.pos]
+            .filter(Boolean)
+            .join("  ")}
+        </p>
+      )}
+      {cardFields.meaning && <p className="text-lg">{item.meaningJa}</p>}
+      {cardFields.tags &&
+        (item.exams?.length || item.domains?.length || item.themes?.length) && (
+          <div className="flex flex-wrap justify-center gap-1.5">
+            {[
+              ...(item.exams ?? []),
+              ...(item.domains ?? []).map((d) => DOMAIN_LABEL_JA[d] ?? d),
+              ...(item.themes ?? []).map((t) => THEME_LABEL_JA[t] ?? t),
+            ].map((t) => (
+              <span
+                key={t}
+                className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-600"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+      {/* 答えが分かってしまうため、表面では英文だけ出す */}
+      {cardFields.example && <p className="text-sm">{item.exampleEn}</p>}
+      {cardFields.related && item.related && item.related.length > 0 && (
+        <p className="text-xs text-zinc-500">
+          {item.related.map((r) => r.word).join(" ・ ")}
+        </p>
+      )}
+      {cardFields.note && note && (
+        <p className="text-xs text-zinc-500">メモ: {note}</p>
+      )}
+    </div>
+  );
+}
+
+// 今のカードの後ろに重ねておく次のカード。横へずらすと中身がのぞく。
+// t は今のカードを引っぱった強さ (0〜1) で、引くほど手前へせり上がる
+function NextCard({
+  item,
+  note,
+  cardFields,
+  t,
+  follow,
+  hidden,
+}: {
+  item: WordDbEntry;
+  note: string | undefined;
+  cardFields: Record<CardFieldKey, boolean>;
+  t: number;
+  // 指の動きに即座に追従させるか (ドラッグ中)
+  follow: boolean;
+  // カードをめくっているあいだは隠す (次の単語が一瞬読めてしまうため)
+  hidden: boolean;
+}) {
+  return (
+    <div
+      aria-hidden
+      style={{
+        transform: `scale(${0.95 + 0.05 * t}) translateY(${18 * (1 - t)}px)`,
+        opacity: hidden ? 0 : 1,
+        transition: follow
+          ? "opacity 0.15s linear"
+          : "transform 0.22s ease-out, opacity 0.15s linear",
+      }}
+      // 手前のカードと同じく、ダークテーマでも白地・黒文字にする
+      className="pointer-events-none absolute inset-0 flex select-none flex-col justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900"
+    >
+      {item.bgImage && (
+        <div
+          className="pointer-events-none absolute inset-0 z-0 rounded-2xl bg-cover bg-center opacity-40"
+          style={{ backgroundImage: `url(${item.bgImage})` }}
+        />
+      )}
+      <CardFront item={item} note={note} cardFields={cardFields} />
+    </div>
+  );
+}
+
 // 1単語分のカード (Tinder風)。スワイプまたは下部の5ボタンで回答する。
 // 回答するとカードが裏返って意味を表示し、「次へ」でカードが飛んでいく。
 // 状態のリセットは親が key={item.word} を変えることで行う
 function WordCard({
   item,
   note,
+  nextItem,
+  nextNote,
   onAction,
   onNext,
   onRefresh,
@@ -181,6 +280,9 @@ function WordCard({
 }: {
   item: WordDbEntry;
   note: string | undefined;
+  // 後ろに重ねて見せる次のカード (キューの末尾やレベル測定中は無い)
+  nextItem: WordDbEntry | undefined;
+  nextNote: string | undefined;
   // 回答後に解説を飛ばして次へ進むか (○ / × 別)
   skipReveal: { known: boolean; unknown: boolean };
   onAction: (action: VocabAction) => void;
@@ -433,9 +535,21 @@ function WordCard({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      {/* 背面のカード (奥行きの演出) */}
       <div className="relative min-h-0 flex-1">
-        <div className="absolute inset-x-3 bottom-[-8px] top-2 rounded-2xl border border-zinc-200 dark:border-zinc-800" />
+        {/* 背面のカード。次の単語が分かっていれば中身ごと重ね、
+            分からなければ枠だけ置いて奥行きを出す */}
+        {nextItem ? (
+          <NextCard
+            item={nextItem}
+            note={nextNote}
+            cardFields={cardFields}
+            t={swipeT}
+            follow={!!drag && !exit}
+            hidden={flip}
+          />
+        ) : (
+          <div className="absolute inset-x-3 bottom-[-8px] top-2 rounded-2xl border border-zinc-200 dark:border-zinc-800" />
+        )}
         <div
           ref={cardRef}
           onPointerDown={onPointerDown}
@@ -508,56 +622,7 @@ function WordCard({
           )}
 
           {step === "ask" ? (
-            <div className="relative z-10 space-y-3 py-4 text-center">
-              {cardFields.word && (
-                <p className="text-4xl font-bold tracking-tight">{item.word}</p>
-              )}
-              {(cardFields.ipa || cardFields.pos) && (
-                <p className="text-xs text-zinc-400">
-                  {[cardFields.ipa && item.ipa, cardFields.pos && item.pos]
-                    .filter(Boolean)
-                    .join("  ")}
-                </p>
-              )}
-              {cardFields.meaning && (
-                <p className="text-lg">{item.meaningJa}</p>
-              )}
-              {cardFields.tags &&
-                (item.exams?.length ||
-                  item.domains?.length ||
-                  item.themes?.length) && (
-                  <div className="flex flex-wrap justify-center gap-1.5">
-                    {[
-                      ...(item.exams ?? []),
-                      ...(item.domains ?? []).map(
-                        (d) => DOMAIN_LABEL_JA[d] ?? d,
-                      ),
-                      ...(item.themes ?? []).map((t) => THEME_LABEL_JA[t] ?? t),
-                    ].map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-600"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              {/* 答えが分かってしまうため、表面では英文だけ出す */}
-              {cardFields.example && (
-                <p className="text-sm">{item.exampleEn}</p>
-              )}
-              {cardFields.related &&
-                item.related &&
-                item.related.length > 0 && (
-                  <p className="text-xs text-zinc-500">
-                    {item.related.map((r) => r.word).join(" ・ ")}
-                  </p>
-                )}
-              {cardFields.note && note && (
-                <p className="text-xs text-zinc-500">メモ: {note}</p>
-              )}
-            </div>
+            <CardFront item={item} note={note} cardFields={cardFields} />
           ) : (
             <div className="relative z-10 py-4 text-center">
               <p className="text-4xl font-bold tracking-tight">{item.word}</p>
@@ -945,6 +1010,24 @@ export function VocabTab({ data, setData }: Props) {
         ...prev,
         vocabLevel: { current: est, recent: [] },
       }));
+      // 測ったその場で最初のキューを作っておく。結果画面の「学習をはじめる」から
+      // そのままカードへ移れるようにするため。ここで作らずに idle へ落とすと
+      // 「出題できる単語がありません」の画面に突き当たって先へ進めない
+      setMode("random");
+      setQueue(
+        buildQueue(
+          dbs,
+          activeLevels(data.settings.vocab, est),
+          data.vocab,
+          data.settings.vocab,
+          "random",
+          BATCH_SIZE,
+          new Date(),
+          // 測定で出したばかりの語がそのまま続けて出ないようにする
+          pSeen,
+        ),
+      );
+      setIndex(0);
       setPhase("placementDone");
       return;
     }
@@ -1070,14 +1153,10 @@ export function VocabTab({ data, setData }: Props) {
     setPhase("quiz");
   };
 
-  // 次の1問へ。キューを使い切ったら補充して無限に出題を続ける
-  const next = () => {
-    if (index + 1 < queue.length) {
-      setIndex(index + 1);
-      return;
-    }
-    if (!dbs || levels.length === 0) return;
-    // 補充のタイミングで直近正解率によるレベル自動調整を判定する (手動設定のときは行わない)
+  // 次のバッチを作る。このタイミングで直近正解率によるレベル自動調整も判定する
+  // (手動設定のときは行わない)
+  const buildNextBatch = (exclude: Set<string>): WordDbEntry[] => {
+    if (!dbs || levels.length === 0) return [];
     let nextLevels = levels;
     const shift =
       mode === "random" && data.settings.vocab.levelMode === "auto"
@@ -1095,7 +1174,6 @@ export function VocabTab({ data, setData }: Props) {
           : `直近の正解率が${Math.round(shift.acc * 100)}%のため、単語レベルを ${levelLabel(shift.next)} に下げました。`,
       );
     }
-    // 直前に出した語がすぐ再登場しないように除外して補充する
     const q = buildQueue(
       dbs,
       nextLevels,
@@ -1104,22 +1182,51 @@ export function VocabTab({ data, setData }: Props) {
       mode,
       BATCH_SIZE,
       new Date(),
-      new Set(queue.map((w) => w.word)),
+      exclude,
     );
-    const refilled =
-      q.length > 0
-        ? q
-        : buildQueue(
-            dbs,
-            nextLevels,
-            data.vocab,
-            data.settings.vocab,
-            mode,
-            BATCH_SIZE,
-            new Date(),
-          );
-    setQueue(refilled);
-    setIndex(0);
+    // 除外すると1語も残らないなら、除外なしで作り直す
+    return q.length > 0
+      ? q
+      : buildQueue(
+          dbs,
+          nextLevels,
+          data.vocab,
+          data.settings.vocab,
+          mode,
+          BATCH_SIZE,
+          new Date(),
+        );
+  };
+
+  // 次の1問へ。キューを使い切る前に継ぎ足して無限に出題を続ける
+  const next = () => {
+    const remaining = queue.length - (index + 1);
+    if (remaining < 1) {
+      // 継ぎ足せていなかったときの保険。作り直して先頭から出し直す
+      const q = buildNextBatch(new Set(queue.map((w) => w.word)));
+      if (q.length === 0) return;
+      setQueue(q);
+      setIndex(0);
+      return;
+    }
+    if (remaining > 1) {
+      setIndex(index + 1);
+      return;
+    }
+    // 残り1枚になった。背面に重ねる次のカードを切らさないよう、ここで継ぎ足す。
+    // 直前に出した語がすぐ再登場しないように、末尾1バッチぶんは除外する
+    const add = buildNextBatch(
+      new Set(queue.slice(-BATCH_SIZE).map((w) => w.word)),
+    );
+    if (add.length === 0) {
+      setIndex(index + 1);
+      return;
+    }
+    // キューが伸び続けないよう、古いぶんは切り捨てて index をずらす
+    const merged = [...queue, ...add];
+    const drop = Math.max(0, merged.length - BATCH_SIZE * 3);
+    setQueue(merged.slice(drop));
+    setIndex(index + 1 - drop);
   };
 
   const resetPlacement = () => {
@@ -1205,6 +1312,9 @@ export function VocabTab({ data, setData }: Props) {
           note={data.notes[pItem.word]}
           status={statusOf(pItem.word)}
           onSetStatus={setStatusOf(pItem)}
+          // 次に出す単語はこの回答の正誤で決まるので、背面に重ねるカードは無い
+          nextItem={undefined}
+          nextNote={undefined}
           onAction={onPlacementAction}
           onNext={onPlacementNext}
           onRefresh={onPlacementNext}
@@ -1241,7 +1351,7 @@ export function VocabTab({ data, setData }: Props) {
           問の正解率が85%以上で1段上に、50%以下で1段下に自動調整されます。
         </p>
         <button
-          onClick={() => setPhase("idle")}
+          onClick={() => setPhase("quiz")}
           className="mt-5 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
         >
           学習をはじめる
@@ -1386,6 +1496,8 @@ export function VocabTab({ data, setData }: Props) {
 
   if (phase === "quiz") {
     const item = queue[index];
+    // 背面に重ねるカード。キューは残り1枚で継ぎ足すので、通常は必ず存在する
+    const nextItem = queue[index + 1];
     return (
       <div className="flex h-full flex-col gap-3">
         {/* スワイプ設定は上のタブの下から、画面の下へ向けて開く */}
@@ -1435,6 +1547,12 @@ export function VocabTab({ data, setData }: Props) {
               key={item.word}
               item={applyEdit(item, data.edits[item.word])}
               note={data.notes[item.word]}
+              nextItem={
+                nextItem
+                  ? applyEdit(nextItem, data.edits[nextItem.word])
+                  : undefined
+              }
+              nextNote={nextItem ? data.notes[nextItem.word] : undefined}
               status={statusOf(item.word)}
               onSetStatus={setStatusOf(item)}
               onAction={(a) => {
@@ -1540,17 +1658,35 @@ export function VocabTab({ data, setData }: Props) {
 
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
         <BookOpen className="mx-auto text-[#4A99EA]" size={28} />
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-          出題できる{kind === "words" ? "単語" : "イディオム"}
-          がありません。設定を見直すか、レベルを再測定してください。
-        </p>
-        <button
-          onClick={() => switchMode("random")}
-          className="mt-4 rounded-full bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
-        >
-          <RefreshCw size={15} className="mr-1 inline" />
-          出題する
-        </button>
+        {levels.length === 0 ? (
+          // 出題対象レベルが1つも無いと switchMode が何もできないので、
+          // 「出題する」ではなく設定を直す導線を出す
+          <>
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+              出題対象のレベルが選ばれていません。スワイプ設定で難易度を選ぶか、レベルを測り直してください。
+            </p>
+            <button
+              onClick={startPlacement}
+              className="mt-4 rounded-full bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
+            >
+              レベルを測定する ({PLACEMENT_SIZE}問)
+            </button>
+          </>
+        ) : (
+          <>
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+              出題できる{kindLabel}
+              がありません。設定を見直すか、レベルを再測定してください。
+            </p>
+            <button
+              onClick={() => switchMode("random")}
+              className="mt-4 rounded-full bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
+            >
+              <RefreshCw size={15} className="mr-1 inline" />
+              出題する
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

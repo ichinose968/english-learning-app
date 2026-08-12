@@ -24,6 +24,39 @@ body {
   }
 }
 
+/* dark: が当たる条件を「端末がダーク」または「.dark を付けた要素の中」に広げる。
+   英語学習アプリだけ端末の設定によらず常にダークにしたいが、
+   同じリポジトリの他のページ (/, /tasks, /midterm, /analyze) は
+   端末の設定に従わせたいので、変数の付け替えではなく条件の追加にしてある */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    @slot;
+  }
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+}
+
+/* 強制ダークの枠内はフォーム部品やスクロールバーもダーク側に寄せる */
+.dark {
+  color-scheme: dark;
+}
+
+/* iOS Safari は、フォントサイズが16px未満の入力欄にフォーカスすると画面を自動で拡大する。
+   拡大されたまま打つことになって読み書きしづらいので、このアプリの入力欄は16pxを下回らせない。
+   viewport で user-scalable=no を指定する手もあるが、指で広げて読む操作まで奪うので採らない */
+.english-app :is(input, textarea, select) {
+  font-size: 16px;
+}
+
+/* ページ (html / body) の地色も合わせる。ここを直さないと、セーフエリアや
+   オーバースクロールで枠の外側だけ白く残る */
+html:has(.dark),
+html:has(.dark) body {
+  color-scheme: dark;
+  background-color: #000;
+}
+
 /* 画面上部のタブを切り替えたとき、中身が横から滑り込んでくる。
    進む向きは --tab-slide-from で渡す (右のタブへ動くなら正、左のタブへ動くなら負) */
 @keyframes tab-slide {
