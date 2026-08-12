@@ -167,6 +167,9 @@ export function statusBadges(
 ): {
   result: { label: string; cls: string; manual: LastResult | null };
   progress: { label: string; cls: string; manual: Progress | null };
+  // これまでの回答回数。単語一覧の ○ / △ / × 列と同じ数え方
+  // (△ は4択の正誤を問わない unsureCount)
+  counts: { known: number; fuzzy: number; unknown: number };
 } {
   const r = lastResult(entry);
   return {
@@ -178,6 +181,11 @@ export function statusBadges(
     progress: {
       ...PROGRESS_BADGE[progressOf(entry, masterKnownCount)],
       manual: entry?.progressOverride ?? null,
+    },
+    counts: {
+      known: entry?.knownCount ?? 0,
+      fuzzy: entry?.unsureCount ?? 0,
+      unknown: entry?.unknownCount ?? 0,
     },
   };
 }

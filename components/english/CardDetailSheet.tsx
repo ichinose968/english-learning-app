@@ -216,6 +216,8 @@ export function CardDetailSheet({
   status: {
     result: { label: string; cls: string; manual: LastResult | null };
     progress: { label: string; cls: string; manual: Progress | null };
+    // これまでの回答回数 (statusBadges が組み立てる)
+    counts: { known: number; fuzzy: number; unknown: number };
   };
   // null を渡すと手動指定を解除し、学習記録から導かれる状態に戻す
   onSetResult: (next: LastResult | null) => void;
@@ -894,6 +896,15 @@ export function CardDetailSheet({
                 )}
               </div>
             )}
+            {/* これまでの回答回数。編集中も出しっぱなしにする
+                (手で付け替えるとき、実際の記録が横に見えていた方が判断しやすい)。
+                色は前回結果のバッジ (RESULT_BADGE) と同じ系統に揃える */}
+            <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500">
+              <span>これまでの回答</span>
+              <span className="text-[#4A99EA]">○ {status.counts.known}回</span>
+              <span className="text-yellow-500">△ {status.counts.fuzzy}回</span>
+              <span className="text-red-500">× {status.counts.unknown}回</span>
+            </p>
           </Box>
 
           {/* 背景画像。次回以降このカードの背面に敷かれる */}

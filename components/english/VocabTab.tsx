@@ -383,6 +383,7 @@ function WordCard({
   status: {
     result: { label: string; cls: string; manual: LastResult | null };
     progress: { label: string; cls: string; manual: Progress | null };
+    counts: { known: number; fuzzy: number; unknown: number };
   };
   onSetResult: (next: LastResult | null) => void;
   onSetProgress: (next: Progress | null) => void;
