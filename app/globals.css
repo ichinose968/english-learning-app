@@ -73,3 +73,210 @@ html:has(.dark) body {
 .tab-slide {
   animation: tab-slide 0.26s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* △ を選んで4択を開くときの演出。カードは裏返さず、単語と品詞が中央から上へ動き、
+   入れ替わりに選択肢が下からせり上がる。
+   カードの跳ね返り (card-bounce-back) は子要素にもそのまま効くので、
+   中身の登場は素早く終わらせて、あとはカードの動きに乗せる。
+   ここを長くすると中身だけ別の動きをして、跳ねているカードから浮いて見える */
+@keyframes choices-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.choices-rise {
+  animation: choices-rise 0.18s ease-out;
+}
+
+/* 選択肢は単語のすぐ後ろから。backwards で待っているあいだも隠しておく */
+.choices-rise-late {
+  animation: choices-rise 0.2s ease-out 0.03s backwards;
+}
+
+/* 上へ引っぱったカードが元の位置へ戻るときの跳ね返り。
+   transition の1回だけのオーバーシュートでは物足りないので、
+   減衰しながら数回揺れるキーフレームにしてある。
+   開始位置は指を離した高さ (--bounce-from) から。ボタンで開いたときは既定値で軽く跳ねる。
+   キーフレーム間の緩急は既定の ease に任せる (linear にすると機械的に見える) */
+@keyframes card-bounce-back {
+  0% {
+    transform: translateY(var(--bounce-from, -40px)) scale(1.02);
+  }
+  28% {
+    transform: translateY(26px) scale(0.975);
+  }
+  48% {
+    transform: translateY(-16px) scale(1.015);
+  }
+  66% {
+    transform: translateY(9px) scale(0.992);
+  }
+  82% {
+    transform: translateY(-4px) scale(1.004);
+  }
+  93% {
+    transform: translateY(1.5px) scale(0.999);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* アニメーションは通常のインラインスタイルより優先されるので、
+   カード側の style={{ transform }} を上書きして最後に元の位置へ戻る */
+.card-bounce {
+  animation: card-bounce-back 0.82s;
+}
+
+/* ○ / × / △ に答えたあと、カードがくるくる回りながら飛んでいく演出。
+   開始位置は指を離した場所 (--fly-x / --fly-y / --fly-r) から続ける。
+   ここを 0 から始めると、飛ぶ前にいったん中央へ戻って見える。
+   transition と競合しないよう、飛ばすあいだカード側は transition: none にしてある */
+/* 回転は1回転半まで。これ以上速く回すと残像になって、回っていること自体が見えない。
+   縮みも 0.45 止まりにして、飛んでいるあいだカードの面を読めるようにする。
+
+   opacity は「画面の外へ抜ける直前」だけ落とす。
+   カードは不透明な白なので、画面端に差しかかった瞬間の辺がそのまま残る。
+   しかも抜ける頃にちょうど回転が180°付近になるため、辺が垂直になって
+   画面端に白い直線として1〜2フレーム焼き付いて見える (実測: 右端21px のとき回転-174°)。
+   15% で下のカードとの重なりはもう14px以下なので、ここから消しても透けて見えない。
+   逆に序盤から薄くすると、下のカードが透けて紙が重なって見えなくなる */
+@keyframes card-fly-right {
+  0% {
+    transform: translate(var(--fly-x, 0px), var(--fly-y, 0px))
+      rotate(var(--fly-r, 0deg)) scale(1);
+    opacity: 1;
+  }
+  15% {
+    opacity: 1;
+  }
+  21% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(150%, -20%) rotate(540deg) scale(0.45);
+    opacity: 0;
+  }
+}
+
+@keyframes card-fly-left {
+  0% {
+    transform: translate(var(--fly-x, 0px), var(--fly-y, 0px))
+      rotate(var(--fly-r, 0deg)) scale(1);
+    opacity: 1;
+  }
+  15% {
+    opacity: 1;
+  }
+  21% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-150%, -20%) rotate(-540deg) scale(0.45);
+    opacity: 0;
+  }
+}
+
+@keyframes card-fly-up {
+  0% {
+    transform: translate(var(--fly-x, 0px), var(--fly-y, 0px))
+      rotate(var(--fly-r, 0deg)) scale(1);
+    opacity: 1;
+  }
+  15% {
+    opacity: 1;
+  }
+  21% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -165%) rotate(360deg) scale(0.45);
+    opacity: 0;
+  }
+}
+
+/* ---- 単語リストのシール ----
+   単語 / 意味の列を隠す紙のシール。右下の角がめくれた長方形。
+   濃い縁 (.seal の地色) の上に明るい面 (::before) を重ね、その右下を斜めに落とす。
+   落とした先に ::after のカール (曲線を持つ濃い形) を置くと、裏側がめくれて見える。
+   貼る / 剥がすアニメーションは付けない (ユーザーの指示で撤去) */
+.seal {
+  --seal-face: #ededed;
+  --seal-edge: #3f3f46;
+  --seal-curl: 9px;
+  position: absolute;
+  border-radius: 6px;
+  background: var(--seal-edge);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 45%);
+  /* カールが角の丸みからはみ出さないようにする */
+  overflow: hidden;
+}
+
+.seal::before {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 4px;
+  background: var(--seal-face);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--seal-curl)),
+    calc(100% - var(--seal-curl)) 100%,
+    0 100%
+  );
+}
+
+/* めくれた裏側。境界は直線ではなく、紙が巻き込むS字の曲線にする。
+   preserveAspectRatio="none" で --seal-curl の正方形いっぱいに伸ばす */
+.seal::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--seal-curl);
+  height: var(--seal-curl);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M100 0C74 4 46 20 31 44 19 63 11 84 0 100L100 100Z' fill='%233f3f46'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+/* カードを飛ばした直後、ボタン列がスワイプ中の縮んだ状態から通常へ戻るときの跳ね。
+   次のカードをすぐ叩けるよう、短く収束させる (長くすると連続でさばけない)。
+   transform だけなのでアニメーション中もタップは通る */
+@keyframes buttons-settle {
+  0% {
+    transform: scale(0.86);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  78% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.buttons-settle {
+  animation: buttons-settle 0.26s ease-out;
+}
+
+/* 出だしを速くしすぎると、序盤で回りきって残りが間延びする。
+   全体をならした曲線にして、最後まで一定の速さで回りながら遠ざかるようにする。
+   forwards で飛んだ先に留め、カードが差し替わるまで戻ってこないようにする */
+.card-fly-right {
+  animation: card-fly-right 0.75s cubic-bezier(0.25, 0.4, 0.45, 1) forwards;
+}
+.card-fly-left {
+  animation: card-fly-left 0.75s cubic-bezier(0.25, 0.4, 0.45, 1) forwards;
+}
+.card-fly-up {
+  animation: card-fly-up 0.75s cubic-bezier(0.25, 0.4, 0.45, 1) forwards;
+}

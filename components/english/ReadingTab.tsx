@@ -19,8 +19,9 @@ import {
 import {
   buildIndex,
   fetchAllWordDbs,
-  STATUS_BADGE,
-  wordStatus,
+  lastResult,
+  LastResult,
+  statusBadges,
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
 import { chipCls, Collapsible } from "./Collapsible";
@@ -108,13 +109,12 @@ export function ReadingTab({ data, setData }: Props) {
   }, [wordIndex, data.vocab]);
 
   const reading = data.settings.reading;
-  // 本文に織り込む単語。要復習を先に、足りなければ学習中から古い順に足す
-  const now = new Date();
-  const byStatus = (want: string) =>
+  // 本文に織り込む単語。×を先に、足りなければ△から古い順に足す
+  const byStatus = (want: LastResult) =>
     Object.values(data.vocab)
-      .filter((e) => wordStatus(e, data.settings.vocab, now) === want)
+      .filter((e) => lastResult(e) === want)
       .sort((a, b) => a.lastSeenAt.localeCompare(b.lastSeenAt));
-  const targetWords = [...byStatus("review"), ...byStatus("learning")]
+  const targetWords = [...byStatus("unknown"), ...byStatus("fuzzy")]
     .slice(0, 8)
     .map((e) => ({ word: e.word, meaningJa: e.meaningJa }));
 
@@ -411,19 +411,30 @@ export function ReadingTab({ data, setData }: Props) {
               return { ...prev, notes };
             })
           }
-          status={{
-            ...STATUS_BADGE[
-              wordStatus(
-                data.vocab[wordDetail.def.word],
-                data.settings.vocab,
-                new Date(),
-              )
-            ],
-            manual: data.vocab[wordDetail.def.word]?.statusOverride ?? null,
-          }}
-          onSetStatus={(next) =>
+          status={statusBadges(
+            data.vocab[wordDetail.def.word],
+            data.settings.vocab.masterKnownCount,
+          )}
+          onSetResult={(next) =>
             setData((prev) =>
-              setStatusOverride(prev, wordDetail.def, wordDetail.level, next),
+              setStatusOverride(
+                prev,
+                wordDetail.def,
+                wordDetail.level,
+                "result",
+                next,
+              ),
+            )
+          }
+          onSetProgress={(next) =>
+            setData((prev) =>
+              setStatusOverride(
+                prev,
+                wordDetail.def,
+                wordDetail.level,
+                "progress",
+                next,
+              ),
             )
           }
         />

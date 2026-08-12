@@ -215,69 +215,53 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
         </section>
 
         <section>
-          <h3 className="mb-1 text-sm font-bold">回答後の動作</h3>
+          <h3 className="mb-1 text-sm font-bold">演習モードの出題</h3>
           <p className="mb-3 text-xs text-zinc-500">
-            オンにすると、カード裏の解説 (意味・例文)
-            を見ずにそのまま次のカードへ進みます。
+            演習では、まだ見ていないカードと一度でも回答したカードを混ぜて出します。
           </p>
           <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
-              <span className="flex-1 text-sm font-medium">
-                ○ Mastered で解説を飛ばす
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  Mastered のカードはテンポよく流す
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.skipRevealOnKnown}
-                onChange={(e) => set("skipRevealOnKnown", e.target.checked)}
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
             <label className="flex items-center gap-3 px-4 py-3.5">
               <span className="flex-1 text-sm font-medium">
-                × New で解説を飛ばす
+                新出の割合
                 <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  後でまとめて復習する場合に
+                  10枚あたり新出 {Math.round(settings.drillNewRatio / 10)} 枚 /
+                  既出 {10 - Math.round(settings.drillNewRatio / 10)} 枚。
+                  在庫が尽きた側はもう片方で埋めます
                 </span>
               </span>
-              <input
-                type="checkbox"
-                checked={settings.skipRevealOnUnknown}
-                onChange={(e) => set("skipRevealOnUnknown", e.target.checked)}
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
+              <div className="flex shrink-0 items-center gap-1">
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  step={10}
+                  value={settings.drillNewRatio}
+                  onChange={(e) =>
+                    set(
+                      "drillNewRatio",
+                      Math.max(0, Math.min(100, Number(e.target.value) || 0)),
+                    )
+                  }
+                  className="w-20 rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-right text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
+                />
+                <span className="text-sm text-zinc-500">%</span>
+              </div>
             </label>
           </div>
         </section>
 
         <section>
-          <h3 className="mb-1 text-sm font-bold">出題の条件</h3>
+          <h3 className="mb-1 text-sm font-bold">学習進捗度</h3>
           <p className="mb-3 text-xs text-zinc-500">
-            どのカードを出すか / 出さないかのしきい値です。
+            初回で正解したカードは、その時点で学習完了になります。それ以外は
+            ○ が続いた回数で判定します。
           </p>
           <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
+            <label className="flex items-center gap-3 px-4 py-3.5">
               <span className="flex-1 text-sm font-medium">
-                初見で○を「学習済み」に分類
+                学習完了とみなす回数
                 <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  初めて見たカードで○を選んだら、元々 Mastered
-                  だったものとして以後出題しない
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.excludeFirstKnown}
-                onChange={(e) => set("excludeFirstKnown", e.target.checked)}
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
-            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
-              <span className="flex-1 text-sm font-medium">
-                習得とみなす回数
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  この回数連続で○ならば学習済みに分類
+                  この回数連続で ○ なら学習完了。△ や × を挟むと数え直し
                 </span>
               </span>
               <input
@@ -294,43 +278,54 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
                 className="w-20 rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-right text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
               />
             </label>
-            <div className="px-4 py-3.5">
-              <div className="flex items-center gap-3">
-                <span className="flex-1 text-sm font-medium">
-                  再出現までの日数
-                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                    {settings.reviewIntervalDays === null
-                      ? "学習済みのカードは日数が経っても出さない"
-                      : "最終閲覧からこの日数で再び出す"}
-                  </span>
+          </div>
+        </section>
+
+        <section>
+          <h3 className="mb-1 text-sm font-bold">回答後の動作</h3>
+          <p className="mb-3 text-xs text-zinc-500">
+            オンにすると、カード裏の解説 (意味・例文)
+            を見ずにそのまま次のカードへ進みます。
+          </p>
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
+              <span className="flex-1 text-sm font-medium">
+                演習で解説を飛ばす
+                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                  知っている / 知らないの仕分けに徹する
                 </span>
-                <input
-                  type="number"
-                  min={1}
-                  max={365}
-                  disabled={settings.reviewIntervalDays === null}
-                  value={settings.reviewIntervalDays ?? ""}
-                  onChange={(e) =>
-                    set(
-                      "reviewIntervalDays",
-                      Math.max(1, Math.min(365, Number(e.target.value) || 1)),
-                    )
-                  }
-                  className="w-20 rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-right text-sm outline-none focus:border-[#4A99EA] disabled:opacity-30 dark:border-zinc-700"
-                />
-              </div>
-              <label className="mt-3 flex items-center gap-3">
-                <span className="flex-1 text-sm">設定しない</span>
-                <input
-                  type="checkbox"
-                  checked={settings.reviewIntervalDays === null}
-                  onChange={(e) =>
-                    set("reviewIntervalDays", e.target.checked ? null : 30)
-                  }
-                  className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-                />
-              </label>
-            </div>
+              </span>
+              <input
+                type="checkbox"
+                checked={settings.skipReveal.drill}
+                onChange={(e) =>
+                  set("skipReveal", {
+                    ...settings.skipReveal,
+                    drill: e.target.checked,
+                  })
+                }
+                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
+              />
+            </label>
+            <label className="flex items-center gap-3 px-4 py-3.5">
+              <span className="flex-1 text-sm font-medium">
+                復習で解説を飛ばす
+                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                  意味を確認せずに回すとき
+                </span>
+              </span>
+              <input
+                type="checkbox"
+                checked={settings.skipReveal.review}
+                onChange={(e) =>
+                  set("skipReveal", {
+                    ...settings.skipReveal,
+                    review: e.target.checked,
+                  })
+                }
+                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
+              />
+            </label>
           </div>
         </section>
       </div>

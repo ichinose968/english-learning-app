@@ -4,11 +4,48 @@ import {
   DEFAULT_VOCAB_SETTINGS,
   EnglishData,
   EMPTY_DATA,
+  LastResult,
   Level,
+  Progress,
+  QuizMode,
   VocabEntry,
 } from "./types";
 
 const STORAGE_KEY = "english-app-data-v1";
+
+// 手動ステータスは1つだったが、前回結果 (○△×) と学習進捗度 (未学習/学習中/学習完了)
+// の2軸に分けた。旧値は意味の近いほうの軸へ移し、対応しないものは指定ごと落とす。
+// 落とさずに残すとバッジの定義を引けずに壊れる
+const RESULT_VALUES = ["known", "fuzzy", "unknown"];
+const PROGRESS_VALUES = ["new", "learning", "done"];
+
+function migrateOverrides(r: Record<string, unknown>): {
+  resultOverride?: LastResult;
+  progressOverride?: Progress;
+} {
+  const out: { resultOverride?: LastResult; progressOverride?: Progress } = {};
+  // 既に2軸を持っているデータはそのまま引き継ぐ
+  if (typeof r.resultOverride === "string" && RESULT_VALUES.includes(r.resultOverride)) {
+    out.resultOverride = r.resultOverride as LastResult;
+  }
+  if (
+    typeof r.progressOverride === "string" &&
+    PROGRESS_VALUES.includes(r.progressOverride)
+  ) {
+    out.progressOverride = r.progressOverride as Progress;
+  }
+  if (out.resultOverride || out.progressOverride) return out;
+
+  // 1軸だった頃の値を振り分ける
+  const old = r.statusOverride;
+  if (typeof old !== "string") return out;
+  if (RESULT_VALUES.includes(old)) out.resultOverride = old as LastResult;
+  else if (old === "mastered") out.progressOverride = "done";
+  else if (old === "learning") out.progressOverride = "learning";
+  else if (old === "new") out.progressOverride = "new";
+  else if (old === "review") out.resultOverride = "unknown";
+  return out;
+}
 
 // 旧形式 (v1初期: correct/wrong/updatedAt) の単語記録を新形式に変換する
 function migrateVocabEntry(raw: unknown, level: Level | null): VocabEntry | null {
@@ -16,8 +53,12 @@ function migrateVocabEntry(raw: unknown, level: Level | null): VocabEntry | null
   const r = raw as Record<string, unknown>;
   if (typeof r.word !== "string") return null;
   if (typeof r.knownCount === "number") {
-    // 既に新形式
-    return r as unknown as VocabEntry;
+    // 既に新形式。手動ステータスだけ2軸に振り分け直す
+    const entry = { ...r } as unknown as VocabEntry & { statusOverride?: unknown };
+    delete entry.statusOverride;
+    delete entry.resultOverride;
+    delete entry.progressOverride;
+    return { ...entry, ...migrateOverrides(r) };
   }
   const wrong = typeof r.wrong === "number" ? r.wrong : 0;
   const correct = typeof r.correct === "number" ? r.correct : 0;
@@ -38,11 +79,35 @@ function migrateVocabEntry(raw: unknown, level: Level | null): VocabEntry | null
   };
 }
 
-// 再出現までの日数。以前は必ず数値 (既定30日) だったが、
-// 「設定しない」(null) を既定に変えたので、旧既定の30はそのまま null に寄せる
-function migrateReviewInterval(raw: unknown): number | null {
-  if (typeof raw !== "number" || !Number.isFinite(raw) || raw === 30) return null;
-  return Math.max(1, Math.min(365, Math.round(raw)));
+// 解説を飛ばす設定。旧形式は ○ / × ごとの skipRevealOnKnown / skipRevealOnUnknown
+// だったが、演習 / 復習のモードごとに持つ形に変えた。
+// 演習は仕分けが目的なので常にオンから始め、復習は旧設定で両方オンにしていた人だけ引き継ぐ
+function migrateSkipReveal(raw: unknown): Record<QuizMode, boolean> {
+  const r = (raw ?? {}) as Record<string, unknown>;
+  const cur = r.skipReveal as Record<string, unknown> | undefined;
+  if (cur && typeof cur.drill === "boolean" && typeof cur.review === "boolean") {
+    return { drill: cur.drill, review: cur.review };
+  }
+  return {
+    drill: true,
+    review: r.skipRevealOnKnown === true && r.skipRevealOnUnknown === true,
+  };
+}
+
+// 学習完了とみなす連続○の回数。壊れた値は既定に寄せる
+function migrateMasterCount(raw: unknown): number {
+  if (typeof raw !== "number" || !Number.isFinite(raw)) {
+    return DEFAULT_VOCAB_SETTINGS.masterKnownCount;
+  }
+  return Math.max(1, Math.min(10, Math.round(raw)));
+}
+
+// 演習モードの新出比率 (%)。旧データには無いので既定の50に寄せる
+function migrateDrillNewRatio(raw: unknown): number {
+  if (typeof raw !== "number" || !Number.isFinite(raw)) {
+    return DEFAULT_VOCAB_SETTINGS.drillNewRatio;
+  }
+  return Math.max(0, Math.min(100, Math.round(raw)));
 }
 
 export function loadData(): EnglishData {
@@ -80,8 +145,12 @@ export function loadData(): EnglishData {
             ...DEFAULT_VOCAB_SETTINGS.cardFields,
             ...(parsed.settings?.vocab?.cardFields ?? {}),
           },
-          reviewIntervalDays: migrateReviewInterval(
-            parsed.settings?.vocab?.reviewIntervalDays,
+          masterKnownCount: migrateMasterCount(
+            parsed.settings?.vocab?.masterKnownCount,
+          ),
+          skipReveal: migrateSkipReveal(parsed.settings?.vocab),
+          drillNewRatio: migrateDrillNewRatio(
+            parsed.settings?.vocab?.drillNewRatio,
           ),
         },
       },

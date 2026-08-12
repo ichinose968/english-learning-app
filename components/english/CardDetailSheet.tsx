@@ -4,8 +4,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowDown, Circle, ImagePlus, Pencil, Trash2, X } from "lucide-react";
 import {
   DOMAIN_LABEL_JA,
-  ManualStatus,
-  MANUAL_STATUSES,
+  LastResult,
+  Progress,
+  PROGRESS_OPTIONS,
+  RESULT_OPTIONS,
   THEME_LABEL_JA,
   WordDbEntry,
   WordEdit,
@@ -161,10 +163,12 @@ export function CardDetailSheet({
   onSaveEdit,
   onSaveNote,
   onAnswer,
+  showUnsure = true,
   initialEdit,
   origin,
   status,
-  onSetStatus,
+  onSetResult,
+  onSetProgress,
 }: {
   item: WordDbEntry; // 編集内容を反映済みのエントリ
   note: string | undefined;
@@ -175,12 +179,20 @@ export function CardDetailSheet({
   onSaveNote: (text: string) => void;
   // 出題中に開いた場合のみ渡す。○ / ? / × を表示する
   onAnswer?: (kind: "known" | "unsure" | "unknown") => void;
+  // ? を出すか。カード画面のボタン列と揃える (演習モードは ○ / × の2つだけ)。
+  // 既定は3つ。単語一覧や長文から開いたときは回答バー自体が出ないので影響しない
+  showUnsure?: boolean;
   // カード画面から開いたときの開始位置。渡されない場合は中央から拡大する
   origin?: SheetOrigin;
-  // 学習状況。ラベルと色は呼び出し側 (単語一覧と共通の定義) から受け取る
-  status: { label: string; cls: string; manual: ManualStatus | null };
+  // 学習状況。ラベルと色は呼び出し側 (単語一覧と共通の定義) から受け取る。
+  // 前回結果は未回答なら label が空文字になり、バッジを描かない
+  status: {
+    result: { label: string; cls: string; manual: LastResult | null };
+    progress: { label: string; cls: string; manual: Progress | null };
+  };
   // null を渡すと手動指定を解除し、学習記録から導かれる状態に戻す
-  onSetStatus: (next: ManualStatus | null) => void;
+  onSetResult: (next: LastResult | null) => void;
+  onSetProgress: (next: Progress | null) => void;
 }) {
   const [editing, setEditing] = useState<SectionKey | null>(initialEdit ?? null);
   const [dMeaning, setDMeaning] = useState(item.meaningJa);
@@ -360,51 +372,6 @@ export function CardDetailSheet({
           </header>
 
         <div className="space-y-3 px-4 pb-6">
-          {/* 学習状況。編集すると学習記録より優先される */}
-          <Box
-            label="ステータス"
-            editing={editing === "status"}
-            onEdit={() => setEditing("status")}
-            onCancel={() => setEditing(null)}
-            onSave={() => setEditing(null)}
-          >
-            {editing === "status" ? (
-              <div className="space-y-2">
-                <div className="flex flex-wrap gap-1.5">
-                  {MANUAL_STATUSES.map((m) => (
-                    <button
-                      key={m.key}
-                      onClick={() => onSetStatus(m.key)}
-                      className={tagChip(status.manual === m.key)}
-                    >
-                      {m.label}
-                    </button>
-                  ))}
-                  <button
-                    onClick={() => onSetStatus(null)}
-                    className={tagChip(status.manual === null)}
-                  >
-                    自動
-                  </button>
-                </div>
-                <p className="text-xs text-zinc-500">
-                  「自動」は学習記録どおりの判定に戻します。手で指定した場合も、次にこのカードへ回答すると自動に戻ります。
-                </p>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-xs ${status.cls}`}
-                >
-                  {status.label}
-                </span>
-                {status.manual && (
-                  <span className="text-xs text-zinc-500">手動で指定</span>
-                )}
-              </div>
-            )}
-          </Box>
-
           {/* 意味・発音 */}
           <Box
             label="意味"
@@ -425,77 +392,6 @@ export function CardDetailSheet({
               />
             ) : (
               <p className="text-base">{item.meaningJa}</p>
-            )}
-          </Box>
-
-          {/* タグ */}
-          <Box
-            label="タグ (試験・分野・テーマ)"
-            editing={editing === "tags"}
-            onEdit={() => startEdit("tags")}
-            onCancel={() => setEditing(null)}
-            onSave={() => {
-              onSaveEdit({ exams: dExams, domains: dDomains, themes: dThemes });
-              setEditing(null);
-            }}
-          >
-            {editing === "tags" ? (
-              <div className="space-y-3">
-                <div>
-                  <p className="mb-1 text-xs text-zinc-500">試験</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {WORD_EXAMS.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => toggle(dExams, t, setDExams)}
-                        className={tagChip(dExams.includes(t))}
-                      >
-                        {t}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-1 text-xs text-zinc-500">分野</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {WORD_DOMAINS.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => toggle(dDomains, t, setDDomains)}
-                        className={tagChip(dDomains.includes(t))}
-                      >
-                        {DOMAIN_LABEL_JA[t] ?? t}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-1 text-xs text-zinc-500">テーマ</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {WORD_THEMES.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => toggle(dThemes, t, setDThemes)}
-                        className={tagChip(dThemes.includes(t))}
-                      >
-                        {THEME_LABEL_JA[t] ?? t}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                <TagRow label="試験" items={item.exams ?? []} />
-                <TagRow
-                  label="分野"
-                  items={(item.domains ?? []).map((d) => DOMAIN_LABEL_JA[d] ?? d)}
-                />
-                <TagRow
-                  label="テーマ"
-                  items={(item.themes ?? []).map((t) => THEME_LABEL_JA[t] ?? t)}
-                />
-              </div>
             )}
           </Box>
 
@@ -596,6 +492,152 @@ export function CardDetailSheet({
             )}
           </Box>
 
+          {/* タグ */}
+          <Box
+            label="タグ (試験・分野・テーマ)"
+            editing={editing === "tags"}
+            onEdit={() => startEdit("tags")}
+            onCancel={() => setEditing(null)}
+            onSave={() => {
+              onSaveEdit({ exams: dExams, domains: dDomains, themes: dThemes });
+              setEditing(null);
+            }}
+          >
+            {editing === "tags" ? (
+              <div className="space-y-3">
+                <div>
+                  <p className="mb-1 text-xs text-zinc-500">試験</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {WORD_EXAMS.map((t) => (
+                      <button
+                        key={t}
+                        onClick={() => toggle(dExams, t, setDExams)}
+                        className={tagChip(dExams.includes(t))}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-1 text-xs text-zinc-500">分野</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {WORD_DOMAINS.map((t) => (
+                      <button
+                        key={t}
+                        onClick={() => toggle(dDomains, t, setDDomains)}
+                        className={tagChip(dDomains.includes(t))}
+                      >
+                        {DOMAIN_LABEL_JA[t] ?? t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-1 text-xs text-zinc-500">テーマ</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {WORD_THEMES.map((t) => (
+                      <button
+                        key={t}
+                        onClick={() => toggle(dThemes, t, setDThemes)}
+                        className={tagChip(dThemes.includes(t))}
+                      >
+                        {THEME_LABEL_JA[t] ?? t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <TagRow label="試験" items={item.exams ?? []} />
+                <TagRow
+                  label="分野"
+                  items={(item.domains ?? []).map((d) => DOMAIN_LABEL_JA[d] ?? d)}
+                />
+                <TagRow
+                  label="テーマ"
+                  items={(item.themes ?? []).map((t) => THEME_LABEL_JA[t] ?? t)}
+                />
+              </div>
+            )}
+          </Box>
+
+          {/* 学習状況。編集すると学習記録より優先される */}
+          <Box
+            label="ステータス"
+            editing={editing === "status"}
+            onEdit={() => setEditing("status")}
+            onCancel={() => setEditing(null)}
+            onSave={() => setEditing(null)}
+          >
+            {editing === "status" ? (
+              <div className="space-y-3">
+                <div>
+                  <p className="mb-1.5 text-xs text-zinc-500">前回結果</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {RESULT_OPTIONS.map((m) => (
+                      <button
+                        key={m.key}
+                        onClick={() => onSetResult(m.key)}
+                        className={tagChip(status.result.manual === m.key)}
+                      >
+                        {m.label}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() => onSetResult(null)}
+                      className={tagChip(status.result.manual === null)}
+                    >
+                      自動
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-1.5 text-xs text-zinc-500">学習進捗度</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {PROGRESS_OPTIONS.map((m) => (
+                      <button
+                        key={m.key}
+                        onClick={() => onSetProgress(m.key)}
+                        className={tagChip(status.progress.manual === m.key)}
+                      >
+                        {m.label}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() => onSetProgress(null)}
+                      className={tagChip(status.progress.manual === null)}
+                    >
+                      自動
+                    </button>
+                  </div>
+                </div>
+                <p className="text-xs text-zinc-500">
+                  「自動」は学習記録どおりの判定に戻します。手で指定した場合も、次にこのカードへ回答すると両方とも自動に戻ります。
+                </p>
+              </div>
+            ) : (
+              <div className="flex flex-wrap items-center gap-2">
+                {status.result.label && (
+                  <span
+                    className={`rounded-full px-2.5 py-0.5 text-xs ${status.result.cls}`}
+                  >
+                    {status.result.label}
+                  </span>
+                )}
+                <span
+                  className={`rounded-full px-2.5 py-0.5 text-xs ${status.progress.cls}`}
+                >
+                  {status.progress.label}
+                </span>
+                {(status.result.manual || status.progress.manual) && (
+                  <span className="text-xs text-zinc-500">手動で指定</span>
+                )}
+              </div>
+            )}
+          </Box>
+
           {/* 背景画像。次回以降このカードの背面に敷かれる */}
           <div className="rounded-2xl bg-zinc-900 p-4">
             <div className="mb-2 flex items-center gap-1.5 text-xs text-zinc-500">
@@ -675,21 +717,23 @@ export function CardDetailSheet({
         >
           <button
             onClick={() => onAnswer("unknown")}
-            title="New"
+            title="×"
             className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500 bg-black text-red-500 transition-colors hover:bg-red-500/10"
           >
             <X size={28} strokeWidth={3} />
           </button>
-          <button
-            onClick={() => onAnswer("unsure")}
-            title="Fuzzy"
-            className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-black text-lg font-bold text-white transition-colors hover:bg-zinc-900"
-          >
-            ?
-          </button>
+          {showUnsure && (
+            <button
+              onClick={() => onAnswer("unsure")}
+              title="△"
+              className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-yellow-500 bg-black text-lg font-bold text-yellow-500 transition-colors hover:bg-yellow-500/10"
+            >
+              △
+            </button>
+          )}
           <button
             onClick={() => onAnswer("known")}
-            title="Mastered"
+            title="○"
             className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#4A99EA] bg-black text-[#4A99EA] transition-colors hover:bg-[#4A99EA]/10"
           >
             <Circle size={26} strokeWidth={3} />

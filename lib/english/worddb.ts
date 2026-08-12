@@ -3,12 +3,20 @@ import {
   CardSource,
   Level,
   LEVELS,
+  QuizMode,
+  LastResult,
+  Progress,
+  VocabAction,
   VocabEntry,
   VocabLevelState,
   VocabSettings,
   WordDb,
   WordDbEntry,
 } from "./types";
+
+// 出題モードと単語の状態は types.ts 側に置いてある (VocabSettings などが参照するため)。
+// 呼び出し側は worddb からも引けるようにしておく
+export type { QuizMode, LastResult, Progress };
 
 export const LEVEL_ORDER: Level[] = ["A1", "A2", "B1", "B2", "C1"];
 
@@ -73,46 +81,37 @@ export function buildIndex(
   return index;
 }
 
-export type WordStatus =
-  | "new" // 未学習
-  | "learning" // 学習中
-  | "review" // 要復習 (直近が誤答/知らない)
-  | "mastered" // 習得済み (「知っている」がしきい値以上) → 出題除外
-  | "stale" // 習得済みだが最終正解が古い → 再出現
-  | "preknown"; // 初見で「知っている」→ 既知の知識として永久に出題しない (設定オン時)
-
-// ステータスの表示名と配色。単語一覧とカード詳細で必ず同じものを使う
-// (以前ここが二重定義になっていて「既知」と「学習済み」が食い違った)
-export const STATUS_BADGE: Record<WordStatus, { label: string; cls: string }> = {
-  new: {
-    label: "未学習",
-    cls: "bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400",
-  },
-  learning: { label: "学習中", cls: "bg-yellow-500/15 text-yellow-500" },
-  review: { label: "要復習", cls: "bg-red-500/15 text-red-500" },
-  stale: { label: "再出現待ち", cls: "bg-red-500/15 text-red-500" },
-  mastered: { label: "学習済み", cls: "bg-[#4A99EA]/15 text-[#4A99EA]" },
-  // 初見で○を選んで除外したものは「既知」。学習の結果ではなく元から知っていた語
-  preknown: { label: "既知", cls: "bg-[#4A99EA]/15 text-[#4A99EA]" },
+// 前回結果の表示名と配色。○=青 / △=黄 / ×=赤
+export const RESULT_BADGE: Record<LastResult, { label: string; cls: string }> = {
+  known: { label: "○", cls: "bg-[#4A99EA]/15 text-[#4A99EA]" },
+  fuzzy: { label: "△", cls: "bg-yellow-500/15 text-yellow-500" },
+  unknown: { label: "×", cls: "bg-red-500/15 text-red-500" },
 };
 
-function daysBetween(fromIso: string, now: Date): number {
-  return (now.getTime() - new Date(fromIso).getTime()) / (1000 * 60 * 60 * 24);
+// 学習進捗度の表示名と配色。未学習=白 / 学習中=灰 / 学習完了=黒。
+// 進むほど濃くなる並びだが、この画面は常にダークなので黒が地に沈む。
+// どれも枠線を持たせて、塗りつぶしの輪郭が出るようにしてある
+export const PROGRESS_BADGE: Record<Progress, { label: string; cls: string }> = {
+  new: { label: "未学習", cls: "border border-zinc-300 bg-white text-zinc-900" },
+  learning: {
+    label: "学習中",
+    cls: "border border-zinc-400 bg-zinc-400 text-zinc-900",
+  },
+  done: { label: "学習完了", cls: "border border-zinc-600 bg-black text-white" },
+};
+
+// 単語一覧とカード詳細で必ず同じ定義を使う
+// (以前ここが二重定義になっていて表示が食い違った)
+
+// 最後に選んだ回答。履歴を持たない旧形式の記録は needsReview から近似する
+function lastAction(entry: VocabEntry): VocabAction | null {
+  if (entry.history.length > 0) return entry.history[entry.history.length - 1].r;
+  if (entry.knownCount + entry.unsureCount + entry.unknownCount === 0) return null;
+  return entry.needsReview ? "unknown" : "known";
 }
 
-// 初見で「知っている」と答え、その後一度も間違えていない単語か
-// (履歴から動的に判定するので、設定をオフに戻せば通常ローテーションに復帰する)
-export function isPreKnown(entry: VocabEntry, settings: VocabSettings): boolean {
-  return (
-    settings.excludeFirstKnown &&
-    entry.history.length > 0 &&
-    entry.history[0].r === "known" &&
-    entry.wrongCount + entry.unknownCount === 0
-  );
-}
-
-// 直近から連続して「知っている」と答え続けている回数。
-// ? や × を選んだ時点で 0 に戻る (履歴を持たない旧形式の記録は累計で近似する)
+// 直近から連続して ○ が続いている回数。△ や × を選んだ時点で 0 に戻る
+// (履歴を持たない旧形式の記録は累計で近似する)
 export function consecutiveKnown(entry: VocabEntry): number {
   if (entry.history.length === 0) return entry.knownCount;
   let n = 0;
@@ -123,32 +122,73 @@ export function consecutiveKnown(entry: VocabEntry): number {
   return n;
 }
 
-export function wordStatus(
+// 前回結果。まだ一度も答えていなければ null
+export function lastResult(entry: VocabEntry | undefined): LastResult | null {
+  if (!entry) return null;
+  if (entry.resultOverride) return entry.resultOverride;
+  const last = lastAction(entry);
+  if (last === null) return null;
+  if (last === "known") return "known";
+  if (last === "unknown") return "unknown";
+  return "fuzzy"; // 4択は正解でも誤答でも △
+}
+
+// 学習進捗度。初見で ○ を出した語と、○ が masterKnownCount 回続いた語を学習完了とする。
+// ただしどちらも「前回結果が ○」であることが条件で、あとで △ や × を出したら学習中へ戻る。
+//
+// 初見の判定に △→正解 は含めない。「怪しいが4択は当たった」は身についたとは言えない。
+// 戻す条件を付けていないと、一度学習完了になった語は忘れても永久に学習完了のままになり、
+// 学習中だけを拾う復習モードに二度と出てこなくなる
+export function progressOf(
   entry: VocabEntry | undefined,
-  settings: VocabSettings,
-  now: Date,
-): WordStatus {
+  masterKnownCount: number,
+): Progress {
   if (!entry) return "new";
-  // 手で付け替えたステータスは学習記録より優先する
-  if (entry.statusOverride) return entry.statusOverride;
-  if (isPreKnown(entry, settings)) return "preknown";
-  if (entry.needsReview) return "review";
-  // 最終閲覧からの経過日数で再出現を判定する (null なら再出現させない)
-  const staleByDate =
-    settings.reviewIntervalDays !== null &&
-    daysBetween(entry.lastSeenAt, now) > settings.reviewIntervalDays;
-  if (consecutiveKnown(entry) >= settings.masterKnownCount) {
-    return staleByDate ? "stale" : "mastered";
+  if (entry.progressOverride) return entry.progressOverride;
+  if (entry.history.length === 0) {
+    // 旧形式の記録は履歴が無い。回答そのものが無ければ未学習
+    if (entry.knownCount + entry.unsureCount + entry.unknownCount === 0) {
+      return "new";
+    }
+    return entry.needsReview ? "learning" : "done";
   }
-  return staleByDate ? "stale" : "learning";
+  // 直近が ○ でなければ、この先の判定を見るまでもなく学習中
+  if (lastAction(entry) !== "known") return "learning";
+  if (entry.history[0].r === "known") return "done";
+  if (consecutiveKnown(entry) >= masterKnownCount) return "done";
+  return "learning";
+}
+
+// カード詳細に渡すステータス。カード画面・単語一覧・長文の3か所で同じものを使う
+// (以前ここが画面ごとの組み立てになっていて表示が食い違った)
+export function statusBadges(
+  entry: VocabEntry | undefined,
+  masterKnownCount: number,
+): {
+  result: { label: string; cls: string; manual: LastResult | null };
+  progress: { label: string; cls: string; manual: Progress | null };
+} {
+  const r = lastResult(entry);
+  return {
+    result: {
+      // 未回答なら前回結果そのものが無いので、ラベルを空にしてバッジを描かせない
+      ...(r ? RESULT_BADGE[r] : { label: "", cls: "" }),
+      manual: entry?.resultOverride ?? null,
+    },
+    progress: {
+      ...PROGRESS_BADGE[progressOf(entry, masterKnownCount)],
+      manual: entry?.progressOverride ?? null,
+    },
+  };
 }
 
 // 間違い (4択誤答 + 知らない) が多い単語ほど重みを大きくする
-function weight(entry: VocabEntry | undefined, status: WordStatus): number {
+function weight(entry: VocabEntry | undefined): number {
   const mistakes = entry ? entry.wrongCount + entry.unknownCount : 0;
   let w = 1 + mistakes * 2;
-  if (status === "review") w += 3;
-  if (status === "stale") w += 1;
+  const last = lastResult(entry);
+  if (last === "unknown") w += 3;
+  if (last === "fuzzy") w += 1;
   return w;
 }
 
@@ -177,10 +217,10 @@ function weightedSample<T>(pool: { item: T; w: number }[], count: number): T[] {
 export interface QueueStats {
   new: number; // 出題対象レベルの未学習
   learning: number; // 以下は学習履歴のある全単語 (レベル横断)
-  review: number;
-  mastered: number;
-  stale: number;
-  preknown: number; // 初見で「既知」として除外した数
+  done: number;
+  known: number; // 前回結果の内訳
+  fuzzy: number;
+  unknown: number;
   mistaken: number; // 間違えたことのある数
 }
 
@@ -188,32 +228,31 @@ export function dbStats(
   dbs: WordDbMap,
   levels: Level[],
   progress: Record<string, VocabEntry>,
-  settings: VocabSettings,
-  now: Date,
+  masterKnownCount: number,
 ): QueueStats {
   const stats: QueueStats = {
     new: 0,
     learning: 0,
-    review: 0,
-    mastered: 0,
-    stale: 0,
-    preknown: 0,
+    done: 0,
+    known: 0,
+    fuzzy: 0,
+    unknown: 0,
     mistaken: 0,
   };
   // 未学習だけは学習履歴がないので、出題対象レベルのDBから数える
   for (const level of levels) {
     for (const w of dbs[level].words) {
-      if (wordStatus(progress[w.word], settings, now) === "new") stats.new++;
+      if (progressOf(progress[w.word], masterKnownCount) === "new") stats.new++;
     }
   }
   // 残りは学習履歴のある全単語 (レベル横断) で数える
   const index = buildIndex(dbs);
   for (const entry of Object.values(progress)) {
     if (!index.has(entry.word)) continue;
-    const s = wordStatus(entry, settings, now);
-    if (s === "learning" || s === "mastered" || s === "preknown") stats[s]++;
-    if (s === "review") stats.review++;
-    if (s === "stale") stats.stale++;
+    const p = progressOf(entry, masterKnownCount);
+    if (p !== "new") stats[p]++;
+    const r = lastResult(entry);
+    if (r) stats[r]++;
     if (entry.wrongCount + entry.unknownCount > 0) stats.mistaken++;
   }
   return stats;
@@ -267,7 +306,7 @@ export function dbStatsAsOf(
   dbs: WordDbMap,
   levels: Level[],
   progress: Record<string, VocabEntry>,
-  settings: VocabSettings,
+  masterKnownCount: number,
   asOf: Date,
 ): QueueStats {
   const pastProgress: Record<string, VocabEntry> = {};
@@ -275,16 +314,15 @@ export function dbStatsAsOf(
     const p = entryAsOf(entry, asOf);
     if (p) pastProgress[word] = p;
   }
-  return dbStats(dbs, levels, pastProgress, settings, asOf);
+  return dbStats(dbs, levels, pastProgress, masterKnownCount);
 }
 
-// 出題モード。ランダム以外はカード画面の上部タブのカテゴリと1対1で対応する
-// - random: 現在レベルの出題対象すべて (未学習・学習中・要復習) を混ぜる。要復習を最大4割
-// - review: 要復習 + 再出現待ち (学習履歴のある全レベルから)
-// - new: 現在レベルの未学習のみ (履歴がないので現在レベルのDBから取る)
-// - learning: 学習中 (学習履歴のある全レベルから)
-// - mastered: 学習済み。初見で除外したもの (preknown) も含む (全レベルから)
-export type QuizMode = "random" | "review" | "new" | "learning" | "mastered";
+// 演習モードの新出比率。設定値が壊れていても出題が止まらないようにここで丸める
+export function drillNewRatio(settings: VocabSettings): number {
+  const r = settings.drillNewRatio;
+  if (typeof r !== "number" || !Number.isFinite(r)) return 50;
+  return Math.max(0, Math.min(100, r));
+}
 
 export function buildQueue(
   dbs: WordDbMap,
@@ -297,50 +335,45 @@ export function buildQueue(
   exclude: Set<string> = new Set(),
 ): WordDbEntry[] {
   const index = buildIndex(dbs);
+  const master = settings.masterKnownCount;
 
-  // 学習履歴のある単語 (全レベル横断) を状態ごとに仕分ける
-  const due: { item: WordDbEntry; w: number }[] = [];
-  const inProgress: { item: WordDbEntry; w: number }[] = [];
-  const done: { item: WordDbEntry; w: number }[] = [];
+  // 学習履歴のある単語 (全レベル横断) を学習進捗度で仕分ける
+  const inProgress: { item: WordDbEntry; w: number }[] = []; // 学習中 (復習の対象)
+  const learned: { item: WordDbEntry; w: number }[] = []; // 学習完了
   for (const entry of Object.values(progress)) {
     const info = index.get(entry.word);
     if (!info || exclude.has(info.def.word)) continue;
-    const status = wordStatus(entry, settings, now);
-    const pick = { item: info.def, w: weight(entry, status) };
-    if (status === "review" || status === "stale") due.push(pick);
-    else if (status === "learning") inProgress.push(pick);
-    else if (status === "mastered" || status === "preknown") done.push(pick);
+    const pick = { item: info.def, w: weight(entry) };
+    const p = progressOf(entry, master);
+    if (p === "learning") inProgress.push(pick);
+    else if (p === "done") learned.push(pick);
+    // 手で「未学習」に戻した語は既出ではないので、下の新出側で拾わせる
   }
 
-  if (mode === "review") return weightedSample(due, size);
-  if (mode === "learning") return weightedSample(inProgress, size);
-  if (mode === "mastered") return weightedSample(done, size);
+  // 復習: 学習中のものだけ。weight() が × を優先して引く
+  if (mode === "review") return weightedSample(inProgress, size);
 
-  // 出題対象レベルの未学習・学習中 (ランダム出題の素材)
+  // 演習: 出題対象レベルの未学習を「新出」、履歴のある語を「既出」として比率で混ぜる
   const fresh: { item: WordDbEntry; w: number }[] = [];
-  const levelLearning: { item: WordDbEntry; w: number }[] = [];
   for (const level of levels) {
     for (const w of dbs[level].words) {
       if (exclude.has(w.word)) continue;
-      const entry = progress[w.word];
-      const status = wordStatus(entry, settings, now);
-      if (status === "new") fresh.push({ item: w, w: 1 });
-      if (status === "learning")
-        levelLearning.push({ item: w, w: weight(entry, status) });
+      if (progressOf(progress[w.word], master) === "new") {
+        fresh.push({ item: w, w: 1 });
+      }
     }
   }
+  const seen = [...inProgress, ...learned];
 
-  if (mode === "new") {
-    return weightedSample(fresh, size);
-  }
+  const freshCount = Math.round((size * drillNewRatio(settings)) / 100);
+  const queue = weightedSample(fresh, freshCount);
+  queue.push(...weightedSample(seen, size - queue.length));
 
-  const dueCount = Math.min(due.length, Math.floor(size * 0.4));
-  const queue = weightedSample(due, dueCount);
-  queue.push(...weightedSample(fresh, size - queue.length));
-
+  // 片方の在庫が尽きたらもう片方で埋める。比率はあくまで目安で、
+  // 出題が止まるくらいなら比率を崩す
   if (queue.length < size) {
     const used = new Set(queue.map((q) => q.word));
-    const fill = [...levelLearning, ...due].filter((p) => !used.has(p.item.word));
+    const fill = [...fresh, ...seen].filter((p) => !used.has(p.item.word));
     queue.push(...weightedSample(fill, size - queue.length));
   }
 

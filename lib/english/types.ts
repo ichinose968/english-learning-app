@@ -132,19 +132,38 @@ export interface VocabEntry {
   needsReview: boolean; // 直近が誤答/知らない (長文読解の題材になる)
   lastSeenAt: string;
   history: { t: string; r: VocabAction }[]; // 回答履歴 (日時つき、直近50件)
-  statusOverride?: ManualStatus; // カード詳細で手動指定したステータス
+  resultOverride?: LastResult; // カード詳細で手動指定した前回結果
+  progressOverride?: Progress; // カード詳細で手動指定した学習進捗度
 }
 
-// カード詳細から手で付け替えられるステータス。
-// 学習記録から導かれる状態より優先されるが、次にそのカードへ回答した時点で外れる
-// (記録と食い違ったまま固定されると、タブの件数や出題対象がずれるため)
-export type ManualStatus = "new" | "learning" | "review" | "mastered";
+// 単語の状態は2軸で持つ。1つに混ぜると「なぜこの語が出るのか」が読めなくなるため分ける。
+//
+// 1. 前回結果 (LastResult): 最後にユーザーが答えた結果そのもの。○ を付ければ ○、
+//    あとで × を付ければ × に変わる。未回答なら null。
+// 2. 学習進捗度 (Progress): その語を身につけたかどうか。出題の対象はこちらで決める。
+export type LastResult =
+  | "known" // ○
+  | "fuzzy" // △ (4択の正誤は問わない)
+  | "unknown"; // ×
 
-export const MANUAL_STATUSES: { key: ManualStatus; label: string }[] = [
+export type Progress =
+  | "new" // 未学習。まだ一度も出題していない
+  | "learning" // 学習中
+  | "done"; // 学習完了。初回で正解した語、または ○ が masterKnownCount 回続いた語
+
+// カード詳細から手で付け替えられる選択肢。どちらの軸も指定でき、
+// 次にそのカードへ回答した時点で両方とも外れる
+// (記録と食い違ったまま固定されると、タブの件数や出題対象がずれるため)
+export const RESULT_OPTIONS: { key: LastResult; label: string }[] = [
+  { key: "known", label: "○" },
+  { key: "fuzzy", label: "△" },
+  { key: "unknown", label: "×" },
+];
+
+export const PROGRESS_OPTIONS: { key: Progress; label: string }[] = [
   { key: "new", label: "未学習" },
   { key: "learning", label: "学習中" },
-  { key: "review", label: "要復習" },
-  { key: "mastered", label: "学習済み" },
+  { key: "done", label: "学習完了" },
 ];
 
 // 出題するカードの範囲 (語彙のみ / イディオムのみ / 両方)
@@ -181,18 +200,19 @@ export interface VocabSettings {
   cardFields: Record<CardFieldKey, boolean>;
   levelMode: LevelMode;
   manualLevels: Level[]; // levelMode が manual のときの出題対象 (1つ以上)
-  // この回数「連続で」○ (知っている) が続いたら学習済みとみなし、出題から除外する。
-  // 途中で ? や × を選ぶと連続はリセットされる
+  // この回数「連続で」○ が続いたら学習完了とみなす。△ や × を挟むと連続は切れる
   masterKnownCount: number;
-  // 最終閲覧からこの日数が経過したら再出現させる。null なら再出現させない
-  reviewIntervalDays: number | null;
-  // 初見で「知っている」と答えた単語は既知の知識とみなし、以後出題しない。
-  // オンの間、知らなかった・怪しかった単語だけを周回する単語帳になる (語彙・イディオム共通)
-  excludeFirstKnown: boolean;
-  // 回答後にカード裏の解説を見ずに次のカードへ進むか (○ / × それぞれ)
-  skipRevealOnKnown: boolean;
-  skipRevealOnUnknown: boolean;
+  // 回答後にカード裏の解説を見ずに次のカードへ進むか。モードごとに持つ。
+  // 演習は仕分けが目的なので既定でオン、復習は覚え直しが目的なので既定でオフ
+  skipReveal: Record<QuizMode, boolean>;
+  // 演習モードで新出 (未学習) の語を出す割合 (%)。残りは既出の語から出す
+  drillNewRatio: number;
 }
+
+// カード画面の出題モード。上部タブと1対1で対応する
+// - drill: 演習。高速に「知っている / 知らない」へ仕分ける
+// - review: 復習。取りこぼした語を解説付きで覚え直す
+export type QuizMode = "drill" | "review";
 
 // 単語レベルの状態。current が null の間は初回測定 (10問) を行う。
 // recent は直近の正誤 (最大20件) で、正解率に応じてレベルを自動調整する
@@ -218,10 +238,8 @@ export const DEFAULT_VOCAB_SETTINGS: VocabSettings = {
   levelMode: "auto",
   manualLevels: ["B1"],
   masterKnownCount: 3,
-  reviewIntervalDays: null,
-  excludeFirstKnown: true,
-  skipRevealOnKnown: false,
-  skipRevealOnUnknown: false,
+  skipReveal: { drill: true, review: false },
+  drillNewRatio: 50,
 };
 
 // ---- 長文読解の設定 (読解タブの中で変える) ----

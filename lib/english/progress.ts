@@ -1,42 +1,18 @@
 // 学習記録の書き換えのうち、複数の画面から使うもの
 import {
   EnglishData,
+  LastResult,
   Level,
-  ManualStatus,
+  Progress,
   VocabEntry,
   WordDbEntry,
 } from "./types";
 
-// 手動でステータスを指定する。null なら指定を外して学習記録どおりの判定に戻す。
-// 未学習の語に指定する場合は、記録を持たせるために空のエントリを作る
-export function setStatusOverride(
-  data: EnglishData,
-  def: WordDbEntry,
-  level: Level,
-  next: ManualStatus | null,
-): EnglishData {
-  const vocab = { ...data.vocab };
-  const entry = vocab[def.word];
+// 手動指定の対象。前回結果と学習進捗度は別の軸なので、それぞれ独立に付け替えられる
+export type OverrideAxis = "result" | "progress";
 
-  if (next === null) {
-    if (!entry) return data;
-    const rest = { ...entry };
-    delete rest.statusOverride;
-    // 指定のためだけに作ったエントリ (回答履歴なし) は丸ごと消す
-    const untouched =
-      rest.history.length === 0 &&
-      rest.knownCount === 0 &&
-      rest.unsureCount === 0 &&
-      rest.unknownCount === 0;
-    if (untouched) {
-      delete vocab[def.word];
-    } else {
-      vocab[def.word] = rest;
-    }
-    return { ...data, vocab };
-  }
-
-  const base: VocabEntry = entry ?? {
+function emptyEntry(def: WordDbEntry, level: Level): VocabEntry {
+  return {
     word: def.word,
     level,
     meaningJa: def.meaningJa,
@@ -49,15 +25,53 @@ export function setStatusOverride(
     lastSeenAt: new Date().toISOString(),
     history: [],
   };
-  vocab[def.word] = { ...base, statusOverride: next };
+}
+
+// 指定のためだけに作られたエントリ (回答履歴も手動指定も無い) か
+function isUntouched(entry: VocabEntry): boolean {
+  return (
+    entry.history.length === 0 &&
+    entry.knownCount === 0 &&
+    entry.unsureCount === 0 &&
+    entry.unknownCount === 0 &&
+    !entry.resultOverride &&
+    !entry.progressOverride
+  );
+}
+
+// 手動でステータスを指定する。null なら指定を外して学習記録どおりの判定に戻す。
+// 記録の無い語に指定する場合は、持たせるために空のエントリを作る
+export function setStatusOverride(
+  data: EnglishData,
+  def: WordDbEntry,
+  level: Level,
+  axis: OverrideAxis,
+  next: LastResult | Progress | null,
+): EnglishData {
+  const vocab = { ...data.vocab };
+  const entry = vocab[def.word];
+  if (!entry && next === null) return data;
+
+  const base = { ...(entry ?? emptyEntry(def, level)) };
+  if (axis === "result") {
+    if (next === null) delete base.resultOverride;
+    else base.resultOverride = next as LastResult;
+  } else {
+    if (next === null) delete base.progressOverride;
+    else base.progressOverride = next as Progress;
+  }
+
+  if (isUntouched(base)) delete vocab[def.word];
+  else vocab[def.word] = base;
   return { ...data, vocab };
 }
 
-// 回答したら手動指定は外す。記録と食い違ったまま固定されると、
+// 回答したら手動指定は両方とも外す。記録と食い違ったまま固定されると、
 // タブの件数や出題対象が実態とずれるため
 export function clearStatusOverride(entry: VocabEntry): VocabEntry {
-  if (!entry.statusOverride) return entry;
+  if (!entry.resultOverride && !entry.progressOverride) return entry;
   const rest = { ...entry };
-  delete rest.statusOverride;
+  delete rest.resultOverride;
+  delete rest.progressOverride;
   return rest;
 }

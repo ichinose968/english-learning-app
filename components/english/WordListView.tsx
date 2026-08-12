@@ -5,6 +5,7 @@ import {
   ArrowDown,
   ArrowDownUp,
   ArrowUp,
+  EyeOff,
   Filter,
   Loader2,
   Plus,
@@ -23,10 +24,14 @@ import {
 import {
   fetchAllWordDbs,
   LEVEL_ORDER,
-  STATUS_BADGE,
+  lastResult,
+  LastResult,
+  PROGRESS_BADGE,
+  progressOf,
+  Progress,
+  RESULT_BADGE,
+  statusBadges,
   WordDbMap,
-  WordStatus,
-  wordStatus,
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
 import { CardDetailSheet } from "./CardDetailSheet";
@@ -36,63 +41,67 @@ const PAGE_SIZE = 100;
 type LevelFilter = Level | "all";
 type SortKey =
   | "word"
-  | "status"
+  | "result"
+  | "progress"
   | "meaning"
   | "known"
-  | "unsureCorrect"
-  | "unsureWrong"
+  | "fuzzy"
   | "unknown"
   | "lastSeen";
 type SortDir = "asc" | "desc";
 type DateOp = "before" | "after" | "on";
 
-// 既定で表示するステータス。未学習と再出現待ちは外して、学習中の語に集中できるようにする
-const DEFAULT_STATUS_FILTER: WordStatus[] = [
-  "learning",
-  "review",
-  "mastered",
-  "preknown",
-];
+// ステータスは前回結果と学習進捗度の2軸。フィルタは軸ごとに持ち、両方指定したら AND で絞る。
+// 既定は未学習を外して、一度でも出題した語に集中できるようにする
+const RESULT_FILTERS: LastResult[] = ["known", "fuzzy", "unknown"];
+const PROGRESS_FILTERS: Progress[] = ["new", "learning", "done"];
+const DEFAULT_PROGRESS_FILTER: Progress[] = ["learning", "done"];
 
-// フィルタに出すステータス。再出現待ちは「再出現までの日数」を設定したときだけ
-// 現れる状態で、既定 (設定しない) では該当が0件なので選択肢に出さない
-const FILTER_STATUSES: WordStatus[] = [
-  "new",
-  "learning",
-  "review",
-  "mastered",
-  "preknown",
-];
-
-// 並べ替えのときの順序。こちらは全状態を持つ
-const STATUS_ORDER: WordStatus[] = [
-  "new",
-  "learning",
-  "review",
-  "stale",
-  "mastered",
-  "preknown",
-];
+// 並べ替えの順序。フィルタのチップの並び (○△× の読み順) とは別に持つ。
+// 昇順は「まだ身についていない側」から始める。
+// 前回結果: × → △ → ○ / 学習進捗度: 未学習 → 学習中 → 学習完了。
+// 未回答 (前回結果なし) は -1 として × より前に置く
+const RESULT_ORDER: LastResult[] = ["unknown", "fuzzy", "known"];
+const PROGRESS_ORDER: Progress[] = ["new", "learning", "done"];
 
 type ColType = "text" | "number" | "date" | "status";
 
-// 列の定義 (見出し・ソートキー・並べ替えの表記に使う型)
-const COLUMNS: {
-  key: SortKey;
-  label: string;
-  type: ColType;
-  title?: string;
-  align?: "center";
-}[] = [
-  { key: "word", label: "単語", type: "text" },
-  { key: "status", label: "ステータス", type: "status" },
-  { key: "meaning", label: "意味", type: "text" },
-  { key: "known", label: "○", type: "number", title: "Mastered と回答した回数", align: "center" },
-  { key: "unsureCorrect", label: "?→○", type: "number", title: "Fuzzy → 4択で正解した回数", align: "center" },
-  { key: "unsureWrong", label: "?→×", type: "number", title: "Fuzzy → 4択で誤答した回数", align: "center" },
-  { key: "unknown", label: "×", type: "number", title: "New と回答した回数", align: "center" },
-  { key: "lastSeen", label: "最終閲覧", type: "date" },
+// 列の定義 (見出し・ソートキー・並べ替えの表記に使う型)。
+// 画面に出す順番は COLUMN_ORDER が持つ
+const COLUMNS: Record<
+  SortKey,
+  { label: string; type: ColType; title?: string; align?: "center" }
+> = {
+  word: { label: "単語", type: "text" },
+  meaning: { label: "意味", type: "text" },
+  progress: { label: "学習進捗度", type: "status" },
+  result: { label: "前回結果", type: "status" },
+  known: { label: "○", type: "number", title: "○ と回答した回数", align: "center" },
+  fuzzy: {
+    label: "△",
+    type: "number",
+    title: "△ と回答した回数 (4択の正誤は問わない)",
+    align: "center",
+  },
+  unknown: { label: "×", type: "number", title: "× と回答した回数", align: "center" },
+  lastSeen: { label: "最終閲覧", type: "date" },
+};
+
+// 列の並び順。ここを書き換えれば表の並びが変わる
+const COLUMN_ORDER: SortKey[] = [
+  "word",
+  "meaning",
+  "progress",
+  "result",
+  "known",
+  "fuzzy",
+  "unknown",
+  "lastSeen",
 ];
+
+// シールを貼れる列 (中身を隠して自分でめくる、暗記用の使い方)
+type SealColumn = "word" | "meaning";
+const SEAL_COLUMNS: SealColumn[] = ["word", "meaning"];
 
 // 並べ替えの向きの表記。分かりやすさを優先して昇順・降順で統一する
 const DIR_LABEL = { asc: "昇順", desc: "降順" };
@@ -137,12 +146,28 @@ export function WordListView({ data, setData }: Props) {
   const [fWord, setFWord] = useState("");
   const [fMeaning, setFMeaning] = useState("");
   // ステータスは複数選択 (空 = すべて)。既定は学習に関わるものだけ出し、未学習は隠す
-  const [fStatus, setFStatus] = useState<WordStatus[]>(DEFAULT_STATUS_FILTER);
+  const [fResult, setFResult] = useState<LastResult[]>([]);
+  const [fProgress, setFProgress] = useState<Progress[]>(
+    DEFAULT_PROGRESS_FILTER,
+  );
   const [fDateOp, setFDateOp] = useState<DateOp>("after");
   const [fDate, setFDate] = useState("");
-  const [sorts, setSorts] = useState<SortRule[]>([]);
-
-  const now = useMemo(() => new Date(), []);
+  // 既定の並べ替え。まだ身についていないものが上に来るようにしておく
+  // (前回結果 × から、次に学習進捗度の未学習から、同点なら単語のアルファベット順)
+  const [sorts, setSorts] = useState<SortRule[]>([
+    { key: "result", dir: "asc" },
+    { key: "progress", dir: "asc" },
+    { key: "word", dir: "asc" },
+  ]);
+  // シールを貼っている列と、めくり済みの単語
+  const [sealed, setSealed] = useState<Record<SealColumn, boolean>>({
+    word: false,
+    meaning: false,
+  });
+  const [peeled, setPeeled] = useState<Record<SealColumn, Set<string>>>({
+    word: new Set(),
+    meaning: new Set(),
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -181,9 +206,13 @@ export function WordListView({ data, setData }: Props) {
       }
       if (w && !def.word.toLowerCase().includes(w)) return false;
       if (m && !def.meaningJa.includes(m)) return false;
+      if (fResult.length > 0) {
+        const r = lastResult(entry);
+        if (!r || !fResult.includes(r)) return false;
+      }
       if (
-        fStatus.length > 0 &&
-        !fStatus.includes(wordStatus(entry, settings, now))
+        fProgress.length > 0 &&
+        !fProgress.includes(progressOf(entry, settings.masterKnownCount))
       ) {
         return false;
       }
@@ -211,14 +240,18 @@ export function WordListView({ data, setData }: Props) {
           return r.def.word.toLowerCase();
         case "meaning":
           return r.def.meaningJa;
-        case "status":
-          return STATUS_ORDER.indexOf(wordStatus(e, settings, now));
+        case "result": {
+          const r = lastResult(e);
+          return r ? RESULT_ORDER.indexOf(r) : -1;
+        }
+        case "progress":
+          return PROGRESS_ORDER.indexOf(
+            progressOf(e, settings.masterKnownCount),
+          );
         case "known":
           return e?.knownCount ?? -1;
-        case "unsureCorrect":
-          return e?.correctCount ?? -1;
-        case "unsureWrong":
-          return e?.wrongCount ?? -1;
+        case "fuzzy":
+          return e?.unsureCount ?? -1;
         case "unknown":
           return e?.unknownCount ?? -1;
         case "lastSeen":
@@ -242,12 +275,12 @@ export function WordListView({ data, setData }: Props) {
   }, [
     rows,
     data.vocab,
-    settings,
-    now,
+    settings.masterKnownCount,
     query,
     fWord,
     fMeaning,
-    fStatus,
+    fResult,
+    fProgress,
     fDate,
     fDateOp,
     sorts,
@@ -256,7 +289,11 @@ export function WordListView({ data, setData }: Props) {
   const shown = filtered.slice(0, visible);
   const resetPage = () => setVisible(PAGE_SIZE);
   const activeFilters =
-    (fWord ? 1 : 0) + (fMeaning ? 1 : 0) + (fStatus.length > 0 ? 1 : 0) + (fDate ? 1 : 0);
+    (fWord ? 1 : 0) +
+    (fMeaning ? 1 : 0) +
+    (fResult.length > 0 ? 1 : 0) +
+    (fProgress.length > 0 ? 1 : 0) +
+    (fDate ? 1 : 0);
 
   const chip = (active: boolean) =>
     `rounded-full border px-3 py-1 text-xs transition-colors ${
@@ -272,6 +309,20 @@ export function WordListView({ data, setData }: Props) {
         : "text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900"
     }`;
 
+  // ---- シール (中身を隠して、タップでめくる) ----
+
+  const toggleSeal = (col: SealColumn) => {
+    setSealed((s) => ({ ...s, [col]: !s[col] }));
+    // 貼り直すときも剥がすときも、めくった記録はまっさらに戻す
+    setPeeled((p) => ({ ...p, [col]: new Set() }));
+  };
+
+  const isSealed = (col: SealColumn, word: string) =>
+    sealed[col] && !peeled[col].has(word);
+
+  const peel = (col: SealColumn, word: string) =>
+    setPeeled((p) => ({ ...p, [col]: new Set(p[col]).add(word) }));
+
   // 見出しクリック: 先頭の規則ならの向きを反転、そうでなければその列だけの並べ替えにする
   const toggleSort = (key: SortKey) => {
     setSorts((prev) =>
@@ -284,9 +335,9 @@ export function WordListView({ data, setData }: Props) {
 
   const addSort = () => {
     const used = new Set(sorts.map((r) => r.key));
-    const next = COLUMNS.find((c) => !used.has(c.key));
+    const next = COLUMN_ORDER.find((k) => !used.has(k));
     if (next) {
-      setSorts([...sorts, { key: next.key, dir: "asc" }]);
+      setSorts([...sorts, { key: next, dir: "asc" }]);
       resetPage();
     }
   };
@@ -337,15 +388,24 @@ export function WordListView({ data, setData }: Props) {
               },
             }))
           }
-          status={{
-            ...STATUS_BADGE[
-              wordStatus(data.vocab[detail.def.word], settings, new Date())
-            ],
-            manual: data.vocab[detail.def.word]?.statusOverride ?? null,
-          }}
-          onSetStatus={(next) =>
+          status={statusBadges(
+            data.vocab[detail.def.word],
+            settings.masterKnownCount,
+          )}
+          onSetResult={(next) =>
             setData((prev) =>
-              setStatusOverride(prev, detail.def, detail.level, next),
+              setStatusOverride(prev, detail.def, detail.level, "result", next),
+            )
+          }
+          onSetProgress={(next) =>
+            setData((prev) =>
+              setStatusOverride(
+                prev,
+                detail.def,
+                detail.level,
+                "progress",
+                next,
+              ),
             )
           }
           onSaveNote={(text) =>
@@ -462,32 +522,64 @@ export function WordListView({ data, setData }: Props) {
           </div>
           <div>
             <label className="mb-1 block text-xs text-zinc-500">
-              ステータスが一致 (複数選択可)
+              前回結果が一致 (複数選択可)
             </label>
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => {
-                  setFStatus([]);
+                  setFResult([]);
                   resetPage();
                 }}
-                className={chip(fStatus.length === 0)}
+                className={chip(fResult.length === 0)}
               >
                 すべて
               </button>
-              {FILTER_STATUSES.map((st) => (
+              {RESULT_FILTERS.map((st) => (
                 <button
                   key={st}
                   onClick={() => {
-                    setFStatus(
-                      fStatus.includes(st)
-                        ? fStatus.filter((x) => x !== st)
-                        : [...fStatus, st],
+                    setFResult(
+                      fResult.includes(st)
+                        ? fResult.filter((x) => x !== st)
+                        : [...fResult, st],
                     );
                     resetPage();
                   }}
-                  className={chip(fStatus.includes(st))}
+                  className={chip(fResult.includes(st))}
                 >
-                  {STATUS_BADGE[st].label}
+                  {RESULT_BADGE[st].label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label className="mb-1 block text-xs text-zinc-500">
+              学習進捗度が一致 (複数選択可)
+            </label>
+            <div className="flex flex-wrap gap-1.5">
+              <button
+                onClick={() => {
+                  setFProgress([]);
+                  resetPage();
+                }}
+                className={chip(fProgress.length === 0)}
+              >
+                すべて
+              </button>
+              {PROGRESS_FILTERS.map((st) => (
+                <button
+                  key={st}
+                  onClick={() => {
+                    setFProgress(
+                      fProgress.includes(st)
+                        ? fProgress.filter((x) => x !== st)
+                        : [...fProgress, st],
+                    );
+                    resetPage();
+                  }}
+                  className={chip(fProgress.includes(st))}
+                >
+                  {PROGRESS_BADGE[st].label}
                 </button>
               ))}
             </div>
@@ -529,7 +621,8 @@ export function WordListView({ data, setData }: Props) {
               onClick={() => {
                 setFWord("");
                 setFMeaning("");
-                setFStatus([]);
+                setFResult([]);
+                setFProgress([]);
                 setFDate("");
                 resetPage();
               }}
@@ -562,9 +655,9 @@ export function WordListView({ data, setData }: Props) {
                     }
                     className="min-w-0 flex-1 rounded-lg border border-zinc-200 bg-transparent px-2 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700 dark:bg-black"
                   >
-                    {COLUMNS.map((c) => (
-                      <option key={c.key} value={c.key}>
-                        {c.label}
+                    {COLUMN_ORDER.map((k) => (
+                      <option key={k} value={k}>
+                        {COLUMNS[k].label}
                       </option>
                     ))}
                   </select>
@@ -590,7 +683,7 @@ export function WordListView({ data, setData }: Props) {
             })}
           </div>
           <div className="mt-2 space-y-1">
-            {sorts.length < COLUMNS.length && (
+            {sorts.length < COLUMN_ORDER.length && (
               <button
                 onClick={addSort}
                 className="flex items-center gap-1.5 rounded-lg px-1 py-1 text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
@@ -623,43 +716,67 @@ export function WordListView({ data, setData }: Props) {
           <table className="w-full min-w-[820px] border-collapse text-left text-[13px]">
             <thead>
               <tr className="border-b border-zinc-200 text-[11px] text-zinc-400 dark:border-zinc-700">
-                {COLUMNS.map((c) => (
-                  <th
-                    key={c.key}
-                    title={c.title}
-                    onClick={() => toggleSort(c.key)}
-                    className={`cursor-pointer select-none px-3 py-2 font-medium hover:text-zinc-600 dark:hover:text-zinc-200 ${
-                      c.align === "center" ? "text-center" : ""
-                    } ${sorts.some((r) => r.key === c.key) ? "text-[#4A99EA]" : ""}`}
-                  >
-                    <span className="inline-flex items-center gap-0.5">
-                      {c.label}
-                      {(() => {
-                        const i = sorts.findIndex((r) => r.key === c.key);
-                        if (i < 0) return null;
-                        return (
-                          <>
-                            {sorts[i].dir === "asc" ? (
-                              <ArrowUp size={11} />
-                            ) : (
-                              <ArrowDown size={11} />
-                            )}
-                            {sorts.length > 1 && (
-                              <span className="text-[9px]">{i + 1}</span>
-                            )}
-                          </>
-                        );
-                      })()}
-                    </span>
-                  </th>
-                ))}
+                {COLUMN_ORDER.map((key) => {
+                  const c = COLUMNS[key];
+                  const sealCol = SEAL_COLUMNS.find((s) => s === key);
+                  return (
+                    <th
+                      key={key}
+                      title={c.title}
+                      onClick={() => toggleSort(key)}
+                      className={`cursor-pointer select-none px-3 py-2 font-medium hover:text-zinc-600 dark:hover:text-zinc-200 ${
+                        c.align === "center" ? "text-center" : ""
+                      } ${sorts.some((r) => r.key === key) ? "text-[#4A99EA]" : ""}`}
+                    >
+                      <span className="inline-flex items-center gap-1">
+                        {sealCol && (
+                          <button
+                            // 見出しの長押し・ソートに巻き込まれないよう、ここで止める
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleSeal(sealCol);
+                            }}
+                            aria-label={`${c.label}にシールを貼る`}
+                            aria-pressed={sealed[sealCol]}
+                            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded transition-colors ${
+                              sealed[sealCol]
+                                ? "bg-[#4A99EA] text-white"
+                                : "text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800"
+                            }`}
+                          >
+                            <EyeOff size={12} />
+                          </button>
+                        )}
+                        {c.label}
+                        {(() => {
+                          const i = sorts.findIndex((r) => r.key === key);
+                          if (i < 0) return null;
+                          return (
+                            <>
+                              {sorts[i].dir === "asc" ? (
+                                <ArrowUp size={11} />
+                              ) : (
+                                <ArrowDown size={11} />
+                              )}
+                              {sorts.length > 1 && (
+                                <span className="text-[9px]">{i + 1}</span>
+                              )}
+                            </>
+                          );
+                        })()}
+                      </span>
+                    </th>
+                  );
+                })}
               </tr>
             </thead>
             <tbody>
               {shown.map(({ def, level: lv }) => {
                 const entry = data.vocab[def.word];
-                const s = wordStatus(entry, settings, now);
-                const badge = STATUS_BADGE[s];
+                const r = lastResult(entry);
+                const resultBadge = r ? RESULT_BADGE[r] : null;
+                const progressBadge =
+                  PROGRESS_BADGE[progressOf(entry, settings.masterKnownCount)];
                 const num = (n: number) =>
                   n === 0 ? (
                     <span className="text-zinc-300 dark:text-zinc-600">0</span>
@@ -667,41 +784,98 @@ export function WordListView({ data, setData }: Props) {
                     <span className="tabular-nums">{n}</span>
                   );
                 const blank = <span className="text-zinc-300 dark:text-zinc-600">−</span>;
+                // シールを貼っている列は中身を隠す。幅が動かないよう、
+                // 中身は消さずに invisible にして、上からシールを重ねる
+                const cell = (key: SortKey) => {
+                  switch (key) {
+                    case "word":
+                      return (
+                        <span>
+                          <span className="font-medium">{def.word}</span>
+                          <span className="ml-1.5 text-[10px] text-zinc-400">
+                            {def.pos}・{lv}
+                          </span>
+                        </span>
+                      );
+                    case "meaning":
+                      return data.edits[def.word]?.meaningJa ?? def.meaningJa;
+                    case "result":
+                      return resultBadge ? (
+                        <span
+                          className={`rounded-full px-2 py-0.5 text-[11px] ${resultBadge.cls}`}
+                        >
+                          {resultBadge.label}
+                        </span>
+                      ) : (
+                        blank
+                      );
+                    case "progress":
+                      return (
+                        <span
+                          className={`rounded-full px-2 py-0.5 text-[11px] ${progressBadge.cls}`}
+                        >
+                          {progressBadge.label}
+                        </span>
+                      );
+                    case "known":
+                      return entry ? num(entry.knownCount) : blank;
+                    case "fuzzy":
+                      return entry ? num(entry.unsureCount) : blank;
+                    case "unknown":
+                      return entry ? num(entry.unknownCount) : blank;
+                    case "lastSeen":
+                      return entry ? formatDateTime(entry.lastSeenAt) : blank;
+                  }
+                };
+                const cellCls: Record<SortKey, string> = {
+                  word: "whitespace-nowrap px-3 py-1.5",
+                  meaning:
+                    "max-w-[220px] truncate px-3 py-1.5 text-zinc-600 dark:text-zinc-300",
+                  result: "whitespace-nowrap px-3 py-1.5",
+                  progress: "whitespace-nowrap px-3 py-1.5",
+                  known: "px-3 py-1.5 text-center",
+                  fuzzy: "px-3 py-1.5 text-center",
+                  unknown: "px-3 py-1.5 text-center",
+                  lastSeen:
+                    "whitespace-nowrap px-3 py-1.5 text-[12px] text-zinc-500",
+                };
                 return (
                   <tr
                     key={`${lv}-${def.word}`}
                     onClick={() => setDetail({ def, level: lv })}
                     className="cursor-pointer border-b border-zinc-100 transition-colors last:border-b-0 hover:bg-zinc-900/5 dark:border-zinc-800 dark:hover:bg-white/10"
                   >
-                    <td className="whitespace-nowrap px-3 py-1.5">
-                      <span className="font-medium">{def.word}</span>
-                      <span className="ml-1.5 text-[10px] text-zinc-400">
-                        {def.pos}・{lv}
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-1.5">
-                      <span className={`rounded-full px-2 py-0.5 text-[11px] ${badge.cls}`}>
-                        {badge.label}
-                      </span>
-                    </td>
-                    <td className="max-w-[220px] truncate px-3 py-1.5 text-zinc-600 dark:text-zinc-300">
-                      {data.edits[def.word]?.meaningJa ?? def.meaningJa}
-                    </td>
-                    <td className="px-3 py-1.5 text-center">
-                      {entry ? num(entry.knownCount) : blank}
-                    </td>
-                    <td className="px-3 py-1.5 text-center">
-                      {entry ? num(entry.correctCount) : blank}
-                    </td>
-                    <td className="px-3 py-1.5 text-center">
-                      {entry ? num(entry.wrongCount) : blank}
-                    </td>
-                    <td className="px-3 py-1.5 text-center">
-                      {entry ? num(entry.unknownCount) : blank}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-1.5 text-[12px] text-zinc-500">
-                      {entry ? formatDateTime(entry.lastSeenAt) : blank}
-                    </td>
+                    {COLUMN_ORDER.map((key) => {
+                      const sealCol = SEAL_COLUMNS.find((s) => s === key);
+                      const covered = sealCol
+                        ? isSealed(sealCol, def.word)
+                        : false;
+                      return (
+                        <td
+                          key={key}
+                          className={`relative ${cellCls[key]}`}
+                          onClick={
+                            covered && sealCol
+                              ? (e) => {
+                                  // シールをめくるだけ。行のカード詳細は開かない
+                                  e.stopPropagation();
+                                  peel(sealCol, def.word);
+                                }
+                              : undefined
+                          }
+                        >
+                          <span className={covered ? "invisible" : undefined}>
+                            {cell(key)}
+                          </span>
+                          {covered && (
+                            <span
+                              aria-label="タップしてめくる"
+                              className="seal inset-x-1.5 inset-y-1"
+                            />
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
                 );
               })}

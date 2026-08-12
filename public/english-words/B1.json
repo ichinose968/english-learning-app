@@ -1,7 +1,7 @@
 {
  "level": "B1",
  "generatedAt": "2026-08-11T14:50:07.686Z",
- "count": 1262,
+ "count": 1261,
  "words": [
   {
    "word": "household",
@@ -4532,48 +4532,6 @@
    ]
   },
   {
-   "word": "союз",
-   "pos": "名詞",
-   "meaningJa": "組合",
-   "distractors": [
-    "会社",
-    "委員会",
-    "政党"
-   ],
-   "exampleEn": "The workers joined a union.",
-   "exampleJa": "労働者たちは組合に加わった。",
-   "ipa": "/ˈjuːnjən/",
-   "posEn": "Noun",
-   "domains": [
-    "Business",
-    "News",
-    "Legal"
-   ],
-   "themes": [
-    "Work",
-    "Politics",
-    "Society"
-   ],
-   "exams": [
-    "TOEIC",
-    "TOEFL"
-   ],
-   "related": [
-    {
-     "word": "union",
-     "meaningJa": "組合、連合"
-    },
-    {
-     "word": "unionize",
-     "meaningJa": "組合を結成する"
-    },
-    {
-     "word": "unite",
-     "meaningJa": "団結する"
-    }
-   ]
-  },
-  {
    "word": "labor",
    "pos": "名詞",
    "meaningJa": "労働",
@@ -4652,7 +4610,7 @@
    ]
   },
   {
-   "word": "客 service",
+   "word": "customer service",
    "pos": "名詞",
    "meaningJa": "サービス、接客",
    "distractors": [
@@ -4660,8 +4618,8 @@
     "値段",
     "在庫"
    ],
-   "exampleEn": "This hotel is famous for its good service.",
-   "exampleJa": "このホテルは良いサービスで有名だ。",
+   "exampleEn": "This hotel is famous for its excellent customer service.",
+   "exampleJa": "このホテルは素晴らしい接客で有名だ。",
    "ipa": "/ˈkʌstəmər ˈsɜːrvɪs/",
    "posEn": "Noun",
    "domains": [
@@ -4677,16 +4635,16 @@
    ],
    "related": [
     {
-     "word": "customer service",
-     "meaningJa": "顧客対応、接客"
-    },
-    {
      "word": "customer",
      "meaningJa": "顧客"
     },
     {
      "word": "serve",
      "meaningJa": "応対する、仕える"
+    },
+    {
+     "word": "hospitality",
+     "meaningJa": "もてなし、接客業"
     }
    ]
   },
