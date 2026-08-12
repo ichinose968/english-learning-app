@@ -13,15 +13,32 @@
 
 ## 2. 起動と確認
 
-開発サーバーは `.claude/launch.json` の `claudecode`（ポート3100）を preview_start で起動する。Bashで `npm run dev` は使わない。
+開発サーバーは `.claude/launch.json` の `english-app`（ポート3200）を preview_start で起動する。Bashで `npm run dev` は使わない。
 
 ```bash
 npx tsc --noEmit
 ```
 
-画面は http://localhost:3100/english 。確認は必ずモバイル幅（375×812, resize_window の mobile プリセット）で行う。ページ全体が横スクロールしたらレイアウト崩れとみなす（単語一覧テーブルの内部横スクロールは正常）。
+```bash
+npx eslint components lib app
+```
 
-状態は localStorage の `english-app-data-v1` に入っている。ブラウザのJSから読むとテストしやすい。
+画面は http://localhost:3200/english （ルート `/` もそこへリダイレクトする）。確認は必ずモバイル幅（375×812, resize_window の mobile プリセット）で行う。ページ全体が横スクロールしたらレイアウト崩れとみなす（単語リストのテーブルの内部横スクロールは正常）。
+
+eslint は**既存分として7 errors / 3 warnings が残っている**。これは以前からのもので、自分の変更で件数が増えていなければよい。件数を基準に見ること。
+
+状態は localStorage の `english-app-data-v1` に入っている。ブラウザのJSから読むとテストしやすい。検証でユーザーの学習記録を書き換えたら、必ず元に戻してから終わること。
+
+`window.confirm` はこの環境では何も表示せず false を返す。確認ダイアログの動作確認は `ConfirmButton`（画面内の二段階確認）で行う。
+
+## 2.5. デプロイ
+
+GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済み。**`main` に push すると自動でビルドされ本番に反映される**（2〜3分）。
+
+- 環境変数は Vercel 側に `ANTHROPIC_API_KEY` を設定済み。ローカルは `.env.local`（gitignore 済み）
+- ルート `/` は `app/page.tsx` が `/english` へリダイレクトする。単体リポジトリなのでトップに置いてある
+- 公開URLなので、読解とAI会話の利用ぶんはリポジトリ所有者のAPI請求になる。認証は付けていない
+- push は本番反映を伴うので、ユーザーの指示なく勝手に push しないこと
 
 ## 3. 技術スタック / 決まりごと
 
