@@ -187,7 +187,8 @@ export function TutorialOverlay({ step, measured, onNext, onBack, onSkip }: Nav)
   const noop = () => {};
 
   return (
-    <div className="fixed inset-0 z-[60] flex flex-col bg-black text-zinc-100">
+    // PCでは本体と同じ列幅に収める (fixed は viewport 基準になるため)
+    <div className="fixed inset-0 z-[60] mx-auto flex max-w-2xl flex-col bg-black text-zinc-100">
       <div className="flex shrink-0 items-center justify-between px-4 py-3">
         <span className="text-xs text-zinc-500">
           チュートリアル {step + 1} / {TUTORIAL_STEP_COUNT}

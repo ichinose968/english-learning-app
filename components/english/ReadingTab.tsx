@@ -378,6 +378,8 @@ export function ReadingTab({ data, setData }: Props) {
           reading={openReading}
           onClose={() => setOpenId(null)}
           onScored={(score) => saveScore(openReading.id, score)}
+          // 単語詳細を重ねているあいだは背面クリックで閉じない
+          dismissOnBackdrop={wordDetail === null}
           wordAction={(text) => {
             const hit = resolveWord(text);
             return hit ? () => setWordDetail(hit) : null;

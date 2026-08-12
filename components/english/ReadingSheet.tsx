@@ -52,12 +52,18 @@ export function ReadingSheet({
   onClose,
   onScored,
   wordAction,
+  dismissOnBackdrop = true,
 }: {
   reading: SavedReading;
   onClose: () => void;
   onScored: (score: { correct: number; total: number }) => void;
   // ハイライトされた語のクリック処理 (単語詳細を開く)。null ならただの強調表示
   wordAction?: (text: string) => (() => void) | null;
+  // 背面のクリックで閉じてよいか。単語詳細をこの上に重ねているあいだは false。
+  // 詳細は列幅 (max-w-2xl) に絞ってあるので、PCでは列の外のクリックが
+  // ここまで素通りしてくる。塞がないと、詳細を開いたまま脇を押しただけで
+  // 背後の長文が閉じ、解答の選択状態まで失われる
+  dismissOnBackdrop?: boolean;
 }) {
   const total = reading.questions.length;
   // 本文を読み上げ中か (トグルの見た目と、読み終わりの戻しに使う)
@@ -98,7 +104,7 @@ export function ReadingSheet({
 
   return (
     <div
-      onClick={close}
+      onClick={dismissOnBackdrop ? close : undefined}
       className={`fixed inset-0 z-50 bg-black/50 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
@@ -109,7 +115,8 @@ export function ReadingSheet({
           transform: visible ? "scale(1)" : "scale(0.96)",
           transition: "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
-        className="absolute inset-3 flex flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-black"
+        // 背面 (暗転) は画面全体のままにして、パネルだけ本体と同じ列幅に収める
+        className="absolute inset-3 mx-auto flex max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-black"
       >
         <header className="flex shrink-0 items-start gap-3 border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
           <h3 className="min-w-0 flex-1 text-base font-semibold leading-snug tracking-tight">

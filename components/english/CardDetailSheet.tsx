@@ -76,6 +76,11 @@ const DISMISS_FLICK_SPEED = 0.5; // px/ms
 const DISMISS_SLOP = 14;
 const DISMISS_S = 0.3; // 下へ抜けるまでの時間
 
+// アプリ本体の列幅。app/english/page.tsx の max-w-2xl (42rem = 672px) と必ず揃える。
+// PCでは画面いっぱいに広がらず、この幅の列に収まる
+const COLUMN_MAX_PX = 672;
+const columnWidth = () => Math.min(window.innerWidth, COLUMN_MAX_PX);
+
 // 関連語は「word = 意味」の行として編集する
 function relatedToText(list: { word: string; meaningJa: string }[]): string {
   return list.map((r) => `${r.word} = ${r.meaningJa}`).join("\n");
@@ -426,11 +431,21 @@ export function CardDetailSheet({
     };
   }, []);
 
-  // マウスは pointer イベントで拾う (マウスにスクロールジェスチャは無いので途切れない)。
-  // タッチは上のネイティブリスナーが拾うので、二重に始めない
+  // マウスは pointer イベントで拾う。タッチは上のネイティブリスナーが拾うので二重に始めない。
+  //
+  // **ポインタを掴んでおくこと (setPointerCapture)。**
+  // マウスには touch のような暗黙のキャプチャが無いので、掴まないと
+  // 「ポインタが根の上にある間」しか pointermove / pointerup が届かない。
+  // 根は列幅 (max-w-2xl) に絞ってあるため、横に少し逸れただけで外れてしまい、
+  // そのまま離すと finishDrag が呼ばれず、パネルが引いた位置に取り残される。
+  // 掴むのは e.target (根ではなく実際に触れた要素)。根を掴むと
+  // 中のボタンへの click まで根に付け替えられてしまう
   const onRootPointerDown = (e: React.PointerEvent) => {
     if (e.pointerType === "touch") return;
     beginDrag(e.clientY);
+    if (dragRef.current) {
+      (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    }
   };
   const onRootPointerMove = (e: React.PointerEvent) => {
     if (e.pointerType === "touch") return;
@@ -456,8 +471,13 @@ export function CardDetailSheet({
       }
     : origin
       ? (() => {
-          const s = origin.card.width / window.innerWidth;
+          // 拡大率は **パネルの幅** を基準にする。画面幅ではない。
+          // PCではパネルが列幅 (max-w-2xl) で止まるので、画面幅で割ると
+          // カードが実際より小さく見積もられ、開くときに一段小さいところから飛んでくる
+          const panelW = columnWidth();
+          const s = origin.card.width / panelW;
           const c = centerOf(origin.card);
+          // パネルは mx-auto で画面中央に置かれるので、中心は画面の中心と一致する
           return {
             transform: `translate(${c.x - window.innerWidth / 2}px, ${
               c.y - window.innerHeight / 2
@@ -581,7 +601,8 @@ export function CardDetailSheet({
         e.preventDefault();
         e.stopPropagation();
       }}
-      className="fixed inset-0 z-50"
+      // PCでは本体と同じ列幅に収める (fixed は viewport 基準になるため)
+      className="fixed inset-0 z-50 mx-auto max-w-2xl"
     >
       {/* パネル本体。白いカードの矩形から画面いっぱいまで広がる */}
       <div
@@ -982,7 +1003,10 @@ export function CardDetailSheet({
           style={{ ...flyStyle(offset?.bar), ...dismissStyle }}
           // 間隔はカード画面のボタン列と揃える (gap-3)。
           // ここがずれると、閉じるアニメーションの着地点が実際のボタン位置と食い違う
-          className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-center gap-3 bg-gradient-to-t from-black via-black/95 to-transparent py-4"
+          // 列幅に収める。中央寄せは mx-auto で行う
+          // (この要素は flyStyle / dismissStyle でインラインの transform を受け取るので、
+          //  translateX(-50%) を使うと上書きされて中央から外れる)
+          className="fixed inset-x-0 bottom-0 z-20 mx-auto flex max-w-2xl items-center justify-center gap-3 bg-gradient-to-t from-black via-black/95 to-transparent py-4"
         >
           <button
             onClick={() => onAnswer("unknown")}

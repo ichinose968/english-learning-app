@@ -48,6 +48,13 @@ export function Sheet({
     if (!open || !canDragFrom(e.target)) return;
     startY.current = e.clientY;
     setDragging(true);
+    // **ポインタを掴んでおく。** マウスには touch のような暗黙のキャプチャが無いので、
+    // 掴まないとパネルの外へ出た時点で pointermove / pointerup が届かなくなる。
+    // パネルは列幅 (max-w-2xl) に絞ってあるため、PCでは横に逸れるだけで外れ、
+    // 離しても onPointerUp が走らずシートがずれた位置で固定される。
+    // 掴むのは e.target (パネルではなく実際に触れた要素)。パネルを掴むと
+    // 中のボタンへの click までパネルに付け替えられてしまう
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   };
   const onPointerMove = (e: React.PointerEvent) => {
     if (startY.current === null) return;
@@ -85,7 +92,11 @@ export function Sheet({
 
       {/* スライド中にはみ出した部分を隠す枠 */}
       <div
-        className="pointer-events-none fixed inset-x-0 z-50 overflow-hidden"
+        // PCでは本体 (max-w-2xl) と同じ列に収める。fixed は本体の枠を抜けて
+        // viewport 基準になるので、指定しないと画面幅いっぱいに広がる。
+        // 中央寄せは mx-auto (margin) で行う。translateX(-50%) だと
+        // 下のパネルが持つ開閉アニメーションの transform と競合する
+        className="pointer-events-none fixed inset-x-0 z-50 mx-auto max-w-2xl overflow-hidden"
         style={{ top, bottom }}
       >
         <div
@@ -93,6 +104,11 @@ export function Sheet({
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
+          // 掴んだポインタを失ったときの保険。ここを付けておかないと、
+          // 何かの拍子に pointerup を取りこぼしたとき引きかけの状態が残り、
+          // このシートは出し入れで作り直さないので次に開いたときずれて出てくる。
+          // pointerup の直後にも飛ぶが、2回目は startY が null なので素通りする
+          onLostPointerCapture={onPointerUp}
           aria-hidden={!open}
           style={{
             transform: open
