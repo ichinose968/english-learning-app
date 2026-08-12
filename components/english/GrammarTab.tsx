@@ -16,6 +16,7 @@ import {
   fetchGrammarPool,
   GrammarPool,
 } from "@/lib/english/grammardb";
+import { requestErrorMessage } from "@/lib/english/net";
 
 interface Props {
   data: EnglishData;
@@ -82,7 +83,7 @@ export function GrammarTab({ data, setData }: Props) {
         setAnsweredCurrent(false);
       })
       .catch((e) => {
-        if (!cancelled) setDbError(e instanceof Error ? e.message : "読み込み失敗");
+        if (!cancelled) setDbError(requestErrorMessage(e, "読み込み失敗"));
       });
     return () => {
       cancelled = true;

@@ -24,6 +24,7 @@ import {
   statusBadges,
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
+import { requestErrorMessage } from "@/lib/english/net";
 import { chipCls, Collapsible } from "./Collapsible";
 
 interface Props {
@@ -174,7 +175,7 @@ export function ReadingTab({ data, setData }: Props) {
       setPhase("idle");
       setOpenId(saved.id);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "生成に失敗しました");
+      setError(requestErrorMessage(e, "生成に失敗しました"));
       setPhase("idle");
     }
   };

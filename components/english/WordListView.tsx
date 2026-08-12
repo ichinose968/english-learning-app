@@ -36,6 +36,7 @@ import {
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
 import { primeSpeech, speak } from "@/lib/english/speech";
+import { requestErrorMessage } from "@/lib/english/net";
 import { CardDetailSheet } from "./CardDetailSheet";
 
 const PAGE_SIZE = 100;
@@ -180,7 +181,7 @@ export function WordListView({ data, setData }: Props) {
         if (!cancelled) setDbs(d);
       })
       .catch((e) => {
-        if (!cancelled) setDbError(e instanceof Error ? e.message : "読み込み失敗");
+        if (!cancelled) setDbError(requestErrorMessage(e, "読み込み失敗"));
       });
     return () => {
       cancelled = true;

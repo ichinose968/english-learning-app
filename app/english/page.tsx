@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { EnglishApp } from "@/components/english/EnglishApp";
+import { ServiceWorkerRegistrar } from "@/components/english/ServiceWorkerRegistrar";
 
 export const metadata: Metadata = {
   title: "英語学習 - 最適な教材を自動作成",
@@ -25,6 +26,8 @@ export default function EnglishPage() {
     // (globals.css の @custom-variant dark が拾う)。english-app は入力欄の
     // フォントサイズを16px以上に保つ指定の足場で、これも globals.css 側にある
     <main className="english-app dark flex h-svh flex-col items-center bg-white dark:bg-black">
+      {/* オフラインで使えるようにするための Service Worker。画面には何も出さない */}
+      <ServiceWorkerRegistrar />
       {/* ヘッダーは設定への導線を持つので EnglishApp 側 (クライアント) に置く */}
       <div className="flex h-full w-full max-w-2xl flex-col border-zinc-200 dark:border-zinc-800 sm:border-x">
         <EnglishApp />

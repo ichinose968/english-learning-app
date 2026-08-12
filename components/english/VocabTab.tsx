@@ -38,6 +38,7 @@ import { primeSpeech, speak, stopSpeaking } from "@/lib/english/speech";
 import { CardDetailSheet, rectOf, SheetOrigin } from "./CardDetailSheet";
 import { ConfirmButton } from "./ConfirmButton";
 import { clearStatusOverride, setStatusOverride } from "@/lib/english/progress";
+import { requestErrorMessage } from "@/lib/english/net";
 import { CardFilterSheet } from "./CardFilterSheet";
 import { Sheet } from "./Sheet";
 import {
@@ -1167,8 +1168,7 @@ export function VocabTab({ data, setData }: Props) {
         setPhase("idle");
       })
       .catch((e) => {
-        if (!cancelled)
-          setDbError(e instanceof Error ? e.message : "読み込み失敗");
+        if (!cancelled) setDbError(requestErrorMessage(e, "読み込み失敗"));
       });
     return () => {
       cancelled = true;

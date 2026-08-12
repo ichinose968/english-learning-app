@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ChatMessage, EnglishData } from "@/lib/english/types";
+import { requestErrorMessage } from "@/lib/english/net";
 import { ChatFilterSheet } from "./ChatFilterSheet";
 import { ConfirmButton } from "./ConfirmButton";
 import { Sheet } from "./Sheet";
@@ -96,7 +97,7 @@ export function ChatTab({ data, setData }: Props) {
       added.push({ role: "assistant", text: json.reply, t: now });
       push(added);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "送信に失敗しました。");
+      setError(requestErrorMessage(e, "送信に失敗しました。"));
     } finally {
       setSending(false);
     }
