@@ -10,6 +10,14 @@ import {
   LEVELS,
   VocabSettings,
 } from "@/lib/english/types";
+import {
+  clampRate,
+  setSpeechRate,
+  primeSpeech,
+  speak,
+  SPEECH_RATE_MAX,
+  SPEECH_RATE_MIN,
+} from "@/lib/english/speech";
 
 // 出題範囲はチェックの組み合わせで決める (両方オンなら混ぜて出す)
 function sourceOf(words: boolean, idioms: boolean): CardSource {
@@ -327,6 +335,64 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
               />
             </label>
           </div>
+        </section>
+
+        <section>
+          <h3 className="mb-1 text-sm font-bold">読み上げ</h3>
+          <p className="mb-3 text-xs text-zinc-500">
+            端末に入っている音声で読み上げます。通信もアカウントも要りません。
+            自動読み上げがオフでも、単語の横のスピーカーを押せばいつでも読めます。
+          </p>
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
+              <span className="flex-1 text-sm font-medium">
+                カードが出たら自動で読む
+                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                  表面が出た時点で単語を1回読みます
+                </span>
+              </span>
+              <input
+                type="checkbox"
+                checked={settings.autoSpeak}
+                onChange={(e) => set("autoSpeak", e.target.checked)}
+                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
+              />
+            </label>
+            <label className="flex items-center gap-3 px-4 py-3.5">
+              <span className="flex-1 text-sm font-medium">
+                読み上げの速さ
+                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                  1.0 が標準。{SPEECH_RATE_MIN} 〜 {SPEECH_RATE_MAX}
+                </span>
+              </span>
+              <div className="flex shrink-0 items-center gap-2">
+                <input
+                  type="range"
+                  min={SPEECH_RATE_MIN}
+                  max={SPEECH_RATE_MAX}
+                  step={0.1}
+                  value={settings.speechRate}
+                  onChange={(e) => set("speechRate", clampRate(Number(e.target.value)))}
+                  className="w-24 accent-[#4A99EA]"
+                />
+                <span className="w-8 text-right text-sm tabular-nums text-zinc-500">
+                  {settings.speechRate.toFixed(1)}
+                </span>
+              </div>
+            </label>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              primeSpeech();
+              // EnglishApp 側の同期を待たずに、いま画面に出ている速さで鳴らす
+              setSpeechRate(settings.speechRate);
+              speak("This is how it sounds.");
+            }}
+            className="mt-2 rounded-full border border-zinc-200 px-4 py-1.5 text-xs text-zinc-600 transition-colors hover:border-zinc-400 disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300"
+          >
+            試しに聞く
+          </button>
         </section>
       </div>
     </div>

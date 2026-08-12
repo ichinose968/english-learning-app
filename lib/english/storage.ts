@@ -10,6 +10,7 @@ import {
   QuizMode,
   VocabEntry,
 } from "./types";
+import { clampRate } from "./speech";
 
 const STORAGE_KEY = "english-app-data-v1";
 
@@ -54,10 +55,17 @@ function migrateVocabEntry(raw: unknown, level: Level | null): VocabEntry | null
   if (typeof r.word !== "string") return null;
   if (typeof r.knownCount === "number") {
     // 既に新形式。手動ステータスだけ2軸に振り分け直す
-    const entry = { ...r } as unknown as VocabEntry & { statusOverride?: unknown };
+    const entry = { ...r } as unknown as VocabEntry & {
+      statusOverride?: unknown;
+      interval?: unknown;
+      dueAt?: unknown;
+    };
     delete entry.statusOverride;
     delete entry.resultOverride;
     delete entry.progressOverride;
+    // 撤回した復習間隔 (エビングハウス) の残骸。書き込まれた端末から掃除する
+    delete entry.interval;
+    delete entry.dueAt;
     return { ...entry, ...migrateOverrides(r) };
   }
   const wrong = typeof r.wrong === "number" ? r.wrong : 0;
@@ -110,6 +118,11 @@ function migrateDrillNewRatio(raw: unknown): number {
   return Math.max(0, Math.min(100, Math.round(raw)));
 }
 
+// 読み上げの速さ。旧データには無いので既定の1に寄せ、範囲外は丸める
+function migrateSpeechRate(raw: unknown): number {
+  return clampRate(typeof raw === "number" ? raw : undefined);
+}
+
 export function loadData(): EnglishData {
   if (typeof window === "undefined") return EMPTY_DATA;
   try {
@@ -152,6 +165,8 @@ export function loadData(): EnglishData {
           drillNewRatio: migrateDrillNewRatio(
             parsed.settings?.vocab?.drillNewRatio,
           ),
+          autoSpeak: parsed.settings?.vocab?.autoSpeak === true,
+          speechRate: migrateSpeechRate(parsed.settings?.vocab?.speechRate),
         },
       },
       vocab,

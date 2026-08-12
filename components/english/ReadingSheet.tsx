@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, Square, Volume2, X } from "lucide-react";
 import { SavedReading } from "@/lib/english/types";
+import { primeSpeech, speak, stopSpeaking } from "@/lib/english/speech";
 
 // **word** のマーカーをハイライトに変換して本文を描画する。
 // wordAction がその語のクリック処理を返したときは、押せるハイライトにする
@@ -59,6 +60,8 @@ export function ReadingSheet({
   wordAction?: (text: string) => (() => void) | null;
 }) {
   const total = reading.questions.length;
+  // 本文を読み上げ中か (トグルの見た目と、読み終わりの戻しに使う)
+  const [speaking, setSpeaking] = useState(false);
   const [picks, setPicks] = useState<(number | null)[]>(
     Array(total).fill(null),
   );
@@ -73,6 +76,9 @@ export function ReadingSheet({
     const id = requestAnimationFrame(() => setShown(true));
     return () => cancelAnimationFrame(id);
   }, []);
+
+  // 閉じたあとも読み上げが続かないようにする
+  useEffect(() => () => stopSpeaking(), []);
 
   const close = () => {
     if (closing) return;
@@ -109,6 +115,31 @@ export function ReadingSheet({
           <h3 className="min-w-0 flex-1 text-base font-semibold leading-snug tracking-tight">
             {reading.title}
           </h3>
+          {/* 本文の読み上げ。長いので押しっぱなしではなくトグルにする */}
+          <button
+            onClick={() => {
+              if (speaking) {
+                stopSpeaking();
+                setSpeaking(false);
+                return;
+              }
+              primeSpeech();
+              setSpeaking(true);
+              // ハイライト用の ** は読み上げに混ぜない
+              speak(reading.passageEn.replace(/\*\*/g, ""), {
+                onEnd: () => setSpeaking(false),
+              });
+            }}
+            aria-label={speaking ? "読み上げを止める" : "本文を読み上げる"}
+            aria-pressed={speaking}
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${
+              speaking
+                ? "bg-[#4A99EA] text-white"
+                : "text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            }`}
+          >
+            {speaking ? <Square size={15} strokeWidth={3} /> : <Volume2 size={18} />}
+          </button>
           <button
             onClick={close}
             aria-label="長文を閉じる"

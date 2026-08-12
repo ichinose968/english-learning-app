@@ -27,6 +27,7 @@ import { WordListView } from "./WordListView";
 import { ChatTab } from "./ChatTab";
 import { Sheet } from "./Sheet";
 import { ConfirmButton } from "./ConfirmButton";
+import { setSpeechRate } from "@/lib/english/speech";
 
 type Tab = "vocab" | "database" | "grammar" | "reading" | "chat";
 type SettingsView = "menu" | "vocab" | "data";
@@ -80,6 +81,12 @@ export function EnglishApp() {
   useEffect(() => {
     if (loaded) saveData(data);
   }, [data, loaded]);
+
+  // 読み上げの速さは speech.ts が1つ持っている。設定の持ち主はここなので、
+  // ここから同期する (各画面へ prop で配ると、渡し忘れた画面だけ既定に戻る)
+  useEffect(() => {
+    setSpeechRate(data.settings.vocab.speechRate);
+  }, [data.settings.vocab.speechRate]);
 
   if (!loaded) {
     return (

@@ -207,6 +207,11 @@ export interface VocabSettings {
   skipReveal: Record<QuizMode, boolean>;
   // 演習モードで新出 (未学習) の語を出す割合 (%)。残りは既出の語から出す
   drillNewRatio: number;
+  // カードが出た時点で単語を自動で読み上げるか。
+  // オフでも、単語の横のスピーカーを押せばいつでも読める
+  autoSpeak: boolean;
+  // 読み上げの速さ。0.5〜1.5 (lib/english/speech.ts の SPEECH_RATE_MIN/MAX)
+  speechRate: number;
 }
 
 // カード画面の出題モード。上部タブと1対1で対応する
@@ -240,6 +245,8 @@ export const DEFAULT_VOCAB_SETTINGS: VocabSettings = {
   masterKnownCount: 3,
   skipReveal: { drill: true, review: false },
   drillNewRatio: 50,
+  autoSpeak: false,
+  speechRate: 1,
 };
 
 // ---- 長文読解の設定 (読解タブの中で変える) ----

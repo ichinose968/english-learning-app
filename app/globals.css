@@ -145,18 +145,25 @@ html:has(.dark) body {
    カードは不透明な白なので、画面端に差しかかった瞬間の辺がそのまま残る。
    しかも抜ける頃にちょうど回転が180°付近になるため、辺が垂直になって
    画面端に白い直線として1〜2フレーム焼き付いて見える (実測: 右端21px のとき回転-174°)。
-   15% で下のカードとの重なりはもう14px以下なので、ここから消しても透けて見えない。
-   逆に序盤から薄くすると、下のカードが透けて紙が重なって見えなくなる */
+   逆に序盤から薄くすると、下のカードが透けて紙が重なって見えなくなる。
+
+   消す時刻は必ず実測して合わせること。以前は 15%→21% で落としていたが、
+   375px 幅の実測ではカードが右端を抜けきるのは 39% (750ms 中 295ms) の時点で、
+   0 になる 161ms の時点ではまだ左端が x=29、つまり画面のほぼ全面を覆っていた。
+   「飛んでいくのが速すぎる」と言われた原因はこれで、速度ではなく
+   画面の真ん中でいきなり消えていたため。
+   計測は VocabTab を操作せず、同じクラスを当てた 343x600 の検証用要素を
+   body に挿し、DOMMatrixReadOnly で四隅を出して行う (学習記録に触れずに済む) */
 @keyframes card-fly-right {
   0% {
     transform: translate(var(--fly-x, 0px), var(--fly-y, 0px))
       rotate(var(--fly-r, 0deg)) scale(1);
     opacity: 1;
   }
-  15% {
+  42% {
     opacity: 1;
   }
-  21% {
+  48% {
     opacity: 0;
   }
   100% {
@@ -171,10 +178,10 @@ html:has(.dark) body {
       rotate(var(--fly-r, 0deg)) scale(1);
     opacity: 1;
   }
-  15% {
+  42% {
     opacity: 1;
   }
-  21% {
+  48% {
     opacity: 0;
   }
   100% {
@@ -189,10 +196,10 @@ html:has(.dark) body {
       rotate(var(--fly-r, 0deg)) scale(1);
     opacity: 1;
   }
-  15% {
+  42% {
     opacity: 1;
   }
-  21% {
+  48% {
     opacity: 0;
   }
   100% {
@@ -270,13 +277,18 @@ html:has(.dark) body {
 
 /* 出だしを速くしすぎると、序盤で回りきって残りが間延びする。
    全体をならした曲線にして、最後まで一定の速さで回りながら遠ざかるようにする。
-   forwards で飛んだ先に留め、カードが差し替わるまで戻ってこないようにする */
+   forwards で飛んだ先に留め、カードが差し替わるまで戻ってこないようにする。
+
+   時間を延ばすだけでは体感は変わらない。曲線が前寄りだと、延ばしたぶんは
+   画面外で回っているだけになるため。見えている時間を延ばすには
+   立ち上がり (第1制御点の y) を下げて、序盤の移動そのものを遅くする。
+   数値を変えたら EXIT_MS (VocabTab) も必ず合わせる */
 .card-fly-right {
-  animation: card-fly-right 0.75s cubic-bezier(0.25, 0.4, 0.45, 1) forwards;
+  animation: card-fly-right 0.6s cubic-bezier(0.36, 0.11, 0.4, 1) forwards;
 }
 .card-fly-left {
-  animation: card-fly-left 0.75s cubic-bezier(0.25, 0.4, 0.45, 1) forwards;
+  animation: card-fly-left 0.6s cubic-bezier(0.36, 0.11, 0.4, 1) forwards;
 }
 .card-fly-up {
-  animation: card-fly-up 0.75s cubic-bezier(0.25, 0.4, 0.45, 1) forwards;
+  animation: card-fly-up 0.6s cubic-bezier(0.36, 0.11, 0.4, 1) forwards;
 }

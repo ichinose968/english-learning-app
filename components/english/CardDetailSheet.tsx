@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ArrowDown, Circle, ImagePlus, Pencil, Trash2, X } from "lucide-react";
+import {
+  ArrowDown,
+  Circle,
+  ImagePlus,
+  Pencil,
+  Trash2,
+  Volume2,
+  X,
+} from "lucide-react";
 import {
   DOMAIN_LABEL_JA,
   LastResult,
@@ -15,6 +23,7 @@ import {
   WORD_EXAMS,
   WORD_THEMES,
 } from "@/lib/english/types";
+import { primeSpeech, speak } from "@/lib/english/speech";
 
 type SectionKey = "status" | "meaning" | "tags" | "example" | "related" | "note";
 
@@ -48,6 +57,24 @@ const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 // cubic-bezier(0.64, 0, 0.78, 0) は出だしが止まって見え、押しても反応しないように感じる
 const EASE_BACK = EASE;
 const DURATION = 0.38;
+
+// ---- 下へ引いて閉じる ----
+//
+// ↓ ボタンは開くときの逆再生 (カードの矩形へ縮んで戻る) だが、こちらは
+// 引いた指のまま下へ抜けていく別の動き。指の延長で閉じるほうが自然なため。
+// 判定はカードのスワイプ (VocabTab の committed) と同じ考え方で、
+// 距離と速さの両方を見る。距離だけだと毎回大きく引くことになる
+const DISMISS_PX = 110; // これだけ引けば閉じる
+const DISMISS_FLICK_PX = 24; // 弾いて閉じるときの最低距離
+const DISMISS_FLICK_SPEED = 0.5; // px/ms
+// これ未満は指の揺れとみなして無視する。
+// **ブラウザが「タップ」とみなす移動量より必ず大きくすること。**
+// iOS Safari は約10pt、Android Chrome は約8dp まで動いても click を出すので、
+// ここを 6px にすると「下へ8pxぶれたふつうのタップ」でも引く操作と判定され、
+// 直後の click を握りつぶしてしまう (詳細内の編集ボタンやチップが1回効かなくなる)。
+// ついでにタップのたびにパネルが数px沈んで戻る
+const DISMISS_SLOP = 14;
+const DISMISS_S = 0.3; // 下へ抜けるまでの時間
 
 // 関連語は「word = 意味」の行として編集する
 function relatedToText(list: { word: string; meaningJa: string }[]): string {
@@ -206,8 +233,11 @@ export function CardDetailSheet({
   const fileRef = useRef<HTMLInputElement>(null);
   const [imageError, setImageError] = useState<string | null>(null);
   const [loadingImage, setLoadingImage] = useState(false);
-  // start: 開始位置を1フレームだけ描く / open: 最終位置へ / closing: 開始位置へ戻す
-  const [phase, setPhase] = useState<"start" | "open" | "closing">("start");
+  // start: 開始位置を1フレームだけ描く / open: 最終位置へ /
+  // closing: 開始位置へ戻す (↓ ボタン) / dismissing: 下へ抜ける (引いて閉じる)
+  const [phase, setPhase] = useState<
+    "start" | "open" | "closing" | "dismissing"
+  >("start");
   const shown = phase === "open";
   const closeRef = useRef<HTMLButtonElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -242,9 +272,171 @@ export function CardDetailSheet({
 
   // ↓ を押したら開くときと逆再生してから、実際に閉じる
   const closeWithAnimation = () => {
-    if (phase === "closing") return;
+    if (phase !== "open") return;
     setPhase("closing");
     window.setTimeout(onClose, DURATION * 1000);
+  };
+
+  // ---- 下へ引いて閉じる ----
+  //
+  // 引き始めた時点で中身が先頭まで戻っているときだけ効かせる。
+  // 途中から効かせると、本文を読み進めようとした指で閉じてしまう
+  // (Sheet.tsx の閉じるスワイプと同じ考え方)。
+  // 先頭にいるあいだは下へ引いてもスクロールする余地が無いので、
+  // overscroll-contain を添えておけば preventDefault なしで指に追従できる
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [dragY, setDragY] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const dragRef = useRef<{
+    y0: number;
+    active: boolean;
+    hist: { y: number; t: number }[];
+  } | null>(null);
+  // 引いて閉じたあとに、下にあったボタンのクリックが発火しないようにする目印
+  const swallowClickRef = useRef(false);
+
+  // ハンドラは**スクロールしない根の要素**に置く (Sheet.tsx と同じ構造)。
+  // パネル (スクロールする要素) 自身に置くと、ブラウザがジェスチャをスクロールと
+  // 判定した瞬間に pointercancel が来て、以後 pointermove が届かなくなる。
+  // 根に置けば、パネルが先頭まで来ていて下へ引けない状況では
+  // ブラウザに奪うスクロールが無く、pointer イベントが流れ続ける
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // 追跡の本体。タッチとマウスの両方から同じ関数を呼ぶ
+  const beginDrag = (y: number) => {
+    // 前回の引き終わりに立てた目印は、ここで必ず下ろす。
+    // 引いて離したあとクリックが発生しないこともあり
+    // (指を大きく動かすとブラウザがクリックを出さない)、
+    // 下ろさないと目印が残って **次のふつうのタップ** を食ってしまう
+    swallowClickRef.current = false;
+    if (phaseRef.current !== "open") return;
+    // 引き始めた時点で中身が先頭まで戻っているときだけ効かせる。
+    // 途中から効かせると、本文を読み進めようとした指で閉じてしまう
+    if ((panelRef.current?.scrollTop ?? 0) > 0) return;
+    dragRef.current = {
+      y0: y,
+      active: false,
+      hist: [{ y, t: performance.now() }],
+    };
+  };
+
+  const moveDrag = (y: number) => {
+    const d = dragRef.current;
+    if (!d) return;
+    const dy = y - d.y0;
+    // 上へ動かしたら引くのをやめて、ふつうのスクロールに返す
+    if (dy <= 0) {
+      if (d.active) {
+        d.active = false;
+        setDragging(false);
+        setDragY(0);
+      }
+      return;
+    }
+    if (!d.active) {
+      if (dy < DISMISS_SLOP) return;
+      d.active = true;
+      setDragging(true);
+    }
+    const now = performance.now();
+    d.hist.push({ y, t: now });
+    // 速さは直近120msから出す。窓を広げると、動かしてから止めて離しても速いと判定される
+    while (d.hist.length > 2 && now - d.hist[0].t > 120) d.hist.shift();
+    setDragY(dy);
+  };
+
+  const finishDrag = () => {
+    const d = dragRef.current;
+    dragRef.current = null;
+    if (!d || !d.active) return;
+    const first = d.hist[0];
+    const last = d.hist[d.hist.length - 1];
+    const dy = last.y - d.y0;
+    const dt = last.t - first.t;
+    const speed = dt > 0 ? (last.y - first.y) / dt : 0;
+    const commit =
+      dy > DISMISS_PX ||
+      (dy > DISMISS_FLICK_PX && speed > DISMISS_FLICK_SPEED);
+    // 引いたぶんの上で指を離しているので、下のボタンのクリックは握りつぶす
+    swallowClickRef.current = true;
+    if (commit) {
+      setPhase("dismissing");
+      window.setTimeout(onClose, DISMISS_S * 1000);
+      return;
+    }
+    setDragging(false);
+    setDragY(0);
+  };
+
+  // beginDrag はネイティブリスナー (下の useEffect) からも呼ぶので、
+  // phase は ref 越しに読む (マウント時のクロージャに古い値が残るため)
+  const phaseRef = useRef(phase);
+  useLayoutEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+
+  // ドラッグ関数もマウント時のクロージャから最新を呼べるよう ref に写す
+  const beginRef = useRef(beginDrag);
+  const moveRef = useRef(moveDrag);
+  const finishRef = useRef(finishDrag);
+  useLayoutEffect(() => {
+    beginRef.current = beginDrag;
+    moveRef.current = moveDrag;
+    finishRef.current = finishDrag;
+  });
+
+  // タッチはネイティブの touch イベントで追跡する。pointer イベントに頼らない。
+  //
+  // **理由1 (pointercancel):** pointer イベントはブラウザがジェスチャをスクロールと
+  // 判定した瞬間に pointercancel で途切れる。その判定のスロップ (8〜10px) は
+  // こちらの発動しきい値 (14px) より小さいので、pointer 追跡は競争に必ず負ける。
+  // touchmove はスクロールが始まっても配送され続けるので、こちらは途切れない。
+  // **理由2 (preventDefault):** React の onTouchMove はルートに passive で付くため
+  // preventDefault が無視される。ref + addEventListener({ passive: false }) が必須。
+  //
+  // preventDefault は「先頭から下向きに動いている」あいだずっと呼ぶ。
+  // 先頭 (scrollTop 0) にいる以上、下向きの引きで動かせるスクロールは存在しないので、
+  // 正当なスクロールを殺すことはない。上向き (dy < 0) は止めず、ふつうのスクロールに返す
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const onStart = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      beginRef.current(e.touches[0].clientY);
+    };
+    const onMove = (e: TouchEvent) => {
+      const d = dragRef.current;
+      const t = e.touches[0];
+      if (!d || !t) return;
+      if (t.clientY - d.y0 > 0 && e.cancelable) e.preventDefault();
+      moveRef.current(t.clientY);
+    };
+    const onEnd = () => finishRef.current();
+    root.addEventListener("touchstart", onStart, { passive: true });
+    root.addEventListener("touchmove", onMove, { passive: false });
+    root.addEventListener("touchend", onEnd);
+    root.addEventListener("touchcancel", onEnd);
+    return () => {
+      root.removeEventListener("touchstart", onStart);
+      root.removeEventListener("touchmove", onMove);
+      root.removeEventListener("touchend", onEnd);
+      root.removeEventListener("touchcancel", onEnd);
+    };
+  }, []);
+
+  // マウスは pointer イベントで拾う (マウスにスクロールジェスチャは無いので途切れない)。
+  // タッチは上のネイティブリスナーが拾うので、二重に始めない
+  const onRootPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "touch") return;
+    beginDrag(e.clientY);
+  };
+  const onRootPointerMove = (e: React.PointerEvent) => {
+    if (e.pointerType === "touch") return;
+    moveDrag(e.clientY);
+  };
+  const endRootDrag = (e: React.PointerEvent) => {
+    if (e.pointerType === "touch") return;
+    finishDrag();
   };
 
   // 開始位置へ「飛ばす」ときは一瞬で、「戻す」ときはアニメーションさせる
@@ -273,6 +465,27 @@ export function CardDetailSheet({
           };
         })()
       : { transform: "scale(0.92)", opacity: 0, transition: backTransition };
+
+  // 引いているあいだ、および下へ抜けていくあいだの上書き。
+  // パネル・閉じるボタン・回答バーの3つに同じだけ効かせる。
+  // 閉じるボタンと回答バーはパネルの外にあるので、ここで一緒に動かさないと
+  // パネルだけが下がって2つが宙に取り残される
+  const dismissStyle: React.CSSProperties | null =
+    phase === "dismissing"
+      ? {
+          // 画面の高さは vh で渡す (window を見るとサーバー描画で落ちる)
+          transform: "translateY(100vh)",
+          opacity: 1,
+          transition: `transform ${DISMISS_S}s ${EASE}`,
+        }
+      : dragging
+        ? {
+            transform: `translateY(${dragY}px)`,
+            opacity: 1,
+            // 指に追従させるあいだは補間しない
+            transition: "none",
+          }
+        : null;
 
   // 開始位置へ飛ばすときはアニメーションさせず、そこから最終位置へ動かす
   const flyStyle = (
@@ -351,16 +564,46 @@ export function CardDetailSheet({
   );
 
   return (
-    <div className="fixed inset-0 z-50">
+    <div
+      ref={rootRef}
+      // 引いて閉じる操作はスクロールしない根で拾う (パネルに置くと、
+      // ブラウザがスクロールと判定した瞬間 pointercancel で途切れる)
+      onPointerDown={onRootPointerDown}
+      onPointerMove={onRootPointerMove}
+      onPointerUp={endRootDrag}
+      onPointerCancel={endRootDrag}
+      // 引いて離した指の下にあったボタンを押してしまわないようにする
+      onClickCapture={(e) => {
+        if (!swallowClickRef.current) return;
+        swallowClickRef.current = false;
+        e.preventDefault();
+        e.stopPropagation();
+      }}
+      className="fixed inset-0 z-50"
+    >
       {/* パネル本体。白いカードの矩形から画面いっぱいまで広がる */}
       <div
-        className="absolute inset-0 overflow-y-auto bg-black pb-32 text-zinc-100"
-        style={panelStyle}
+        ref={panelRef}
+        className="absolute inset-0 overflow-y-auto overscroll-y-contain bg-black pb-32 text-zinc-100"
+        style={{ ...panelStyle, ...dismissStyle }}
       >
         <div className="mx-auto max-w-2xl">
           <header className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/85 px-4 py-3 backdrop-blur-md">
             <div>
-              <p className="text-2xl font-bold tracking-tight">{item.word}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-2xl font-bold tracking-tight">{item.word}</p>
+                <button
+                  type="button"
+                  aria-label={`${item.word} を読み上げる`}
+                  onClick={() => {
+                    primeSpeech();
+                    speak(item.word);
+                  }}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+                >
+                  <Volume2 size={17} />
+                </button>
+              </div>
               <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
                 {item.ipa && <span className="font-mono">{item.ipa}</span>}
                 {/* 品詞はカード画面・単語一覧と同じ日本語表記に揃える */}
@@ -425,7 +668,22 @@ export function CardDetailSheet({
               </div>
             ) : (
               <>
-                <p className="text-sm leading-relaxed">{item.exampleEn}</p>
+                <div className="flex items-start gap-2">
+                  <p className="flex-1 text-sm leading-relaxed">
+                    {item.exampleEn}
+                  </p>
+                  <button
+                    type="button"
+                    aria-label="例文を読み上げる"
+                    onClick={() => {
+                      primeSpeech();
+                      speak(item.exampleEn);
+                    }}
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+                  >
+                    <Volume2 size={15} />
+                  </button>
+                </div>
                 <p className="mt-1 text-xs text-zinc-500">{item.exampleJa}</p>
               </>
             )}
@@ -699,7 +957,7 @@ export function CardDetailSheet({
           ref={closeRef}
           onClick={closeWithAnimation}
           aria-label="詳細を閉じる"
-          style={flyStyle(offset?.close, -180)}
+          style={{ ...flyStyle(offset?.close, -180), ...dismissStyle }}
           className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black"
         >
           <ArrowDown size={20} strokeWidth={3} />
@@ -710,7 +968,7 @@ export function CardDetailSheet({
       {onAnswer && (
         <div
           ref={barRef}
-          style={flyStyle(offset?.bar)}
+          style={{ ...flyStyle(offset?.bar), ...dismissStyle }}
           // 間隔はカード画面のボタン列と揃える (gap-3)。
           // ここがずれると、閉じるアニメーションの着地点が実際のボタン位置と食い違う
           className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-center gap-3 bg-gradient-to-t from-black via-black/95 to-transparent py-4"

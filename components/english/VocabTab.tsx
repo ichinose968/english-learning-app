@@ -15,6 +15,7 @@ import {
   SlidersHorizontal,
   TrendingDown,
   TrendingUp,
+  Volume2,
   X,
 } from "lucide-react";
 import {
@@ -28,10 +29,12 @@ import {
   LastResult,
   Progress,
   VocabAction,
+  VocabEntry,
   VocabSettings,
   WordDbEntry,
   WordEdit,
 } from "@/lib/english/types";
+import { primeSpeech, speak, stopSpeaking } from "@/lib/english/speech";
 import { CardDetailSheet, rectOf, SheetOrigin } from "./CardDetailSheet";
 import { ConfirmButton } from "./ConfirmButton";
 import { clearStatusOverride, setStatusOverride } from "@/lib/english/progress";
@@ -77,7 +80,7 @@ const MODE_TABS: { key: QuizMode; label: string }[] = [
 const BATCH_SIZE = 10;
 // カードが回りながら飛んでいく時間。globals.css の card-fly-* と必ず揃える。
 // 短すぎるとコピーを消すのが早すぎて、飛びきる前にアニメーションが切れる
-const EXIT_MS = 750;
+const EXIT_MS = 600;
 
 // 飛んでいくカードのコピー。飛ばすと決めた瞬間の見た目をそのまま持たせる
 interface FlyingCard {
@@ -122,10 +125,15 @@ function activeLevels(
 // 表以外の場面でカードに乗せる地色。4択中は黄、回答後は正解が青 / 不正解が赤。
 // カードは白地・黒文字を保ちたいので、色は塗り替えずに白の上へ薄く重ねる
 // (backgroundImage を使うと Tailwind の bg-white がそのまま下に残る)。
-// 上を濃く・下を薄くして、いちばん見せたい判定ラベル側に色が寄るようにしてある
-function cardTone(rgb: string) {
+// 上を濃く・下を薄くして、いちばん見せたい判定ラベル側に色が寄るようにしてある。
+//
+// fill は地色の濃さの倍率。青 (#4A99EA) は黄や赤より明度が高く、
+// 同じ不透明度だと白地に沈んで「色が付いていない」ように見えるので、正解のときだけ上げる。
+// 枠と影は倍率をかけない (かけると枠だけ不透明になって、他の2色と輪郭の強さが揃わない)
+function cardTone(rgb: string, fill = 1) {
+  const a = (v: number) => Math.min(1, v * fill).toFixed(3);
   return {
-    image: `linear-gradient(180deg, rgba(${rgb},0.22) 0%, rgba(${rgb},0.06) 55%, rgba(${rgb},0.03) 100%)`,
+    image: `linear-gradient(180deg, rgba(${rgb},${a(0.22)}) 0%, rgba(${rgb},${a(0.06)}) 55%, rgba(${rgb},${a(0.03)}) 100%)`,
     border: `rgba(${rgb},0.55)`,
     glow: `0 0 26px 2px rgba(${rgb},0.28)`,
   };
@@ -134,7 +142,7 @@ function cardTone(rgb: string) {
 const CARD_TONE = {
   // 4択を開いているあいだ。まだ正誤は決まっていないので △ と同じ黄
   unsure: cardTone("234,179,8"),
-  correct: cardTone("74,153,234"),
+  correct: cardTone("74,153,234", 2.6),
   wrong: cardTone("239,68,68"),
 };
 
@@ -197,20 +205,50 @@ function swipeShadow(dir: SwipeDir, t: number): string {
   return `0 0 ${22 + 52 * e}px ${2 + 10 * e}px ${glow(0.1 + 0.3 * e)}`;
 }
 
-// カードの表面。今のカードと、その後ろに重ねる次のカードで共用する
+// カードの表面。今のカードと、その後ろに重ねる次のカードで共用する。
+//
+// スピーカーは背面カードと飛んでいくコピーにも同じ大きさで描く。
+// 手前のカードにだけ描くと、カードが飛んで背面が手前に来た瞬間に
+// アイコンが生えて見え、単語の位置も横にずれる。
+// 触れるのは手前のカードだけなので、onSpeak が無いときは pointer-events を切る
 function CardFront({
   item,
   note,
   cardFields,
+  onSpeak,
 }: {
   item: WordDbEntry;
   note: string | undefined;
   cardFields: Record<CardFieldKey, boolean>;
+  onSpeak?: () => void;
 }) {
   return (
     <div className="relative z-10 space-y-3 py-4 text-center">
       {cardFields.word && (
-        <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+        <div className="flex items-center justify-center gap-2">
+          {/* 単語を中央に保つため、右のスピーカーと同じ幅の見えない枠を左に置く */}
+          <span className="w-8 shrink-0" aria-hidden />
+          <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+          <button
+            type="button"
+            aria-label={`${item.word} を読み上げる`}
+            onClick={
+              onSpeak
+                ? (e) => {
+                    // カードのタップ (詳細を開く / スワイプ) に巻き込まれないようにする
+                    e.stopPropagation();
+                    onSpeak();
+                  }
+                : undefined
+            }
+            onPointerDown={(e) => e.stopPropagation()}
+            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors ${
+              onSpeak ? "hover:bg-zinc-100 hover:text-zinc-700" : "pointer-events-none"
+            }`}
+          >
+            <Volume2 size={18} />
+          </button>
+        </div>
       )}
       {(cardFields.ipa || cardFields.pos) && (
         <p className="text-xs text-zinc-400">
@@ -322,6 +360,7 @@ function WordCard({
   initialPicked = null,
   initialChoices = [],
   settleButtons = false,
+  autoSpeak = false,
 }: {
   item: WordDbEntry;
   note: string | undefined;
@@ -358,6 +397,8 @@ function WordCard({
   initialChoices?: string[];
   // 直前のカードを飛ばした直後か。ボタン列を跳ねながら通常状態へ戻す
   settleButtons?: boolean;
+  // カードが出た時点で単語を自動で読み上げるか (速さは speech.ts が持つ)
+  autoSpeak?: boolean;
 }) {
   const [step, setStep] = useState<"ask" | "choices" | "reveal">(initialStep);
   const [choices, setChoices] = useState<string[]>(initialChoices);
@@ -367,6 +408,26 @@ function WordCard({
   // prop をそのまま見ると、親が飛行中のコピーを片付けた時点でクラスが外れ、
   // 0.26秒の跳ねが途中で切れてしまう
   const [settle] = useState(settleButtons);
+  // 読み上げ。速さは speech.ts が1つ持っているので、ここでは渡さない
+  const speakText = (text: string) => {
+    primeSpeech();
+    speak(text);
+  };
+  // 自動読み上げ。表面が出たときだけ読む (4択や解説へ移ったときは読み直さない)。
+  // コピーでは鳴らさない。本体で既に読んでいるので二重になる
+  useEffect(() => {
+    if (ghost || !autoSpeak || step !== "ask") return;
+    speak(item.word);
+  }, [ghost, autoSpeak, step, item.word]);
+  // カード画面から離れるときは読み上げを止める。
+  // 止めないと、タブを移ったあとも前の単語を読み続ける。
+  // **コピー側では止めない。** コピーは飛び終えた 0.98秒後に片付けられるので、
+  // ここで止めると、その頃には手前に出ている次のカードの読み上げを切ってしまう
+  useEffect(() => {
+    if (ghost) return;
+    return () => stopSpeaking();
+  }, [ghost]);
+
   // ドラッグ (スワイプ) の状態
   const [drag, setDrag] = useState<{ x: number; y: number } | null>(null);
   // 4択へ移るときの跳ね返りの開始位置 (指を離した高さ)
@@ -429,7 +490,13 @@ function WordCard({
   // ここで待たない。待つと飛びきるまで下のカードもボタンも触れなくなる。
   // 指を離した位置から続けて飛ばすため、開始位置も一緒に渡す
   // (0 から始めるといったん中央へ戻ってから飛ぶように見える)
-  const flyAway = (dir: "left" | "right" | "up", nextAction?: VocabAction) => {
+  const flyAway = (
+    dir: "left" | "right" | "up",
+    nextAction?: VocabAction,
+    // コピーに描かせる面。既定は今の面だが、詳細から答えたときは
+    // 裏返していないので必ず表を描かせる
+    faceStep: "ask" | "choices" | "reveal" = step,
+  ) => {
     onFly({
       item,
       note,
@@ -437,7 +504,7 @@ function WordCard({
       from: drag
         ? { x: `${drag.x}px`, y: `${drag.y}px`, r: `${drag.x * 0.05}deg` }
         : { x: "0px", y: "0px", r: "0deg" },
-      step,
+      step: faceStep,
       action: nextAction ?? action,
       picked,
       choices,
@@ -445,12 +512,20 @@ function WordCard({
     onNext();
   };
 
-  const answer = (a: VocabAction) => {
+  // fromDetail: カード詳細の下部バーから答えたとき。
+  // 詳細で意味も例文も読んだ直後なので、「解説を飛ばす」設定が
+  // オフでも裏面は見せず、そのまま次のカードへ送る
+  const answer = (a: VocabAction, fromDetail = false) => {
+    // **ここでも解錠する。** 下部のボタン列はカード本体の外にある兄弟要素なので、
+    // ボタンだけで仕分けているとカードの onPointerDown を一度も通らない。
+    // 演習は「× ○ の2ボタンで高速に仕分ける」のが本来の使い方なので、これが主経路。
+    // 解錠しないと iOS では自動読み上げが永久に無音のままになる
+    primeSpeech();
     setAction(a);
     onAction(a);
-    // 設定がオンなら解説を見せず、そのまま次のカードへ送る
-    if (skipReveal && (a === "known" || a === "unknown")) {
-      flyAway(a === "known" ? "right" : "left", a);
+    if (skipReveal || fromDetail) {
+      const dir = a === "known" ? "right" : a === "unknown" ? "left" : "up";
+      flyAway(dir, a, fromDetail ? "ask" : step);
       return;
     }
     setDrag(null);
@@ -464,6 +539,8 @@ function WordCard({
   const openChoices = () => {
     // △ を出さないモードでは 4択そのものを使わない
     if (!showUnsure) return;
+    // △ ボタンもカード本体の外なので、ここでも解錠しておく
+    primeSpeech();
     setChoices(shuffle([item.meaningJa, ...item.distractors]));
     setPicked(null);
     // 跳ね返りの開始位置。ボタンから開いたときはドラッグが無いので軽く跳ねるだけにする
@@ -500,6 +577,10 @@ function WordCard({
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (step !== "ask" && step !== "reveal") return;
+    // iOS Safari は「ユーザー操作の中から呼ばれた speak」でしか音を出さない。
+    // カードが出た瞬間の自動読み上げは操作ではないので、
+    // 最初にカードへ触れたこのタイミングで解錠しておく (2回目以降は何もしない)
+    primeSpeech();
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
     startRef.current = { x: e.clientX, y: e.clientY };
     histRef.current = [{ x: e.clientX, y: e.clientY, t: performance.now() }];
@@ -551,8 +632,9 @@ function WordCard({
     // コピーは指を離した瞬間の演出 (色と大きな記号) を保ったまま飛んでいく
     if (ghost) {
       if (!flyDir) return null;
-      // 裏面から飛ばしたときは回答ではなく「次へ」なので、飛ぶ向きによらず青にする。
-      // 向きだけで決めると、左へ飛ばした瞬間に赤 (×) へ化けて見える
+      // 裏面から飛ばしたときは回答ではなく「次へ」なので、飛ぶ向きでは決めない。
+      // 向きだけで決めると、左へ飛ばした瞬間に色が化けて見える。
+      // 実際の色は glowDir がカードの地色 (正解=青 / 不正解=赤) に合わせる
       if (step === "reveal") return { dir: "known", t: 1 };
       const dir: SwipeDir =
         flyDir === "right" ? "known" : flyDir === "left" ? "unknown" : "unsure";
@@ -611,6 +693,15 @@ function WordCard({
       : step === "reveal" && action
         ? CARD_TONE[isCorrect(action) ? "correct" : "wrong"]
         : null;
+
+  // スワイプ中の影の色。表は向き (○=青 / ×=赤 / △=黄) で決めるが、
+  // **裏面はカードの地色に合わせる**。不正解 (赤地) のカードを引いたとき、
+  // 向き基準のままだと赤いカードに青い影が付いて見える (ユーザー指摘)。
+  // ボタンの反応 (lit / buttonFx) は「次へ」の → に付けたままにするので swipe.dir は変えない
+  const glowDir: SwipeDir =
+    step === "reveal" && action && !isCorrect(action)
+      ? "unknown"
+      : (swipe?.dir ?? "known");
 
   // 反応中のボタンは大きく + 発光させ、他のボタンは縮めて消す。
   // off はその場面で使えないボタン (4択中の ? と →)。押せないことが分かるよう薄くする
@@ -695,7 +786,7 @@ function WordCard({
             borderColor: tone?.border,
             // スワイプ中の影を優先する (指の向きが分からなくなるため)
             boxShadow: swipe
-              ? swipeShadow(swipe.dir, swipe.t)
+              ? swipeShadow(glowDir, swipe.t)
               : (tone?.glow ?? undefined),
             touchAction: "none",
             // 4択へ移るときの跳ね返りの開始位置 (card-bounce-back が読む)
@@ -735,8 +826,9 @@ function WordCard({
                     : swipe.dir === "unknown"
                       ? "0% 50%"
                       : "50% 0%"
-                }, ${SWIPE_GLOW[swipe.dir](0.22 * swipe.t)} 0%, ${SWIPE_GLOW[
-                  swipe.dir
+                  // 色は影と同じく地色に合わせる (裏面の不正解カードは赤)
+                }, ${SWIPE_GLOW[glowDir](0.22 * swipe.t)} 0%, ${SWIPE_GLOW[
+                  glowDir
                 ](0)} 70%)`,
               }}
             />
@@ -765,7 +857,13 @@ function WordCard({
           )}
 
           {step === "ask" ? (
-            <CardFront item={item} note={note} cardFields={cardFields} />
+            <CardFront
+              item={item}
+              note={note}
+              cardFields={cardFields}
+              // コピーと背面カードには持たせない (触れないので押しても何も起きない)
+              onSpeak={ghost ? undefined : () => speakText(item.word)}
+            />
           ) : (
             <div
               // 4択へ移るときは、中央にあった単語が上へ動いたように見せる
@@ -773,7 +871,29 @@ function WordCard({
                 step === "choices" ? "choices-rise" : ""
               }`}
             >
-              <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+              <div className="flex items-center justify-center gap-2">
+                {/* 表面と同じ組み方。単語を中央に保つため左に同じ幅の枠を置く */}
+                <span className="w-8 shrink-0" aria-hidden />
+                <p className="text-4xl font-bold tracking-tight">{item.word}</p>
+                <button
+                  type="button"
+                  aria-label={`${item.word} を読み上げる`}
+                  onClick={
+                    ghost
+                      ? undefined
+                      : (e) => {
+                          e.stopPropagation();
+                          speakText(item.word);
+                        }
+                  }
+                  onPointerDown={(e) => e.stopPropagation()}
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors ${
+                    ghost ? "pointer-events-none" : "hover:bg-white/60 hover:text-zinc-700"
+                  }`}
+                >
+                  <Volume2 size={18} />
+                </button>
+              </div>
               {/* 回答後も表と同じ情報 (発音記号・品詞) を出す */}
               <p className="mt-1 text-xs text-zinc-400">
                 {[item.ipa, item.pos].filter(Boolean).join("  ")}
@@ -843,7 +963,27 @@ function WordCard({
               {/* 地色の上なので、白を透かして重ねる (bg-zinc-100 だと色が濁る) */}
               <div className="rounded-2xl bg-white/75 p-3 text-sm">
                 <p className="font-bold">{item.meaningJa}</p>
-                <p className="mt-1 text-zinc-600">{item.exampleEn}</p>
+                <div className="mt-1 flex items-start gap-2">
+                  <p className="flex-1 text-zinc-600">{item.exampleEn}</p>
+                  <button
+                    type="button"
+                    aria-label="例文を読み上げる"
+                    onClick={
+                      ghost
+                        ? undefined
+                        : (e) => {
+                            e.stopPropagation();
+                            speakText(item.exampleEn);
+                          }
+                    }
+                    onPointerDown={(e) => e.stopPropagation()}
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors ${
+                      ghost ? "pointer-events-none" : "hover:bg-white hover:text-zinc-700"
+                    }`}
+                  >
+                    <Volume2 size={15} />
+                  </button>
+                </div>
                 <p className="mt-0.5 text-xs text-zinc-500">{item.exampleJa}</p>
               </div>
             </div>
@@ -956,9 +1096,11 @@ function WordCard({
               setPicked(null);
               setStep("ask");
             }
-            if (kind === "known") answer("known");
-            else if (kind === "unknown") answer("unknown");
-            else openChoices();
+            if (kind === "known") answer("known", true);
+            else if (kind === "unknown") answer("unknown", true);
+            // 詳細からは4択を出せない (意味がもう見えているので出す意味がない)。
+            // △ は「怪しい → 不正解」= unsure_wrong として数える
+            else answer("unsure_wrong", true);
           }}
         />
       )}
@@ -980,10 +1122,11 @@ export function VocabTab({ data, setData }: Props) {
   const [slideFrom, setSlideFrom] = useState(24);
   const [queue, setQueue] = useState<WordDbEntry[]>([]);
   const [index, setIndex] = useState(0);
-  // 飛んでいる最中のカードのコピー (触れない見た目だけの層)
-  const [flying, setFlying] = useState<(FlyingCard & { key: number }) | null>(
-    null,
-  );
+  // 飛んでいる最中のカードのコピー (触れない見た目だけの層)。
+  // 1枚に限らず配列で持つ。演習モードは続けて仕分ける前提なので、
+  // 前のカードが飛びきる前に次を飛ばすことがよくある。1枚しか持たないと
+  // そこで前のコピーが差し替わって、飛んでいる途中でふっと消える
+  const [flying, setFlying] = useState<(FlyingCard & { key: number })[]>([]);
   // セッション中の回答数と正解数 (無限出題なので件数だけ持つ)
   const [shiftMsg, setShiftMsg] = useState<string | null>(null);
   // レベル測定の状態
@@ -1202,29 +1345,24 @@ export function VocabTab({ data, setData }: Props) {
       if (!e) return prev;
       const history = e.history.slice(0, -1);
       const last = history[history.length - 1];
+      const rolledBack: VocabEntry = {
+        ...e,
+        knownCount: e.knownCount - (action === "known" ? 1 : 0),
+        unsureCount:
+          e.unsureCount -
+          (action === "unsure_correct" || action === "unsure_wrong" ? 1 : 0),
+        unknownCount: e.unknownCount - (action === "unknown" ? 1 : 0),
+        correctCount: e.correctCount - (action === "unsure_correct" ? 1 : 0),
+        wrongCount: e.wrongCount - (action === "unsure_wrong" ? 1 : 0),
+        needsReview: last
+          ? last.r === "unsure_wrong" || last.r === "unknown"
+          : false,
+        lastSeenAt: last ? last.t : e.lastSeenAt,
+        history,
+      };
       return {
         ...prev,
-        vocab: {
-          ...prev.vocab,
-          [word]: {
-            ...e,
-            knownCount: e.knownCount - (action === "known" ? 1 : 0),
-            unsureCount:
-              e.unsureCount -
-              (action === "unsure_correct" || action === "unsure_wrong"
-                ? 1
-                : 0),
-            unknownCount: e.unknownCount - (action === "unknown" ? 1 : 0),
-            correctCount:
-              e.correctCount - (action === "unsure_correct" ? 1 : 0),
-            wrongCount: e.wrongCount - (action === "unsure_wrong" ? 1 : 0),
-            needsReview: last
-              ? last.r === "unsure_wrong" || last.r === "unknown"
-              : false,
-            lastSeenAt: last ? last.t : e.lastSeenAt,
-            history,
-          },
-        },
+        vocab: { ...prev.vocab, [word]: rolledBack },
         vocabLevel: countedRecent
           ? { ...prev.vocabLevel, recent: prev.vocabLevel.recent.slice(0, -1) }
           : prev.vocabLevel,
@@ -1274,45 +1412,45 @@ export function VocabTab({ data, setData }: Props) {
         setStatusOverride(prev, def, levelOf(def), "progress", next),
       );
 
-  // 飛んでいくカードのコピーを立てる。飛び終える頃に片付ける。
-  // key を毎回変えて、連続で飛ばしたときにアニメーションを最初からやり直させる
+  // 飛んでいくカードのコピーを立てる。飛び終えたぶんから順に片付ける。
+  // key を毎回変えて、連続で飛ばしたときも1枚ずつ別のアニメーションとして走らせる
   const flightRef = useRef(0);
   const startFlight = (f: FlyingCard) => {
     flightRef.current += 1;
     const key = flightRef.current;
-    setFlying({ ...f, key });
+    setFlying((cur) => [...cur, { ...f, key }]);
     window.setTimeout(() => {
-      // すでに次のカードが飛んでいたら、そちらのコピーを消さない
-      setFlying((cur) => (cur && cur.key === key ? null : cur));
+      // 自分のぶんだけ消す。まだ飛んでいる他のコピーには触らない
+      setFlying((cur) => cur.filter((c) => c.key !== key));
     }, EXIT_MS + 80);
   };
 
   // 飛んでいくカードのコピー。触れない見た目だけの層として本体に重ねる。
   // 本体はもう次の単語に変わっているので、飛んでいる最中でもそのまま操作できる。
   // showUnsure / skipReveal はコピーの見た目に影響しない (ボタン列を出さないため)
-  const flyingLayer = flying && (
+  const flyingLayer = flying.map((f) => (
     // z-30 はカード内で使う最大の z-20 (スワイプ中の大きな英字) より上、
     // Sheet (z-40〜) より下。z-10 だと本体カードの中身 (z-10) と同点になり、
     // DOM順で後の本体側が勝って、下のカードの文字が飛んでいるカードの上に描かれる
     // (本体カードは stacking context を作らないので、中身の z がここまで届く)
     <div
+      key={f.key}
       aria-hidden
       className="pointer-events-none absolute inset-0 z-30 flex flex-col"
     >
       <WordCard
-        key={flying.key}
         ghost
-        flyDir={flying.dir}
-        flyFrom={flying.from}
-        initialStep={flying.step}
-        initialAction={flying.action}
-        initialPicked={flying.picked}
-        initialChoices={flying.choices}
-        item={flying.item}
-        note={flying.note}
+        flyDir={f.dir}
+        flyFrom={f.from}
+        initialStep={f.step}
+        initialAction={f.action}
+        initialPicked={f.picked}
+        initialChoices={f.choices}
+        item={f.item}
+        note={f.note}
         nextItem={undefined}
         nextNote={undefined}
-        status={statusOf(flying.item.word)}
+        status={statusOf(f.item.word)}
         cardFields={data.settings.vocab.cardFields}
         showUnsure
         skipReveal={false}
@@ -1327,7 +1465,7 @@ export function VocabTab({ data, setData }: Props) {
         onSetProgress={() => {}}
       />
     </div>
-  );
+  ));
 
   // モードを切り替える (出題はそのまま続く)
   const switchMode = (m: QuizMode) => {
@@ -1508,7 +1646,8 @@ export function VocabTab({ data, setData }: Props) {
         <WordCard
           key={pItem.word}
           onFly={startFlight}
-          settleButtons={!!flying}
+          autoSpeak={data.settings.vocab.autoSpeak}
+          settleButtons={flying.length > 0}
           item={applyEdit(pItem, data.edits[pItem.word])}
           note={data.notes[pItem.word]}
           status={statusOf(pItem.word)}
@@ -1632,8 +1771,8 @@ export function VocabTab({ data, setData }: Props) {
     </div>
   );
 
-  // 出題モードの切替タブ。件数は buildQueue が同じモードで拾う範囲に合わせる。
-  // 演習は無限に出し続けるので件数を出さない (復習に溜まった数だけが行動の目安になる)
+  // 出題モードの切替タブ。件数は buildQueue が同じモードで拾う範囲に合わせる
+  // (復習の件数 = 学習中)。演習は無限に出し続けるので件数を出さない
   const modeCount: Record<QuizMode, number | null> = {
     drill: null,
     review: stats ? stats.learning : null,
@@ -1726,7 +1865,8 @@ export function VocabTab({ data, setData }: Props) {
             <WordCard
               key={item.word}
               onFly={startFlight}
-              settleButtons={!!flying}
+              autoSpeak={data.settings.vocab.autoSpeak}
+              settleButtons={flying.length > 0}
               item={applyEdit(item, data.edits[item.word])}
               note={data.notes[item.word]}
               nextItem={

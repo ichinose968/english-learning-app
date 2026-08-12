@@ -323,16 +323,9 @@ export function WordListView({ data, setData }: Props) {
   const peel = (col: SealColumn, word: string) =>
     setPeeled((p) => ({ ...p, [col]: new Set(p[col]).add(word) }));
 
-  // 見出しクリック: 先頭の規則ならの向きを反転、そうでなければその列だけの並べ替えにする
-  const toggleSort = (key: SortKey) => {
-    setSorts((prev) =>
-      prev.length > 0 && prev[0].key === key
-        ? [{ key, dir: prev[0].dir === "asc" ? "desc" : "asc" }, ...prev.slice(1)]
-        : [{ key, dir: "asc" }],
-    );
-    resetPage();
-  };
-
+  // 並べ替えの変更は下の「ソート」パネルからだけ。見出しは押しても何も起きない
+  // (表を読んでいる最中や、シールをめくろうとした指が当たって並びが変わるのを防ぐ)。
+  // 見出しには今どの規則で並んでいるかの表示だけ残す
   const addSort = () => {
     const used = new Set(sorts.map((r) => r.key));
     const next = COLUMN_ORDER.find((k) => !used.has(k));
@@ -723,19 +716,16 @@ export function WordListView({ data, setData }: Props) {
                     <th
                       key={key}
                       title={c.title}
-                      onClick={() => toggleSort(key)}
-                      className={`cursor-pointer select-none px-3 py-2 font-medium hover:text-zinc-600 dark:hover:text-zinc-200 ${
+                      // 列名は途中で折り返さない (表は最小幅で横スクロールするので、
+                      // 折り返すと見出しだけ2行になって行の高さが揺れる)
+                      className={`select-none whitespace-nowrap px-3 py-2 font-medium ${
                         c.align === "center" ? "text-center" : ""
                       } ${sorts.some((r) => r.key === key) ? "text-[#4A99EA]" : ""}`}
                     >
                       <span className="inline-flex items-center gap-1">
                         {sealCol && (
                           <button
-                            // 見出しの長押し・ソートに巻き込まれないよう、ここで止める
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleSeal(sealCol);
-                            }}
+                            onClick={() => toggleSeal(sealCol)}
                             aria-label={`${c.label}にシールを貼る`}
                             aria-pressed={sealed[sealCol]}
                             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded transition-colors ${

@@ -182,13 +182,21 @@ export function statusBadges(
   };
 }
 
-// 間違い (4択誤答 + 知らない) が多い単語ほど重みを大きくする
-function weight(entry: VocabEntry | undefined): number {
-  const mistakes = entry ? entry.wrongCount + entry.unknownCount : 0;
-  let w = 1 + mistakes * 2;
+// 復習で引かれやすさを決める重み。**間違えた回数が多い語ほどよく出る。**
+// × (知らない) を最も重く、△ はその下に置く。△ の中でも4択まで外した回数 (wrongCount)
+// を、当てた回数 (correctCount) より重くする。
+// さらに直近の結果を上乗せする。前回 × だった語がいま一番怪しいため。
+// 数字を変えるときは scripts/check-english-queue.ts の検算も合わせて直す
+export function reviewWeight(entry: VocabEntry | undefined): number {
+  if (!entry) return 1;
+  let w =
+    1 +
+    entry.unknownCount * 3 + // ×
+    entry.wrongCount * 2 + // △ → 4択で誤答
+    entry.correctCount * 1; // △ → 4択で正解 (それでも「怪しい」と答えた証拠)
   const last = lastResult(entry);
-  if (last === "unknown") w += 3;
-  if (last === "fuzzy") w += 1;
+  if (last === "unknown") w += 4;
+  if (last === "fuzzy") w += 2;
   return w;
 }
 
@@ -343,14 +351,14 @@ export function buildQueue(
   for (const entry of Object.values(progress)) {
     const info = index.get(entry.word);
     if (!info || exclude.has(info.def.word)) continue;
-    const pick = { item: info.def, w: weight(entry) };
+    const pick = { item: info.def, w: reviewWeight(entry) };
     const p = progressOf(entry, master);
     if (p === "learning") inProgress.push(pick);
     else if (p === "done") learned.push(pick);
     // 手で「未学習」に戻した語は既出ではないので、下の新出側で拾わせる
   }
 
-  // 復習: 学習中のものだけ。weight() が × を優先して引く
+  // 復習: 学習中のものだけ。reviewWeight() が × の多い語を優先して引く
   if (mode === "review") return weightedSample(inProgress, size);
 
   // 演習: 出題対象レベルの未学習を「新出」、履歴のある語を「既出」として比率で混ぜる
