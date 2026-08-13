@@ -88,7 +88,7 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `lib/english/types.ts` … データモデルの中心。`VocabSettings`, `CardFieldKey`/`CARD_FIELDS`, `WordDbEntry`, `WORD_DOMAINS`/`WORD_THEMES`/`WORD_EXAMS`, `VocabEntry`, `WordEdit`＋`applyEdit()`, `EnglishData`, `READING_PURPOSES`。
 - `lib/english/worddb.ts` … `fetchAllWordDbs(source)`（bothなら語彙＋イディオムをマージ）, `lastResult()`/`progressOf()`/`statusBadges()`, `consecutiveKnown()`, `buildQueue(dbs, level, progress, settings, mode, size, now, exclude)`, プレースメント（`PLACEMENT_SIZE=10`）, `evaluateLevelShift`（直近20問、85%で上、50%で下）。
 - `lib/english/grammardb.ts` … 文法出題キュー。`buildGrammarQueue(db, topics, ...)` の `topics` は複数指定でき、空ならおまかせで苦手トピックを重み3で優先する。
-- `lib/english/storage.ts` … localStorage の読み書きと旧形式マイグレーション。
+- `lib/english/storage.ts` … 学習記録の保存。**IndexedDB** の読み書き、旧 localStorage からの移行、旧形式マイグレーション、保存失敗の通知（`onStorageProblem`）。詳細は5章。
 - `lib/english/generate.ts` … Anthropic 呼び出し共通処理。
 - `app/api/english/reading/route.ts` … 長文をその場で生成する。
 - `app/api/english/chat/route.ts` … AI会話の返信。添削オフなら素のテキスト（`generateChatReply`）、オンなら `{correction, reply}` の構造化出力を1回で取る。直近20往復だけ送る。
@@ -113,6 +113,19 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 
 ## 5. 設計上の決定と、その理由
 
+- **学習記録は IndexedDB に置く（localStorage は使わない）。** 元は localStorage に丸ごとJSONで入れていたが、カードの背景画像が1枚最大1.2MB（`MAX_IMAGE_CHARS`）入るのに対して **iOS Safari の localStorage は約5MB** しかない。しかも `setItem` を try/catch 無しで呼んでいたので、**溢れた時点で例外が投げっぱなしになり、以後の学習記録が一切保存されなくなる**（画面には何も出ない）。取り返しがつかないデータなので移した。
+  - 注意: **Chrome では再現しない。** 実測でこのMacの Chromium は localStorage に30MB書けた（IndexedDB の割当は2.78GB）。**上限が問題になるのは実機の iOS Safari** で、そこが本番。手元で再現しないからといって無いことにしない。
+  - 記録は `{ rev, data }` の1レコード。`rev` は書き込みのたびに1つ増える。
+  - **書き込みは「読んで、自分の知っている `rev` と同じなら書く」を1つのトランザクションでやる。** ホーム画面のPWAとSafariのタブを同時に開くと、どちらも全体のコピーを持っているので、**後から保存したほうが相手の記録を丸ごと消す**。食い違ったら書かずに諦め、赤い帯で再読み込みを促す。黙って消えるよりよい。
+  - **保存はまとめて書く**（`SAVE_DEBOUNCE_MS` = 400ms）。カードは連続でめくるので1回ごとに全体を書くと無駄。ただし**まとめている最中にアプリを閉じられたぶんは失われる**ので、`pagehide` と `visibilitychange`（hidden）で書き切る。iOS はそこから始めた書き込みが必ず終わる保証が無いため、間隔は短くしてある。
+  - **失敗は必ず画面に出す**（`onStorageProblem` → EnglishApp の赤い帯）。容量超過 / 別タブとの衝突 / その他の3種で文言を分ける。閉じるボタンは付けない。
+  - 帯を出すとヘッダーと本文の間に高さが増えるので、**設定シートの `top`（ヘッダーの高さ61を直に渡している）に帯の実測高さを足す**。文言が2〜3行に折り返すので決め打ちにできない。測るのは `ref` + `useEffect` ではなく **callback ref**。このコンポーネントは読み込み中に早期 return するので、`[]` の `useEffect` は入れ物がまだDOMに無いうちに一度走って終わる。
+  - **旧 localStorage のデータは初回に読み込んで移し、元のキーは `-backup` に改名して残す（消さない）。** 改名するのは、IndexedDB がブラウザに追い出されたとき古いスナップショットへ黙って巻き戻るのを防ぐため。手で戻したいときのために中身は取ってある。
+    - **`-backup` は自動では絶対に読まない**（`readLegacy()` は `LEGACY_KEY` だけ見る）。ここを `?? getItem(BACKUP)` にすると改名の意味が消え、IndexedDB が空になった瞬間に移行日の記録へ巻き戻って、それ以降の学習記録が消えたまま「昔のデータはある」状態になる。**監査で実際にこの書き方をしていて指摘された。**
+  - **退避（fallback）した書き込みには版番号を付ける。** 読みは「IndexedDB → 空なら localStorage」なのに、書きは「IndexedDB → 失敗したら localStorage」に落ちる。番号が無いと、1回書き込みに失敗したセッションのぶんが**次の起動で一度も読まれないまま IndexedDB 側に上書きされて消える**。`loadData` で両方の版番号を比べ、新しいほうを採る。
+  - **書き出し / 読み込み（設定 → 学習データ）が唯一のバックアップ手段。** 端末の紛失・機種変更・ブラウザによる退去・「サイトデータを削除」のどれでも記録は消えるし、**Capacitor 版は別オリジンになるので PWA 側の IndexedDB は1件も見えない**（保存先が IndexedDB でも同じ。オリジンが変わる以上どちらでも引き継げない）。ストア申請の前提でもある。読み込みは必ず `normalize()` を通し、版番号を進めてから書く（衝突検知に引っかかって黙って失敗しないように）。
+  - IndexedDB が開けない環境（プライベートモードなど）では localStorage へ退避する。容量の問題は残るが、そのときは帯が出る。
+  - `navigator.storage.persist()` を起動時に1回頼む。断られても動きは変わらない（localhost では実際に断られた。ホーム画面に追加した端末では通ることが多い）。
 - ユーザーの編集は `EnglishData.edits` にオーバーライドとして保存し、DBファイル自体は書き換えない。DBを再生成しても編集が消えないため。
 - 単語・文法はAPIを呼ばない。生成待ちが体験を壊すので、事前生成DBから即出題する。
 - **初回は「はじめに設定してください」(SetupPanel) ではなくチュートリアルを出す**（`EnglishData.tutorialDone`。旧フローを通った既存ユーザーと学習記録のあるユーザーは storage.ts の移行で「済み」扱い）。
@@ -165,7 +178,7 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - **オフライン対応は Service Worker（`public/english-sw.js`）で行う。** ワークボックス等のライブラリは入れない（キャッシュの分け方が上の4種類だけで、生成される設定を読むより直接書いたほうが短い）。
   - **スコープは `/english` だけに絞る。** 開発リポジトリ（`~/Desktop/claudecode`）では同じオリジンに `/`（EDINET分析）・`/tasks`・`/midterm`・`/analyze` が同居していて、それらまで巻き込みたくないため。
     - **このリポジトリは英語アプリ単体なので、絞る必要は本来無い。それでも同じにしてある**（コードを丸ごとコピーして同期する運用なので、ここだけ食い違わせない）。
-    - そのぶん、**ルート `/`（`app/page.tsx` の `/english` へのリダイレクト）はスコープ外**でオフラインでは開けない。ホーム画面のアイコンは `manifest.ts` の `start_url: "/english"` から起動するので実害は無いが、圏外でドメインだけ打つと失敗する。気になるならこのリポジトリだけスコープを `/` に広げる（`/` もプリキャッシュに足すこと）。
+    - そのぶん、**ルート `/`（`app/page.tsx` の `/english` へのリダイレクト）はスコープ外**でオフラインでは開けない。ホーム画面のアイコンは `manifest.ts` の `start_url: "/english"` から起動するので実害は無いが、圏外でドメインだけ打つと失敗する。
     - スクリプトは `public/` 直下（= `/english-sw.js`）に置き、登録側で `{ scope: "/english" }` を渡す。スクリプトの位置より**深い**スコープは自由に指定できる。
     - **`public/english/sw.js` に置く手は使えない。** そこに置くとスコープが `/english/`（末尾スラッシュ付き）になり、ページのURLである `/english` が前方一致しないので、肝心のページが管理下に入らない。
     - スコープが絞られていても、**管理下に入ったページからの fetch は URL がスコープ外でも全部 SW を通る**。だから `/english-words/*.json`（スコープ外）もキャッシュできる。
@@ -184,6 +197,13 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
   - install で `skipWaiting()`、activate で `clients.claim()`。**claim しないと初回訪問中に読み込む単語DBが1件もキャッシュされない**（初回は登録が終わる前にページの読み込みが始まっている）。飛んでくる版が入れ替わっても `/_next/static` はハッシュごとに別々に残るので、開いたままのページが読み込み済みのチャンクを失うことはない。
   - **開発中は登録しない**（`ServiceWorkerRegistrar` が `NODE_ENV` を見る）。`next dev` の `/_next/static` はハッシュが固定されずHMRも走るので、キャッシュ優先で掴むと更新が反映されなくなる。さらに、本番ビルドを localhost で動かして登録が残ったまま `next dev` に戻ると同じ罠を踏むので、開発時は逆に**登録を外しにいく**。
   - **オフラインで使えるのは「一度オンラインで開いた教材」だけ。** 単語DBは起動時に読むので自動的に入るが、**イディオムと文法は、そのタブを一度開くまでキャッシュに入らない**。入っていない状態で開くと `requestErrorMessage` が「オフラインです…」を出す。事前にまとめて落とす仕組みは、7章Bのレベル別ダウンロードと同じ話なのでそちらでまとめて作る。
+- **ヘッダーの上端はセーフエリアに合わせて伸ばす**（`paddingTop: max(0.75rem, env(safe-area-inset-top))`）。ホーム画面から起動すると `status-bar-style: black-translucent` と `viewportFit: cover` の組み合わせで中身がステータスバーの下まで広がるので、足さないと Dynamic Island 機（inset 59px）やノッチ機（47px）で題名と歯車が時計に潜る。
+  - **設定シートの `top` も同じ式にする。** シートは `fixed` でヘッダーの高さを直に受け取るので、ヘッダーだけ伸ばすと重なる。`calc(49px + max(0.75rem, env(safe-area-inset-top)) + 帯の高さ)`。61 という数字はこの計算（49 + 12）が畳まれたものだった。実測でインセット0の環境では 61px に解決し、ヘッダーの下端とぴったり一致する。
+- **`claude-opus-5` は `thinking` を省略すると adaptive thinking が既定で走り、その思考トークンも `max_tokens` に含まれる**（Opus 4.8/4.7 は省略＝思考なしだったので、そのつもりの値だと足りない）。AI会話の返信は 1024 だったため、会話量「長め」や履歴が伸びたときに思考で使い切って、途中で切れた返信や空文字が HTTP 200 で返っていた。
+  - 上限を 4000 に上げ、短い雑談に見合うよう `output_config: { effort: "low" }` を付けた。**`thinking: disabled` は選ばない**。opus-5 で思考を切ると「ツール呼び出しが本文に混ざる」「`<thinking>` タグが漏れる」という既知の失敗があり、effort を下げるほうが安全で費用もほぼ同じだけ下がる。
+  - `stop_reason === "max_tokens"` と空文字も失敗として扱う（`generateJson` と揃えた）。見ていないと、切れた返信が成功として画面に出る。
+- **AI会話に送る履歴は、後ろから切ったあと先頭が `user` になるまで捨てる。** APIは先頭が user でないと 400 になる。`slice(-20)` は先頭が assistant になることがあり、失敗した回は assistant の返信が増えないので長さの偶奇が変わらず、**以後ずっと同じ形で切り出されてAI会話タブが恒久的に壊れる**（会話をリセットするまで直らない）。
+- **`WordCard` の key は `単語#出題連番`。** 語だけだと、復習の対象が1語しか無いとき（測定10問で1問だけ×だった直後など）にキューが `[a]` のまま作り直され、key が変わらないのでカードが解説面のまま固まって先へ進めなくなる。
 - 品詞はどの画面でも日本語表記（`pos`）を使う。DBの `posEn` は表示に使わない。
 - 発音記号はユーザーが編集できない。全7,634件に付与済みで、手で直す必要がないため。
 - カードの背景画像は `edits` に data URL で入れる。localStorage を圧迫しないよう長辺1000px・JPEG品質0.8に縮め、1.2MBを超えたら保存せずエラーを出す。
@@ -340,15 +360,16 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 
 ### 引き継ぎ時点の状況（2026-08-13 セッション終了時）
 
-**このリポジトリは Service Worker まで反映済み・本番稼働中。作業ツリーはきれい。**
-開発は `~/Desktop/claudecode`（`48192dc`）で進め、区切りごとにここへコピーして push する。
+**このリポジトリはリスク台帳の HIGH 修正まで反映済み・本番稼働中。作業ツリーはきれい。**
+開発は `~/Desktop/claudecode`（`bced0c5`）で進め、区切りごとにここへコピーして push する。
 
 反映するのは英語アプリの実装ファイルだけ。このリポジトリ固有の
 `app/layout.tsx`・`app/page.tsx`・`README.md`・`AGENTS.md`・`.claude/launch.json` と、
 この文書の2章・2.5章・7章冒頭は向こうからコピーしない。
 
-`npx tsc --noEmit` と `npx next build` は通る。eslint は9件（7 errors / 2 warnings）で基準どおり
-（claudecode 側は `components/tasks/TaskApp.tsx` のぶん1件多い10件が基準）。
+`npx tsc --noEmit` と `npx next build` は通る。eslint は**8件（6 errors / 2 warnings）が新しい基準**
+（claudecode 側は `components/tasks/TaskApp.tsx` のぶん1件多い9件）。
+IndexedDB 化で `EnglishApp` の set-state-in-effect が1件消えたぶん、以前の 9 / 10 から下がっている。
 
 push は本番反映を伴うので、ユーザーの指示なく勝手に push しないこと。
 
@@ -366,6 +387,25 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
 文法タブが実際に出題する / 長文生成でオフラインの文言が出る。
 `DATA_VERSION` を上げると `english-data-v1` が消えて v2 に入れ直され、
 シェルとアセットのキャッシュはそのまま残ることも確認済み。
+
+3. **学習記録を IndexedDB へ移した**（`lib/english/storage.ts`）。仕様と理由は5章。
+   別タブとの衝突検知（版番号）と、保存失敗を知らせる赤い帯も入れた。
+   検証: 旧 localStorage のデータ（旧々形式の `correct`/`wrong` と、撤回済みの
+   `interval`/`dueAt` を混ぜたもの）を置いて起動 → 全部正しく移り、旧キーは
+   `-backup` に改名。別タブが書いた状況を作ると**相手の記録が無傷のまま**帯が出る。
+   再読み込みしても設定が残ることも確認済み。
+
+4. **アプリ全体のリスク監査**（7観点・110件 → 99件を台帳化。**8章**）。
+   そこで出た **HIGH 8件をすべて修正**した。
+   - 上の IndexedDB 移行に自分で入れていた2件（`-backup` を自動で読んでいた／
+     退避した書き込みが二度と読まれない）。どちらも学習記録が黙って消える経路。
+   - **書き出し / 読み込み**を追加（設定 → 学習データ）。唯一のバックアップ手段で、
+     Capacitor 版への引っ越しの前提でもある。
+   - **セーフエリア上端**。standalone 起動でヘッダーが時計に潜っていた。
+   - **AI会話の `max_tokens`**。opus-5 の既定 thinking を勘定に入れていなかった。
+   - **AI会話が11通目以降に恒久的に壊れる**（履歴の先頭が assistant になる）。
+   - **カードが解説面のまま固まる**（同じ語が連続すると key が変わらない）。
+   - **イディオム専用＋未測定の行き止まり**（全記録を捨てる以外に抜け道が無かった）。
 
 そのうえで**多エージェントのレビュー**（6観点で29件を挙げ、各件を別のエージェントが
 反証。生き残り3件）を通し、次を直した。
@@ -409,19 +449,26 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
    PWA として完成した。**次は実機のホーム画面から数日使い、出た不便をストア版の
    要件にする**という進め方をユーザーに勧めてある（読み上げの実機確認も同時に済む。
    末尾「保留 / その他の候補」参照）。
-2. **保存を localStorage から IndexedDB へ移す。**（**次はここから**）`storage.ts` の `saveData` は
-   `try/catch` 無しで `setItem` を呼んでいる。背景画像は1枚最大1.2MB
-   (`MAX_IMAGE_CHARS`)、localStorage の上限は約5MB なので、**背景画像4枚で容量超過して
-   例外が投げっぱなしになる**。学習記録が飛ぶ事故につながるので優先度が高い。
-3. **APIに認証とレート制限を入れる。** `app/api/english/{chat,reading}/route.ts` には
+2. ~~**保存を localStorage から IndexedDB へ移す。**~~ **完了（2026-08-13）。** 仕様は5章。
+   あわせて別タブとの衝突検知と、保存失敗を知らせる赤い帯を入れた。
+   残っている関連課題は2つ。**(a) 背景画像を data URL のまま記録と同じレコードに
+   入れている**ので、画像1枚でレコード全体が数MBになり、保存のたびに丸ごと書き直す。
+   Blob にして別ストアへ分けると軽くなる（base64 のぶん33%も減る）。
+   **(b) 書き出し / 読み込みが無い。** これは下の4（Capacitor は別オリジンになるので
+   PWAのデータを引き継げない）の前提でもある。
+2.5 **リスク台帳の残り（8章）。** HIGH 8件は片付いた。次に効くのは MEDIUM のうち
+   「学習記録を丸ごと毎回書き直している（背景画像込み）」「タブ切替のたびに全5レベルの
+   DBを読み直す」「初見○の語が × を何度出しても ○ 一回で学習完了に戻る」あたり。
+3. **APIに認証とレート制限を入れる。**（**次はここから**） `app/api/english/{chat,reading}/route.ts` には
    **認証もレート制限も一切無い**（grep 済み）。公開URLなので現在も誰でも叩けるが、
    ストアで配布すると読解とAI会話の利用料が全部リポジトリ所有者の請求になる。
    **ネイティブアプリにAPIキーを同梱するのは不可**（バイナリから抜ける）ので、
    Capacitor でも Vercel をバックエンドとして呼ぶ構成になる。ここに無記名トークンでも
    よいので認証と1日あたりの上限が要る。
 4. **Capacitor で iOS/Android を包む。** Apple $99/年、Google Play $25 買い切り。
-   注意: Capacitor は別オリジンになるので、PWA で貯めた localStorage は引き継がれない。
-   移行するならデータの書き出し/読み込みが要る。
+   注意: Capacitor は別オリジンになるので、PWA で貯めた記録は引き継がれない
+   （保存先が IndexedDB になっても同じ。オリジンが変わる以上どちらでも同じこと）。
+   移行するには 2(b) の書き出し/読み込みが要る。
 
 #### B. 単語の拡張
 
@@ -499,8 +546,7 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
 
 - **Service Worker は `next dev` では確かめられない**（そもそも登録しない作りにしてある）。
   本番ビルドを動かす必要がある。このリポジトリは開発サーバーを常駐させていないので
-  そのまま `npx next build && npx next start` でよい。
-  以下は claudecode 側でやるときの手順（あちらは他セッションの開発サーバーが `.next` を掴んでいる）。
+  そのまま `npx next build && npx next start` でよい。以下は claudecode 側の手順。
   **`next build` は `.next` を書き換えるので、他のセッションの開発サーバーが動いている
   ときに同じディレクトリでやってはいけない。** スクラッチパッドに作業ツリーを丸ごと
   写して、そこでビルドして `next start` すればよい。
@@ -579,3 +625,217 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
   読み上げの音声選びはこれで不具合が見つかった（`getVoices()` の中身を数えたら、
   en-US に `default` が1つも無く、先頭がジョーク音声だった）。
   「たぶんこう動く」で済ませず、`getVoices()` の一覧のように**実際の値を出力して見る**こと。
+
+## 8. リスク台帳（2026-08-13 の多エージェント監査）
+
+7観点で110件を挙げ、各件を別のエージェントがコードを読んで裁定した（refuted 11件を除く**99件**）。
+`確認済` はコード上で機構をたどれたもの、`推定` は筋は通るが確証まで至らなかったもの。
+**このセッションで HIGH 8件はすべて修正済み**（見出しに ✅）。残りは未着手。
+件数の内訳は HIGH 8 / MEDIUM 32 / LOW 59。
+
+### HIGH（8件）
+
+- ✅ **Opus 5 は既定で thinking が有効。max_tokens 1024 の会話返信が空／途中切れで返る**
+  `lib/english/generate.ts:62` … API/モデル / 確認済 / 修正コスト:小
+- ✅ **復習キューが同じ語を連続で並べ、カードが再マウントされず解説面のまま固まる**
+  `components/english/VocabTab.tsx:1543` … 学習ロジック / 確認済 / 修正コスト:小
+- ✅ **セーフエリア上端が全画面で未処理（standalone起動でヘッダーが時計に潜る）**
+  `app/layout.tsx:11` … アプリ化 / 確認済 / 修正コスト:小
+- ✅ **学習記録の書き出し・読み込みが無く、オリジン変更と退避で全損する**
+  `lib/english/storage.ts:477` … アプリ化 / 確認済 / 修正コスト:小
+- ✅ **IDB退避後もバックアップキーを読むため、IndexedDB退去で移行前スナップショットへ黙って巻き戻る**
+  `lib/english/storage.ts:164` … データ保存 / 確認済 / 修正コスト:小
+- ✅ **localStorage フォールバックへの書き込みは次回起動で読まれない（書き込み専用の穴）**
+  `lib/english/storage.ts:437` … データ保存 / 確認済 / 修正コスト:小
+- ✅ **取り返しのつかない学習記録に書き出し/読み込み（バックアップ）が一切ない**
+  `lib/english/storage.ts:444` … データ保存 / 確認済 / 修正コスト:中
+- ✅ **イディオム専用＋未測定でカード画面が完全な行き止まりになる**
+  `components/english/VocabTab.tsx:1594` … UX/失敗経路 / 確認済 / 修正コスト:小
+
+### MEDIUM（32件）
+
+- ✅ **AI会話が11通目以降に恒久的に壊れる（先頭がassistantのmessages配列）**
+  `app/api/english/chat/route.ts:85` … API/モデル / 確認済 / 修正コスト:小
+- **非JSONのエラー応答で、生のJSONパースエラーが画面に出る（タイムアウト時の主経路）**
+  `components/english/ReadingTab.tsx:158` … API/モデル / 確認済 / 修正コスト:小
+- **初見で ○ だった語は、その後何度 × を出しても ○ 一回で学習完了に戻る**
+  `lib/english/worddb.ts:157` … 学習ロジック / 確認済 / 修正コスト:小
+- **出題範囲を「語彙＋イディオム」にすると単語レベルの自動調整が黙って止まる**
+  `components/english/VocabTab.tsx:1883` … 学習ロジック / 確認済 / 修正コスト:小
+- **IndexedDB移行の要件: 背景画像込みの全文書をスワイプ中に書き直している**
+  `lib/english/storage.ts:406` … 学習ロジック / 確認済 / 修正コスト:中
+- **IndexedDB移行の要件: 別タブ競合を検知したあとも回答を受け付け続け、そのセッションぶんが消える**
+  `lib/english/storage.ts:408` … 学習ロジック / 確認済 / 修正コスト:小
+- **/api への相対パス直書きとCORS未設定でCapacitor版の読解・AI会話が全滅**
+  `components/english/ChatTab.tsx:68` … アプリ化 / 確認済 / 修正コスト:小
+- **下端に固定した回答バー・シートがホームインジケータ領域に食い込む**
+  `components/english/CardDetailSheet.tsx:1009` … アプリ化 / 確認済 / 修正コスト:小
+- **iOSのキーボード対策が Chromium 限定の指定だけで、AI会話の入力欄が隠れる**
+  `app/english/page.tsx:17` … アプリ化 / 推定 / 修正コスト:小
+- **バックグラウンド復帰後に読み上げが永久に無音になる（primed が戻らない）**
+  `lib/english/speech.ts:126` … アプリ化 / 推定 / 修正コスト:小
+- **deltas の先週比計算が、描画されない statsRowRetired のためだけに毎回答で走る**
+  `components/english/VocabTab.tsx:1189` … 性能 / 確認済 / 修正コスト:小
+- **背景画像の data URL を毎描画で `url(...)` に組み直しており、スワイプ中に毎フレーム1.2MBの文字列を作る**
+  `components/english/VocabTab.tsx:815` … 性能 / 確認済 / 修正コスト:小
+- **タブを切り替えるたびに全5レベルのDBを読み直し、ヒープを丸ごと作り直す**
+  `components/english/EnglishApp.tsx:296` … 性能 / 確認済 / 修正コスト:中
+- **IndexedDB の読み出しが永久に解決しないと、アプリが「読み込み中...」から二度と進まない**
+  `lib/english/storage.ts:96` … データ保存 / 推定 / 修正コスト:小
+- **400msのデバウンスにより、回答直後にアプリを閉じると最後の数回の回答が消える**
+  `lib/english/storage.ts:42` … データ保存 / 推定 / 修正コスト:小
+- **clearData がバックアップキーを消さないため、リセットした記録が後から復活する**
+  `lib/english/storage.ts:466` … データ保存 / 確認済 / 修正コスト:小
+- **別タブ検出が一方通行のラッチで、きっかけになった回答は捨てられ、リロードするまで二度と保存されない**
+  `lib/english/storage.ts:110` … データ保存 / 確認済 / 修正コスト:中
+- **起動直後の無条件書き込みが rev を進めるため、二重に開くだけで先に開いていたほうが衝突ラッチに落ちる**
+  `components/english/EnglishApp.tsx:136` … データ保存 / 確認済 / 修正コスト:小
+- **1回の保存で背景画像を含む全データを丸ごと書き直すため、スワイプ中に数MBを400msごとに複製する**
+  `lib/english/storage.ts:406` … データ保存 / 確認済 / 修正コスト:中
+- **エラーバウンダリが無く、設定値1つが壊れるだけでアプリ全体が落ちる**
+  `lib/english/worddb.ts:375` … データ保存 / 確認済 / 修正コスト:小
+- **復習の残り1語で、カードが解説面のまま固まって進まなくなる (key の衝突)**
+  `components/english/VocabTab.tsx:1541` … React実装 / 確認済 / 修正コスト:小
+- **IndexedDB が空になると、改名して残した localStorage のバックアップまで読み戻して学習記録が巻き戻る**
+  `lib/english/storage.ts:163` … React実装 / 確認済 / 修正コスト:小
+- **単語DBの読み込みに一度失敗すると、そのタブは赤いエラー画面から自力で戻れない**
+  `components/english/VocabTab.tsx:1576` … React実装 / 確認済 / 修正コスト:小
+- **レベル測定10問の途中でタブを移ると測定がまるごと消える。チュートリアル自身がその操作をさせる**
+  `components/english/EnglishApp.tsx:353` … React実装 / 確認済 / 修正コスト:中
+- **2つ目のタブでアプリを開いた瞬間に保存が恒久停止する (起動時に必ず1回書くため)**
+  `components/english/EnglishApp.tsx:149` … React実装 / 確認済 / 修正コスト:小
+- **補充できないとカードが凍りつき、同じ語に何度も回答が記録される**
+  `components/english/VocabTab.tsx:1539` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **初回・リセット直後の単語リストが「該当なし」だけになる**
+  `components/english/WordListView.tsx:153` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **DB読み込み失敗が3タブで再試行不能の終端になる**
+  `components/english/GrammarTab.tsx:190` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **カード詳細の編集途中の入力が警告なく消える**
+  `components/english/CardDetailSheet.tsx:355` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **長文は11本目を作った時点で最古の1本が予告なく消える**
+  `components/english/ReadingTab.tsx:173` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **IndexedDB移行の要件: 読み込みが返ってこないと「読み込み中...」で永久停止する**
+  `components/english/EnglishApp.tsx:122` … UX/失敗経路 / 推定 / 修正コスト:小
+- **IndexedDB移行の要件: 競合検知後も回答を受け付け続け、すべて捨てられる**
+  `lib/english/storage.ts:408` … UX/失敗経路 / 確認済 / 修正コスト:小
+
+### LOW（59件）
+
+- **リクエストボディを検証しておらず、不正な形なら未捕捉例外で非JSONの500になる**
+  `app/api/english/chat/route.ts:53` … API/モデル / 確認済 / 修正コスト:小
+- **ユーザー入力がシステムプロンプトに直接埋め込まれ、levelは検証もされていない**
+  `app/api/english/chat/route.ts:58` … API/モデル / 確認済 / 修正コスト:小
+- **1メッセージあたりの長さが無制限のままモデルへ届く（コスト・レイテンシ・413）**
+  `components/english/ChatTab.tsx:71` … API/モデル / 確認済 / 修正コスト:小
+- **スキーマに配列サイズの制約が無く、想定外の形は黙って捨てられるか課金済みの500になる**
+  `app/api/english/reading/route.ts:126` … API/モデル / 推定 / 修正コスト:小
+- **モデル出力を検証せずそのまま保存領域へ書き込む**
+  `app/api/english/reading/route.ts:135` … API/モデル / 推定 / 修正コスト:小
+- **エラー応答が内部情報を出し、文言も画面と一致していない**
+  `lib/english/generate.ts:11` … API/モデル / 確認済 / 修正コスト:小
+- **生成成功後の crypto.randomUUID() が非セキュアコンテキストで落ち、生成物を捨てる**
+  `components/english/ReadingTab.tsx:162` … API/モデル / 確認済 / 修正コスト:小
+- **送信失敗時にユーザー発言だけが履歴に残り、下書きも消えるので再送できない**
+  `components/english/ChatTab.tsx:63` … API/モデル / 確認済 / 修正コスト:小
+- **文法タブ: キュー再構築で直前の問題が先頭に来ると、回答済み表示のまま「次へ」も消えて詰む**
+  `components/english/GrammarTab.tsx:179` … 学習ロジック / 確認済 / 修正コスト:小
+- **レベル測定中にカード詳細の下部バーから答えると、段（ladder）が進まず測定結果もずれる**
+  `components/english/VocabTab.tsx:1322` … 学習ロジック / 確認済 / 修正コスト:小
+- **回答の取り消し（←）が、record() の外した手動ステータス指定を復元しない**
+  `components/english/VocabTab.tsx:1344` … 学習ロジック / 確認済 / 修正コスト:小
+- **出題対象レベルが空のとき、直しようのない「レベルを測定する」に誘導されて堂々巡りする**
+  `components/english/VocabTab.tsx:1307` … 学習ロジック / 推定 / 修正コスト:小
+- **history が直近50件で切られるのに、学習完了の「初見」判定が history[0] を見ている**
+  `components/english/VocabTab.tsx:1219` … 学習ロジック / 確認済 / 修正コスト:小
+- **dbStats / dbStatsAsOf が毎レンダー走り、その結果の大半は描画されない死にコード**
+  `components/english/VocabTab.tsx:1189` … 学習ロジック / 確認済 / 修正コスト:小
+- **単語DBは5レベル同時取得の全か無かで、1ファイル欠けるとカードタブ全体が死ぬ**
+  `lib/english/worddb.ts:51` … 学習ロジック / 確認済 / 修正コスト:小
+- **Androidの戻るボタンでアプリが終了する（全画面オーバーレイに履歴が無い）**
+  `components/english/CardDetailSheet.tsx:604` … アプリ化 / 推定 / 修正コスト:中
+- **Service Worker のアセットキャッシュがデプロイのたびに増え続ける**
+  `public/english-sw.js:117` … アプリ化 / 確認済 / 修正コスト:小
+- **Capacitor 配下でも SW を登録しにいき、同梱JSONを二重に持つ**
+  `components/english/ServiceWorkerRegistrar.tsx:17` … アプリ化 / 推定 / 修正コスト:小
+- **manifest のブランド色がアプリの実際の配色と食い違う**
+  `app/manifest.ts:15` … アプリ化 / 推定 / 修正コスト:小
+- **ストア用アイコンの素材が足りない（1024px 無し・アルファ付き・マスカブル非対応）**
+  `app/manifest.ts:17` … アプリ化 / 推定 / 修正コスト:小
+- **AI会話まわりのストア審査対策（プライバシーポリシー・通報導線・年齢設定）が皆無**
+  `components/english/ChatTab.tsx:68` … アプリ化 / 推定 / 修正コスト:小
+- **iOS は manifest の orientation を無視するのに横向きのレイアウト対策が無い**
+  `app/manifest.ts:13` … アプリ化 / 確認済 / 修正コスト:小
+- **stats の dbStats がメモ化されておらず、1描画あたり索引を3本作り直す**
+  `components/english/VocabTab.tsx:1183` … 性能 / 確認済 / 修正コスト:小
+- **単語リストの並べ替えが比較関数の中でキーを再計算しており、検索は1文字ごとに全件ソート**
+  `components/english/WordListView.tsx:265` … 性能 / 確認済 / 修正コスト:小
+- **単語リストの表が仮想化されておらず、auto レイアウトのまま行が無制限に増える**
+  `components/english/WordListView.tsx:767` … 性能 / 推定 / 修正コスト:小
+- **背景画像が edits の同じレコードに同居しており、どの保存でも画像ごと書き直される**
+  `lib/english/storage.ts:195` … 性能 / 確認済 / 修正コスト:中
+- **buildQueue が索引を作り直し、しかもカードが飛ぶ瞬間に最大2回呼ばれる**
+  `components/english/VocabTab.tsx:1495` … 性能 / 確認済 / 修正コスト:小
+- **pointermove ごとに setDrag しており、カード全体が入力レートで再描画される**
+  `components/english/VocabTab.tsx:591` … 性能 / 推定 / 修正コスト:小
+- **単語リストとカード詳細が unmount 時に読み上げを止めない**
+  `components/english/WordListView.tsx:798` … 性能 / 確認済 / 修正コスト:小
+- **normalize が未知のトップレベルキーを落とすため、古いビルドが1回動くと新フィールドが永久に消える**
+  `lib/english/storage.ts:312` … データ保存 / 推定 / 修正コスト:小
+- **db.onversionchange が無く、将来の DB_VERSION 引き上げが onblocked → フォールバックの穴に落ちる**
+  `lib/english/storage.ts:85` … データ保存 / 推定 / 修正コスト:小
+- **migrateVocabEntry が壊れたエントリを黙って捨て、捨てたことを誰も知らない**
+  `lib/english/storage.ts:225` … データ保存 / 推定 / 修正コスト:小
+- **tutorialDone を毎回の読み込みで推測して書き戻すため、チュートリアル中に閉じると二度と再開しない**
+  `lib/english/storage.ts:354` … データ保存 / 確認済 / 修正コスト:小
+- **history が直近50件に切られるのに progressOf が history[0] を「初見」として読む**
+  `lib/english/worddb.ts:157` … データ保存 / 確認済 / 修正コスト:小
+- **長文が11本目の生成で黙って1本消える**
+  `components/english/ReadingTab.tsx:173` … データ保存 / 確認済 / 修正コスト:小
+- **レコードにスキーマ版が無く、マイグレーションが形の推測だけで動いている**
+  `lib/english/storage.ts:226` … データ保存 / 推定 / 修正コスト:小
+- **回答の取り消しが手動ステータスと切り捨てた履歴を戻さない**
+  `components/english/VocabTab.tsx:1344` … データ保存 / 確認済 / 修正コスト:小
+- **loadData が共有のミュータブル定数 EMPTY_DATA をそのまま返す**
+  `lib/english/storage.ts:303` … データ保存 / 推定 / 修正コスト:小
+- **画面に出していない先週比の集計のために、回答のたびに単語DB全走査が3回走る**
+  `components/english/VocabTab.tsx:1189` … React実装 / 確認済 / 修正コスト:小
+- **pointercancel をスワイプの確定として扱うため、iOSの端スワイプなどで意図しない ○ / × が記録される**
+  `components/english/VocabTab.tsx:774` … React実装 / 推定 / 修正コスト:小
+- **長文生成中にタブを移ると進行表示が消え、二重生成 (二重課金) になる**
+  `components/english/ReadingTab.tsx:141` … React実装 / 確認済 / 修正コスト:小
+- **カード操作デモは一度クリアすると見返せない (戻っても1.1秒で勝手に進む)**
+  `components/english/TutorialFlow.tsx:165` … React実装 / 確認済 / 修正コスト:小
+- **カードに2本目の指が触れると、スワイプの起点が乗っ取られて意図しない回答が確定しうる**
+  `components/english/VocabTab.tsx:580` … React実装 / 確認済 / 修正コスト:小
+- **カード詳細のタグ欄が毎レンダーで作り直され、引いて閉じるジェスチャ中にDOMが再構築される**
+  `components/english/CardDetailSheet.tsx:573` … React実装 / 確認済 / 修正コスト:小
+- **ステータス編集の「キャンセル」が変更を取り消さない**
+  `components/english/CardDetailSheet.tsx:848` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **AI会話の送信失敗にリトライが無く、入力も消える**
+  `components/english/ChatTab.tsx:54` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **読解の解答途中が、タブバーへの一押しで消える**
+  `components/english/ReadingSheet.tsx:107` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **チュートリアルが中断・再読み込みで最初からやり直しになる**
+  `components/english/EnglishApp.tsx:116` … UX/失敗経路 / 確認済 / 修正コスト:中
+- **チュートリアルのバナーが回答ボタン・入力欄を画面外へ押し出す**
+  `components/english/EnglishApp.tsx:293` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **長文生成が中断不能で、タブを離れると二重生成しやすい**
+  `components/english/ReadingTab.tsx:317` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **APIがJSON以外を返すと生のJSパースエラーが画面に出る**
+  `components/english/ReadingTab.tsx:158` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **難易度設定を変えても出題中のキューが切り替わらない**
+  `components/english/CardFilterSheet.tsx:68` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **文法のトピック選択と解答途中がタブ切り替えで失われる**
+  `components/english/GrammarTab.tsx:45` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **確認ボタンの2段目が指の下に出てくる（誤タップで会話が消える）**
+  `components/english/ConfirmButton.tsx:34` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **背景画像の削除だけ確認なしの一発操作**
+  `components/english/CardDetailSheet.tsx:961` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **アクセシビリティ: シートのフォーカス管理とアイコンのみボタンのラベル**
+  `components/english/Sheet.tsx:112` … UX/失敗経路 / 確認済 / 修正コスト:中
+- **文法の誤タップが取り消せず、苦手判定に残る**
+  `components/english/ChoiceQuestion.tsx:29` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **AI会話の入力欄が1行のまま伸びない**
+  `components/english/ChatTab.tsx:288` … UX/失敗経路 / 確認済 / 修正コスト:小
+- **長文の単語索引が失敗すると、ハイライトが黙って押せなくなる**
+  `components/english/ReadingTab.tsx:69` … UX/失敗経路 / 確認済 / 修正コスト:小

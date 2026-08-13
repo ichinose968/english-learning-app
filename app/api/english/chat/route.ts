@@ -86,6 +86,11 @@ export async function POST(req: NextRequest) {
     role: m.role,
     content: m.text,
   }));
+  // **APIは先頭が user でないと 400 になる。** 履歴を後ろから切ると先頭が
+  // assistant になることがあり、そうなると送信が失敗する。失敗した回は
+  // assistant の返信が増えないので長さの偶奇が変わらず、以後ずっと同じ形で
+  // 切り出されて **AI会話タブが恒久的に壊れる**（会話をリセットするまで直らない）
+  while (messages.length > 0 && messages[0].role !== "user") messages.shift();
 
   try {
     // 添削なしなら素のテキストだけ返す

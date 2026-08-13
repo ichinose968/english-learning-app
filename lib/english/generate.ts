@@ -50,7 +50,16 @@ export async function generateJson<T>(args: {
   return JSON.parse(text) as T;
 }
 
-// 会話用。構造化せずにテキストをそのまま返す
+// 会話用。構造化せずにテキストをそのまま返す。
+//
+// **claude-opus-5 は `thinking` を省略すると adaptive thinking が既定で走り、
+// その思考トークンも `max_tokens` に含まれる。** 以前ここは 1024 だったので、
+// 会話量「長め」や履歴が伸びたときに思考で使い切って、途中で切れた返信や
+// 空文字が HTTP 200 のまま返っていた（`stop_reason` を見ていなかったので
+// 気づけない）。上限を上げたうえで、短い雑談に見合うよう effort を下げる。
+// `thinking: disabled` は選ばない。opus-5 で思考を切ると
+// ツール呼び出しが本文に混ざる／`<thinking>` タグが漏れる既知の失敗があり、
+// effort を下げるほうが安全で、費用もほぼ同じだけ下がる。
 export async function generateChatReply(args: {
   system: string;
   messages: { role: "user" | "assistant"; content: string }[];
@@ -59,14 +68,23 @@ export async function generateChatReply(args: {
   const client = new Anthropic();
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: args.maxTokens ?? 1024,
+    max_tokens: args.maxTokens ?? 4000,
     system: args.system,
     messages: args.messages,
+    output_config: { effort: "low" },
   });
   if (response.stop_reason === "refusal") {
     throw new GenerateRefusalError();
   }
-  return response.content.find((b) => b.type === "text")?.text ?? "";
+  // 切れた返信を成功として返さない（generateJson と同じ扱い）
+  if (response.stop_reason === "max_tokens") {
+    throw new Error("output truncated (max_tokens)");
+  }
+  const text = response.content.find((b) => b.type === "text")?.text ?? "";
+  if (!text.trim()) {
+    throw new Error("empty reply");
+  }
+  return text;
 }
 
 export class GenerateRefusalError extends Error {

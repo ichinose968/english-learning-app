@@ -335,7 +335,7 @@ function NextCard({
 
 // 1単語分のカード (Tinder風)。スワイプまたは下部のボタンで回答する。
 // 回答するとカードが裏返って意味を表示し、「次へ」でカードが飛んでいく。
-// 状態のリセットは親が key={item.word} を変えることで行う
+// 状態のリセットは親が key を変えることで行う (`単語#出題連番`。同じ語が続いても作り直す)
 export function WordCard({
   item,
   note,
@@ -1124,6 +1124,11 @@ export function VocabTab({ data, setData }: Props) {
   const [slideFrom, setSlideFrom] = useState(24);
   const [queue, setQueue] = useState<WordDbEntry[]>([]);
   const [index, setIndex] = useState(0);
+  // 出題のたびに1つ増える。WordCard の key に混ぜて、**同じ語が2回続いても
+  // 必ず作り直させる**ための番号。復習の対象が1語しか無いとき
+  // (測定10問で1問だけ×だった直後など) キューは [a] のまま作り直されるので、
+  // key が item.word だけだとカードが解説面のまま固まって先へ進めなくなる
+  const [cardSeq, setCardSeq] = useState(0);
   // 飛んでいる最中のカードのコピー (触れない見た目だけの層)。
   // 1枚に限らず配列で持つ。演習モードは続けて仕分ける前提なので、
   // 前のカードが飛びきる前に次を飛ばすことがよくある。1枚しか持たないと
@@ -1537,6 +1542,7 @@ export function VocabTab({ data, setData }: Props) {
 
   // 次の1問へ。キューを使い切る前に継ぎ足して無限に出題を続ける
   const next = () => {
+    setCardSeq((n) => n + 1);
     const remaining = queue.length - (index + 1);
     if (remaining < 1) {
       // 継ぎ足せていなかったときの保険。作り直して先頭から出し直す
@@ -1573,6 +1579,73 @@ export function VocabTab({ data, setData }: Props) {
 
   // ---- 表示 ----
 
+  // 出題モードの切替タブ。件数は buildQueue が同じモードで拾う範囲に合わせる
+  // (復習の件数 = 学習中)。演習は無限に出し続けるので件数を出さない
+  const modeCount: Record<QuizMode, number | null> = {
+    drill: null,
+    review: stats ? stats.learning : null,
+  };
+  const modeTabs = (
+    <div className="flex items-stretch border-b border-zinc-200 dark:border-zinc-800">
+      <button
+        onClick={() => setFilterOpen((v) => !v)}
+        aria-label="スワイプ設定"
+        aria-expanded={filterOpen}
+        className="mr-1 flex w-11 shrink-0 items-center justify-center text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+      >
+        <SlidersHorizontal size={20} />
+      </button>
+      {/* タブは2つだけなので横スクロールにせず、残り幅を等分する */}
+      {MODE_TABS.map((t) => (
+        <button
+          key={t.key}
+          onClick={() => switchMode(t.key)}
+          className={`relative flex-1 py-3 text-sm transition-colors ${
+            mode === t.key
+              ? "font-bold"
+              : "text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+          }`}
+        >
+          {t.label}
+          {modeCount[t.key] !== null && (
+            <span className="ml-1 text-[10px] text-zinc-400">
+              {modeCount[t.key]}
+            </span>
+          )}
+          {mode === t.key && (
+            <span className="absolute inset-x-0 bottom-0 mx-auto h-1 w-14 rounded-full bg-[#4A99EA]" />
+          )}
+        </button>
+      ))}
+    </div>
+  );
+
+  // スワイプ設定。上のタブの下から画面の下へ向けて開く。
+  // **modeTabs ともども早期 return より前で定義する。** 出題できない状態の画面
+  // (イディオムだけ + 未測定 など) からも、ここを開いて出題範囲を戻せないと
+  // 抜け道が無くなる
+  const filterSheet = (
+    <Sheet
+      side="bottom"
+      open={filterOpen}
+      onClose={() => setFilterOpen(false)}
+      top={138}
+      bottom={0}
+    >
+      <CardFilterSheet
+        settings={data.settings.vocab}
+        setData={setData}
+        onChange={(next) =>
+          setData((prev) => ({
+            ...prev,
+            settings: { ...prev.settings, vocab: next },
+          }))
+        }
+        onClose={() => setFilterOpen(false)}
+      />
+    </Sheet>
+  );
+
   if (dbError) {
     return (
       <div className="rounded-2xl border border-red-500/40 bg-white p-6 text-center text-sm text-red-500 dark:bg-black">
@@ -1591,14 +1664,33 @@ export function VocabTab({ data, setData }: Props) {
   }
 
   // イディオム部門は語彙タブで測定した単語レベルを使う
+  // イディオムだけ + 未測定。**ここは完全な行き止まりだった。**
+  // この枝には modeTabs (スワイプ設定を開く唯一のボタン) も測定のボタンも無く、
+  // 歯車の中にも出題範囲を戻す導線が無いので、
+  // 「学習データをリセット」で全記録を捨てる以外に抜け道が無かった。
+  // しかも文面は存在しない「語彙タブ」を案内していた。
+  // 出口を2つ (測定を始める / スワイプ設定を開く) 置く
   if (kind === "idioms" && vocabLevel.current === null) {
     return (
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
-        <Gauge className="mx-auto text-[#4A99EA]" size={28} />
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-          イディオムの出題には単語レベルを使います。先に「語彙」タブでレベル測定
-          ({PLACEMENT_SIZE}問) を行ってください。
-        </p>
+      <div className="flex h-full flex-col">
+        {modeTabs}
+        <div className="mt-3 rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
+          <Gauge className="mx-auto text-[#4A99EA]" size={28} />
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+            イディオムの出題には単語レベルを使います。先にレベル測定 (
+            {PLACEMENT_SIZE}問) を行ってください。
+          </p>
+          <p className="mt-1 text-xs text-zinc-400">
+            左上の「スワイプ設定」から出題範囲に「語彙」を足すこともできます。
+          </p>
+          <button
+            onClick={startPlacement}
+            className="mt-4 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
+          >
+            測定をはじめる ({PLACEMENT_SIZE}問)
+          </button>
+        </div>
+        {filterSheet}
       </div>
     );
   }
@@ -1772,73 +1864,13 @@ export function VocabTab({ data, setData }: Props) {
     </div>
   );
 
-  // 出題モードの切替タブ。件数は buildQueue が同じモードで拾う範囲に合わせる
-  // (復習の件数 = 学習中)。演習は無限に出し続けるので件数を出さない
-  const modeCount: Record<QuizMode, number | null> = {
-    drill: null,
-    review: stats ? stats.learning : null,
-  };
-  const modeTabs = (
-    <div className="flex items-stretch border-b border-zinc-200 dark:border-zinc-800">
-      <button
-        onClick={() => setFilterOpen((v) => !v)}
-        aria-label="スワイプ設定"
-        aria-expanded={filterOpen}
-        className="mr-1 flex w-11 shrink-0 items-center justify-center text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-      >
-        <SlidersHorizontal size={20} />
-      </button>
-      {/* タブは2つだけなので横スクロールにせず、残り幅を等分する */}
-      {MODE_TABS.map((t) => (
-        <button
-          key={t.key}
-          onClick={() => switchMode(t.key)}
-          className={`relative flex-1 py-3 text-sm transition-colors ${
-            mode === t.key
-              ? "font-bold"
-              : "text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900"
-          }`}
-        >
-          {t.label}
-          {modeCount[t.key] !== null && (
-            <span className="ml-1 text-[10px] text-zinc-400">
-              {modeCount[t.key]}
-            </span>
-          )}
-          {mode === t.key && (
-            <span className="absolute inset-x-0 bottom-0 mx-auto h-1 w-14 rounded-full bg-[#4A99EA]" />
-          )}
-        </button>
-      ))}
-    </div>
-  );
-
   if (phase === "quiz") {
     const item = queue[index];
     // 背面に重ねるカード。キューは残り1枚で継ぎ足すので、通常は必ず存在する
     const nextItem = queue[index + 1];
     return (
       <div className="flex h-full flex-col gap-3">
-        {/* スワイプ設定は上のタブの下から、画面の下へ向けて開く */}
-        <Sheet
-          side="bottom"
-          open={filterOpen}
-          onClose={() => setFilterOpen(false)}
-          top={138}
-          bottom={0}
-        >
-          <CardFilterSheet
-            settings={data.settings.vocab}
-            setData={setData}
-            onChange={(next) =>
-              setData((prev) => ({
-                ...prev,
-                settings: { ...prev.settings, vocab: next },
-              }))
-            }
-            onClose={() => setFilterOpen(false)}
-          />
-        </Sheet>
+        {filterSheet}
         {modeTabs}
         {shiftMsg && (
           <div className="flex items-start gap-2 rounded-2xl bg-[#4A99EA]/10 p-3 text-sm text-[#4A99EA]">
@@ -1864,7 +1896,7 @@ export function VocabTab({ data, setData }: Props) {
           >
             {flyingLayer}
             <WordCard
-              key={item.word}
+              key={`${item.word}#${cardSeq}`}
               onFly={startFlight}
               autoSpeak={data.settings.vocab.autoSpeak}
               settleButtons={flying.length > 0}
