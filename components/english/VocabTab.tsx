@@ -31,6 +31,8 @@ import {
   VocabAction,
   VocabEntry,
   VocabSettings,
+  DEFAULT_TAG_PROPS,
+  TagProp,
   WordDbEntry,
   WordEdit,
 } from "@/lib/english/types";
@@ -53,6 +55,7 @@ import {
   LEVEL_ORDER,
   LEVEL_SHIFT_WINDOW,
   PLACEMENT_SIZE,
+  reviewProgressOf,
   statusBadges,
   QuizMode,
   samplePlacementWord,
@@ -353,6 +356,8 @@ export function WordCard({
   status,
   onSetResult,
   onSetProgress,
+  tagProps = DEFAULT_TAG_PROPS,
+  onChangeTagProps = () => {},
   ghost = false,
   flyDir = null,
   flyFrom,
@@ -365,6 +370,10 @@ export function WordCard({
 }: {
   item: WordDbEntry;
   note: string | undefined;
+  // タグのプロパティ定義。カード詳細から追加・削除するのでそのまま渡す。
+  // 飛んでいくコピー (ghost) とチュートリアルのデモは詳細を開けないので省略できる
+  tagProps?: TagProp[];
+  onChangeTagProps?: (next: TagProp[]) => void;
   // 後ろに重ねて見せる次のカード (キューの末尾やレベル測定中は無い)
   nextItem: WordDbEntry | undefined;
   nextNote: string | undefined;
@@ -1079,6 +1088,8 @@ export function WordCard({
 
       {detailOpen && (
         <CardDetailSheet
+          tagProps={tagProps}
+          onChangeTagProps={onChangeTagProps}
           item={item}
           note={note}
           onClose={() => setDetailOpen(false)}
@@ -1583,7 +1594,14 @@ export function VocabTab({ data, setData }: Props) {
   // (復習の件数 = 学習中)。演習は無限に出し続けるので件数を出さない
   const modeCount: Record<QuizMode, number | null> = {
     drill: null,
-    review: stats ? stats.learning : null,
+    // **buildQueue(review) が拾う集合と必ず一致させる。**
+    // 復習の対象は設定 (reviewProgress) で選べるので、件数もそれに従う
+    review: stats
+      ? reviewProgressOf(data.settings.vocab).reduce(
+          (n, p) => n + stats[p],
+          0,
+        )
+      : null,
   };
   const modeTabs = (
     <div className="flex items-stretch border-b border-zinc-200 dark:border-zinc-800">
@@ -1634,6 +1652,7 @@ export function VocabTab({ data, setData }: Props) {
     >
       <CardFilterSheet
         settings={data.settings.vocab}
+        data={data}
         setData={setData}
         onChange={(next) =>
           setData((prev) => ({
@@ -1739,6 +1758,10 @@ export function VocabTab({ data, setData }: Props) {
         <WordCard
           key={pItem.word}
           onFly={startFlight}
+          tagProps={data.tagProps}
+          onChangeTagProps={(next) =>
+            setData((prev) => ({ ...prev, tagProps: next }))
+          }
           autoSpeak={data.settings.vocab.autoSpeak}
           settleButtons={flying.length > 0}
           item={applyEdit(pItem, data.edits[pItem.word])}
@@ -1898,6 +1921,10 @@ export function VocabTab({ data, setData }: Props) {
             <WordCard
               key={`${item.word}#${cardSeq}`}
               onFly={startFlight}
+              tagProps={data.tagProps}
+              onChangeTagProps={(next) =>
+                setData((prev) => ({ ...prev, tagProps: next }))
+              }
               autoSpeak={data.settings.vocab.autoSpeak}
               settleButtons={flying.length > 0}
               item={applyEdit(item, data.edits[item.word])}

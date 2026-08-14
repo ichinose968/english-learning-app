@@ -11,19 +11,18 @@ import {
   X,
 } from "lucide-react";
 import {
-  DOMAIN_LABEL_JA,
+  DEFAULT_TAG_PROPS,
   LastResult,
   Progress,
   PROGRESS_OPTIONS,
   RESULT_OPTIONS,
-  THEME_LABEL_JA,
+  TagProp,
+  tagValuesOf,
   WordDbEntry,
   WordEdit,
-  WORD_DOMAINS,
-  WORD_EXAMS,
-  WORD_THEMES,
 } from "@/lib/english/types";
 import { primeSpeech, speak } from "@/lib/english/speech";
+import { ConfirmButton } from "./ConfirmButton";
 
 type SectionKey = "status" | "meaning" | "tags" | "example" | "related" | "note";
 
@@ -82,6 +81,23 @@ const COLUMN_MAX_PX = 672;
 const columnWidth = () => Math.min(window.innerWidth, COLUMN_MAX_PX);
 
 // 関連語は「word = 意味」の行として編集する
+/*
+ * 見出し語の文字サイズ。**カード表面と同じ text-4xl を基準にする。**
+ * 詳細はカードから開くので、同じ語がそこで小さくなるのはおかしい
+ * (以前は text-2xl で、カードの 4xl から一段縮んでいた)。
+ *
+ * ただし見出し語はイディオムを含み、最長は37文字
+ * ("give someone the benefit of the doubt")。全部 4xl にすると
+ * 長いものが3行に折り返して、sticky なヘッダーが画面を食う。
+ * 語彙・イディオム 7,633件のうち約6,000件は10文字以下なので、
+ * 大半は最大サイズのまま、長いものだけ落とす。
+ */
+function headwordSize(word: string): string {
+  if (word.length <= 12) return "text-4xl";
+  if (word.length <= 20) return "text-3xl";
+  return "text-2xl";
+}
+
 function relatedToText(list: { word: string; meaningJa: string }[]): string {
   return list.map((r) => `${r.word} = ${r.meaningJa}`).join("\n");
 }
@@ -201,6 +217,8 @@ export function CardDetailSheet({
   status,
   onSetResult,
   onSetProgress,
+  tagProps,
+  onChangeTagProps,
 }: {
   item: WordDbEntry; // 編集内容を反映済みのエントリ
   note: string | undefined;
@@ -216,6 +234,9 @@ export function CardDetailSheet({
   showUnsure?: boolean;
   // カード画面から開いたときの開始位置。渡されない場合は中央から拡大する
   origin?: SheetOrigin;
+  // タグのプロパティ定義 (全単語で共通)。この画面から追加・削除する
+  tagProps: TagProp[];
+  onChangeTagProps: (next: TagProp[]) => void;
   // 学習状況。ラベルと色は呼び出し側 (単語一覧と共通の定義) から受け取る。
   // 前回結果は未回答なら label が空文字になり、バッジを描かない
   status: {
@@ -232,9 +253,13 @@ export function CardDetailSheet({
   const [dMeaning, setDMeaning] = useState(item.meaningJa);
   const [dExEn, setDExEn] = useState(item.exampleEn);
   const [dExJa, setDExJa] = useState(item.exampleJa);
-  const [dExams, setDExams] = useState<string[]>(item.exams ?? []);
-  const [dDomains, setDDomains] = useState<string[]>(item.domains ?? []);
-  const [dThemes, setDThemes] = useState<string[]>(item.themes ?? []);
+  // この単語のタグ選択 (プロパティID → 値)。保存を押すまでは下書き
+  const [dTags, setDTags] = useState<Record<string, string[]>>({});
+  // 新しい選択肢の入力欄を開いているプロパティと、その入力値
+  const [addingTo, setAddingTo] = useState<string | null>(null);
+  const [newTag, setNewTag] = useState("");
+  const [newProp, setNewProp] = useState("");
+  const [tagError, setTagError] = useState<string | null>(null);
   const [dRelated, setDRelated] = useState(relatedToText(item.related ?? []));
   const [dNote, setDNote] = useState(note ?? "");
   const fileRef = useRef<HTMLInputElement>(null);
@@ -552,16 +577,86 @@ export function CardDetailSheet({
     setDMeaning(item.meaningJa);
     setDExEn(item.exampleEn);
     setDExJa(item.exampleJa);
-    setDExams(item.exams ?? []);
-    setDDomains(item.domains ?? []);
-    setDThemes(item.themes ?? []);
+    setDTags(
+      Object.fromEntries(tagProps.map((p) => [p.id, tagValuesOf(p, item)])),
+    );
+    setAddingTo(null);
+    setNewTag("");
+    setNewProp("");
     setDRelated(relatedToText(item.related ?? []));
     setDNote(note ?? "");
     setEditing(key);
   };
 
-  const toggle = (list: string[], v: string, set: (x: string[]) => void) =>
-    set(list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
+  // 選択肢を1つ足す。**全単語で共通の定義**なので、単語の保存を待たず即反映する。
+  // 追加した値はそのままこの単語にも付けておく (足してすぐ使いたいのが普通)
+  const addOption = (prop: TagProp) => {
+    const v = newTag.trim();
+    if (!v) return;
+    if (prop.options.some((o) => o.value === v || o.label === v)) {
+      setTagError(`「${v}」は「${prop.label}」に既にあります。`);
+      return;
+    }
+    onChangeTagProps(
+      tagProps.map((x) =>
+        x.id === prop.id
+          ? { ...x, options: [...x.options, { value: v, label: v }] }
+          : x,
+      ),
+    );
+    setDTags((prev) => ({ ...prev, [prop.id]: [...(prev[prop.id] ?? []), v] }));
+    setNewTag("");
+    setAddingTo(null);
+    setTagError(null);
+  };
+
+  // 消されている組み込みプロパティ (戻す導線に使う)
+  const missingBuiltins = DEFAULT_TAG_PROPS.filter(
+    (d) => !tagProps.some((p) => p.id === d.id),
+  );
+
+  /*
+   * 選択肢を1つ消す。**単語に付いた値は消さない。**
+   *
+   * 組み込みプロパティの値は単語DB側にあり (7,633語ぶん)、そこを書き換えることは
+   * できない。だから「定義から外れた値は表示にもフィルタにも出さない」という
+   * 一本の規則にしてある。自作プロパティも同じ扱いにすると、
+   * **消した選択肢を作り直せば元どおり戻る**ので、消す操作が怖くない
+   * (組み込みプロパティを消したときの ↺ と同じ考え方)
+   */
+  const removeOption = (prop: TagProp, value: string) => {
+    onChangeTagProps(
+      tagProps.map((x) =>
+        x.id === prop.id
+          ? { ...x, options: x.options.filter((o) => o.value !== value) }
+          : x,
+      ),
+    );
+    setDTags((prev) => ({
+      ...prev,
+      [prop.id]: (prev[prop.id] ?? []).filter((v) => v !== value),
+    }));
+    setTagError(null);
+  };
+
+  // プロパティを1つ足す。IDは表示名と切り離す (名前を変えても付けたタグが外れないように)
+  const addProp = () => {
+    const label = newProp.trim();
+    if (!label) return;
+    if (tagProps.some((p) => p.label === label)) {
+      setTagError(`「${label}」は既にあります。`);
+      return;
+    }
+    const prop: TagProp = {
+      id: `p_${crypto.randomUUID().slice(0, 8)}`,
+      label,
+      options: [],
+    };
+    onChangeTagProps([...tagProps, prop]);
+    setDTags((prev) => ({ ...prev, [prop.id]: [] }));
+    setNewProp("");
+    setTagError(null);
+  };
 
   const tagChip = (active: boolean) =>
     `rounded-full px-2.5 py-0.5 text-xs transition-colors ${
@@ -614,7 +709,11 @@ export function CardDetailSheet({
           <header className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/85 px-4 py-3 backdrop-blur-md">
             <div>
               <div className="flex items-center gap-2">
-                <p className="text-2xl font-bold tracking-tight">{item.word}</p>
+                <p
+                  className={`font-bold leading-tight tracking-tight break-words ${headwordSize(item.word)}`}
+                >
+                  {item.word}
+                </p>
                 <button
                   type="button"
                   aria-label={`${item.word} を読み上げる`}
@@ -773,73 +872,206 @@ export function CardDetailSheet({
             )}
           </Box>
 
-          {/* タグ */}
+          {/* タグ。プロパティ (試験・分野・テーマ・自作) は全単語で共通の定義で、
+              この画面から追加・削除できる。値の選択だけがこの単語の下書き */}
           <Box
-            label="タグ (試験・分野・テーマ)"
+            label="タグ"
             editing={editing === "tags"}
             onEdit={() => startEdit("tags")}
             onCancel={() => setEditing(null)}
             onSave={() => {
-              onSaveEdit({ exams: dExams, domains: dDomains, themes: dThemes });
+              // 既存の値に重ねる。編集中に消したプロパティのぶんは
+              // dTags に無いだけで残るので、戻せば元どおりになる
+              const prevTags =
+                (item as unknown as { tags?: Record<string, string[]> }).tags ??
+                {};
+              onSaveEdit({ tags: { ...prevTags, ...dTags } });
               setEditing(null);
             }}
           >
             {editing === "tags" ? (
-              <div className="space-y-3">
-                <div>
-                  <p className="mb-1 text-xs text-zinc-500">試験</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {WORD_EXAMS.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => toggle(dExams, t, setDExams)}
-                        className={tagChip(dExams.includes(t))}
-                      >
-                        {t}
-                      </button>
-                    ))}
+              <div className="space-y-4">
+                {tagProps.map((prop) => (
+                  <div key={prop.id}>
+                    {/* プロパティ名は自由入力なので長くなりうる。名前側を
+                        truncate で詰めて、削除ボタンを押し出さないようにする */}
+                    <div className="mb-1 flex items-start justify-between gap-2">
+                      <p className="min-w-0 flex-1 truncate text-xs text-zinc-500">
+                        {prop.label}
+                      </p>
+                      <ConfirmButton
+                        label="プロパティを削除"
+                        // 名前をそのまま入れると質問文が際限なく伸びるので、
+                        // 長いものは頭だけ見せる (どれを消すかは分かる)
+                        question={`「${
+                          prop.label.length > 10
+                            ? `${prop.label.slice(0, 10)}…`
+                            : prop.label
+                        }」を削除しますか？`}
+                        confirmLabel="削除する"
+                        className="rounded-full border border-zinc-700 px-2.5 py-0.5 text-[11px] text-zinc-500 hover:text-red-400"
+                        onConfirm={() =>
+                          onChangeTagProps(
+                            tagProps.filter((x) => x.id !== prop.id),
+                          )
+                        }
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {/* チップは「選ぶ」と「タグごと消す」の2つの当たり判定を持つ。
+                          button の入れ子は不正なので、span で包んで横に並べる */}
+                      {prop.options.map((o) => {
+                        const on = (dTags[prop.id] ?? []).includes(o.value);
+                        return (
+                          <span
+                            key={o.value}
+                            className={`inline-flex items-center overflow-hidden rounded-full ${
+                              on
+                                ? "bg-[#4A99EA]/15 text-[#4A99EA]"
+                                : "border border-zinc-700 text-zinc-400"
+                            }`}
+                          >
+                            <button
+                              onClick={() =>
+                                setDTags((prev) => {
+                                  const cur = prev[prop.id] ?? [];
+                                  return {
+                                    ...prev,
+                                    [prop.id]: cur.includes(o.value)
+                                      ? cur.filter((x) => x !== o.value)
+                                      : [...cur, o.value],
+                                  };
+                                })
+                              }
+                              className="max-w-[10rem] truncate py-0.5 pr-1 pl-2.5 text-xs"
+                            >
+                              {o.label}
+                            </button>
+                            <button
+                              onClick={() => removeOption(prop, o.value)}
+                              aria-label={`タグ「${o.label}」を削除`}
+                              className="py-0.5 pr-2 pl-0.5 text-xs opacity-50 hover:opacity-100"
+                            >
+                              <X size={11} />
+                            </button>
+                          </span>
+                        );
+                      })}
+                      {addingTo === prop.id ? (
+                        <span className="flex items-center gap-1">
+                          <input
+                            autoFocus
+                            value={newTag}
+                            onChange={(e) => setNewTag(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") addOption(prop);
+                              if (e.key === "Escape") setAddingTo(null);
+                            }}
+                            placeholder="タグ名"
+                            className="w-28 rounded-full border border-zinc-700 bg-transparent px-2.5 py-0.5 text-xs outline-none focus:border-[#4A99EA]"
+                          />
+                          <button
+                            onClick={() => addOption(prop)}
+                            className="rounded-full bg-[#4A99EA] px-2.5 py-0.5 text-xs font-bold text-white"
+                          >
+                            追加
+                          </button>
+                        </span>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setNewTag("");
+                            setAddingTo(prop.id);
+                          }}
+                          className="rounded-full border border-dashed border-zinc-600 px-2.5 py-0.5 text-xs text-zinc-500 hover:text-zinc-300"
+                        >
+                          ＋ タグ
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <p className="mb-1 text-xs text-zinc-500">分野</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {WORD_DOMAINS.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => toggle(dDomains, t, setDDomains)}
-                        className={tagChip(dDomains.includes(t))}
-                      >
-                        {DOMAIN_LABEL_JA[t] ?? t}
-                      </button>
-                    ))}
+                ))}
+
+                {/* 消した組み込みプロパティを戻す。
+                    組み込みは単語DBの値 (全7,633語ぶん) を読む口なので、
+                    名前で作り直しても別IDの空プロパティにしかならず元に戻せない。
+                    間違って消したときの出口をここに置く */}
+                {missingBuiltins.length > 0 && (
+                  <div className="border-t border-zinc-800 pt-3">
+                    <p className="mb-1 text-xs text-zinc-500">
+                      消した組み込みプロパティを戻す
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {missingBuiltins.map((p) => (
+                        <button
+                          key={p.id}
+                          onClick={() => {
+                            onChangeTagProps([...tagProps, p]);
+                            // **下書きにも同時に入れる。** dTags は編集を開いた
+                            // 時点の tagProps で作るので、あとから戻した
+                            // プロパティのキーが無いまま保存すると、その
+                            // プロパティに付いていた値ごと消えてしまう
+                            setDTags((prev) => ({
+                              ...prev,
+                              [p.id]: tagValuesOf(p, item),
+                            }));
+                          }}
+                          className="rounded-full border border-dashed border-zinc-600 px-2.5 py-0.5 text-xs text-zinc-400 hover:text-zinc-200"
+                        >
+                          ↺ {p.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <p className="mb-1 text-xs text-zinc-500">テーマ</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {WORD_THEMES.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => toggle(dThemes, t, setDThemes)}
-                        className={tagChip(dThemes.includes(t))}
-                      >
-                        {THEME_LABEL_JA[t] ?? t}
-                      </button>
-                    ))}
+                )}
+
+                {/* プロパティの追加。ここだけは単語ではなく設定の変更なので、
+                    保存を待たずその場で反映する */}
+                <div className="border-t border-zinc-800 pt-3">
+                  <p className="mb-1 text-xs text-zinc-500">
+                    プロパティを追加 (例: 好き度)
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <input
+                      value={newProp}
+                      onChange={(e) => setNewProp(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") addProp();
+                      }}
+                      placeholder="プロパティ名"
+                      className={inputCls}
+                    />
+                    <button
+                      onClick={addProp}
+                      className="shrink-0 rounded-full bg-[#4A99EA] px-4 py-1.5 text-sm font-bold text-white hover:bg-[#3d87d4]"
+                    >
+                      追加
+                    </button>
                   </div>
+                  {tagError && (
+                    <p className="mt-1 text-xs text-red-400">{tagError}</p>
+                  )}
                 </div>
               </div>
+            ) : tagProps.length === 0 ? (
+              <p className="text-xs text-zinc-400">
+                プロパティがありません (編集から追加できます)
+              </p>
             ) : (
               <div className="space-y-2">
-                <TagRow label="試験" items={item.exams ?? []} />
-                <TagRow
-                  label="分野"
-                  items={(item.domains ?? []).map((d) => DOMAIN_LABEL_JA[d] ?? d)}
-                />
-                <TagRow
-                  label="テーマ"
-                  items={(item.themes ?? []).map((t) => THEME_LABEL_JA[t] ?? t)}
-                />
+                {tagProps.map((prop) => (
+                  <TagRow
+                    key={prop.id}
+                    label={prop.label}
+                    // **定義に残っている選択肢だけ出す。** 消したタグが
+                    // 単語側に残っていても表示しない (組み込みの値は単語DB側に
+                    // あって消せないので、表示を定義に合わせるのが唯一の一貫した規則)
+                    items={tagValuesOf(prop, item).flatMap((v) => {
+                      const o = prop.options.find((x) => x.value === v);
+                      return o ? [o.label] : [];
+                    })}
+                  />
+                ))}
               </div>
             )}
           </Box>

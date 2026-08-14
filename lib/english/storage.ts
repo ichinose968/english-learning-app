@@ -8,6 +8,8 @@ import {
   Level,
   Progress,
   QuizMode,
+  TagProp,
+  DEFAULT_TAG_PROPS,
   VocabEntry,
 } from "./types";
 import { clampRate } from "./speech";
@@ -310,6 +312,13 @@ function migrateSkipReveal(raw: unknown): Record<QuizMode, boolean> {
   };
 }
 
+// 復習モードで出す学習進捗度。この機能より前のデータには無いので既定 (学習中) に寄せる。
+// **空配列は「復習を出さない」という正しい選択**なので、そのまま通す
+function migrateReviewProgress(raw: unknown): Progress[] {
+  if (!Array.isArray(raw)) return DEFAULT_VOCAB_SETTINGS.reviewProgress;
+  return raw.filter((p): p is Progress => p === "learning" || p === "done");
+}
+
 // 学習完了とみなす連続○の回数。壊れた値は既定に寄せる
 function migrateMasterCount(raw: unknown): number {
   if (typeof raw !== "number" || !Number.isFinite(raw)) {
@@ -329,6 +338,41 @@ function migrateDrillNewRatio(raw: unknown): number {
 // 読み上げの速さ。旧データには無いので既定の1に寄せ、範囲外は丸める
 function migrateSpeechRate(raw: unknown): number {
   return clampRate(typeof raw === "number" ? raw : undefined);
+}
+
+/*
+ * タグのプロパティ定義。
+ * **キーが無いとき（この機能より前のデータ）だけ既定の3つを入れる。**
+ * 空配列は「全部消した」という正しい状態なので、既定に戻してはいけない。
+ */
+function migrateTagProps(raw: unknown): TagProp[] {
+  if (!Array.isArray(raw)) return DEFAULT_TAG_PROPS;
+  const out: TagProp[] = [];
+  for (const p of raw) {
+    if (typeof p !== "object" || p === null) continue;
+    const r = p as Record<string, unknown>;
+    if (typeof r.id !== "string" || typeof r.label !== "string") continue;
+    const options = Array.isArray(r.options)
+      ? r.options.flatMap((o) => {
+          if (typeof o !== "object" || o === null) return [];
+          const oo = o as Record<string, unknown>;
+          if (typeof oo.value !== "string") return [];
+          return [
+            {
+              value: oo.value,
+              label: typeof oo.label === "string" ? oo.label : oo.value,
+            },
+          ];
+        })
+      : [];
+    out.push({
+      id: r.id,
+      label: r.label,
+      options,
+      ...(r.builtin === true ? { builtin: true } : {}),
+    });
+  }
+  return out;
 }
 
 /**
@@ -375,6 +419,9 @@ function normalize(parsed: Partial<EnglishData> | null): EnglishData {
         drillNewRatio: migrateDrillNewRatio(
           parsed.settings?.vocab?.drillNewRatio,
         ),
+        reviewProgress: migrateReviewProgress(
+          parsed.settings?.vocab?.reviewProgress,
+        ),
         autoSpeak: parsed.settings?.vocab?.autoSpeak === true,
         speechRate: migrateSpeechRate(parsed.settings?.vocab?.speechRate),
       },
@@ -383,6 +430,7 @@ function normalize(parsed: Partial<EnglishData> | null): EnglishData {
     vocabLevel: parsed.vocabLevel ?? { current: null, recent: [] },
     notes: parsed.notes ?? {},
     edits: parsed.edits ?? {},
+    tagProps: migrateTagProps(parsed.tagProps),
     grammar: parsed.grammar ?? {},
     grammarSeen: parsed.grammarSeen ?? [],
     readings: parsed.readings ?? [],

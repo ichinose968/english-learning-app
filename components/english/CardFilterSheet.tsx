@@ -8,16 +8,11 @@ import {
   EnglishData,
   Level,
   LEVELS,
+  Progress,
   VocabSettings,
 } from "@/lib/english/types";
-import {
-  clampRate,
-  setSpeechRate,
-  primeSpeech,
-  speak,
-  SPEECH_RATE_MAX,
-  SPEECH_RATE_MIN,
-} from "@/lib/english/speech";
+import { Collapsible } from "./Collapsible";
+import { ConfirmButton } from "./ConfirmButton";
 
 // 出題範囲はチェックの組み合わせで決める (両方オンなら混ぜて出す)
 function sourceOf(words: boolean, idioms: boolean): CardSource {
@@ -26,16 +21,41 @@ function sourceOf(words: boolean, idioms: boolean): CardSource {
 
 interface Props {
   settings: VocabSettings;
+  data: EnglishData;
   onChange: (next: VocabSettings) => void;
   setData: React.Dispatch<React.SetStateAction<EnglishData>>;
   onClose: () => void;
 }
 
-// 「スワイプ設定」。カード画面の左上ボタンから開く全画面シート
-export function CardFilterSheet({ settings, onChange, onClose }: Props) {
+const rowCls =
+  "flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 last:border-b-0 dark:border-zinc-800";
+const boxCls =
+  "overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800";
+const numCls =
+  "w-20 shrink-0 rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-right text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700";
+
+/*
+ * 「単語の設定」。カード画面の左上ボタンから開く全画面シート。
+ *
+ * **2階層の折りたたみで並べる。** 以前は section を縦に7つ並べただけで、
+ * 「どれが出題するカードを絞る設定で、どれが見え方の設定か」が読めなかった。
+ * 大分類は2つだけで、分ける基準は「出題される集合が変わるかどうか」:
+ *   1. 出題カードのフィルタリング (どのカードが出るか)
+ *   2. スワイプ時オプション (出たカードがどう見えるか)
+ * 歯車の中にあった単語レベルの表示と再測定も、難易度の設定と同じ場所にある
+ * ほうが自然なのでここへ移した。
+ */
+export function CardFilterSheet({
+  settings,
+  data,
+  onChange,
+  setData,
+  onClose,
+}: Props) {
   const [sourceError, setSourceError] = useState<string | null>(null);
   const [fieldError, setFieldError] = useState<string | null>(null);
   const [levelError, setLevelError] = useState<string | null>(null);
+  const [reviewError, setReviewError] = useState<string | null>(null);
 
   const set = <K extends keyof VocabSettings>(
     key: K,
@@ -48,7 +68,7 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
   const toggleSource = (kind: "words" | "idioms", checked: boolean) => {
     const next = kind === "words" ? [checked, useIdioms] : [useWords, checked];
     if (!next[0] && !next[1]) {
-      setSourceError("出題範囲は少なくとも1つ選んでください。");
+      setSourceError("語彙とイディオムのどちらかは選んでください。");
       return;
     }
     setSourceError(null);
@@ -58,7 +78,7 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
   const toggleField = (key: string, checked: boolean) => {
     const next = { ...settings.cardFields, [key]: checked };
     if (Object.values(next).every((v) => !v)) {
-      setFieldError("スワイプ時に表示する項目は少なくとも1つ選んでください。");
+      setFieldError("表示する項目は少なくとも1つ選んでください。");
       return;
     }
     setFieldError(null);
@@ -81,16 +101,58 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
     );
   };
 
+  const toggleReview = (p: Progress, checked: boolean) => {
+    const next = checked
+      ? [...settings.reviewProgress, p]
+      : settings.reviewProgress.filter((x) => x !== p);
+    if (next.length === 0) {
+      setReviewError("学習中と学習完了のどちらかは選んでください。");
+      return;
+    }
+    setReviewError(null);
+    set("reviewProgress", next);
+  };
+
   const errorLine = (msg: string) => (
     <p className="mt-2 flex items-center gap-1.5 text-xs text-red-500">
       <AlertCircle size={14} /> {msg}
     </p>
   );
 
+  // 折りたたんだままでも今の設定が分かるよう、見出しの右に1行で出す
+  const sourceSummary = [useWords && "語彙", useIdioms && "イディオム"]
+    .filter(Boolean)
+    .join("・");
+  const levelSummary =
+    settings.levelMode === "auto"
+      ? `自動 (${data.vocabLevel.current ?? "未測定"})`
+      : settings.manualLevels.join("・");
+  const reviewSummary = settings.reviewProgress
+    .map((p) => (p === "learning" ? "学習中" : "学習完了"))
+    .join("・");
+  const fieldSummary = CARD_FIELDS.filter((f) => settings.cardFields[f.key])
+    .map((f) => f.label)
+    .join("・");
+  const revealSummary = [
+    !settings.skipReveal.drill && "演習",
+    !settings.skipReveal.review && "復習",
+  ]
+    .filter(Boolean)
+    .join("・");
+
+  const checkbox = (checked: boolean, onChangeChecked: (v: boolean) => void) => (
+    <input
+      type="checkbox"
+      checked={checked}
+      onChange={(e) => onChangeChecked(e.target.checked)}
+      className="h-5 w-5 shrink-0 accent-[#4A99EA]"
+    />
+  );
+
   return (
     <div className="mx-auto max-w-2xl">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-base font-bold">スワイプ設定</h2>
+        <h2 className="text-base font-bold">単語の設定</h2>
         <button
           onClick={onClose}
           aria-label="設定を閉じる"
@@ -100,300 +162,306 @@ export function CardFilterSheet({ settings, onChange, onClose }: Props) {
         </button>
       </div>
 
-      <div className="space-y-6">
-        <section>
-          <h3 className="mb-1 text-sm font-bold">出題範囲</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            カードに出す種類を選びます。両方選ぶと混ぜて出題します。
+      <div className="space-y-3">
+        {/* ---- 1. 出題カードのフィルタリング ---- */}
+        <Collapsible
+          accent
+          defaultOpen
+          title="出題カードのフィルタリング"
+          summary=""
+        >
+          <p className="mb-1 px-1 text-xs text-zinc-500">
+            ここで選んだ条件に当てはまるカードだけが出題されます。
           </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
-              <span className="flex-1 text-sm font-medium">語彙</span>
-              <input
-                type="checkbox"
-                checked={useWords}
-                onChange={(e) => toggleSource("words", e.target.checked)}
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
-            <label className="flex items-center gap-3 px-4 py-3.5">
-              <span className="flex-1 text-sm font-medium">イディオム</span>
-              <input
-                type="checkbox"
-                checked={useIdioms}
-                onChange={(e) => toggleSource("idioms", e.target.checked)}
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
-          </div>
-          {sourceError && errorLine(sourceError)}
-        </section>
 
-        <section>
-          <h3 className="mb-1 text-sm font-bold">単語の難易度設定</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            出題する単語のレベルの決め方です。
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            {[
-              {
-                key: "auto" as const,
-                title: "自動設定",
-                desc: "最初の10問で測定し、直近の正解率で自動調整します",
-              },
-              {
-                key: "manual" as const,
-                title: "手動設定",
-                desc: "出題するレベルを自分で選びます (複数可)",
-              },
-            ].map((m) => (
-              <label
-                key={m.key}
-                className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 last:border-b-0 dark:border-zinc-800"
-              >
+          <Collapsible nested title="語彙とイディオム" summary={sourceSummary}>
+            <p className="mb-2 text-xs text-zinc-500">
+              カードに出す種類です。両方選ぶと混ぜて出題します。
+            </p>
+            <div className={boxCls}>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">語彙</span>
+                {checkbox(useWords, (v) => toggleSource("words", v))}
+              </label>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">イディオム</span>
+                {checkbox(useIdioms, (v) => toggleSource("idioms", v))}
+              </label>
+            </div>
+            {sourceError && errorLine(sourceError)}
+          </Collapsible>
+
+          <Collapsible nested title="難易度 (レベル)" summary={levelSummary}>
+            <p className="mb-2 text-xs text-zinc-500">
+              出題するカードのレベルの決め方です。
+            </p>
+
+            {/* 現在のレベルと再測定。歯車の「単語学習の設定」から移した */}
+            <div className="mb-3 flex items-center justify-between gap-3 rounded-2xl bg-zinc-50 px-3 py-2 text-sm dark:bg-zinc-900">
+              <span className="min-w-0 flex-1">
+                いまの難易度:{" "}
+                <span className="font-medium">
+                  {data.vocabLevel.current ?? "未測定"}
+                </span>
+                <span className="block text-xs text-zinc-500">
+                  最初の10問で測り、以後は直近の正解率で自動調整します
+                </span>
+              </span>
+              <ConfirmButton
+                label="再測定"
+                question="レベルを測り直しますか？ (学習記録は残ります)"
+                confirmLabel="測り直す"
+                className="shrink-0 rounded-full border border-zinc-300 px-3 py-1.5 text-xs whitespace-nowrap hover:bg-zinc-100 dark:border-zinc-600 dark:hover:bg-zinc-800"
+                onConfirm={() =>
+                  setData((prev) => ({
+                    ...prev,
+                    vocabLevel: { current: null, recent: [] },
+                  }))
+                }
+              />
+            </div>
+
+            <div className={boxCls}>
+              {(
+                [
+                  {
+                    key: "auto" as const,
+                    title: "自動設定",
+                    desc: "測ったレベルに合わせて自動で上下します",
+                  },
+                  {
+                    key: "manual" as const,
+                    title: "手動設定",
+                    desc: "出題するレベルを自分で選びます",
+                  },
+                ] as const
+              ).map((o) => (
+                <label key={o.key} className={rowCls}>
+                  <span className="flex-1 text-sm font-medium">
+                    {o.title}
+                    <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                      {o.desc}
+                    </span>
+                  </span>
+                  <input
+                    type="radio"
+                    name="levelMode"
+                    checked={settings.levelMode === o.key}
+                    onChange={() => set("levelMode", o.key)}
+                    className="h-5 w-5 shrink-0 accent-[#4A99EA]"
+                  />
+                </label>
+              ))}
+            </div>
+
+            {settings.levelMode === "manual" && (
+              <>
+                <div className={`mt-2 ${boxCls}`}>
+                  {LEVELS.map((l) => (
+                    <label key={l.key} className={rowCls}>
+                      <span className="flex-1 text-sm">
+                        {l.key}{" "}
+                        <span className="text-zinc-500">({l.label})</span>
+                        <span className="mt-0.5 block text-xs text-zinc-500">
+                          {l.guide}
+                        </span>
+                      </span>
+                      {checkbox(settings.manualLevels.includes(l.key), (v) =>
+                        toggleLevel(l.key, v),
+                      )}
+                    </label>
+                  ))}
+                </div>
+                {levelError && errorLine(levelError)}
+              </>
+            )}
+          </Collapsible>
+
+          <Collapsible
+            nested
+            title="演習モードの出題設定"
+            summary={`新出 ${settings.drillNewRatio}%`}
+          >
+            <p className="mb-2 text-xs text-zinc-500">
+              演習では、まだ見ていないカード (新出) と一度でも回答したカード
+              (既出) を混ぜて出します。その比率です。
+            </p>
+            <div className={boxCls}>
+              <label className={rowCls}>
                 <span className="flex-1 text-sm font-medium">
-                  {m.title}
+                  新出の割合
                   <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                    {m.desc}
+                    10枚あたり新出 {Math.round(settings.drillNewRatio / 10)} 枚 /
+                    既出 {10 - Math.round(settings.drillNewRatio / 10)} 枚。
+                    在庫が尽きた側はもう片方で埋めます
+                  </span>
+                </span>
+                <div className="flex shrink-0 items-center gap-1">
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    step={10}
+                    value={settings.drillNewRatio}
+                    onChange={(e) =>
+                      set(
+                        "drillNewRatio",
+                        Math.max(0, Math.min(100, Number(e.target.value) || 0)),
+                      )
+                    }
+                    className={numCls}
+                  />
+                  <span className="text-sm text-zinc-500">%</span>
+                </div>
+              </label>
+            </div>
+          </Collapsible>
+
+          <Collapsible
+            nested
+            title="復習モードの出題設定"
+            summary={reviewSummary}
+          >
+            <p className="mb-2 text-xs text-zinc-500">
+              復習に出すカードを学習進捗度で選びます。間違えた回数が多いカードほど
+              先に出ます。
+            </p>
+            <div className={boxCls}>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">
+                  学習中
+                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                    まだ身についていないカード
+                  </span>
+                </span>
+                {checkbox(settings.reviewProgress.includes("learning"), (v) =>
+                  toggleReview("learning", v),
+                )}
+              </label>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">
+                  学習完了
+                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                    覚えたカード。抜き打ちで確認したいときに足します
+                  </span>
+                </span>
+                {checkbox(settings.reviewProgress.includes("done"), (v) =>
+                  toggleReview("done", v),
+                )}
+              </label>
+            </div>
+            {reviewError && errorLine(reviewError)}
+
+            <p className="mt-3 mb-2 text-xs text-zinc-500">
+              学習完了とみなす条件です。初回で正解したカードは、その時点で学習完了になります。
+            </p>
+            <div className={boxCls}>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">
+                  学習完了とみなす回数
+                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                    この回数連続で ○ なら学習完了。△ や × を挟むと数え直し
                   </span>
                 </span>
                 <input
-                  type="radio"
-                  name="levelMode"
-                  checked={settings.levelMode === m.key}
-                  onChange={() => {
-                    setLevelError(null);
-                    set("levelMode", m.key);
-                  }}
-                  className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-                />
-              </label>
-            ))}
-          </div>
-          {settings.levelMode === "manual" && (
-            <>
-              <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-                {LEVELS.map((l) => (
-                  <label
-                    key={l.key}
-                    className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3 last:border-b-0 dark:border-zinc-800"
-                  >
-                    <span className="flex-1 text-sm">
-                      {l.key} {l.label}
-                      <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                        {l.guide}
-                      </span>
-                    </span>
-                    <input
-                      type="checkbox"
-                      checked={settings.manualLevels.includes(l.key)}
-                      onChange={(e) => toggleLevel(l.key, e.target.checked)}
-                      className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-                    />
-                  </label>
-                ))}
-              </div>
-              {levelError && errorLine(levelError)}
-            </>
-          )}
-        </section>
-
-        <section>
-          <h3 className="mb-1 text-sm font-bold">スワイプ時に表示する項目</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            カードをめくる前 (回答する前) の面に出す情報です。
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            {CARD_FIELDS.map((f) => (
-              <label
-                key={f.key}
-                className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3 last:border-b-0 dark:border-zinc-800"
-              >
-                <span className="flex-1 text-sm">{f.label}</span>
-                <input
-                  type="checkbox"
-                  checked={settings.cardFields[f.key]}
-                  onChange={(e) => toggleField(f.key, e.target.checked)}
-                  className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-                />
-              </label>
-            ))}
-          </div>
-          {fieldError && errorLine(fieldError)}
-        </section>
-
-        <section>
-          <h3 className="mb-1 text-sm font-bold">演習モードの出題</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            演習では、まだ見ていないカードと一度でも回答したカードを混ぜて出します。
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 px-4 py-3.5">
-              <span className="flex-1 text-sm font-medium">
-                新出の割合
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  10枚あたり新出 {Math.round(settings.drillNewRatio / 10)} 枚 /
-                  既出 {10 - Math.round(settings.drillNewRatio / 10)} 枚。
-                  在庫が尽きた側はもう片方で埋めます
-                </span>
-              </span>
-              <div className="flex shrink-0 items-center gap-1">
-                <input
                   type="number"
-                  min={0}
-                  max={100}
-                  step={10}
-                  value={settings.drillNewRatio}
+                  min={1}
+                  max={10}
+                  value={settings.masterKnownCount}
                   onChange={(e) =>
                     set(
-                      "drillNewRatio",
-                      Math.max(0, Math.min(100, Number(e.target.value) || 0)),
+                      "masterKnownCount",
+                      Math.max(1, Math.min(10, Number(e.target.value) || 1)),
                     )
                   }
-                  className="w-20 rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-right text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
+                  className={numCls}
                 />
-                <span className="text-sm text-zinc-500">%</span>
-              </div>
-            </label>
-          </div>
-        </section>
+              </label>
+            </div>
+          </Collapsible>
+        </Collapsible>
 
-        <section>
-          <h3 className="mb-1 text-sm font-bold">学習進捗度</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            初回で正解したカードは、その時点で学習完了になります。それ以外は
-            ○ が続いた回数で判定します。
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 px-4 py-3.5">
-              <span className="flex-1 text-sm font-medium">
-                学習完了とみなす回数
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  この回数連続で ○ なら学習完了。△ や × を挟むと数え直し
-                </span>
-              </span>
-              <input
-                type="number"
-                min={1}
-                max={10}
-                value={settings.masterKnownCount}
-                onChange={(e) =>
-                  set(
-                    "masterKnownCount",
-                    Math.max(1, Math.min(10, Number(e.target.value) || 1)),
-                  )
-                }
-                className="w-20 rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-right text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
-              />
-            </label>
-          </div>
-        </section>
-
-        <section>
-          <h3 className="mb-1 text-sm font-bold">回答後の動作</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            オンにすると、カード裏の解説 (意味・例文)
-            を見ずにそのまま次のカードへ進みます。
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
-              <span className="flex-1 text-sm font-medium">
-                演習で解説を飛ばす
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  知っている / 知らないの仕分けに徹する
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.skipReveal.drill}
-                onChange={(e) =>
-                  set("skipReveal", {
-                    ...settings.skipReveal,
-                    drill: e.target.checked,
-                  })
-                }
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
-            <label className="flex items-center gap-3 px-4 py-3.5">
-              <span className="flex-1 text-sm font-medium">
-                復習で解説を飛ばす
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  意味を確認せずに回すとき
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.skipReveal.review}
-                onChange={(e) =>
-                  set("skipReveal", {
-                    ...settings.skipReveal,
-                    review: e.target.checked,
-                  })
-                }
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
-          </div>
-        </section>
-
-        <section>
-          <h3 className="mb-1 text-sm font-bold">読み上げ</h3>
-          <p className="mb-3 text-xs text-zinc-500">
-            端末に入っている音声で読み上げます。通信もアカウントも要りません。
-            自動読み上げがオフでも、単語の横のスピーカーを押せばいつでも読めます。
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <label className="flex items-center gap-3 border-b border-zinc-100 px-4 py-3.5 dark:border-zinc-800">
-              <span className="flex-1 text-sm font-medium">
-                カードが出たら自動で読む
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  表面が出た時点で単語を1回読みます
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.autoSpeak}
-                onChange={(e) => set("autoSpeak", e.target.checked)}
-                className="h-5 w-5 shrink-0 accent-[#4A99EA]"
-              />
-            </label>
-            <label className="flex items-center gap-3 px-4 py-3.5">
-              <span className="flex-1 text-sm font-medium">
-                読み上げの速さ
-                <span className="mt-0.5 block text-xs font-normal text-zinc-500">
-                  1.0 が標準。{SPEECH_RATE_MIN} 〜 {SPEECH_RATE_MAX}
-                </span>
-              </span>
-              <div className="flex shrink-0 items-center gap-2">
-                <input
-                  type="range"
-                  min={SPEECH_RATE_MIN}
-                  max={SPEECH_RATE_MAX}
-                  step={0.1}
-                  value={settings.speechRate}
-                  onChange={(e) => set("speechRate", clampRate(Number(e.target.value)))}
-                  className="w-24 accent-[#4A99EA]"
-                />
-                <span className="w-8 text-right text-sm tabular-nums text-zinc-500">
-                  {settings.speechRate.toFixed(1)}
-                </span>
-              </div>
-            </label>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              primeSpeech();
-              // EnglishApp 側の同期を待たずに、いま画面に出ている速さで鳴らす
-              setSpeechRate(settings.speechRate);
-              speak("This is how it sounds.");
-            }}
-            className="mt-2 rounded-full border border-zinc-200 px-4 py-1.5 text-xs text-zinc-600 transition-colors hover:border-zinc-400 disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300"
+        {/* ---- 2. スワイプ時オプション ---- */}
+        <Collapsible
+          accent
+          title="スワイプ時オプション"
+          summary=""
+        >
+          <Collapsible
+            nested
+            title="自動で読み上げる"
+            summary={settings.autoSpeak ? "オン" : "オフ"}
           >
-            試しに聞く
-          </button>
-        </section>
+            <p className="mb-2 text-xs text-zinc-500">
+              オフでも、単語の横のスピーカーを押せばいつでも聞けます。
+            </p>
+            <div className={boxCls}>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">
+                  カードが出たら自動で読む
+                </span>
+                {checkbox(settings.autoSpeak, (v) => set("autoSpeak", v))}
+              </label>
+            </div>
+          </Collapsible>
+
+          <Collapsible
+            nested
+            title="回答する前に見せる項目"
+            summary={fieldSummary}
+          >
+            <p className="mb-2 text-xs text-zinc-500">
+              カードをめくる前 (回答する前) の面に出す情報です。意味を出せば
+              思い出す前に答えが見えます。
+            </p>
+            <div className={boxCls}>
+              {CARD_FIELDS.map((f) => (
+                <label key={f.key} className={rowCls}>
+                  <span className="flex-1 text-sm">{f.label}</span>
+                  {checkbox(settings.cardFields[f.key], (v) =>
+                    toggleField(f.key, v),
+                  )}
+                </label>
+              ))}
+            </div>
+            {fieldError && errorLine(fieldError)}
+          </Collapsible>
+
+          <Collapsible
+            nested
+            title="回答した後に解説を出す"
+            summary={revealSummary || "出さない"}
+          >
+            <p className="mb-2 text-xs text-zinc-500">
+              オンにすると、回答後にカードが裏返って意味と例文が出ます。オフなら
+              そのまま次のカードへ進みます。
+            </p>
+            <div className={boxCls}>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">
+                  演習で解説を表示
+                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                    演習は速く仕分けるのが目的なので、既定はオフ
+                  </span>
+                </span>
+                {checkbox(!settings.skipReveal.drill, (v) =>
+                  set("skipReveal", { ...settings.skipReveal, drill: !v }),
+                )}
+              </label>
+              <label className={rowCls}>
+                <span className="flex-1 text-sm font-medium">
+                  復習で解説を表示
+                  <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+                    復習は覚え直すのが目的なので、既定はオン
+                  </span>
+                </span>
+                {checkbox(!settings.skipReveal.review, (v) =>
+                  set("skipReveal", { ...settings.skipReveal, review: !v }),
+                )}
+              </label>
+            </div>
+          </Collapsible>
+        </Collapsible>
       </div>
     </div>
   );

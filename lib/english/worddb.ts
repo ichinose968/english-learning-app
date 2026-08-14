@@ -333,6 +333,18 @@ export function dbStatsAsOf(
   return dbStats(dbs, levels, pastProgress, masterKnownCount);
 }
 
+/**
+ * 復習モードで出す学習進捗度。壊れた値は既定 (学習中) に寄せる。
+ * **空配列はそのまま返す。** 画面側は最低1つ選ばせるので通常は起きないが、
+ * 書き出しファイルの取り込みや古い記録では空になりうる。ここで既定に
+ * 戻すと、画面のチェックと実際に出る集合が食い違う
+ */
+export function reviewProgressOf(settings: VocabSettings): Progress[] {
+  const r = settings.reviewProgress;
+  if (!Array.isArray(r)) return ["learning"];
+  return r.filter((p) => p === "learning" || p === "done");
+}
+
 // 演習モードの新出比率。設定値が壊れていても出題が止まらないようにここで丸める
 export function drillNewRatio(settings: VocabSettings): number {
   const r = settings.drillNewRatio;
@@ -366,8 +378,16 @@ export function buildQueue(
     // 手で「未学習」に戻した語は既出ではないので、下の新出側で拾わせる
   }
 
-  // 復習: 学習中のものだけ。reviewWeight() が × の多い語を優先して引く
-  if (mode === "review") return weightedSample(inProgress, size);
+  // 復習: 設定で選ばれた学習進捗度のものだけ。
+  // reviewWeight() が × の多い語を優先して引く
+  if (mode === "review") {
+    const want = reviewProgressOf(settings);
+    const pool = [
+      ...(want.includes("learning") ? inProgress : []),
+      ...(want.includes("done") ? learned : []),
+    ];
+    return weightedSample(pool, size);
+  }
 
   // 演習: 出題対象レベルの未学習を「新出」、履歴のある語を「既出」として比率で混ぜる
   const fresh: { item: WordDbEntry; w: number }[] = [];

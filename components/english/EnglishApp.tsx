@@ -223,8 +223,8 @@ export function EnglishApp() {
             {
               view: "vocab" as SettingsView,
               icon: <GraduationCap size={18} className="text-[#4A99EA]" />,
-              title: "単語学習の設定",
-              desc: "単語レベルの確認と再測定",
+              title: "興味のあるテーマ",
+              desc: "長文読解とAI会話の題材",
             },
             {
               view: "data" as SettingsView,
@@ -269,37 +269,12 @@ export function EnglishApp() {
     </div>
   );
 
+  // 単語レベルの表示と再測定は「単語の設定」(カード画面の左上) へ移した。
+  // 難易度の設定と同じ場所にあるほうが探しやすいため。
+  // ここに残るのは、読解とAI会話が使う興味テーマだけ
   const settingsVocab = (
     <div className="space-y-4">
-      <SubHeader title="単語学習の設定" onBack={() => setSettingsView("menu")} />
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
-        <div className="mb-3 flex items-center justify-between gap-3 rounded-lg bg-zinc-50 px-3 py-2 text-sm dark:bg-zinc-800">
-          <span>
-            現在の単語レベル:{" "}
-            <span className="font-medium">{data.vocabLevel.current ?? "未測定"}</span>
-            <span className="block text-xs text-zinc-500">
-              最初の10問で測定し、直近の正解率で自動調整されます
-            </span>
-          </span>
-          <ConfirmButton
-            label="再測定"
-            question="レベルを測り直しますか？ (学習記録は残ります)"
-            confirmLabel="測り直す"
-            className="shrink-0 rounded-lg border border-zinc-300 px-3 py-1.5 text-xs hover:bg-zinc-100 dark:border-zinc-600 dark:hover:bg-zinc-700"
-            onConfirm={() =>
-              setData((prev) => ({
-                ...prev,
-                vocabLevel: { current: null, recent: [] },
-              }))
-            }
-          />
-        </div>
-        <div className="space-y-3">
-          <p className="rounded-2xl border border-zinc-200 px-3 py-2 text-xs text-zinc-500 dark:border-zinc-800">
-            出題範囲 (語彙 / イディオム) と出題条件、スワイプ時の表示項目は、カード画面の左上のボタン「スワイプ設定」から変更します。
-          </p>
-        </div>
-      </div>
+      <SubHeader title="興味のあるテーマ" onBack={() => setSettingsView("menu")} />
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
         <h3 className="text-sm font-medium">興味のあるテーマ</h3>
         <p className="mb-3 mt-0.5 text-xs text-zinc-500">

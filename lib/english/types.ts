@@ -84,6 +84,74 @@ export const THEME_LABEL_JA: Record<string, string> = {
   Psychology: "心理", Entertainment: "娯楽",
 };
 
+/*
+ * ---- タグのプロパティ ----
+ *
+ * 「試験 / 分野 / テーマ」は元はDBの固定フィールドを直に読む3本の別実装だったが、
+ * ユーザーが自分でプロパティ（例「好き度」）を足せるようにしたので、
+ * **組み込みの3つも同じ仕組みに載せている**。分けたままだと、追加・削除・
+ * フィルタをそれぞれ2通り書くことになる。
+ *
+ * `builtin` はDBの同名フィールド（`exams` / `domains` / `themes`）から値を読む印。
+ * 組み込みを削除しても消えるのは定義だけで、**DB側の値には触らない**ので、
+ * あとで作り直せば元の値がそのまま戻る。
+ *
+ * 選択は**すべて複数選択**（ユーザーの指定）。1単語に「大好き」と「嫌い」を
+ * 同時に付けられてしまうが、試験タグのように複数当てはまるものと揃える。
+ */
+export interface TagOption {
+  value: string; // 保存される値。組み込みは英語 (Business など)
+  label: string; // 画面に出す文字。追加分は value と同じ
+}
+
+export interface TagProp {
+  id: string;
+  label: string;
+  options: TagOption[];
+  builtin?: boolean;
+}
+
+const opts = (m: Record<string, string>): TagOption[] =>
+  Object.entries(m).map(([value, label]) => ({ value, label }));
+
+export const DEFAULT_TAG_PROPS: TagProp[] = [
+  {
+    id: "exams",
+    label: "試験",
+    builtin: true,
+    // 試験名は日本語表記が無いのでそのまま出す
+    options: WORD_EXAMS.map((v) => ({ value: v, label: v })),
+  },
+  { id: "domains", label: "分野", builtin: true, options: opts(DOMAIN_LABEL_JA) },
+  { id: "themes", label: "テーマ", builtin: true, options: opts(THEME_LABEL_JA) },
+];
+
+/**
+ * ある単語がそのプロパティに持っている値。
+ * 優先順は **ユーザーの編集 (`tags`) → 旧形式の編集 → DBの値**。
+ * `def` はDBの生エントリでも `applyEdit` 済みのものでも正しく動く。
+ */
+export function tagValuesOf(
+  prop: TagProp,
+  def: WordDbEntry,
+  edit?: WordEdit,
+): string[] {
+  const t = edit?.tags?.[prop.id];
+  if (t) return t;
+  // applyEdit 済みのエントリは tags を引き継いでいるので、そちらも見る
+  // (呼び出し側が編集内容を持っていなくても正しく読める)
+  const merged = (def as unknown as { tags?: Record<string, string[]> }).tags;
+  if (merged?.[prop.id]) return merged[prop.id];
+  if (!prop.builtin) return [];
+  // 旧形式 (exams/domains/themes を直に持つ編集) も読む
+  const legacy = edit
+    ? (edit as unknown as Record<string, unknown>)[prop.id]
+    : undefined;
+  if (Array.isArray(legacy)) return legacy as string[];
+  const base = (def as unknown as Record<string, unknown>)[prop.id];
+  return Array.isArray(base) ? (base as string[]) : [];
+}
+
 export interface WordDbEntry {
   word: string;
   pos: string;
@@ -207,6 +275,10 @@ export interface VocabSettings {
   skipReveal: Record<QuizMode, boolean>;
   // 演習モードで新出 (未学習) の語を出す割合 (%)。残りは既出の語から出す
   drillNewRatio: number;
+  // 復習モードで出す学習進捗度。既定は学習中だけ。
+  // 学習完了も足せば、覚えた語の抜き打ち確認ができる。
+  // **タブの件数もここに合わせる** (件数と実際に出る集合がずれると読めなくなる)
+  reviewProgress: Progress[];
   // カードが出た時点で単語を自動で読み上げるか。
   // オフでも、単語の横のスピーカーを押せばいつでも読める
   autoSpeak: boolean;
@@ -245,6 +317,7 @@ export const DEFAULT_VOCAB_SETTINGS: VocabSettings = {
   masterKnownCount: 3,
   skipReveal: { drill: true, review: false },
   drillNewRatio: 50,
+  reviewProgress: ["learning"],
   autoSpeak: false,
   speechRate: 1,
 };
@@ -375,9 +448,12 @@ export interface WordEdit {
   ipa?: string;
   exampleEn?: string;
   exampleJa?: string;
+  // 旧形式。新しい編集は下の tags に入るが、既存データを読むために残す
   domains?: string[];
   themes?: string[];
   exams?: string[];
+  // プロパティID → 選んだ値。組み込み・追加分ともここへ書く
+  tags?: Record<string, string[]>;
   related?: { word: string; meaningJa: string }[];
   bgImage?: string; // 背景画像 (data URL)。空文字なら削除
 }
@@ -409,6 +485,9 @@ export interface EnglishData {
   vocabLevel: VocabLevelState;
   notes: Record<string, string>; // 単語ごとのメモ
   edits: Record<string, WordEdit>; // カード詳細で編集した内容
+  // タグのプロパティ定義。カード詳細から追加・削除できる。
+  // 既定は DEFAULT_TAG_PROPS (試験 / 分野 / テーマ)
+  tagProps: TagProp[];
   grammar: Record<string, GrammarRecord>;
   grammarSeen: string[]; // 出題済み問題id (直近300件。未出題を優先するため)
   readings: SavedReading[];
@@ -438,6 +517,7 @@ export const EMPTY_DATA: EnglishData = {
   vocabLevel: { current: null, recent: [] },
   notes: {},
   edits: {},
+  tagProps: DEFAULT_TAG_PROPS,
   grammar: {},
   grammarSeen: [],
   readings: [],

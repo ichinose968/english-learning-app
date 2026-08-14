@@ -392,6 +392,10 @@ export function ReadingTab({ data, setData }: Props) {
           ここでの編集・メモ・ステータスもアプリ共通の記録に入る */}
       {wordDetail && (
         <CardDetailSheet
+          tagProps={data.tagProps}
+          onChangeTagProps={(next) =>
+            setData((prev) => ({ ...prev, tagProps: next }))
+          }
           item={applyEdit(wordDetail.def, data.edits[wordDetail.def.word])}
           note={data.notes[wordDetail.def.word]}
           onClose={() => setWordDetail(null)}

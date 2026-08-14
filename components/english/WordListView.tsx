@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import {
   applyEdit,
+  tagValuesOf,
   EnglishData,
   Level,
   LEVELS,
@@ -41,7 +42,6 @@ import { CardDetailSheet } from "./CardDetailSheet";
 
 const PAGE_SIZE = 100;
 
-type LevelFilter = Level | "all";
 type SortKey =
   | "word"
   | "result"
@@ -52,7 +52,6 @@ type SortKey =
   | "unknown"
   | "lastSeen";
 type SortDir = "asc" | "desc";
-type DateOp = "before" | "after" | "on";
 
 // ステータスは前回結果と学習進捗度の2軸。フィルタは軸ごとに持ち、両方指定したら AND で絞る。
 // 既定は未学習を外して、一度でも出題した語に集中できるようにする
@@ -137,7 +136,8 @@ export function WordListView({ data, setData }: Props) {
   const kindLabel = settings.cardSource === "idioms" ? "イディオム" : "単語";
   const [dbs, setDbs] = useState<WordDbMap | null>(null);
   const [dbError, setDbError] = useState<string | null>(null);
-  const [level, setLevel] = useState<LevelFilter>("all");
+  // レベルは複数選択 (空 = すべて)。他のフィルタと揃えてある
+  const [levels, setLevels] = useState<Level[]>([]);
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [detail, setDetail] = useState<{ def: WordDbEntry; level: Level } | null>(
     null,
@@ -146,15 +146,14 @@ export function WordListView({ data, setData }: Props) {
   // ツールバー (フィルタ / ソート / 検索)
   const [panel, setPanel] = useState<"filter" | "sort" | "search" | null>(null);
   const [query, setQuery] = useState("");
-  const [fWord, setFWord] = useState("");
-  const [fMeaning, setFMeaning] = useState("");
   // ステータスは複数選択 (空 = すべて)。既定は学習に関わるものだけ出し、未学習は隠す
   const [fResult, setFResult] = useState<LastResult[]>([]);
   const [fProgress, setFProgress] = useState<Progress[]>(
     DEFAULT_PROGRESS_FILTER,
   );
-  const [fDateOp, setFDateOp] = useState<DateOp>("after");
-  const [fDate, setFDate] = useState("");
+  // タグの絞り込み。プロパティID → 選んだ値。
+  // 同じプロパティ内は OR、プロパティ同士は AND
+  const [fTags, setFTags] = useState<Record<string, string[]>>({});
   // 既定の並べ替え。まだ身についていないものが上に来るようにしておく
   // (前回結果 × から、次に学習進捗度の未学習から、同点なら単語のアルファベット順)
   const [sorts, setSorts] = useState<SortRule[]>([
@@ -190,25 +189,20 @@ export function WordListView({ data, setData }: Props) {
 
   const rows = useMemo(() => {
     if (!dbs) return [];
-    const levels: Level[] = level === "all" ? LEVEL_ORDER : [level];
-    return levels.flatMap((lv) =>
+    const want: Level[] = levels.length === 0 ? LEVEL_ORDER : levels;
+    return want.flatMap((lv) =>
       dbs[lv].words.map((w) => ({ def: w as WordDbEntry, level: lv })),
     );
-  }, [dbs, level]);
+  }, [dbs, levels]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const w = fWord.trim().toLowerCase();
-    const m = fMeaning.trim();
-    const dateBound = fDate ? new Date(fDate) : null;
 
     const list = rows.filter(({ def }) => {
       const entry: VocabEntry | undefined = data.vocab[def.word];
       if (q && !def.word.toLowerCase().includes(q) && !def.meaningJa.includes(q)) {
         return false;
       }
-      if (w && !def.word.toLowerCase().includes(w)) return false;
-      if (m && !def.meaningJa.includes(m)) return false;
       if (fResult.length > 0) {
         const r = lastResult(entry);
         if (!r || !fResult.includes(r)) return false;
@@ -219,18 +213,12 @@ export function WordListView({ data, setData }: Props) {
       ) {
         return false;
       }
-      if (dateBound) {
-        if (!entry) return false;
-        const seen = new Date(entry.lastSeenAt);
-        if (fDateOp === "before" && !(seen < dateBound)) return false;
-        if (fDateOp === "after" && !(seen > dateBound)) return false;
-        if (fDateOp === "on") {
-          const same =
-            seen.getFullYear() === dateBound.getFullYear() &&
-            seen.getMonth() === dateBound.getMonth() &&
-            seen.getDate() === dateBound.getDate();
-          if (!same) return false;
-        }
+      // タグ。選んだ値のどれか1つでも付いていれば通す (プロパティ同士は AND)
+      for (const prop of data.tagProps) {
+        const want = fTags[prop.id];
+        if (!want || want.length === 0) continue;
+        const has = tagValuesOf(prop, def, data.edits[def.word]);
+        if (!want.some((v) => has.includes(v))) return false;
       }
       return true;
     });
@@ -280,23 +268,21 @@ export function WordListView({ data, setData }: Props) {
     data.vocab,
     settings.masterKnownCount,
     query,
-    fWord,
-    fMeaning,
     fResult,
     fProgress,
-    fDate,
-    fDateOp,
+    fTags,
+    data.tagProps,
+    data.edits,
     sorts,
   ]);
 
   const shown = filtered.slice(0, visible);
   const resetPage = () => setVisible(PAGE_SIZE);
   const activeFilters =
-    (fWord ? 1 : 0) +
-    (fMeaning ? 1 : 0) +
+    (levels.length > 0 ? 1 : 0) +
     (fResult.length > 0 ? 1 : 0) +
     (fProgress.length > 0 ? 1 : 0) +
-    (fDate ? 1 : 0);
+    Object.values(fTags).filter((v) => v.length > 0).length;
 
   const chip = (active: boolean) =>
     `rounded-full border px-3 py-1 text-xs transition-colors ${
@@ -369,6 +355,10 @@ export function WordListView({ data, setData }: Props) {
     <div className="space-y-3">
       {detail && (
         <CardDetailSheet
+          tagProps={data.tagProps}
+          onChangeTagProps={(next) =>
+            setData((prev) => ({ ...prev, tagProps: next }))
+          }
           item={applyEdit(detail.def, data.edits[detail.def.word])}
           note={data.notes[detail.def.word]}
           onClose={() => setDetail(null)}
@@ -473,21 +463,28 @@ export function WordListView({ data, setData }: Props) {
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => {
-                  setLevel("all");
+                  setLevels([]);
                   resetPage();
                 }}
-                className={chip(level === "all")}
+                className={chip(levels.length === 0)}
               >
-                全レベル
+                すべて
               </button>
               {LEVELS.map((l) => (
                 <button
                   key={l.key}
                   onClick={() => {
-                    setLevel(l.key);
+                    setLevels(
+                      levels.includes(l.key)
+                        ? levels.filter((x) => x !== l.key)
+                        : // 表示順を LEVELS に合わせて保つ
+                          LEVELS.filter(
+                            (x) => x.key === l.key || levels.includes(x.key),
+                          ).map((x) => x.key),
+                    );
                     resetPage();
                   }}
-                  className={chip(level === l.key)}
+                  className={chip(levels.includes(l.key))}
                 >
                   {l.key} ({dbs[l.key].count})
                 </button>
@@ -495,31 +492,7 @@ export function WordListView({ data, setData }: Props) {
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs text-zinc-500">単語を含む</label>
-            <input
-              value={fWord}
-              onChange={(e) => {
-                setFWord(e.target.value);
-                resetPage();
-              }}
-              className="w-full rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
-            />
-          </div>
-          <div>
-            <label className="mb-1 block text-xs text-zinc-500">意味を含む</label>
-            <input
-              value={fMeaning}
-              onChange={(e) => {
-                setFMeaning(e.target.value);
-                resetPage();
-              }}
-              className="w-full rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
-            />
-          </div>
-          <div>
-            <label className="mb-1 block text-xs text-zinc-500">
-              前回結果が一致 (複数選択可)
-            </label>
+            <label className="mb-1 block text-xs text-zinc-500">前回結果</label>
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => {
@@ -550,7 +523,7 @@ export function WordListView({ data, setData }: Props) {
           </div>
           <div>
             <label className="mb-1 block text-xs text-zinc-500">
-              学習進捗度が一致 (複数選択可)
+              学習進捗度
             </label>
             <div className="flex flex-wrap gap-1.5">
               <button
@@ -580,46 +553,59 @@ export function WordListView({ data, setData }: Props) {
               ))}
             </div>
           </div>
-          <div>
-            <label className="mb-1 block text-xs text-zinc-500">最終閲覧</label>
-            <div className="flex flex-wrap items-center gap-1.5">
-              {(
-                [
-                  ["before", "より前"],
-                  ["after", "より後"],
-                  ["on", "と一致"],
-                ] as [DateOp, string][]
-              ).map(([op, label]) => (
-                <button
-                  key={op}
-                  onClick={() => {
-                    setFDateOp(op);
-                    resetPage();
-                  }}
-                  className={chip(fDateOp === op)}
-                >
-                  {label}
-                </button>
-              ))}
-              <input
-                type="date"
-                value={fDate}
-                onChange={(e) => {
-                  setFDate(e.target.value);
-                  resetPage();
-                }}
-                className="rounded-full border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
-              />
+          {/* タグ。プロパティはユーザーが追加・削除するので、
+              フィルタの項目も data.tagProps から毎回組み立てる */}
+          {data.tagProps.map((prop) => (
+            <div key={prop.id}>
+              <label className="mb-1 block text-xs text-zinc-500">
+                {prop.label}
+              </label>
+              {prop.options.length === 0 ? (
+                <p className="text-xs text-zinc-400">
+                  タグがありません (単語詳細のタグから追加できます)
+                </p>
+              ) : (
+                <div className="flex flex-wrap gap-1.5">
+                  <button
+                    onClick={() => {
+                      setFTags((prev) => ({ ...prev, [prop.id]: [] }));
+                      resetPage();
+                    }}
+                    className={chip((fTags[prop.id] ?? []).length === 0)}
+                  >
+                    すべて
+                  </button>
+                  {prop.options.map((o) => (
+                    <button
+                      key={o.value}
+                      onClick={() => {
+                        setFTags((prev) => {
+                          const cur = prev[prop.id] ?? [];
+                          return {
+                            ...prev,
+                            [prop.id]: cur.includes(o.value)
+                              ? cur.filter((x) => x !== o.value)
+                              : [...cur, o.value],
+                          };
+                        });
+                        resetPage();
+                      }}
+                      className={chip((fTags[prop.id] ?? []).includes(o.value))}
+                    >
+                      {o.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
+          ))}
           {activeFilters > 0 && (
             <button
               onClick={() => {
-                setFWord("");
-                setFMeaning("");
+                setLevels([]);
                 setFResult([]);
                 setFProgress([]);
-                setFDate("");
+                setFTags({});
                 resetPage();
               }}
               className="flex items-center gap-1 text-xs text-zinc-500 underline"
