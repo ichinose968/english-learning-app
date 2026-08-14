@@ -396,6 +396,7 @@ function normalize(parsed: Partial<EnglishData> | null): EnglishData {
       level,
       interests: parsed.settings?.interests ?? [],
       purpose: parsed.settings?.purpose ?? "general",
+      customPurposes: parsed.settings?.customPurposes ?? [],
       grammarLevels: parsed.settings?.grammarLevels ?? [],
       chat: {
         ...DEFAULT_CHAT_SETTINGS,

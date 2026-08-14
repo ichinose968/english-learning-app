@@ -284,6 +284,11 @@ export interface VocabSettings {
   autoSpeak: boolean;
   // 読み上げの速さ。0.5〜1.5 (lib/english/speech.ts の SPEECH_RATE_MIN/MAX)
   speechRate: number;
+  // 出題するタグの絞り込み。プロパティID → 選んだ値。
+  // **同じプロパティ内は OR、プロパティ同士は AND** (単語リストのフィルタと同じ規則)。
+  // 空 (または値が空) のプロパティは条件なし。
+  // プロパティを消したら残ったキーは無視されるので、追加・削除にそのまま追随する
+  tagFilter: Record<string, string[]>;
 }
 
 // カード画面の出題モード。上部タブと1対1で対応する
@@ -316,10 +321,13 @@ export const DEFAULT_VOCAB_SETTINGS: VocabSettings = {
   manualLevels: ["B1"],
   masterKnownCount: 3,
   skipReveal: { drill: true, review: false },
-  drillNewRatio: 50,
+  // 既定は新出だけ。演習は「まだ知らない単語を洗い出す」のが役割で、
+  // 覚え直しは復習モードが受け持つ (ユーザーの指定)
+  drillNewRatio: 100,
   reviewProgress: ["learning"],
   autoSpeak: false,
   speechRate: 1,
+  tagFilter: {},
 };
 
 // ---- 長文読解の設定 (読解タブの中で変える) ----
@@ -333,9 +341,15 @@ export const READING_LENGTHS: {
   desc: string;
   words: string | null;
 }[] = [
-  { key: "short", label: "短め", desc: "100語前後。すきま時間に1本", words: "90〜130語" },
-  { key: "normal", label: "ふつう", desc: "レベルに合わせた標準的な長さ", words: null },
-  { key: "long", label: "長め", desc: "300〜400語。じっくり読む", words: "320〜420語" },
+  { key: "short", label: "短め", desc: "すきま時間に1本", words: "90〜130語" },
+  {
+    key: "normal",
+    label: "ふつう",
+    desc: "レベルに合わせた標準的な長さ",
+    // 実際の語数はレベルで変わるが、目安が無いと「短め」との差が読めない
+    words: "150〜250語",
+  },
+  { key: "long", label: "長め", desc: "じっくり読む", words: "320〜420語" },
 ];
 
 export interface ReadingSettings {
@@ -474,7 +488,9 @@ export interface EnglishData {
   settings: {
     level: Level | null;
     interests: string[];
-    purpose: string; // READING_PURPOSES のkey
+    purpose: string; // READING_PURPOSES のkey、または自分で足した目的の文字列
+    // 自分で足した勉強目的。READING_PURPOSES と同じ並びに混ぜて出す
+    customPurposes: string[];
     vocab: VocabSettings;
     // 文法の出題難易度 (複数可)。空なら level に従う
     grammarLevels: Level[];
@@ -507,6 +523,7 @@ export const EMPTY_DATA: EnglishData = {
   settings: {
     level: null,
     interests: [],
+    customPurposes: [],
     purpose: "general",
     vocab: DEFAULT_VOCAB_SETTINGS,
     grammarLevels: [],

@@ -292,3 +292,47 @@ html:has(.dark) body {
 .card-fly-up {
   animation: card-fly-up 0.6s cubic-bezier(0.36, 0.11, 0.4, 1) forwards;
 }
+
+/* チュートリアルでスワイプを促す指の演出。穴 (カード) の中を左右に往復する。
+   指の丸だけだと「押す」に見えるので、進む向きへ薄い尾を引かせて動きを示す。
+   カードの上に重ねる見た目だけの要素なので pointer-events は殺してある
+   (Spotlight 側で指定)。ゆっくり (1.6s) 3回に1回止まる感じにはせず、
+   等速で繰り返す。止めると「終わったのか」と迷わせる */
+@keyframes tour-swipe-right {
+  0% {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+}
+@keyframes tour-swipe-left {
+  0% {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+}
+.tour-swipe-right {
+  animation: tour-swipe-right 1.6s ease-in-out infinite;
+}
+.tour-swipe-left {
+  animation: tour-swipe-left 1.6s ease-in-out infinite;
+}

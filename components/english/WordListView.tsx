@@ -127,10 +127,27 @@ function formatDateTime(iso: string | null | undefined): string {
 interface Props {
   data: EnglishData;
   setData: React.Dispatch<React.SetStateAction<EnglishData>>;
+  // チュートリアルの暗記シール演習。**貼った / めくった瞬間に呼ぶ。**
+  // どちらもユーザーの操作から直に呼ぶので、上の EnglishApp 側で
+  // 効果 (useEffect) を挟まずそのまま次のステップへ送れる
+  onSealAction?: (kind: "seal" | "peel") => void;
+  // 行をタップして単語詳細を開いた瞬間。チュートリアルが次のステップへ進む
+  onDetailOpen?: () => void;
+  // ユーザーが自分で単語詳細を閉じた瞬間 (右上の ↓)。同じく次のステップへ
+  onDetailClose?: () => void;
+  // チュートリアルが詳細のステップを抜けたら、開いている詳細を閉じる
+  hideDetail?: boolean;
 }
 
 // データベース一覧タブ。出題範囲の設定 (語彙 / イディオム / 両方) に従って読み込む
-export function WordListView({ data, setData }: Props) {
+export function WordListView({
+  data,
+  setData,
+  onSealAction,
+  onDetailOpen,
+  onDetailClose,
+  hideDetail = false,
+}: Props) {
   const settings = data.settings.vocab;
   const unit = settings.cardSource === "idioms" ? "個" : "語";
   const kindLabel = settings.cardSource === "idioms" ? "イディオム" : "単語";
@@ -170,6 +187,14 @@ export function WordListView({ data, setData }: Props) {
     word: new Set(),
     meaning: new Set(),
   });
+
+  // チュートリアルが詳細のステップを抜けたら閉じる。**state を消すところまでやる。**
+  // 描画を止めるだけだと、チュートリアルが終わって hideDetail が false に戻った
+  // 瞬間に、開きっぱなしだった詳細が何もしていないのに現れる
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (hideDetail) setDetail(null);
+  }, [hideDetail]);
 
   useEffect(() => {
     let cancelled = false;
@@ -285,7 +310,7 @@ export function WordListView({ data, setData }: Props) {
     Object.values(fTags).filter((v) => v.length > 0).length;
 
   const chip = (active: boolean) =>
-    `rounded-full border px-3 py-1 text-xs transition-colors ${
+    `rounded-full border px-3 py-1 text-sm transition-colors ${
       active
         ? "border-[#4A99EA] bg-[#4A99EA]/10 text-[#4A99EA]"
         : "border-zinc-200 text-zinc-600 hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-400"
@@ -301,6 +326,8 @@ export function WordListView({ data, setData }: Props) {
   // ---- シール (中身を隠して、タップでめくる) ----
 
   const toggleSeal = (col: SealColumn) => {
+    // 貼ったときだけ知らせる (剥がしたときは演習の達成にならない)
+    if (!sealed[col]) onSealAction?.("seal");
     setSealed((s) => ({ ...s, [col]: !s[col] }));
     // 貼り直すときも剥がすときも、めくった記録はまっさらに戻す
     setPeeled((p) => ({ ...p, [col]: new Set() }));
@@ -309,8 +336,10 @@ export function WordListView({ data, setData }: Props) {
   const isSealed = (col: SealColumn, word: string) =>
     sealed[col] && !peeled[col].has(word);
 
-  const peel = (col: SealColumn, word: string) =>
+  const peel = (col: SealColumn, word: string) => {
+    onSealAction?.("peel");
     setPeeled((p) => ({ ...p, [col]: new Set(p[col]).add(word) }));
+  };
 
   // 並べ替えの変更は下の「ソート」パネルからだけ。見出しは押しても何も起きない
   // (表を読んでいる最中や、シールをめくろうとした指が当たって並びが変わるのを防ぐ)。
@@ -361,7 +390,10 @@ export function WordListView({ data, setData }: Props) {
           }
           item={applyEdit(detail.def, data.edits[detail.def.word])}
           note={data.notes[detail.def.word]}
-          onClose={() => setDetail(null)}
+          onClose={() => {
+            setDetail(null);
+            onDetailClose?.();
+          }}
           onSaveEdit={(patch) =>
             setData((prev) => ({
               ...prev,
@@ -408,7 +440,7 @@ export function WordListView({ data, setData }: Props) {
       <div className="flex items-center justify-between">
         <span className="text-sm font-bold">
           {kindLabel}リスト
-          <span className="ml-2 text-xs font-normal text-zinc-400">
+          <span className="ml-2 text-sm font-normal text-zinc-400">
             {filtered.length} {unit}
           </span>
         </span>
@@ -427,7 +459,7 @@ export function WordListView({ data, setData }: Props) {
           >
             <ArrowDownUp size={18} />
             {sorts.length > 0 && (
-              <span className="ml-0.5 text-[10px] font-bold">{sorts.length}</span>
+              <span className="ml-0.5 text-[12px] font-bold">{sorts.length}</span>
             )}
           </button>
           <button
@@ -459,7 +491,7 @@ export function WordListView({ data, setData }: Props) {
       {panel === "filter" && (
         <div className="space-y-3 rounded-2xl border border-zinc-200 p-4 dark:border-zinc-800">
           <div>
-            <label className="mb-1 block text-xs text-zinc-500">レベル</label>
+            <label className="mb-1 block text-sm text-zinc-500">レベル</label>
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => {
@@ -492,7 +524,7 @@ export function WordListView({ data, setData }: Props) {
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs text-zinc-500">前回結果</label>
+            <label className="mb-1 block text-sm text-zinc-500">前回結果</label>
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => {
@@ -522,7 +554,7 @@ export function WordListView({ data, setData }: Props) {
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs text-zinc-500">
+            <label className="mb-1 block text-sm text-zinc-500">
               学習進捗度
             </label>
             <div className="flex flex-wrap gap-1.5">
@@ -557,11 +589,11 @@ export function WordListView({ data, setData }: Props) {
               フィルタの項目も data.tagProps から毎回組み立てる */}
           {data.tagProps.map((prop) => (
             <div key={prop.id}>
-              <label className="mb-1 block text-xs text-zinc-500">
+              <label className="mb-1 block text-sm text-zinc-500">
                 {prop.label}
               </label>
               {prop.options.length === 0 ? (
-                <p className="text-xs text-zinc-400">
+                <p className="text-sm text-zinc-400">
                   タグがありません (単語詳細のタグから追加できます)
                 </p>
               ) : (
@@ -608,7 +640,7 @@ export function WordListView({ data, setData }: Props) {
                 setFTags({});
                 resetPage();
               }}
-              className="flex items-center gap-1 text-xs text-zinc-500 underline"
+              className="flex items-center gap-1 text-sm text-zinc-500 underline"
             >
               <X size={12} /> フィルタを解除
             </button>
@@ -619,7 +651,7 @@ export function WordListView({ data, setData }: Props) {
       {panel === "sort" && (
         <div className="rounded-2xl border border-zinc-200 p-3 dark:border-zinc-800">
           {sorts.length === 0 && (
-            <p className="mb-2 px-1 text-xs text-zinc-500">
+            <p className="mb-2 px-1 text-sm text-zinc-500">
               並べ替えの規則がありません。上から順に優先して並べ替えます。
             </p>
           )}
@@ -627,7 +659,7 @@ export function WordListView({ data, setData }: Props) {
             {sorts.map((rule, i) => {
               return (
                 <div key={`${rule.key}-${i}`} className="flex items-center gap-2">
-                  <span className="w-4 shrink-0 text-center text-[11px] text-zinc-400">
+                  <span className="w-5 shrink-0 text-center text-[13px] text-zinc-400">
                     {i + 1}
                   </span>
                   <select
@@ -695,9 +727,9 @@ export function WordListView({ data, setData }: Props) {
         {shown.length === 0 ? (
           <p className="p-6 text-center text-sm text-zinc-500">該当なし</p>
         ) : (
-          <table className="w-full min-w-[820px] border-collapse text-left text-[13px]">
+          <table className="w-full min-w-[820px] border-collapse text-left text-[15px]">
             <thead>
-              <tr className="border-b border-zinc-200 text-[11px] text-zinc-400 dark:border-zinc-700">
+              <tr className="border-b border-zinc-200 text-[13px] text-zinc-400 dark:border-zinc-700">
                 {COLUMN_ORDER.map((key) => {
                   const c = COLUMNS[key];
                   const sealCol = SEAL_COLUMNS.find((s) => s === key);
@@ -705,6 +737,10 @@ export function WordListView({ data, setData }: Props) {
                     <th
                       key={key}
                       title={c.title}
+                      // チュートリアルのスポットライトの対象。表は min-w-[820px] の
+                      // 横スクロール枠の中なので、375px幅では初期位置から見えない。
+                      // Spotlight 側が scrollIntoView({inline:"center"}) で寄せる
+                      data-tour={`col-${key}`}
                       // 列名は途中で折り返さない (表は最小幅で横スクロールするので、
                       // 折り返すと見出しだけ2行になって行の高さが揺れる)
                       className={`select-none whitespace-nowrap px-3 py-2 font-medium ${
@@ -715,6 +751,10 @@ export function WordListView({ data, setData }: Props) {
                         {sealCol && (
                           <button
                             onClick={() => toggleSeal(sealCol)}
+                            // チュートリアルのスポットライトの対象 (単語列のぶんだけ)
+                            data-tour={
+                              sealCol === "word" ? "seal-button" : undefined
+                            }
                             aria-label={`${c.label}にシールを貼る`}
                             aria-pressed={sealed[sealCol]}
                             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded transition-colors ${
@@ -738,7 +778,7 @@ export function WordListView({ data, setData }: Props) {
                                 <ArrowDown size={11} />
                               )}
                               {sorts.length > 1 && (
-                                <span className="text-[9px]">{i + 1}</span>
+                                <span className="text-[11px]">{i + 1}</span>
                               )}
                             </>
                           );
@@ -750,7 +790,7 @@ export function WordListView({ data, setData }: Props) {
               </tr>
             </thead>
             <tbody>
-              {shown.map(({ def, level: lv }) => {
+              {shown.map(({ def, level: lv }, rowIndex) => {
                 const entry = data.vocab[def.word];
                 const r = lastResult(entry);
                 const resultBadge = r ? RESULT_BADGE[r] : null;
@@ -788,7 +828,7 @@ export function WordListView({ data, setData }: Props) {
                               <Volume2 size={14} />
                             </button>
                           </span>
-                          <span className="text-[10px] text-zinc-400">
+                          <span className="text-[12px] text-zinc-400">
                             {def.pos}・{lv}
                           </span>
                         </span>
@@ -798,7 +838,7 @@ export function WordListView({ data, setData }: Props) {
                     case "result":
                       return resultBadge ? (
                         <span
-                          className={`rounded-full px-2 py-0.5 text-[11px] ${resultBadge.cls}`}
+                          className={`rounded-full px-2.5 py-1 text-[13px] ${resultBadge.cls}`}
                         >
                           {resultBadge.label}
                         </span>
@@ -808,7 +848,7 @@ export function WordListView({ data, setData }: Props) {
                     case "progress":
                       return (
                         <span
-                          className={`rounded-full px-2 py-0.5 text-[11px] ${progressBadge.cls}`}
+                          className={`rounded-full px-2.5 py-1 text-[13px] ${progressBadge.cls}`}
                         >
                           {progressBadge.label}
                         </span>
@@ -833,12 +873,17 @@ export function WordListView({ data, setData }: Props) {
                   fuzzy: "px-3 py-1.5 text-center",
                   unknown: "px-3 py-1.5 text-center",
                   lastSeen:
-                    "whitespace-nowrap px-3 py-1.5 text-[12px] text-zinc-500",
+                    "whitespace-nowrap px-3 py-1.5 text-[13px] text-zinc-500",
                 };
                 return (
                   <tr
                     key={`${lv}-${def.word}`}
-                    onClick={() => setDetail({ def, level: lv })}
+                    // チュートリアルで押させる1行 (先頭行だけ)
+                    data-tour={rowIndex === 0 ? "first-row" : undefined}
+                    onClick={() => {
+                      setDetail({ def, level: lv });
+                      onDetailOpen?.();
+                    }}
                     className="cursor-pointer border-b border-zinc-100 transition-colors last:border-b-0 hover:bg-zinc-900/5 dark:border-zinc-800 dark:hover:bg-white/10"
                   >
                     {COLUMN_ORDER.map((key) => {
@@ -849,6 +894,23 @@ export function WordListView({ data, setData }: Props) {
                       return (
                         <td
                           key={key}
+                          // チュートリアルの目印。**空白区切りで複数付けられる**
+                          // (Spotlight は data-tour~= で引く)。
+                          // - col-word / col-progress: 列は**見出しと全セルに同じ印**。
+                          //   Spotlight が同じ印をまとめて1つの穴にするので列がまるごと抜ける
+                          // - first-word: シールをめくらせる1枚。
+                          //   **covered を条件にしない。** めくった瞬間に印が消えると
+                          //   対象を見失って暗幕ごと外れ、穴の位置が飛ぶ (ユーザー報告)。
+                          //   めくったあとも同じ場所を指し続け、現れた単語を見せる
+                          data-tour={
+                            key === "word"
+                              ? rowIndex === 0
+                                ? "col-word first-word"
+                                : "col-word"
+                              : key === "progress"
+                                ? "col-progress"
+                                : undefined
+                          }
                           className={`relative ${cellCls[key]}`}
                           onClick={
                             covered && sealCol

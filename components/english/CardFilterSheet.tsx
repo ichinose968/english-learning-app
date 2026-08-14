@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AlertCircle, Check } from "lucide-react";
+import { AlertCircle, ArrowDown } from "lucide-react";
 import {
   CARD_FIELDS,
   CardSource,
@@ -25,6 +25,8 @@ interface Props {
   onChange: (next: VocabSettings) => void;
   setData: React.Dispatch<React.SetStateAction<EnglishData>>;
   onClose: () => void;
+  // チュートリアル中だけ、説明している大分類を開いてもう一方を閉じる
+  openSection?: "filter" | "swipe" | null;
 }
 
 const rowCls =
@@ -40,7 +42,7 @@ const numCls =
  * **2階層の折りたたみで並べる。** 以前は section を縦に7つ並べただけで、
  * 「どれが出題するカードを絞る設定で、どれが見え方の設定か」が読めなかった。
  * 大分類は2つだけで、分ける基準は「出題される集合が変わるかどうか」:
- *   1. 出題カードのフィルタリング (どのカードが出るか)
+ *   1. 出題の設定 (どのカードが出るか)
  *   2. スワイプ時オプション (出たカードがどう見えるか)
  * 歯車の中にあった単語レベルの表示と再測定も、難易度の設定と同じ場所にある
  * ほうが自然なのでここへ移した。
@@ -51,6 +53,7 @@ export function CardFilterSheet({
   onChange,
   setData,
   onClose,
+  openSection,
 }: Props) {
   const [sourceError, setSourceError] = useState<string | null>(null);
   const [fieldError, setFieldError] = useState<string | null>(null);
@@ -61,6 +64,26 @@ export function CardFilterSheet({
     key: K,
     value: VocabSettings[K],
   ) => onChange({ ...settings, [key]: value });
+
+  // タグの絞り込み。**data.tagProps から毎回組み立てる**ので、
+  // プロパティを足したり消したりしても、条件の側は勝手に追随する。
+  // 消えたプロパティのキーが tagFilter に残っても、
+  // passesTagFilter が tagProps しか見ないので無視される
+  const tagFilter = settings.tagFilter ?? {};
+  const setTagFilter = (id: string, values: string[]) =>
+    set("tagFilter", { ...tagFilter, [id]: values });
+  const tagSummary =
+    data.tagProps
+      .filter((p) => (tagFilter[p.id] ?? []).length > 0)
+      .map((p) => `${p.label}: ${(tagFilter[p.id] ?? []).length}`)
+      .join("・") || "すべて";
+  // 選択チップの見た目 (単語リストのフィルタと揃える)
+  const chipCls = (on: boolean) =>
+    `rounded-full border px-3 py-1 text-xs transition-colors ${
+      on
+        ? "border-[#4A99EA] bg-[#4A99EA]/10 text-[#4A99EA]"
+        : "border-zinc-200 text-zinc-600 hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-400"
+    }`;
 
   const useWords = settings.cardSource !== "idioms";
   const useIdioms = settings.cardSource !== "words";
@@ -158,16 +181,19 @@ export function CardFilterSheet({
           aria-label="設定を閉じる"
           className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-900 text-white dark:bg-white dark:text-black"
         >
-          <Check size={18} strokeWidth={3} />
+          <ArrowDown size={18} strokeWidth={3} />
         </button>
       </div>
 
       <div className="space-y-3">
-        {/* ---- 1. 出題カードのフィルタリング ---- */}
+        {/* ---- 1. 出題の設定 ---- */}
         <Collapsible
           accent
           defaultOpen
-          title="出題カードのフィルタリング"
+          dataTour="filter-section"
+          // チュートリアル中だけ、説明している側を開いてもう一方を閉じる
+          open={openSection ? openSection === "filter" : undefined}
+          title="出題の設定"
           summary=""
         >
           <p className="mb-1 px-1 text-xs text-zinc-500">
@@ -379,11 +405,71 @@ export function CardFilterSheet({
               </label>
             </div>
           </Collapsible>
+
+          {/* タグでの絞り込み。**data.tagProps から毎回組み立てる**ので、
+              プロパティの追加・削除にそのまま追随する。
+              同じプロパティ内は OR、プロパティ同士は AND (単語リストのフィルタと同じ) */}
+          <Collapsible nested title="タグ" summary={tagSummary}>
+            <p className="mb-2 text-xs text-zinc-500">
+              選んだタグが付いたカードだけを出題します。同じ項目の中はどれか1つ、
+              項目どうしは両方に当てはまるものが出ます。
+            </p>
+            {data.tagProps.length === 0 ? (
+              <p className="text-xs text-zinc-400">
+                プロパティがありません (カード詳細のタグから追加できます)
+              </p>
+            ) : (
+              <div className="space-y-3">
+                {data.tagProps.map((prop) => (
+                  <div key={prop.id}>
+                    <p className="mb-1 text-xs font-medium">{prop.label}</p>
+                    {prop.options.length === 0 ? (
+                      <p className="text-xs text-zinc-400">
+                        タグがありません (単語詳細のタグから追加できます)
+                      </p>
+                    ) : (
+                      <div className="flex flex-wrap gap-1.5">
+                        <button
+                          onClick={() => setTagFilter(prop.id, [])}
+                          className={chipCls(
+                            (tagFilter[prop.id] ?? []).length === 0,
+                          )}
+                        >
+                          すべて
+                        </button>
+                        {prop.options.map((o) => (
+                          <button
+                            key={o.value}
+                            onClick={() => {
+                              const cur = tagFilter[prop.id] ?? [];
+                              setTagFilter(
+                                prop.id,
+                                cur.includes(o.value)
+                                  ? cur.filter((x) => x !== o.value)
+                                  : [...cur, o.value],
+                              );
+                            }}
+                            className={chipCls(
+                              (tagFilter[prop.id] ?? []).includes(o.value),
+                            )}
+                          >
+                            {o.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </Collapsible>
         </Collapsible>
 
         {/* ---- 2. スワイプ時オプション ---- */}
         <Collapsible
           accent
+          dataTour="swipe-section"
+          open={openSection ? openSection === "swipe" : undefined}
           title="スワイプ時オプション"
           summary=""
         >

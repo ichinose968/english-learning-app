@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Plus, X } from "lucide-react";
 import { ReadingSheet } from "./ReadingSheet";
 import { CardDetailSheet } from "./CardDetailSheet";
 import {
@@ -36,6 +36,86 @@ type Phase = "idle" | "loading";
 
 // 長文リストで最初に見せる本数
 const READING_LIST_LIMIT = 5;
+
+/**
+ * 自分で足した項目 (出題テーマ / 勉強目的) の編集。
+ * **「追加・削除」を押したときだけ編集の姿になる。**
+ * 入力欄と × を常に出しておくと、選ぶだけのときに邪魔で、
+ * しかも選ぼうとして × を踏む事故が起きる
+ */
+function CustomEditor({
+  items,
+  placeholder,
+  onAdd,
+  onRemove,
+}: {
+  items: string[];
+  placeholder: string;
+  onAdd: (v: string) => void;
+  onRemove: (v: string) => void;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState("");
+
+  const add = () => {
+    const v = value.trim();
+    setValue("");
+    if (v) onAdd(v);
+  };
+
+  return (
+    <div className="mt-2">
+      <button
+        onClick={() => setEditing((v) => !v)}
+        className="flex items-center gap-1 text-xs text-[#4A99EA]"
+      >
+        <Plus size={13} />
+        {editing ? "閉じる" : "追加・削除"}
+      </button>
+      {editing && (
+        <div className="mt-2 rounded-xl border border-zinc-200 p-2 dark:border-zinc-700">
+          <div className="flex gap-2">
+            <input
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") add();
+              }}
+              placeholder={placeholder}
+              className="min-w-0 flex-1 rounded-lg border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
+            />
+            <button
+              onClick={add}
+              className="shrink-0 rounded-lg border border-zinc-200 px-3 py-1.5 text-xs hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
+            >
+              追加
+            </button>
+          </div>
+          {items.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {items.map((t) => (
+                <span
+                  key={t}
+                  className="flex items-center gap-1 rounded-full border border-zinc-200 px-3 py-1 text-xs text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
+                >
+                  {t}
+                  <button onClick={() => onRemove(t)} aria-label={`${t}を削除`}>
+                    <X size={12} />
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+          {items.length === 0 && (
+            <p className="mt-2 text-xs text-zinc-400">
+              まだ自分で追加した項目はありません。
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ReadingTab({ data, setData }: Props) {
   const [phase, setPhase] = useState<Phase>("idle");
@@ -131,6 +211,71 @@ export function ReadingTab({ data, setData }: Props) {
       settings: { ...prev.settings, reading: { ...prev.settings.reading, ...patch } },
     }));
 
+  // 自分で足したテーマ。**保存先は settings.interests のまま**。
+  // 元は設定 (歯車) の「興味のあるテーマ」だったが、出題テーマと役割が
+  // 被っていたのでこのタブへ統合した。保存先を変えると既存の記録が消えるので、
+  // 場所だけ移して入れ物はそのまま使っている
+  const customTopics = data.settings.interests.filter(
+    (t) => !INTEREST_PRESETS.includes(t),
+  );
+  const addTopic = (t: string) => {
+    if (INTEREST_PRESETS.includes(t) || customTopics.includes(t)) return;
+    setData((prev) => ({
+      ...prev,
+      settings: {
+        ...prev.settings,
+        interests: [...prev.settings.interests, t],
+        // 足したテーマはそのまま選んだ状態にする (足して選ぶ、の2手間を省く)
+        reading: {
+          ...prev.settings.reading,
+          topics: [...prev.settings.reading.topics, t],
+        },
+      },
+    }));
+  };
+
+  // 消したテーマが選ばれたままだと、無いテーマで生成しにいくので一緒に外す
+  const removeTopic = (t: string) =>
+    setData((prev) => ({
+      ...prev,
+      settings: {
+        ...prev.settings,
+        interests: prev.settings.interests.filter((x) => x !== t),
+        reading: {
+          ...prev.settings.reading,
+          topics: prev.settings.reading.topics.filter((x) => x !== t),
+        },
+      },
+    }));
+
+  const addPurpose = (p: string) => {
+    if (
+      READING_PURPOSES.some((x) => x.key === p || x.label === p) ||
+      data.settings.customPurposes.includes(p)
+    )
+      return;
+    setData((prev) => ({
+      ...prev,
+      settings: {
+        ...prev.settings,
+        customPurposes: [...prev.settings.customPurposes, p],
+        // 足した目的をそのまま選んだ状態にする
+        purpose: p,
+      },
+    }));
+  };
+
+  // 消した目的が選ばれたままだと、無い目的で生成しにいくので既定へ戻す
+  const removePurpose = (p: string) =>
+    setData((prev) => ({
+      ...prev,
+      settings: {
+        ...prev.settings,
+        customPurposes: prev.settings.customPurposes.filter((x) => x !== p),
+        purpose: prev.settings.purpose === p ? "general" : prev.settings.purpose,
+      },
+    }));
+
   const toggleTopic = (t: string) =>
     setReading({
       topics: reading.topics.includes(t)
@@ -147,9 +292,10 @@ export function ReadingTab({ data, setData }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           level: activeLevel,
-          // 出題テーマ。おまかせ (空) のときは登録済みの興味テーマを渡す
-          interests:
-            reading.topics.length > 0 ? reading.topics : data.settings.interests,
+          // 出題テーマ。**おまかせ (空) はそのまま空で渡す**。
+          // 以前は設定の「興味のあるテーマ」を代わりに送っていたが、
+          // 役割が被るのでこのタブへ統合した。空ならAI側が題材を決める
+          interests: reading.topics,
           purpose: data.settings.purpose,
           length: reading.length,
           targetWords,
@@ -226,9 +372,25 @@ export function ReadingTab({ data, setData }: Props) {
               {t}
             </button>
           ))}
+          {/* 自分で足したテーマ。用意した分と同じ並びに混ぜる */}
+          {customTopics.map((t) => (
+            <button
+              key={t}
+              onClick={() => toggleTopic(t)}
+              className={chipCls(reading.topics.includes(t))}
+            >
+              {t}
+            </button>
+          ))}
         </div>
+        <CustomEditor
+          items={customTopics}
+          placeholder="テーマを追加 (例: 宇宙、サッカー)"
+          onAdd={addTopic}
+          onRemove={removeTopic}
+        />
         <p className="mt-2 text-xs text-zinc-500">
-          複数選べます。おまかせのときは設定した興味テーマから選びます。
+          複数選べます。おまかせのときはAIが題材を決めます。
         </p>
       </Collapsible>
 
@@ -276,7 +438,9 @@ export function ReadingTab({ data, setData }: Props) {
       <Collapsible
         nested
         title="文章の長さ"
-        summary={lengthDef?.label ?? "ふつう"}
+        summary={
+          lengthDef ? `${lengthDef.label} ${lengthDef.words}` : "ふつう"
+        }
       >
         <div className="flex flex-wrap gap-2">
           {READING_LENGTHS.map((l) => (
@@ -285,7 +449,7 @@ export function ReadingTab({ data, setData }: Props) {
               onClick={() => setReading({ length: l.key })}
               className={chipCls(reading.length === l.key)}
             >
-              {l.label}
+              {l.label} {l.words}
             </button>
           ))}
         </div>
@@ -308,8 +472,31 @@ export function ReadingTab({ data, setData }: Props) {
               {p.label}
             </button>
           ))}
+          {/* 自分で足した目的。用意した分と同じ並びに混ぜる */}
+          {data.settings.customPurposes.map((p) => (
+            <button
+              key={p}
+              onClick={() =>
+                setData((prev) => ({
+                  ...prev,
+                  settings: { ...prev.settings, purpose: p },
+                }))
+              }
+              className={chipCls(data.settings.purpose === p)}
+            >
+              {p}
+            </button>
+          ))}
         </div>
-        <p className="mt-2 text-xs text-zinc-500">{purposeDef?.desc}</p>
+        <CustomEditor
+          items={data.settings.customPurposes}
+          placeholder="目的を追加 (例: 医療英語、IELTS対策)"
+          onAdd={addPurpose}
+          onRemove={removePurpose}
+        />
+        <p className="mt-2 text-xs text-zinc-500">
+          {purposeDef?.desc ?? "この目的に合う題材と文体で長文を作ります。"}
+        </p>
       </Collapsible>
     </Collapsible>
   );

@@ -98,8 +98,13 @@ export async function POST(req: NextRequest) {
   const passageWords = lengthDef?.words ?? levelDef.passageWords;
   const targets = (body.targetWords ?? []).slice(0, 8);
 
+  // 用意した目的は決め打ちの指示を使う。**それ以外はユーザーが自分で足した
+  // 目的なので、その文字列をそのまま指示にする。** 既定へ潰すと、
+  // せっかく追加した目的が生成に一切効かない
+  const purposeKey = body.purpose ?? "general";
   const purposeInstruction =
-    PURPOSE_PROMPT[body.purpose ?? "general"] ?? PURPOSE_PROMPT.general;
+    PURPOSE_PROMPT[purposeKey] ??
+    `「${purposeKey}」の学習に役立つ題材・文体・設問にする。`;
 
   const user = `レベル: ${levelDesc}
 本文の語数: ${passageWords}

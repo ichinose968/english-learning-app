@@ -65,6 +65,23 @@ import {
 interface Props {
   data: EnglishData;
   setData: React.Dispatch<React.SetStateAction<EnglishData>>;
+  // チュートリアルが動いているあいだ true。**このタブの props は data と setData の
+  // 2つだけ、という原則の例外。** チュートリアル中にカード詳細を開かれると、
+  // CardDetailSheet がスポットライトの板の下に潜って操作できなくなり詰む
+  // (ユーザー報告)。詳細を開く ↑ ボタンを消すためだけに受け取る
+  tourActive?: boolean;
+  // 復習の説明ステップ用。**復習に出せる語が1つも無いときサンプルを1枚用意する。**
+  // 測定10問で全部 ○ だったユーザーは学習中の語を持たないので、
+  // これが無いと「復習する単語はありません」の空画面でチュートリアルが詰む
+  tourSampleReview?: boolean;
+  // 出題モードを切り替えたときに知らせる (チュートリアルが次のステップへ進む)
+  onModeChange?: (m: QuizMode) => void;
+  // 「単語の設定」シートを開いたときに知らせる (チュートリアルが次へ進む)
+  onFilterOpen?: () => void;
+  // チュートリアルが設定のステップを抜けたら閉じる
+  hideFilter?: boolean;
+  // チュートリアル中だけ、設定のどちらの大分類を開くか
+  tourOpenSection?: "filter" | "swipe" | null;
 }
 
 type Phase =
@@ -255,7 +272,7 @@ function CardFront({
         </div>
       )}
       {(cardFields.ipa || cardFields.pos) && (
-        <p className="text-xs text-zinc-400">
+        <p className="text-sm text-zinc-400">
           {[cardFields.ipa && item.ipa, cardFields.pos && item.pos]
             .filter(Boolean)
             .join("  ")}
@@ -359,6 +376,7 @@ export function WordCard({
   tagProps = DEFAULT_TAG_PROPS,
   onChangeTagProps = () => {},
   ghost = false,
+  noDetail = false,
   flyDir = null,
   flyFrom,
   initialStep = "ask",
@@ -399,6 +417,9 @@ export function WordCard({
   onSetProgress: (next: Progress | null) => void;
   // 飛んでいく最中の見た目だけを描くコピー。触れず、ボタン列も詳細も持たない
   ghost?: boolean;
+  // チュートリアル中は詳細を開かせない。開くと CardDetailSheet が
+  // スポットライトの板の下に潜って操作できなくなり、詰む (ユーザー報告)
+  noDetail?: boolean;
   flyDir?: "left" | "right" | "up" | null;
   flyFrom?: { x: string; y: string; r: string };
   // コピーは飛んだ瞬間の面をそのまま見せる (表 / 4択 / 解説)
@@ -415,6 +436,15 @@ export function WordCard({
   const [choices, setChoices] = useState<string[]>(initialChoices);
   const [picked, setPicked] = useState<number | null>(initialPicked);
   const [action, setAction] = useState<VocabAction | null>(initialAction);
+  // **1枚のカードに2回答えさせない。** step も picked も state なので、
+  // 素早く連打すると更新が届く前に2回目のハンドラが走り、同じ語に2回記録される
+  // (「○ を連打すると1枚に ○ が2つ付く」というユーザー報告の正体)。
+  // ref なら同じフレームでも即座に効く。key が「単語#出題連番」なので、
+  // 次のカードでは新しくマウントされて自動的に戻る
+  const answeredRef = useRef(false);
+  // 同じ理由で、次のカードへ送るのも1回だけにする。
+  // 裏面の「次へ」を連打すると onNext が2回走り、カードを1枚読み飛ばしていた
+  const flownRef = useRef(false);
   // 直前のカードを飛ばした直後にマウントされたか。マウント時の値で固定する。
   // prop をそのまま見ると、親が飛行中のコピーを片付けた時点でクラスが外れ、
   // 0.26秒の跳ねが途中で切れてしまう
@@ -508,6 +538,8 @@ export function WordCard({
     // 裏返していないので必ず表を描かせる
     faceStep: "ask" | "choices" | "reveal" = step,
   ) => {
+    if (flownRef.current) return;
+    flownRef.current = true;
     onFly({
       item,
       note,
@@ -527,6 +559,8 @@ export function WordCard({
   // 詳細で意味も例文も読んだ直後なので、「解説を飛ばす」設定が
   // オフでも裏面は見せず、そのまま次のカードへ送る
   const answer = (a: VocabAction, fromDetail = false) => {
+    if (answeredRef.current) return;
+    answeredRef.current = true;
     // **ここでも解錠する。** 下部のボタン列はカード本体の外にある兄弟要素なので、
     // ボタンだけで仕分けているとカードの onPointerDown を一度も通らない。
     // 演習は「× ○ の2ボタンで高速に仕分ける」のが本来の使い方なので、これが主経路。
@@ -570,6 +604,8 @@ export function WordCard({
   // 回答を取り消してカードの表側に戻す
   const flipBack = () => {
     if (!action) return;
+    // 取り消したらもう一度答えられるようにする (カードはまだ生きている)
+    answeredRef.current = false;
     onUndo(action);
     setFlip(true);
     window.setTimeout(() => {
@@ -777,6 +813,11 @@ export function WordCard({
         )}
         <div
           ref={cardRef}
+          // チュートリアルのスポットライトの対象 (スワイプを促すステップ)
+          // card-area はカードと回答ボタン列の共通の印。
+          // Spotlight が同じ印をまとめて1つの穴にするので、
+          // 「カードも4択もボタンも触れる」1つの領域になる (復習の △ の演習で使う)
+          data-tour={ghost ? undefined : "card card-area"}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -906,14 +947,20 @@ export function WordCard({
                 </button>
               </div>
               {/* 回答後も表と同じ情報 (発音記号・品詞) を出す */}
-              <p className="mt-1 text-xs text-zinc-400">
+              <p className="mt-1 text-sm text-zinc-400">
                 {[item.ipa, item.pos].filter(Boolean).join("  ")}
               </p>
             </div>
           )}
 
           {step === "choices" && (
-            <div className="choices-rise-late relative z-10 grid gap-2">
+            <div
+              className="choices-rise-late relative z-10 grid gap-2"
+              // チュートリアルのスポットライトの対象。△ のステップは
+              // ["choices", "answer-unsure"] を候補に渡してあるので、
+              // 4択が出た瞬間に穴が △ ボタンからここへ移る
+              data-tour={ghost ? undefined : "choices"}
+            >
               <p className="mb-1 text-center text-xs text-zinc-500">
                 意味はどれ？
               </p>
@@ -921,7 +968,8 @@ export function WordCard({
                 <button
                   key={i}
                   onClick={() => {
-                    if (picked !== null) return;
+                    if (answeredRef.current) return;
+                    answeredRef.current = true;
                     const a =
                       c === item.meaningJa ? "unsure_correct" : "unsure_wrong";
                     setPicked(i);
@@ -1001,6 +1049,7 @@ export function WordCard({
           )}
 
           {/* Tinder風: カード右下の ↑ でカードの詳細を開く */}
+          {!noDetail && (
           <button
             ref={arrowRef}
             onClick={() => openDetail()}
@@ -1010,6 +1059,7 @@ export function WordCard({
           >
             <ArrowUp size={20} strokeWidth={2.5} />
           </button>
+          )}
 
           {note && step !== "choices" && (
             <p className="relative z-10 mt-3 rounded-2xl border border-zinc-200 px-3 py-2 text-xs text-zinc-500">
@@ -1023,6 +1073,10 @@ export function WordCard({
           飛んでいくコピーは本体のボタン列と二重に見えるので描かない */}
       <div
         ref={buttonsRef}
+        // チュートリアルのスポットライトの対象。飛んでいくコピーは invisible な
+        // 二重の列なので印を付けない (付けると querySelector が先に当たった
+        // ほうを掴んで、穴が見えないボタン列の上に開く)
+        data-tour={ghost ? undefined : "answer-buttons card-area"}
         className={`mt-4 flex shrink-0 items-center justify-center gap-3 ${
           ghost ? "invisible" : ""
         } ${settle ? "buttons-settle" : ""}`}
@@ -1037,6 +1091,7 @@ export function WordCard({
           }
           title={backLabel}
           aria-label={backLabel}
+          data-tour={ghost ? undefined : "answer-unknown"}
           style={buttonFx("unknown")}
           className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500 disabled:opacity-30 ${
             lit("unknown")
@@ -1056,6 +1111,7 @@ export function WordCard({
             disabled={step !== "ask"}
             title="△"
             aria-label="△"
+            data-tour={ghost ? undefined : "answer-unsure"}
             style={buttonFx("unsure", step !== "ask")}
             className={`flex h-14 w-14 items-center justify-center rounded-full border-2 border-yellow-500 text-lg font-bold disabled:opacity-30 ${
               lit("unsure")
@@ -1071,6 +1127,7 @@ export function WordCard({
           disabled={step === "choices"}
           title={step === "ask" ? "○" : "次のカードへ"}
           aria-label={step === "ask" ? "○" : "次のカードへ"}
+          data-tour={ghost ? undefined : "answer-known"}
           style={buttonFx("known", step === "choices")}
           className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#4A99EA] disabled:opacity-30 ${
             lit("known")
@@ -1121,12 +1178,27 @@ export function WordCard({
   );
 }
 
-export function VocabTab({ data, setData }: Props) {
-  // 出題範囲は「スワイプ設定」で決める (語彙 / イディオム / 両方)
+export function VocabTab({
+  data,
+  setData,
+  tourActive = false,
+  tourSampleReview = false,
+  onModeChange,
+  onFilterOpen,
+  hideFilter = false,
+  tourOpenSection = null,
+}: Props) {
+  // 出題範囲は「単語の設定」で決める (語彙 / イディオム / 両方)
   const kind = data.settings.vocab.cardSource;
   const unit = kind === "idioms" ? "個" : "語";
   const kindLabel = kind === "idioms" ? "イディオム" : "単語";
   const [filterOpen, setFilterOpen] = useState(false);
+  // チュートリアルが設定のステップを抜けたら閉じる。開きっぱなしで
+  // チュートリアルが終わると、締めの画面の裏にシートが残る
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (hideFilter) setFilterOpen(false);
+  }, [hideFilter]);
   const [dbs, setDbs] = useState<WordDbMap | null>(null);
   const [dbError, setDbError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
@@ -1174,6 +1246,9 @@ export function VocabTab({ data, setData }: Props) {
             "drill",
             BATCH_SIZE,
             new Date(),
+            new Set(),
+            data.tagProps,
+            data.edits,
           );
           setMode("drill");
           setQueue(q);
@@ -1328,6 +1403,8 @@ export function VocabTab({ data, setData }: Props) {
           new Date(),
           // 測定で出したばかりの語がそのまま続けて出ないようにする
           pSeen,
+          data.tagProps,
+          data.edits,
         ),
       );
       setIndex(0);
@@ -1484,13 +1561,22 @@ export function VocabTab({ data, setData }: Props) {
     </div>
   ));
 
+  // **設定を閉じたら出題キューを作り直す。** ここは「どのカードが出るか」を
+  // 変える設定 (語彙/イディオム・難易度・タグ・復習の範囲) が入っているのに、
+  // 作り直さないと今のバッチを使い切るまで前の条件のカードが出続ける。
+  // タグで絞ったのに条件に合わない語が出てきて、効いていないように見えていた
+  const closeFilter = () => {
+    setFilterOpen(false);
+    if (phase === "quiz") switchMode(mode);
+  };
+
   // モードを切り替える (出題はそのまま続く)
   const switchMode = (m: QuizMode) => {
     if (!dbs || levels.length === 0) return;
     const from = MODE_TABS.findIndex((t) => t.key === mode);
     const to = MODE_TABS.findIndex((t) => t.key === m);
     setSlideFrom(to >= from ? 24 : -24);
-    const q = buildQueue(
+    let q = buildQueue(
       dbs,
       levels,
       data.vocab,
@@ -1498,8 +1584,20 @@ export function VocabTab({ data, setData }: Props) {
       m,
       BATCH_SIZE,
       new Date(),
+      new Set(),
+      data.tagProps,
+      data.edits,
     );
+    // チュートリアルの復習ステップで学習中の語が1つも無いときは、
+    // 出題対象レベルから1語だけ借りてサンプルにする。空画面で詰ませない
+    if (m === "review" && q.length === 0 && tourSampleReview) {
+      const sample = levels
+        .flatMap((lv) => dbs[lv].words as WordDbEntry[])
+        .find((w) => w);
+      if (sample) q = [sample];
+    }
     setMode(m);
+    onModeChange?.(m);
     setQueue(q);
     setIndex(0);
     setShiftMsg(null);
@@ -1536,6 +1634,8 @@ export function VocabTab({ data, setData }: Props) {
       BATCH_SIZE,
       new Date(),
       exclude,
+      data.tagProps,
+      data.edits,
     );
     // 除外すると1語も残らないなら、除外なしで作り直す
     return q.length > 0
@@ -1548,6 +1648,9 @@ export function VocabTab({ data, setData }: Props) {
           mode,
           BATCH_SIZE,
           new Date(),
+          new Set(),
+          data.tagProps,
+          data.edits,
         );
   };
 
@@ -1606,9 +1709,13 @@ export function VocabTab({ data, setData }: Props) {
   const modeTabs = (
     <div className="flex items-stretch border-b border-zinc-200 dark:border-zinc-800">
       <button
-        onClick={() => setFilterOpen((v) => !v)}
-        aria-label="スワイプ設定"
+        onClick={() => {
+          if (!filterOpen) onFilterOpen?.();
+          setFilterOpen((v) => !v);
+        }}
+        aria-label="単語の設定"
         aria-expanded={filterOpen}
+        data-tour="card-settings"
         className="mr-1 flex w-11 shrink-0 items-center justify-center text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
       >
         <SlidersHorizontal size={20} />
@@ -1618,6 +1725,7 @@ export function VocabTab({ data, setData }: Props) {
         <button
           key={t.key}
           onClick={() => switchMode(t.key)}
+          data-tour={`mode-${t.key}`}
           className={`relative flex-1 py-3 text-sm transition-colors ${
             mode === t.key
               ? "font-bold"
@@ -1638,7 +1746,7 @@ export function VocabTab({ data, setData }: Props) {
     </div>
   );
 
-  // スワイプ設定。上のタブの下から画面の下へ向けて開く。
+  // 単語の設定。上のタブの下から画面の下へ向けて開く。
   // **modeTabs ともども早期 return より前で定義する。** 出題できない状態の画面
   // (イディオムだけ + 未測定 など) からも、ここを開いて出題範囲を戻せないと
   // 抜け道が無くなる
@@ -1646,11 +1754,12 @@ export function VocabTab({ data, setData }: Props) {
     <Sheet
       side="bottom"
       open={filterOpen}
-      onClose={() => setFilterOpen(false)}
+      onClose={closeFilter}
       top={138}
       bottom={0}
     >
       <CardFilterSheet
+        openSection={tourOpenSection}
         settings={data.settings.vocab}
         data={data}
         setData={setData}
@@ -1660,7 +1769,7 @@ export function VocabTab({ data, setData }: Props) {
             settings: { ...prev.settings, vocab: next },
           }))
         }
-        onClose={() => setFilterOpen(false)}
+        onClose={closeFilter}
       />
     </Sheet>
   );
@@ -1684,11 +1793,11 @@ export function VocabTab({ data, setData }: Props) {
 
   // イディオム部門は語彙タブで測定した単語レベルを使う
   // イディオムだけ + 未測定。**ここは完全な行き止まりだった。**
-  // この枝には modeTabs (スワイプ設定を開く唯一のボタン) も測定のボタンも無く、
+  // この枝には modeTabs (単語の設定を開く唯一のボタン) も測定のボタンも無く、
   // 歯車の中にも出題範囲を戻す導線が無いので、
   // 「学習データをリセット」で全記録を捨てる以外に抜け道が無かった。
   // しかも文面は存在しない「語彙タブ」を案内していた。
-  // 出口を2つ (測定を始める / スワイプ設定を開く) 置く
+  // 出口を2つ (測定を始める / 単語の設定を開く) 置く
   if (kind === "idioms" && vocabLevel.current === null) {
     return (
       <div className="flex h-full flex-col">
@@ -1700,7 +1809,7 @@ export function VocabTab({ data, setData }: Props) {
             {PLACEMENT_SIZE}問) を行ってください。
           </p>
           <p className="mt-1 text-xs text-zinc-400">
-            左上の「スワイプ設定」から出題範囲に「語彙」を足すこともできます。
+            左上の「単語の設定」から出題範囲に「語彙」を足すこともできます。
           </p>
           <button
             onClick={startPlacement}
@@ -1735,6 +1844,7 @@ export function VocabTab({ data, setData }: Props) {
         </p>
         <button
           onClick={startPlacement}
+          data-tour="placement-start"
           className="mt-4 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
         >
           測定をはじめる ({PLACEMENT_SIZE}問)
@@ -1746,7 +1856,13 @@ export function VocabTab({ data, setData }: Props) {
   if (phase === "placement" && pItem) {
     return (
       <div className="relative flex h-full flex-col gap-3">
-        <div className="flex items-center justify-between text-sm text-zinc-500">
+        <div
+          className="flex items-center justify-between text-sm text-zinc-500"
+          // 測定中のスポットライトの対象。「測定をはじめる」ボタンは押した時点で
+          // 消えるので、10問のあいだ指すものが無くなる。ここを指せば吹き出しが
+          // カード上部の余白に収まり、下端の回答ボタンに被らない
+          data-tour="placement-progress"
+        >
           <span>
             レベル測定 {pCount + 1} / {PLACEMENT_SIZE} 問
           </span>
@@ -1757,6 +1873,7 @@ export function VocabTab({ data, setData }: Props) {
         {flyingLayer}
         <WordCard
           key={pItem.word}
+          noDetail={tourActive}
           onFly={startFlight}
           tagProps={data.tagProps}
           onChangeTagProps={(next) =>
@@ -1783,8 +1900,11 @@ export function VocabTab({ data, setData }: Props) {
             setPTrack(next);
             setPLadder(next.length > 0 ? next[next.length - 1] : 2);
           }}
-          // 測定は正確さが要るので、モードの設定によらず ? を出して解説も見せる
-          showUnsure
+          // 測定は演習と同じ ○ / × の2択にする。チュートリアルが「この10問の答え方が
+          // そのまま普段の演習です」と説明できるようにするため (ユーザーの指定)。
+          // 解説だけは残す。測定は初めて見る単語が続くので、答えた直後に意味が出ないと
+          // 10問がただの作業になる
+          showUnsure={false}
           skipReveal={false}
         />
       </div>
@@ -1794,23 +1914,31 @@ export function VocabTab({ data, setData }: Props) {
   if (phase === "placementDone" && placementResult) {
     const def = LEVELS.find((l) => l.key === placementResult);
     return (
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black">
+      <div
+        className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-black"
+        data-tour="placement-result"
+      >
         <p className="text-sm text-zinc-500">あなたの単語レベル</p>
         <p className="mt-2 text-4xl font-semibold text-[#4A99EA]">
           {placementResult}
           <span className="ml-2 text-2xl">{def?.label}</span>
         </p>
         <p className="mt-1 text-sm text-zinc-500">{def?.guide}</p>
-        <p className="mx-auto mt-3 max-w-md text-xs text-zinc-400">
-          このレベルから出題をはじめます。今後は直近{LEVEL_SHIFT_WINDOW}
-          問の正解率が85%以上で1段上に、50%以下で1段下に自動調整されます。
-        </p>
+        {/* **チュートリアル中は「学習をはじめる」を出さない。** 押すと phase が
+            quiz に飛んで、チュートリアルが用意した順序 (結果 → 単語リスト → 演習)
+            から外れてしまう。チュートリアルは結果のステップの「次へ」で進むので
+            この出口は要らない。
+            ただし**チュートリアルの外では消せない。** 設定から測り直したときは
+            この画面が終端で、ボタンが無いと phase === "placementDone" のまま
+            出口を失う (単語タブが結果表示のまま固まる) */}
+        {!tourActive && (
         <button
           onClick={() => setPhase("quiz")}
           className="mt-5 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
         >
           学習をはじめる
         </button>
+        )}
       </div>
     );
   }
@@ -1920,6 +2048,7 @@ export function VocabTab({ data, setData }: Props) {
             {flyingLayer}
             <WordCard
               key={`${item.word}#${cardSeq}`}
+              noDetail={tourActive}
               onFly={startFlight}
               tagProps={data.tagProps}
               onChangeTagProps={(next) =>
@@ -1982,7 +2111,7 @@ export function VocabTab({ data, setData }: Props) {
                 <p className="mt-1 text-xs text-zinc-400">
                   {mode === "review"
                     ? `演習で取りこぼした${unit}がここに溜まります。`
-                    : "スワイプ設定で出題範囲やレベルを見直してください。"}
+                    : "単語の設定で出題範囲やレベルを見直してください。"}
                 </p>
               </>
             )}
@@ -2040,7 +2169,7 @@ export function VocabTab({ data, setData }: Props) {
           // 「出題する」ではなく設定を直す導線を出す
           <>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-              出題対象のレベルが選ばれていません。スワイプ設定で難易度を選ぶか、レベルを測り直してください。
+              出題対象のレベルが選ばれていません。単語の設定で難易度を選ぶか、レベルを測り直してください。
             </p>
             <button
               onClick={startPlacement}

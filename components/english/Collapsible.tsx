@@ -13,6 +13,8 @@ export function Collapsible({
   nested = false,
   defaultOpen = false,
   accent = false,
+  dataTour,
+  open: forcedOpen,
 }: {
   title: string;
   summary: string;
@@ -21,10 +23,18 @@ export function Collapsible({
   defaultOpen?: boolean;
   // 外枠の見出し (生成条件) を目立たせる
   accent?: boolean;
+  // チュートリアルのスポットライトの対象にするときの印
+  dataTour?: string;
+  // 外から開閉を決めたいとき。**渡したあいだは自前の状態より優先する**
+  // (チュートリアルが「今説明している側だけ開く」ために使う)
+  open?: boolean;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
+  const [innerOpen, setInnerOpen] = useState(defaultOpen);
+  const open = forcedOpen ?? innerOpen;
+  const setOpen = setInnerOpen;
   return (
     <div
+      data-tour={dataTour}
       className={
         nested
           ? "border-t border-zinc-100 first:border-t-0 dark:border-zinc-800"

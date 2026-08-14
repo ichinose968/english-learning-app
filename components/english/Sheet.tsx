@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // 画面の端から出てくるポップアップ。
 // - side="top": ヘッダーの裏から降りてきて、ボトムナビの少し上で止まる (設定)
-// - side="bottom": 画面の下から上がってきて、上のタブの少し下で止まる (スワイプ設定・会話設定)
+// - side="bottom": 画面の下から上がってきて、上のタブの少し下で止まる (単語の設定・会話設定)
 // 閉じ方はどちらも3つ: 呼び出したボタンをもう一度押す / 端の方向へスワイプ / はみ出した余白をタップ。
 //
 // マウントは常に維持し、open の切り替えだけで出し入れする
@@ -30,6 +30,14 @@ export function Sheet({
   const [dragging, setDragging] = useState(false);
   const startY = useRef<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  // ネイティブのリスナーはマウント時のクロージャに古い値を掴むので、
+  // 引いた量と閉じる処理は ref 越しに読む
+  const dragYRef = useRef(0);
+  const closeRef = useRef(onClose);
+  useEffect(() => {
+    closeRef.current = onClose;
+  });
 
   // 閉じる向き。上のシートは上へ、下のシートは下へ引く
   const away = side === "top" ? -1 : 1;
@@ -44,7 +52,60 @@ export function Sheet({
     return side === "top" ? sc.scrollTop >= rest - 1 : sc.scrollTop <= 1;
   };
 
+  // **指の追跡はネイティブの touch で行い、pointer に頼らない。**
+  // pointer はブラウザがジェスチャをスクロールと判定した瞬間 pointercancel で
+  // 途切れる。その判定のスロップ (8〜10px) は閉じるしきい値より小さいので、
+  // pointer 追跡は競争に必ず負ける (CardDetailSheet で同じ罠を踏んでいる)。
+  // touchmove はスクロールが始まっても配送され続ける。
+  // preventDefault は React の onTouchMove では効かない (React は passive で付ける)
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    let start: number | null = null;
+
+    const onStart = (e: TouchEvent) => {
+      if (!open || e.touches.length !== 1 || !canDragFrom(e.target)) return;
+      start = e.touches[0].clientY;
+      setDragging(true);
+    };
+    const onMove = (e: TouchEvent) => {
+      if (start === null) return;
+      const raw = e.touches[0].clientY - start;
+      const d = away < 0 ? Math.min(0, raw) : Math.max(0, raw);
+      // 閉じる向きに動かしているあいだだけスクロールを止める。
+      // すでに端まで来ているので、殺して困る正当なスクロールは無い
+      if (d !== 0 && e.cancelable) e.preventDefault();
+      dragYRef.current = d;
+      setDragY(d);
+    };
+    const onEnd = () => {
+      if (start === null) return;
+      start = null;
+      setDragging(false);
+      const d = dragYRef.current;
+      if (Math.abs(d) > CLOSE_THRESHOLD && Math.sign(d) === away)
+        closeRef.current();
+      dragYRef.current = 0;
+      setDragY(0);
+    };
+
+    el.addEventListener("touchstart", onStart, { passive: true });
+    el.addEventListener("touchmove", onMove, { passive: false });
+    el.addEventListener("touchend", onEnd);
+    el.addEventListener("touchcancel", onEnd);
+    return () => {
+      el.removeEventListener("touchstart", onStart);
+      el.removeEventListener("touchmove", onMove);
+      el.removeEventListener("touchend", onEnd);
+      el.removeEventListener("touchcancel", onEnd);
+    };
+    // canDragFrom は毎レンダー新しい関数になるが、中で見ている ref は同じ
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, side, away]);
+
+  // マウス用。touch では上のネイティブ側が受けるので二重に動かさない
   const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse") return;
     if (!open || !canDragFrom(e.target)) return;
     startY.current = e.clientY;
     setDragging(true);
@@ -57,7 +118,7 @@ export function Sheet({
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   };
   const onPointerMove = (e: React.PointerEvent) => {
-    if (startY.current === null) return;
+    if (e.pointerType !== "mouse" || startY.current === null) return;
     // 閉じる向きにだけ動かす (逆向きはすでに端まで来ている)
     const d = e.clientY - startY.current;
     setDragY(away < 0 ? Math.min(0, d) : Math.max(0, d));
@@ -100,6 +161,7 @@ export function Sheet({
         style={{ top, bottom }}
       >
         <div
+          ref={panelRef}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}

@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   ArrowDown,
   Circle,
@@ -133,7 +139,7 @@ function Box({
 }) {
   return (
     <div className="rounded-2xl bg-zinc-900 p-4">
-      <div className="mb-2 flex items-center gap-1.5 text-xs text-zinc-500">
+      <div className="mb-2 flex items-center gap-1.5 text-sm text-zinc-500">
         {icon}
         <span>{label}</span>
       </div>
@@ -272,6 +278,20 @@ export function CardDetailSheet({
   >("start");
   const shown = phase === "open";
   const closeRef = useRef<HTMLButtonElement>(null);
+  // 見出しブロックの高さ。閉じるボタンの縦位置を合わせるのに使う。
+  // **ref + useEffect ではなく callback ref。** このコンポーネントは
+  // 条件によって早期 return するので、`[]` の useEffect は見出しがまだ
+  // DOM に無いうちに一度走って終わってしまう (保存エラーの帯と同じ理由)
+  const [headerH, setHeaderH] = useState(0);
+  const headerObs = useRef<ResizeObserver | null>(null);
+  const headerRef = useCallback((el: HTMLElement | null) => {
+    headerObs.current?.disconnect();
+    headerObs.current = null;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => setHeaderH(el.offsetHeight));
+    ro.observe(el);
+    headerObs.current = ro;
+  }, []);
   const barRef = useRef<HTMLDivElement>(null);
   // ↓ ボタンと回答バーは、最終位置を実測してから開始位置との差を出す
   const [offset, setOffset] = useState<{
@@ -659,7 +679,7 @@ export function CardDetailSheet({
   };
 
   const tagChip = (active: boolean) =>
-    `rounded-full px-2.5 py-0.5 text-xs transition-colors ${
+    `rounded-full px-3 py-1.5 text-sm transition-colors ${
       active
         ? "bg-[#4A99EA]/15 text-[#4A99EA]"
         : "border border-zinc-700 text-zinc-400"
@@ -667,7 +687,7 @@ export function CardDetailSheet({
 
   const TagRow = ({ label, items }: { label: string; items: string[] }) => (
     <div className="flex flex-wrap items-baseline gap-1.5">
-      <span className="w-10 shrink-0 text-xs text-zinc-500">{label}</span>
+      <span className="w-12 shrink-0 text-sm text-zinc-500">{label}</span>
       {items.length > 0 ? (
         items.map((t) => (
           <span key={t} className={tagChip(true)}>
@@ -675,7 +695,7 @@ export function CardDetailSheet({
           </span>
         ))
       ) : (
-        <span className="text-xs text-zinc-400">なし</span>
+        <span className="text-sm text-zinc-400">なし</span>
       )}
     </div>
   );
@@ -698,6 +718,9 @@ export function CardDetailSheet({
       }}
       // PCでは本体と同じ列幅に収める (fixed は viewport 基準になるため)
       className="fixed inset-0 z-50 mx-auto max-w-2xl"
+      // チュートリアルのスポットライトの対象。カード画面からは
+      // チュートリアル中に開けない (noDetail) ので、印は1つしか出ない
+      data-tour="word-detail"
     >
       {/* パネル本体。白いカードの矩形から画面いっぱいまで広がる */}
       <div
@@ -706,7 +729,10 @@ export function CardDetailSheet({
         style={{ ...panelStyle, ...dismissStyle }}
       >
         <div className="mx-auto max-w-2xl">
-          <header className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/85 px-4 py-3 backdrop-blur-md">
+          <header
+            ref={headerRef}
+            className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/85 px-4 py-3 backdrop-blur-md"
+          >
             <div>
               <div className="flex items-center gap-2">
                 <p
@@ -726,7 +752,7 @@ export function CardDetailSheet({
                   <Volume2 size={17} />
                 </button>
               </div>
-              <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+              <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-400">
                 {item.ipa && <span className="font-mono">{item.ipa}</span>}
                 {/* 品詞はカード画面・単語一覧と同じ日本語表記に揃える */}
                 <span>{item.pos}</span>
@@ -806,7 +832,7 @@ export function CardDetailSheet({
                     <Volume2 size={15} />
                   </button>
                 </div>
-                <p className="mt-1 text-xs text-zinc-500">{item.exampleJa}</p>
+                <p className="mt-1 text-sm text-zinc-500">{item.exampleJa}</p>
               </>
             )}
           </Box>
@@ -835,7 +861,7 @@ export function CardDetailSheet({
                 {item.related.map((r) => (
                   <div key={r.word} className="flex items-baseline gap-2">
                     <span className="text-sm font-medium">{r.word}</span>
-                    <span className="text-xs text-zinc-500">{r.meaningJa}</span>
+                    <span className="text-sm text-zinc-500">{r.meaningJa}</span>
                   </div>
                 ))}
               </div>
@@ -896,7 +922,7 @@ export function CardDetailSheet({
                     {/* プロパティ名は自由入力なので長くなりうる。名前側を
                         truncate で詰めて、削除ボタンを押し出さないようにする */}
                     <div className="mb-1 flex items-start justify-between gap-2">
-                      <p className="min-w-0 flex-1 truncate text-xs text-zinc-500">
+                      <p className="min-w-0 flex-1 truncate text-sm font-medium text-zinc-400">
                         {prop.label}
                       </p>
                       <ConfirmButton
@@ -909,7 +935,9 @@ export function CardDetailSheet({
                             : prop.label
                         }」を削除しますか？`}
                         confirmLabel="削除する"
-                        className="rounded-full border border-zinc-700 px-2.5 py-0.5 text-[11px] text-zinc-500 hover:text-red-400"
+                        // 元は 11px に上下2px で当たり判定が約17px。
+                        // 「プロパティごと消す」という重い操作なのに一番小さかった
+                        className="shrink-0 rounded-full border border-zinc-700 px-3 py-1.5 text-sm text-zinc-500 hover:text-red-400"
                         onConfirm={() =>
                           onChangeTagProps(
                             tagProps.filter((x) => x.id !== prop.id),
@@ -943,16 +971,18 @@ export function CardDetailSheet({
                                   };
                                 })
                               }
-                              className="max-w-[10rem] truncate py-0.5 pr-1 pl-2.5 text-xs"
+                              // **指で押せる大きさにする。** 元は 12px + 上下2px で
+                              // 当たり判定が約20pxしかなく、選ぶのも消すのも苦労した
+                              className="max-w-[10rem] truncate py-1.5 pr-1 pl-3 text-sm"
                             >
                               {o.label}
                             </button>
                             <button
                               onClick={() => removeOption(prop, o.value)}
                               aria-label={`タグ「${o.label}」を削除`}
-                              className="py-0.5 pr-2 pl-0.5 text-xs opacity-50 hover:opacity-100"
+                              className="py-1.5 pr-2.5 pl-1 text-sm opacity-50 hover:opacity-100"
                             >
-                              <X size={11} />
+                              <X size={14} />
                             </button>
                           </span>
                         );
@@ -968,11 +998,11 @@ export function CardDetailSheet({
                               if (e.key === "Escape") setAddingTo(null);
                             }}
                             placeholder="タグ名"
-                            className="w-28 rounded-full border border-zinc-700 bg-transparent px-2.5 py-0.5 text-xs outline-none focus:border-[#4A99EA]"
+                            className="w-32 rounded-full border border-zinc-700 bg-transparent px-3 py-1 text-sm outline-none focus:border-[#4A99EA]"
                           />
                           <button
                             onClick={() => addOption(prop)}
-                            className="rounded-full bg-[#4A99EA] px-2.5 py-0.5 text-xs font-bold text-white"
+                            className="rounded-full bg-[#4A99EA] px-3 py-1.5 text-sm font-bold text-white"
                           >
                             追加
                           </button>
@@ -983,7 +1013,7 @@ export function CardDetailSheet({
                             setNewTag("");
                             setAddingTo(prop.id);
                           }}
-                          className="rounded-full border border-dashed border-zinc-600 px-2.5 py-0.5 text-xs text-zinc-500 hover:text-zinc-300"
+                          className="rounded-full border border-dashed border-zinc-600 px-3 py-1.5 text-sm text-zinc-500 hover:text-zinc-300"
                         >
                           ＋ タグ
                         </button>
@@ -1016,7 +1046,7 @@ export function CardDetailSheet({
                               [p.id]: tagValuesOf(p, item),
                             }));
                           }}
-                          className="rounded-full border border-dashed border-zinc-600 px-2.5 py-0.5 text-xs text-zinc-400 hover:text-zinc-200"
+                          className="rounded-full border border-dashed border-zinc-600 px-3 py-1.5 text-sm text-zinc-400 hover:text-zinc-200"
                         >
                           ↺ {p.label}
                         </button>
@@ -1054,7 +1084,7 @@ export function CardDetailSheet({
                 </div>
               </div>
             ) : tagProps.length === 0 ? (
-              <p className="text-xs text-zinc-400">
+              <p className="text-sm text-zinc-400">
                 プロパティがありません (編集から追加できます)
               </p>
             ) : (
@@ -1087,7 +1117,7 @@ export function CardDetailSheet({
             {editing === "status" ? (
               <div className="space-y-3">
                 <div>
-                  <p className="mb-1.5 text-xs text-zinc-500">前回結果</p>
+                  <p className="mb-1.5 text-sm text-zinc-500">前回結果</p>
                   <div className="flex flex-wrap gap-1.5">
                     {RESULT_OPTIONS.map((m) => (
                       <button
@@ -1107,7 +1137,7 @@ export function CardDetailSheet({
                   </div>
                 </div>
                 <div>
-                  <p className="mb-1.5 text-xs text-zinc-500">学習進捗度</p>
+                  <p className="mb-1.5 text-sm text-zinc-500">学習進捗度</p>
                   <div className="flex flex-wrap gap-1.5">
                     {PROGRESS_OPTIONS.map((m) => (
                       <button
@@ -1134,25 +1164,25 @@ export function CardDetailSheet({
               <div className="flex flex-wrap items-center gap-2">
                 {status.result.label && (
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-xs ${status.result.cls}`}
+                    className={`rounded-full px-3 py-1 text-sm ${status.result.cls}`}
                   >
                     {status.result.label}
                   </span>
                 )}
                 <span
-                  className={`rounded-full px-2.5 py-0.5 text-xs ${status.progress.cls}`}
+                  className={`rounded-full px-3 py-1 text-sm ${status.progress.cls}`}
                 >
                   {status.progress.label}
                 </span>
                 {(status.result.manual || status.progress.manual) && (
-                  <span className="text-xs text-zinc-500">手動で指定</span>
+                  <span className="text-sm text-zinc-500">手動で指定</span>
                 )}
               </div>
             )}
             {/* これまでの回答回数。編集中も出しっぱなしにする
                 (手で付け替えるとき、実際の記録が横に見えていた方が判断しやすい)。
                 色は前回結果のバッジ (RESULT_BADGE) と同じ系統に揃える */}
-            <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500">
+            <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500">
               <span>これまでの回答</span>
               <span className="text-[#4A99EA]">○ {status.counts.known}回</span>
               <span className="text-yellow-500">△ {status.counts.fuzzy}回</span>
@@ -1162,7 +1192,7 @@ export function CardDetailSheet({
 
           {/* 背景画像。次回以降このカードの背面に敷かれる */}
           <div className="rounded-2xl bg-zinc-900 p-4">
-            <div className="mb-2 flex items-center gap-1.5 text-xs text-zinc-500">
+            <div className="mb-2 flex items-center gap-1.5 text-sm text-zinc-500">
               <span>背景画像</span>
             </div>
             {item.bgImage ? (
@@ -1215,12 +1245,22 @@ export function CardDetailSheet({
         </div>
       </div>
 
-      {/* 閉じるボタン。カードの ↑ の位置から、回りながら右上へ移動して ↓ になる */}
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto flex max-w-2xl justify-end px-4 py-3">
+      {/* 閉じるボタン。カードの ↑ の位置から、回りながら右上へ移動して ↓ になる。
+          **見出しのブロックと縦の中心を揃える。** ボタンはパネルの拡大に
+          巻き込まれないよう transform を持つパネルの外に置いてあるので、
+          flex では揃えられない。見出しの高さを実測して自分で合わせる。
+          見出し語は長さで 4xl / 3xl / 2xl の3段に変わり、長いイディオムは
+          2行に折り返すため、決め打ちの余白では合わない */}
+      <div
+        className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto flex max-w-2xl justify-end px-4"
+        style={{ paddingTop: Math.max(12, headerH / 2 - 20) }}
+      >
         <button
           ref={closeRef}
           onClick={closeWithAnimation}
           aria-label="詳細を閉じる"
+          // チュートリアルのスポットライトの対象 (自分で閉じさせるステップ)
+          data-tour="detail-close"
           style={{ ...flyStyle(offset?.close, -180), ...dismissStyle }}
           className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black"
         >

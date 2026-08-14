@@ -6,12 +6,15 @@ import {
   QuizMode,
   LastResult,
   Progress,
+  TagProp,
+  tagValuesOf,
   VocabAction,
   VocabEntry,
   VocabLevelState,
   VocabSettings,
   WordDb,
   WordDbEntry,
+  WordEdit,
 } from "./types";
 
 // 出題モードと単語の状態は types.ts 側に置いてある (VocabSettings などが参照するため)。
@@ -133,12 +136,21 @@ export function lastResult(entry: VocabEntry | undefined): LastResult | null {
   return "fuzzy"; // 4択は正解でも誤答でも △
 }
 
-// 学習進捗度。初見で ○ を出した語と、○ が masterKnownCount 回続いた語を学習完了とする。
+// 学習進捗度。一度も外していない語と、○ が masterKnownCount 回続いた語を学習完了とする。
 // ただしどちらも「前回結果が ○」であることが条件で、あとで △ や × を出したら学習中へ戻る。
 //
-// 初見の判定に △→正解 は含めない。「怪しいが4択は当たった」は身についたとは言えない。
+// 「一度も外していない」に △→正解 は含めない。「怪しいが4択は当たった」は身についたとは言えない。
 // 戻す条件を付けていないと、一度学習完了になった語は忘れても永久に学習完了のままになり、
-// 学習中だけを拾う復習モードに二度と出てこなくなる
+// 学習中だけを拾う復習モードに二度と出てこなくなる。
+//
+// **近道は「履歴に △ も × も一度も無い」ときだけ効く。** 以前は `history[0].r === "known"`、
+// つまり初見が ○ でありさえすれば通していたので、そのあと × を何回出しても ○ を1回取るだけで
+// 学習完了へ戻り、連続の判定に永久に到達しなかった。一度でも外した語は、そこから
+// masterKnownCount 回続けて ○ を出すまで学習中に留める。
+//
+// 履歴は直近50件で切られるが、`some` で見ているのでこの判定は壊れない。
+// 50件すべてが ○ なら実質「50回連続 ○」であり、学習完了で差し支えない
+// (`history[0]` を見る書き方では、51回目以降その語の本当の初見が読めなくなっていた)
 export function progressOf(
   entry: VocabEntry | undefined,
   masterKnownCount: number,
@@ -154,7 +166,7 @@ export function progressOf(
   }
   // 直近が ○ でなければ、この先の判定を見るまでもなく学習中
   if (lastAction(entry) !== "known") return "learning";
-  if (entry.history[0].r === "known") return "done";
+  if (entry.history.every((h) => h.r === "known")) return "done";
   if (consecutiveKnown(entry) >= masterKnownCount) return "done";
   return "learning";
 }
@@ -352,6 +364,24 @@ export function drillNewRatio(settings: VocabSettings): number {
   return Math.max(0, Math.min(100, r));
 }
 
+// タグの絞り込みを通るか。**同じプロパティ内は OR、プロパティ同士は AND**
+// (単語リストのフィルタと同じ規則)。値を1つも選んでいないプロパティは条件なし。
+// プロパティを消すと tagProps から居なくなるので、その条件も自動で外れる
+export function passesTagFilter(
+  def: WordDbEntry,
+  edit: WordEdit | undefined,
+  tagProps: TagProp[],
+  filter: Record<string, string[]>,
+): boolean {
+  for (const prop of tagProps) {
+    const want = filter[prop.id];
+    if (!want || want.length === 0) continue;
+    const has = tagValuesOf(prop, def, edit);
+    if (!want.some((v) => has.includes(v))) return false;
+  }
+  return true;
+}
+
 export function buildQueue(
   dbs: WordDbMap,
   levels: Level[],
@@ -361,9 +391,14 @@ export function buildQueue(
   size: number,
   now: Date,
   exclude: Set<string> = new Set(),
+  // タグの絞り込みに要る。渡さなければタグでは絞らない
+  tagProps: TagProp[] = [],
+  edits: Record<string, WordEdit> = {},
 ): WordDbEntry[] {
   const index = buildIndex(dbs);
   const master = settings.masterKnownCount;
+  const tagOk = (def: WordDbEntry) =>
+    passesTagFilter(def, edits[def.word], tagProps, settings.tagFilter ?? {});
 
   // 学習履歴のある単語 (全レベル横断) を学習進捗度で仕分ける
   const inProgress: { item: WordDbEntry; w: number }[] = []; // 学習中 (復習の対象)
@@ -371,6 +406,7 @@ export function buildQueue(
   for (const entry of Object.values(progress)) {
     const info = index.get(entry.word);
     if (!info || exclude.has(info.def.word)) continue;
+    if (!tagOk(info.def)) continue;
     const pick = { item: info.def, w: reviewWeight(entry) };
     const p = progressOf(entry, master);
     if (p === "learning") inProgress.push(pick);
@@ -394,6 +430,7 @@ export function buildQueue(
   for (const level of levels) {
     for (const w of dbs[level].words) {
       if (exclude.has(w.word)) continue;
+      if (!tagOk(w)) continue;
       if (progressOf(progress[w.word], master) === "new") {
         fresh.push({ item: w, w: 1 });
       }

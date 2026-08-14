@@ -1,19 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
   Database,
   FileText,
-  GraduationCap,
   List,
-  MessagesSquare,
   PenLine,
   Settings,
 } from "lucide-react";
-import { EnglishData, EMPTY_DATA } from "@/lib/english/types";
+import { EnglishData, EMPTY_DATA, VocabAction } from "@/lib/english/types";
 import {
   clearData,
   exportData,
@@ -25,31 +23,40 @@ import {
   saveData,
   StorageProblem,
 } from "@/lib/english/storage";
-import { InterestsEditor } from "./InterestsEditor";
 import {
+  DEMO_EXPECTED,
+  isDemoStep,
+  isFinalStep,
+  isWelcomeStep,
+  STEP,
   TUTORIAL_STEP_COUNT,
-  TutorialBanner,
+  TutorialDemo,
+  TutorialSpotlight,
   TutorialOverlay,
+  TutorialWelcome,
   tutorialTabForStep,
 } from "./TutorialFlow";
 import { VocabTab } from "./VocabTab";
 import { GrammarTab } from "./GrammarTab";
 import { ReadingTab } from "./ReadingTab";
 import { WordListView } from "./WordListView";
-import { ChatTab } from "./ChatTab";
 import { Sheet } from "./Sheet";
 import { ConfirmButton } from "./ConfirmButton";
 import { setSpeechRate } from "@/lib/english/speech";
 
-type Tab = "vocab" | "database" | "grammar" | "reading" | "chat";
-type SettingsView = "menu" | "vocab" | "data";
+// シールをめくってから次のステップへ進むまでの間。
+// めくれた単語を読む時間を取る (この後、表が横へスクロールする)。
+// この 1 秒は「いいですね。」に文言を差し替え、画面のどこも押させない
+const PEEL_PAUSE_MS = 1000;
+
+type Tab = "vocab" | "database" | "grammar" | "reading";
+type SettingsView = "menu" | "data";
 
 const TABS: { key: Tab; label: string; icon: React.ReactNode }[] = [
   { key: "vocab", label: "単語", icon: <BookOpen size={22} /> },
   { key: "database", label: "単語リスト", icon: <List size={22} /> },
   { key: "grammar", label: "文法", icon: <PenLine size={22} /> },
   { key: "reading", label: "読解", icon: <FileText size={22} /> },
-  { key: "chat", label: "AI会話", icon: <MessagesSquare size={22} /> },
 ];
 
 // 設定サブ画面の共通ヘッダー
@@ -82,9 +89,23 @@ export function EnglishApp() {
     contentRef.current?.scrollTo(0, 0);
   }, [tab]);
   // チュートリアル。初回 (tutorialDone が false) は自動で始まり、設定からも見直せる。
-  // ステップをここで持つのは、タブ体験のステップで実タブを切り替えるため。
-  // 0=ようこそ / 1=カード操作デモ (全画面) / 2〜6=各タブの体験 (バナー) / 7=おわり (全画面)
+  // ステップをここで持つのは、タブを切り替えるためと、達成条件の判定に data が要るため。
+  // 各ステップの意味は TutorialFlow の STEP を見る (番号は直書きしない)
   const [tourStep, setTourStep] = useState<number | null>(null);
+  // 演習のステップ (13) に入った時点の総回答数。ここから1つでも増えたら達成とみなす。
+  // 回数そのものを見るので、どのカードにどう答えたかは問わない
+  const [tourAnswerMark, setTourAnswerMark] = useState(0);
+  // シールを1枚めくった直後の短い間だけ true。文言を褒め言葉に差し替え、
+  // 画面を止めてから次のステップへ送る
+  const [sealPeeled, setSealPeeled] = useState(false);
+  const answerCount = useMemo(
+    () =>
+      Object.values(data.vocab).reduce(
+        (n, e) => n + e.knownCount + e.unsureCount + e.unknownCount,
+        0,
+      ),
+    [data.vocab],
+  );
   const goTourStep = (n: number) => {
     if (n >= TUTORIAL_STEP_COUNT) {
       finishTutorial();
@@ -92,7 +113,13 @@ export function EnglishApp() {
     }
     const next = Math.max(0, n);
     setTourStep(next);
-    // タブ体験のステップに入った瞬間、そのタブへ切り替える。
+    setSealPeeled(false);
+    // 演習のステップは「入ってから1語答える」が条件なので、入った時点で基準を取る。
+    // 測定の10問がすでに数に入っているため、基準を取らずに総数を見ると最初から達成扱いになる
+    // 「入ってから1回操作する」が条件のステップは、入った時点で基準を取る。
+    // 基準を取らずに総数を見ると、それまでの回答のせいで最初から達成扱いになる
+    if (next === STEP.reviewUnsure) setTourAnswerMark(answerCount);
+    // タブのステップに入った瞬間、そのタブへ切り替える。
     // 以後ユーザーが他のタブを覗くのは自由 (強制的に戻したりしない)
     const target = tutorialTabForStep(next);
     if (target) setTab(target);
@@ -102,13 +129,89 @@ export function EnglishApp() {
     setTab("vocab");
     setData((prev) => ({ ...prev, tutorialDone: true }));
   };
+  const measured = data.vocabLevel.current !== null;
+  const answered = answerCount > tourAnswerMark;
+  // **測定中はボトムナビと歯車を塞ぐ。** 他のステップはスポットライトの板が
+  // 画面を覆うので勝手に塞がるが、10問のあいだだけは対象が見つからず
+  // 板が出ないので、ここだけ素通しになっていた。タブを移ると VocabTab ごと
+  // アンマウントされて答えた分が丸ごと消える (docs の既知課題)
+  const tourLockChrome = tourStep === STEP.placement && !measured;
   const tourNav = tourStep !== null && {
     step: tourStep,
-    measured: data.vocabLevel.current !== null,
+    measured,
+    answered,
+    sealPeeled,
+    masterCount: data.settings.vocab.masterKnownCount,
     onNext: () => goTourStep(tourStep + 1),
-    onBack: () => goTourStep(tourStep - 1),
     onSkip: finishTutorial,
   };
+
+  // デモの回答。待っている回答が来たら、そのまま次のステップへ送る。
+  // 入力方法 (ボタン / スワイプ) は見ない。Spotlight の穴がその時できる操作を
+  // 1つに限定しているので、区別する必要がそもそも無い
+  // 暗記シールの演習。貼った / めくった操作から直に呼ばれるので、
+  // 効果を挟まずそのまま次のステップへ送れる
+  const onSealAction = (kind: "seal" | "peel") => {
+    if (tourStep === STEP.sealOn && kind === "seal") goTourStep(STEP.sealPeel);
+    // **めくったら少し置いてから進める。** 次のステップは学習進捗度の列を指すので
+    // 表が右へスクロールする。すぐ進めると、めくれた単語を見る前に画面が動いて
+    // 「めくれたのかどうか分からない」状態になる (ユーザー報告)
+    if (tourStep === STEP.sealPeel && kind === "peel") {
+      setSealPeeled(true);
+      window.setTimeout(() => {
+        // 待っているあいだにスキップされたり戻られたりしたら何もしない。
+        // 関数更新で今の値を見るので、古い値を掴む心配がない。
+        // **どちらも単語リストのタブなので setTab は要らない。**
+        // 順番を入れ替えるときはここも見直すこと
+        setTourStep((cur) =>
+          cur === STEP.sealPeel ? STEP.progressColumn : cur,
+        );
+        setSealPeeled(false);
+      }, PEEL_PAUSE_MS);
+    }
+  };
+  // 先頭行を押して単語詳細が開いた瞬間
+  const onDetailOpen = () => {
+    if (tourStep === STEP.firstRow) goTourStep(STEP.detail);
+  };
+  // 「単語の設定」を開いた瞬間
+  const onFilterOpen = () => {
+    if (tourStep === STEP.cardSettings) goTourStep(STEP.filterSection);
+  };
+  // 復習タブへ切り替えた瞬間
+  const onModeChange = (m: "drill" | "review") => {
+    if (tourStep === STEP.toReview && m === "review")
+      goTourStep(STEP.reviewBasics);
+  };
+  // 右上の ↓ で自分で閉じた瞬間。**「次へ」で勝手に閉じない。**
+  // 画面が急に単語リストへ戻ると驚かせるので、閉じる操作はユーザーに委ねる
+  const onDetailClose = () => {
+    if (tourStep === STEP.detailClose) goTourStep(STEP.sealOn);
+  };
+
+  const onDemoAction = (a: VocabAction) => {
+    if (tourStep === null || !isDemoStep(tourStep)) return;
+    if (DEMO_EXPECTED[tourStep] === a) goTourStep(tourStep + 1);
+  };
+
+  // 操作で進むステップの自動進行。デモと違って達成が data の変化として届くので、
+  // 描画の外で拾うしかない。ステップ4は10問を終えた瞬間、ステップ16は △ で答えた瞬間。
+  // 「望みの行動を達成したら次へを押さずに進む」というユーザーの指定
+  useEffect(() => {
+    // VocabTab の props は data と setData の2つだけという決まりなので、
+    // 「10問終わった」「1語答えた」を直接受け取る口が無い。data の変化として
+    // 拾うしかなく、ここは set-state-in-effect が本来想定している
+    // 「外部の状態の変化に同期する」用途にあたる。
+    // 条件は tourStep で1回しか通らないので、連鎖描画にはならない
+    /* eslint-disable react-hooks/set-state-in-effect */
+    if (tourStep === STEP.placement && measured)
+      goTourStep(STEP.placementResult);
+    if (tourStep === STEP.reviewUnsure && answered)
+      goTourStep(STEP.cardSettings);
+    /* eslint-enable react-hooks/set-state-in-effect */
+    // goTourStep は毎レンダー新しい関数になるが、発火の条件は上の3つだけ
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tourStep, measured, answered]);
 
   // 保存に失敗したときだけ出す帯。学習記録は取り返しがつかないので、
   // 黙って失敗させない (元の実装は例外を投げっぱなしにしていた)
@@ -221,12 +324,6 @@ export function EnglishApp() {
         {(
           [
             {
-              view: "vocab" as SettingsView,
-              icon: <GraduationCap size={18} className="text-[#4A99EA]" />,
-              title: "興味のあるテーマ",
-              desc: "長文読解とAI会話の題材",
-            },
-            {
               view: "data" as SettingsView,
               icon: <Database size={18} className="text-[#4A99EA]" />,
               title: "学習データ",
@@ -252,7 +349,7 @@ export function EnglishApp() {
         <button
           onClick={() => {
             closeSettings();
-            goTourStep(0);
+            goTourStep(STEP.welcome);
           }}
           className="flex w-full items-center gap-3 px-4 py-4 text-left hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
         >
@@ -271,28 +368,7 @@ export function EnglishApp() {
 
   // 単語レベルの表示と再測定は「単語の設定」(カード画面の左上) へ移した。
   // 難易度の設定と同じ場所にあるほうが探しやすいため。
-  // ここに残るのは、読解とAI会話が使う興味テーマだけ
-  const settingsVocab = (
-    <div className="space-y-4">
-      <SubHeader title="興味のあるテーマ" onBack={() => setSettingsView("menu")} />
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
-        <h3 className="text-sm font-medium">興味のあるテーマ</h3>
-        <p className="mb-3 mt-0.5 text-xs text-zinc-500">
-          長文読解とAI会話の「おまかせ」の題材に使われます。
-        </p>
-        <InterestsEditor
-          interests={data.settings.interests}
-          onChange={(interests) =>
-            setData((prev) => ({
-              ...prev,
-              settings: { ...prev.settings, interests },
-            }))
-          }
-        />
-      </div>
-    </div>
-  );
-
+  // ここに残るのは、読解が使う興味テーマだけ
   const settingsData = (
     <div className="space-y-4">
       <SubHeader title="学習データ" onBack={() => setSettingsView("menu")} />
@@ -385,7 +461,8 @@ export function EnglishApp() {
           }}
           aria-label="設定"
           aria-expanded={settingsOpen}
-          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+          disabled={tourLockChrome}
+          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors disabled:pointer-events-none disabled:opacity-30 ${
             settingsOpen
               ? "bg-zinc-900 text-white dark:bg-white dark:text-black"
               : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-900"
@@ -418,16 +495,44 @@ export function EnglishApp() {
         ref={contentRef}
         className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto px-4 py-4"
       >
-      {/* タブ体験のステップでは、タブの中身の上に説明バナーを通常フローで置く
-          (オーバーレイにするとカード画面の回答ボタンなどを覆ってしまう) */}
-      {tourNav && tutorialTabForStep(tourNav.step) && (
-        <TutorialBanner {...tourNav} />
+      {tab === "vocab" && (
+        <VocabTab
+          data={data}
+          setData={setData}
+          // チュートリアル中はカード右下の ↑ を出さない。
+          // 開くと CardDetailSheet がスポットライトの板の下に潜って詰む
+          tourActive={tourStep !== null}
+          // 復習の説明に入るとき、学習中の語が無ければサンプルを1枚出す
+          tourSampleReview={tourStep !== null && tourStep >= STEP.toReview}
+          onModeChange={onModeChange}
+          onFilterOpen={onFilterOpen}
+          // 設定のステップを抜けたら閉じる。開いたままだと締めの画面の裏に残る
+          hideFilter={tourStep !== null && tourStep > STEP.swipeSection}
+          // 説明している大分類だけを開く
+          tourOpenSection={
+            tourStep === STEP.filterSection
+              ? "filter"
+              : tourStep === STEP.swipeSection
+                ? "swipe"
+                : null
+          }
+        />
       )}
-      {tab === "vocab" && <VocabTab data={data} setData={setData} />}
-      {tab === "database" && <WordListView data={data} setData={setData} />}
+      {tab === "database" && (
+        <WordListView
+          data={data}
+          setData={setData}
+          onSealAction={onSealAction}
+          onDetailOpen={onDetailOpen}
+          onDetailClose={onDetailClose}
+          // 詳細のステップ (8〜9) を抜けても開いたままなら閉じる。
+          // 通常は 9 でユーザー自身が ↓ を押して閉じるので、これは保険。
+          // チュートリアル中だけの制御で、終わったら手を出さない
+          hideDetail={tourStep !== null && tourStep > STEP.detailClose}
+        />
+      )}
       {tab === "grammar" && <GrammarTab data={data} setData={setData} />}
       {tab === "reading" && <ReadingTab data={data} setData={setData} />}
-      {tab === "chat" && <ChatTab data={data} setData={setData} />}
       </div>
 
       {/* 設定はヘッダーの裏から降りてくる */}
@@ -441,11 +546,7 @@ export function EnglishApp() {
         top={`calc(49px + max(0.75rem, env(safe-area-inset-top)) + ${bannerH}px)`}
         bottom={"calc(76px + env(safe-area-inset-bottom))"}
       >
-        {settingsView === "menu"
-          ? settingsMenu
-          : settingsView === "vocab"
-            ? settingsVocab
-            : settingsData}
+        {settingsView === "menu" ? settingsMenu : settingsData}
       </Sheet>
 
       {/* X風のボトムナビ (アクティブは前景色+太字、色は使わない)。
@@ -464,7 +565,10 @@ export function EnglishApp() {
                   setTab(t.key);
                   closeSettings();
                 }}
-                className={`flex flex-1 flex-col items-center gap-0.5 py-2.5 transition-colors ${
+                disabled={tourLockChrome}
+                // チュートリアルのスポットライトの対象 (単語リストを指すステップ)
+                data-tour={t.key === "database" ? "nav-database" : undefined}
+                className={`flex flex-1 flex-col items-center gap-0.5 py-2.5 transition-colors disabled:pointer-events-none disabled:opacity-30 ${
                   active
                     ? "text-zinc-900 dark:text-white"
                     : "text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
@@ -473,7 +577,9 @@ export function EnglishApp() {
                 {t.icon}
                 {/* 選択中は太字にするが、太字ぶんの幅を常に確保しておく。
                     そうしないと選んだ瞬間にラベルの幅が変わってタブがずれる */}
-                <span className="grid text-[10px]">
+                {/* 常に見えるラベルなので、最小級の 10px からは上げる。
+                    タブが4つになって横幅に余裕ができたぶんを回す */}
+                <span className="grid text-[11px]">
                   <span
                     aria-hidden
                     className="invisible col-start-1 row-start-1 font-bold"
@@ -492,9 +598,19 @@ export function EnglishApp() {
         </div>
       </nav>
 
-      {/* 最初と最後だけ全画面 (z-[60])。閉じた瞬間にそのまま単語タブが出る */}
-      {tourNav && !tutorialTabForStep(tourNav.step) && (
-        <TutorialOverlay {...tourNav} />
+      {/* 答え方のデモ (z-[60])。本物の WordCard を出すだけの全画面で、
+          何をすればよいかの指示はこの上のスポットライトが受け持つ */}
+      {tourNav && isWelcomeStep(tourNav.step) && <TutorialWelcome {...tourNav} />}
+      {tourNav && isDemoStep(tourNav.step) && (
+        <TutorialDemo onAction={onDemoAction} />
+      )}
+      {/* 締めの全画面 (z-[60])。閉じた瞬間にそのまま単語タブが出る */}
+      {tourNav && isFinalStep(tourNav.step) && <TutorialOverlay {...tourNav} />}
+      {/* スポットライト (z-[65])。デモの上にも実画面の上にも同じものを重ねる。
+          暗い部分がタップを吸い、穴だけが押せるので、穴の位置が
+          そのまま「次にできる操作」の限定になる */}
+      {tourNav && !isFinalStep(tourNav.step) && !isWelcomeStep(tourNav.step) && (
+        <TutorialSpotlight {...tourNav} />
       )}
     </div>
   );
