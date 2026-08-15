@@ -63,6 +63,23 @@ interface Box {
 const PAD = 6; // 穴を対象より少し大きく取る (切り取りより前に足す)
 const GAP = 12; // 穴と吹き出しの間隔
 const TIP_MAX = 320; // 吹き出しの最大幅
+const TIP_H = 130; // 置き場所を決めるときの吹き出しの高さの見積もり (実測は tipH)
+// セーフエリアの内側に置くときの余白
+const SAFE_GAP = 8;
+
+// **吹き出しは必ずセーフエリアの内側に収める。**
+// 穴が画面いっぱい (単語詳細) だったり、穴の上に置く分岐に入ったりすると、
+// 素の座標では画面上端に寄って時計や Dynamic Island に潜る (実機で3か所報告された)。
+// `env()` は JS から読めないので、CSS の max() / clamp() で下限と上限を作る。
+// 単位は親 (fixed inset-0 の根) 基準なので、100% はビューポートの高さになる
+const safeTop = (px: number) =>
+  `max(${Math.round(px)}px, calc(env(safe-area-inset-top) + ${SAFE_GAP}px))`;
+// 下からの指定は「下にはみ出さない」だけでなく「上にもはみ出さない」を同時に満たす。
+// 上限は 100% から吹き出しの高さと上のインセットを引いたもの。
+// **第1引数は CSS の長さの式**。呼び出し側が `calc(88px + env(...))` のように
+// インセットを足した値を渡すことがあるので、数値に丸めない
+const safeBottom = (expr: string, tipH: number) =>
+  `clamp(calc(env(safe-area-inset-bottom) + ${SAFE_GAP}px), ${expr}, calc(100% - ${Math.round(tipH)}px - env(safe-area-inset-top) - ${SAFE_GAP}px))`;
 const DIM = "rgba(0,0,0,0.72)";
 
 // 候補を順に引いて、最初に見つかった印の要素を**すべて**返す。
@@ -232,6 +249,10 @@ export function Spotlight({
 }: Props) {
   const [boxes, setBoxes] = useState<Box[]>([]);
   const boxesRef = useRef<Box[]>([]);
+  // 吹き出しの実際の高さ。**上のインセットへの食い込みを防ぐ上限に使う**ので、
+  // 見積もり (TIP_H) ではなく実測が要る。文言はステップごとに1〜3行と幅がある
+  const tipRef = useRef<HTMLDivElement | null>(null);
+  const [tipH, setTipH] = useState(TIP_H);
   // 依存配列に配列そのものを置くと毎レンダー別物になるので、文字列に畳んで渡す
   const key = Array.isArray(target) ? target.join("|") : target;
 
@@ -253,6 +274,14 @@ export function Spotlight({
       behavior: "smooth",
     });
   }, [key]);
+
+  // 吹き出しの高さを測る。文言が変われば行数が変わるので step ごとに測り直す
+  useEffect(() => {
+    const el = tipRef.current;
+    if (!el) return;
+    const h = el.getBoundingClientRect().height;
+    if (h > 0) setTipH((cur) => (Math.abs(cur - h) > 1 ? h : cur));
+  }, [body, step, boxes]);
 
   // 毎フレーム測り直す。値が動いたときだけ state を更新する
   useEffect(() => {
@@ -351,7 +380,6 @@ export function Spotlight({
   // カードの上部は余白なので、そこへ重ねても読むものを隠さない。
   // 吹き出し自身は pointer-events-auto だが、カードは広いので
   // 少し下をなぞればスワイプできる
-  const TIP_H = 130;
   const place: "below" | "above" | "inside" =
     vh - (hTop + hH) >= TIP_H ? "below" : hTop >= TIP_H ? "above" : "inside";
   // 穴の中に置くときは、穴の形で上下を選ぶ。
@@ -359,14 +387,29 @@ export function Spotlight({
   // 説明文がその見出しの名前を指しているので隠してはいけない。
   // 幅の広い穴 (カード) は上に置く。中央に見出し語があり、下には指の演出が動く
   const narrow = hW < vw * 0.6;
+  // **どの分岐でもセーフエリアの内側に丸める** (safeTop / safeBottom)。
+  // 素の座標のままだと、穴が画面いっぱいのとき (単語詳細) も、穴の上に置くときも、
+  // 吹き出しが画面上端まで寄って時計や Dynamic Island に潜る。実機で3か所報告された
   const tipStyle =
     place === "below"
-      ? { top: hTop + hH + GAP, left: 0, right: 0 }
+      ? { top: safeTop(hTop + hH + GAP), left: 0, right: 0 }
       : place === "above"
-        ? { bottom: vh - hTop + GAP, left: 0, right: 0 }
+        ? {
+            bottom: safeBottom(`${Math.round(vh - hTop + GAP)}px`, tipH),
+            left: 0,
+            right: 0,
+          }
         : narrow
-          ? { bottom: "calc(88px + env(safe-area-inset-bottom))", left: 0, right: 0 }
-          : { top: hTop + GAP, left: 0, right: 0 };
+          ? {
+              // 88px は下タブを避けるぶん。インセットはその外側に足す
+              bottom: safeBottom(
+                "calc(88px + env(safe-area-inset-bottom))",
+                tipH,
+              ),
+              left: 0,
+              right: 0,
+            }
+          : { top: safeTop(hTop + GAP), left: 0, right: 0 };
 
   return (
     // z は ボトムナビ(40) と Sheet(45〜50) とデモの全画面(60) より上。
@@ -479,7 +522,9 @@ export function Spotlight({
         </div>
       )}
       <div className="pointer-events-none absolute px-4" style={tipStyle}>
-        <div className="pointer-events-auto">{tip}</div>
+        <div ref={tipRef} className="pointer-events-auto">
+          {tip}
+        </div>
       </div>
     </div>
   );

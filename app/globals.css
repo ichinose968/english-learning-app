@@ -62,6 +62,13 @@ html:has(.dark) body {
   color-scheme: dark;
   background-color: #000;
   color: #f4f4f5;
+  /* **ドキュメント側のスクロールとラバーバンドを塞ぐ。** このアプリはアプリシェルで、
+     スクロールは EnglishApp 内の1つのコンテナだけが担う。ページが動くと
+     ヘッダーと下タブが指で持ち上がる (ホーム画面から起動した実機で報告された)。
+     `main` を `fixed inset-0` にしたうえで、ここでドキュメントごと固定する。
+     `.dark` を含む文書 (= /english) にしか当たらないので他ページは無傷 */
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 /* 画面上部のタブを切り替えたとき、中身が横から滑り込んでくる。

@@ -19,13 +19,22 @@ export const viewport: Viewport = {
 
 export default function EnglishPage() {
   return (
-    // ページ自体は一切スクロールさせない。高さを画面ぴったりに固定し、
-    // スクロールはすべて EnglishApp 内部のコンテナで行う (ボトムナビがずれる原因になるため)
+    // ページ自体は一切スクロールさせない。スクロールはすべて EnglishApp 内部の
+    // コンテナで行う (ボトムナビがずれる原因になるため)。
+    //
+    // **`h-svh` ではなく `fixed inset-0` で留める。** ホーム画面から起動した iOS では
+    // `100svh` が画面の高さより下のセーフエリアぶん短く解決され、`main` の下に
+    // 地色の帯が残っていた。そこへ下タブが自前で `env(safe-area-inset-bottom)` を
+    // 足すので余白が二重になり、タブが画面の下端から約90px浮いていた (実機で報告された)。
+    // 同じ理由でページ側にスクロールが生まれ、ヘッダーと下タブが指で動いてしまっていた。
+    // `fixed inset-0` は `viewportFit: "cover"` のレイアウトビューポート
+    // (= セーフエリアを含む画面全体) にぴったり張り付くので、どちらも消える。
+    // ドキュメント側のスクロールとラバーバンドは globals.css の `html:has(.dark)` で塞ぐ。
     //
     // dark は端末がライトモードでもこのアプリだけダークにするための印
     // (globals.css の @custom-variant dark が拾う)。english-app は入力欄の
     // フォントサイズを16px以上に保つ指定の足場で、これも globals.css 側にある
-    <main className="english-app dark flex h-svh flex-col items-center bg-white dark:bg-black">
+    <main className="english-app dark fixed inset-0 flex flex-col items-center bg-white dark:bg-black">
       {/* オフラインで使えるようにするための Service Worker。画面には何も出さない */}
       <ServiceWorkerRegistrar />
       {/* ヘッダーは設定への導線を持つので EnglishApp 側 (クライアント) に置く */}
