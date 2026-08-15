@@ -447,7 +447,12 @@ export function EnglishApp() {
           ノッチ機 (47px) で題名と歯車が時計に潜る */}
       <header
         style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
-        className="flex shrink-0 items-center justify-between border-b border-zinc-200 bg-white/85 px-4 pb-3 backdrop-blur-md dark:border-zinc-800 dark:bg-black/85"
+        // **backdrop-blur は使わない。** 地色が黒で、下の中身はここを通り抜けない
+        // (スクロールするのは header と nav に挟まれたコンテナだけ) のでぼかしは
+        // 何も足していない。にもかかわらず backdrop-filter が作る合成の境目が、
+        // この上に重なる単語詳細の閉じる ↓ ボタンを横切り、白い丸が上下で
+        // 違う白に割れて見えていた (実機で報告された。境目はヘッダーの下端と一致)
+        className="flex shrink-0 items-center justify-between border-b border-zinc-200 bg-white px-4 pb-3 dark:border-zinc-800 dark:bg-black"
       >
         <h1 className="text-xl font-bold tracking-tight">英語学習</h1>
         <button
@@ -552,7 +557,8 @@ export function EnglishApp() {
       {/* X風のボトムナビ (アクティブは前景色+太字、色は使わない)。
           fixed ではなくシェルの最下段に置く。fixed だとビューポートの高さ変動に追随して動いてしまう */}
       <nav
-        className="relative z-40 shrink-0 border-t border-zinc-200 bg-white/85 backdrop-blur-md dark:border-zinc-800 dark:bg-black/85"
+        // ヘッダーと同じ理由で backdrop-blur を外す (合成の境目を作らない)
+        className="relative z-40 shrink-0 border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-black"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
         <div className="mx-auto flex max-w-2xl items-stretch justify-around">
