@@ -738,7 +738,11 @@ export function CardDetailSheet({
         <div className="mx-auto max-w-2xl">
           <header
             ref={headerRef}
-            className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/85 px-4 py-3 backdrop-blur-md"
+            // **backdrop-blur は使わない。** 地色が黒でパネルの中身も黒なので
+            // ぼかしは見た目に何も足していないのに、backdrop-filter が作る合成の境目が
+            // 上に重なる閉じる ↓ ボタンを横切り、丸の上半分と下半分で白の濃さが
+            // 変わって見えていた (実機で報告された)。不透明な黒にすれば消える
+            className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black px-4 py-3"
           >
             <div>
               <div className="flex items-center gap-2">
