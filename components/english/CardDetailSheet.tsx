@@ -735,10 +735,10 @@ export function CardDetailSheet({
         <div className="mx-auto max-w-2xl">
           <header
             ref={headerRef}
-            // **backdrop-blur は使わない。** 地色が黒でパネルの中身も黒なので
-            // ぼかしは見た目に何も足していないのに、backdrop-filter が作る合成の境目が
-            // 上に重なる閉じる ↓ ボタンを横切り、丸の上半分と下半分で白の濃さが
-            // 変わって見えていた (実機で報告された)。不透明な黒にすれば消える
+            // **backdrop-blur は使わない。** 地色が黒でパネルの中身も黒なので、
+            // ぼかしは見た目に何も足さず合成の層を増やすだけ。
+            // (閉じる ↓ の白が割れて見えた件は当初これを疑ったが外れで、
+            //  正体はボタン自体への UA の描画だった。globals.css を見ること)
             className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black px-4 py-3"
             // **セーフエリアの逃げはここが持つ。** top-0 で画面の上端に貼り付き、
             // 不透明な黒なので、下を流れていく中身をステータスバーの裏に見せない
@@ -1278,9 +1278,14 @@ export function CardDetailSheet({
           // チュートリアルのスポットライトの対象 (自分で閉じさせるステップ)
           data-tour="detail-close"
           style={{ ...flyStyle(offset?.close, -180), ...dismissStyle }}
-          className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-black"
+          // **白い丸はボタンの背景ではなく子要素で描く。** 実機でこの丸が
+          // 上下二色に割れて見える (線は常に丸の上から61%) 件への対処で、
+          // 要素自身の背景の層に何が描かれても、上に敷いた子要素で覆い隠せる。
+          // globals.css の appearance: none と二重の保険。詳細は /btntest
+          className="pointer-events-auto relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-black"
         >
-          <ArrowDown size={20} strokeWidth={3} />
+          <span aria-hidden className="absolute inset-0 rounded-full bg-white" />
+          <ArrowDown size={20} strokeWidth={3} className="relative" />
         </button>
       </div>
 

@@ -59,6 +59,67 @@ const TABS: { key: Tab; label: string; icon: React.ReactNode }[] = [
   { key: "reading", label: "読解", icon: <FileText size={22} /> },
 ];
 
+// **一時的な調査表示 (v2)。** ホーム画面起動でナビが画面の下端に付かない件を
+// 実測で追うためのもの。ブラウザではインセットが 0 になり再現しないので、
+// 端末に数えさせるしかない。ビルド・起動中ページのメタ・ビューポートを
+// 1枚のスクショで確定できるようにしてある。直ったら消すこと
+function LayoutProbe() {
+  const [text, setText] = useState("測定中…");
+  useEffect(() => {
+    // setTimeout 経由にして、effect 内の同期 setState を避ける
+    const t = window.setTimeout(() => {
+      const probe = document.createElement("div");
+      probe.style.cssText =
+        "position:fixed;left:0;top:0;width:0;visibility:hidden;" +
+        "padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)";
+      document.body.appendChild(probe);
+      const cs = getComputedStyle(probe);
+      const insetTop = cs.paddingTop;
+      const insetBottom = cs.paddingBottom;
+      probe.remove();
+      const meta =
+        document
+          .querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')
+          ?.getAttribute("content") ?? "(なし)";
+      const vp =
+        document.querySelector('meta[name="viewport"]')?.getAttribute("content") ??
+        "";
+      const nav = document.querySelector("nav");
+      const nr = nav?.getBoundingClientRect();
+      const standalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        (window.navigator as unknown as { standalone?: boolean }).standalone ===
+          true;
+      setText(
+        [
+          `build=${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "local"} (probe v2)`,
+          `standalone=${standalone}`,
+          `inner=${window.innerWidth}x${window.innerHeight} screen=${window.screen.width}x${window.screen.height}`,
+          `inset top=${insetTop} bottom=${insetBottom}`,
+          `statusbar-meta=${meta}`,
+          `viewport-fit=${vp.includes("viewport-fit=cover") ? "cover" : "coverなし"}`,
+          nr
+            ? `nav bottom=${Math.round(nr.bottom)} 画面内下端との差=${Math.round(window.innerHeight - nr.bottom)}`
+            : "",
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      );
+    }, 0);
+    return () => window.clearTimeout(t);
+  }, []);
+  return (
+    <div className="rounded-2xl border border-[#4A99EA]/40 bg-[#4A99EA]/10 p-3">
+      <p className="mb-1 text-xs font-bold text-[#4A99EA]">
+        表示領域の調査 (原因が分かったら消します)
+      </p>
+      <pre className="whitespace-pre-wrap break-all text-[11px] leading-relaxed text-zinc-300">
+        {text}
+      </pre>
+    </div>
+  );
+}
+
 // 設定サブ画面の共通ヘッダー
 function SubHeader({ title, onBack }: { title: string; onBack: () => void }) {
   return (
@@ -372,6 +433,7 @@ export function EnglishApp() {
   const settingsData = (
     <div className="space-y-4">
       <SubHeader title="学習データ" onBack={() => setSettingsView("menu")} />
+      <LayoutProbe />
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
         <p className="text-sm text-zinc-600 dark:text-zinc-300">
           単語 {Object.keys(data.vocab).length} 語 / 文法 {data.stats.grammarAnswered}{" "}
@@ -449,9 +511,9 @@ export function EnglishApp() {
         style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
         // **backdrop-blur は使わない。** 地色が黒で、下の中身はここを通り抜けない
         // (スクロールするのは header と nav に挟まれたコンテナだけ) のでぼかしは
-        // 何も足していない。にもかかわらず backdrop-filter が作る合成の境目が、
-        // この上に重なる単語詳細の閉じる ↓ ボタンを横切り、白い丸が上下で
-        // 違う白に割れて見えていた (実機で報告された。境目はヘッダーの下端と一致)
+        // 見た目に何も足さず、合成の層を1枚増やすだけだった。
+        // (閉じる ↓ の白が割れて見えた件は当初これを疑ったが外しても変わらず、
+        //  正体はボタン自体への UA の描画だった。globals.css を見ること)
         className="flex shrink-0 items-center justify-between border-b border-zinc-200 bg-white px-4 pb-3 dark:border-zinc-800 dark:bg-black"
       >
         <h1 className="text-xl font-bold tracking-tight">英語学習</h1>
