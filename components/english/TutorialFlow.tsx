@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { BookMarked, Sparkles } from "lucide-react";
+import { BookMarked, PenLine } from "lucide-react";
 import { CardFieldKey, VocabAction, WordDbEntry } from "@/lib/english/types";
 import { statusBadges } from "@/lib/english/worddb";
 import { EXIT_MS, FlyingCard, WordCard } from "./VocabTab";
@@ -390,7 +390,7 @@ export function TutorialOverlay({ step, measured, masterCount, onNext }: Nav) {
         <div className="mx-auto w-full max-w-md">
           <div className="mb-4 flex flex-col items-center text-center">
             <span className="text-[#4A99EA]">
-              <Sparkles size={30} />
+              <PenLine size={30} />
             </span>
             <h2 className="mt-2 text-lg font-bold">準備完了</h2>
             <p className="mt-1 text-xs text-zinc-400">

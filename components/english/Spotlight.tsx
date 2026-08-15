@@ -101,7 +101,9 @@ function findTargetGroups(key: string): Element[][] {
       // `~=` は空白区切りの値のどれかに一致すればよい。
       // 1つの要素に複数の役割を持たせられる (単語列の先頭セルは
       // 「単語列の一部」でもあり「シールをめくらせる1枚」でもある)
-      let els: Element[] = [...document.querySelectorAll(`[data-tour~="${t}"]`)];
+      let els: Element[] = [
+        ...document.querySelectorAll(`[data-tour~="${t}"]`),
+      ];
       if (demo) els = els.filter((e) => demo.contains(e));
       if (els.length > 0) groups.push(els);
     }
@@ -411,6 +413,13 @@ export function Spotlight({
             }
           : { top: safeTop(hTop + GAP), left: 0, right: 0 };
 
+  // **対象が画面いっぱいのときは、暗幕も輪郭も出さない。**
+  // 単語詳細のように画面全体が対象だと、囲っても「どこを見ればいいか」を
+  // 何も伝えないうえ、枠が画面の端で切れて見栄えが悪い (ユーザーの指定)。
+  // 画面はそのまま素で見せ、吹き出しの「次へ」だけ押せるようにする
+  // (下の absorber が画面全体のタップを吸う)
+  const fullScreen = hW >= vw - 8 && hH >= vh - 8;
+
   return (
     // z は ボトムナビ(40) と Sheet(45〜50) とデモの全画面(60) より上。
     // 根は当たり判定を持たない (下の panel のコメント参照)
@@ -418,46 +427,64 @@ export function Spotlight({
       {/* **暗幕は SVG のマスクで描く。** 穴を何個でも開けられるので、
           「単語の列」と「下タブの単語リスト」のように離れた場所を同時に指せる。
           白が暗いところ、黒が穴。見た目だけなので当たり判定は持たせない */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        aria-hidden
-      >
-        <defs>
-          <mask id="tour-holes">
-            <rect x="0" y="0" width="100%" height="100%" fill="white" />
-            {boxes.map((b, i) => (
-              <rect
-                key={i}
-                x={b.left}
-                y={b.top}
-                width={b.width}
-                height={b.height}
-                rx="12"
-                fill="black"
-              />
-            ))}
-          </mask>
-        </defs>
-        <rect
-          x="0"
-          y="0"
-          width="100%"
-          height="100%"
-          fill={DIM}
-          mask="url(#tour-holes)"
-        />
-      </svg>
+      {!fullScreen && (
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          aria-hidden
+        >
+          <defs>
+            <mask id="tour-holes">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" />
+              {boxes.map((b, i) => (
+                <rect
+                  key={i}
+                  x={b.left}
+                  y={b.top}
+                  width={b.width}
+                  height={b.height}
+                  rx="12"
+                  fill="black"
+                />
+              ))}
+            </mask>
+          </defs>
+          <rect
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            fill={DIM}
+            mask="url(#tour-holes)"
+          />
+        </svg>
+      )}
       {/* 穴を囲む4枚の板。これがタップを吸う。穴の位置には何も置かないので、
           そこだけ下のUIへ届く。穴が複数のときは「全部を囲む矩形」の外を塞ぐ
           (中はどのみち blockHole で塞ぐ使い方しかしていない) */}
-      <div style={{ ...panel, top: 0, left: 0, right: 0, height: topH }} />
-      <div style={{ ...panel, top: bottomTop, left: 0, right: 0, bottom: 0 }} />
-      <div
-        style={{ ...panel, top: topH, left: 0, width: leftW, height: hH }}
-      />
-      <div
-        style={{ ...panel, top: topH, left: rightLeft, right: 0, height: hH }}
-      />
+      {fullScreen ? (
+        // 画面いっぱいが対象のとき。暗くも囲みもせず、タップだけ全面で吸う。
+        // 吹き出しはこの後に描かれるので、「次へ」だけがこの板より上に来る
+        <div style={{ ...panel, inset: 0 }} />
+      ) : (
+        <>
+          <div style={{ ...panel, top: 0, left: 0, right: 0, height: topH }} />
+          <div
+            style={{ ...panel, top: bottomTop, left: 0, right: 0, bottom: 0 }}
+          />
+          <div
+            style={{ ...panel, top: topH, left: 0, width: leftW, height: hH }}
+          />
+          <div
+            style={{
+              ...panel,
+              top: topH,
+              left: rightLeft,
+              right: 0,
+              height: hH,
+            }}
+          />
+        </>
+      )}
       {/* 見せるだけのステップでは、穴の上に透明な板を重ねてタップを吸う */}
       {(blockHole || frozen) && (
         <div
@@ -478,27 +505,28 @@ export function Spotlight({
           穴そのもの (SVGのマスク) は丸めない。丸めると対象の端が暗幕に隠れる。
           `outline` は要素の外側に描かれるので、内向き (outlineOffset: -2) にして
           丸めた縁のさらに内側へ確実に収める */}
-      {boxes.map((b, i) => {
-        const left = Math.max(b.left, 0);
-        const top = Math.max(b.top, 0);
-        const right = Math.min(b.left + b.width, vw);
-        const bottom = Math.min(b.top + b.height, vh);
-        if (right <= left || bottom <= top) return null;
-        return (
-          <div
-            key={i}
-            className="pointer-events-none absolute rounded-xl"
-            style={{
-              top,
-              left,
-              width: right - left,
-              height: bottom - top,
-              outline: "2px solid #4A99EA",
-              outlineOffset: -2,
-            }}
-          />
-        );
-      })}
+      {!fullScreen &&
+        boxes.map((b, i) => {
+          const left = Math.max(b.left, 0);
+          const top = Math.max(b.top, 0);
+          const right = Math.min(b.left + b.width, vw);
+          const bottom = Math.min(b.top + b.height, vh);
+          if (right <= left || bottom <= top) return null;
+          return (
+            <div
+              key={i}
+              className="pointer-events-none absolute rounded-xl"
+              style={{
+                top,
+                left,
+                width: right - left,
+                height: bottom - top,
+                outline: "2px solid #4A99EA",
+                outlineOffset: -2,
+              }}
+            />
+          );
+        })}
       {/* スワイプを促す指。穴の中央で左右に往復する */}
       {gesture && (
         // 指は穴の中央ではなく少し下に置く。カードだと中央に見出し語があり、

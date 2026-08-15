@@ -1281,7 +1281,7 @@ export function CardDetailSheet({
           // **白い丸はボタンの背景ではなく子要素で描く。** 実機でこの丸が
           // 上下二色に割れて見える (線は常に丸の上から61%) 件への対処で、
           // 要素自身の背景の層に何が描かれても、上に敷いた子要素で覆い隠せる。
-          // globals.css の appearance: none と二重の保険。詳細は /btntest
+          // globals.css の appearance: none と二重の保険
           className="pointer-events-auto relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-black"
         >
           <span aria-hidden className="absolute inset-0 rounded-full bg-white" />
