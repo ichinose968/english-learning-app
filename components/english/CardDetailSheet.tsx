@@ -726,7 +726,14 @@ export function CardDetailSheet({
       <div
         ref={panelRef}
         className="absolute inset-0 overflow-y-auto overscroll-y-contain bg-black pb-32 text-zinc-100"
-        style={{ ...panelStyle, ...dismissStyle }}
+        // **セーフエリアぶん中身を下げる。** この層は fixed で本体のヘッダーを覆うので、
+        // ヘッダー側の逃げを一切継がない。入れないと見出し語が時計や
+        // Dynamic Island に潜る (ホーム画面から起動した実機で報告された)
+        style={{
+          paddingTop: "env(safe-area-inset-top)",
+          ...panelStyle,
+          ...dismissStyle,
+        }}
       >
         <div className="mx-auto max-w-2xl">
           <header
@@ -1253,7 +1260,11 @@ export function CardDetailSheet({
           2行に折り返すため、決め打ちの余白では合わない */}
       <div
         className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto flex max-w-2xl justify-end px-4"
-        style={{ paddingTop: Math.max(12, headerH / 2 - 20) }}
+        // 見出しブロックとの縦中心合わせに、セーフエリアぶんを足す
+        // (パネル側も同じだけ下げているので、ずれないよう同じ値を足す)
+        style={{
+          paddingTop: `calc(${Math.max(12, headerH / 2 - 20)}px + env(safe-area-inset-top))`,
+        }}
       >
         <button
           ref={closeRef}
@@ -1272,7 +1283,12 @@ export function CardDetailSheet({
       {onAnswer && (
         <div
           ref={barRef}
-          style={{ ...flyStyle(offset?.bar), ...dismissStyle }}
+          // ホームインジケータに掛からないよう、下のインセットぶん持ち上げる
+          style={{
+            paddingBottom: "calc(1rem + env(safe-area-inset-bottom))",
+            ...flyStyle(offset?.bar),
+            ...dismissStyle,
+          }}
           // 間隔はカード画面のボタン列と揃える (gap-3)。
           // ここがずれると、閉じるアニメーションの着地点が実際のボタン位置と食い違う
           // 列幅に収める。中央寄せは mx-auto で行う

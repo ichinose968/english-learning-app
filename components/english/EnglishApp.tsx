@@ -60,6 +60,62 @@ const TABS: { key: Tab; label: string; icon: React.ReactNode }[] = [
 ];
 
 // 設定サブ画面の共通ヘッダー
+// **一時的な調査用。** ホーム画面から起動したとき `fixed inset-0` が画面の下端まで
+// 届かず、下タブも単語詳細も約58px浮く件を追うためのもの。手元のブラウザでは
+// セーフエリアのインセットが 0 になって再現しないので、端末に数えさせる。
+// 原因が分かったら消すこと
+function LayoutProbe() {
+  const [text, setText] = useState("測定中…");
+  useEffect(() => {
+    const probe = document.createElement("div");
+    probe.style.cssText =
+      "position:fixed;left:0;top:0;width:0;visibility:hidden;" +
+      "padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)";
+    document.body.appendChild(probe);
+    const cs = getComputedStyle(probe);
+    const insetTop = cs.paddingTop;
+    const insetBottom = cs.paddingBottom;
+    probe.remove();
+
+    const main = document.querySelector("main");
+    const nav = document.querySelector("nav");
+    const mr = main?.getBoundingClientRect();
+    const nr = nav?.getBoundingClientRect();
+    const vv = window.visualViewport;
+    const standalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      // iOS の Safari だけが持つ独自プロパティ
+      (window.navigator as unknown as { standalone?: boolean }).standalone ===
+        true;
+    setText(
+      [
+        `standalone=${standalone}`,
+        `inner=${window.innerWidth}x${window.innerHeight}`,
+        `screen=${window.screen.width}x${window.screen.height} dpr=${window.devicePixelRatio}`,
+        vv
+          ? `visual=${Math.round(vv.width)}x${Math.round(vv.height)} offTop=${Math.round(vv.offsetTop)} scale=${vv.scale}`
+          : "visual=なし",
+        `inset top=${insetTop} bottom=${insetBottom}`,
+        mr ? `main top=${mr.top} bottom=${mr.bottom} h=${mr.height}` : "main=なし",
+        nr ? `nav bottom=${nr.bottom} h=${Math.round(nr.height)}` : "nav=なし",
+        nr ? `画面下端との差=${Math.round(window.innerHeight - nr.bottom)}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    );
+  }, []);
+  return (
+    <div className="rounded-2xl border border-[#4A99EA]/40 bg-[#4A99EA]/10 p-3">
+      <p className="mb-1 text-xs font-bold text-[#4A99EA]">
+        表示領域の調査 (原因が分かったら消します)
+      </p>
+      <pre className="whitespace-pre-wrap break-all text-[11px] leading-relaxed text-zinc-300">
+        {text}
+      </pre>
+    </div>
+  );
+}
+
 function SubHeader({ title, onBack }: { title: string; onBack: () => void }) {
   return (
     <div className="mb-3 flex items-center gap-2">
@@ -372,6 +428,10 @@ export function EnglishApp() {
   const settingsData = (
     <div className="space-y-4">
       <SubHeader title="学習データ" onBack={() => setSettingsView("menu")} />
+      {/* **一時的な調査用の表示。** ホーム画面から起動したとき下タブが画面の下端から
+          浮く件を追うためのもので、原因が分かったら消す。手元 (ブラウザ) では
+          セーフエリアのインセットが 0 になり再現しないので、端末に数えさせるしかない */}
+      <LayoutProbe />
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
         <p className="text-sm text-zinc-600 dark:text-zinc-300">
           単語 {Object.keys(data.vocab).length} 語 / 文法 {data.stats.grammarAnswered}{" "}
