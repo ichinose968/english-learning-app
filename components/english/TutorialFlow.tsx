@@ -7,6 +7,21 @@ import { statusBadges } from "@/lib/english/worddb";
 import { EXIT_MS, FlyingCard, WordCard } from "./VocabTab";
 import { Spotlight } from "./Spotlight";
 
+// 全画面の層 (ようこそ / デモ / 準備完了) の共通クラスと、セーフエリアの逃げ。
+// **この3つは fixed でヘッダーの上に被さるので、本体の逃げを一切継がない。**
+// 本体のヘッダーは EnglishApp が max(0.75rem, env(safe-area-inset-top)) で
+// 押し下げているが、そこを覆ってしまうため自分で避ける必要がある。
+// 入れないと「チュートリアル n / N」とスキップが時計・Dynamic Island に潜る
+// (ホーム画面から起動した実機で報告された。ブラウザのタブで開いている間は
+// 上下にブラウザのUIがあってインセットが 0 になるため、絶対に再現しない)。
+// 下端も同じ理由でホームインジケータに掛かるので、まとめてここで避ける
+const FULL_LAYER =
+  "fixed inset-0 z-[60] mx-auto flex max-w-2xl flex-col bg-black text-zinc-100";
+const FULL_LAYER_SAFE = {
+  paddingTop: "env(safe-area-inset-top)",
+  paddingBottom: "env(safe-area-inset-bottom)",
+};
+
 // 初回チュートリアル。以前の「はじめに設定してください」(SetupPanel) と
 // その後の単語力測定への一連のフローを、これで置き換えた。
 //
@@ -208,7 +223,8 @@ export function TutorialDemo({
   return (
     // PCでは本体と同じ列幅に収める (fixed は viewport 基準になるため)
     <div
-      className="fixed inset-0 z-[60] mx-auto flex max-w-2xl flex-col bg-black text-zinc-100"
+      className={FULL_LAYER}
+      style={FULL_LAYER_SAFE}
       // これが出ているあいだ、Spotlight はこの中の印だけを対象にする。
       // 下の単語タブにも同じ印のカードがあるため (2周目)
       data-tour-layer="demo"
@@ -303,7 +319,7 @@ function Row({ title, desc }: { title: string; desc: string }) {
 // 以降は全部、実物を指して1行ずつ
 export function TutorialWelcome({ step, masterCount, onNext, onSkip }: Nav) {
   return (
-    <div className="fixed inset-0 z-[60] mx-auto flex max-w-2xl flex-col bg-black text-zinc-100">
+    <div className={FULL_LAYER} style={FULL_LAYER_SAFE}>
       <div className="flex shrink-0 items-center justify-between px-4 py-3">
         <span className="text-xs text-zinc-500">
           チュートリアル {step + 1} / {TUTORIAL_STEP_COUNT}
@@ -363,7 +379,7 @@ export function TutorialWelcome({ step, masterCount, onNext, onSkip }: Nav) {
 
 export function TutorialOverlay({ step, measured, masterCount, onNext }: Nav) {
   return (
-    <div className="fixed inset-0 z-[60] mx-auto flex max-w-2xl flex-col bg-black text-zinc-100">
+    <div className={FULL_LAYER} style={FULL_LAYER_SAFE}>
       <div className="flex shrink-0 items-center justify-between px-4 py-3">
         <span className="text-xs text-zinc-500">
           チュートリアル {step + 1} / {TUTORIAL_STEP_COUNT}

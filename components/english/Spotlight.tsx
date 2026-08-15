@@ -66,9 +66,10 @@ const TIP_MAX = 320; // 吹き出しの最大幅
 const DIM = "rgba(0,0,0,0.72)";
 
 // 候補を順に引いて、最初に見つかった印の要素を**すべて**返す。
-// 同じ印を複数の要素に付けると、それらを囲む1つの穴になる
-// (表の1列まるごとを抜くのに使う。見出しと各セルに同じ印を付ける)
-function findTargets(key: string): Element[] {
+// 戻り値は `+` でつないだ**印ごとのグループ**。同じ印を複数の要素に付けると
+// それらは1つの穴にまとまるが (表の1列まるごとを抜くのに使う。見出しと各セルに
+// 同じ印を付ける)、**印をまたいでまとめてはいけない** (measureBoxes を見ること)
+function findTargetGroups(key: string): Element[][] {
   // **デモの全画面が出ているあいだは、その中の要素だけを対象にする。**
   // 2周目は下の単語タブに本物のカードが出ているので、`answer-known` などの印が
   // デモ側と本物側の2つに当たり、その和集合が穴になって位置がずれていた
@@ -78,15 +79,16 @@ function findTargets(key: string): Element[] {
     // `+` でつなぐと、離れた場所を**同時に**抜ける (穴が2つ以上になる)。
     // 「単語の列」と「下タブの単語リスト」のように、画面の別々の場所を
     // まとめて指したいときに使う
-    let els: Element[] = [];
+    const groups: Element[][] = [];
     for (const t of cand.split("+")) {
       // `~=` は空白区切りの値のどれかに一致すればよい。
       // 1つの要素に複数の役割を持たせられる (単語列の先頭セルは
       // 「単語列の一部」でもあり「シールをめくらせる1枚」でもある)
-      els.push(...document.querySelectorAll(`[data-tour~="${t}"]`));
+      let els: Element[] = [...document.querySelectorAll(`[data-tour~="${t}"]`)];
+      if (demo) els = els.filter((e) => demo.contains(e));
+      if (els.length > 0) groups.push(els);
     }
-    if (demo) els = els.filter((e) => demo.contains(e));
-    if (els.length > 0) return els;
+    if (groups.length > 0) return groups;
   }
   return [];
 }
@@ -187,24 +189,34 @@ function sameBoxes(a: Box[], b: Box[]) {
 }
 
 // 対象の矩形を測って、余白を足し、それぞれ自分を切り取っている枠に収め、
-// 重なるものをまとめる。**要素ごとに切り取る**のが要点で、
+// **同じ印のものだけ**まとめる。要素ごとに切り取るのが要点で、
 // 単語の列 (表の枠に収める) と下タブのボタン (枠が別) を同時に扱える
 function measureBoxes(key: string): Box[] {
   const out: Box[] = [];
-  for (const el of findTargets(key)) {
-    const r = el.getBoundingClientRect();
-    // 幅か高さが 0 の要素 (display:none の名残など) は無いものとして扱う
-    if (r.width <= 0 || r.height <= 0) continue;
-    const padded = {
-      top: r.top - PAD,
-      left: r.left - PAD,
-      width: r.width + PAD * 2,
-      height: r.height + PAD * 2,
-    };
-    const clipped = clipToClippers(padded, el);
-    if (clipped) out.push(clipped);
+  for (const group of findTargetGroups(key)) {
+    const boxes: Box[] = [];
+    for (const el of group) {
+      const r = el.getBoundingClientRect();
+      // 幅か高さが 0 の要素 (display:none の名残など) は無いものとして扱う
+      if (r.width <= 0 || r.height <= 0) continue;
+      const padded = {
+        top: r.top - PAD,
+        left: r.left - PAD,
+        width: r.width + PAD * 2,
+        height: r.height + PAD * 2,
+      };
+      const clipped = clipToClippers(padded, el);
+      if (clipped) boxes.push(clipped);
+    }
+    // **まとめるのは同じ印の中だけ。** 表の1列は連続しているので1つの穴になるが、
+    // 下タブのボタンは別の印なので、隣り合っていても別の穴のまま残る。
+    // ここを印をまたいでやると、単語リストの表の下端と下タブの上端が
+    // ちょうど接しているせいで両方が1つの大きな長方形になり、
+    // 指したい2か所の間にある関係ない部分 (意味の列や他のタブ) まで
+    // 抜けてしまう。実機で報告された
+    out.push(...mergeBoxes(boxes));
   }
-  return mergeBoxes(out);
+  return out;
 }
 
 export function Spotlight({
@@ -227,7 +239,7 @@ export function Spotlight({
   // 横スクロール枠の中にあり、375px幅では初期位置から見えない。
   // scrollIntoView は縦横ともスクロール可能な祖先を全部辿ってくれる
   useEffect(() => {
-    const el = findTargets(key)[0];
+    const el = findTargetGroups(key)[0]?.[0];
     if (!el) return;
     // **画面より広い対象を横に中央寄せしない。** 単語リストの表は
     // min-w-[820px] の横スクロール枠に入っていて、行そのものも 820px ある。
@@ -258,6 +270,7 @@ export function Spotlight({
   }, [key]);
 
   const vh = typeof window === "undefined" ? 0 : window.innerHeight;
+  const vw = typeof window === "undefined" ? 0 : window.innerWidth;
 
   const tip = (
     <div
@@ -345,7 +358,6 @@ export function Spotlight({
   // **細くて縦長の穴 (表の1列) は下端に回す。** 上に置くと列の見出しを隠すが、
   // 説明文がその見出しの名前を指しているので隠してはいけない。
   // 幅の広い穴 (カード) は上に置く。中央に見出し語があり、下には指の演出が動く
-  const vw = typeof window === "undefined" ? 0 : window.innerWidth;
   const narrow = hW < vw * 0.6;
   const tipStyle =
     place === "below"
@@ -416,20 +428,34 @@ export function Spotlight({
           }}
         />
       )}
-      {/* 穴の輪郭。穴ごとに1つ。当たり判定を持たせない */}
-      {boxes.map((b, i) => (
-        <div
-          key={i}
-          className="pointer-events-none absolute rounded-xl"
-          style={{
-            top: b.top,
-            left: b.left,
-            width: b.width,
-            height: b.height,
-            outline: "2px solid #4A99EA",
-          }}
-        />
-      ))}
+      {/* 穴の輪郭。穴ごとに1つ。当たり判定を持たせない。
+          **画面からはみ出す穴は、輪郭だけ画面内に丸める。**
+          カード詳細のように画面幅いっぱいの対象だと、左右の辺が画面の外に出て
+          上下の2本しか見えず、枠として読めなくなる (実機で報告された)。
+          穴そのもの (SVGのマスク) は丸めない。丸めると対象の端が暗幕に隠れる。
+          `outline` は要素の外側に描かれるので、内向き (outlineOffset: -2) にして
+          丸めた縁のさらに内側へ確実に収める */}
+      {boxes.map((b, i) => {
+        const left = Math.max(b.left, 0);
+        const top = Math.max(b.top, 0);
+        const right = Math.min(b.left + b.width, vw);
+        const bottom = Math.min(b.top + b.height, vh);
+        if (right <= left || bottom <= top) return null;
+        return (
+          <div
+            key={i}
+            className="pointer-events-none absolute rounded-xl"
+            style={{
+              top,
+              left,
+              width: right - left,
+              height: bottom - top,
+              outline: "2px solid #4A99EA",
+              outlineOffset: -2,
+            }}
+          />
+        );
+      })}
       {/* スワイプを促す指。穴の中央で左右に往復する */}
       {gesture && (
         // 指は穴の中央ではなく少し下に置く。カードだと中央に見出し語があり、
