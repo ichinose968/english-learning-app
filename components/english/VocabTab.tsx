@@ -1659,9 +1659,10 @@ export function VocabTab({
     setCardSeq((n) => n + 1);
     const remaining = queue.length - (index + 1);
     if (remaining < 1) {
-      // 継ぎ足せていなかったときの保険。作り直して先頭から出し直す
+      // 継ぎ足せていなかったときの保険。作り直して先頭から出し直す。
+      // **出す語が尽きたときも必ずキューを入れ替える。** ここで何もせずに返すと、
+      // 答え終わったカードが画面に残ったまま操作を受け付けなくなる
       const q = buildNextBatch(new Set(queue.map((w) => w.word)));
-      if (q.length === 0) return;
       setQueue(q);
       setIndex(0);
       return;
@@ -2016,9 +2017,19 @@ export function VocabTab({
   );
 
   if (phase === "quiz") {
-    const item = queue[index];
+    // **復習の在庫が尽きたかどうかは、キューではなく件数で見る。**
+    // 回答の記録 (record の setData) と next() は同じティックで走るので、
+    // next() が作り直すキューには「いま答えたぶん」がまだ入っていない。
+    // キューを基準にすると、masterKnownCount 回目の ○ で学習完了になった語が
+    // もう1度出てしまう (復習の対象が1語だけのときは、それが延々と続く)。
+    // 件数は毎レンダー data から数え直すので、答えた瞬間に 0 になる。
+    // 件数はタグの絞り込みを掛けない上位集合なので、0 なら buildQueue も必ず空。
+    // チュートリアルは空の復習画面で詰まないようサンプルを1枚借りるので、そこは除く
+    const reviewEmpty =
+      mode === "review" && !tourSampleReview && modeCount.review === 0;
+    const item = reviewEmpty ? undefined : queue[index];
     // 背面に重ねるカード。キューは残り1枚で継ぎ足すので、通常は必ず存在する
-    const nextItem = queue[index + 1];
+    const nextItem = reviewEmpty ? undefined : queue[index + 1];
     return (
       <div className="flex h-full flex-col gap-3">
         {filterSheet}
