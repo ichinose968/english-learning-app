@@ -726,14 +726,11 @@ export function CardDetailSheet({
       <div
         ref={panelRef}
         className="absolute inset-0 overflow-y-auto overscroll-y-contain bg-black pb-32 text-zinc-100"
-        // **セーフエリアぶん中身を下げる。** この層は fixed で本体のヘッダーを覆うので、
-        // ヘッダー側の逃げを一切継がない。入れないと見出し語が時計や
-        // Dynamic Island に潜る (ホーム画面から起動した実機で報告された)
-        style={{
-          paddingTop: "env(safe-area-inset-top)",
-          ...panelStyle,
-          ...dismissStyle,
-        }}
+        // **セーフエリアの余白をここに置いてはいけない。** スクロールする側の
+        // padding-top はスクロール領域の一部なので、少しでもスクロールすると
+        // 中身が上へ抜けてステータスバーの裏に出る (実機で報告された)。
+        // 逃げは下の sticky な見出しヘッダーが持つ
+        style={{ ...panelStyle, ...dismissStyle }}
       >
         <div className="mx-auto max-w-2xl">
           <header
@@ -743,6 +740,9 @@ export function CardDetailSheet({
             // 上に重なる閉じる ↓ ボタンを横切り、丸の上半分と下半分で白の濃さが
             // 変わって見えていた (実機で報告された)。不透明な黒にすれば消える
             className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black px-4 py-3"
+            // **セーフエリアの逃げはここが持つ。** top-0 で画面の上端に貼り付き、
+            // 不透明な黒なので、下を流れていく中身をステータスバーの裏に見せない
+            style={{ paddingTop: "calc(0.75rem + env(safe-area-inset-top))" }}
           >
             <div>
               <div className="flex items-center gap-2">
@@ -1264,10 +1264,11 @@ export function CardDetailSheet({
           2行に折り返すため、決め打ちの余白では合わない */}
       <div
         className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto flex max-w-2xl justify-end px-4"
-        // 見出しブロックとの縦中心合わせに、セーフエリアぶんを足す
-        // (パネル側も同じだけ下げているので、ずれないよう同じ値を足す)
+        // 見出しブロックとの縦中心合わせ。**headerH は逃げを含んだ実測値**なので、
+        // 見出しの中身の中心は (headerH + インセット) / 2 にある。
+        // 逃げが 0 のとき (ステータスバーが不透明なとき) は元の式に戻る
         style={{
-          paddingTop: `calc(${Math.max(12, headerH / 2 - 20)}px + env(safe-area-inset-top))`,
+          paddingTop: `calc(${Math.max(12, headerH / 2 - 20)}px + env(safe-area-inset-top) / 2)`,
         }}
       >
         <button

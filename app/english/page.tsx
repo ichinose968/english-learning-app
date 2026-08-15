@@ -34,7 +34,19 @@ export default function EnglishPage() {
     // dark は端末がライトモードでもこのアプリだけダークにするための印
     // (globals.css の @custom-variant dark が拾う)。english-app は入力欄の
     // フォントサイズを16px以上に保つ指定の足場で、これも globals.css 側にある
-    <main className="english-app dark fixed inset-0 flex flex-col items-center bg-white dark:bg-black">
+    <main
+      className="english-app dark fixed inset-0 flex flex-col items-center bg-white dark:bg-black"
+      // **古い起動設定で追加された PWA を救うための補正。**
+      // iOS はホーム画面に追加した時点の `apple-mobile-web-app-status-bar-style` を
+      // 焼き込むので、HTML を "black" に直しても、既にアイコンを持っている人は
+      // "black-translucent" のまま起動する。その設定だとビューポートの高さが
+      // 「ステータスバーが不透明だったとき」の値になり、画面より上インセットぶん
+      // (実測で 852 − 793 = 59px) 短いまま上詰めで置かれる。余りは画面の下に残る。
+      // ここで下端を同じだけ伸ばすと、そのぶんを取り返して下タブが画面の下端に付く。
+      // **新しい設定で追加し直した端末では上インセットが 0 になるので、この式は
+      // そのまま 0 になって何もしない。** どちらでも正しく、後で消す必要もない
+      style={{ bottom: "calc(-1 * env(safe-area-inset-top))" }}
+    >
       {/* オフラインで使えるようにするための Service Worker。画面には何も出さない */}
       <ServiceWorkerRegistrar />
       {/* ヘッダーは設定への導線を持つので EnglishApp 側 (クライアント) に置く */}
