@@ -104,10 +104,13 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - 単語・文法はAPIを使わずDBから出す（レイテンシ回避のため意図的にそうしている）。
 
 データ（静的JSON、`public/` 配下）
-- `public/english-words/{A1..C1}.json` … 6,020語。
-- `public/english-idioms/{A1..C1}.json` … 1,614語。
-- `public/english-grammar/{A1..C1}.json` … 2,987問。
-- 語彙・イディオムの全7,634件に ipa / posEn / domains / themes / exams / related を付与済み（欠損ゼロ）。
+- `public/english-words/{A1..C2}.json` … 6,966語。
+- `public/english-idioms/{A1..C2}.json` … 2,565語。
+- `public/english-grammar/{A1..C2}.json` … 2,987問（**C2 はまだ空**）。
+- **語彙・イディオムは合計 9,531語**（2026-08-17 に 7,633 → 9,531 へ拡充）。
+  全件に ipa / posEn / domains / themes / exams / related を付与済み（欠損ゼロ）。
+- **レベルは A1〜C2 の6段。** C2（最上級 / 英検1級上位・GRE・学術英語）は
+  2026-08-17 に追加したが**中身はこれから**。レベルの足し方は5章「レベルは足せる」。
 
 生成スクリプト（`scripts/`）
 - `generate-english-words.mjs`, `generate-english-grammar.mjs` … DB生成。
@@ -531,6 +534,25 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     （`typeof [] === "object"` なので素直に書くと素通りし、`result.passageEn` が undefined のまま保存される。
     これは `scripts/check-english-net.ts` を書いて実際に見つけた）。
   - **文言には必ずHTTPステータスを混ぜる。** ユーザーが分からなくても、報告してもらえれば原因が一意に絞れる。
+- **レベルは足せる。定義は `LEVEL_ORDER` 1か所。**（`lib/english/worddb.ts`）
+  レベルを1段増やすのに必要なのは3つだけ:
+  (1) `LEVEL_ORDER` と `types.ts` の `Level` / `LEVELS` に1行、
+  (2) `public/english-{words,idioms,grammar}/<レベル>.json` を置く、
+  (3) `generate.ts` の `LEVEL_PROMPT` に1行。あとは `DATA_VERSION` を上げる。
+  - **決め打ちの添字を書かないこと。** 以前 `estimatePlacement` に `Math.min(4, ...)`、
+    測定画面に `Math.min(pLadder, 4)` があり、レベルを足すと壊れた。いまは
+    どちらも `LEVEL_ORDER.length` 基準。
+  - **データが無いレベルがあっても落とさない。** `fetchWordDb` / `fetchGrammarDb` は
+    **404 だけ**を空として扱う。以前は全レベル同時取得の「全か無か」で、
+    `LEVEL_ORDER` に1行足した瞬間にカードタブ全体が赤いエラー画面になった。
+    **通信の失敗と壊れたJSONは今までどおり投げる。**「無い」と「読めない」は別物で、
+    後者を空にすると、オフラインで全部空になったのに画面には
+    「出題できる単語がありません」としか出ない。
+  - **空のレベルには着地させない**（`levelsWithWords` / `clampToAvailable`）。
+    測定で全問正解した学習者が語のないレベルに置かれると、`buildQueue` が
+    1語も拾えず行き止まりになる。測定結果とレベル自動調整の両方に掛ける。
+    **柵で今のレベルへ戻ったときは、動かさなかったことにする** — さもないと
+    「レベルを C2 に上げました」と出したのに中身は C1 のまま、という食い違いが残る。
 - **語彙の拡充は「収録の事実」だけを持ち込み、中身は自前で作る**（`scripts/expand-english-words.mjs`）。
   市販の単語帳（鉄壁 / ターゲット1900 / LEAP / 速読英熟語 / パス単準1級 / 熟語ターゲット1000）の
   収録語と突き合わせて、このアプリに**足りない語を洗い出すためだけ**に使う。
@@ -553,6 +575,18 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     スクリプトが実測の使用量と金額をバッチごとに出すので、**まず `--limit 30` で1バッチ回して
     中身と実費を見てから全体を流す。**
   - **DBを増やしたら `public/english-sw.js` の `DATA_VERSION` を上げること。**
+  - **生成はこのセッション内で分担する。APIキーは要らない。** 一度スクリプトから
+    Claude を呼ぶ形にしたが、鍵が要るうえに遠回りだった。エントリを書くのは Claude 自身で、
+    `scripts/merge-english-expansion.mjs` は**検証と取り込みだけ**を行う。
+  - 実績（2026-08-17）: 40語×52バッチを並列で書かせて **2,048件を生成、1,899件を取り込み**、
+    7,633 → **9,531語**。取り込み後の検算は 重複0 / 非ASCII0 / 必須フィールド欠損0 /
+    `count` と実件数の一致。
+  - **重複は「取り込み時」に弾くのであって、対象リストの時点では取り切れない。**
+    `A as well as B` のような見出しは、規則どおり `as well as` に整えた**あとで**
+    既存DBと衝突する。実測で 既存との重複109件 / 生成物内の重複40件。
+  - **見出し語はASCIIに保つ。** `résumé` が1件生まれたが、既存の `resume`（動詞）と
+    綴りが衝突し、読解タブの語照合はASCIIで正規化するので押しても引けない。
+    見出しからは外し、**意味は `resume` の関連語として残した**。
 - **アイコンの原本は `assets/english-icon/*.svg` で、PNG / ICO は生成物**（`scripts/generate-english-icons.mjs`）。
   黒地に Didot の `Eng.`、ピリオドだけアクセント色 `#4A99EA`。**生成物を手で編集しない。**
   - **ストア提出用は 1024px・アルファ無し・角丸を焼き込まない。** 以前の紫の `A` は
