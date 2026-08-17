@@ -95,7 +95,8 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `lib/english/appToken.ts` … 端末を表す無記名トークン。`localStorage` に UUID を1つ持つだけ。**本人確認ではない。**
 - `lib/english/net.ts` … クライアントから `/api/english/*` を呼ぶときの共通処理。`apiUrl(path)`（`NEXT_PUBLIC_API_BASE` を前置。Capacitor 版はオリジンが変わるため）、`readApiJson(res, fallback)`（**`res.json()` を直に呼ばないための受け取り口**）、`requestErrorMessage(e, fallback)`（fetch が投げた TypeError を「オフラインです…」に振り替える）。詳細は5章。
 - `public/english-sw.js` … Service Worker（オフライン対応）。詳細は5章。
-- `components/english/ServiceWorkerRegistrar.tsx` … その登録だけを行う（描画しない）。`app/english/page.tsx` から置く。
+- `components/english/EnglishScreen.tsx` … 学習画面そのもの（`main` の枠＋`ServiceWorkerRegistrar`＋`EnglishApp`）。**デプロイ側では `/english` と `/` の両方から出す**（Capacitor が開くのは `out/index.html` なので）。
+- `components/english/ServiceWorkerRegistrar.tsx` … その登録だけを行う（描画しない）。`EnglishScreen` から置く。
 - `scripts/check-english-net.ts` … `readApiJson` の検算。**どの応答でも JS の生の例外文が漏れないこと**を9ケースで確かめる（コマンドはファイル冒頭）。
 - `scripts/generate-english-icons.mjs` … アイコン一式の生成。原本は `assets/english-icon/*.svg` で、**生成物（`public/icons/*`・`app/favicon.ico`）は手で触らない**。詳細は `assets/english-icon/README.md`。
 - `scripts/check-english-queue.ts` … 復習の重み付け（`reviewWeight`）と復習タブの件数の検算。テスト基盤が無いので単体でコンパイルして走らせる（コマンドはファイル冒頭のコメント）。**復習タブの件数と `buildQueue(review)` が拾う集合の一致**をここで確かめている。
@@ -437,6 +438,22 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     - `Sheet` は出し入れで作り直さない（`open` の切り替えだけ）ので、引きかけの状態が漏れると次に開いたときずれて出てくる。保険に `onLostPointerCapture` でも終了処理を呼ぶ。
   - **重ねたポップアップの下に「クリックで閉じる背面」があるときは、上が開いているあいだ背面を無効にする。** 読解タブは長文シート（背面は全画面）の上に単語詳細（列幅）を重ねるので、列の外のクリックが背面まで素通りして長文が閉じ、解答の選択状態まで失われていた。`ReadingSheet` の `dismissOnBackdrop` を `wordDetail === null` にして塞いでいる。
   - これら3つは列幅を絞ったことで**新たに入った**退行で、多エージェントのレビューで見つけた。モバイル（375px）はどれも無傷（列幅より画面が狭く死角が無い＋タッチには暗黙のキャプチャがある）。
+- **静的書き出し（`output: "export"`）は `CAP_BUILD=1` のときだけ効かせる。** Capacitor に同梱するときだけ要るもので、
+  無条件に書くと **Vercel 側のビルドまで静的化されて `/api/english/reading` が消える**。
+  しかも**警告が出ない**（ビルドは成功し、ルート表には `ƒ /api/english/reading` と出るのに `out/` に api が生成されない）ので、
+  気づくのはアプリを動かしてから。`npm run build:cap` から渡す。
+  - **`app/manifest.ts` に `export const dynamic = "force-static"` が要る。** 無いと export ビルドが
+    `Failed to collect page data for /manifest.webmanifest` で落ち、ページ生成に到達しない。
+    通常のビルドに入れても害が無いので条件分岐しない。
+  - **`trailingSlash: true` は API にも効き、POST が 308 で末尾スラッシュへ飛ぶ。** Vercel 側の設定には絶対に混ぜない。
+  - **ルート（`/`）に `redirect()` を置かない**（デプロイ側の `app/page.tsx`）。サーバーリダイレクトは
+    静的書き出しで表現できず、`out/index.html` が `<html id="__next_error__">` の空ページになる（meta refresh も入らない）。
+    **Capacitor が既定で開くのはこの index.html** なので、放置すると起動が永久に白いまま。
+    `EnglishScreen` を `/` と `/english` の両方から出す。`/english` は消さない
+    （既存のホーム画面アイコン・SW の `SHELL_HTML_URL`・manifest の `start_url` がそこを指している）。
+  - 検算: `npm run build:cap` のあと `out/index.html` に `__next_error__` が**無い**こと、`out/api` が**無い**こと、
+    チャンクに `NEXT_PUBLIC_API_BASE` が焼き込まれていることを見る。
+    `out/` をそのまま静的配信すると Capacitor と同じ起動が再現できる（実測でチュートリアルまで出た）。
 - **読解APIは公開URLである、という前提で書く**（`app/api/english/reading/route.ts`）。ストア配布の準備として 2026-08-17 に固めた。
   - **入力は何ひとつ信用しない。** 以前の検証は `level` だけで、本番へ `-d 'null'` や
     `{"targetWords":"abcdefgh"}` を投げると `join` / `map` が TypeError になり、

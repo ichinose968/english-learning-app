@@ -1,5 +1,12 @@
 import type { MetadataRoute } from "next";
 
+// **`output: "export"` のビルドではこの1行が無いと落ちる。**
+// 実測のエラー: `export const dynamic = "force-static"/export const revalidate
+// not configured on route "/manifest.webmanifest" with "output: export"` に続いて
+// `Failed to collect page data for /manifest.webmanifest`。ページ生成に到達しない。
+// 通常のビルドに入れても害が無いので、条件分岐せず常に付けておく
+export const dynamic = "force-static";
+
 // スマホのホーム画面に追加したときにアプリとして起動するための設定
 export default function manifest(): MetadataRoute.Manifest {
   return {
