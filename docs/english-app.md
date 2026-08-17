@@ -97,6 +97,7 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `public/english-sw.js` … Service Worker（オフライン対応）。詳細は5章。
 - `components/english/EnglishScreen.tsx` … 学習画面そのもの（`main` の枠＋`ServiceWorkerRegistrar`＋`EnglishApp`）。**デプロイ側では `/english` と `/` の両方から出す**（Capacitor が開くのは `out/index.html` なので）。
 - `components/english/ServiceWorkerRegistrar.tsx` … その登録だけを行う（描画しない）。`EnglishScreen` から置く。
+- `scripts/expand-english-words.mjs` … **既存DBに指定した見出し語だけを足す。** 冪等・再開可能で、既にある語は毎回スキップする。実行時に対象リストのパスを渡す（**リスト自体はリポジトリに置かない**。5章「語彙の拡充」）。
 - `scripts/check-english-net.ts` … `readApiJson` の検算。**どの応答でも JS の生の例外文が漏れないこと**を9ケースで確かめる（コマンドはファイル冒頭）。
 - `scripts/generate-english-icons.mjs` … アイコン一式の生成。原本は `assets/english-icon/*.svg` で、**生成物（`public/icons/*`・`app/favicon.ico`）は手で触らない**。詳細は `assets/english-icon/README.md`。
 - `scripts/check-english-queue.ts` … 復習の重み付け（`reviewWeight`）と復習タブの件数の検算。テスト基盤が無いので単体でコンパイルして走らせる（コマンドはファイル冒頭のコメント）。**復習タブの件数と `buildQueue(review)` が拾う集合の一致**をここで確かめている。
@@ -530,6 +531,28 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     （`typeof [] === "object"` なので素直に書くと素通りし、`result.passageEn` が undefined のまま保存される。
     これは `scripts/check-english-net.ts` を書いて実際に見つけた）。
   - **文言には必ずHTTPステータスを混ぜる。** ユーザーが分からなくても、報告してもらえれば原因が一意に絞れる。
+- **語彙の拡充は「収録の事実」だけを持ち込み、中身は自前で作る**（`scripts/expand-english-words.mjs`）。
+  市販の単語帳（鉄壁 / ターゲット1900 / LEAP / 速読英熟語 / パス単準1級 / 熟語ターゲット1000）の
+  収録語と突き合わせて、このアプリに**足りない語を洗い出すためだけ**に使う。
+  - **個々の英単語に著作権は無いが、「どの語を選ぶか」という選定と配列は編集著作物になりうる。**
+    だから取るのは「その語が載っている」という事実だけにして、
+    **意味・例文・発音記号・関連語はこのアプリが新しく生成する。**
+    通し番号・章立て・区分は持ち込まないし、「◯◯収録」のようなタグも付けない
+    （編集の構造を再現することになり、提携も示唆するため）。
+  - **抽出した見出しの一覧はリポジトリに置かない。** それ自体が編集著作物の再配布に近づく。
+    スクリプトは実行時にパスを受け取る形にしてある。リポジトリに入るのは生成済みのエントリだけ。
+  - 実測（2026-08-17）: 6冊の異なり語は 5,380。**うち 61.2% (3,293語) は既にDBにあった。**
+    不足は 2,048件（単語947 / 熟語1,101）で、スクリプト側の照合を通すと 2,034件。
+  - 抽出の注意: 速読英熟語の表には**文型の表記**が混ざっている
+    （`the比較級 ~, the比較級...` など）。日本語を含む行を除外しないと
+    `the the` や `and` のようなゴミが見出し語として入る（実際に33件が対象に紛れ込んだ）。
+  - **熟語の見出しは既存DBの作法に合わせる。** `A` / `B` のプレースホルダは使わず、
+    人は `someone`、所有格は `one's`、目的語は落とす（`a couple of ~` → `a couple of`）。
+  - 費用: `claude-opus-5` は 入力 $5 / 出力 $25 per MTok。**thinking が既定でオンで、
+    思考トークンも出力として課金される**ので、`effort` が主レバー（この作業は `medium`）。
+    スクリプトが実測の使用量と金額をバッチごとに出すので、**まず `--limit 30` で1バッチ回して
+    中身と実費を見てから全体を流す。**
+  - **DBを増やしたら `public/english-sw.js` の `DATA_VERSION` を上げること。**
 - **アイコンの原本は `assets/english-icon/*.svg` で、PNG / ICO は生成物**（`scripts/generate-english-icons.mjs`）。
   黒地に Didot の `Eng.`、ピリオドだけアクセント色 `#4A99EA`。**生成物を手で編集しない。**
   - **ストア提出用は 1024px・アルファ無し・角丸を焼き込まない。** 以前の紫の `A` は
