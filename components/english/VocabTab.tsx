@@ -49,8 +49,10 @@ import {
   DbKind,
   dbStats,
   dbStatsAsOf,
+  clampToAvailable,
   estimatePlacement,
   evaluateLevelShift,
+  levelsWithWords,
   fetchAllWordDbs,
   LEVEL_ORDER,
   LEVEL_SHIFT_WINDOW,
@@ -1382,7 +1384,9 @@ export function VocabTab({
     if (!dbs) return;
     const done = pCount + 1;
     if (done >= PLACEMENT_SIZE) {
-      const est = estimatePlacement(pTrack);
+      // **語が1つも無いレベルへ置かない。** レベルを足した直後にデータが
+      // 揃っていないと、全問正解した学習者がそのまま行き止まりに突き当たる
+      const est = clampToAvailable(estimatePlacement(pTrack), levelsWithWords(dbs));
       setPlacementResult(est);
       setData((prev) => ({
         ...prev,
@@ -1613,16 +1617,24 @@ export function VocabTab({
       mode === "drill" && data.settings.vocab.levelMode === "auto"
         ? evaluateLevelShift(data.vocabLevel)
         : null;
-    if (shift) {
-      nextLevels = [shift.next];
+    // 測定と同じ理由で、語が無いレベルへは動かさない。
+    // **柵で今のレベルへ戻ったときは、動かさなかったことにする。**
+    // そうしないと「レベルを C2 に上げました」と出したのに中身は C1 のまま、
+    // という食い違いが画面に残る
+    const shiftTo = shift
+      ? clampToAvailable(shift.next, levelsWithWords(dbs))
+      : null;
+    if (shift && shiftTo && shiftTo !== data.vocabLevel.current) {
+      const next = shiftTo;
+      nextLevels = [next];
       setData((prev) => ({
         ...prev,
-        vocabLevel: { current: shift.next, recent: [] },
+        vocabLevel: { current: next, recent: [] },
       }));
       setShiftMsg(
         shift.direction === "up"
-          ? `直近の正解率が${Math.round(shift.acc * 100)}%と高いため、単語レベルを ${levelLabel(shift.next)} に上げました。`
-          : `直近の正解率が${Math.round(shift.acc * 100)}%のため、単語レベルを ${levelLabel(shift.next)} に下げました。`,
+          ? `直近の正解率が${Math.round(shift.acc * 100)}%と高いため、単語レベルを ${levelLabel(next)} に上げました。`
+          : `直近の正解率が${Math.round(shift.acc * 100)}%のため、単語レベルを ${levelLabel(next)} に下げました。`,
       );
     }
     const q = buildQueue(
@@ -1868,7 +1880,7 @@ export function VocabTab({
             レベル測定 {pCount + 1} / {PLACEMENT_SIZE} 問
           </span>
           <span className="text-xs">
-            いま {levelLabel(LEVEL_ORDER[Math.min(pLadder, 4)])} の単語
+            いま {levelLabel(LEVEL_ORDER[Math.min(pLadder, LEVEL_ORDER.length - 1)])} の単語
           </span>
         </div>
         {flyingLayer}

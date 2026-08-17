@@ -1,6 +1,6 @@
 // 英語学習アプリの型定義
 
-export type Level = "A1" | "A2" | "B1" | "B2" | "C1";
+export type Level = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export const LEVELS: {
   key: Level;
@@ -13,7 +13,18 @@ export const LEVELS: {
   { key: "B1", label: "中級", guide: "英検2級 / TOEIC 500〜700", passageWords: "160〜220語" },
   { key: "B2", label: "中上級", guide: "英検準1級 / TOEIC 700〜850", passageWords: "220〜300語" },
   { key: "C1", label: "上級", guide: "英検1級 / TOEIC 850〜", passageWords: "280〜380語" },
+  { key: "C2", label: "最上級", guide: "英検1級上位 / GRE・学術英語", passageWords: "300〜420語" },
 ];
+
+// **レベルを足すときはここに1行足すだけで済むようにしてある。**
+// 決め打ちの添字 (以前 worddb.ts と VocabTab.tsx にあった `Math.min(4, ...)`) は
+// 全部 LEVEL_ORDER.length 基準に直した。あわせて必要なのは
+//   1. public/english-{words,idioms,grammar}/<新レベル>.json を置く
+//      (中身が空でも `{ level, count: 0, words: [] }` の形にしておく)
+//   2. lib/english/generate.ts の LEVEL_PROMPT に1行
+//   3. public/english-sw.js の DATA_VERSION を上げる
+// **ファイルが無いレベルがあっても落ちない**ようにしてあるので、
+// 型と一覧を先に足してからデータを埋める順序で進められる
 
 export const INTEREST_PRESETS = [
   "テクノロジー",

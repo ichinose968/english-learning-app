@@ -22,7 +22,8 @@
 
 // v2: アイコンを Eng. のロゴタイプに差し替えた
 const VERSION = "v2";
-const DATA_VERSION = "v1";
+// v2: C2 レベルを追加し、既存レベルにも語を足した (2026-08-17)
+const DATA_VERSION = "v2";
 
 const SHELL = `english-shell-${VERSION}`;
 const ASSETS = `english-assets-${VERSION}`;

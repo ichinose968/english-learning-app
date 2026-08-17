@@ -168,4 +168,5 @@ export const LEVEL_PROMPT: Record<string, string> = {
   B1: "CEFR B1 (中級。英検2級・TOEIC 500〜700相当。高校修了〜大学入試レベルの語彙)",
   B2: "CEFR B2 (中上級。英検準1級・TOEIC 700〜850相当。大学中級・ビジネスで使う語彙)",
   C1: "CEFR C1 (上級。英検1級・TOEIC 850以上相当。新聞・学術文章の語彙)",
+  C2: "CEFR C2 (最上級。英検1級の上位・GRE相当。学術論文や文学作品で使う語彙、専門用語、低頻度語)",
 };

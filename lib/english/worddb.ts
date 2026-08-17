@@ -2,7 +2,6 @@
 import {
   CardSource,
   Level,
-  LEVELS,
   QuizMode,
   LastResult,
   Progress,
@@ -21,7 +20,7 @@ import {
 // 呼び出し側は worddb からも引けるようにしておく
 export type { QuizMode, LastResult, Progress };
 
-export const LEVEL_ORDER: Level[] = ["A1", "A2", "B1", "B2", "C1"];
+export const LEVEL_ORDER: Level[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
 export type WordDbMap = Record<Level, WordDb>;
 
@@ -33,8 +32,29 @@ const DB_PATH: Record<DbKind, string> = {
   idioms: "english-idioms",
 };
 
+const emptyDb = (level: Level): WordDb => ({
+  level,
+  generatedAt: "",
+  count: 0,
+  words: [],
+});
+
+/**
+ * 1レベル分のDBを読む。
+ *
+ * **404 だけは空として扱い、例外にしない。** 以前はどのレベルが欠けても
+ * 投げていたので、`LEVEL_ORDER` にレベルを1つ足した瞬間、まだデータを
+ * 作っていないというだけで**カードタブ全体が赤いエラー画面になった**
+ * (リスク台帳の「5レベル同時取得の全か無か」)。型と一覧を先に足してから
+ * データを埋める、という順序が取れないと拡張が苦しい。
+ *
+ * **通信の失敗や壊れたJSONは今までどおり投げる。** 「無い」と「読めない」は
+ * 別物で、後者を黙って空にすると、オフラインで全レベルが空になったのに
+ * 画面には「出題できる単語がありません」としか出ない。
+ */
 async function fetchWordDb(kind: DbKind, level: Level): Promise<WordDb> {
   const res = await fetch(`/${DB_PATH[kind]}/${level}.json`);
+  if (res.status === 404) return emptyDb(level);
   if (!res.ok) {
     throw new Error(
       kind === "words"
@@ -42,7 +62,9 @@ async function fetchWordDb(kind: DbKind, level: Level): Promise<WordDb> {
         : "イディオムデータベースが見つかりません。生成ワークフローの完了とマージを確認してください。",
     );
   }
-  return (await res.json()) as WordDb;
+  const db = (await res.json()) as WordDb;
+  // 形が違うものを混ぜない (取り込み事故で count だけ書き換わった等)
+  return Array.isArray(db?.words) ? db : emptyDb(level);
 }
 
 // 全レベルのDBをまとめて読み込む (レベル測定と多レベル復習に使う)。
@@ -51,7 +73,7 @@ export async function fetchAllWordDbs(
   source: CardSource = "words",
 ): Promise<WordDbMap> {
   if (source !== "both") {
-    const dbs = await Promise.all(LEVELS.map((l) => fetchWordDb(source, l.key)));
+    const dbs = await Promise.all(LEVEL_ORDER.map((lv) => fetchWordDb(source, lv)));
     return Object.fromEntries(dbs.map((db) => [db.level, db])) as WordDbMap;
   }
   const [words, idioms] = await Promise.all([
@@ -472,11 +494,37 @@ export function samplePlacementWord(
   return cands[Math.floor(Math.random() * cands.length)];
 }
 
+/**
+ * 実際に語が入っているレベルだけを返す。
+ *
+ * **空のレベルへ着地させないための柵。** `LEVEL_ORDER` にレベルを足した直後は
+ * まだデータが無く、測定で全問正解した学習者がそこへ置かれると
+ * `buildQueue` が1語も拾えず「出題できる単語がありません」の行き止まりになる。
+ * レベルの追加を「データを置くだけ」の作業にしておきたいので、
+ * 空かどうかは実行時に見る。
+ */
+export function levelsWithWords(dbs: WordDbMap): Level[] {
+  return LEVEL_ORDER.filter((lv) => (dbs[lv]?.words.length ?? 0) > 0);
+}
+
+/** 空のレベルに当たったら、語がある一番近い下のレベルへ寄せる */
+export function clampToAvailable(level: Level, available: Level[]): Level {
+  if (available.includes(level)) return level;
+  if (available.length === 0) return level;
+  const want = LEVEL_ORDER.indexOf(level);
+  // 下に語があるならそちら、無ければ一番下
+  for (let i = want - 1; i >= 0; i--) {
+    if (available.includes(LEVEL_ORDER[i])) return LEVEL_ORDER[i];
+  }
+  return available[0];
+}
+
 // 各回答後の段の推移から判定する (序盤は探索なので後半6回の平均を使う)
 export function estimatePlacement(track: number[]): Level {
   const tail = track.slice(-6);
   const avg = tail.reduce((s, x) => s + x, 0) / Math.max(1, tail.length);
-  return LEVEL_ORDER[Math.max(0, Math.min(4, Math.round(avg)))];
+  // 上限は LEVEL_ORDER の長さから取る。**決め打ちの 4 にしないこと** (レベルを足すと壊れる)
+  return LEVEL_ORDER[Math.max(0, Math.min(LEVEL_ORDER.length - 1, Math.round(avg)))];
 }
 
 // ---- 正解率によるレベルの動的調整 ----

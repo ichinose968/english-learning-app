@@ -3,6 +3,11 @@ import { GrammarDb, GrammarDbItem, Level } from "./types";
 
 export async function fetchGrammarDb(level: Level): Promise<GrammarDb> {
   const res = await fetch(`/english-grammar/${level}.json`);
+  // **そのレベルの文法DBがまだ無くても落とさない** (単語DBと同じ扱い)。
+  // レベルを足した直後は単語だけ先にあることがある
+  if (res.status === 404) {
+    return { level, generatedAt: "", count: 0, items: [] };
+  }
   if (!res.ok) {
     throw new Error(
       "文法問題データベースが見つかりません。`node scripts/generate-english-grammar.mjs` を実行して生成してください。",
