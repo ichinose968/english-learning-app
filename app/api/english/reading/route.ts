@@ -13,6 +13,11 @@ import {
   READING_LENGTHS,
   ReadingResult,
 } from "@/lib/english/types";
+import {
+  bearerToken,
+  checkReadingLimits,
+  clientIp,
+} from "@/lib/english/ratelimit";
 
 export const maxDuration = 120;
 
@@ -200,6 +205,31 @@ export async function POST(req: NextRequest) {
     return withCors(
       NextResponse.json({ error: "invalid level" }, { status: 400 }),
       cors,
+    );
+  }
+
+  // ---- 上限 ----
+  // **検証を通ったあと、Claude を呼ぶ前に見る。**
+  // 前に置くと壊れた入力が枠を食い、後ろに置くと止める意味が無い。
+  // **数えるのは「試行」であって成功ではない。** 失敗した生成も
+  // トークンを消費しうるし、成功時だけ数えると、わざと失敗させて
+  // 無限に回せてしまう。
+  const limit = await checkReadingLimits({
+    ip: clientIp(req.headers),
+    token: bearerToken(req.headers),
+  });
+  if (!limit.ok) {
+    // 文言はクライアントの statusMessage が組み立てる (429 と 503 で別)。
+    // ここで本文に文言を入れないのは、どの単位で当たったかを外に見せないため
+    console.warn(`[english/reading] 上限に到達: ${limit.scope}`);
+    return withCors(new NextResponse(null, { status: limit.status }), cors);
+  }
+  if (limit.unconfigured) {
+    // **ストアに出す前に必ず環境変数を入れる。** 入れ忘れたまま公開すると
+    // 費用の天井が Anthropic の残高そのものに戻る。
+    // ここで止めないのは、入れ忘れた瞬間に本番が丸ごと使えなくなるため
+    console.error(
+      "[english/reading] レート制限が未設定のまま生成した (UPSTASH_REDIS_REST_URL / KV_REST_API_URL が無い)",
     );
   }
 

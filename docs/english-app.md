@@ -91,6 +91,8 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `app/api/english/reading/route.ts` … 長文をその場で生成する。
 - `lib/english/progress.ts` … 手動ステータスの付け外し（`setStatusOverride(data, def, level, axis, next)` / `clearStatusOverride`）。軸は `"result"` と `"progress"` の2つ。
 - `lib/english/speech.ts` … 読み上げ。ブラウザ内蔵の Web Speech API だけで完結する。外に見せるのは `speak` / `stopSpeaking` / `primeSpeech` / `setSpeechRate` / `isSpeechSupported` / `clampRate` だけ。
+- `lib/english/ratelimit.ts` … **サーバー専用。** 読解の生成にかける日次の上限（全体 / IP / トークン）。Upstash REST を fetch で直接叩く（SDKは入れない）。`clientIp()` / `bearerToken()` もここ。詳細は5章。
+- `lib/english/appToken.ts` … 端末を表す無記名トークン。`localStorage` に UUID を1つ持つだけ。**本人確認ではない。**
 - `lib/english/net.ts` … クライアントから `/api/english/*` を呼ぶときの共通処理。`apiUrl(path)`（`NEXT_PUBLIC_API_BASE` を前置。Capacitor 版はオリジンが変わるため）、`readApiJson(res, fallback)`（**`res.json()` を直に呼ばないための受け取り口**）、`requestErrorMessage(e, fallback)`（fetch が投げた TypeError を「オフラインです…」に振り替える）。詳細は5章。
 - `public/english-sw.js` … Service Worker（オフライン対応）。詳細は5章。
 - `components/english/ServiceWorkerRegistrar.tsx` … その登録だけを行う（描画しない）。`app/english/page.tsx` から置く。
@@ -456,6 +458,42 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
   - **APIのURLは `apiUrl()` を通す。** 相対パス直書きだと、バンドル方式の Capacitor 版が
     同梱物の中を探しにいって必ず失敗する。**静的JSON（単語・イディオム・文法）は通さない。**
     あれはネイティブ版でも端末内にあるので相対のままが正しい。
+- **読解の生成には日次の上限を置く**（`lib/english/ratelimit.ts`）。**これが無いと公開できない。**
+  1回の生成が `claude-opus-5` の `max_tokens` 16000 を使い、上限が無いあいだ
+  **費用の天井は Anthropic のアカウント残高そのもの**だった。ストアで配ると利用料は全部所有者の請求になる。
+  - **外部の置き場所が要る。** `route.ts` はサーバーレス関数なので、インスタンス内の `Map` は
+    並列の呼び出しどうしで共有されず上限にならない。**Upstash Redis を使う**が、
+    **環境変数は `UPSTASH_REDIS_REST_*` と `KV_REST_API_*` の両方を受ける**ので、
+    Upstash を直接契約しても Vercel のダッシュボードから足しても、コードを触らずに切り替えられる。
+  - **SDK は入れない。** `@upstash/redis` は REST を fetch で包んだだけで、ここで使うのは
+    `INCR` と `EXPIRE` の2つだけ。直接書くほうが短く、上の2系統の名前も吸収できる。
+  - 上限は3段。**費用の天井を担うのは全体の日次だけ**（既定100本）。トークンは自己発行で
+    無限に作れるのでトークン単位（20本）は公平性のためのもので、IP単位（40本）がその中間。
+    どれも環境変数で動かせる（`READING_LIMIT_GLOBAL` など）。**上げるときは費用を計算してから**
+    （1本あたり $0.10〜0.20 の見積もり）。
+  - **見る順は 全体 → IP → トークン。** 先に当たった単位より後ろの鍵は増やさない。
+    実測: 上限を 5/3/2 にして8回叩くと `global=8 / ip=5 / token=3` になり、
+    無駄に数えていないことが確認できる。返すのは**全体なら 503、個別なら 429**
+    （`net.ts` の `statusMessage` がこの2つを別の文言に振り分ける）。
+    **本文に文言を入れない。** どの単位で当たったかを外に見せないため。
+  - **`EXPIRE` は `INCR` の戻りが 1 のときだけ打つ。** 毎回打つと、上限に当たり続けている
+    あいだ期限が延び続けて日付が変わってもリセットされない。
+  - **数えるのは「試行」であって成功ではない。** 失敗した生成もトークンを消費しうるし、
+    成功時だけ数えるとわざと失敗させて無限に回せる。
+  - **置き場所が未設定のとき、および Redis に届かないときは通す。** ここで止めると、
+    環境変数を入れ忘れた瞬間や一過性の障害で本番が丸ごと使えなくなる。
+    代わりに毎回 `console.error` を出す。**ストアに出す前に必ず設定すること**（`.env.example` 参照）。
+    最終的な天井は Anthropic Console 側の spend limit が持つ。待ちは2秒で打ち切る。
+  - **`NextRequest` に `.ip` は無い**（Next.js 16 で削除。型定義で確認した。訓練データの知識だと
+    `req.ip` を書きたくなるが生えていない）。`x-forwarded-for` の先頭を読む。
+  - **アカウントは作らない**（`lib/english/appToken.ts`）。初回に UUID を作って `localStorage` に置き、
+    `Authorization: Bearer` で送るだけ。サーバーに持つべきユーザーのデータが無く
+    （学習記録は端末側が正）、アカウントを提供すると審査項目（削除導線など）が増えるため。
+    **学習記録の IndexedDB には入れない。** あちらは版番号つきの衝突検知を持つ1レコードで、
+    混ぜると保存が競合しただけでトークンまで巻き戻る。
+    将来ここを本物のユーザー識別に差し替えても、送り方は変わらないので呼び出し側は無傷。
+  - 検証は**偽の Upstash サーバー**（`/pipeline` に INCR / EXPIRE だけ応える最小の HTTP サーバー）で
+    行った。認証情報が無くても、上限・順序・期限・障害時の挙動を全部実測できる。
 - **運用側の事情を本番のユーザーに見せない**（`lib/english/generate.ts` の `operatorError`）。
   「.env.local に ANTHROPIC_API_KEY=sk-ant-... を追記して開発サーバーを再起動」
   「console.anthropic.com の Plans & Billing でクレジットを追加」が、そのまま読解タブの赤字に出ていた。
@@ -730,10 +768,17 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
 6. **自由入力の注意書きとAI生成物の免責**を1行ずつ。
 7. **アイコン一式を作り直した**（5章）。
 
-> **まだ入っていない（次の本命）**
-> **レート制限が無い。** 1日の総本数・トークン単位・IP単位のどれも無く、
-> **費用の天井はアカウント残高そのまま。** 状態を置く場所（Upstash Redis 等）が要るので、
-> ユーザーの用意を待っている。それまでの止血は Anthropic Console の spend limit だけ。
+8. **レート制限を入れた**（5章）。全体 / IP / トークンの3段の日次上限。
+   偽の Upstash サーバーを立てて、上限・順序・期限・障害時の挙動を実測してある。
+
+> **動かすのに残っている手続き（コードは全部入っている）**
+> 1. **Upstash Redis か Vercel KV を作って、環境変数を入れる**（`.env.example` に書いてある）。
+>    **入れるまで上限は効かない**（未設定でもアプリは動くが、毎回 `console.error` が出る）。
+>    費用の天井がアカウント残高のままなので、**ストアに出す前に必ず入れる。**
+> 2. **`ANTHROPIC_API_KEY` の再発行。** 現行のキーは `/v1/models` に対して
+>    `401 API key is invalid` を返す（開発側とデプロイ側で同じキーなので両方）。
+>    Vercel 側は環境変数を保存しただけでは効かず **Redeploy が要る。**
+> 3. **Anthropic Console の spend limit。** コードの上限とは別の、最後の砦。
 
 ### 2026-08-16 のセッションで入れたもの（すべて本番反映済み）
 
@@ -805,20 +850,13 @@ push は本番反映を伴うので、ユーザーの指示なく勝手に push 
 1. **実機で残っている2件**（上の「未解決 / 確認待ち」）。閉じる ↓ の白丸と、オフライン起動。
    オフライン起動は、審査メモに「オフラインで学習が完結する」と書く根拠そのものなので、
    **書く前に実測を通しておく。**
-2. **レート制限**（**次はここから。ストア申請の本丸**）。
-   `app/api/english/reading/route.ts` は認証もレート制限も無く、**費用の天井が
-   アカウント残高そのもの**。入力検証と CORS は入ったが、ここが空いている限り公開できない。
-   - 置き場所が要る（**Upstash Redis を推す**。HTTP越しで接続プールが要らず、
-     日次上限・トークン単位・IP単位を同じ場所に置ける。Vercel KV でも成立する。
-     Vercel Firewall はコード不要な代わりにIP単位しか表現できず「1日の総本数」を持てない）。
-   - 順序: (a) `reading:global:YYYY-MM-DD` を INCR して**1日の総本数**を止める
-     → (b) 初回起動時に `crypto.randomUUID()` を作って IndexedDB に保存し
-     `Authorization: Bearer` で送る**無記名トークン**＋トークン単位・IP単位の上限。
-     **`Access-Control-Allow-Headers` に `Authorization` は既に入れてある。**
-   - 429 / 503 の文言は `lib/english/net.ts` の `statusMessage` に**もう用意してある**
-     （`scripts/check-english-net.ts` で検算済み）。サーバー側を足すだけで画面はそのまま動く。
-   - **将来の課金に載せ替えられる形にしておく**（ユーザーの意向）。トークンを
-     ユーザー識別に差し替えられるよう、上限の値をトークンに紐づく設定として読む形にする。
+2. **レート制限の環境変数を入れる**（**次はここから**）。コードは入っている（5章）が、
+   **`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`（または `KV_REST_API_*`）を
+   入れるまで上限は効かない。** Upstash か Vercel KV を作って Vercel の環境変数に入れ、
+   **Redeploy する**（保存だけでは既存のデプロイに効かない）。
+   入ったら本番へ数回叩いて、`READING_LIMIT_*` を一時的に小さくして 429 / 503 を1度見ておく。
+   あわせて **`ANTHROPIC_API_KEY` の再発行**（現行キーは 401）と、
+   **Anthropic Console の spend limit**（コードの上限とは別の最後の砦）。
 3. **`output: 'export'` を通して Capacitor に載せる。** 実測で分かっている落とし穴が3つある。
    - `next.config.ts` に素直に `output: 'export'` を書くと **Vercel 側のビルドまで静的化して
      読解APIが消える**（ビルドは成功しルート表に出るのに out/ に api が無い）。

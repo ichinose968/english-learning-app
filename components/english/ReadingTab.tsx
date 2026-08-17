@@ -27,6 +27,7 @@ import {
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
 import { apiUrl, readApiJson, requestErrorMessage } from "@/lib/english/net";
+import { authHeaders } from "@/lib/english/appToken";
 import { chipCls, Collapsible } from "./Collapsible";
 
 interface Props {
@@ -305,7 +306,9 @@ export function ReadingTab({ data, setData }: Props) {
       // 同梱物の中を探しにいって必ず失敗する (apiUrl が NEXT_PUBLIC_API_BASE を前置する)
       const res = await fetch(apiUrl("/api/english/reading"), {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        // 無記名トークン。レート制限を端末単位で数えるためだけのもので、
+        // 本人確認ではない (lib/english/appToken.ts)
+        headers: { "Content-Type": "application/json", ...authHeaders() },
         body: JSON.stringify({
           level: activeLevel,
           // 出題テーマ。**おまかせ (空) はそのまま空で渡す**。
