@@ -26,7 +26,24 @@ if (!srcDir) {
   process.exit(1);
 }
 
-const LEVELS = ["A1", "A2", "B1", "B2", "C1"];
+// **レベルを決め打ちしない。** ここを `["A1".."C1"]` と書いていたせいで、
+// C2 を足した直後の取り込みが 1,073 件まるごと「level が不正」で弾かれた
+// (幸い検算が止めたのでDBは無傷)。**存在するDBファイルからレベルを導く**ので、
+// 新しいレベルは JSON を1つ置けば自動的に通る
+function detectLevels() {
+  const dir = path.join("public", "english-words");
+  const found = fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5))
+    : [];
+  // CEFR の順に並べ、知らない表記は後ろに回す
+  const order = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  return found.sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+  });
+}
+
+const LEVELS = detectLevels();
 const POS_EN = ["Noun", "Verb", "Adjective", "Adverb", "Preposition", "Conjunction", "Phrase"];
 const DOMAINS = ["Business", "Academic", "DailyLife", "Travel", "Medical", "Legal",
   "Technical", "News", "Literary", "Casual"];
