@@ -1263,7 +1263,18 @@ export function CardDetailSheet({
           見出し語は長さで 4xl / 3xl / 2xl の3段に変わり、長いイディオムは
           2行に折り返すため、決め打ちの余白では合わない */}
       <div
-        className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto flex max-w-2xl justify-end px-4"
+        // **`fixed` にしないこと (`absolute` のまま)。** 根が既に `fixed inset-0` で
+        // 列幅にも収まっているので、位置と大きさはどちらでも1pxも変わらない。
+        // だが iOS は `position: fixed` をビューポート基準の別レイヤーへ持ち上げるため、
+        // その層が外側のスクロールコンテナ (EnglishApp の唯一のスクロール枠) の
+        // 上端をまたぐところで合成の継ぎ目ができ、**白い丸の下側だけが 12% 暗く
+        // 塗られていた** (実機で報告。境目は常にスクロール枠の上端＝ヘッダーの
+        // 境界線と同じ y)。実測: 丸は CSS y 83.5〜123.5、上側 255 / 下側 224 の
+        // 段差がちょうど y=119.6 で、スクロール枠の上端に一致していた。
+        // 同じ境界をまたぐパネルは `absolute` なので無傷だった。これが決め手。
+        // 単語詳細は単語リスト・カード画面・読解タブのどれからも
+        // **スクロールコンテナの中から**描かれるので、この条件は常に成り立つ
+        className="pointer-events-none absolute inset-x-0 top-0 z-30 mx-auto flex max-w-2xl justify-end px-4"
         // 見出しブロックとの縦中心合わせ。**headerH は逃げを含んだ実測値**なので、
         // 見出しの中身の中心は (headerH + インセット) / 2 にある。
         // 逃げが 0 のとき (ステータスバーが不透明なとき) は元の式に戻る
@@ -1278,10 +1289,8 @@ export function CardDetailSheet({
           // チュートリアルのスポットライトの対象 (自分で閉じさせるステップ)
           data-tour="detail-close"
           style={{ ...flyStyle(offset?.close, -180), ...dismissStyle }}
-          // **白い丸はボタンの背景ではなく子要素で描く。** 実機でこの丸が
-          // 上下二色に割れて見える (線は常に丸の上から61%) 件への対処で、
-          // 要素自身の背景の層に何が描かれても、上に敷いた子要素で覆い隠せる。
-          // globals.css の appearance: none と二重の保険
+          // **白い丸はボタンの背景ではなく子要素で描く。** globals.css の
+          // appearance: none と合わせた保険 (割れの正体は下の position だった)
           className="pointer-events-auto relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-black"
         >
           <span aria-hidden className="absolute inset-0 rounded-full bg-white" />
@@ -1304,7 +1313,9 @@ export function CardDetailSheet({
           // 列幅に収める。中央寄せは mx-auto で行う
           // (この要素は flyStyle / dismissStyle でインラインの transform を受け取るので、
           //  translateX(-50%) を使うと上書きされて中央から外れる)
-          className="fixed inset-x-0 bottom-0 z-20 mx-auto flex max-w-2xl items-center justify-center gap-3 bg-gradient-to-t from-black via-black/95 to-transparent py-4"
+          // **閉じるボタンと同じ理由で `absolute`。** `fixed` にすると
+          // スクロール枠の下端をまたぐところで ○ △ × の枠が合成の継ぎ目を拾う
+          className="absolute inset-x-0 bottom-0 z-20 mx-auto flex max-w-2xl items-center justify-center gap-3 bg-gradient-to-t from-black via-black/95 to-transparent py-4"
         >
           <button
             onClick={() => onAnswer("unknown")}
