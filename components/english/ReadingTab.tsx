@@ -10,6 +10,8 @@ import {
   INTEREST_PRESETS,
   Level,
   LEVELS,
+  MAX_PURPOSE_LEN,
+  MAX_TOPIC_LEN,
   READING_LENGTHS,
   READING_PURPOSES,
   ReadingResult,
@@ -24,7 +26,7 @@ import {
   statusBadges,
 } from "@/lib/english/worddb";
 import { setStatusOverride } from "@/lib/english/progress";
-import { requestErrorMessage } from "@/lib/english/net";
+import { apiUrl, readApiJson, requestErrorMessage } from "@/lib/english/net";
 import { chipCls, Collapsible } from "./Collapsible";
 
 interface Props {
@@ -46,11 +48,15 @@ const READING_LIST_LIMIT = 5;
 function CustomEditor({
   items,
   placeholder,
+  maxLength,
   onAdd,
   onRemove,
 }: {
   items: string[];
   placeholder: string;
+  // 上限は lib/english/types.ts が持ち、APIも同じ値で切る。
+  // 画面側にも入れておかないと、通ったように見えて生成時に黙って途中で切られる
+  maxLength: number;
   onAdd: (v: string) => void;
   onRemove: (v: string) => void;
 }) {
@@ -82,6 +88,7 @@ function CustomEditor({
                 if (e.key === "Enter") add();
               }}
               placeholder={placeholder}
+              maxLength={maxLength}
               className="min-w-0 flex-1 rounded-lg border border-zinc-200 bg-transparent px-3 py-1.5 text-sm outline-none focus:border-[#4A99EA] dark:border-zinc-700"
             />
             <button
@@ -111,6 +118,13 @@ function CustomEditor({
               まだ自分で追加した項目はありません。
             </p>
           )}
+          {/* **ここで書いた文字列はほぼ原文のまま Anthropic へ渡る**
+              (route.ts が <user_topics> / <user_purpose> で囲んで送る)。
+              端末の外へ出る数少ない経路なので、断りを画面に出しておく。
+              プライバシーポリシーの記載ともここで揃える */}
+          <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+            入力した内容は教材を作るためにAIへ送られます。個人が特定できる情報は書かないでください。
+          </p>
         </div>
       )}
     </div>
@@ -287,7 +301,9 @@ export function ReadingTab({ data, setData }: Props) {
     setPhase("loading");
     setError(null);
     try {
-      const res = await fetch("/api/english/reading", {
+      // **相対パス直書きにしない。** Capacitor 版はオリジンが変わるので
+      // 同梱物の中を探しにいって必ず失敗する (apiUrl が NEXT_PUBLIC_API_BASE を前置する)
+      const res = await fetch(apiUrl("/api/english/reading"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -301,9 +317,9 @@ export function ReadingTab({ data, setData }: Props) {
           targetWords,
         }),
       });
-      const json = await res.json();
-      if (!res.ok || json.error) throw new Error(json.error ?? "生成に失敗しました");
-      const result = json as ReadingResult;
+      // **`res.json()` を直に呼ばないこと。** 504・404・本文0バイトの500 が
+      // 全部この行を通るので、JSONと決めつけるとパースエラーが画面に出る
+      const result = await readApiJson<ReadingResult>(res, "生成に失敗しました");
       const saved: SavedReading = {
         id: crypto.randomUUID(),
         createdAt: new Date().toISOString(),
@@ -386,6 +402,7 @@ export function ReadingTab({ data, setData }: Props) {
         <CustomEditor
           items={customTopics}
           placeholder="テーマを追加 (例: 宇宙、サッカー)"
+          maxLength={MAX_TOPIC_LEN}
           onAdd={addTopic}
           onRemove={removeTopic}
         />
@@ -491,6 +508,7 @@ export function ReadingTab({ data, setData }: Props) {
         <CustomEditor
           items={data.settings.customPurposes}
           placeholder="目的を追加 (例: 医療英語、IELTS対策)"
+          maxLength={MAX_PURPOSE_LEN}
           onAdd={addPurpose}
           onRemove={removePurpose}
         />

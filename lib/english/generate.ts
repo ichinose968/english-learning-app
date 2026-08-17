@@ -8,13 +8,34 @@ export function missingApiKey(): boolean {
   return !process.env.ANTHROPIC_API_KEY;
 }
 
-export function apiKeyErrorResponse() {
+// **運用側の事情は本番のユーザーに見せない。**
+// 「.env.local に ANTHROPIC_API_KEY=sk-ant-... を追記して開発サーバーを再起動」
+// 「console.anthropic.com の Plans & Billing でクレジットを追加」といった案内が、
+// そのまま読解タブの赤字に出ていた。公開URLなので一般ユーザーにも、
+// APIを叩いている相手にも読める。残高切れの文言に至っては
+// 「枯らし切った」という合図まで返していた。
+//
+// 原因は console.error でサーバー側 (Vercel のログ) にだけ残す。
+// 手元では今までどおり詳しく出ないと直せないので、開発時だけ元の文言を出す。
+const DEV = process.env.NODE_ENV !== "production";
+
+// 運用側の問題 (鍵が無い・鍵が無効・残高切れ) はユーザーには全部同じに見える。
+// どれも「こちらの都合でいま使えない」であって、ユーザーに打てる手は無い
+const UNAVAILABLE = "いま教材を生成できません。時間をおいてもう一度お試しください。";
+
+function operatorError(status: number, label: string, devMessage: string, e?: unknown) {
+  console.error(`[english/generate] ${label}`, e ?? "");
   return NextResponse.json(
-    {
-      error:
-        "ANTHROPIC_API_KEY が設定されていません。プロジェクト直下の .env.local に ANTHROPIC_API_KEY=sk-ant-... を追記して、開発サーバーを再起動してください。",
-    },
-    { status: 500 },
+    { error: DEV ? devMessage : UNAVAILABLE },
+    { status },
+  );
+}
+
+export function apiKeyErrorResponse() {
+  return operatorError(
+    500,
+    "ANTHROPIC_API_KEY が未設定",
+    "ANTHROPIC_API_KEY が設定されていません。プロジェクト直下の .env.local に ANTHROPIC_API_KEY=sk-ant-... を追記して、開発サーバーを再起動してください。",
   );
 }
 
@@ -101,22 +122,24 @@ export function handleGenerateError(e: unknown, label: string) {
     );
   }
   if (e instanceof Anthropic.AuthenticationError) {
-    return NextResponse.json(
-      { error: "Anthropic APIの認証に失敗しました。.env.local の ANTHROPIC_API_KEY を確認してください。" },
-      { status: 500 },
+    return operatorError(
+      500,
+      `${label}: Anthropic の認証に失敗 (キーが無効か失効)`,
+      "Anthropic APIの認証に失敗しました。.env.local の ANTHROPIC_API_KEY を確認してください。",
+      e,
     );
   }
-  // 残高切れは 400 で返ってくる。原因が分かる文言にしないと解決できない
+  // 残高切れは 400 で返ってくる。**ステータスは 402 のまま分けておく。**
+  // 文言は本番では他と同じでも、ログとステータスで運用側が切り分けられる
   if (
     e instanceof Anthropic.BadRequestError &&
     /credit balance/i.test(String(e.message))
   ) {
-    return NextResponse.json(
-      {
-        error:
-          "Anthropic APIの残高が不足しています。console.anthropic.com の Plans & Billing でクレジットを追加してください。",
-      },
-      { status: 402 },
+    return operatorError(
+      402,
+      `${label}: Anthropic の残高不足`,
+      "Anthropic APIの残高が不足しています。console.anthropic.com の Plans & Billing でクレジットを追加してください。",
+      e,
     );
   }
   if (e instanceof Anthropic.RateLimitError) {

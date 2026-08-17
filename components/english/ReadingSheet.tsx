@@ -157,6 +157,12 @@ export function ReadingSheet({
         </header>
 
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4">
+          {/* 本文・語注・和訳・設問はすべてAIがその場で作ったもので、
+              事前生成DBの単語・文法とは出どころが違う。
+              本文の**上**に置く (読み終わってから断られても遅い) */}
+          <p className="mb-3 text-xs text-zinc-500">
+            AIが生成した教材です。内容が正確とは限りません。
+          </p>
           <div className="text-[15px]">
             {renderPassage(reading.passageEn, wordAction)}
           </div>

@@ -47,8 +47,51 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Xcode build artifacts (iOS wrapper app)
-/ios/build/
+# ---- 署名に使う秘密 ----
+# **このリポジトリは PUBLIC。** 1回でもコミットしたら、消しても履歴に残るので
+# 鍵は作り直しになる。Android の upload keystore は失うと同じアプリを
+# 二度と更新できないので、リポジトリの外 (パスワード管理側) に置いてバックアップも別に取る。
+# `npx cap add` でネイティブのプロジェクトが生える前に、ここが効いていることを確かめること
+*.keystore
+*.jks
+*.p12
+*.p8
+*.cer
+*.certSigningRequest
+*.mobileprovision
+*.provisionprofile
+key.properties
+keystore.properties
+google-services.json
+GoogleService-Info.plist
+
+# ---- Capacitor: iOS ----
+# ios/ 自体はコミットする (Info.plist などを手で編集するため)。
+# 除外するのは依存の実体と、`cap sync` が毎回作り直す生成物だけ。
+# **App/App/public/ は同梱するWebアセットの写し**で、out/ から毎回コピーされる
+ios/App/Pods/
+ios/App/build/
+ios/App/output/
+ios/App/App/public/
+ios/App/App/capacitor.config.json
+ios/App/App/config.xml
+ios/DerivedData/
+xcuserdata/
+*.xcuserstate
+
+# ---- Capacitor: Android ----
+android/.gradle/
+android/build/
+android/app/build/
+android/captures/
+android/local.properties
+android/app/release/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/capacitor-cordova-android-plugins/
+*.iml
+.idea/
 
 # LaTeX build artifacts
 *.aux

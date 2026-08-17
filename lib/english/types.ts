@@ -29,6 +29,12 @@ export const INTEREST_PRESETS = [
   "歴史",
 ];
 
+// 自由入力の文字数上限。**画面とAPIの両方がここを見る。**
+// APIは公開URLなので受け取った側でも必ず切るが、画面側にも同じ値を入れておかないと
+// 入力欄では通ったのに黙って途中で切られる。数字を変えるときは1か所で済ませる
+export const MAX_TOPIC_LEN = 30;
+export const MAX_PURPOSE_LEN = 40;
+
 // 長文生成の勉強目的。文体・題材・設問形式が変わる
 export const READING_PURPOSES: { key: string; label: string; desc: string }[] = [
   { key: "general", label: "一般", desc: "興味テーマ中心の読み物" },
