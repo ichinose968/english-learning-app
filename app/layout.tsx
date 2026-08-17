@@ -2,12 +2,12 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "英語学習 - 最適な教材を自動作成",
+  title: "Eng. - 英語学習",
   description:
     "レベルと興味に合わせて、単語・文法・長文読解の教材を自動作成する英語学習アプリ",
   appleWebApp: {
     capable: true,
-    title: "英語学習",
+    title: "Eng.",
     // **"black-translucent" にしない。** ホーム画面から起動した iOS では、
     // Webビューはステータスバーの下まで広がるのに、ビューポートの高さは
     // 「ステータスバーが不透明だったとき」の値 (画面852 − 上インセット59 = 793) を返し、

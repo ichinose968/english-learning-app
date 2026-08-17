@@ -95,6 +95,7 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `lib/english/appToken.ts` … 端末を表す無記名トークン。`localStorage` に UUID を1つ持つだけ。**本人確認ではない。**
 - `lib/english/net.ts` … クライアントから `/api/english/*` を呼ぶときの共通処理。`apiUrl(path)`（`NEXT_PUBLIC_API_BASE` を前置。Capacitor 版はオリジンが変わるため）、`readApiJson(res, fallback)`（**`res.json()` を直に呼ばないための受け取り口**）、`requestErrorMessage(e, fallback)`（fetch が投げた TypeError を「オフラインです…」に振り替える）。詳細は5章。
 - `public/english-sw.js` … Service Worker（オフライン対応）。詳細は5章。
+- `components/english/Wordmark.tsx` … アプリのワードマーク（`Eng.`）。**アイコンと同じアウトライン**を SVG で持つ。5章「アプリ名の表記」。
 - `components/english/EnglishScreen.tsx` … 学習画面そのもの（`main` の枠＋`ServiceWorkerRegistrar`＋`EnglishApp`）。**デプロイ側では `/english` と `/` の両方から出す**（Capacitor が開くのは `out/index.html` なので）。
 - `components/english/ServiceWorkerRegistrar.tsx` … その登録だけを行う（描画しない）。`EnglishScreen` から置く。
 - `scripts/expand-english-words.mjs` … **既存DBに指定した見出し語だけを足す。** 冪等・再開可能で、既にある語は毎回スキップする。実行時に対象リストのパスを渡す（**リスト自体はリポジトリに置かない**。5章「語彙の拡充」）。
@@ -553,6 +554,29 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     1語も拾えず行き止まりになる。測定結果とレベル自動調整の両方に掛ける。
     **柵で今のレベルへ戻ったときは、動かさなかったことにする** — さもないと
     「レベルを C2 に上げました」と出したのに中身は C1 のまま、という食い違いが残る。
+- **アプリ名の表記は `Eng.` に統一し、字はアイコンと同じアウトラインを使う**（`components/english/Wordmark.tsx`）。
+  - **`font-family: Didot, ...` にしないこと。** Didot は macOS と iOS にしか無く、
+    Android では別の明朝体に落ちる。**ホーム画面のアイコンと画面の中で字が食い違う**のが
+    一番まずいので、アウトライン化済みのパスを SVG で持つ。どの端末でも1文字も変わらない。
+  - 原本は `assets/english-icon/icon.svg`。**字形を変えるときはそちらを直してパスを貼り直す。**
+  - `viewBox` はアイコンの1024キャンバスから**インクの外接矩形だけを切り出した値**
+    （x 102 / y 309.5 / 幅 820 / 高さ 405、縦横比 2.025）。パスの座標から計算しようとすると
+    `V` / `H` コマンドで壊れるので、**実際に描画して測った**。
+  - 白い部分は `currentColor`、ピリオドだけアクセント色 `#4A99EA` で固定。
+  - **高さは `h-7`（28px）。** `h-5`（20px）だと幅40pxで、元の「英語学習」（約80px）の半分しかなく
+    小さすぎた。ワードマークは `g` の下がりを高さに含むので、**同じ px でも文字より見た目が小さくなる**。
+  - 表記を変えた場所: `manifest.ts` の `name` / `short_name`、`layout.tsx` の
+    `appleWebApp.title`、各ページの `metadata.title`、ヘッダーの `h1`。
+    **`app/layout.tsx` は両リポジトリで内容が違うので個別に直す。**
+- **チュートリアルの文字は 2026-08-17 に一段上げた。** 吹き出しの本文が 13px → **17px**、
+  段数とスキップが 10px → 13px、「次へ」が 11px → 15px（`Spotlight.tsx`）。
+  全画面の層は見出し 18px → 24px、カードの見出し 14px → 18px、本文 12px → 15px、
+  ボタン 14px → 16px（`TutorialFlow.tsx`）。
+  - **吹き出しは大きくしても画面に収まる。** 置き場所は実測（`tipH`）で決めているので
+    高さが変わっても追随する。実測で本文95〜148px、はみ出し0件、横スクロールなし。
+  - 字を大きくしたぶん、吹き出しの内側の余白も `p-3` → `p-4` に広げた（詰まって見えるため）。
+- **画面に出すレベルの範囲を決め打ちしない。** 測定の説明が `A1〜C1` と直書きで、
+  C2 を足したあとも古いままだった。いまは `LEVEL_ORDER` の両端から出している。
 - **語彙の拡充は「収録の事実」だけを持ち込み、中身は自前で作る**（`scripts/expand-english-words.mjs`）。
   市販の単語帳（鉄壁 / ターゲット1900 / LEAP / 速読英熟語 / パス単準1級 / 熟語ターゲット1000）の
   収録語と突き合わせて、このアプリに**足りない語を洗い出すためだけ**に使う。
@@ -1000,12 +1024,11 @@ A1 1,087 / A2 1,253 / B1 1,898 / B2 2,749 / C1 2,544 / **C2 1,073（新設）**�
 > Android のパッケージ名として有効。iOS の Bundle ID としても有効。
 > `io.github.<GitHubユーザー名>` 形式で、リポジトリ所有者 `ichinose968` と一致している。
 
-> **アプリ名 `Eng.` はアイコンと揃っている**（黒地に Didot の `Eng.`、ピリオドがアクセント色）。
-> **未決**: PWA の `manifest.ts` は `name: "英語学習 - 最適な教材を自動作成"` /
-> `short_name: "英語学習"`、`app/layout.tsx` の `appleWebApp.title` も `"英語学習"`、
-> 画面のヘッダーも `英語学習` のまま。**ストア名に合わせて `Eng.` へ寄せるかは未決定。**
-> `short_name` を変えると**既存ユーザーのホーム画面のラベルが変わる**ので、
-> 勝手に変えずユーザーに確かめること。
+> **アプリ内の表記も `Eng.` に統一済み**（2026-08-17、ユーザーの指示）。
+> `manifest.ts` の `name` / `short_name`、`layout.tsx` の `appleWebApp.title`、
+> 各ページの `metadata.title`、ヘッダーの `h1` すべて。
+> **ヘッダーはアイコンと同じアウトラインを SVG で描いている**（5章「アプリ名の表記」）。
+> `short_name` が変わったので、**既にホーム画面に入れている端末はラベルが `Eng.` になる。**
 
 #### ユーザーにしかできないこと（これが律速）
 

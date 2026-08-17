@@ -10,8 +10,8 @@ export const dynamic = "force-static";
 // スマホのホーム画面に追加したときにアプリとして起動するための設定
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "英語学習 - 最適な教材を自動作成",
-    short_name: "英語学習",
+    name: "Eng. - 英語学習",
+    short_name: "Eng.",
     description:
       "レベルと興味に合わせて単語・文法・長文読解の教材を自動作成する英語学習アプリ",
     start_url: "/english",

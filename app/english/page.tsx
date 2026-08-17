@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { EnglishScreen } from "@/components/english/EnglishScreen";
 
 export const metadata: Metadata = {
-  title: "英語学習 - 最適な教材を自動作成",
+  title: "Eng. - 英語学習",
   description:
     "レベルと興味に合わせて、単語・文法・長文読解の教材をAIが自動生成する英語学習アプリ",
 };

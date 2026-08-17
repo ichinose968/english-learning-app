@@ -41,6 +41,7 @@ import { GrammarTab } from "./GrammarTab";
 import { ReadingTab } from "./ReadingTab";
 import { WordListView } from "./WordListView";
 import { Sheet } from "./Sheet";
+import { Wordmark } from "./Wordmark";
 import { ConfirmButton } from "./ConfirmButton";
 import { setSpeechRate } from "@/lib/english/speech";
 
@@ -454,7 +455,16 @@ export function EnglishApp() {
         //  正体はボタン自体への UA の描画だった。globals.css を見ること)
         className="flex shrink-0 items-center justify-between border-b border-zinc-200 bg-white px-4 pb-3 dark:border-zinc-800 dark:bg-black"
       >
-        <h1 className="text-xl font-bold tracking-tight">英語学習</h1>
+        {/* ワードマーク。**アイコンと同じアウトライン**を使うので、
+            ホーム画面のアイコンと画面の中で字が食い違わない (Wordmark.tsx)。
+            高さで指定して幅は縦横比 (2.025) に任せる。
+            **h-5 (20px) では小さすぎた** — 幅40pxで、元の「英語学習」(約80px) の半分。
+            ワードマークは `g` の下がりを高さに含むので、同じ px でも
+            文字より見た目が小さくなる。ヘッダーの内容高は歯車ボタンと同じ36pxなので、
+            h-7 (28px) で上下に4pxずつ余る */}
+        <h1 className="flex items-center">
+          <Wordmark className="h-7 w-auto" />
+        </h1>
         <button
           onClick={() => {
             if (settingsOpen) {

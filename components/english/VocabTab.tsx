@@ -1849,7 +1849,8 @@ export function VocabTab({
           まず単語レベルを測定します
         </h3>
         <p className="mx-auto mt-1 max-w-md text-sm text-zinc-600 dark:text-zinc-300">
-          {PLACEMENT_SIZE}問に答えると、あなたの単語レベル (A1〜C1)
+          {PLACEMENT_SIZE}問に答えると、あなたの単語レベル ({LEVEL_ORDER[0]}〜
+          {LEVEL_ORDER[LEVEL_ORDER.length - 1]})
           を判定します。正解すると次は難しい単語、間違えると易しい単語が出る方式です。
         </p>
         <p className="mt-1 text-xs text-zinc-400">

@@ -230,8 +230,8 @@ export function TutorialDemo({
       data-tour-layer="demo"
     >
       <div className="shrink-0 px-4 pb-1 pt-4 text-center">
-        <h2 className="text-base font-bold">カードの答え方</h2>
-        <p className="mt-0.5 text-[11px] text-zinc-500">
+        <h2 className="text-xl font-bold">カードの答え方</h2>
+        <p className="mt-1 text-[15px] text-zinc-500">
           ここでの回答は記録に残りません。
         </p>
       </div>
@@ -304,9 +304,9 @@ export function TutorialDemo({
 function Row({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="rounded-2xl bg-zinc-900 p-4">
-      <span className="text-sm font-medium">
+      <span className="text-lg font-medium">
         {title}
-        <span className="mt-0.5 block text-xs font-normal leading-relaxed text-zinc-400">
+        <span className="mt-1 block text-[15px] font-normal leading-relaxed text-zinc-400">
           {desc}
         </span>
       </span>
@@ -321,12 +321,12 @@ export function TutorialWelcome({ step, masterCount, onNext, onSkip }: Nav) {
   return (
     <div className={FULL_LAYER} style={FULL_LAYER_SAFE}>
       <div className="flex shrink-0 items-center justify-between px-4 py-3">
-        <span className="text-xs text-zinc-500">
+        <span className="text-sm text-zinc-500">
           チュートリアル {step + 1} / {TUTORIAL_STEP_COUNT}
         </span>
         <button
           onClick={onSkip}
-          className="rounded-full px-3 py-1 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200"
+          className="rounded-full px-3 py-1.5 text-sm text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200"
         >
           スキップ
         </button>
@@ -337,8 +337,8 @@ export function TutorialWelcome({ step, masterCount, onNext, onSkip }: Nav) {
             <span className="text-[#4A99EA]">
               <BookMarked size={30} />
             </span>
-            <h2 className="mt-2 text-lg font-bold">ようこそ</h2>
-            <p className="mt-1 text-xs text-zinc-400">
+            <h2 className="mt-3 text-2xl font-bold">ようこそ</h2>
+            <p className="mt-2 text-base text-zinc-400">
               知らない単語を繰り返し復習できる英単語アプリです
             </p>
           </div>
@@ -356,7 +356,7 @@ export function TutorialWelcome({ step, masterCount, onNext, onSkip }: Nav) {
               title="文法・長文演習も"
               desc="文法4択問題の演習も可能。長文はあなたが知らなかった単語を用いてAIが生成します。"
             />
-            <p className="pt-1 text-center text-xs text-zinc-500">
+            <p className="pt-2 text-center text-[15px] text-zinc-500">
               このチュートリアルは、実際に触りながら進みます。
             </p>
           </div>
@@ -367,7 +367,7 @@ export function TutorialWelcome({ step, masterCount, onNext, onSkip }: Nav) {
         <div className="mx-auto flex max-w-md">
           <button
             onClick={onNext}
-            className="flex-1 rounded-full bg-[#4A99EA] py-2.5 text-sm font-bold text-white hover:bg-[#3d87d4]"
+            className="flex-1 rounded-full bg-[#4A99EA] py-3 text-base font-bold text-white hover:bg-[#3d87d4]"
           >
             次へ
           </button>
@@ -381,7 +381,7 @@ export function TutorialOverlay({ step, measured, masterCount, onNext }: Nav) {
   return (
     <div className={FULL_LAYER} style={FULL_LAYER_SAFE}>
       <div className="flex shrink-0 items-center justify-between px-4 py-3">
-        <span className="text-xs text-zinc-500">
+        <span className="text-sm text-zinc-500">
           チュートリアル {step + 1} / {TUTORIAL_STEP_COUNT}
         </span>
       </div>
@@ -392,8 +392,8 @@ export function TutorialOverlay({ step, measured, masterCount, onNext }: Nav) {
             <span className="text-[#4A99EA]">
               <PenLine size={30} />
             </span>
-            <h2 className="mt-2 text-lg font-bold">準備完了</h2>
-            <p className="mt-1 text-xs text-zinc-400">
+            <h2 className="mt-3 text-2xl font-bold">準備完了</h2>
+            <p className="mt-2 text-base text-zinc-400">
               {measured
                 ? "閉じると、さっきの演習の画面に戻ります"
                 : "閉じると単語タブに測定画面が出ます"}
@@ -415,7 +415,7 @@ export function TutorialOverlay({ step, measured, masterCount, onNext }: Nav) {
               title="復習"
               desc={`覚えたかどうかを確かめます。うろ覚えは △。○ が${masterCount}回続いた単語は学習完了です。`}
             />
-            <p className="pt-1 text-xs leading-relaxed text-zinc-500">
+            <p className="pt-2 text-[15px] leading-relaxed text-zinc-500">
               文法と読解は下のタブから。チュートリアルはいつでも設定 (歯車) から見直せます。
             </p>
           </div>
@@ -430,7 +430,7 @@ export function TutorialOverlay({ step, measured, masterCount, onNext }: Nav) {
         <div className="mx-auto flex max-w-md">
           <button
             onClick={onNext}
-            className="flex-1 rounded-full bg-[#4A99EA] py-2.5 text-sm font-bold text-white hover:bg-[#3d87d4]"
+            className="flex-1 rounded-full bg-[#4A99EA] py-3 text-base font-bold text-white hover:bg-[#3d87d4]"
           >
             {measured ? "はじめる" : "単語力測定へ"}
           </button>

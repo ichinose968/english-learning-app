@@ -305,30 +305,30 @@ export function Spotlight({
 
   const tip = (
     <div
-      className="mx-auto w-full rounded-2xl border border-[#4A99EA] bg-black p-3 shadow-xl"
+      className="mx-auto w-full rounded-2xl border border-[#4A99EA] bg-black p-4 shadow-xl"
       style={{ maxWidth: TIP_MAX }}
     >
       <div className="flex items-center justify-between">
-        <span className="text-[10px] font-bold text-[#4A99EA]">
+        <span className="text-[13px] font-bold text-[#4A99EA]">
           {step} / {total}
         </span>
         {!frozen && (
           <button
             onClick={onSkip}
-            className="rounded-full px-2 py-0.5 text-[10px] text-zinc-500 hover:text-zinc-300"
+            className="rounded-full px-2.5 py-1 text-[13px] text-zinc-500 hover:text-zinc-300"
           >
             スキップ
           </button>
         )}
       </div>
-      <p className="mt-1 text-[13px] font-medium leading-relaxed text-zinc-100">
+      <p className="mt-1.5 text-[17px] font-medium leading-relaxed text-zinc-100">
         {body}
       </p>
       {!frozen && onNext && (
         <div className="mt-2.5">
           <button
             onClick={onNext}
-            className="w-full rounded-full bg-[#4A99EA] py-1.5 text-[11px] font-bold text-white hover:bg-[#3d87d4]"
+            className="w-full rounded-full bg-[#4A99EA] py-2.5 text-[15px] font-bold text-white hover:bg-[#3d87d4]"
           >
             次へ
           </button>
