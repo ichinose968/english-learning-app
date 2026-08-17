@@ -13,12 +13,15 @@
  *
  * --- バージョンの上げ方 ---
  * VERSION      … シェル (HTML・アイコン) と /_next/static のキャッシュ。
- *                キャッシュの持ち方そのものを変えたときに上げる。
+ *                キャッシュの持ち方そのものを変えたときと、**アイコンを差し替えたとき**に上げる。
+ *                アイコンはパスが同じまま中身だけ変わるので、上げないと
+ *                導入済みの端末が古い絵を持ち続ける。
  * DATA_VERSION … 単語・イディオム・文法の静的JSON。**DBを再生成したら必ず上げる。**
  *                こちらは意図的に再検証しないので、上げないと古い語が残り続ける。
  */
 
-const VERSION = "v1";
+// v2: アイコンを Eng. のロゴタイプに差し替えた
+const VERSION = "v2";
 const DATA_VERSION = "v1";
 
 const SHELL = `english-shell-${VERSION}`;
@@ -31,6 +34,7 @@ const SHELL_ASSET_URLS = [
   "/manifest.webmanifest",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
+  "/icons/icon-maskable-512.png",
   "/icons/apple-touch-icon.png",
 ];
 

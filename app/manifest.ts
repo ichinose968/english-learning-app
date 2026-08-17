@@ -17,7 +17,14 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
       { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-      { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+      // maskable は Android が円や角丸で切り抜くので、字面を中央 65% に縮めた別絵を渡す。
+      // any と同じ絵を maskable として渡すと端の文字が欠ける
+      {
+        src: "/icons/icon-maskable-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
+      },
     ],
   };
 }
