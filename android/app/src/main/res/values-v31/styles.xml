@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12 (API 31) からの起動画面。**ここは system が描く**ので、
+     values/styles.xml の `android:background` は効かない。指定しないと
+     windowBackground へフォールバックし、端末がライトだと白く光る。
+     アプリは常にダークなので黒に固定し、真ん中にはアプリアイコンを出す -->
+<resources>
+    <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
+        <item name="android:windowSplashScreenBackground">@color/engBlack</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="android:background">@drawable/splash</item>
+    </style>
+</resources>

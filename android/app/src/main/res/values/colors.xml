@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- アプリは端末の設定によらず常にダーク (docs 5章)。起動から最初の描画までのあいだ、
+     システムが塗る面をここで黒に揃える。入れないと白く光ってから黒い画面に切り替わる -->
+<resources>
+    <color name="engBlack">#FF000000</color>
+</resources>
