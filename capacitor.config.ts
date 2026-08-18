@@ -15,6 +15,23 @@ const config: CapacitorConfig = {
   // 起動直後のページを描く前の一瞬だけ白く光る（既定は白）。
   // 起動画面側は android/app/src/main/res の styles.xml で黒にしてある
   backgroundColor: "#000000",
+  plugins: {
+    // Capacitor 8 に内蔵のシステムバー制御（別途プラグインを入れる必要は無い）。
+    SystemBars: {
+      // **`DARK` は「地が暗い」という意味で、アイコンは白になる。**
+      // 既定 (`DEFAULT`) は端末のライト/ダーク設定に従うので、端末がライトだと
+      // アイコンが黒く描かれ、**黒いこのアプリの上で時計も電池も見えなくなる**
+      // （エミュレータで実測。Web 側で踏んだ「黒地に黒」と同じ罠）。
+      // テーマの `windowLightStatusBar` と MainActivity での指定より、
+      // **この設定のほうが後に効く**ので、ここが実質の決定点になる
+      style: "DARK",
+      // 既定のまま。Android では `--safe-area-inset-*` を注入してくれるが、
+      // このアプリが使っているのは `env(safe-area-inset-*)` のほう。
+      // **切り替えるときは両方を突き合わせて実測すること**（値がずれると
+      // ヘッダーが時計に潜るか、下タブが浮く）
+      insetsHandling: "css",
+    },
+  },
 };
 
 export default config;
