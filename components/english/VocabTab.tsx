@@ -42,6 +42,7 @@ import { ConfirmButton } from "./ConfirmButton";
 import { clearStatusOverride, setStatusOverride } from "@/lib/english/progress";
 import { requestErrorMessage } from "@/lib/english/net";
 import { CardFilterSheet } from "./CardFilterSheet";
+import { useAndroidBack } from "./useAndroidBack";
 import { Sheet } from "./Sheet";
 import {
   buildIndex,
@@ -266,7 +267,9 @@ function CardFront({
             }
             onPointerDown={(e) => e.stopPropagation()}
             className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors ${
-              onSpeak ? "hover:bg-zinc-100 hover:text-zinc-700" : "pointer-events-none"
+              onSpeak
+                ? "hover:bg-zinc-100 hover:text-zinc-700"
+                : "pointer-events-none"
             }`}
           >
             <Volume2 size={18} />
@@ -480,6 +483,8 @@ export function WordCard({
   const [flip, setFlip] = useState(false);
   // カード詳細 (カード右下の ↑ から開く)
   const [detailOpen, setDetailOpen] = useState(false);
+  // Android の戻るボタンで閉じる (登録順で後のものが勝つので、詳細が手前になる)
+  useAndroidBack(detailOpen, () => setDetailOpen(false));
   // 詳細を開くアニメーションの開始位置 (カード / ↑ボタン / 下部のボタン列)
   const [detailOrigin, setDetailOrigin] = useState<SheetOrigin | undefined>();
   const cardRef = useRef<HTMLDivElement>(null);
@@ -517,7 +522,6 @@ export function WordCard({
     );
     setDetailOpen(true);
   };
-
 
   // 裏返してから内容を差し替える (めくる演出)
   const flipTo = (next: "choices" | "reveal") => {
@@ -621,7 +625,9 @@ export function WordCard({
 
   // 「次へ」: 回答の向きにカードを飛ばしてから次の単語へ
   const flyOut = () => {
-    flyAway(action === "known" ? "right" : action === "unknown" ? "left" : "up");
+    flyAway(
+      action === "known" ? "right" : action === "unknown" ? "left" : "up",
+    );
   };
 
   const onPointerDown = (e: React.PointerEvent) => {
@@ -824,32 +830,34 @@ export function WordCard({
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
-          style={{
-            transform:
-              `${transform ?? ""} ${flip ? "scaleX(0.02)" : ""}`.trim() ||
-              undefined,
-            // 飛んでいるあいだは transition を切る。transition はアニメーションより
-            // 優先されるので、残しておくと card-fly-* が効かない
-            transition: ghost
-              ? "none"
-              : drag
-                ? "box-shadow 0.12s linear"
-                : "transform 0.22s ease-out, opacity 0.22s ease-out, box-shadow 0.22s ease-out, background-image 0.2s ease-out, border-color 0.2s ease-out",
-            // 裏面の地色。bg-white の上に重ねるので backgroundImage で入れる
-            backgroundImage: tone?.image,
-            borderColor: tone?.border,
-            // スワイプ中の影を優先する (指の向きが分からなくなるため)
-            boxShadow: swipe
-              ? swipeShadow(glowDir, swipe.t)
-              : (tone?.glow ?? undefined),
-            touchAction: "none",
-            // 4択へ移るときの跳ね返りの開始位置 (card-bounce-back が読む)
-            "--bounce-from": `${bounceFrom}px`,
-            // 飛んでいくときの開始位置 (card-fly-* が読む)
-            "--fly-x": flyFrom?.x ?? "0px",
-            "--fly-y": flyFrom?.y ?? "0px",
-            "--fly-r": flyFrom?.r ?? "0deg",
-          } as React.CSSProperties}
+          style={
+            {
+              transform:
+                `${transform ?? ""} ${flip ? "scaleX(0.02)" : ""}`.trim() ||
+                undefined,
+              // 飛んでいるあいだは transition を切る。transition はアニメーションより
+              // 優先されるので、残しておくと card-fly-* が効かない
+              transition: ghost
+                ? "none"
+                : drag
+                  ? "box-shadow 0.12s linear"
+                  : "transform 0.22s ease-out, opacity 0.22s ease-out, box-shadow 0.22s ease-out, background-image 0.2s ease-out, border-color 0.2s ease-out",
+              // 裏面の地色。bg-white の上に重ねるので backgroundImage で入れる
+              backgroundImage: tone?.image,
+              borderColor: tone?.border,
+              // スワイプ中の影を優先する (指の向きが分からなくなるため)
+              boxShadow: swipe
+                ? swipeShadow(glowDir, swipe.t)
+                : (tone?.glow ?? undefined),
+              touchAction: "none",
+              // 4択へ移るときの跳ね返りの開始位置 (card-bounce-back が読む)
+              "--bounce-from": `${bounceFrom}px`,
+              // 飛んでいくときの開始位置 (card-fly-* が読む)
+              "--fly-x": flyFrom?.x ?? "0px",
+              "--fly-y": flyFrom?.y ?? "0px",
+              "--fly-r": flyFrom?.r ?? "0deg",
+            } as React.CSSProperties
+          }
           // カードだけはダークテーマでも白地・黒文字にする (紙の単語カードに寄せる)
           className={`absolute inset-0 flex select-none flex-col justify-center overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900 ${
             ghost && flyDir
@@ -942,7 +950,9 @@ export function WordCard({
                   }
                   onPointerDown={(e) => e.stopPropagation()}
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors ${
-                    ghost ? "pointer-events-none" : "hover:bg-white/60 hover:text-zinc-700"
+                    ghost
+                      ? "pointer-events-none"
+                      : "hover:bg-white/60 hover:text-zinc-700"
                   }`}
                 >
                   <Volume2 size={18} />
@@ -1039,7 +1049,9 @@ export function WordCard({
                     }
                     onPointerDown={(e) => e.stopPropagation()}
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-zinc-400 transition-colors ${
-                      ghost ? "pointer-events-none" : "hover:bg-white hover:text-zinc-700"
+                      ghost
+                        ? "pointer-events-none"
+                        : "hover:bg-white hover:text-zinc-700"
                     }`}
                   >
                     <Volume2 size={15} />
@@ -1052,15 +1064,15 @@ export function WordCard({
 
           {/* Tinder風: カード右下の ↑ でカードの詳細を開く */}
           {!noDetail && (
-          <button
-            ref={arrowRef}
-            onClick={() => openDetail()}
-            onPointerDown={(e) => e.stopPropagation()}
-            aria-label="カードの詳細を見る"
-            className="absolute bottom-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-600 transition-colors hover:bg-zinc-50"
-          >
-            <ArrowUp size={20} strokeWidth={2.5} />
-          </button>
+            <button
+              ref={arrowRef}
+              onClick={() => openDetail()}
+              onPointerDown={(e) => e.stopPropagation()}
+              aria-label="カードの詳細を見る"
+              className="absolute bottom-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-600 transition-colors hover:bg-zinc-50"
+            >
+              <ArrowUp size={20} strokeWidth={2.5} />
+            </button>
           )}
 
           {note && step !== "choices" && (
@@ -1386,7 +1398,10 @@ export function VocabTab({
     if (done >= PLACEMENT_SIZE) {
       // **語が1つも無いレベルへ置かない。** レベルを足した直後にデータが
       // 揃っていないと、全問正解した学習者がそのまま行き止まりに突き当たる
-      const est = clampToAvailable(estimatePlacement(pTrack), levelsWithWords(dbs));
+      const est = clampToAvailable(
+        estimatePlacement(pTrack),
+        levelsWithWords(dbs),
+      );
       setPlacementResult(est);
       setData((prev) => ({
         ...prev,
@@ -1499,16 +1514,14 @@ export function VocabTab({
     statusBadges(data.vocab[word], data.settings.vocab.masterKnownCount);
   const levelOf = (def: WordDbEntry) =>
     wordIndex?.get(def.word)?.level ?? vocabLevel.current ?? "B1";
-  const setResultOf =
-    (def: WordDbEntry) => (next: LastResult | null) =>
-      setData((prev) =>
-        setStatusOverride(prev, def, levelOf(def), "result", next),
-      );
-  const setProgressOf =
-    (def: WordDbEntry) => (next: Progress | null) =>
-      setData((prev) =>
-        setStatusOverride(prev, def, levelOf(def), "progress", next),
-      );
+  const setResultOf = (def: WordDbEntry) => (next: LastResult | null) =>
+    setData((prev) =>
+      setStatusOverride(prev, def, levelOf(def), "result", next),
+    );
+  const setProgressOf = (def: WordDbEntry) => (next: Progress | null) =>
+    setData((prev) =>
+      setStatusOverride(prev, def, levelOf(def), "progress", next),
+    );
 
   // 飛んでいくカードのコピーを立てる。飛び終えたぶんから順に片付ける。
   // key を毎回変えて、連続で飛ばしたときも1枚ずつ別のアニメーションとして走らせる
@@ -1607,6 +1620,12 @@ export function VocabTab({
     setShiftMsg(null);
     setPhase("quiz");
   };
+
+  // Android の戻るボタンで「単語の設定」を閉じる。**`closeFilter` を通す**ので、
+  // 閉じたら出題キューを作り直すという約束もそのまま守られる。
+  // **`switchMode` の宣言より後に置くこと。** `closeFilter` はそれを呼ぶので、
+  // 手前に置くと「宣言前の変数を参照している」と react-hooks に止められる
+  useAndroidBack(filterOpen, closeFilter);
 
   // 次のバッチを作る。このタイミングで直近正解率によるレベル自動調整も判定する
   // (手動設定のときは行わない)
@@ -1713,10 +1732,7 @@ export function VocabTab({
     // **buildQueue(review) が拾う集合と必ず一致させる。**
     // 復習の対象は設定 (reviewProgress) で選べるので、件数もそれに従う
     review: stats
-      ? reviewProgressOf(data.settings.vocab).reduce(
-          (n, p) => n + stats[p],
-          0,
-        )
+      ? reviewProgressOf(data.settings.vocab).reduce((n, p) => n + stats[p], 0)
       : null,
   };
   const modeTabs = (
@@ -1881,7 +1897,9 @@ export function VocabTab({
             レベル測定 {pCount + 1} / {PLACEMENT_SIZE} 問
           </span>
           <span className="text-xs">
-            いま {levelLabel(LEVEL_ORDER[Math.min(pLadder, LEVEL_ORDER.length - 1)])} の単語
+            いま{" "}
+            {levelLabel(LEVEL_ORDER[Math.min(pLadder, LEVEL_ORDER.length - 1)])}{" "}
+            の単語
           </span>
         </div>
         {flyingLayer}
@@ -1946,12 +1964,12 @@ export function VocabTab({
             この画面が終端で、ボタンが無いと phase === "placementDone" のまま
             出口を失う (単語タブが結果表示のまま固まる) */}
         {!tourActive && (
-        <button
-          onClick={() => setPhase("quiz")}
-          className="mt-5 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
-        >
-          学習をはじめる
-        </button>
+          <button
+            onClick={() => setPhase("quiz")}
+            className="mt-5 rounded-lg bg-[#4A99EA] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#3d87d4]"
+          >
+            学習をはじめる
+          </button>
         )}
       </div>
     );
@@ -2066,7 +2084,9 @@ export function VocabTab({
         {item ? (
           <div
             key={mode}
-            style={{ "--tab-slide-from": `${slideFrom}px` } as React.CSSProperties}
+            style={
+              { "--tab-slide-from": `${slideFrom}px` } as React.CSSProperties
+            }
             className="tab-slide relative flex min-h-0 flex-1 flex-col"
           >
             {flyingLayer}

@@ -39,6 +39,7 @@ import { setStatusOverride } from "@/lib/english/progress";
 import { primeSpeech, speak } from "@/lib/english/speech";
 import { requestErrorMessage } from "@/lib/english/net";
 import { CardDetailSheet } from "./CardDetailSheet";
+import { useAndroidBack } from "./useAndroidBack";
 
 const PAGE_SIZE = 100;
 
@@ -78,14 +79,24 @@ const COLUMNS: Record<
   meaning: { label: "意味", type: "text" },
   progress: { label: "学習進捗度", type: "status" },
   result: { label: "前回結果", type: "status" },
-  known: { label: "○", type: "number", title: "○ と回答した回数", align: "center" },
+  known: {
+    label: "○",
+    type: "number",
+    title: "○ と回答した回数",
+    align: "center",
+  },
   fuzzy: {
     label: "△",
     type: "number",
     title: "△ と回答した回数 (4択の正誤は問わない)",
     align: "center",
   },
-  unknown: { label: "×", type: "number", title: "× と回答した回数", align: "center" },
+  unknown: {
+    label: "×",
+    type: "number",
+    title: "× と回答した回数",
+    align: "center",
+  },
   lastSeen: { label: "最終閲覧", type: "date" },
 };
 
@@ -156,12 +167,18 @@ export function WordListView({
   // レベルは複数選択 (空 = すべて)。他のフィルタと揃えてある
   const [levels, setLevels] = useState<Level[]>([]);
   const [visible, setVisible] = useState(PAGE_SIZE);
-  const [detail, setDetail] = useState<{ def: WordDbEntry; level: Level } | null>(
-    null,
-  );
+  const [detail, setDetail] = useState<{
+    def: WordDbEntry;
+    level: Level;
+  } | null>(null);
+
+  // Android の戻るボタン: 単語詳細を閉じる
+  useAndroidBack(detail !== null, () => setDetail(null));
 
   // ツールバー (フィルタ / ソート / 検索)
   const [panel, setPanel] = useState<"filter" | "sort" | "search" | null>(null);
+  // 戻るボタンでツールバーのパネルも閉じる (詳細より先に登録するので、重なれば詳細が優先)
+  useAndroidBack(panel !== null, () => setPanel(null));
   const [query, setQuery] = useState("");
   // ステータスは複数選択 (空 = すべて)。既定は学習に関わるものだけ出し、未学習は隠す
   const [fResult, setFResult] = useState<LastResult[]>([]);
@@ -225,7 +242,11 @@ export function WordListView({
 
     const list = rows.filter(({ def }) => {
       const entry: VocabEntry | undefined = data.vocab[def.word];
-      if (q && !def.word.toLowerCase().includes(q) && !def.meaningJa.includes(q)) {
+      if (
+        q &&
+        !def.word.toLowerCase().includes(q) &&
+        !def.meaningJa.includes(q)
+      ) {
         return false;
       }
       if (fResult.length > 0) {
@@ -249,7 +270,10 @@ export function WordListView({
     });
 
     if (sorts.length === 0) return list;
-    const valueOf = (r: { def: WordDbEntry }, key: SortKey): string | number => {
+    const valueOf = (
+      r: { def: WordDbEntry },
+      key: SortKey,
+    ): string | number => {
       const e = data.vocab[r.def.word];
       switch (key) {
         case "word":
@@ -459,7 +483,9 @@ export function WordListView({
           >
             <ArrowDownUp size={18} />
             {sorts.length > 0 && (
-              <span className="ml-0.5 text-[12px] font-bold">{sorts.length}</span>
+              <span className="ml-0.5 text-[12px] font-bold">
+                {sorts.length}
+              </span>
             )}
           </button>
           <button
@@ -474,7 +500,10 @@ export function WordListView({
 
       {panel === "search" && (
         <div className="relative">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+          <Search
+            size={14}
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+          />
           <input
             autoFocus
             value={query}
@@ -658,7 +687,10 @@ export function WordListView({
           <div className="space-y-2">
             {sorts.map((rule, i) => {
               return (
-                <div key={`${rule.key}-${i}`} className="flex items-center gap-2">
+                <div
+                  key={`${rule.key}-${i}`}
+                  className="flex items-center gap-2"
+                >
                   <span className="w-5 shrink-0 text-center text-[13px] text-zinc-400">
                     {i + 1}
                   </span>
@@ -802,7 +834,9 @@ export function WordListView({
                   ) : (
                     <span className="tabular-nums">{n}</span>
                   );
-                const blank = <span className="text-zinc-300 dark:text-zinc-600">−</span>;
+                const blank = (
+                  <span className="text-zinc-300 dark:text-zinc-600">−</span>
+                );
                 // シールを貼っている列は中身を隠す。幅が動かないよう、
                 // 中身は消さずに invisible にして、上からシールを重ねる
                 const cell = (key: SortKey) => {

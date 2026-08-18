@@ -1,5 +1,6 @@
 import { EnglishApp } from "./EnglishApp";
 import { ServiceWorkerRegistrar } from "./ServiceWorkerRegistrar";
+import { BackButtonBridge } from "./BackButtonBridge";
 
 /**
  * 学習画面そのもの。**複数のルートから同じものを出すために切り出してある。**
@@ -39,6 +40,8 @@ export function EnglishScreen() {
     <main className="english-app dark fixed inset-0 flex flex-col items-center bg-white dark:bg-black">
       {/* オフラインで使えるようにするための Service Worker。画面には何も出さない */}
       <ServiceWorkerRegistrar />
+      {/* Android の戻るボタンの受け口。**アプリ全体で1つだけ**。画面には何も出さない */}
+      <BackButtonBridge />
       {/* ヘッダーは設定への導線を持つので EnglishApp 側 (クライアント) に置く */}
       <div className="flex h-full w-full max-w-2xl flex-col border-zinc-200 dark:border-zinc-800 sm:border-x">
         <EnglishApp />

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Loader2, Plus, X } from "lucide-react";
 import { ReadingSheet } from "./ReadingSheet";
+import { useAndroidBack } from "./useAndroidBack";
 import { CardDetailSheet } from "./CardDetailSheet";
 import {
   applyEdit,
@@ -144,6 +145,11 @@ export function ReadingTab({ data, setData }: Props) {
     def: WordDbEntry;
     level: Level;
   } | null>(null);
+  // Android の戻るボタン: **長文シートより単語詳細を先に閉じる。**
+  // 登録順で後のものが勝つので、この2つはこの順で並べること
+  // (単語詳細は長文シートの上に重ねて開く)
+  useAndroidBack(openId !== null, () => setOpenId(null));
+  useAndroidBack(wordDetail !== null, () => setWordDetail(null));
   // ハイライトの単語を引くための索引 (小文字キー)。語彙とイディオムの両方を対象にする
   const [wordIndex, setWordIndex] = useState<Map<
     string,
@@ -177,7 +183,8 @@ export function ReadingTab({ data, setData }: Props) {
       if (t.endsWith("ies")) candidates.push(t.slice(0, -3) + "y");
       if (t.endsWith("es")) candidates.push(t.slice(0, -2));
       if (t.endsWith("s")) candidates.push(t.slice(0, -1));
-      if (t.endsWith("ing")) candidates.push(t.slice(0, -3), t.slice(0, -3) + "e");
+      if (t.endsWith("ing"))
+        candidates.push(t.slice(0, -3), t.slice(0, -3) + "e");
       if (t.endsWith("ed")) candidates.push(t.slice(0, -2), t.slice(0, -1));
       for (const c of candidates) {
         const hit = wordIndex.get(c);
@@ -223,7 +230,10 @@ export function ReadingTab({ data, setData }: Props) {
   const setReading = (patch: Partial<typeof reading>) =>
     setData((prev) => ({
       ...prev,
-      settings: { ...prev.settings, reading: { ...prev.settings.reading, ...patch } },
+      settings: {
+        ...prev.settings,
+        reading: { ...prev.settings.reading, ...patch },
+      },
     }));
 
   // 自分で足したテーマ。**保存先は settings.interests のまま**。
@@ -287,7 +297,8 @@ export function ReadingTab({ data, setData }: Props) {
       settings: {
         ...prev.settings,
         customPurposes: prev.settings.customPurposes.filter((x) => x !== p),
-        purpose: prev.settings.purpose === p ? "general" : prev.settings.purpose,
+        purpose:
+          prev.settings.purpose === p ? "general" : prev.settings.purpose,
       },
     }));
 
@@ -322,7 +333,10 @@ export function ReadingTab({ data, setData }: Props) {
       });
       // **`res.json()` を直に呼ばないこと。** 504・404・本文0バイトの500 が
       // 全部この行を通るので、JSONと決めつけるとパースエラーが画面に出る
-      const result = await readApiJson<ReadingResult>(res, "生成に失敗しました");
+      const result = await readApiJson<ReadingResult>(
+        res,
+        "生成に失敗しました",
+      );
       const saved: SavedReading = {
         id: crypto.randomUUID(),
         createdAt: new Date().toISOString(),
@@ -357,7 +371,9 @@ export function ReadingTab({ data, setData }: Props) {
     : data.readings.slice(0, READING_LIST_LIMIT);
   const hiddenReadings = data.readings.length - visibleReadings.length;
   const lengthDef = READING_LENGTHS.find((l) => l.key === reading.length);
-  const purposeDef = READING_PURPOSES.find((p) => p.key === data.settings.purpose);
+  const purposeDef = READING_PURPOSES.find(
+    (p) => p.key === data.settings.purpose,
+  );
 
   // 設定はタブの中に折りたたんで置く (設定画面へ行き来しなくて済むように)
   const panels = (
@@ -458,9 +474,7 @@ export function ReadingTab({ data, setData }: Props) {
       <Collapsible
         nested
         title="文章の長さ"
-        summary={
-          lengthDef ? `${lengthDef.label} ${lengthDef.words}` : "ふつう"
-        }
+        summary={lengthDef ? `${lengthDef.label} ${lengthDef.words}` : "ふつう"}
       >
         <div className="flex flex-wrap gap-2">
           {READING_LENGTHS.map((l) => (
@@ -476,7 +490,11 @@ export function ReadingTab({ data, setData }: Props) {
         <p className="mt-2 text-xs text-zinc-500">{lengthDef?.desc}</p>
       </Collapsible>
 
-      <Collapsible nested title="勉強目的" summary={purposeDef?.label ?? "一般"}>
+      <Collapsible
+        nested
+        title="勉強目的"
+        summary={purposeDef?.label ?? "一般"}
+      >
         <div className="flex flex-wrap gap-2">
           {READING_PURPOSES.map((p) => (
             <button
@@ -551,7 +569,9 @@ export function ReadingTab({ data, setData }: Props) {
 
       {data.readings.length > 0 && (
         <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-black">
-          <p className="mb-2 text-xs font-medium text-zinc-500">これまでの長文</p>
+          <p className="mb-2 text-xs font-medium text-zinc-500">
+            これまでの長文
+          </p>
           <div className="space-y-2">
             {visibleReadings.map((r) => (
               <button
@@ -563,8 +583,8 @@ export function ReadingTab({ data, setData }: Props) {
                   {r.title}
                 </span>
                 <span className="shrink-0 text-xs text-zinc-400">
-                  {r.score ? `${r.score.correct}/${r.score.total}` : "未回答"} ・{" "}
-                  {r.createdAt.slice(0, 10)}
+                  {r.score ? `${r.score.correct}/${r.score.total}` : "未回答"}{" "}
+                  ・ {r.createdAt.slice(0, 10)}
                 </span>
               </button>
             ))}

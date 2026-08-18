@@ -45,6 +45,7 @@ import { WordListView } from "./WordListView";
 import { Sheet } from "./Sheet";
 import { Wordmark } from "./Wordmark";
 import { ConfirmButton } from "./ConfirmButton";
+import { useAndroidBack } from "./useAndroidBack";
 import { setSpeechRate } from "@/lib/english/speech";
 
 // シールをめくってから次のステップへ進むまでの間。
@@ -86,6 +87,8 @@ export function EnglishApp() {
   const [settingsView, setSettingsView] = useState<SettingsView>("menu");
 
   const closeSettings = () => setSettingsOpen(false);
+  // Android の戻るボタン: 設定が開いていれば閉じる (アプリごと終了させない)
+  useAndroidBack(settingsOpen, closeSettings);
   // タブを切り替えたら中身のスクロールを先頭へ戻す
   const contentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -139,6 +142,10 @@ export function EnglishApp() {
   // 板が出ないので、ここだけ素通しになっていた。タブを移ると VocabTab ごと
   // アンマウントされて答えた分が丸ごと消える (docs の既知課題)
   const tourLockChrome = tourStep === STEP.placement && !measured;
+  // **チュートリアル中の戻るボタンは何もしない。** 何も登録しないとアプリごと終了し、
+  // 初回の利用者が最初の1分で落とすことになる。かといって戻るで飛ばしてしまうのも
+  // 乱暴なので、進めるのは画面上の「スキップ」だけにする
+  useAndroidBack(tourStep !== null, () => {});
   const tourNav = tourStep !== null && {
     step: tourStep,
     measured,
