@@ -114,9 +114,18 @@ export function ReadingSheet({
         style={{
           transform: visible ? "scale(1)" : "scale(0.96)",
           transition: "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)",
+          // **セーフエリアの逃げはパネル自身が持つ。** 中の header に padding を足す形
+          // (CardDetailSheet の流儀) だと、中身は下がっても角丸・枠線・影の上辺が
+          // ステータスバーの裏に残る。あちらのパネルは全面べた塗りで角丸も枠線も
+          // 持たないので、同じ書き方をそのまま持ち込めない。
+          // 0.75rem は元の inset-3 と同じ浮かせ量。背面が fixed inset-0 なので、
+          // この top / bottom はビューポート基準に解決する
+          top: "calc(0.75rem + env(safe-area-inset-top))",
+          bottom: "calc(0.75rem + env(safe-area-inset-bottom))",
         }}
-        // 背面 (暗転) は画面全体のままにして、パネルだけ本体と同じ列幅に収める
-        className="absolute inset-3 mx-auto flex max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-black"
+        // 背面 (暗転) は画面全体のままにして、パネルだけ本体と同じ列幅に収める。
+        // 上下は style 側が持つので、横だけクラスで 12px
+        className="absolute inset-x-3 mx-auto flex max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-black"
       >
         <header className="flex shrink-0 items-start gap-3 border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
           <h3 className="min-w-0 flex-1 text-base font-semibold leading-snug tracking-tight">
