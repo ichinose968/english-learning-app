@@ -537,6 +537,29 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     Web 側を直したのに古い画面のままなら、まずこれを流し忘れていないか見る。
   - **`versionCode` はアップロードのたびに1つ上げる**（`android/app/build.gradle`）。
     同じ番号は Play が受け付けない。`versionName` は表示用なので重複してよい。
+  - **システムバーのアイコンは `capacitor.config.ts` の `SystemBars.style: "DARK"` で決まる。**
+    `DARK` は「地が暗い」の意味で、アイコンは白になる。既定 (`DEFAULT`) だと端末の
+    ライト/ダーク設定に従うので、**端末がライトのときアイコンが黒で描かれ、
+    黒いこのアプリの上で時計も電池も完全に消える**（エミュレータで実測。
+    `dumpsys window` の `mLastAppearance=LIGHT_STATUS_BARS` がその状態）。
+    Web 側で踏んだ「黒地に黒で文字が消える」と同じ罠。
+    - **テーマの `windowLightStatusBar` でも `MainActivity` でも直らない。**
+      どちらも入れてあるが、実測ではどちらも効かなかった。Capacitor 8 は
+      `com.getcapacitor.plugin.SystemBars` が起動時に見た目を設定し直すので、
+      **この設定がいちばん後に効く**。同じ症状を追うときは、まずここを見ること。
+    - `@capacitor/status-bar` は要らない（Capacitor 8 に内蔵されている）。一度入れて外した。
+  - **Android の戻るボタンは「開いているものを1つずつ閉じる」**
+    （`lib/english/platform.ts` の `pushBackHandler` / `useAndroidBack` / `BackButtonBridge`）。
+    - **既定では押した瞬間にアプリごと終了する。** 画面の履歴が1つも無いためで、
+      シートを開いていようがチュートリアルの途中だろうが関係なく落ちる（実測）。
+    - 画面側は「開いているあいだの閉じ方」を登録するだけ。**登録順で後のものが勝つ**ので、
+      長文シートの上に単語詳細を重ねても手前から閉じる。何も登録が無いときだけ `exitApp()`。
+    - **チュートリアル中は何もしない handler を登録する。** 登録しないとアプリごと落ち、
+      初回の利用者が最初の1分で終了してしまう。飛ばすのは画面上の「スキップ」だけ。
+    - 受け口には `@capacitor/app` が要る（ネイティブ側の依存）。ただし
+      **共有コードからは import しない**。`window.Capacitor.Plugins.App` から取る。
+    - `closeFilter` を渡している箇所は、**`switchMode` の宣言より後に置くこと**。
+      前に置くと react-hooks が「宣言前の変数を参照している」と止める。
   - **ビルドには JDK 21 を使う**（`brew install openjdk@21`、`/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home`）。
     **Android Studio 同梱の JBR は 25 で、Gradle 8.14.3 が読めない**
     （`Unsupported class file major version 69` で即失敗する。`./gradlew --version` は
@@ -879,21 +902,22 @@ eslint は英語アプリ配下で **5件（3 errors / 2 warnings）が基準**
 
 ### 未解決 / 確認待ち（**新しいセッションはここから読む**）
 
-**0. Android のビルドと実機確認が丸ごと未着手（`android/` は生成済み）**
+**0. Android は動くところまで来た。残るのは署名まわりと通信の実地確認**
 
-Capacitor の導入は済んでいるが、**このMacに JDK と Android SDK が無いので一度も
-ビルドできていない**。Android Studio が入ったら最初にやるのは次の4つ（7章末尾の表も見ること）。
+エミュレータ（`eng_test`、android-36 / arm64）で起動・チュートリアル・戻るボタンまで
+確認済み。**残っているのは次の3つ。**
 
-1. `./gradlew bundleRelease`（署名の設定を入れてから）で AAB が出るか。
-2. **起動時に白フラッシュが出ないか。** 3か所を黒にしてあるが、実際に見るまで確証は無い。
-3. **edge-to-edge で `env(safe-area-inset-*)` が効くか。** targetSdk 36 は
-   edge-to-edge が既定なので、ヘッダーと下タブの位置が iOS と同じ理屈で決まるかを実測する。
-   効いていなければヘッダーが時計に潜るか、逆に下タブが浮く。
-4. **読解タブが Vercel のAPIを叩けるか**（CORS の実地確認。`https://localhost` から出る）。
+1. **アップロード鍵（keystore）を作って `signingConfigs` に通し、`bundleRelease` で AAB を出す。**
+   鍵はリポジトリの外に置き、`android/key.properties`（gitignore 済み）から読ませる。
+   **鍵を失うと同じアプリを二度と更新できない**ので、作成とバックアップはユーザーが行う。
+2. **読解タブが Vercel のAPIを叩けるか**（CORS の実地確認。ネイティブは `https://localhost`
+   から出る）。**`ANTHROPIC_API_KEY` が失効しているので、いまは生成そのものが通らない。**
+   確認するなら「通信に失敗しました」ではなく「いま教材を生成できません」が出れば
+   CORS は抜けている、という読み方になる。
+3. **iOS はまだ何もしていない**（`cap add ios` に CocoaPods が要る）。
 
-チュートリアルの吹き出しの切れ（同じ日に修正）は5章「吹き出しが入るかどうかは…」。
-手元では実機のインセットを再現して24ステップ全部を通してある（393×852 / 375×812）が、
-**実機のPWAでの確認はまだ**。
+チュートリアルの吹き出しの切れ（同じ日に修正）は**Android の実機条件で確認済み**。
+iOS の実機（ホーム画面のPWA）での確認はまだ。
 
 **1. カード詳細の閉じる ↓ の白丸が上下二色に割れる（実機のみ）→ 原因特定・修正済み。確認待ち**
 
@@ -999,6 +1023,36 @@ Capacitor の導入は済んでいるが、**このMacに JDK と Android SDK �
 > - **CLI が対話を出すと止まる。** `CI=true` を付けて実行する。
 > - `@capacitor/cli` の依存に脆弱性の警告が出る（`xcode` / `simple-plist` 系）。
 >   **開発時のツールだけで、アプリの中身には入らない。**
+
+### 2026-08-18（後半その2）Android で実際に動かして、2件直した
+
+**Android Studio が入ったので、エミュレータで初めて起動できた回。** 動かして初めて
+分かったことが2つあり、どちらも直してある（5章「ネイティブ版」）。
+
+1. **ステータスバーの時計と電池が消えていた。** 端末がライト設定だとアイコンが黒で
+   描かれ、黒いアプリの上で見えなくなる。`SystemBars.style: "DARK"` で固定した。
+2. **戻るボタンでアプリごと終了していた。** 開いているものを1つずつ閉じる形にした。
+
+確認できたこと: 起動時の白フラッシュは出ない（起動直後3枚の平均輝度 27 / 27 / 2.4）。
+**チュートリアルの吹き出しの修正が実機の条件でも効いている**（2/24 の「次へ」が
+画面内に収まっている）。セーフエリアも上下とも正しく空く。アイコンはランチャーで
+黒丸の `Eng.` として出る。
+
+> **エミュレータの作り方（次も同じ手順で作れる）**
+> - `brew install --cask android-commandlinetools` で入る `avdmanager` は
+>   **SDK のルートを見失って「Package path is not valid」で失敗する**。
+>   `sdkmanager --sdk_root=~/Library/Android/sdk "cmdline-tools;latest"` で
+>   **SDK の中に入れたほうの `avdmanager`** を使うと通る。
+> - 手順: `sdkmanager` で `platforms;android-36` と
+>   `system-images;android-36;google_apis;arm64-v8a` を入れる →
+>   `avdmanager create avd -n eng_test -k ... -d pixel_7` →
+>   `emulator -avd eng_test -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect`。
+>   **`-no-window` でよい**。`adb exec-out screencap -p` で画も取れるし、
+>   `adb shell input tap x y` で操作もできる（座標は画素、1080×2400）。
+> - 見た目の判定は**画素で測る**。「ステータスバーが出ていない」も、上端40行の
+>   最大輝度が 0 だと分かって初めて確定した。
+> - **`| tail` を通すと `$?` が tail の結果になる。** 一度これでビルドの失敗を
+>   「成功」と読み違えた。終了コードを見るなら `${PIPESTATUS[0]}`。
 
 ### 2026-08-17（前半）実機の描画不具合を潰した
 
@@ -1257,7 +1311,7 @@ A1 1,087 / A2 1,253 / B1 1,898 / B2 2,749 / C1 2,544 / **C2 1,073（新設）**�
 | # | 内容 | これが無いと |
 |---|---|---|
 | 1 | ~~appId とアプリ名を決める~~ **決定済み**（`io.github.ichinose968.eng` / `Eng.`） | — |
-| 2 | **Android Studio を入れる**（下記）。**これが律速** | `android/` は生成済みだが**一度もビルドできない**。AAB が無いと 12人×14日の時計が始まらない |
+| 2 | ~~Android Studio を入れる~~ **完了**（2026-08-18）。次は**アップロード鍵の作成**（keystore。失うと更新できなくなるので本人が作って保管する） | 署名が無いと AAB を出せず、12人×14日の時計が始まらない |
 | 3 | **Play Console で12人ルールの対象か確認 → 対象ならテスターを集め始める** | 製品版申請ができない。集めるだけで数日かかる |
 | 4 | **`ANTHROPIC_API_KEY` の再発行**（ローカル＋Vercel、そのあと Redeploy） | 読解の生成が通らない |
 | 5 | **Upstash Redis か Vercel KV を作って環境変数を入れる**（`.env.example` 参照） | **レート制限が効かず、費用の天井がアカウント残高のまま。この状態で公開しない** |
@@ -1269,18 +1323,19 @@ A1 1,087 / A2 1,253 / B1 1,898 / B2 2,749 / C1 2,544 / **C2 1,073（新設）**�
 |---|---|---|
 | Xcode | ✅ 26.6（`xcode-select` は `/Applications/Xcode.app/Contents/Developer`） | iOS |
 | CocoaPods | ❌ **未インストール**（`pod` が無い） | **iOS の `cap add ios`** |
-| Java ランタイム | ❌ **無し**（`java -version` が "Unable to locate a Java Runtime"） | **Android のビルド** |
-| Android SDK | ❌ 無し（`~/Library/Android/sdk` も環境変数も無い） | **Android のビルド** |
-| Android Studio | ❌ 無し | Android の実質的な前提 |
+| Java ランタイム | ✅ **JDK 21**（`brew install openjdk@21`）。**Studio 同梱の JBR 25 は使えない** | **Android のビルド** |
+| Android SDK | ✅ platform 36 / build-tools 36 / system-image android-36 arm64 | **Android のビルド** |
+| Android Studio | ✅ **インストール済み**（2026-08-18） | Android の実質的な前提 |
+| エミュレータ | ✅ AVD `eng_test`（pixel_7 / android-36） | 動作確認 |
 
 > **`npx cap add android` 自体は道具無しで通る**（テンプレートを置くだけなので）。
 > 実際 2026-08-18 に `android/` を生成できている。**足りないのはビルド側**で、
 > `./gradlew` が JDK を、コンパイルが SDK を要求する。
 
 > **iOS は CocoaPods を入れれば進める。** `sudo gem install cocoapods` か `brew install cocoapods`。
-> **Android は Android Studio を入れるのが早い**（JDK・SDK・`adb`・エミュレータが一式そろう）。
-> **Android の道具が無いと 12人×14日の時計を始められない**ので、
-> ストア公開までの完了日はここで決まる。**iOS より先に着手する価値がある。**
+> **Android のビルドは通るようになった**（2026-08-18）。ただし
+> **Android Studio 同梱の JBR (25) では Gradle が動かない**ので、
+> `brew install openjdk@21` した JDK を `JAVA_HOME` で明示すること（5章）。
 
 あわせて **Anthropic Console の spend limit**（コードの上限とは別の最後の砦）と、
 実機での確認2件（閉じる ↓ の白丸 / オフライン起動）。
