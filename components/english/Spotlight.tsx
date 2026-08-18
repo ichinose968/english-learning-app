@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 // チュートリアルのスポットライト。画面全体を暗くし、`data-tour` を付けた要素だけ
 // 明るく抜いて、その隣に1行だけ説明を出す。
@@ -63,7 +63,12 @@ interface Box {
 const PAD = 6; // 穴を対象より少し大きく取る (切り取りより前に足す)
 const GAP = 12; // 穴と吹き出しの間隔
 const TIP_MAX = 320; // 吹き出しの最大幅
-const TIP_H = 130; // 置き場所を決めるときの吹き出しの高さの見積もり (実測は tipH)
+// 置き場所を決めるときの吹き出しの高さ。**実測 (tipH) が入るまでの初期値**で、
+// 判定そのものは実測を使う。**小さめに見積もってはいけない。**
+// 130 にしていたときは、実測 148px の吹き出しを 132px の隙間に「入る」と判断して
+// 下に置き、「次へ」が画面の外に切れて押せなくなっていた (実機で報告された)。
+// 多めに見ておくぶんには、下に置けないと判断して上か穴の中へ回るだけで害がない
+const TIP_H = 150;
 // セーフエリアの内側に置くときの余白
 const SAFE_GAP = 8;
 
@@ -71,9 +76,12 @@ const SAFE_GAP = 8;
 // 穴が画面いっぱい (単語詳細) だったり、穴の上に置く分岐に入ったりすると、
 // 素の座標では画面上端に寄って時計や Dynamic Island に潜る (実機で3か所報告された)。
 // `env()` は JS から読めないので、CSS の max() / clamp() で下限と上限を作る。
-// 単位は親 (fixed inset-0 の根) 基準なので、100% はビューポートの高さになる
-const safeTop = (px: number) =>
-  `max(${Math.round(px)}px, calc(env(safe-area-inset-top) + ${SAFE_GAP}px))`;
+// 単位は親 (fixed inset-0 の根) 基準なので、100% はビューポートの高さになる。
+// **上からの指定でも下端をはみ出さないよう、上限を必ず付ける。**
+// 置き場所は実測の高さで選んでいるが、文言が変わった直後の1フレームだけは
+// 前のステップの高さで判断してしまう。そこで下に切れないための保険
+const safeTop = (px: number, tipH: number) =>
+  `clamp(calc(env(safe-area-inset-top) + ${SAFE_GAP}px), ${Math.round(px)}px, calc(100% - ${Math.round(tipH)}px - env(safe-area-inset-bottom) - ${SAFE_GAP}px))`;
 // 下からの指定は「下にはみ出さない」だけでなく「上にもはみ出さない」を同時に満たす。
 // 上限は 100% から吹き出しの高さと上のインセットを引いたもの。
 // **第1引数は CSS の長さの式**。呼び出し側が `calc(88px + env(...))` のように
@@ -81,6 +89,33 @@ const safeTop = (px: number) =>
 const safeBottom = (expr: string, tipH: number) =>
   `clamp(calc(env(safe-area-inset-bottom) + ${SAFE_GAP}px), ${expr}, calc(100% - ${Math.round(tipH)}px - env(safe-area-inset-top) - ${SAFE_GAP}px))`;
 const DIM = "rgba(0,0,0,0.72)";
+
+// 描画前に測りたいが、サーバーでは useLayoutEffect が警告を出すので落とす
+// (チュートリアルは読み込み後にしか出ないので実際には走らない。保険)
+const useIsoLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+// **セーフエリアの実測値。置き場所の判定にはこれが要る。**
+// `env()` は JS から読めないので、当てた要素の padding を getComputedStyle で読む
+// (docs 7章「端末でしか分からない値は、アプリに出させる」と同じ手)。
+// ブラウザのタブでは上下とも 0 だが、ホーム画面から起動した実機では
+// 上 59px / 下 34px 前後になる。**その下 34px のぶんだけ穴が持ち上がるので、
+// 「穴の下に吹き出しが入る」と誤判定して画面の外へはみ出していた。**
+// タブでは絶対に再現しないのはこのため
+function readSafeInsets(): { top: number; bottom: number } {
+  if (typeof document === "undefined") return { top: 0, bottom: 0 };
+  const probe = document.createElement("div");
+  probe.style.cssText =
+    "position:fixed;top:0;left:0;width:0;height:0;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)";
+  document.body.appendChild(probe);
+  const st = getComputedStyle(probe);
+  const insets = {
+    top: parseFloat(st.paddingTop) || 0,
+    bottom: parseFloat(st.paddingBottom) || 0,
+  };
+  probe.remove();
+  return insets;
+}
 
 // 候補を順に引いて、最初に見つかった印の要素を**すべて**返す。
 // 戻り値は `+` でつないだ**印ごとのグループ**。同じ印を複数の要素に付けると
@@ -255,6 +290,8 @@ export function Spotlight({
   // 見積もり (TIP_H) ではなく実測が要る。文言はステップごとに1〜3行と幅がある
   const tipRef = useRef<HTMLDivElement | null>(null);
   const [tipH, setTipH] = useState(TIP_H);
+  // セーフエリアの実測値。回転や、キーボードで viewport が変わったときに測り直す
+  const [insets, setInsets] = useState(readSafeInsets);
   // 依存配列に配列そのものを置くと毎レンダー別物になるので、文字列に畳んで渡す
   const key = Array.isArray(target) ? target.join("|") : target;
 
@@ -277,13 +314,31 @@ export function Spotlight({
     });
   }, [key]);
 
-  // 吹き出しの高さを測る。文言が変われば行数が変わるので step ごとに測り直す
-  useEffect(() => {
+  // 吹き出しの高さを測る。文言が変われば行数が変わるので step ごとに測り直す。
+  // **描画前 (useLayoutEffect) に測る。** 置き場所がこの値で決まるので、
+  // 描画後に測ると「前のステップの高さで置いた1フレーム」が見えてしまう
+  useIsoLayoutEffect(() => {
     const el = tipRef.current;
     if (!el) return;
     const h = el.getBoundingClientRect().height;
     if (h > 0) setTipH((cur) => (Math.abs(cur - h) > 1 ? h : cur));
   }, [body, step, boxes]);
+
+  // セーフエリアは回転で入れ替わる (縦の下 34px が、横では左右に移る)
+  useEffect(() => {
+    const update = () => {
+      const next = readSafeInsets();
+      setInsets((cur) =>
+        cur.top === next.top && cur.bottom === next.bottom ? cur : next,
+      );
+    };
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+    };
+  }, []);
 
   // 毎フレーム測り直す。値が動いたときだけ state を更新する
   useEffect(() => {
@@ -382,8 +437,20 @@ export function Spotlight({
   // カードの上部は余白なので、そこへ重ねても読むものを隠さない。
   // 吹き出し自身は pointer-events-auto だが、カードは広いので
   // 少し下をなぞればスワイプできる
+  // **入るかどうかは「実測の吹き出し + 間隔 + セーフエリア + 余白」で見る。**
+  // 定数の見積もり (130px) と素の座標だけで判断していたときは、
+  // 実測 148px の吹き出しをデモのカードの下 132px の隙間に置いてしまい、
+  // 「次へ」が画面の外に切れて押せなかった。**132px の内訳は
+  // ○× ボタン 64 + 余白 44 + セーフエリア下 34** で、
+  // ブラウザのタブでは最後の 34 が 0 になるため絶対に再現しない (実機で報告された)
+  const needBelow = tipH + GAP + insets.bottom + SAFE_GAP;
+  const needAbove = tipH + GAP + insets.top + SAFE_GAP;
   const place: "below" | "above" | "inside" =
-    vh - (hTop + hH) >= TIP_H ? "below" : hTop >= TIP_H ? "above" : "inside";
+    vh - (hTop + hH) >= needBelow
+      ? "below"
+      : hTop >= needAbove
+        ? "above"
+        : "inside";
   // 穴の中に置くときは、穴の形で上下を選ぶ。
   // **細くて縦長の穴 (表の1列) は下端に回す。** 上に置くと列の見出しを隠すが、
   // 説明文がその見出しの名前を指しているので隠してはいけない。
@@ -394,7 +461,7 @@ export function Spotlight({
   // 吹き出しが画面上端まで寄って時計や Dynamic Island に潜る。実機で3か所報告された
   const tipStyle =
     place === "below"
-      ? { top: safeTop(hTop + hH + GAP), left: 0, right: 0 }
+      ? { top: safeTop(hTop + hH + GAP, tipH), left: 0, right: 0 }
       : place === "above"
         ? {
             bottom: safeBottom(`${Math.round(vh - hTop + GAP)}px`, tipH),
@@ -411,7 +478,7 @@ export function Spotlight({
               left: 0,
               right: 0,
             }
-          : { top: safeTop(hTop + GAP), left: 0, right: 0 };
+          : { top: safeTop(hTop + GAP, tipH), left: 0, right: 0 };
 
   // **対象が画面いっぱいのときは、暗幕も輪郭も出さない。**
   // 単語詳細のように画面全体が対象だと、囲っても「どこを見ればいいか」を
