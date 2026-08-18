@@ -97,6 +97,8 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
 - `public/english-sw.js` … Service Worker（オフライン対応）。詳細は5章。
 - `components/english/Wordmark.tsx` … アプリのワードマーク（`Eng.`）。**アイコンと同じアウトライン**を SVG で持つ。5章「アプリ名の表記」。
 - `components/english/EnglishScreen.tsx` … 学習画面そのもの（`main` の枠＋`ServiceWorkerRegistrar`＋`EnglishApp`）。**デプロイ側では `/english` と `/` の両方から出す**（Capacitor が開くのは `out/index.html` なので）。
+- `components/english/DocPage.tsx` … プライバシーポリシーとサポートの共通の枠（`DocPage` / `DocSection` / `DocList` / `ContactLink` と `CONTACT_EMAIL`）。**問い合わせ先の文字列はここが唯一の定義。**
+- `app/english/privacy/page.tsx` / `app/english/support/page.tsx` … 両ストアが必須にしている2ページ。5章「ポリシーとサポート」。
 - `components/english/ServiceWorkerRegistrar.tsx` … その登録だけを行う（描画しない）。`EnglishScreen` から置く。
 - `scripts/expand-english-words.mjs` … **既存DBに指定した見出し語だけを足す。** 冪等・再開可能で、既にある語は毎回スキップする。実行時に対象リストのパスを渡す（**リスト自体はリポジトリに置かない**。5章「語彙の拡充」）。
 - `scripts/check-english-net.ts` … `readApiJson` の検算。**どの応答でも JS の生の例外文が漏れないこと**を9ケースで確かめる（コマンドはファイル冒頭）。
@@ -480,6 +482,25 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
   - **APIのURLは `apiUrl()` を通す。** 相対パス直書きだと、バンドル方式の Capacitor 版が
     同梱物の中を探しにいって必ず失敗する。**静的JSON（単語・イディオム・文法）は通さない。**
     あれはネイティブ版でも端末内にあるので相対のままが正しい。
+- **ポリシーとサポートのページ**（`/english/privacy`, `/english/support`。2026-08-18）。
+  - **両ストアとも公開URLが必須**で、無いと提出フォームが埋まらない。
+    **問い合わせ先は `kurohaichinose968@gmail.com`**（ユーザーの指定）。
+    文字列は `DocPage.tsx` の `CONTACT_EMAIL` 1か所に置く。2ページで別々に書くと、
+    片方を直したときに食い違い、ストアの掲載情報とも突き合わせられなくなる。
+  - **本文はストアの申告（Data safety / App Privacy）と必ず一致させる。**
+    食い違いはリジェクトの典型。書くときは実装
+    （`app/api/english/reading/route.ts` / `lib/english/ratelimit.ts` / `lib/english/storage.ts`）
+    を読んでから直す。**いま本文が主張しているのは次の5点**:
+    (1) 端末外へ出るのは長文生成のときだけ、(2) 送るのはレベル・テーマ・目的・長さ・
+    対象語と無記名トークンとIP、(3) 生成の委託先は Anthropic、(4) 回数制限のために
+    IPとトークンを鍵にした「回数」だけを約25時間持つ、(5) アカウント・広告・解析・Cookie は無い。
+  - **組み方はアプリ本体と別**（`DocPage`）。本体はアプリシェル（`h-svh` に固定して
+    中の1つのコンテナだけをスクロールさせる）だが、こちらは読み物なのでページごと
+    ふつうに縦スクロールさせる。配色だけ `dark` を付けて本体に合わせる。
+  - **アプリ内の導線（設定 → 歯車）は同梱物ではなく公開URLを開く**（`net.ts` の `siteUrl()`、
+    `target="_blank"`）。ネイティブ版は端末内に写しを持つが、そちらを開くと
+    **文面を直しても古いものが残り、ストアの掲載URLと食い違う**。
+    Web と開発では相対パスのままになるので、同一オリジンで正しく開く。
 - **ネイティブ版（Capacitor）は 2026-08-18 に導入した。ただし `android/` があるのは
   デプロイ側だけで、`claudecode` 側には入れない。**
   - **共有コードから `@capacitor/*` を import しないこと。** `components/english` と
@@ -516,6 +537,11 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     Web 側を直したのに古い画面のままなら、まずこれを流し忘れていないか見る。
   - **`versionCode` はアップロードのたびに1つ上げる**（`android/app/build.gradle`）。
     同じ番号は Play が受け付けない。`versionName` は表示用なので重複してよい。
+  - **ビルドには JDK 21 を使う**（`brew install openjdk@21`、`/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home`）。
+    **Android Studio 同梱の JBR は 25 で、Gradle 8.14.3 が読めない**
+    （`Unsupported class file major version 69` で即失敗する。`./gradlew --version` は
+    通ってしまうので、動くように見えて騙される）。JAVA_HOME を明示して叩くこと:
+    `JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home ANDROID_HOME=~/Library/Android/sdk ./gradlew assembleDebug`
   - 生成時点の値: `minSdk 24 / compileSdk 36 / targetSdk 36`、Gradle 8.14.3、Capacitor 8.5.0。
     **targetSdk は Play の要件（新規アプリは十分に新しい API を要求される）に直結する**ので、
     上げろと言われたら `android/variables.gradle` の1か所を直す。
@@ -1263,12 +1289,9 @@ A1 1,087 / A2 1,253 / B1 1,898 / B2 2,749 / C1 2,544 / **C2 1,073（新設）**�
 
 #### コード側の残り（依存順）
 
-1. **プライバシーポリシーとサポートページ**（`/english/privacy`, `/english/support`）。
-   `grep` で0件。両ストアとも URL が必須で、無いと提出フォームが埋まらない。
-   **端末外へ出るのは読解APIに送る5項目だけ**（level / interests / purpose / length /
-   targetWords）で、アカウントもCookieも解析も広告も無い。この事実で本文が書ける。
-   **App Privacy / Data safety の申告と本文を必ず一致させる**（食い違いはリジェクトの典型）。
-   メールアドレスが決まれば書ける。
+1. ~~**プライバシーポリシーとサポートページ**~~ **完了**（2026-08-18。5章「ポリシーとサポート」）。
+   `/english/privacy` と `/english/support`。設定（歯車）からも開ける。
+   **残りはストアの申告をこの本文と一致させること**（App Privacy / Data safety）。
 2. ~~**Capacitor の導入**~~ **Android は導入済み**（2026-08-18。5章「ネイティブ版」）。
    `capacitor.config.ts` と `android/` があり、`build:cap` → `cap sync` で
    同梱まで通っている。**残りはビルド環境が入ってからの4つ**:

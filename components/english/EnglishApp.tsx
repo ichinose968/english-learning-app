@@ -6,6 +6,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Database,
+  ExternalLink,
   FileText,
   List,
   PenLine,
@@ -23,6 +24,7 @@ import {
   saveData,
   StorageProblem,
 } from "@/lib/english/storage";
+import { siteUrl } from "@/lib/english/net";
 import {
   DEMO_EXPECTED,
   isDemoStep,
@@ -344,7 +346,10 @@ export function EnglishApp() {
                 {row.desc}
               </span>
             </span>
-            <ChevronRight size={16} className="ml-auto shrink-0 text-zinc-400" />
+            <ChevronRight
+              size={16}
+              className="ml-auto shrink-0 text-zinc-400"
+            />
           </button>
         ))}
         <button
@@ -364,6 +369,41 @@ export function EnglishApp() {
           <ChevronRight size={16} className="ml-auto shrink-0 text-zinc-400" />
         </button>
       </div>
+
+      {/* **アプリの中からもポリシーとサポートへ行けるようにする。**
+          両ストアとも掲載情報として URL を出すが、アプリ内にも導線が無いと
+          「アプリ内で連絡手段が見つからない」という指摘を受けうる。
+          **開くのは同梱物ではなく公開URL**（`target="_blank"`）。
+          ネイティブ版は端末内の写しを持っているので、そちらを開くと
+          内容を直したときに古い文面が残り、掲載URLと食い違う */}
+      <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-black">
+        {(
+          [
+            {
+              href: siteUrl("/english/privacy"),
+              title: "プライバシーポリシー",
+            },
+            {
+              href: siteUrl("/english/support"),
+              title: "サポート・お問い合わせ",
+            },
+          ] as const
+        ).map((row) => (
+          <a
+            key={row.href}
+            href={row.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center gap-3 border-b border-zinc-100 px-4 py-4 text-left last:border-b-0 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/50"
+          >
+            <span className="text-sm font-medium">{row.title}</span>
+            <ExternalLink
+              size={15}
+              className="ml-auto shrink-0 text-zinc-400"
+            />
+          </a>
+        ))}
+      </div>
     </div>
   );
 
@@ -375,8 +415,9 @@ export function EnglishApp() {
       <SubHeader title="学習データ" onBack={() => setSettingsView("menu")} />
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-black">
         <p className="text-sm text-zinc-600 dark:text-zinc-300">
-          単語 {Object.keys(data.vocab).length} 語 / 文法 {data.stats.grammarAnswered}{" "}
-          問 / 長文 {data.readings.length} 本の記録があります。
+          単語 {Object.keys(data.vocab).length} 語 / 文法{" "}
+          {data.stats.grammarAnswered} 問 / 長文 {data.readings.length}{" "}
+          本の記録があります。
         </p>
 
         {/* 書き出し / 読み込み。学習記録の唯一のバックアップ手段で、
@@ -510,44 +551,44 @@ export function EnglishApp() {
         ref={contentRef}
         className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto px-4 py-4"
       >
-      {tab === "vocab" && (
-        <VocabTab
-          data={data}
-          setData={setData}
-          // チュートリアル中はカード右下の ↑ を出さない。
-          // 開くと CardDetailSheet がスポットライトの板の下に潜って詰む
-          tourActive={tourStep !== null}
-          // 復習の説明に入るとき、学習中の語が無ければサンプルを1枚出す
-          tourSampleReview={tourStep !== null && tourStep >= STEP.toReview}
-          onModeChange={onModeChange}
-          onFilterOpen={onFilterOpen}
-          // 設定のステップを抜けたら閉じる。開いたままだと締めの画面の裏に残る
-          hideFilter={tourStep !== null && tourStep > STEP.swipeSection}
-          // 説明している大分類だけを開く
-          tourOpenSection={
-            tourStep === STEP.filterSection
-              ? "filter"
-              : tourStep === STEP.swipeSection
-                ? "swipe"
-                : null
-          }
-        />
-      )}
-      {tab === "database" && (
-        <WordListView
-          data={data}
-          setData={setData}
-          onSealAction={onSealAction}
-          onDetailOpen={onDetailOpen}
-          onDetailClose={onDetailClose}
-          // 詳細のステップ (8〜9) を抜けても開いたままなら閉じる。
-          // 通常は 9 でユーザー自身が ↓ を押して閉じるので、これは保険。
-          // チュートリアル中だけの制御で、終わったら手を出さない
-          hideDetail={tourStep !== null && tourStep > STEP.detailClose}
-        />
-      )}
-      {tab === "grammar" && <GrammarTab data={data} setData={setData} />}
-      {tab === "reading" && <ReadingTab data={data} setData={setData} />}
+        {tab === "vocab" && (
+          <VocabTab
+            data={data}
+            setData={setData}
+            // チュートリアル中はカード右下の ↑ を出さない。
+            // 開くと CardDetailSheet がスポットライトの板の下に潜って詰む
+            tourActive={tourStep !== null}
+            // 復習の説明に入るとき、学習中の語が無ければサンプルを1枚出す
+            tourSampleReview={tourStep !== null && tourStep >= STEP.toReview}
+            onModeChange={onModeChange}
+            onFilterOpen={onFilterOpen}
+            // 設定のステップを抜けたら閉じる。開いたままだと締めの画面の裏に残る
+            hideFilter={tourStep !== null && tourStep > STEP.swipeSection}
+            // 説明している大分類だけを開く
+            tourOpenSection={
+              tourStep === STEP.filterSection
+                ? "filter"
+                : tourStep === STEP.swipeSection
+                  ? "swipe"
+                  : null
+            }
+          />
+        )}
+        {tab === "database" && (
+          <WordListView
+            data={data}
+            setData={setData}
+            onSealAction={onSealAction}
+            onDetailOpen={onDetailOpen}
+            onDetailClose={onDetailClose}
+            // 詳細のステップ (8〜9) を抜けても開いたままなら閉じる。
+            // 通常は 9 でユーザー自身が ↓ を押して閉じるので、これは保険。
+            // チュートリアル中だけの制御で、終わったら手を出さない
+            hideDetail={tourStep !== null && tourStep > STEP.detailClose}
+          />
+        )}
+        {tab === "grammar" && <GrammarTab data={data} setData={setData} />}
+        {tab === "reading" && <ReadingTab data={data} setData={setData} />}
       </div>
 
       {/* 設定はヘッダーの裏から降りてくる */}
@@ -616,7 +657,9 @@ export function EnglishApp() {
 
       {/* 答え方のデモ (z-[60])。本物の WordCard を出すだけの全画面で、
           何をすればよいかの指示はこの上のスポットライトが受け持つ */}
-      {tourNav && isWelcomeStep(tourNav.step) && <TutorialWelcome {...tourNav} />}
+      {tourNav && isWelcomeStep(tourNav.step) && (
+        <TutorialWelcome {...tourNav} />
+      )}
       {tourNav && isDemoStep(tourNav.step) && (
         <TutorialDemo onAction={onDemoAction} />
       )}
@@ -625,9 +668,9 @@ export function EnglishApp() {
       {/* スポットライト (z-[65])。デモの上にも実画面の上にも同じものを重ねる。
           暗い部分がタップを吸い、穴だけが押せるので、穴の位置が
           そのまま「次にできる操作」の限定になる */}
-      {tourNav && !isFinalStep(tourNav.step) && !isWelcomeStep(tourNav.step) && (
-        <TutorialSpotlight {...tourNav} />
-      )}
+      {tourNav &&
+        !isFinalStep(tourNav.step) &&
+        !isWelcomeStep(tourNav.step) && <TutorialSpotlight {...tourNav} />}
     </div>
   );
 }

@@ -21,6 +21,18 @@ export function apiUrl(path: string): string {
 }
 
 /**
+ * 公開サイト上のページ (プライバシーポリシー / サポート) のURL。
+ *
+ * **同梱物ではなく公開URLを開く。** ネイティブ版は端末内に写しを持っているが、
+ * そちらを開くと**文面を直しても古いものが残り、ストアの掲載URLと食い違う**。
+ * 審査でも見られる項目なので、常に配信中のものを見せる。
+ * PWA と開発では `apiUrl` と同じく相対パスのままにする (同一オリジンなので正しい)。
+ */
+export function siteUrl(path: string): string {
+  return apiUrl(path);
+}
+
+/**
  * fetch はネットワーク層で失敗すると TypeError ("Failed to fetch") を投げる。
  * そのまま画面に出しても何が起きたか分からないので、接続状態を見て振り替える。
  *
@@ -69,7 +81,10 @@ function statusMessage(status: number): string {
  * 成功時だけパース済みの本体を返し、それ以外は読める文言にして throw する。
  * 呼び出し側は今までどおり catch して `requestErrorMessage` に渡せばよい。
  */
-export async function readApiJson<T>(res: Response, fallback: string): Promise<T> {
+export async function readApiJson<T>(
+  res: Response,
+  fallback: string,
+): Promise<T> {
   // .json() ではなく .text() で受けてから自分でパースする。
   // 中身がHTMLでも空でもここで例外にならない
   const text = await res.text().catch(() => "");
