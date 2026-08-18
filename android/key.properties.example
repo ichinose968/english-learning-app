@@ -1,0 +1,30 @@
+# Android のアップロード鍵の場所とパスワード。
+#
+# **このファイルをコピーして android/key.properties を作り、そこに実際の値を書く。**
+# key.properties は .gitignore 済みで、コミットされない。
+# このリポジトリは PUBLIC なので、間違ってもパスワードや .jks 本体を追加しないこと。
+#
+#   cp android/key.properties.example android/key.properties
+#   （そのあと key.properties を開いて、下の3つを自分の値に書き換える）
+#
+# 鍵は Android Studio の Build → Generate Signed App Bundle or APK… で作ったもの。
+# **失うと同じアプリを二度と更新できない**ので、.jks 本体とパスワードは
+# 別々にバックアップしておくこと。
+#
+# 設定すると `./gradlew bundleRelease` で署名済みの AAB が作れる:
+#   cd android
+#   JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home \
+#   ANDROID_HOME=~/Library/Android/sdk ./gradlew bundleRelease
+#   → app/build/outputs/bundle/release/app-release.aab
+
+# .jks の場所。android/ からの相対パスか、絶対パスで書く
+storeFile=/Users/<あなた>/Documents/eng-upload-key.jks
+
+# キーストアのパスワード（PKCS12 なので鍵のパスワードも同じ値になる）
+storePassword=ここに入力
+
+# 鍵のエイリアス（作成時に指定したもの。例: eng-upload）
+keyAlias=eng-upload
+
+# 鍵のパスワードがストアと違う場合だけ書く。同じなら消してよい
+#keyPassword=

@@ -143,7 +143,11 @@ const ALLOWED_ORIGINS = [
   "capacitor://localhost", // Capacitor iOS
   "https://localhost", // Capacitor Android
   "http://localhost:3100", // 開発
-  "https://english-learning-app-f-daiki.vercel.app", // 本番 (PWA)
+  "https://engdot.vercel.app", // 本番 (PWA)。ストアに載せるURLもこちら
+  // **旧ドメインも残す。** 学習記録は IndexedDB でオリジンごとに分かれているので、
+  // ここを外すと旧URLでホーム画面に追加した端末が読解を使えなくなる
+  // (記録そのものは端末に残るが、生成だけ CORS で弾かれる)
+  "https://english-learning-app-f-daiki.vercel.app", // 旧本番
 ];
 
 function corsHeaders(origin: string | null): Record<string, string> {

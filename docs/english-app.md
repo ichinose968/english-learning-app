@@ -544,6 +544,12 @@ GitHub の `ichinose968/english-learning-app`（public）と Vercel が接続済
     `local.properties`・`.gradle/`・`build/` が対象。実測で追跡対象は77ファイル、
     生成物は0件。**デプロイ側は PUBLIC リポジトリなので、`npx cap add` の前に
     ここが効いていることを必ず確かめる**（鍵は1回でもコミットしたら作り直し）。
+  - **署名は `android/key.properties` から読む**（`android/key.properties.example` が雛形。
+    `.gitignore` 済み）。ファイルが無ければ debug は通り、release だけ未署名になるので、
+    鍵を持たない環境でもプロジェクトは開ける。設定すると
+    `./gradlew bundleRelease` で署名済み AAB が作れる（**JAVA_HOME に JDK 21 を明示すること**）。
+    **鍵の実体（`.jks`）とパスワードはリポジトリの外**に置く。デプロイ側は PUBLIC で、
+    アップロード鍵は失うと同じアプリを二度と更新できない。
   - **同梱物を更新する手順は `npm run build:cap && npx cap sync android`。**
     ふつうの `npm run build` では `out/` が出ない（`CAP_BUILD=1` のときだけ静的書き出しになる）。
     Web 側を直したのに古い画面のままなら、まずこれを流し忘れていないか見る。
@@ -919,9 +925,10 @@ eslint は英語アプリ配下で **5件（3 errors / 2 warnings）が基準**
 エミュレータ（`eng_test`、android-36 / arm64）で起動・チュートリアル・戻るボタンまで
 確認済み。**残っているのは次の3つ。**
 
-1. **アップロード鍵（keystore）を作って `signingConfigs` に通し、`bundleRelease` で AAB を出す。**
-   鍵はリポジトリの外に置き、`android/key.properties`（gitignore 済み）から読ませる。
-   **鍵を失うと同じアプリを二度と更新できない**ので、作成とバックアップはユーザーが行う。
+1. ~~アップロード鍵を作って `signingConfigs` に通す~~ **完了**（2026-08-18）。
+   鍵は `~/Documents/eng-upload-key.jks`（PKCS12・ユーザーが作成・リポジトリ外）。
+   `android/key.properties` に場所とパスワードを書けば `./gradlew bundleRelease` が通る
+   （雛形は `android/key.properties.example`）。**パスワードはユーザーが自分で書き込む。**
 2. **読解タブが Vercel のAPIを叩けるか**（CORS の実地確認。ネイティブは `https://localhost`
    から出る）。**`ANTHROPIC_API_KEY` が失効しているので、いまは生成そのものが通らない。**
    確認するなら「通信に失敗しました」ではなく「いま教材を生成できません」が出れば
