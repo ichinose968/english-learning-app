@@ -25,6 +25,7 @@ import {
   StorageProblem,
 } from "@/lib/english/storage";
 import { siteUrl } from "@/lib/english/net";
+import { isNativeApp } from "@/lib/english/platform";
 import {
   DEMO_EXPECTED,
   isDemoStep,
@@ -277,16 +278,70 @@ export function EnglishApp() {
     text: string;
   } | null>(null);
 
-  const exportToFile = () => {
+  // **ネイティブ版では `<a download>` が効かない。** WKWebView も Android の WebView も、
+  // ダウンロードの受け手 (WKDownloadDelegate / DownloadListener) を持たないと
+  // クリックを黙って捨てる。iOS シミュレータで実測し、コンテナにも端末全体にも
+  // ファイルが1つも作られないことを確認した。それでも旧実装は成否を見ずに
+  // 「書き出しました。」を出していたので、**唯一のバックアップ手段が嘘をついていた。**
+  //
+  // そこでネイティブ版だけ共有シート (Web Share) に差し替える。**ブラウザ版は
+  // 従来どおり `<a download>` のまま**で、動いているものを触らない。
+  // 共有も使えないネイティブ端末では、成功と言わずに正直に失敗を出す。
+  const exportToFile = async () => {
+    const name = `english-${new Date().toISOString().slice(0, 10)}.json`;
+    const text = exportData(data);
+    const nav = navigator as Navigator & {
+      canShare?: (data?: ShareData) => boolean;
+      share?: (data?: ShareData) => Promise<void>;
+    };
+
+    // **共有シートに切り替えるのはネイティブ版だけ。** ブラウザ版 (PWA を含む) の
+    // `<a download>` は動いているので、そこの挙動は変えない。両方を共有シートに
+    // 寄せると、macOS Safari のように `canShare` が真になる環境でダウンロードが
+    // 共有メニューに変わってしまう
+    if (isNativeApp()) {
+      try {
+        const file = new File([text], name, { type: "application/json" });
+        // `share` の有無だけでは足りない。**ファイルを渡せるかは実物で聞く**
+        if (nav.share && nav.canShare?.({ files: [file] })) {
+          await nav.share({ files: [file], title: name });
+          setTransferMsg({ ok: true, text: "書き出しました。" });
+          return;
+        }
+      } catch (e) {
+        // 共有シートを閉じただけなら失敗ではない。文言を出さずに黙って戻る
+        if (e instanceof DOMException && e.name === "AbortError") {
+          setTransferMsg(null);
+          return;
+        }
+        setTransferMsg({ ok: false, text: "書き出しに失敗しました。" });
+        return;
+      }
+      // ここへ来たら打つ手が無い。**成功と言わずに正直に失敗を出す**
+      setTransferMsg({
+        ok: false,
+        text: "この端末では書き出せませんでした。共有機能が使えません。",
+      });
+      return;
+    }
+
+    // ブラウザ版の経路。**アンカーを document に挿してから押す**。
+    // `revokeObjectURL` はクリックと同じタスクで呼ぶとダウンロードの開始に
+    // 間に合わないことがあるので、次のタスクへ回す
     try {
-      const blob = new Blob([exportData(data)], { type: "application/json" });
+      const blob = new Blob([text], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
       // 日付だけのファイル名にする (端末をまたいで並べたときに順に並ぶ)
-      a.download = `english-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = name;
+      a.style.display = "none";
+      document.body.appendChild(a);
       a.click();
-      URL.revokeObjectURL(url);
+      setTimeout(() => {
+        a.remove();
+        URL.revokeObjectURL(url);
+      }, 0);
       setTransferMsg({ ok: true, text: "書き出しました。" });
     } catch {
       setTransferMsg({ ok: false, text: "書き出しに失敗しました。" });
@@ -436,7 +491,7 @@ export function EnglishApp() {
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button
-              onClick={exportToFile}
+              onClick={() => void exportToFile()}
               className="rounded-lg border border-zinc-300 px-4 py-1.5 text-xs hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
             >
               書き出し
